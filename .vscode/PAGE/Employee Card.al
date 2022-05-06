@@ -89,16 +89,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         }
                     }
                     //BH 01 start
-                    group("Military service")
+                    /*group("Military service")
                     {
 
 
 
                         Caption = 'Military service';
-
-
-
-
+                        
                         field("Military Years of Service"; "Military Years of Service")
                         {
                             Editable = false;
@@ -112,6 +109,27 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Editable = false;
                         }
                     }
+/*
+                    group("Work experience with military")
+                    {
+
+
+
+                        Caption = 'Work experience with military';
+
+                        field("Years with military"; "Years with military")
+                        {
+                            Editable = false;
+                        }
+                        field("Months with military"; "Months with military")
+                        {
+                            Editable = false;
+                        }
+                        field("Days with military"; "Days with military")
+                        {
+                            Editable = false;
+                        }
+                    }*/
                     //BH 01 end
                     group("Experience in Company")
                     {
@@ -131,8 +149,64 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         }
 
                     }
+                }
+
+
+
+            }
+            group("MILITARY EXPERIENCE")
+            {
+
+                Caption = 'Military Experience';
+                //BH 01 start
+                grid("Experience with military")
+                {
+                    GridLayout = Rows;
+                    group("Work experience with military")
+                    {
+
+
+
+                        Caption = 'Work experience with military';
+
+                        field("Years with military"; "Years with military")
+                        {
+                            Editable = false;
+                        }
+                        field("Months with military"; "Months with military")
+                        {
+                            Editable = false;
+                        }
+                        field("Days with military"; "Days with military")
+                        {
+                            Editable = false;
+                        }
+                    }
+                    group("Military service")
+                    {
+
+
+
+                        Caption = 'Military service';
+
+                        field("Military Years of Service"; "Military Years of Service")
+                        {
+                            Editable = false;
+                        }
+                        field("Military Months of Service"; "Military Months of Service")
+                        {
+                            Editable = false;
+                        }
+                        field("Military Days of Service"; "Military Days of Service")
+                        {
+                            Editable = false;
+                        }
+                    }
+
 
                 }
+                //BH 01 end
+
             }
 
             group(PLATE)
@@ -163,70 +237,69 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
                 }
-                group(General2)
-                {
-                    Caption = 'General';
-                    //The GridLayout property is only supported on controls of type Grid
-
-                    field("Hours In Day"; "Hours In Day")
-                    {
-                    }
-                    field("Transport Amount"; "Transport Amount")
-                    {
-                    }
-                    field("Wage Type"; "Wage Type")
-                    {
-                    }
-                    field("For Calculation"; "For Calculation")
-                    {
-                    }
-                    field(Meal; Meal)
-                    {
-                    }
-                    field("Send PayList"; "Send PayList")
-                    {
-                    }
-
-
-                }
-                group("PORESKA OLAKŠICA")
-                {
-                    field("Tax Deduction"; "Tax Deduction")
-                    {
-                    }
-                    field("Tax Individual"; "Tax Individual")
-                    {
-                    }
-                    field("General Tax"; "General Tax")
-                    {
-                    }
-                    field("Additional Tax"; "Additional Tax")
-                    {
-                    }
-                    field("Tax Deduction Amount"; "Tax Deduction Amount")
-                    {
-                        Editable = false;
-                    }
-                }
-                group(Posting)
-                {
-                    Caption = 'Posting';
-
-                    field("Wage Posting Group"; "Wage Posting Group")
-                    {
-                    }
-                    field("Contribution Category Code"; "Contribution Category Code")
-                    {
-
-                    }
-                }
-
-
-
-                //ĐK
 
             }
+            group(General2)
+            {
+                Caption = 'General';
+                //The GridLayout property is only supported on controls of type Grid
+
+                field("Hours In Day"; "Hours In Day")
+                {
+                }
+                field("Transport Amount"; "Transport Amount")
+                {
+                }
+                field("Wage Type"; "Wage Type")
+                {
+                }
+                field("For Calculation"; "For Calculation")
+                {
+                }
+                field(Meal; Meal)
+                {
+                }
+                field("Send PayList"; "Send PayList")
+                {
+                }
+
+
+            }
+            group("PORESKA OLAKŠICA")
+            {
+                field("Tax Deduction"; "Tax Deduction")
+                {
+                }
+                field("Tax Individual"; "Tax Individual")
+                {
+                }
+                field("General Tax"; "General Tax")
+                {
+                }
+                field("Additional Tax"; "Additional Tax")
+                {
+                }
+                field("Tax Deduction Amount"; "Tax Deduction Amount")
+                {
+                    Editable = false;
+                }
+            }
+            group(Posting)
+            {
+                Caption = 'Posting';
+
+                field("Wage Posting Group"; "Wage Posting Group")
+                {
+                }
+                field("Contribution Category Code"; "Contribution Category Code")
+                {
+
+                }
+            }
+
+
         }
+
 
 
         addafter("No.")
@@ -746,8 +819,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
                         end;
-                    }
-                    /* field(Smjena; EmployeeContractLedger."Rad u smjenama")
+                    }/*error
+                    field(Smjena; EmployeeContractLedger."Rad u smjenama")
                      {
                          Caption = 'Rad u smjenama';
                          Editable = false;
@@ -764,8 +837,45 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                              EmployeeContractLedgerPage.RUN;
                              CurrPage.UPDATE;
                          end;
-                     }
- */
+                     }*//*error
+                    field(Superior1; EmployeeContractLedger.Superior1)
+                    {
+                        Caption = 'Superior 1';
+                        Editable = false;
+                        Importance = Promoted;
+                        ApplicationArea = all;
+
+                        trigger OnDrillDown()
+                        begin
+
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }*/
+                    /*error
+                    field(Superior2; EmployeeContractLedger.Superior2)
+                    {
+                        Caption = 'Superior 2';
+                        Editable = false;
+                        Importance = Promoted;
+                        ApplicationArea = all;
+
+                        trigger OnDrillDown()
+                        begin
+
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }*/
+
 
                 }
 

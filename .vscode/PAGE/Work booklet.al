@@ -221,6 +221,7 @@ page 50163 "Work booklet"
                     R_WorkExperience.SetEmp("Employee No.", TODAY);
                     R_WorkExperience.RUN;
                     SETCURRENTKEY("Starting Date");
+                    //SetCurrentKey("Current Company");//dodala belma
                     ASCENDING(FALSE);
 
 
@@ -242,6 +243,11 @@ page 50163 "Work booklet"
                     IF Employee2.FINDFIRST THEN BEGIN
                         R_WorkExperience.SetEmp("Employee No.", TODAY);
                         R_WorkExperience.RUN;
+                        //BH
+                        /* R_BroughtExperience.SetEmp(Rec."Employee No.");
+                         R_BroughtExperience.RUN;
+                         CALCFIELDS(Status);*/
+                        //BH
                         SETCURRENTKEY("Starting Date");
                         ASCENDING(FALSE);
                     END;

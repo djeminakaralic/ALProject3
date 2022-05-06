@@ -402,7 +402,7 @@ tableextension 50071 EmployeeExtension extends Employee
             CalcFormula = Count("Work Duties Violation" WHERE("Employee No." = FIELD("No."), "Page Type" = FILTER('Awards')));
         }
 
-        field(503575; "Clauses"; Integer)
+        field(503586; "Clauses"; Integer)
         {
             Caption = 'Clauses';
             FieldClass = FlowField;
@@ -2763,10 +2763,26 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Military Days of Service';
         }
+        field(70010; "Years with military"; Integer)
+        {
+            Caption = 'Years with military';
+        }
+        field(70011; "Months with military"; Integer)
+        {
+            Caption = 'Months with military';
+        }
+        field(70012; "Days with military"; Integer)
+        {
+            Caption = 'Days';
+        }
         //BH 01 end
         field(70005; "Date of graduation"; Date)
         {
             Caption = 'Date of graduation';
+        }
+        field(503575; "Military count"; Boolean)
+        {
+            Caption = 'Vojni staž se obračunava u ukupni staž';
         }
 
 

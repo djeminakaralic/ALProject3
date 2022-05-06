@@ -129,6 +129,10 @@ tableextension 51921 MyExtension extends "Employee Absence"
         field(50141; "Order"; Integer)
         {
         }
+
+        field(50156; "Days"; Integer) //dodano
+        {
+        }
         field(50142; "Short Code"; Code[10])
         {
             Caption = 'Short Code';
@@ -180,10 +184,10 @@ tableextension 51921 MyExtension extends "Employee Absence"
                 Employee.Get("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
-                "Full Name" := "First Name" + ' ' + "Last Name";
             end;
-
         }
+
+
         modify("Cause of Absence Code")
         {
             trigger OnAfterValidate()
@@ -202,9 +206,14 @@ tableextension 51921 MyExtension extends "Employee Absence"
             end;
 
         }
+
+
     }
+
 
     var
         myInt: Integer;
         CauseOfAbsence: Record "Cause of Absence";
+        Employee: Record "Employee";
+
 }

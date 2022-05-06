@@ -45,6 +45,15 @@ report 50116 "Work experience in Company"
             column(Military_Days_of_Service; DataItem1."Military Days of Service")
             {
             }
+            column(Experience_With_Military_Years; DataItem1."Years with military")
+            {
+            }
+            column(Experience_With_Military_Months; DataItem1."Months with military")
+            {
+            }
+            column(Experience_With_Military_Days; DataItem1."Days with military")
+            {
+            }
             //BH 01 end
 
             trigger OnAfterGetRecord()
@@ -152,12 +161,21 @@ report 50116 "Work experience in Company"
                 UkupniDani := 0;
                 UkupniMjeseci := 0;
                 MODIFY;
+                //BH 01 start
+                UkupniSaVojnimDani := 0;
+                UkupniSaVojnimGodine := 0;
+                UkupniSaVojnimMjeseci := 0;
+                MODIFY;
 
+                SviVojniGodine := 0;
+                SviVojniMjeseci := 0;
+                SviVojniDani := 0;
+                //BH 01 end
 
                 t_WorkBooklet.RESET;
                 t_WorkBooklet.SETFILTER("Employee No.", "No.");
                 t_WorkBooklet.SETFILTER("Is not dekra", '%1', FALSE);
-                // t_WorkBooklet.SETFILTER("Military Service", '%1', TRUE);//da ne ulazi necheckovan vojni
+                t_WorkBooklet.SETFILTER("Military Service", '%1', FALSE);//BH 01 da u ukupni ne ide vojni 
                 IF t_WorkBooklet.FINDFIRST THEN BEGIN
                     REPEAT
                         UkupniDani += t_WorkBooklet.Days;
@@ -197,8 +215,40 @@ report 50116 "Work experience in Company"
                 "Brought Months Total" := (("Brought Months of Exp.in Curr." + "Brought Months of Experience") + (("Brought Days of Exp.in Curr." + "Brought Days of Experience") DIV 30)) MOD 12;
                 "Brought Days Total" := (("Brought Days of Exp.in Curr." + "Brought Days of Experience") MOD 30);
 
-                //tu
+                //BH 01 start
+                //ukupni sa vojnim
+                t_WorkBooklet.RESET;
+                t_WorkBooklet.SETFILTER("Employee No.", "No.");
+                t_WorkBooklet.SETFILTER("Is not dekra", '%1', FALSE); //BH 01 da u ukupni ide vojni 
+                IF t_WorkBooklet.FINDFIRST THEN BEGIN
+                    REPEAT
+                        UkupniSaVojnimDani += t_WorkBooklet.Days;
+                        UkupniSaVojnimMjeseci += t_WorkBooklet.Months;
+                        UkupniSaVojnimGodine += t_WorkBooklet.Years;
+                    UNTIL t_WorkBooklet.NEXT = 0;
+                end;
 
+                "Years with military" := UkupniSaVojnimGodine + (((UkupniSaVojnimMjeseci) + ((UkupniSaVojnimDani) DIV 30)) DIV 12);
+                "Months with military" := ((UkupniSaVojnimMjeseci) + ((UkupniSaVojnimDani) DIV 30)) MOD 12;
+                "Days with military" := (UkupniSaVojnimDani) MOD 30;
+                MODIFY;/*
+                //svi vojni
+                t_WorkBooklet.RESET;
+                t_WorkBooklet.SETFILTER("Employee No.", "No.");
+                t_WorkBooklet.SETFILTER("Is not dekra", '%1', FALSE);
+                t_WorkBooklet.SETFILTER("Military Service", '%1', TRUE);//BH 01 da bira samo vojne
+                IF t_WorkBooklet.FINDFIRST THEN BEGIN
+                    REPEAT
+                        SviVojniDani += t_WorkBooklet.Days;
+                        SviVojniMjeseci += t_WorkBooklet.Months;
+                        SviVojniGodine += t_WorkBooklet.Years;
+                    UNTIL t_WorkBooklet.NEXT = 0;
+                end;
+
+                "All " := UkupniSaVojnimGodine + (((UkupniSaVojnimMjeseci) + ((UkupniSaVojnimDani) DIV 30)) DIV 12);
+                "Months with military" := ((UkupniSaVojnimMjeseci) + ((UkupniSaVojnimDani) DIV 30)) MOD 12;
+                "Days with military" := (UkupniSaVojnimDani) MOD 30;*/
+                //BH 01 end
                 IF WageSetup.GET THEN BEGIN
                     IF "Org Entity Code" = 'FBIH' THEN BEGIN
                         IF WageSetup."Type Of Work Percentage Calc." = 0 THEN
@@ -318,6 +368,13 @@ report 50116 "Work experience in Company"
         BroughtTotalYears: Integer;
         ECL: Record "Employee Contract Ledger";
         EmpNo: Code[10];
+        UkupniSaVojnimGodine: Integer;
+        UkupniSaVojnimMjeseci: Integer;
+        UkupniSaVojnimDani: Integer;
+
+        SviVojniGodine: Integer;
+        SviVojniMjeseci: Integer;
+        SviVojniDani: Integer;
 
     procedure SetEndingDate(Date: Date)
     begin
@@ -335,4 +392,3 @@ report 50116 "Work experience in Company"
         //HR01
     end;
 }
-

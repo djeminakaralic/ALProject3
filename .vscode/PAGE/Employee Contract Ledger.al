@@ -750,6 +750,14 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
+                field(Superior1; Superior1)
+                {
+                    ApplicationArea = all;
+                }
+                field(Superior2; Superior2)
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

@@ -10727,6 +10727,14 @@ table 50071 "Employee Contract Ledger"
         {
             Caption = 'Rad u smjenama';
         }
+        field(594131; "Superior1"; Text[100])
+        {
+            Caption = 'Superior 1';
+        }
+        field(594132; "Superior2"; Text[100])
+        {
+            Caption = 'Superior 2';
+        }
     }
 
     keys

@@ -18,7 +18,7 @@ report 50104 "Update Brought Experience"
             {
             }
             //BH 01 start
-            column(Military_Years_of_Service; DataItem2."Military Years of Service")
+            column(Military_Years_of_Servisce; DataItem2."Military Years of Service")
             {
             }
             column(Military_Months_of_Service; DataItem2."Military Months of Service")
@@ -27,6 +27,16 @@ report 50104 "Update Brought Experience"
             column(Military_Days_of_Service; DataItem2."Military Days of Service")
             {
             }
+            /*
+            column(Experience_With_Military_Years; DataItem2."Years with military")
+            {
+            }
+            column(Experience_With_Military_Months; DataItem2."Months with military")
+            {
+            }
+            column(Experience_With_Military_Days; DataItem2."Days with military")
+            {
+            }*/
             //BH 01 end
             trigger OnAfterGetRecord()
             begin
@@ -34,6 +44,7 @@ report 50104 "Update Brought Experience"
                 "Brought Years of Experience E" := 0;
                 "Brought Months of Experience E" := 0;
                 "Brought Days of Experience E" := 0;
+
                 //BH 01 start
                 "Military Years of Service" := 0;
                 "Military Months of Service" := 0;
@@ -76,7 +87,7 @@ report 50104 "Update Brought Experience"
                 t_WorkBooklet.SETFILTER("Employee No.", "No.");
                 t_WorkBooklet.SETFILTER("Current Company", '%1', FALSE);
                 t_WorkBooklet.SETFILTER("Is not dekra", '%1', FALSE);
-                //t_WorkBooklet.SETFILTER("Military Service", '%1', TRUE);//kada je FALSE da ne ulazi u prijasnji staz
+                t_WorkBooklet.SETFILTER("Military Service", '%1', FALSE);//kada je FALSE da ne ulazi u prijasnji staz
 
                 IF t_WorkBooklet.FINDFIRST THEN
                     REPEAT
@@ -203,10 +214,8 @@ report 50104 "Update Brought Experience"
                 "Military Months of Service" := ((VojniMjeseci) + ((VojniDani) DIV 30)) MOD 12;
                 "Military Days of Service" := (VojniDani) MOD 30;
                 MODIFY;
-                //BH 01 end
-
-
             end;
+            //BH 01 end
 
             trigger OnPreDataItem()
             begin
@@ -299,9 +308,13 @@ report 50104 "Update Brought Experience"
         UkupniMjeseciD: Integer;
         Workkkk: Record "Work Booklet";
         //BH 01 start
+
         VojneGodine: Integer;
         VojniMjeseci: Integer;
-        VojniDani: Integer;
+        VojniDani: Integer;/*
+        UkupniSaVojnimGodine: Integer;
+        UkupniSaVojnimMjeseci: Integer;
+        UkupniSaVojnimDani: Integer;*/
     //BH 01 end
 
     procedure SetEmp(EmployeeNo: Code[10])

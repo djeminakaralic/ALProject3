@@ -57,6 +57,106 @@ table 50208 "Work Booklet"
                         "Last Name" := T_Employee."Last Name";
                         "Employee ID" := T_Employee."Employee ID";
                     END;
+
+                    //BH 01 start
+                    IF "Ending Date" <> 0D THEN BEGIN
+                        IF "Starting Date" = 0D THEN
+                            ERROR(Text001);
+
+                        IF "Starting Date" > "Ending Date" then
+                            FIELDERROR("Ending Date");
+                        //BH 01 end
+                    END;
+                    //BH 01 update
+                    IF "Ending Date" = 0D THEN
+                        "Ending Date" := TODAY;
+                    //
+                    CountDays := 0;
+                    CountMonths1 := 0;
+                    CountYears1 := 0;
+                    Found1 := FALSE;
+                    UkupniDani := 0;
+                    UkupniMjeseci := 0;
+                    UkupnoGodine := 0;
+
+                    RecDate1.RESET;
+                    RecDate1.SETRANGE("Period Type", RecDate1."Period Type"::Date);
+                    RecDate1.SETRANGE("Period Start", "Starting Date", CALCDATE('<+1D>', "Ending Date"));
+                    IF RecDate1.FINDSET THEN BEGIN
+                        LastFoundDate1 := "Starting Date";
+                        // *** find count of years ***
+                        TempDate1 := CALCDATE('<+1Y>', "Starting Date");
+                        //već sam povecala za 1 god
+                        Found1 := TRUE;
+                        REPEAT
+
+
+                            IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+                                //ako zadovolji uslove treba povećati za +1G
+
+                                AddYear := '';
+                                CountYears1 += 1;
+
+                                //  LastFoundDate1 := TempDate1;
+                                AddYear := '<+' + FORMAT(CountYears1 + 1) + 'Y>';
+                                TempDate1 := CALCDATE(AddYear, "Starting Date");
+                            END
+                            ELSE
+                                Found1 := FALSE;
+                        UNTIL NOT Found1;
+
+                        //pronašao broj godina i onda temp1 ide dalje
+                        NumberOfYear := '<+' + FORMAT(CountYears1) + 'Y>';
+
+                        TempDate1 := CALCDATE('<+1M>', CALCDATE(NumberOfYear, "Starting Date"));
+                        Found1 := TRUE;
+                        REPEAT
+
+                            IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+
+                                AddMonth := '';
+                                CountMonths1 += 1;
+
+                                // LastFoundDate1 := TempDate1;
+                                AddMonth := '<' + FORMAT(CountYears1) + 'Y+' + FORMAT(CountMonths1 + 1) + 'M>';
+                                TempDate1 := CALCDATE(AddMonth, "Starting Date");
+                            END
+                            ELSE
+                                Found1 := FALSE;
+                        UNTIL NOT Found1;
+
+                        NumberOfMonth := '<' + FORMAT(CountYears1) + 'Y+' + FORMAT(CountMonths1) + 'M>';
+
+
+                        TempDate1 := CALCDATE('<+1d>', CALCDATE(NumberOfMonth, "Starting Date"));
+                        Found1 := TRUE;
+                        REPEAT
+                            IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+                                CountDays += 1;
+                                LastFoundDate1 := TempDate1;
+                                TempDate1 := CALCDATE('<+1d>', TempDate1);
+                            END
+                            ELSE
+                                Found1 := FALSE;
+                        UNTIL NOT Found1;
+                    END;
+
+
+                    Days := CountDays;
+                    Months := CountMonths1;
+                    Years := CountYears1;
+
+                    IF Coefficient <> 1 THEN BEGIN
+                        UkupniDani += ROUND((Days + (Months * 30) + (Years * 12 * 30)) * Coefficient, 1, '>');
+                        UkupniMjeseci := 0;
+                        UkupnoGodine := 0;
+
+                        Years := UkupnoGodine + ((UkupniMjeseci + (UkupniDani DIV 30)) DIV 12);
+                        Months := (UkupniMjeseci + (UkupniDani DIV 30)) MOD 12;
+                        Days := UkupniDani MOD 30;
+
+                    END;
+                    //BH 01 update 
                 END;
 
                 /*CloseDate:=Rec."Starting Date"-1;
@@ -94,12 +194,116 @@ table 50208 "Work Booklet"
                 IF "Ending Date" <> 0D THEN BEGIN
                     IF "Starting Date" = 0D THEN
                         ERROR(Text001);
+                    //BH 01 start
+                    IF "Starting Date" > "Ending Date" then
+                        FIELDERROR("Ending Date");
+                    //BH 01 end
                 END;
                 //EC02e
                 //VALIDATE(Coefficient,Coefficient);
                 //VALIDATE("Current Company","Current Company");
+                //BH 01 update start
+                IF "Ending Date" = 0D THEN
+                    "Ending Date" := TODAY;
+                //
+                CountDays := 0;
+                CountMonths1 := 0;
+                CountYears1 := 0;
+                Found1 := FALSE;
+                UkupniDani := 0;
+                UkupniMjeseci := 0;
+                UkupnoGodine := 0;
+
+                RecDate1.RESET;
+                RecDate1.SETRANGE("Period Type", RecDate1."Period Type"::Date);
+                RecDate1.SETRANGE("Period Start", "Starting Date", CALCDATE('<+1D>', "Ending Date"));
+                IF RecDate1.FINDSET THEN BEGIN
+                    LastFoundDate1 := "Starting Date";
+                    // *** find count of years ***
+                    TempDate1 := CALCDATE('<+1Y>', "Starting Date");
+                    //već sam povecala za 1 god
+                    Found1 := TRUE;
+                    REPEAT
+
+
+                        IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+                            //ako zadovolji uslove treba povećati za +1G
+
+                            AddYear := '';
+                            CountYears1 += 1;
+
+                            //  LastFoundDate1 := TempDate1;
+                            AddYear := '<+' + FORMAT(CountYears1 + 1) + 'Y>';
+                            TempDate1 := CALCDATE(AddYear, "Starting Date");
+                        END
+                        ELSE
+                            Found1 := FALSE;
+                    UNTIL NOT Found1;
+
+                    //pronašao broj godina i onda temp1 ide dalje
+                    NumberOfYear := '<+' + FORMAT(CountYears1) + 'Y>';
+
+                    TempDate1 := CALCDATE('<+1M>', CALCDATE(NumberOfYear, "Starting Date"));
+                    Found1 := TRUE;
+                    REPEAT
+
+                        IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+
+                            AddMonth := '';
+                            CountMonths1 += 1;
+
+                            // LastFoundDate1 := TempDate1;
+                            AddMonth := '<' + FORMAT(CountYears1) + 'Y+' + FORMAT(CountMonths1 + 1) + 'M>';
+                            TempDate1 := CALCDATE(AddMonth, "Starting Date");
+                        END
+                        ELSE
+                            Found1 := FALSE;
+                    UNTIL NOT Found1;
+
+                    NumberOfMonth := '<' + FORMAT(CountYears1) + 'Y+' + FORMAT(CountMonths1) + 'M>';
+
+
+                    TempDate1 := CALCDATE('<+1d>', CALCDATE(NumberOfMonth, "Starting Date"));
+                    Found1 := TRUE;
+                    REPEAT
+                        IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+                            CountDays += 1;
+                            LastFoundDate1 := TempDate1;
+                            TempDate1 := CALCDATE('<+1d>', TempDate1);
+                        END
+                        ELSE
+                            Found1 := FALSE;
+                    UNTIL NOT Found1;
+                END;
+
+
+                Days := CountDays;
+                Months := CountMonths1;
+                Years := CountYears1;
+
+                IF Coefficient <> 1 THEN BEGIN
+                    UkupniDani += ROUND((Days + (Months * 30) + (Years * 12 * 30)) * Coefficient, 1, '>');
+                    UkupniMjeseci := 0;
+                    UkupnoGodine := 0;
+
+                    Years := UkupnoGodine + ((UkupniMjeseci + (UkupniDani DIV 30)) DIV 12);
+                    Months := (UkupniMjeseci + (UkupniDani DIV 30)) MOD 12;
+                    Days := UkupniDani MOD 30;
+
+                END;
+                //BH 01 update end
+
+
             end;
         }
+        //BH 01 start
+
+        field(51000; "Military Service"; Boolean)
+        {
+            Caption = 'Military Service';
+        }
+
+        //BH 01 end
         field(8; Employer; Text[250])
         {
             Caption = 'Employer';
@@ -373,6 +577,96 @@ table 50208 "Work Booklet"
                         //  MESSAGE(FORMAT(Employee."Returned to Company"));
                     END;
                 END;
+                //BH update start
+                IF "Ending Date" = 0D THEN
+                    "Ending Date" := TODAY;
+                //
+                CountDays := 0;
+                CountMonths1 := 0;
+                CountYears1 := 0;
+                Found1 := FALSE;
+                UkupniDani := 0;
+                UkupniMjeseci := 0;
+                UkupnoGodine := 0;
+
+                RecDate1.RESET;
+                RecDate1.SETRANGE("Period Type", RecDate1."Period Type"::Date);
+                RecDate1.SETRANGE("Period Start", "Starting Date", CALCDATE('<+1D>', "Ending Date"));
+                IF RecDate1.FINDSET THEN BEGIN
+                    LastFoundDate1 := "Starting Date";
+                    // *** find count of years ***
+                    TempDate1 := CALCDATE('<+1Y>', "Starting Date");
+                    //već sam povecala za 1 god
+                    Found1 := TRUE;
+                    REPEAT
+
+
+                        IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+                            //ako zadovolji uslove treba povećati za +1G
+
+                            AddYear := '';
+                            CountYears1 += 1;
+
+                            //  LastFoundDate1 := TempDate1;
+                            AddYear := '<+' + FORMAT(CountYears1 + 1) + 'Y>';
+                            TempDate1 := CALCDATE(AddYear, "Starting Date");
+                        END
+                        ELSE
+                            Found1 := FALSE;
+                    UNTIL NOT Found1;
+
+                    //pronašao broj godina i onda temp1 ide dalje
+                    NumberOfYear := '<+' + FORMAT(CountYears1) + 'Y>';
+
+                    TempDate1 := CALCDATE('<+1M>', CALCDATE(NumberOfYear, "Starting Date"));
+                    Found1 := TRUE;
+                    REPEAT
+
+                        IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+
+                            AddMonth := '';
+                            CountMonths1 += 1;
+
+                            // LastFoundDate1 := TempDate1;
+                            AddMonth := '<' + FORMAT(CountYears1) + 'Y+' + FORMAT(CountMonths1 + 1) + 'M>';
+                            TempDate1 := CALCDATE(AddMonth, "Starting Date");
+                        END
+                        ELSE
+                            Found1 := FALSE;
+                    UNTIL NOT Found1;
+
+                    NumberOfMonth := '<' + FORMAT(CountYears1) + 'Y+' + FORMAT(CountMonths1) + 'M>';
+
+
+                    TempDate1 := CALCDATE('<+1d>', CALCDATE(NumberOfMonth, "Starting Date"));
+                    Found1 := TRUE;
+                    REPEAT
+                        IF (TempDate1 <= CALCDATE('<+1D>', "Ending Date")) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
+                            CountDays += 1;
+                            LastFoundDate1 := TempDate1;
+                            TempDate1 := CALCDATE('<+1d>', TempDate1);
+                        END
+                        ELSE
+                            Found1 := FALSE;
+                    UNTIL NOT Found1;
+                END;
+
+
+                Days := CountDays;
+                Months := CountMonths1;
+                Years := CountYears1;
+
+                IF Coefficient <> 1 THEN BEGIN
+                    UkupniDani += ROUND((Days + (Months * 30) + (Years * 12 * 30)) * Coefficient, 1, '>');
+                    UkupniMjeseci := 0;
+                    UkupnoGodine := 0;
+
+                    Years := UkupnoGodine + ((UkupniMjeseci + (UkupniDani DIV 30)) DIV 12);
+                    Months := (UkupniMjeseci + (UkupniDani DIV 30)) MOD 12;
+                    Days := UkupniDani MOD 30;
+
+                END;
+                //BH update end
 
             end;
         }
@@ -654,12 +948,8 @@ table 50208 "Work Booklet"
         {
             Caption = 'Hours change';
         }
-        //BH 01 start
-        field(51000; "Military Service"; Boolean)
-        {
-            Caption = 'Military Service';
-        }
-        //BH 01 end
+
+
     }
 
     keys
@@ -908,5 +1198,10 @@ table 50208 "Work Booklet"
         WbPrevious: Record "Work Booklet";
         WorkBooklet2: Record "Work Booklet";
         UserPersonalization: Record "User Personalization";
+        //BH 01 start
+        Text002: Label 'Starting Date field cannot be after Ending Date field.';
+        Text003: Label 'Ending Date field cannot be before Starting Date field.';
+    //BH 01 end
+
 }
 

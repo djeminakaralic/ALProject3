@@ -88,6 +88,30 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
+            field("Military Years of Service"; "Military Years of Service")
+            {
+
+            }
+            field("Military Months of Service"; "Military Months of Service")
+            {
+
+            }
+            field("Military Days of Service"; "Military Days of Service")
+            {
+
+            }
+            field("Years with military"; "Years with military")
+            {
+
+            }
+            field("Months with military"; "Months with military")
+            {
+
+            }
+            field("Days with military"; "Days with military")
+            {
+
+            }
         }
 
 

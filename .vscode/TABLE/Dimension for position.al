@@ -14,6 +14,7 @@ table 50046 "Dimension for position"
             trigger OnValidate()
             begin
 
+                //Djemina;
                 /*OrgStr.SETFILTER(Status,'%1',OrgStr.Status::Active);
                IF OrgStr.FINDFIRST THEN
                  BEGIN

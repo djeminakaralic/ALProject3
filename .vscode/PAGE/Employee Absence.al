@@ -2,13 +2,14 @@ page 51129 "Employee Absence"
 {
     // // Added fields "In Addition to Regular Work"
 
-    Caption = 'Employee Absence';
+    Caption = 'Employee Absence Elmira';
     DataCaptionFields = "Employee No.";
     DelayedInsert = true;
     PageType = Worksheet;
     SaveValues = true;
-    SourceTable = "Employee Absence";
+    SourceTable = "Employee Absence Reg";
     //SourceTableView = SORTING("Employee No.", From Date);
+
 
     layout
     {
@@ -87,19 +88,6 @@ page 51129 "Employee Absence"
                 field("Employee No."; "Employee No.")
                 {
 
-                    trigger OnValidate()
-                    begin
-
-                    end;
-                    /*trigger OnValidate() {
-                        var Employee: Record Employee;
-                        begin
-                            Employee.Get("Employee No.");
-                            "First Name" := Employee."First Name";
-                            "Last Name" := Employee."Last Name";
-                            //"Full Name" := "First Name" + ' ' + "Last Name";
-                        end;
-                    }*/
 
                     /*trigger OnLookup(var Text: Text): Boolean
                     begin
@@ -132,9 +120,22 @@ page 51129 "Employee Absence"
 
                     trigger OnValidate()
                     begin
-                        IF ("To Date" = 0D) THEN BEGIN
-                            "To Date" := "From Date";
+
+                        IF "To Date" <> 0D THEN BEGIN
+                            IF "From Date" = 0D THEN
+                                FIELDERROR("From Date");
+
+                            IF "From Date" > "To Date" then
+                                FIELDERROR("From Date");
                         END;
+
+
+
+
+
+                        /*IF ("To Date" = 0D) THEN BEGIN
+                            "To Date" := "From Date";
+                        END;*/
                         //FillHours(FIELDNO("From Date"));
                     end;
                 }
@@ -145,9 +146,17 @@ page 51129 "Employee Absence"
                     begin
                         //IF (xRec."To Date" <> "To Date") AND ("To Date" <> 0D) THEN
                         //FillHours(FIELDNO("To Date"));
-                        IF "To Date" < "From Date" THEN
-                            FIELDERROR("To Date");
 
+                        /*IF "To Date" < "From Date" THEN
+                            FIELDERROR("To Date");?*/
+
+                        IF "To Date" <> 0D THEN BEGIN
+                            IF "From Date" = 0D THEN
+                                FIELDERROR("To Date");
+
+                            IF "From Date" > "To Date" then
+                                FIELDERROR("To Date");
+                        END;
                     end;
                 }
 
@@ -162,8 +171,18 @@ page 51129 "Employee Absence"
 
                 field("Quantity"; "Quantity")
                 {
-
+                    /*trigger OnValidate()
+                    begin
+                        Employee.SETFILTER("No.", '%1', Rec."Employee No.");
+                        IF Employee.FINDFIRST THEN BEGIN
+                            Employee.Get("Employee No.");
+                            "First Name" := Employee."First Name";
+                            "Last Name" := Employee."Last Name";
+                        END;
+                    end;*/
                 }
+
+
                 field(Approved; Approved)
                 {
                     Editable = true;
@@ -196,11 +215,11 @@ page 51129 "Employee Absence"
                     RunPageLink = "Employee No." = FIELD("Employee No.");
 
                 }*/
-                action("Overview by &Periods")
+                /*action("Overview by &Periods")
                 {
                     Caption = 'Overview by &Periods';
                     RunObject = Page "Absence Overview by Periods";
-                }
+                }*/
 
                 /*action("&Reset Quantity")
                 {
@@ -225,7 +244,7 @@ page 51129 "Employee Absence"
 
                     trigger OnAction()
                     begin
-                        SetApprove(TRUE);
+                        //SetApprove(TRUE);
                     end;
                 }
 
@@ -240,7 +259,7 @@ page 51129 "Employee Absence"
 
                     trigger OnAction()
                     begin
-                        SetApprove(FALSE);
+                        //SetApprove(FALSE);
                     end;
                 }
 
@@ -333,20 +352,29 @@ page 51129 "Employee Absence"
 
     trigger OnAfterGetRecord()
     begin
-        OnAfterGetCurrRecord;
+        //OnAfterGetCurrRecord;
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        EXIT(TestRecordValid);
+        //EXIT(TestRecordValid);
+
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
-        EXIT(TestRecordValid);
+        //EXIT(TestRecordValid);
     end;
 
+
+
     trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+
+    end;
+
+
+    /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
         recEmployee.RESET;
         recEmployee.SETFILTER("No.", EmployeeFilter);
@@ -361,23 +389,29 @@ page 51129 "Employee Absence"
             END;
         END;
         //TestDateValid; //DODANO
-        OnAfterGetCurrRecord;
-    end;
+        //OnAfterGetCurrRecord;
+    end;*/
+
+
 
     trigger OnOpenPage()
     begin
         //  GetInitialFilters;
+        Employee.Get("Employee No.");
+        "First Name" := Employee."First Name";
+        "Last Name" := Employee."Last Name";
+
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        SaveFilters;
+        //SaveFilters;
     end;
 
     var
 
         HRSetup: Record "Human Resources Setup";
-        UnitOfMeasure: Record "Human Resource Unit of Measure";
+        //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
         Year: Integer;
         Month: Integer;
@@ -518,26 +552,26 @@ page 51129 "Employee Absence"
         END;
     end;*/
 
-    procedure SaveFilters()
+    /*procedure SaveFilters()
     begin
         IF NOT ISSERVICETIER THEN BEGIN
             SETRANGE("From Date");
             SETRANGE("Employee No.");
             //SETRANGE("Global Dimension 1 Code");
             //SETRANGE("Global Dimension 2 Code");
-            FILTERGROUP(2);
+            //FILTERGROUP(2);
             recEmplAbsence.RESET;
             COPYFILTER("From Date", recEmplAbsence."From Date");
             COPYFILTER("Employee No.", recEmplAbsence."Employee No.");
             //COPYFILTER("Global Dimension 1 Code", recEmplAbsence."Global Dimension 1 Code");
             //COPYFILTER("Global Dimension 2 Code", recEmplAbsence."Global Dimension 2 Code");
-            FILTERGROUP(0);
+            //FILTERGROUP(0);
             recEmplAbsence.COPYFILTER("From Date", Rec."From Date");
             recEmplAbsence.COPYFILTER("Employee No.", Rec."Employee No.");
             /*recEmplAbsence.COPYFILTER("Global Dimension 1 Code", Rec."Global Dimension 1 Code");
             recEmplAbsence.COPYFILTER("Global Dimension 2 Code", Rec."Global Dimension 2 Code");*/
-        END;
-    end;
+    /*END;
+end;*/
 
     /*local procedure PrevMonth()
     begin
@@ -594,17 +628,17 @@ page 51129 "Employee Absence"
             CurrPeriodStartDate := DMY2DATE(1, Month, Year);
             CurrPeriodEndDate := CALCDATE('<+1M><-1D>', CurrPeriodStartDate);
             SETRANGE("From Date");
-            FILTERGROUP(2);
+            //FILTERGROUP(2);
             SETRANGE("From Date", CurrPeriodStartDate, CurrPeriodEndDate);
-            FILTERGROUP(0);
+            //FILTERGROUP(0);
         END ELSE BEGIN
             Year := 0;
             Month := 0;
             CurrPeriodStartDate := 0D;
             CurrPeriodEndDate := 20180325D;
-            FILTERGROUP(2);
+            //FILTERGROUP(2);
             SETRANGE("From Date");
-            FILTERGROUP(0);
+            //FILTERGROUP(0);
         END;
     end;
 
@@ -612,14 +646,14 @@ page 51129 "Employee Absence"
     begin
         IF EmployeeFilter <> '' THEN BEGIN
             SETRANGE("Employee No.");
-            FILTERGROUP(2);
+            //FILTERGROUP(2);
             SETFILTER("Employee No.", EmployeeFilter);
-            FILTERGROUP(0);
+            //FILTERGROUP(0);
         END ELSE BEGIN
             SETRANGE("Employee No.");
-            FILTERGROUP(2);
+            //FILTERGROUP(2);
             SETRANGE("Employee No.");
-            FILTERGROUP(0);
+            //FILTERGROUP(0);
         END;
     end;
 
@@ -653,7 +687,7 @@ page 51129 "Employee Absence"
         END;
     end;*/
 
-    procedure TestRecordWithinFilter(bOnlyKeyFields: Boolean): Boolean
+    /*procedure TestRecordWithinFilter(bOnlyKeyFields: Boolean): Boolean
     begin
         recEmplAbsenceTemp.RESET;
         recEmplAbsenceTemp.DELETEALL;
@@ -661,22 +695,22 @@ page 51129 "Employee Absence"
         recEmplAbsenceTemp.TRANSFERFIELDS(Rec);
         recEmplAbsenceTemp.INSERT;
         recEmplAbsenceTemp.RESET;
-        FILTERGROUP(2);
+        //FILTERGROUP(2);
         COPYFILTER("Employee No.", recEmplAbsenceTemp."Employee No.");
         /*COPYFILTER("Global Dimension 1 Code", recEmplAbsenceTemp."Global Dimension 1 Code");
         COPYFILTER("Global Dimension 2 Code", recEmplAbsenceTemp."Global Dimension 2 Code");*/
-        IF NOT bOnlyKeyFields THEN BEGIN
-            COPYFILTER("From Date", recEmplAbsenceTemp."From Date");
-        END;
-        FILTERGROUP(0);
-        recEmplAbsenceTemp.INIT;
-        recEmplAbsenceTemp.TRANSFERFIELDS(Rec);
-        IF NOT recEmplAbsenceTemp.FIND('=') THEN
-            ERROR(Text001);
-        EXIT(TRUE);
-    end;
+    /*IF NOT bOnlyKeyFields THEN BEGIN
+        COPYFILTER("From Date", recEmplAbsenceTemp."From Date");
+    END;
+    //FILTERGROUP(0);
+    recEmplAbsenceTemp.INIT;
+    recEmplAbsenceTemp.TRANSFERFIELDS(Rec);
+    IF NOT recEmplAbsenceTemp.FIND('=') THEN
+        ERROR(Text001);
+    EXIT(TRUE);
+end;*/
 
-    procedure TestRecordValid(): Boolean
+    /*procedure TestRecordValid(): Boolean POGLEDATI
     begin
         IF NOT Employee.GET("Employee No.") THEN
             FIELDERROR("Employee No.");
@@ -693,9 +727,9 @@ page 51129 "Employee Absence"
         IF NOT TestVacationOK THEN
             EXIT(FALSE);
         EXIT(TestRecordWithinFilter(FALSE));
-    end;
+    end;*/
 
-    procedure FillHours(inFieldNo: Integer)
+    /*procedure FillHours(inFieldNo: Integer)
     var
         l_Date: Date;
         l_WorkHoursCode: Code[10];
@@ -744,9 +778,9 @@ page 51129 "Employee Absence"
                          VALIDATE("Unit of Measure Code", Setup."Day Unit of Measure Code");
                      END;
                  END;*/
-            END;
-        END;
-    end;
+    /*END;
+END;
+end;*/
 
     procedure TestVacationOK(): Boolean
     var
@@ -807,9 +841,9 @@ page 51129 "Employee Absence"
     procedure SetApprove(inNewValue: Boolean)
     begin
         txtView := Rec.GETVIEW;
-        FILTERGROUP(2);
+        //FILTERGROUP(2);
         txtView2 := Rec.GETVIEW;
-        FILTERGROUP(0);
+        //FILTERGROUP(0);
         CurrPage.SETSELECTIONFILTER(Rec);
         IF COUNT > 3 THEN BEGIN
             IF NOT CONFIRM(Text002, FALSE, inNewValue, COUNT) THEN BEGIN
@@ -823,9 +857,9 @@ page 51129 "Employee Absence"
             UNTIL NEXT = 0;
         Rec.CLEARMARKS;
         Rec.MARKEDONLY(FALSE);
-        FILTERGROUP(2);
+        //FILTERGROUP(2);
         Rec.SETVIEW(txtView2);
-        FILTERGROUP(0);
+        //FILTERGROUP(0);
         Rec.SETVIEW(txtView);
         txtView := '';
     end;
@@ -836,7 +870,9 @@ page 51129 "Employee Absence"
         SettingNewFilters := TRUE;
     end;
 
-    procedure SetDim1Filter(NewFilter: Code[250])
+
+
+    /*procedure SetDim1Filter(NewFilter: Code[250])
     begin
         NewDim1Filter := NewFilter;
         SettingNewFilters := TRUE;
@@ -846,7 +882,7 @@ page 51129 "Employee Absence"
     begin
         NewDim2Filter := NewFilter;
         SettingNewFilters := TRUE;
-    end;
+    end;*/
 
     procedure YearOnAfterValidate()
     begin
@@ -876,26 +912,27 @@ page 51129 "Employee Absence"
         CurrPage.UPDATE(FALSE);
     end;*/
 
-    procedure EmployeeFilterOnAfterValidate()
+    /*procedure EmployeeFilterOnAfterValidate()
     begin
         CurrPage.SAVERECORD;
         SetEmployee;
         CurrPage.UPDATE(FALSE);
-    end;
+    end;*/
 
-    procedure OnAfterGetCurrRecord()
+    /*procedure OnAfterGetCurrRecord()
     begin
         xRec := Rec;
         IF txtView <> '' THEN BEGIN
             CLEARMARKS;
             MARKEDONLY(FALSE);
-            FILTERGROUP(2);
+            //FILTERGROUP(2);
             Rec.SETVIEW(txtView2);
-            FILTERGROUP(0);
+            //FILTERGROUP(0);
             Rec.SETVIEW(txtView);
             txtView := '';
         END;
-    end;
+    end;*/
+
 
     procedure EmployeeNoOnAfterInput(var Text: Text[1024])
     begin
@@ -906,4 +943,6 @@ page 51129 "Employee Absence"
             Text := recEmployee."No.";
         END;
     end;
+
+
 }

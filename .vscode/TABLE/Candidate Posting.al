@@ -356,6 +356,8 @@ table 50213 "Candidate/Posting"
             Caption = 'Appropriate Profile for Bank';
             Editable = false;
         }
+
+
     }
 
     keys
