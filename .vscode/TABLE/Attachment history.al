@@ -11,6 +11,8 @@ table 50153 "Attachment History"
             Caption = 'No.';
             Editable = false;
 
+            //ipak ne
+
         }
         field(2; Attachment; Text[250])
         {
