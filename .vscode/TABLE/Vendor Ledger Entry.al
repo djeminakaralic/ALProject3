@@ -12,10 +12,10 @@ tableextension 50109 VendorLedgerEntryExtends extends "Vendor Ledger Entry"
         }
 
 
-        field(50001; "G/L Account"; Code[10])
+        field(50001; "G/L Account"; Code[20])
         {
             FieldClass = FlowField;
-            CalcFormula = lookup ("Vendor Posting Group"."Payables Account" where(code = field("Vendor Posting Group")));
+            CalcFormula = lookup("Vendor Posting Group"."Payables Account" where(code = field("Vendor Posting Group")));
 
         }
 
