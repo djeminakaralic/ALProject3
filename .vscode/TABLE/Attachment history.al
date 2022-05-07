@@ -10,7 +10,7 @@ table 50153 "Attachment History"
         {
             Caption = 'No.';
             Editable = false;
-            //ĐK test novi
+            //ĐK test novi stvarno je tako
         }
         field(2; Attachment; Text[250])
         {
