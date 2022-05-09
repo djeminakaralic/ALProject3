@@ -16,6 +16,8 @@ page 50001 "Award Category List"
                 {
                     Visible = false;
                     ApplicationArea = all;
+
+                    //aida hero
                 }
                 field(Category; Category)
                 {
