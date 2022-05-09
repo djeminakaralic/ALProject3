@@ -3194,7 +3194,7 @@ table 52039 "Certifications r"
 
     procedure ExportAttachment()
     var
-        TempBlob: Record "TempBlob";
+        //   TempBlob: Record "TempBlob";
         MarketingSetup: Record "Marketing Setup";
         FileMgt: Codeunit "File Management";
         FileName: Text[1024];

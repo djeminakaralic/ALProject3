@@ -20,11 +20,10 @@ table 50052 TempGLE
             Caption = 'Posting Date';
             ClosingDates = true;
         }
-        field(5; "Document Type"; Option)
+        field(5; "Document Type"; Enum "Gen. Journal Document Type")
         {
             Caption = 'Document Type';
-            OptionCaption = ' ,Payment,Invoice,Credit Memo,Finance Charge Memo,Reminder,Refund';
-            OptionMembers = " ",Payment,Invoice,"Credit Memo","Finance Charge Memo",Reminder,Refund;
+
         }
         field(6; "Document No."; Code[20])
         {
@@ -130,11 +129,10 @@ table 50052 TempGLE
             Caption = 'Reason Code';
             TableRelation = "Reason Code";
         }
-        field(48; "Gen. Posting Type"; Option)
+        field(48; "Gen. Posting Type"; Enum "General Posting Type")
         {
             Caption = 'Gen. Posting Type';
-            OptionCaption = ' ,Purchase,Sale,Settlement';
-            OptionMembers = " ",Purchase,Sale,Settlement;
+
         }
         field(49; "Gen. Bus. Posting Group"; Code[10])
         {
@@ -177,11 +175,10 @@ table 50052 TempGLE
         {
             Caption = 'External Document No.';
         }
-        field(57; "Source Type"; Option)
+        field(57; "Source Type"; Enum "Gen. Journal Source Type")
         {
             Caption = 'Source Type';
-            OptionCaption = ' ,Customer,Vendor,Bank Account,Fixed Asset';
-            OptionMembers = " ",Customer,Vendor,"Bank Account","Fixed Asset";
+
         }
         field(58; "Source No."; Code[20])
         {
@@ -270,7 +267,7 @@ table 50052 TempGLE
             Caption = 'Reversed Entry No.';
             TableRelation = "G/L Entry";
         }
-        field(76; "G/L Account Name"; Text[50])
+        field(76; "G/L Account Name"; Text[100])
         {
             FieldClass = FlowField;
             CalcFormula = Lookup("G/L Account".Name WHERE("No." = FIELD("G/L Account No.")));
@@ -489,7 +486,7 @@ table 50052 TempGLE
         "Use Tax" := GenJnlLine."Use Tax";
     end;
 
-    procedure CopyPostingGroupsFromDtldCVBuf(DtldCVLedgEntryBuf: Record "Detailed CV Ledg. Entry Buffer"; GenPostingType: Option " ",Purchase,Sale,Settlement)
+    procedure CopyPostingGroupsFromDtldCVBuf(DtldCVLedgEntryBuf: Record "Detailed CV Ledg. Entry Buffer"; GenPostingType: enum "General Posting Type")
     begin
         "Gen. Posting Type" := GenPostingType;
         "Gen. Bus. Posting Group" := DtldCVLedgEntryBuf."Gen. Bus. Posting Group";

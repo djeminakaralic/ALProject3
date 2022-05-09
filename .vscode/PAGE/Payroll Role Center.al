@@ -8,10 +8,7 @@ page 50094 "Payroll Role Center"
         area(rolecenter)
 
         {
-            part(Part4; 50086)
-            {
-                ApplicationArea = all;
-            }
+
 
             group(rolegroup)
             {

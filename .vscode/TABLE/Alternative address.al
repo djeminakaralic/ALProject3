@@ -636,14 +636,12 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
         {
             Caption = 'Active';
         }
-        field(50020; Status; Option)
+        field(50020; Status; enum "Employee Status")
         {
             FieldClass = FlowField;
             CalcFormula = Lookup(Employee.Status WHERE("No." = FIELD("Employee No.")));
             Caption = 'Status';
 
-            OptionCaption = 'Active,Inactive,Unpaid,Terminated';
-            OptionMembers = Active,Inactive,Unpaid,Terminated;
         }
         field(50021; "Employment Date"; Date)
         {

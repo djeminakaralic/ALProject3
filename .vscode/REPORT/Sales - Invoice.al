@@ -1298,7 +1298,7 @@ report 50123 "Sales - Invoice new 2"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                CurrReport.LANGUAGE := GetLanguage.GetLanguageID("Language Code");
                 IF CR.GET(CompanyInfo."Country/Region Code") THEN
                     CountryComp := CR."Name 2"
                 ELSE
@@ -1568,6 +1568,7 @@ report 50123 "Sales - Invoice new 2"
 
     var
         DiscountCapt2: Label 'Discount ';
+        GetLanguage: Codeunit Language;
         FiscalNoCaption: Text[1000];
         ProformaCapt: Label 'Proforma Invoice No.';
         naslovAvans: Label 'Prepayment Invoice';

@@ -377,11 +377,10 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = 'Payment Date (Author Contract)';
         }
-        field(224; Status; Option)
+        field(224; Status; enum "Employee Status")
         {
             Caption = 'Status';
-            OptionCaption = 'Active,Inactive,Unpaid,Terminated';
-            OptionMembers = Active,Inactive,Unpaid,Terminated;
+
         }
         field(225; Paid; Boolean)
         {

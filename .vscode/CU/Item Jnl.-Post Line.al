@@ -122,7 +122,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         SalesBlockedErr: Label 'You cannot sell this item because the Sales Blocked check box is selected on the item card.';
         PurchasingBlockedErr: Label 'You cannot purchase this item because the Purchasing Blocked check box is selected on the item card.';
 
-    [Scope('Personalization')]
+
     procedure RunWithCheck(var ItemJnlLine2: Record "Item Journal Line"): Boolean
     var
         TrackingSpecExists: Boolean;
@@ -132,7 +132,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         EXIT(PostSplitJnlLine(ItemJnlLine2, TrackingSpecExists));
     end;
 
-    [Scope('Personalization')]
+
     procedure RunPostWithReservation(var ItemJnlLine2: Record "Item Journal Line"; var ReservationEntry: Record "Reservation Entry"): Boolean
     var
         TrackingSpecExists: Boolean;
@@ -438,6 +438,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         MfgUnitCost: Decimal;
         ReTrack: Boolean;
         PostWhseJnlLine: Boolean;
+
     begin
         WITH ItemJnlLine DO BEGIN
             IF "Stop Time" <> 0 THEN BEGIN
@@ -513,6 +514,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
             END;
 
             CalcDirAndIndirCostAmts(DirCostAmt, IndirCostAmt, ValuedQty, "Unit Cost", "Indirect Cost %", "Overhead Rate");
+
 
             InsertCapValueEntry(CapLedgEntry, "Value Entry Type"::"Direct Cost", ValuedQty, ValuedQty, DirCostAmt);
             InsertCapValueEntry(CapLedgEntry, "Value Entry Type"::"Indirect Cost", ValuedQty, 0, IndirCostAmt);
@@ -874,7 +876,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    local procedure InsertCapValueEntry(var CapLedgEntry: Record "Capacity Ledger Entry"; ValueEntryType: Option; ValuedQty: Decimal; InvdQty: Decimal; AdjdCost: Decimal)
+    local procedure InsertCapValueEntry(var CapLedgEntry: Record "Capacity Ledger Entry"; ValueEntryType: enum "Cost Entry Type"; ValuedQty: Decimal; InvdQty: Decimal; AdjdCost: Decimal)
     var
         ValueEntry: Record "Value Entry";
     begin
@@ -1302,7 +1304,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
             END;
     end;
 
-    [Scope('Personalization')]
+
     procedure UnApply(Application: Record "Item Application Entry")
     var
         ItemLedgEntry1: Record "Item Ledger Entry";
@@ -1391,7 +1393,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         UpdateLinkedValuationUnapply(Valuationdate, CostItemLedgEntry."Entry No.", CostItemLedgEntry.Positive);
     end;
 
-    [Scope('Personalization')]
+
     procedure ReApply(ItemLedgEntry: Record "Item Ledger Entry"; ApplyWith: Integer)
     var
         ItemLedgEntry2: Record "Item Ledger Entry";
@@ -3490,7 +3492,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         ReservMgt.AutoTrack(ItemLedgEntryRec."Remaining Quantity");
     end;
 
-    [Scope('Personalization')]
+
     procedure SetPostponeReservationHandling(Postpone: Boolean)
     begin
         // Used when posting Transfer Order receipts
@@ -3669,7 +3671,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         EXIT(FALSE);
     end;
 
-    [Scope('Personalization')]
+
     procedure CollectTrackingSpecification(var TargetTrackingSpecification: Record "Tracking Specification" temporary): Boolean
     begin
         TempTrackingSpecification.RESET;
@@ -3689,7 +3691,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         EXIT(TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure CollectValueEntryRelation(var TargetValueEntryRelation: Record "Value Entry Relation" temporary; RowId: Text[250]): Boolean
     begin
         TempValueEntryRelation.RESET;
@@ -3709,7 +3711,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         EXIT(TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure CollectItemEntryRelation(var TargetItemEntryRelation: Record "Item Entry Relation" temporary): Boolean
     begin
         TempItemEntryRelation.RESET;
@@ -3925,7 +3927,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure UndoValuePostingWithJob(OldItemLedgEntryNo: Integer; NewItemLedgEntryNo: Integer)
     var
         OldItemLedgEntry: Record "Item Ledger Entry";
@@ -4114,7 +4116,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
             Item.INIT;
     end;
 
-    [Scope('Personalization')]
+
     procedure CheckItemTracking()
     begin
         IF SNRequired AND (ItemJnlLine."Serial No." = '') THEN
@@ -4232,20 +4234,20 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure SetCalledFromInvtPutawayPick(NewCalledFromInvtPutawayPick: Boolean)
     begin
         CalledFromInvtPutawayPick := NewCalledFromInvtPutawayPick;
     end;
 
-    [Scope('Personalization')]
+
     procedure SetCalledFromAdjustment(NewCalledFromAdjustment: Boolean; NewPostToGL: Boolean)
     begin
         CalledFromAdjustment := NewCalledFromAdjustment;
         PostToGL := NewPostToGL;
     end;
 
-    [Scope('Personalization')]
+
     procedure NextOperationExist(ProdOrderRtngLine: Record "Prod. Order Routing Line"): Boolean
     begin
         EXIT(ProdOrderRtngLine."Next Operation No." <> '');
@@ -4258,13 +4260,13 @@ codeunit 50999 "Item Jnl.-Post Line2"
               "Order Type", "Order No.", "Order Line No.", OriginalPostingDate, "Valuation Date");
     end;
 
-    local procedure SetAdjmtProp(ItemNo: Code[20]; ItemLedgEntryType: Option; Adjustment: Boolean; OrderType: Option; OrderNo: Code[20]; OrderLineNo: Integer; OriginalPostingDate: Date; ValuationDate: Date)
+    local procedure SetAdjmtProp(ItemNo: Code[20]; ItemLedgEntryType: Enum "Item Ledger Entry Type"; Adjustment: Boolean; OrderType: Enum "Inventory Order Type"; OrderNo: Code[20]; OrderLineNo: Integer; OriginalPostingDate: Date; ValuationDate: Date)
     begin
         SetItemAdjmtProp(ItemNo, ItemLedgEntryType, Adjustment, OriginalPostingDate, ValuationDate);
         SetOrderAdjmtProp(ItemLedgEntryType, OrderType, OrderNo, OrderLineNo, OriginalPostingDate, ValuationDate);
     end;
 
-    local procedure SetItemAdjmtProp(ItemNo: Code[20]; ItemLedgEntryType: Option; Adjustment: Boolean; OriginalPostingDate: Date; ValuationDate: Date)
+    local procedure SetItemAdjmtProp(ItemNo: Code[20]; ItemLedgEntryType: Enum "Item Ledger Entry Type"; Adjustment: Boolean; OriginalPostingDate: Date; ValuationDate: Date)
     var
         Item: Record "Item";
         ValueEntry: Record "Value Entry";
@@ -4579,7 +4581,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
             END;
     end;
 
-    [Scope('Personalization')]
+
     procedure RedoApplications()
     var
         TouchedItemLedgEntry: Record "Item Ledger Entry";
@@ -4624,7 +4626,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         ValueEntry.MODIFYALL("Valued By Average Cost", ValuedByAverage);
     end;
 
-    [Scope('Personalization')]
+
     procedure CostAdjust()
     var
         InvtSetup: Record "Inventory Setup";
@@ -4670,7 +4672,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure AnyTouchedEntries(): Boolean
     begin
         EXIT(TouchedItemLedgerEntries.FIND('-'))
@@ -4719,7 +4721,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         EXIT(Date2);
     end;
 
-    [Scope('Personalization')]
+
     procedure SetValuationDateAllValueEntrie(ItemLedgerEntryNo: Integer; ValuationDate: Date; FixedApplication: Boolean)
     var
         ValueEntry: Record "Value Entry";
@@ -4741,13 +4743,13 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure SetServUndoConsumption(Value: Boolean)
     begin
         IsServUndoConsumption := Value;
     end;
 
-    [Scope('Personalization')]
+
     procedure SetProdOrderCompModified(ProdOrderCompIsModified: Boolean)
     begin
         ProdOrderCompModified := ProdOrderCompIsModified;
@@ -4946,7 +4948,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         JobPlanningLineReserve.TransferJobLineToItemJnlLine(JobPlanningLine, ToItemJnlLine, ToItemJnlLine."Quantity (Base)");
     end;
 
-    [Scope('Personalization')]
+
     procedure SetupTempSplitItemJnlLine(ItemJnlLine2: Record "Item Journal Line"; SignFactor: Integer; var NonDistrQuantity: Decimal; var NonDistrAmount: Decimal; var NonDistrAmountACY: Decimal; var NonDistrDiscountAmount: Decimal; Invoice: Boolean): Boolean
     var
         FloatingFactor: Decimal;
@@ -5368,13 +5370,13 @@ codeunit 50999 "Item Jnl.-Post Line2"
         OnAfterPrepareItem(ItemJnlLineToPost);
     end;
 
-    [Scope('Personalization')]
+
     procedure SetSkipApplicationCheck(NewValue: Boolean)
     begin
         SkipApplicationCheck := NewValue;
     end;
 
-    [Scope('Personalization')]
+
     procedure LogApply(ApplyItemLedgEntry: Record "Item Ledger Entry"; AppliedItemLedgEntry: Record "Item Ledger Entry")
     var
         ItemApplnEntry: Record "Item Application Entry";
@@ -5392,7 +5394,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         AddToApplicationLog(ItemApplnEntry, TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure LogUnapply(ItemApplnEntry: Record "Item Application Entry")
     begin
         AddToApplicationLog(ItemApplnEntry, FALSE);
@@ -5413,13 +5415,13 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure ClearApplicationLog()
     begin
         TempItemApplnEntryHistory.DELETEALL;
     end;
 
-    [Scope('Personalization')]
+
     procedure UndoApplications()
     var
         ItemLedgEntry: Record "Item Ledger Entry";
@@ -5445,7 +5447,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure ApplicationLogIsEmpty(): Boolean
     begin
         EXIT(TempItemApplnEntryHistory.ISEMPTY);
@@ -5464,7 +5466,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         EXIT(STRSUBSTNO(BasicTextString, ItemNo) + STRSUBSTNO(LineNoTxt, LineNo));
     end;
 
-    [Scope('Personalization')]
+
     procedure SetCalledFromApplicationWorksheet(IsCalledFromApplicationWorksheet: Boolean)
     begin
         CalledFromApplicationWorksheet := IsCalledFromApplicationWorksheet;
@@ -5498,7 +5500,7 @@ codeunit 50999 "Item Jnl.-Post Line2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure RestoreTouchedEntries(var TempItem: Record "Item" temporary)
     var
         ItemApplicationEntryHistory: Record "Item Application Entry History";

@@ -27,7 +27,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         ItemJnlRollRndg: Boolean;
         ServiceLinePostingDate: Date;
 
-    [Scope('Personalization')]
+
     procedure Initialize(var TempServHeader: Record "Service Header"; TmpConsume: Boolean; TmpInvoice: Boolean)
     var
         SrcCodeSetup: Record "Source Code Setup";
@@ -43,7 +43,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         GenJnlLineExtDocNo := '';
     end;
 
-    [Scope('Personalization')]
+
     procedure Finalize()
     begin
         CLEAR(GenJnlPostLine);
@@ -52,20 +52,20 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         CLEAR(ServLedgEntryPostSale);
     end;
 
-    [Scope('Personalization')]
+
     procedure SetPostingOptions(PassedConsume: Boolean; PassedInvoice: Boolean)
     begin
         Consume := PassedConsume;
         Invoice := PassedInvoice;
     end;
 
-    [Scope('Personalization')]
+
     procedure SetItemJnlRollRndg(PassedItemJnlRollRndg: Boolean)
     begin
         ItemJnlRollRndg := PassedItemJnlRollRndg;
     end;
 
-    [Scope('Personalization')]
+
     procedure SetGenJnlLineDocNos(DocNo: Code[20]; ExtDocNo: Code[20])
     begin
         GenJnlLineDocNo := DocNo;
@@ -94,7 +94,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
                 Location.GET(LocationCode);
     end;
 
-    [Scope('Personalization')]
+
     procedure PostItemJnlLine(var ServiceLine: Record "Service Line"; QtyToBeShipped: Decimal; QtyToBeShippedBase: Decimal; QtyToBeConsumed: Decimal; QtyToBeConsumedBase: Decimal; QtyToBeInvoiced: Decimal; QtyToBeInvoicedBase: Decimal; ItemLedgShptEntryNo: Integer; var TrackingSpecification: Record "Tracking Specification"; var TempTrackingSpecificationInv: Record "Tracking Specification"; var TempHandlingSpecification: Record "Tracking Specification"; var TempTrackingSpecification: Record "Tracking Specification" temporary; var ServShptHeader: Record "Service Shipment Header"; ServShptLineDocNo: Code[20]): Integer
     var
         ItemJnlLine: Record "Item Journal Line";
@@ -310,7 +310,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
             UNTIL TempWhseJnlLine2.NEXT = 0;
     end;
 
-    [Scope('Personalization')]
+
     procedure PostInvoicePostBufferLine(var InvoicePostBuffer: Record "Invoice Post. Buffer"; DocType: Integer; DocNo: Code[20]; ExtDocNo: Code[20])
     var
         GenJnlLine: Record "Gen. Journal Line";
@@ -322,7 +322,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
               InvoicePostBuffer."Global Dimension 1 Code", InvoicePostBuffer."Global Dimension 2 Code",
               InvoicePostBuffer."Dimension Set ID", ServiceHeader."Reason Code");
 
-            CopyDocumentFields(DocType, DocNo, ExtDocNo, SrcCode, '');
+            CopyDocumentFields(ConverterFromIntegerToEnum(DocType), DocNo, ExtDocNo, SrcCode, '');
 
             CopyFromServiceHeader(ServiceHeader);
             CopyFromInvoicePostBuffer(InvoicePostBuffer);
@@ -334,7 +334,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure PostCustomerEntry(var TotalServiceLine: Record "Service Line"; var TotalServiceLineLCY: Record "Service Line"; DocType: Integer; DocNo: Code[20]; ExtDocNo: Code[20])
     var
         GenJnlLine: Record "Gen. Journal Line";
@@ -345,7 +345,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
               ServiceHeader."Shortcut Dimension 1 Code", ServiceHeader."Shortcut Dimension 2 Code",
               ServiceHeader."Dimension Set ID", ServiceHeader."Reason Code");
 
-            CopyDocumentFields(DocType, DocNo, ExtDocNo, SrcCode, '');
+            CopyDocumentFields(ConverterFromIntegerToEnum(DocType), DocNo, ExtDocNo, SrcCode, '');
 
             "Account Type" := "Account Type"::Customer;
             "Account No." := ServiceHeader."Bill-to Customer No.";
@@ -369,7 +369,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         END;
     end;
 
-    [Scope('Personalization')]
+
 
     procedure PostDirectConsumption(var ServiceLine: Record "Service Line"; var ServiceHeader: Record "Service Header"; ShptNo: Code[20])
     var
@@ -447,7 +447,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
             CopyFromServiceHeader(ServiceHeader);
             SetCurrencyFactor(ServiceHeader."Currency Code", ServiceHeader."Currency Factor");
 
-            SetApplyToDocNo(ServiceHeader, GenJnlLine, DocType, DocNo);
+            SetApplyToDocNo(ServiceHeader, GenJnlLine, ConverterFromIntegerToEnum(DocType), DocNo);
 
             Amount := TotalServiceLine."Amount Including VAT" + CustLedgEntry."Remaining Pmt. Disc. Possible";
             "Source Currency Amount" := Amount;
@@ -511,7 +511,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
                 GenJnlLine."Currency Factor" := 1
             ELSE
                 GenJnlLine."Currency Factor" := "Currency Factor";
-            GenJnlLine."Applies-to Doc. Type" := GenJnlLineDocType;
+            GenJnlLine."Applies-to Doc. Type" := ConverterFromIntegerToEnum(GenJnlLineDocType);
             GenJnlLine."Applies-to Doc. No." := GenJnlLineDocNo;
             GenJnlLine."Source Type" := GenJnlLine."Source Type"::Customer;
             GenJnlLine."Source No." := "Bill-to Customer No.";
@@ -520,6 +520,15 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
             GenJnlLine.Correction := Correction;
             GenJnlPostLine.RunWithCheck(GenJnlLine);
         END;
+    end;
+
+    procedure ConverterFromIntegerToEnum(var OrdinalValue: Integer): Enum "Gen. Journal Document Type"
+    var
+        level: Enum "Gen. Journal Document Type";
+
+
+    begin
+        level := Enum::"Gen. Journal Document Type".FromInteger(OrdinalValue);
     end;
 
     procedure PostGenJnlLineReceivable(var TotalServiceLine: Record "Service Line"; var TotalServiceLineLCY: Record "Service Line"; GenJnlLineDocType: Integer; GenJnlLineDocNo: Code[20]; GenJnlLineExtDocNo: Code[20])
@@ -541,7 +550,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
             GenJnlLine."Reason Code" := "Reason Code";
             GenJnlLine."Account Type" := GenJnlLine."Account Type"::Customer;
             GenJnlLine."Account No." := "Bill-to Customer No.";
-            GenJnlLine."Document Type" := GenJnlLineDocType;
+            GenJnlLine."Document Type" := ConverterFromIntegerToEnum(GenJnlLineDocType);
             GenJnlLine."Document No." := GenJnlLineDocNo;
             GenJnlLine."External Document No." := GenJnlLineExtDocNo;
             GenJnlLine."Currency Code" := "Currency Code";
@@ -592,7 +601,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
             GenJnlLine.VALIDATE("VAT Date", "VAT Date");//BH1.00
             GenJnlLine.Description := "Posting Description";
             GenJnlLine."Reason Code" := "Reason Code";
-            GenJnlLine."Document Type" := GenJnlLineDocType;
+            GenJnlLine."Document Type" := ConverterFromIntegerToEnum(GenJnlLineDocType);
             GenJnlLine."Document No." := GenJnlLineDocNo;
             GenJnlLine."External Document No." := GenJnlLineExtDocNo;
             GenJnlLine."Account No." := InvPostingBuffer[1]."G/L Account";
@@ -641,7 +650,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         GenJnlLine.VALIDATE("FA Posting Type", GenJnlLine."FA Posting Type"::" ");
     end;
 
-    local procedure SetApplyToDocNo(ServiceHeader: Record "Service Header"; var GenJnlLine: Record "Gen. Journal Line"; DocType: Option; DocNo: Code[20])
+    local procedure SetApplyToDocNo(ServiceHeader: Record "Service Header"; var GenJnlLine: Record "Gen. Journal Line"; DocType: Enum "Gen. Journal Document Type"; DocNo: Code[20])
     begin
         WITH GenJnlLine DO BEGIN
             IF ServiceHeader."Bal. Account Type" = ServiceHeader."Bal. Account Type"::"Bank Account" THEN
@@ -652,7 +661,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure PostResJnlLineShip(var ServiceLine: Record "Service Line"; DocNo: Code[20]; ExtDocNo: Code[20])
     var
         ResJnlLine: Record "Res. Journal Line";
@@ -669,7 +678,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         TimeSheetMgt.CreateTSLineFromServiceLine(ServiceLine, GenJnlLineDocNo, TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure PostResJnlLineUndoUsage(var ServiceLine: Record "Service Line"; DocNo: Code[20]; ExtDocNo: Code[20])
     var
         ResJnlLine: Record "Res. Journal Line";
@@ -681,7 +690,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
           ServiceLine.Amount / ServiceLine."Qty. to Invoice", -ServiceLine.Amount);
     end;
 
-    [Scope('Personalization')]
+
     procedure PostResJnlLineSale(var ServiceLine: Record "Service Line"; DocNo: Code[20]; ExtDocNo: Code[20])
     var
         ResJnlLine: Record "Res. Journal Line";
@@ -692,7 +701,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
           -ServiceLine.Amount / ServiceLine.Quantity, -ServiceLine.Amount);
     end;
 
-    [Scope('Personalization')]
+
     procedure PostResJnlLineConsume(var ServiceLine: Record "Service Line"; var ServShptHeader: Record "Service Shipment Header")
     var
         ResJnlLine: Record "Res. Journal Line";
@@ -708,7 +717,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         TimeSheetMgt.CreateTSLineFromServiceLine(ServiceLine, GenJnlLineDocNo, FALSE);
     end;
 
-    local procedure PostResJnlLine(ServiceHeader: Record "Service Header"; ServiceLine: Record "Service Line"; DocNo: Code[20]; ExtDocNo: Code[35]; SrcCode: Code[10]; PostingNoSeries: Code[20]; EntryType: Option; Qty: Decimal; UnitPrice: Decimal; TotalPrice: Decimal)
+    local procedure PostResJnlLine(ServiceHeader: Record "Service Header"; ServiceLine: Record "Service Line"; DocNo: Code[20]; ExtDocNo: Code[35]; SrcCode: Code[10]; PostingNoSeries: Code[20]; EntryType: enum "Res. Journal Line Entry Type"; Qty: Decimal; UnitPrice: Decimal; TotalPrice: Decimal)
     var
         ResJnlLine: Record "Res. Journal Line";
     begin
@@ -729,39 +738,39 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         END;
     end;
 
-    [Scope('Personalization')]
+
     procedure InitServiceRegister(var NextServLedgerEntryNo: Integer; var NextWarrantyLedgerEntryNo: Integer)
     begin
         ServLedgEntryPostSale.InitServiceRegister(NextServLedgerEntryNo, NextWarrantyLedgerEntryNo);
     end;
 
-    [Scope('Personalization')]
+
     procedure FinishServiceRegister(var nextServEntryNo: Integer; var nextWarrantyEntryNo: Integer)
     begin
         ServLedgEntryPostSale.FinishServiceRegister(nextServEntryNo, nextWarrantyEntryNo);
     end;
 
-    [Scope('Personalization')]
+
     procedure InsertServLedgerEntry(var NextEntryNo: Integer; var ServiceHeader: Record "Service Header"; var ServiceLine: Record "Service Line"; var ServItemLine: Record "Service Item Line"; Qty: Decimal; DocNo: Code[20]): Integer
     begin
         EXIT(
           ServLedgEntryPostSale.InsertServLedgerEntry(NextEntryNo, ServiceHeader, ServiceLine, ServItemLine, Qty, DocNo));
     end;
 
-    [Scope('Personalization')]
+
     procedure InsertServLedgerEntrySale(var passedNextEntryNo: Integer; var ServHeader: Record "Service Header"; var ServLine: Record "Service Line"; var ServItemLine: Record "Service Item Line"; Qty: Decimal; QtyToCharge: Decimal; GenJnlLineDocNo: Code[20]; DocLineNo: Integer)
     begin
         ServLedgEntryPostSale.InsertServLedgerEntrySale(
           passedNextEntryNo, ServHeader, ServLine, ServItemLine, Qty, QtyToCharge, GenJnlLineDocNo, DocLineNo);
     end;
 
-    [Scope('Personalization')]
+
     procedure CreateCreditEntry(var passedNextEntryNo: Integer; var ServHeader: Record "Service Header"; var ServLine: Record "Service Line"; GenJnlLineDocNo: Code[20])
     begin
         ServLedgEntryPostSale.CreateCreditEntry(passedNextEntryNo, ServHeader, ServLine, GenJnlLineDocNo);
     end;
 
-    [Scope('Personalization')]
+
     procedure InsertWarrantyLedgerEntry(var NextWarrantyEntryNo: Integer; var ServiceHeader: Record "Service Header"; var ServiceLine: Record "Service Line"; var ServItemLine: Record "Service Item Line"; Qty: Decimal; GenJnlLineDocNo: Code[20]): Integer
     begin
         EXIT(
@@ -769,13 +778,13 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
             NextWarrantyEntryNo, ServiceHeader, ServiceLine, ServItemLine, Qty, GenJnlLineDocNo));
     end;
 
-    [Scope('Personalization')]
+
     procedure CalcSLEDivideAmount(Qty: Decimal; var passedServHeader: Record "Service Header"; var passedTempServLine: Record "Service Line"; var passedVATAmountLine: Record "VAT Amount Line")
     begin
         ServLedgEntryPostSale.CalcDivideAmount(Qty, passedServHeader, passedTempServLine, passedVATAmountLine);
     end;
 
-    [Scope('Personalization')]
+
     procedure TestSrvCostDirectPost(ServLineNo: Code[20])
     var
         ServCost: Record "Service Cost";
@@ -786,7 +795,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         GLAcc.TESTFIELD("Direct Posting", TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure TestGLAccDirectPost(ServLineNo: Code[20])
     var
         GLAcc: Record "G/L Account";
@@ -795,7 +804,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         GLAcc.TESTFIELD("Direct Posting", TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure CollectValueEntryRelation(var PassedValueEntryRelation: Record "Value Entry Relation"; RowId: Text[100])
     begin
         TempValueEntryRelation.RESET;
@@ -811,7 +820,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         TempValueEntryRelation.DELETEALL;
     end;
 
-    [Scope('Personalization')]
+
     procedure PostJobJnlLine(var ServHeader: Record "Service Header"; ServLine: Record "Service Line"; QtyToBeConsumed: Decimal): Boolean
     var
         JobJnlLine: Record "Job Journal Line";
@@ -913,7 +922,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         EXIT(TRUE);
     end;
 
-    [Scope('Personalization')]
+
     procedure SetPostingDate(PostingDate: Date)
     begin
         ServiceLinePostingDate := PostingDate;

@@ -1297,7 +1297,7 @@ report 50993 "Posted Sales - Credit Memo"
                 IF User.FINDFIRST
                   THEN
                     UserName := User."Full Name";
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                CurrReport.LANGUAGE := GetLanguage.GetLanguageID("Language Code");
                 /*IF CurrReport.LANGUAGE=1033 THEN
                 naslov:='Sales Credit Memo'
                 ELSE
@@ -1527,6 +1527,7 @@ report 50993 "Posted Sales - Credit Memo"
 
     var
         naslovAvans: Label 'Prepayment credit memo';
+        GetLanguage: Codeunit Language;
         naslovi: Label 'Credit memo';
         Text50016: Label 'Bill No.';
         Text000: Label 'Salesperson';

@@ -390,13 +390,13 @@ table 50032 "Wage Addition"
         {
             Caption = 'Payment Month';
         }
-        field(133; Gender; Option)
+        field(133; Gender; enum "Employee Gender")
         {
-            CalcFormula = Lookup (Employee.Gender WHERE("No." = FIELD("Employee No.")));
-            Caption = 'Gender';
             FieldClass = FlowField;
-            OptionCaption = ' ,Female,Male';
-            OptionMembers = " ",Female,Male;
+            CalcFormula = Lookup(Employee.Gender WHERE("No." = FIELD("Employee No.")));
+            Caption = 'Gender';
+
+
         }
         field(134; "Starting Date"; Date)
         {

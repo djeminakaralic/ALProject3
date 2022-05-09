@@ -34,7 +34,7 @@ codeunit 50998 "Job Jnl.-Post Line2"
         NextEntryNo: Integer;
         GLEntryNo: Integer;
 
-    [Scope('Personalization')]
+
     procedure RunWithCheck(var JobJnlLine2: Record "Job Journal Line"): Integer
     var
         JobLedgEntryNo: Integer;
@@ -217,7 +217,7 @@ codeunit 50998 "Job Jnl.-Post Line2"
         GLSetupRead := TRUE;
     end;
 
-    [Scope('Personalization')]
+
     procedure CreateJobLedgEntry(JobJnlLine2: Record "Job Journal Line"): Integer
     var
         ResLedgEntry: Record "Res. Ledger Entry";
@@ -385,7 +385,7 @@ codeunit 50998 "Job Jnl.-Post Line2"
                 Location.GET(LocationCode);
     end;
 
-    [Scope('Personalization')]
+
     procedure SetGLEntryNo(GLEntryNo2: Integer)
     begin
         GLEntryNo := GLEntryNo2;

@@ -95,7 +95,7 @@ table 50023 Reduction
         field(36; "No. of Installments paid"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count ("Reduction per Wage" WHERE("Employee No." = FIELD("Employee No."),
+            CalcFormula = Count("Reduction per Wage" WHERE("Employee No." = FIELD("Employee No."),
                                                             "Reduction No." = FIELD("No.")));
             Caption = 'No. of installments paid';
 
@@ -103,7 +103,7 @@ table 50023 Reduction
         field(40; "Paid Amount"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Reduction per Wage".Amount WHERE("Employee No." = FIELD("Employee No."),
+            CalcFormula = Sum("Reduction per Wage".Amount WHERE("Employee No." = FIELD("Employee No."),
                                                                 "Reduction No." = FIELD("No.")));
             Caption = 'Paid Amount';
 
@@ -274,13 +274,13 @@ table 50023 Reduction
         {
             Caption = 'Payment end';
         }
-        field(50009; "Employee Status"; Option)
+        field(50009; "Employee Status"; enum "Employee Status")
         {
-            CalcFormula = Lookup (Employee.Status WHERE("No." = FIELD("Employee No.")));
-            Caption = 'Status';
             FieldClass = FlowField;
-            OptionCaption = 'Active,Inactive,Unpaid,Terminated';
-            OptionMembers = Active,Inactive,Unpaid,Terminated;
+            CalcFormula = Lookup(Employee.Status WHERE("No." = FIELD("Employee No.")));
+            Caption = 'Status';
+
+
         }
         field(50010; "Paid Installments"; Integer)
         {

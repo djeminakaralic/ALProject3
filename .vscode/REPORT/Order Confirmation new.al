@@ -1443,10 +1443,10 @@ report 50099 "Order Confirmation new"
                 Note1 := ReplaceString(DataItem6640."Note 1", '@DatumIzdavanjaFakture', format(DataItem6640."Document Date", 0, '<Day,2>.<Month,2>.<Year4>'));
 
                 CompanyInfo1.CALCFIELDS(Picture);
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                CurrReport.LANGUAGE := GetLanguage.GetLanguageID("Language Code");
 
                 CASE "Document Type" OF
-                    1:
+                    "Document Type"::Order:
                         BEGIN
                             naslov := OrderNoCaptionLbl;
                             br := InvNo2;
@@ -1458,7 +1458,7 @@ report 50099 "Order Confirmation new"
                             CustomerCapt := CustomerCaption2;
                             CustomerCaption := CustNo;
                         END;
-                    0:
+                    "Document Type"::Quote:
                         BEGIN
                             naslov := Quote;
                             vrijedido := Valid;
@@ -1471,7 +1471,7 @@ report 50099 "Order Confirmation new"
                         END;
 
 
-                    2:
+                    "Document Type"::Invoice:
                         BEGIN
                             naslov := OrderNoCaptionLbl;
                             br := InvNo2;
@@ -1731,6 +1731,7 @@ report 50099 "Order Confirmation new"
 
     var
         Text000: Label 'Salesperson';
+        GetLanguage: Codeunit Language;
 
         Cijena: Decimal;
         EmptyRow: Boolean;

@@ -24,7 +24,7 @@ report 50035 Timesheets
 
 
 
-                    IF Status = 0 THEN BEGIN
+                    IF Status.AsInteger() = 0 THEN BEGIN
                         excLine += 1;
                         excLineSum += 1;
 
@@ -306,7 +306,7 @@ report 50035 Timesheets
 
                 trigger OnAfterGetRecord()
                 begin
-                    IF Status = 0 THEN BEGIN
+                    IF Status.AsInteger() = 0 THEN BEGIN
 
                         excLine += 1;
 
@@ -572,7 +572,7 @@ report 50035 Timesheets
 
                 trigger OnAfterGetRecord()
                 begin
-                    IF Status = 0 THEN BEGIN
+                    IF Status.AsInteger() = 0 THEN BEGIN
 
                         excLine += 1;
 

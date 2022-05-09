@@ -61,17 +61,15 @@ table 50004 "Detailed VAT Entry"
             Caption = 'Column10';
             DataClassification = ToBeClassified;
         }
-        field(100; Type; Option)
+        field(100; Type; Enum "Type Detailed VAT Entry")
         {
             Caption = 'Type';
-            DataClassification = ToBeClassified;
-            OptionCaption = ' ,Purchase,Sale,Settlement';
-            OptionMembers = " ",Purchase,Sale,Settlement;
+
         }
         field(50000; "VAT retro"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("VAT Entry"."VAT Base (retro.)" WHERE("Entry No." = FIELD("VAT Entry No.")));
+            CalcFormula = Sum("VAT Entry"."VAT Base (retro.)" WHERE("Entry No." = FIELD("VAT Entry No.")));
 
 
         }
@@ -79,7 +77,7 @@ table 50004 "Detailed VAT Entry"
         {
 
             FieldClass = FlowField;
-            CalcFormula = Sum ("VAT Entry"."VAT Amount (retro.)" WHERE("Entry No." = FIELD("VAT Entry No.")));
+            CalcFormula = Sum("VAT Entry"."VAT Amount (retro.)" WHERE("Entry No." = FIELD("VAT Entry No.")));
 
         }
     }

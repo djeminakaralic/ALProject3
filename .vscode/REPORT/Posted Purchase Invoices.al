@@ -465,7 +465,7 @@ report 50991 "Purchase - Invoice report"
                             VATAmountLine.InsertLine;
 
                             AllowVATDisctxt := FORMAT("Allow Invoice Disc.");
-                            PurchInLineTypeNo := Type;
+                            PurchInLineTypeNo := Type.AsInteger();
 
                             TotalSubTotal += "Line Amount";
                             TotalInvoiceDiscountAmount -= "Inv. Discount Amount";
@@ -722,7 +722,7 @@ report 50991 "Purchase - Invoice report"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                CurrReport.LANGUAGE := GetLanguage.GetLanguageID("Language Code");
 
                 CompanyInfo.GET;
                 CompanyInfo.CALCFIELDS(Picture);
@@ -848,6 +848,7 @@ report 50991 "Purchase - Invoice report"
 
     var
         Text000: Label 'Purchaser';
+        GetLanguage: Codeunit Language;
         Text001: Label 'Total %1';
         Text002: Label 'Total %1 Incl. VAT';
         Text003: Label ' COPY';

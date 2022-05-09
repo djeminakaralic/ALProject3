@@ -1,4 +1,4 @@
-report 50084 "Mail Sending2"
+report 50012 "Mail Sending2"
 {
     DefaultLayout = RDLC;
     //RDLCLayout = './Mail Sending.rdl';
@@ -174,6 +174,7 @@ report 50084 "Mail Sending2"
 
 
             SMTPMail.CreateMessage(CompInf."Sender Name", TemplateMessages."E-mail sender", Recipients, Subject, Sadrzaj_notifikacije_text, TRUE);
+
             //ĐK   SMTPMail.AddCC(MailCc);
             DocumforOffer.RESET;
             DocumforOffer.SETFILTER("Document No", '%1', Off);

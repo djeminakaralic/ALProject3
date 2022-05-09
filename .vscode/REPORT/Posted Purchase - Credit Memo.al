@@ -710,7 +710,7 @@ report 50992 "Posted Purchase - Credit Memo"
 
             trigger OnAfterGetRecord()
             begin
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                CurrReport.LANGUAGE := GetLanguage.GetLanguageID("Language Code");
 
                 CompanyInfo.GET;
                 CompanyInfo.CALCFIELDS(Picture);
@@ -835,6 +835,7 @@ report 50992 "Posted Purchase - Credit Memo"
 
     var
         Text000: Label 'Purchaser';
+        GetLanguage: Codeunit Language;
         Text001: Label 'Total %1';
         Text002: Label 'Total %1 Incl. VAT';
         Text003: Label '(Applies to %1 %2)';

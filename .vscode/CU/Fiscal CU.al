@@ -743,7 +743,7 @@ codeunit 50126 FiscalPrinter
         i: Integer;
         j: Integer;
         xmlNodeList5: XmlNodeList;
-        TempBlob: Record TempBlob;
+        //TempBlob: Record TempBlob;
         Charr: Char;
         importFile: File;
         importFile2: File;

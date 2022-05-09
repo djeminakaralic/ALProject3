@@ -1327,7 +1327,7 @@ report 50137 "Posted Order Confirmation"
                     PaymentSWIFT := BankAccountTemp."SWIFT Code";
 
                 end;
-                CurrReport.LANGUAGE := Language.GetLanguageID("Language Code");
+                CurrReport.LANGUAGE := GetLanguage.GetLanguageID("Language Code");
                 IF CR.GET(CompanyInfo."Country/Region Code") THEN
                     CountryComp := CR."Name 2"
                 ELSE
@@ -1633,6 +1633,7 @@ report 50137 "Posted Order Confirmation"
 
     var
         DiscountCapt2: Label 'Discount ';
+        GetLanguage: Codeunit Language;
         FiscalNoCaption: Text[1000];
 
         Cijena: Decimal;
