@@ -1,8 +1,8 @@
 table 50151 Sector
 {
     Caption = 'Sector';
-    DrillDownPageID = 99000750;
-    LookupPageID = 99000750;
+    DrillDownPageID = Sector;
+    LookupPageID = Sector;
 
     fields
     {

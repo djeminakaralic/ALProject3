@@ -23,14 +23,20 @@ page 50130 "Department Category"
                 field("Official Translate of DepCat"; "Official Translate of DepCat")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Org Shema"; "Org Shema")
                 {
                     ApplicationArea = all;
                 }
+                field("Sector Belongs"; "Sector Belongs")
+                {
+
+                }
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Department Type"; "Department Type")
                 {
@@ -39,14 +45,17 @@ page 50130 "Department Category"
                 field("Identity Sector"; "Identity Sector")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Identity; Identity)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("ID for GPS"; "ID for GPS")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
 
             }

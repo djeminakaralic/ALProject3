@@ -142,12 +142,9 @@ table 50104 "Employee Absence Reg"
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
         EmployeeAbsence: Record "Employee Absence Reg";
-<<<<<<< HEAD
-=======
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
->>>>>>> 2bbddfb01b4ae1d0a1eb811afa29d979aac3df5f
 
     trigger OnInsert()
     begin

@@ -434,14 +434,7 @@ table 50085 "HR Cue"
             Caption = 'Volonteer';
             FieldClass = FlowField;
         }
-        field(50059; "Student Service"; Integer)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Count(Employee WHERE(StatusExt = FILTER('Student Service'),
-                                                "External employer Status" = FILTER(Active)));
-            Caption = 'Student Service';
 
-        }
 
         field(50061; "Contract in conflict"; Integer)
         {

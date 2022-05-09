@@ -207,6 +207,11 @@ table 50040 "Department Category"
             OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
             OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
         }
+        field(50018; "Sector Belongs"; Text[250])
+        {
+            TableRelation = Sector.Description;
+
+        }
         field(500402; "Official Translate of DepCat"; Text[250])
         {
             Caption = 'Official Translate of DepCat';

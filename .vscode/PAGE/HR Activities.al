@@ -113,11 +113,7 @@ page 50066 "HR activities"
                     Image = People;
                     ApplicationArea = all;
                 }
-                field("Student Service"; "Student Service")
-                {
-                    Image = People;
-                    ApplicationArea = all;
-                }
+
 
             }
 

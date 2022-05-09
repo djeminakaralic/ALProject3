@@ -23,6 +23,7 @@ page 50120 TeamsP
                 field("Official Translate of Team"; "Official Translate of Team")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Org Shema"; "Org Shema")
                 {
@@ -45,22 +46,27 @@ page 50120 TeamsP
                 field(Identity; Identity)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Group Identity"; "Group Identity")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Identity Sector"; "Identity Sector")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Entity Code"; "Entity Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("ID for GPS"; "ID for GPS")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }

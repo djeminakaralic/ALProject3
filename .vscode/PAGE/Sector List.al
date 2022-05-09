@@ -23,6 +23,7 @@ page 50115 Sector
                 field("Official Translate of Sector"; "Official Translate of Sector")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Org Shema"; "Org Shema")
                 {
@@ -31,18 +32,22 @@ page 50115 Sector
                 field(Identity; Identity)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
+                     Visible = false;
                 }
                 field("Department Type"; "Department Type")
                 {
                     ApplicationArea = all;
+                    
                 }
                 field("ID for GPS"; "ID for GPS")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Parent; Parent)
                 {

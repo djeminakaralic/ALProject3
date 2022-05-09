@@ -23,6 +23,7 @@ page 50063 Group
                 field("Official Translate of Group"; "Official Translate of Group")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Org Shema"; "Org Shema")
                 {
@@ -31,6 +32,7 @@ page 50063 Group
                 field("Identity Sector"; "Identity Sector")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Belongs to Department Category"; "Belongs to Department Category")
                 {
@@ -43,14 +45,17 @@ page 50063 Group
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Identity; Identity)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("ID for GPS"; "ID for GPS")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
