@@ -220,7 +220,7 @@ page 51129 "Employee Absence"
 
                     trigger OnAction()
                     begin
-                        //SetApprove(FALSE);
+                        SetApprove(FALSE);
                     end;
                 }
 

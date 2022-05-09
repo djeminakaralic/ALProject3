@@ -60,10 +60,10 @@ table 50104 "Employee Absence Reg"
             begin
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
-                        ERROR('Unesite datum završetka!');
+                        ERROR(Text001);
 
                     IF "From Date" > "To Date" then
-                        ERROR('Uneseni datum nije ispravan!');
+                        ERROR(Text002);
                 END;
             end;
         }
@@ -81,12 +81,22 @@ table 50104 "Employee Absence Reg"
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
+<<<<<<< HEAD
                         ERROR('Unesite datum početka!');
 
                     IF "From Date" > "To Date" then
                         ERROR('Uneseni datum nije ispravan!');
                 END;
             end;
+=======
+                        ERROR(Text001);
+
+                    IF "From Date" > "To Date" then
+                        ERROR(Text003);
+                END;
+            end;
+
+>>>>>>> 2bbddfb01b4ae1d0a1eb811afa29d979aac3df5f
         }
 
         field(10; "Employee No."; Code[20])
@@ -141,6 +151,12 @@ table 50104 "Employee Absence Reg"
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
         EmployeeAbsence: Record "Employee Absence Reg";
+<<<<<<< HEAD
+=======
+        Text001: Label 'Starting Date field cannot be blank.';
+        Text002: Label 'Starting Date field cannot be after Ending Date field.';
+        Text003: Label 'Ending Date field cannot be before Starting Date field.';
+>>>>>>> 2bbddfb01b4ae1d0a1eb811afa29d979aac3df5f
 
     trigger OnInsert()
     begin

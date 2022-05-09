@@ -5008,6 +5008,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Msg</note>
         </trans-unit>
+        <trans-unit id="Table 1229655105 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 1229655105 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date field cannot be after Ending Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 1229655105 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date field cannot be before Starting Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text003</note>
+        </trans-unit>
         <trans-unit id="Table 1229655105 - Field 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approved</source>
           <note from="Developer" annotates="general" priority="2"></note>
