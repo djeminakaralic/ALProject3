@@ -11,7 +11,7 @@ report 50221 "Department Temporary GROUP"
 
             trigger OnAfterGetRecord()
             begin
-
+                //
                 /*
                      IF Promjena=1 THEN BEGIN
                    SETFILTER("ORG Shema",'%1',"ORG Shema");
