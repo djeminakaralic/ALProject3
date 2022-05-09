@@ -24,6 +24,8 @@ table 50208 "Work Booklet"
             begin
 
                 //HR01 start
+
+                //blma
                 IF "Employee ID" <> '' THEN BEGIN
                     T_Employee.SETFILTER("Employee ID", "Employee ID");
                     IF T_Employee.FINDFIRST THEN BEGIN
