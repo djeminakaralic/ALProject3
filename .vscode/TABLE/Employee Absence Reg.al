@@ -81,14 +81,6 @@ table 50104 "Employee Absence Reg"
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
-<<<<<<< HEAD
-                        ERROR('Unesite datum početka!');
-
-                    IF "From Date" > "To Date" then
-                        ERROR('Uneseni datum nije ispravan!');
-                END;
-            end;
-=======
                         ERROR(Text001);
 
                     IF "From Date" > "To Date" then
@@ -96,7 +88,6 @@ table 50104 "Employee Absence Reg"
                 END;
             end;
 
->>>>>>> 2bbddfb01b4ae1d0a1eb811afa29d979aac3df5f
         }
 
         field(10; "Employee No."; Code[20])
