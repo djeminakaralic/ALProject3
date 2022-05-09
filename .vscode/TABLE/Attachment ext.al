@@ -6,6 +6,7 @@ tableextension 50090 "Attachment_Ext" extends Attachment
         field(18; "File Name"; Text[500])
         {
             Caption = 'File Name';
+            //sta sada
         }
     }
 
