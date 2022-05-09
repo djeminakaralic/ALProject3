@@ -175,18 +175,6 @@ tableextension 51921 MyExtension extends "Employee Absence"
             OptionMembers = " ","Vacation";
         }
 
-        modify("Employee No.")
-        {
-            trigger OnAfterValidate()
-            var
-                Employee: Record Employee;
-            begin
-                Employee.Get("Employee No.");
-                "First Name" := Employee."First Name";
-                "Last Name" := Employee."Last Name";
-            end;
-        }
-
 
         modify("Cause of Absence Code")
         {
@@ -213,6 +201,7 @@ tableextension 51921 MyExtension extends "Employee Absence"
 
     var
         myInt: Integer;
+
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
 

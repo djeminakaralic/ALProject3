@@ -337,6 +337,7 @@ report 50116 "Work experience in Company"
         MESSAGE('Završeno');
     end;
 
+
     var
         zadnji: Text[100];
         Str: Text[100];
