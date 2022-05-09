@@ -10,6 +10,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+        modify("Employment Date")
+        {
+            visible = false;
+        }
+        modify("Search Name")
+        {
+            Visible = false;
+        }
         modify("Privacy Blocked")
         {
             Visible = false;
@@ -36,36 +44,201 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         addafter(Personal)
         {
 
-            group("Work Experience")
+            /* group("Work Experience")
+             {
+
+                 Caption = 'Work Experience';
+                 //The GridLayout property is only supported on controls of type Grid
+                 grid("Work Experience ")
+                 {
+
+                     GridLayout = Rows;
+
+                     Group("Total experience")
+
+                     {
+                         Caption = 'Total experience';
+
+                         field("Years of Experience"; "Years of Experience")
+                         {
+                             Editable = false;
+                         }
+                         field("Months of Experience"; "Months of Experience")
+                         {
+                             Editable = false;
+                         }
+                         field("Days of Experience"; "Days of Experience")
+                         {
+                             Editable = false;
+                         }
+
+                     }
+                     group("Brought experience")
+                     {
+
+
+
+                         Caption = 'Brought experience';
+
+
+
+
+                         field("Brought Years of Experience"; "Brought Years of Experience")
+                         {
+                             Editable = false;
+                         }
+                         field("Brought Months of Experience"; "Brought Months of Experience")
+                         {
+                             Editable = false;
+                         }
+                         field("Brought Days of Experience"; "Brought Days of Experience")
+                         {
+                             Editable = false;
+                         }
+                     }
+
+                     group("Experience in Company")
+                     {
+                         Caption = 'Experience in Company';
+
+                         field("Years of Experience in Company"; "Years of Experience in Company")
+                         {
+                             Editable = false;
+                         }
+                         field("Months of Exp. in Company"; "Months of Exp. in Company")
+                         {
+                             Editable = false;
+                         }
+                         field("Days of Experience in Company"; "Days of Experience in Company")
+                         {
+                             Editable = false;
+                         }
+
+                     }
+                 }
+
+
+
+             }
+             group("MILITARY EXPERIENCE")
+             {
+
+                 Caption = 'Military Experience';
+                 //BH 01 start
+                 grid("Experience with military")
+                 {
+                     GridLayout = Rows;
+                     group("Work experience with military")
+                     {
+
+
+
+                         Caption = 'Work experience with military';
+
+                         field("Years with military"; "Years with military")
+                         {
+                             Editable = false;
+                         }
+                         field("Months with military"; "Months with military")
+                         {
+                             Editable = false;
+                         }
+                         field("Days with military"; "Days with military")
+                         {
+                             Editable = false;
+                         }
+                     }
+                     group("Military service")
+                     {
+
+
+
+                         Caption = 'Military service';
+
+                         field("Military Years of Service"; "Military Years of Service")
+                         {
+                             Editable = false;
+                         }
+                         field("Military Months of Service"; "Military Months of Service")
+                         {
+                             Editable = false;
+                         }
+                         field("Military Days of Service"; "Military Days of Service")
+                         {
+                             Editable = false;
+                         }
+                     }
+
+
+                 }
+                 //BH 01 end
+
+             }
+             group("ADDED")
+             {
+
+                 Caption = 'Added';
+                 //BH 01 start
+                 grid("Added ")
+                 {
+                     GridLayout = Rows;
+                     group("Brought Years in Company")
+                     {
+
+
+
+                         Caption = 'Brought Years in Curr. Company';
+
+                         field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.")
+                         {
+                             Editable = false;
+                         }
+                         field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.")
+                         {
+                             Editable = false;
+                         }
+                         field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.")
+                         {
+                             Editable = false;
+                         }
+                     }
+                     group("Brought Total")
+                     {
+
+
+
+                         Caption = 'Brought Total';
+
+                         field("Brought Years Total"; "Brought Years Total")
+                         {
+                             Editable = false;
+                         }
+                         field("Brought Months Total"; "Brought Months Total")
+                         {
+                             Editable = false;
+                         }
+                         field("Brought Days Total"; "Brought Days Total")
+                         {
+                             Editable = false;
+                         }
+                     }
+
+
+                 }
+                 //BH 01 end
+
+             }
+ */
+            group("Brought experience ")
             {
 
-                Caption = 'Work Experience';
+                Caption = 'Brought experience';
                 //The GridLayout property is only supported on controls of type Grid
-                grid("Work Experience ")
+                grid("Brought experience  ")
                 {
 
                     GridLayout = Rows;
-
-                    Group("Total experience")
-
-                    {
-                        Caption = 'Total experience';
-
-                        field("Years of Experience"; "Years of Experience")
-                        {
-                            Editable = false;
-                        }
-                        field("Months of Experience"; "Months of Experience")
-                        {
-                            Editable = false;
-                        }
-                        field("Days of Experience"; "Days of Experience")
-                        {
-                            Editable = false;
-                        }
-
-                    }
-                    group("Brought experience")
+                    group("Brought experience   ")
                     {
 
 
@@ -88,49 +261,64 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Editable = false;
                         }
                     }
-                    //BH 01 start
-                    /*group("Military service")
+                    group("Brought Years in Company")
                     {
 
 
 
-                        Caption = 'Military service';
-                        
-                        field("Military Years of Service"; "Military Years of Service")
+                        Caption = 'Brought Years in Curr. Company';
+
+                        field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.")
                         {
                             Editable = false;
                         }
-                        field("Military Months of Service"; "Military Months of Service")
+                        field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.")
                         {
                             Editable = false;
                         }
-                        field("Military Days of Service"; "Military Days of Service")
+                        field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.")
                         {
                             Editable = false;
                         }
                     }
-/*
-                    group("Work experience with military")
+                    group("Brought Total")
                     {
 
 
 
-                        Caption = 'Work experience with military';
+                        Caption = 'Brought Total';
 
-                        field("Years with military"; "Years with military")
+                        field("Brought Years Total"; "Brought Years Total")
                         {
                             Editable = false;
                         }
-                        field("Months with military"; "Months with military")
+                        field("Brought Months Total"; "Brought Months Total")
                         {
                             Editable = false;
                         }
-                        field("Days with military"; "Days with military")
+                        field("Brought Days Total"; "Brought Days Total")
                         {
                             Editable = false;
                         }
-                    }*/
-                    //BH 01 end
+                    }
+
+
+
+
+                }
+
+
+
+            }
+            group("Current Company")
+            {
+
+                Caption = 'Work Experience in Company';
+                //BH 01 start
+                grid("Work Experience in Company")
+                {
+                    GridLayout = Rows;
+
                     group("Experience in Company")
                     {
                         Caption = 'Experience in Company';
@@ -149,9 +337,28 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         }
 
                     }
+                    group("Current Total")
+                    {
+                        Caption = 'Current Total';
+
+                        field("Current Years Total"; "Current Years Total")
+                        {
+                            Editable = false;
+                        }
+                        field("Current Months Total"; "Current Months Total")
+                        {
+                            Editable = false;
+                        }
+                        field("Current Days Total"; "Current Days Total")
+                        {
+                            Editable = false;
+                        }
+
+                    }
+
+
                 }
-
-
+                //BH 01 end
 
             }
             group("MILITARY EXPERIENCE")
@@ -162,26 +369,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 grid("Experience with military")
                 {
                     GridLayout = Rows;
-                    group("Work experience with military")
-                    {
-
-
-
-                        Caption = 'Work experience with military';
-
-                        field("Years with military"; "Years with military")
-                        {
-                            Editable = false;
-                        }
-                        field("Months with military"; "Months with military")
-                        {
-                            Editable = false;
-                        }
-                        field("Days with military"; "Days with military")
-                        {
-                            Editable = false;
-                        }
-                    }
                     group("Military service")
                     {
 
@@ -202,6 +389,47 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Editable = false;
                         }
                     }
+                    Group("Total experience")
+
+                    {
+                        Caption = 'Total experience';
+
+                        field("Years of Experience"; "Years of Experience")
+                        {
+                            Editable = false;
+                        }
+                        field("Months of Experience"; "Months of Experience")
+                        {
+                            Editable = false;
+                        }
+                        field("Days of Experience"; "Days of Experience")
+                        {
+                            Editable = false;
+                        }
+
+                    }
+                    group("Work experience with military")
+                    {
+
+
+
+                        Caption = 'Work experience with military';
+
+                        field("Years with military"; "Years with military")
+                        {
+                            Editable = false;
+                        }
+                        field("Months with military"; "Months with military")
+                        {
+                            Editable = false;
+                        }
+                        field("Days with military"; "Days with military")
+                        {
+                            Editable = false;
+                        }
+                    }
+
+
 
 
                 }
@@ -238,86 +466,296 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 }
 
-            }
-            group(General2)
-            {
-                Caption = 'General';
-                //The GridLayout property is only supported on controls of type Grid
+                group(General2)
+                {
+                    Caption = 'General';
+                    //The GridLayout property is only supported on controls of type Grid
 
-                field("Hours In Day"; "Hours In Day")
-                {
+                    field("Hours In Day"; "Hours In Day")
+                    {
+                    }
+                    field("Transport Amount"; "Transport Amount")
+                    {
+                    }
+                    field("Wage Type"; "Wage Type")
+                    {
+                    }
+                    field("For Calculation"; "For Calculation")
+                    {
+                    }
+                    field(Meal; Meal)
+                    {
+                    }
+                    field("Send PayList"; "Send PayList")
+                    {
+                    }
                 }
-                field("Transport Amount"; "Transport Amount")
+                group("PORESKA OLAKŠICA")
                 {
+                    field("Tax Deduction"; "Tax Deduction")
+                    {
+                    }
+                    field("Tax Individual"; "Tax Individual")
+                    {
+                    }
+                    field("General Tax"; "General Tax")
+                    {
+                    }
+                    field("Additional Tax"; "Additional Tax")
+                    {
+                    }
+                    field("Tax Deduction Amount"; "Tax Deduction Amount")
+                    {
+                        Editable = false;
+                    }
                 }
-                field("Wage Type"; "Wage Type")
+                group(Posting)
                 {
-                }
-                field("For Calculation"; "For Calculation")
-                {
-                }
-                field(Meal; Meal)
-                {
-                }
-                field("Send PayList"; "Send PayList")
-                {
-                }
+                    Caption = 'Posting';
 
+                    field("Wage Posting Group"; "Wage Posting Group")
+                    {
+                    }
+                    field("Contribution Category Code"; "Contribution Category Code")
+                    {
 
-            }
-            group("PORESKA OLAKŠICA")
-            {
-                field("Tax Deduction"; "Tax Deduction")
-                {
-                }
-                field("Tax Individual"; "Tax Individual")
-                {
-                }
-                field("General Tax"; "General Tax")
-                {
-                }
-                field("Additional Tax"; "Additional Tax")
-                {
-                }
-                field("Tax Deduction Amount"; "Tax Deduction Amount")
-                {
-                    Editable = false;
-                }
-            }
-            group(Posting)
-            {
-                Caption = 'Posting';
-
-                field("Wage Posting Group"; "Wage Posting Group")
-                {
-                }
-                field("Contribution Category Code"; "Contribution Category Code")
-                {
-
+                    }
                 }
             }
+
 
 
         }
+        addafter("Gender")
+        {
+            group("Birth Data")
+            {
+                field("Employee ID"; "Employee ID")
+                {
 
+                }
 
+            }
+            group("Employement Data")
+            {
+                field(DepartmentName; EmployeeContractLedger."Department Name")
+                {
+                    Caption = 'Department Name';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
 
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(SectorDescription; EmployeeContractLedger."Sector Description")
+                {
+                    Caption = 'Sector Description';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Služba; EmployeeContractLedger."Department Cat. Description")
+                {
+                    Caption = 'Služba';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Odjel; EmployeeContractLedger."Group Description")
+                {
+                    Caption = 'Odjel';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(PositionName; EmployeeContractLedger."Position Description")
+                {
+                    Caption = 'Position';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(StatusP; EmployeeContractLedger.Status)
+                {
+                    Caption = 'Status';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Smjena; EmployeeContractLedger."Rad u smjenama")
+                {
+                    Caption = 'Rad u smjenama';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Superior1; EmployeeContractLedger.Superior1)
+                {
+                    Caption = 'Superior 1';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(Superior2; EmployeeContractLedger.Superior2)
+                {
+                    Caption = 'Superior 2';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+            }
+        }
         addafter("No.")
         {
-            field("Employee ID"; "Employee ID")
-            {
-                Caption = 'Employee ID';
-            }
-            field("Old Employee No."; "Old Employee No.")
-            {
-                Caption = 'Old Employee No.';
 
-            }
 
+
+            group("Living information")
+            {
+                field("Address CIPS"; "Address CIPS")
+                {
+
+                }
+                field("Municipality Code CIPS"; "Municipality Code CIPS")
+                {
+
+                }
+                field(Region; Region)
+                {
+
+                }
+                field("Full Phone No."; "Full Phone No.")
+                {
+
+                }
+                field("City CIPS"; "City CIPS")
+                {
+
+                }
+                field("Post Code CIPS"; "Post Code CIPS")
+                {
+
+                }
+                field("Entity Code CIPS"; "Entity Code CIPS")
+                {
+
+                }
+                field("Country/Region Code CIPS"; "Country/Region Code CIPS")
+                {
+
+                }
+            }
+            /*group("Employement Data")
+            {
+                
+            }*/
+
+        }
+        addafter("Gender")
+        {
             field(StatusExt; StatusExt)
             {
                 Caption = 'Status';
             }
+
 
         }
         addafter("Country/Region Code")
@@ -514,10 +952,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                         end;
                     }
-                    field("Employment Date2"; "Employment Date")
-                    {
-                        ApplicationArea = all;
-                    }
 
                     field(EmployeeContractLedgerBrutto; EmployeeContractLedger.Brutto)
                     {
@@ -712,181 +1146,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-                    field(DepartmentName; EmployeeContractLedger."Department Name")
-                    {
-                        Caption = 'Department Name';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
 
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(SectorDescription; EmployeeContractLedger."Sector Description")
-                    {
-                        Caption = 'Sector Description';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(Služba; EmployeeContractLedger."Department Cat. Description")
-                    {
-                        Caption = 'Služba';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(Odjel; EmployeeContractLedger."Group Description")
-                    {
-                        Caption = 'Odjel';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(PositionName; EmployeeContractLedger."Position Description")
-                    {
-                        Caption = 'Position';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(StatusP; EmployeeContractLedger.Status)
-                    {
-                        Caption = 'Status';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }/*error
-                    field(Smjena; EmployeeContractLedger."Rad u smjenama")
-                     {
-                         Caption = 'Rad u smjenama';
-                         Editable = false;
-                         Importance = Promoted;
-                         ApplicationArea = all;
-
-                         trigger OnDrillDown()
-                         begin
-
-                             EmployeeContractLedger.RESET;
-                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                             EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                             EmployeeContractLedgerPage.RUN;
-                             CurrPage.UPDATE;
-                         end;
-                     }*//*error
-                    field(Superior1; EmployeeContractLedger.Superior1)
-                    {
-                        Caption = 'Superior 1';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }*/
-                    /*error
-                    field(Superior2; EmployeeContractLedger.Superior2)
-                    {
-                        Caption = 'Superior 2';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }*/
 
 
                 }
 
             }
-        }
-
-
-
-        addafter("Address & Contact")
-        {
-            group("Potential Employe")
+            /*group("Potential Employe")
             {
                 Caption = 'Potential Employe';
                 field("Potential Employee"; "Potential Employee")
@@ -915,7 +1181,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 }
 
 
-            }
+            }*/
 
         }
 
@@ -981,7 +1247,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         showMC: Boolean;
         TerminationVisible: Boolean;
         EmploymentAbroadVisible: Boolean;
-        EducationHistory: Record "Additional Education";
+        Educ: Record "Additional Education";
         EducationHistoryPage: Page "Education History";
         EmployeeDisability: record "Employee Level Of Disability";
 
@@ -996,15 +1262,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         emp: Record employee;
         PersonalDocumentsCit2: Record "Personal Documents";
         PersonalDocumentsCit1: Record "Personal Documents";
-        OrgDijelovi: Record "ORG Dijelovi";
-        EmpPage: Page "Employee Card";
-        OrgDijeloviPage: Page "ORG Dijelovi";
-        wb: record "Work Booklet";
-        ThisYearLast: Date;
+        //FirstDayOfWeek:
+        //FirstDayOfWeek:
+        age: Page "ORG Dijelovi";
+        //WAPage: page "Wage AdditWag"Calculaged" Addition Calculated";
+
 
         DayOfWeekInput: DotNet FirstDayOfWeek;
         WeekOfYearInput: DotNet FirstWeekOfYear;
-        ThisMonthFirst: Date;
+        //WAPage: page "Wage Addition Calculated";
         //WAPage: page "Wage Addition Calculated";
         ThisYearFirst: Date;
         AgeT: Decimal;
@@ -1016,13 +1282,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         MotherName: Text[100];
         ThisMonthLast: Date;
         NextMonthFirst: Date;
-        NextMonthLast: Date;
-        EmployeeCIPSAddress: Record "Alternative Address";
+        ////WPAgeDVPagAPaJeblations";
+        ////WPAgeDVPagAPaJeblations";
         RelativesEmployees: Integer;
         EmployeeRelative: Record "Employee Relative";
         EmployeeRelativePage: Page "Employee Relatives";
         UnionEmployees1: Record "Union Employees";
-        WDV: Record "Work Duties Violation";
+        //WDVPAge: Page "Job Violations";
         //WDVPAge: Page "Job Violations";
         ManagementLevel: Code[10];
         Position: Record Position;

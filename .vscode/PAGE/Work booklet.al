@@ -97,9 +97,19 @@ page 50163 "Work booklet"
                             enable := FALSE;
                             //Rec.MODIFY;
                             CurrPage.UPDATE(TRUE);
+
                         END;
                     end;
                 }
+                //BH 01 start
+
+                field("Military service"; "Military service")
+                {
+                    ApplicationArea = all;
+
+
+                }
+                //BH 01 end
                 field(Coefficient; Coefficient)
                 {
                     ApplicationArea = all;
@@ -161,15 +171,7 @@ page 50163 "Work booklet"
                 {
                     ApplicationArea = all;
                 }
-                //BH 01 start
 
-                field("Military service"; "Military service")
-                {
-                    ApplicationArea = all;
-
-
-                }
-                //BH 01 end
             }
         }
     }
@@ -221,21 +223,10 @@ page 50163 "Work booklet"
                     R_WorkExperience.SetEmp("Employee No.", TODAY);
                     R_WorkExperience.RUN;
                     SETCURRENTKEY("Starting Date");
-                    //SetCurrentKey("Current Company");//dodala belma
                     ASCENDING(FALSE);
 
 
                 END
-                //BH 01 start
-                /*ELSE
-                    IF (Rec."Military Service" = true) THEN BEGIN
-
-                        R_MilitaryService.SetEmp("Employee No.", TODAY);
-                        R_MilitaryService.RUN;
-                        SETCURRENTKEY("Starting Date");
-                        ASCENDING(FALSE);
-                    END*/
-                //BH 01 end
                 ELSE BEGIN
                     Employee2.RESET;
                     Employee2.SETFILTER("No.", '%1', Rec."Employee No.");
@@ -243,11 +234,6 @@ page 50163 "Work booklet"
                     IF Employee2.FINDFIRST THEN BEGIN
                         R_WorkExperience.SetEmp("Employee No.", TODAY);
                         R_WorkExperience.RUN;
-                        //BH
-                        /* R_BroughtExperience.SetEmp(Rec."Employee No.");
-                         R_BroughtExperience.RUN;
-                         CALCFIELDS(Status);*/
-                        //BH
                         SETCURRENTKEY("Starting Date");
                         ASCENDING(FALSE);
                     END;
@@ -261,9 +247,7 @@ page 50163 "Work booklet"
         enable: Boolean;
         R_WorkExperience: Report "Work experience in Company";
         R_BroughtExperience: Report "Update Brought Experience";
-        //BH 01 start
-        // R_MilitaryService: Report "Military Service";
-        //BH 01 end
+
         ECL: Record "Employee Contract Ledger";
         WB: Record "Work Booklet";
         IMA: Boolean;

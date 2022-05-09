@@ -60,34 +60,26 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
-            field("Years of Experience"; "Years of Experience")
-            {
-
-            }
-            field("Months of Experience"; "Months of Experience")
-            {
-
-            }
-            field("Days of Experience"; "Days of Experience")
-            {
-
-            }
-            field("Years of Experience in Company"; "Years of Experience in Company")
-            {
-
-            }
-            field("Months of Exp. in Company"; "Months of Exp. in Company")
-            {
-
-            }
-            field("Days of Experience in Company"; "Days of Experience in Company")
-            {
-
-            }
             field("Send PayList"; "Send PayList")
             {
 
             }
+            //BH 01 start
+            field("Brought Years of Experience"; "Brought Years of Experience") { }
+            field("Brought Months of Experience"; "Brought Months of Experience") { }
+            field("Brought Days of Experience"; "Brought Days of Experience") { }
+            field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.") { }
+            field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.") { }
+            field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.") { }
+            field("Brought Years Total"; "Brought Years Total") { }
+            field("Brought Months Total"; "Brought Months Total") { }
+            field("Brought Days Total"; "Brought Days Total") { }
+            field("Years of Experience in Company"; "Years of Experience in Company") { }
+            field("Months of Exp. in Company"; "Months of Exp. in Company") { }
+            field("Days of Experience in Company"; "Days of Experience in Company") { }
+            field("Current Years Total"; "Current Years Total") { }
+            field("Current Months Total"; "Current Months Total") { }
+            field("Current Days Total"; "Current Days Total") { }
             field("Military Years of Service"; "Military Years of Service")
             {
 
@@ -97,6 +89,16 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
             field("Military Days of Service"; "Military Days of Service")
+            { }
+            field("Years of Experience"; "Years of Experience")
+            {
+
+            }
+            field("Months of Experience"; "Months of Experience")
+            {
+
+            }
+            field("Days of Experience"; "Days of Experience")
             {
 
             }
@@ -112,6 +114,9 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
+
+            //BH 01 end
+
         }
 
 

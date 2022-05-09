@@ -237,6 +237,21 @@ report 50115 "Work exp.in Comp.by Emp"
     begin
 
         //MESSAGE(Text0001);
+        //BH proba update
+        WorkBooklet.RESET;
+        WorkBooklet.SETFILTER(Coefficient, '<>%1', 1);
+        WorkBooklet.SETFILTER(Status, '<>%1', WorkBooklet.Status::Terminated);
+        IF WorkBooklet.FINDSET THEN
+            REPEAT
+                IF WorkBooklet."Ending Date" = 0D THEN
+                    WorkBooklet."Ending Date" := TODAY;
+                WorkBooklet.VALIDATE(Coefficient, WorkBooklet.Coefficient);
+                WorkBooklet.MODIFY;
+
+            UNTIL WorkBooklet.NEXT = 0;
+        //MESSAGE(Text0001);
+        MESSAGE('Završeno');
+        //BH proba update
     end;
 
     var

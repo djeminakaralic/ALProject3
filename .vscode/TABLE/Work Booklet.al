@@ -64,7 +64,8 @@ table 50208 "Work Booklet"
                             ERROR(Text001);
 
                         IF "Starting Date" > "Ending Date" then
-                            FIELDERROR("Ending Date");
+                            //FIELDERROR("Ending Date");
+                            ERROR(Text002);
                         //BH 01 end
                     END;
                     //BH 01 update
@@ -196,7 +197,8 @@ table 50208 "Work Booklet"
                         ERROR(Text001);
                     //BH 01 start
                     IF "Starting Date" > "Ending Date" then
-                        FIELDERROR("Ending Date");
+                        //FIELDERROR("Ending Date");
+                        ERROR(Text003);
                     //BH 01 end
                 END;
                 //EC02e

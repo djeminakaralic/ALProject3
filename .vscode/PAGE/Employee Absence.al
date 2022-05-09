@@ -2,7 +2,7 @@ page 51129 "Employee Absence"
 {
     // // Added fields "In Addition to Regular Work"
 
-    Caption = 'Employee Absence Elmira';
+    Caption = 'Employee Absence';
     DataCaptionFields = "Employee No.";
     DelayedInsert = true;
     PageType = Worksheet;
@@ -88,16 +88,20 @@ page 51129 "Employee Absence"
                 field("Employee No."; "Employee No.")
                 {
 
-
-                    /*trigger OnLookup(var Text: Text): Boolean
+                    /*trigger OnValidate()
                     begin
-                        EXIT(EmployeeLookup(Text, TRUE));
-                    end;
 
-                    trigger OnValidate()
-                    begin
-                        TestRecordWithinFilter(TRUE);
+
+                        IF "Employee No." <> '' THEN BEGIN
+                            //Employee.SETFILTER("Employee No.", "empl");
+                            IF Employee.FINDFIRST THEN BEGIN
+                                "First Name" := Employee."First Name";
+                                "Last Name" := Employee."Last Name";
+                            END;
+                        END;
+
                     end;*/
+
 
                 }
 
@@ -118,46 +122,11 @@ page 51129 "Employee Absence"
                 field("From Date"; "From Date")
                 {
 
-                    trigger OnValidate()
-                    begin
 
-                        IF "To Date" <> 0D THEN BEGIN
-                            IF "From Date" = 0D THEN
-                                FIELDERROR("From Date");
-
-                            IF "From Date" > "To Date" then
-                                FIELDERROR("From Date");
-                        END;
-
-
-
-
-
-                        /*IF ("To Date" = 0D) THEN BEGIN
-                            "To Date" := "From Date";
-                        END;*/
-                        //FillHours(FIELDNO("From Date"));
-                    end;
                 }
                 field("To Date"; "To Date")
                 {
 
-                    trigger OnValidate()
-                    begin
-                        //IF (xRec."To Date" <> "To Date") AND ("To Date" <> 0D) THEN
-                        //FillHours(FIELDNO("To Date"));
-
-                        /*IF "To Date" < "From Date" THEN
-                            FIELDERROR("To Date");?*/
-
-                        IF "To Date" <> 0D THEN BEGIN
-                            IF "From Date" = 0D THEN
-                                FIELDERROR("To Date");
-
-                            IF "From Date" > "To Date" then
-                                FIELDERROR("To Date");
-                        END;
-                    end;
                 }
 
                 field("Cause of Absence Code"; "Cause of Absence Code")
@@ -171,15 +140,7 @@ page 51129 "Employee Absence"
 
                 field("Quantity"; "Quantity")
                 {
-                    /*trigger OnValidate()
-                    begin
-                        Employee.SETFILTER("No.", '%1', Rec."Employee No.");
-                        IF Employee.FINDFIRST THEN BEGIN
-                            Employee.Get("Employee No.");
-                            "First Name" := Employee."First Name";
-                            "Last Name" := Employee."Last Name";
-                        END;
-                    end;*/
+
                 }
 
 
@@ -244,7 +205,7 @@ page 51129 "Employee Absence"
 
                     trigger OnAction()
                     begin
-                        //SetApprove(TRUE);
+                        SetApprove(TRUE);
                     end;
                 }
 
@@ -259,7 +220,7 @@ page 51129 "Employee Absence"
 
                     trigger OnAction()
                     begin
-                        //SetApprove(FALSE);
+                        SetApprove(FALSE);
                     end;
                 }
 
@@ -397,9 +358,7 @@ page 51129 "Employee Absence"
     trigger OnOpenPage()
     begin
         //  GetInitialFilters;
-        Employee.Get("Employee No.");
-        "First Name" := Employee."First Name";
-        "Last Name" := Employee."Last Name";
+
 
     end;
 
@@ -841,9 +800,9 @@ end;*/
     procedure SetApprove(inNewValue: Boolean)
     begin
         txtView := Rec.GETVIEW;
-        //FILTERGROUP(2);
+        FILTERGROUP(2);
         txtView2 := Rec.GETVIEW;
-        //FILTERGROUP(0);
+        FILTERGROUP(0);
         CurrPage.SETSELECTIONFILTER(Rec);
         IF COUNT > 3 THEN BEGIN
             IF NOT CONFIRM(Text002, FALSE, inNewValue, COUNT) THEN BEGIN
@@ -852,23 +811,23 @@ end;*/
         END;
         IF FIND('-') THEN
             REPEAT
-                //Approved := inNewValue;
+                Approved := inNewValue;
                 MODIFY(FALSE);
             UNTIL NEXT = 0;
         Rec.CLEARMARKS;
         Rec.MARKEDONLY(FALSE);
-        //FILTERGROUP(2);
+        FILTERGROUP(2);
         Rec.SETVIEW(txtView2);
-        //FILTERGROUP(0);
+        FILTERGROUP(0);
         Rec.SETVIEW(txtView);
         txtView := '';
     end;
 
-    procedure SetEmployeeFilter(NewFilter: Code[250])
+    /*procedure SetEmployeeFilter(NewFilter: Code[250])
     begin
         NewEmployeeFilter := NewFilter;
         SettingNewFilters := TRUE;
-    end;
+    end;*/
 
 
 
@@ -934,7 +893,7 @@ end;*/
     end;*/
 
 
-    procedure EmployeeNoOnAfterInput(var Text: Text[1024])
+    /*procedure EmployeeNoOnAfterInput(var Text: Text[1024])
     begin
         recEmployee.RESET;
         recEmployee.SETFILTER("No.", '*' + UPPERCASE(Text) + '*');
@@ -942,7 +901,6 @@ end;*/
             recEmployee.FIND('-');
             Text := recEmployee."No.";
         END;
-    end;
-
+    end;*/
 
 }

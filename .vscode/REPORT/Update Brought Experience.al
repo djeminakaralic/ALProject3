@@ -246,6 +246,7 @@ report 50104 "Update Brought Experience"
     trigger OnPostReport()
     begin
         //MESSAGE(Text0001);
+
     end;
 
     trigger OnPreReport()

@@ -2775,8 +2775,48 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Days';
         }
+
+        field(70014; "Brought Years in C"; Integer)
+        {
+            Caption = 'Brought Years in C';
+        }
+        field(70015; "Brought Months in C"; Integer)
+        {
+            Caption = 'Brought Months in C';
+        }
+        field(70016; "Brought Days in C"; Integer)
+        {
+            Caption = 'Brought Days in C';
+        }
+
+
+        field(70017; "Total Brought Years"; Integer)
+        {
+            Caption = 'Total Brought Years';
+        }
+        field(70018; "Total Brought Months"; Integer)
+        {
+            Caption = 'Total Brought Months';
+        }
+        field(70019; "Total Brought Days"; Integer)
+        {
+            Caption = 'Total Brought Days';
+        }
+        field(70021; "Current Years in Company"; Integer)
+        {
+            Caption = 'Current Years in Company';
+        }
+        field(70022; "Current Months in Company"; Integer)
+        {
+            Caption = 'Current Months in Company';
+        }
+        field(70023; "Current Days in Company"; Integer)
+        {
+            Caption = 'Current Days in Company';
+        }
+
         //BH 01 end
-        field(70005; "Date of graduation"; Date)
+        field(70020; "Date of graduation"; Date)
         {
             Caption = 'Date of graduation';
         }
