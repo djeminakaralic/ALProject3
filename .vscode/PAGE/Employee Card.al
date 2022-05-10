@@ -251,14 +251,17 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Brought Years of Experience"; "Brought Years of Experience")
                         {
                             Editable = false;
+                            Caption = 'Brought Years Card';
                         }
                         field("Brought Months of Experience"; "Brought Months of Experience")
                         {
                             Editable = false;
+                            Caption = 'Brought Months Card';
                         }
                         field("Brought Days of Experience"; "Brought Days of Experience")
                         {
                             Editable = false;
+                            Caption = 'Brought Days Card';
                         }
                     }
                     group("Brought Years in Company")
@@ -271,14 +274,17 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.")
                         {
                             Editable = false;
+                            Caption = 'Brought Years Comp Card';
                         }
                         field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.")
                         {
                             Editable = false;
+                            Caption = 'Brought Months Comp Card';
                         }
                         field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.")
                         {
                             Editable = false;
+                            Caption = 'Brought Days Comp Card';
                         }
                     }
                     group("Brought Total")
@@ -291,14 +297,17 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Brought Years Total"; "Brought Years Total")
                         {
                             Editable = false;
+                            Caption = 'Brought Years Total Card';
                         }
                         field("Brought Months Total"; "Brought Months Total")
                         {
                             Editable = false;
+                            Caption = 'Brought Months Total Card';
                         }
                         field("Brought Days Total"; "Brought Days Total")
                         {
                             Editable = false;
+                            Caption = 'Brought Days Total Card';
                         }
                     }
 
@@ -438,14 +447,17 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Years with military"; "Years with military")
                         {
                             Editable = false;
+                            Caption = 'With Military Years Card';
                         }
                         field("Months with military"; "Months with military")
                         {
                             Editable = false;
+                            Caption = 'With Military Months Card';
                         }
                         field("Days with military"; "Days with military")
                         {
                             Editable = false;
+                            Caption = 'With Military Days Card';
                         }
                     }
 
@@ -1166,8 +1178,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-
-
 
                 }
 

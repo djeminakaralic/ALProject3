@@ -31848,15 +31848,60 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought experience    - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 2335644307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Days Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Days of Experience - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 4077688327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Months Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Months of Experience - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 1162868718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Years Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Years of Experience - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 179605469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Brought Total</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Total - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 3880155136 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Days Total Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Days Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 3073348028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Months Total Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Months Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 265650089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Years Total Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Years Total - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 4195644183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Brought Years in Curr. Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Years in Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 3578685533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Days Comp Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Days of Exp. in Curr. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 768515601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Months Comp Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Months of Exp. in Curr. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 1183093100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Brought Years Comp Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Brought Years of Exp. in Curr. - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 2985612066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Work Experience in Company</source>
@@ -31902,6 +31947,21 @@
           <source>Work experience with military</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Work experience with military - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 1100429870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>With Military Days Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Days with military - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 622518754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>With Military Months Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Months with military - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 4105163259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>With Military Years Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Years with military - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 4147506714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Bank Data</source>
