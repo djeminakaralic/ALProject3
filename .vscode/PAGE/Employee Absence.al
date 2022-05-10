@@ -336,7 +336,7 @@ page 51129 "Employee Absence"
 
     end;
 
-
+    //komentar
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
         recEmployee.RESET;
