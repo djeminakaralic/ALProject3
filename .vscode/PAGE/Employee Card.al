@@ -369,7 +369,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
                     Caption = 'Total experience';
-                    group("YearsF")
+                    group("Godine")
                     {
 
                         field("Years of Experience"; "Years of Experience")
@@ -378,7 +378,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Caption = 'Total Years Card';
                         }
                     }
-                    group("MonthsF")
+                    group("Mjeseci")
                     {
                         field("Months of Experience"; "Months of Experience")
                         {
@@ -386,7 +386,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Caption = 'Total Months Card';
                         }
                     }
-                    group("DaysF")
+                    group("Dani")
                     {
                         field("Days of Experience"; "Days of Experience")
                         {
