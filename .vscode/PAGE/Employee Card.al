@@ -1204,6 +1204,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
     actions
     {
+        modify("Ledger E&ntries")
+        {
+            Visible = false;
+        }
+        modify(PayEmployee)
+        {
+            Visible = false;
+
+        }
         // Add changes to page actions here
 
         addafter(Dimensions)
