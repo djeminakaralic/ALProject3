@@ -326,8 +326,8 @@ page 51129 "Employee Absence"
             Error(Text006);
     end;
 
-    trigger OnModifyRecord(BelowxRec: Boolean): Boolean
-    //trigger OnModifyRecord(): Boolean
+
+    trigger OnModifyRecord(): Boolean
     begin
         //EXIT(TestRecordValid);
         IF "From Date" = 0D then
