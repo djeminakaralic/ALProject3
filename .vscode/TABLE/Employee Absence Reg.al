@@ -67,6 +67,11 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text002);
                 END;
 
+                if "From Date" <> 0D then
+                    IF "To Date" = 0D then
+                        ERROR(Text005);
+
+
             end;
         }
 
@@ -148,6 +153,7 @@ table 50104 "Employee Absence Reg"
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
+        Text005: Label 'Ending Date field cannot be blank.';
 
     trigger OnInsert()
     begin
