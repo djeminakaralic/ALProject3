@@ -59,13 +59,23 @@ table 50104 "Employee Absence Reg"
             Caption = 'From Date';
             trigger OnValidate()
             begin
-                IF "To Date" <> 0D THEN BEGIN
+                /*IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
                         ERROR(Text001);
 
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
-                END;
+                END;*/
+
+                IF "To Date" <> 0D THEN
+                    IF "From Date" = 0D THEN
+                        ERROR(Text001);
+
+                IF "To Date" <> 0D THEN
+                    IF "From Date" > "To Date" then
+                        ERROR(Text002);
+
+
             end;
         }
 
