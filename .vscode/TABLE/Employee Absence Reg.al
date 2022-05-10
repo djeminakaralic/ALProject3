@@ -68,9 +68,9 @@ table 50104 "Employee Absence Reg"
                 END;
 
 
-                if "From Date" <> 0D then
+                /*if "From Date" <> 0D then
                     IF "To Date" = 0D then
-                        ERROR(Text004);
+                        ERROR(Text004);*/
 
             end;
         }
