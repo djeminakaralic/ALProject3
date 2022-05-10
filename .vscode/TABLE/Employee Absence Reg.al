@@ -8,6 +8,7 @@ table 50104 "Employee Absence Reg"
     fields
     {
 
+        //sjdshfsd
         field(1; "First Name"; Text[30])
         {
             Caption = 'First Name';
