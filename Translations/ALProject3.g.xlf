@@ -31939,7 +31939,15 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Total - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 3895337068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
           <source>Total Days Card</source>
+=======
+          <source>Military Days Card</source>
+>>>>>>> Stashed changes
+=======
+          <source>Military Days Card</source>
+>>>>>>> Stashed changes
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Days of Experience - Property Caption</note>
         </trans-unit>
