@@ -324,14 +324,19 @@ page 51129 "Employee Absence"
 
         IF "Cause of Absence Code" = '' then
             Error(Text006);
-
-
-
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
         //EXIT(TestRecordValid);
+        IF "From Date" = 0D then
+            Error(Text004);
+
+        IF "To Date" = 0D then
+            ERROR(Text005);
+
+        IF "Cause of Absence Code" = '' then
+            Error(Text006);
     end;
 
 
