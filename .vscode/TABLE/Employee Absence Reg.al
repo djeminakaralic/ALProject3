@@ -66,12 +66,16 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 END;
 
                 if "From Date" <> 0D then
                     IF "To Date" = 0D then
                         ERROR(Text005);
                 //Text005
+=======
+                END;                    
+>>>>>>> Stashed changes
 =======
                 END;                    
 >>>>>>> Stashed changes
