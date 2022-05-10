@@ -143,7 +143,7 @@ table 50104 "Employee Absence Reg"
             //Clustered = TRUE;
         }
     }
-
+    //komentar
     var
         Msg: Label 'Hello from my method';
         CauseOfAbsence: Record "Cause of Absence";
