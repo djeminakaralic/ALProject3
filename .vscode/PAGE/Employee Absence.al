@@ -155,11 +155,11 @@ page 51129 "Employee Absence"
 
     actions
     {
-        area(navigation)
-        {
-            group("A&bsence")
-            {
-                Caption = 'A&bsence';
+        //area(navigation)
+        //{
+            //group("A&bsence")
+            //{
+                //Caption = 'A&bsence';
                 /*action("Co&mments")
                 {
                     Caption = 'Co&mments';
@@ -224,8 +224,8 @@ page 51129 "Employee Absence"
                     end;
                 }
 
-            }
-        }
+            //}
+        //}
         area(processing)
         {
             /*action("Previous Year")
@@ -385,8 +385,8 @@ page 51129 "Employee Absence"
         recDimValue: Record "Dimension Value";
         EmployeeFilter: Code[250];
         FormEmployeeList: Page "Employee List";
-        recEmployee: Record "Employee";
-        Text001: Label 'Set filters do not allow entry';
+                              recEmployee: Record "Employee";
+                              Text001: Label 'Set filters do not allow entry';
         CalendarMgt: Codeunit "Absence Fill";
         CauseOfAbsence: Record "Cause of Absence";
         Text002: Label 'Set Approved to %1 for %2 records?';
