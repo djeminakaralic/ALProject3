@@ -166,7 +166,11 @@ table 50104 "Employee Absence Reg"
         end;
     end;
 
+
+
 }
+
+
 
 /*modify("Cause of Absence Code")
 {

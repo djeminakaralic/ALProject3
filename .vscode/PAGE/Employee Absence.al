@@ -155,77 +155,77 @@ page 51129 "Employee Absence"
 
     actions
     {
-        //area(navigation)
-        //{
+        area(navigation)
+        {
             //group("A&bsence")
             //{
-                //Caption = 'A&bsence';
-                /*action("Co&mments")
-                {
-                    Caption = 'Co&mments';
-                    Image = ViewComments;
-                    RunObject = Page "Human Resource Comment Sheet";
-                    /* RunPageLink = Table Name=CONST(Employee Absence),
-                                   Table Line No.=FIELD(Entry No.);*/
-                /*}*/
+            //Caption = 'A&bsence';
+            /*action("Co&mments")
+            {
+                Caption = 'Co&mments';
+                Image = ViewComments;
+                RunObject = Page "Human Resource Comment Sheet";
+                /* RunPageLink = Table Name=CONST(Employee Absence),
+                               Table Line No.=FIELD(Entry No.);*/
+            /*}*/
 
-                /*action("Overview by &Categories") STAJALO
-                {
-                    Caption = 'Overview by &Categories';
-                    "Absence Overview by Categories";
-                    RunPageLink = "Employee No." = FIELD("Employee No.");
+            /*action("Overview by &Categories") STAJALO
+            {
+                Caption = 'Overview by &Categories';
+                "Absence Overview by Categories";
+                RunPageLink = "Employee No." = FIELD("Employee No.");
 
-                }*/
-                /*action("Overview by &Periods")
-                {
-                    Caption = 'Overview by &Periods';
-                    RunObject = Page "Absence Overview by Periods";
-                }*/
+            }*/
+            /*action("Overview by &Periods")
+            {
+                Caption = 'Overview by &Periods';
+                RunObject = Page "Absence Overview by Periods";
+            }*/
 
-                /*action("&Reset Quantity")
-                {
-                    Caption = '&Reset Quantity';
-                    Image = UnApply;
-                    ShortCutKey = 'F7';
+            /*action("&Reset Quantity")
+            {
+                Caption = '&Reset Quantity';
+                Image = UnApply;
+                ShortCutKey = 'F7';
 
-                    trigger OnAction()
-                    begin
-                        ResetQuantity;
-                    end;
-                }*/
+                trigger OnAction()
+                begin
+                    ResetQuantity;
+                end;
+            }*/
 
-                action("&Approve All")
-                {
-                    Caption = '&Approve All';
-                    Image = Approve;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    ShortCutKey = 'F9';
+            action("&Approve All")
+            {
+                Caption = '&Approve All';
+                Image = Approve;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ShortCutKey = 'F9';
 
-                    trigger OnAction()
-                    begin
-                        SetApprove(TRUE);
-                    end;
-                }
+                trigger OnAction()
+                begin
+                    SetApprove(TRUE);
+                end;
+            }
 
-                action("&Unapprove All")
-                {
-                    Caption = '&Unapprove All';
-                    Image = ResetStatus;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    ShortCutKey = 'Ctrl+F9';
+            action("&Unapprove All")
+            {
+                Caption = '&Unapprove All';
+                Image = ResetStatus;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ShortCutKey = 'Ctrl+F9';
 
-                    trigger OnAction()
-                    begin
-                        SetApprove(FALSE);
-                    end;
-                }
+                trigger OnAction()
+                begin
+                    SetApprove(FALSE);
+                end;
+            }
 
             //}
-        //}
+        }
         area(processing)
         {
             /*action("Previous Year")
@@ -385,8 +385,8 @@ page 51129 "Employee Absence"
         recDimValue: Record "Dimension Value";
         EmployeeFilter: Code[250];
         FormEmployeeList: Page "Employee List";
-                              recEmployee: Record "Employee";
-                              Text001: Label 'Set filters do not allow entry';
+        recEmployee: Record "Employee";
+        Text001: Label 'Set filters do not allow entry';
         CalendarMgt: Codeunit "Absence Fill";
         CauseOfAbsence: Record "Cause of Absence";
         Text002: Label 'Set Approved to %1 for %2 records?';
