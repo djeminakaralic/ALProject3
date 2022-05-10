@@ -53,6 +53,10 @@ report 50115 "Work exp.in Comp.by Emp"
                         IF ((wb."Current Company")) THEN
                             wb.VALIDATE("Ending Date", EndingDate);
                         wb.MODIFY;
+                        //belma novo
+                        wb.VALIDATE(Coefficient, wb.Coefficient);
+                        wb.MODIFY;
+                        //belma novo
                     END;
                     /*ELSE BEGIN
                       ECL.SETFILTER("Employee No.",'%1',"No.");

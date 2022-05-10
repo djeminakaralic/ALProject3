@@ -361,6 +361,25 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //BH 01 end
 
             }
+            Group("Total experience")
+
+            {
+                Caption = 'Total experience';
+
+                field("Years of Experience"; "Years of Experience")
+                {
+                    Editable = false;
+                }
+                field("Months of Experience"; "Months of Experience")
+                {
+                    Editable = false;
+                }
+                field("Days of Experience"; "Days of Experience")
+                {
+                    Editable = false;
+                }
+
+            }
             group("MILITARY EXPERIENCE")
             {
 
@@ -389,25 +408,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Editable = false;
                         }
                     }
-                    Group("Total experience")
 
-                    {
-                        Caption = 'Total experience';
-
-                        field("Years of Experience"; "Years of Experience")
-                        {
-                            Editable = false;
-                        }
-                        field("Months of Experience"; "Months of Experience")
-                        {
-                            Editable = false;
-                        }
-                        field("Days of Experience"; "Days of Experience")
-                        {
-                            Editable = false;
-                        }
-
-                    }
                     group("Work experience with military")
                     {
 
