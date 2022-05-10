@@ -22458,6 +22458,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text002</note>
         </trans-unit>
+        <trans-unit id="Page 3164093577 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Page 3164093577 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text005</note>
+        </trans-unit>
         <trans-unit id="Page 3164093577 - Action 4183078860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Approve All</source>
           <note from="Developer" annotates="general" priority="2"></note>

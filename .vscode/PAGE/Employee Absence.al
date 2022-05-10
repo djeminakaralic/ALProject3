@@ -157,9 +157,7 @@ page 51129 "Employee Absence"
     {
         area(navigation)
         {
-            //group("A&bsence")
-            //{
-            //Caption = 'A&bsence';
+
             /*action("Co&mments")
             {
                 Caption = 'Co&mments';
@@ -318,7 +316,11 @@ page 51129 "Employee Absence"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        //EXIT(TestRecordValid);
+        IF "From Date" = 0D then
+            Error(Text005);
+
+        IF "To Date" = 0D then
+            ERROR(Text004);
 
     end;
 
@@ -368,7 +370,8 @@ page 51129 "Employee Absence"
     end;
 
     var
-
+        Text005: Label 'Starting Date field cannot be blank.';
+        Text004: Label 'Ending Date field cannot be blank.';
         HRSetup: Record "Human Resources Setup";
         //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
