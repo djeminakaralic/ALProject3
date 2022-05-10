@@ -364,21 +364,26 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Group("Total experience")
 
             {
-                Caption = 'Total experience';
+                grid("Total")
+                {
+                    GridLayout = Columns;
 
-                field("Years of Experience"; "Years of Experience")
-                {
-                    Editable = false;
-                }
-                field("Months of Experience"; "Months of Experience")
-                {
-                    Editable = false;
-                }
-                field("Days of Experience"; "Days of Experience")
-                {
-                    Editable = false;
-                }
 
+                    Caption = 'Total experience';
+
+                    field("Years of Experience"; "Years of Experience")
+                    {
+                        Editable = false;
+                    }
+                    field("Months of Experience"; "Months of Experience")
+                    {
+                        Editable = false;
+                    }
+                    field("Days of Experience"; "Days of Experience")
+                    {
+                        Editable = false;
+                    }
+                }
             }
             group("MILITARY EXPERIENCE")
             {
