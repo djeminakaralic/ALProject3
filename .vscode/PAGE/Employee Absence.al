@@ -323,7 +323,7 @@ page 51129 "Employee Absence"
             ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text004);
+            Error(Text005);
     end;
 
 
@@ -336,8 +336,8 @@ page 51129 "Employee Absence"
         IF "To Date" = 0D then
             ERROR(Text004);
 
-        /*IF "Cause of Absence Code" = '' then
-            Error(Text004);*/
+        IF "Cause of Absence Code" = '' then
+            Error(Text005);
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
