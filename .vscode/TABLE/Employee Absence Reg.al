@@ -155,6 +155,7 @@ table 50104 "Employee Absence Reg"
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
         Text004: Label 'Ending Date field cannot be blank.';
 
+
     trigger OnInsert()
     begin
         EmployeeAbsence.SetCurrentKey("Entry No.");

@@ -317,13 +317,13 @@ page 51129 "Employee Absence"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         IF "From Date" = 0D then
-            Error(Text004);
+            Error(Text001);
 
         IF "To Date" = 0D then
-            ERROR(Text005);
+            ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text006);
+            Error(Text005);
     end;
 
 
@@ -331,13 +331,13 @@ page 51129 "Employee Absence"
     begin
         //EXIT(TestRecordValid);
         IF "From Date" = 0D then
-            Error(Text004);
+            Error(Text001);
 
         IF "To Date" = 0D then
-            ERROR(Text005);
+            ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text006);
+            Error(Text005);
     end;
 
 
@@ -381,10 +381,8 @@ page 51129 "Employee Absence"
     end;
 
     var
-        Text004: Label 'Starting Date field cannot be blank.';
-        Text005: Label 'Ending Date field cannot be blank.';
-        Text006: Label 'Cause of Absence Code field cannot be blank.';
-
+        Text004: Label 'Ending Date field cannot be blank.';
+        Text005: Label 'Cause of Absence Code field cannot be blank.';
         HRSetup: Record "Human Resources Setup";
         //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
@@ -397,7 +395,7 @@ page 51129 "Employee Absence"
         recEmplAbsenceTemp: Record "Employee Absence" temporary;
         Dim1Filter: Code[250];
         Dim2Filter: Code[250];
-        //"Dimension Value List"; STAJALO
+        //"Dimension Value List"; 
         recDimValue: Record "Dimension Value";
         EmployeeFilter: Code[250];
         FormEmployeeList: Page "Employee List";
