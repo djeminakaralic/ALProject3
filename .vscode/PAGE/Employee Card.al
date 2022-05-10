@@ -364,24 +364,31 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Group("Total experience")
 
             {
-                grid("Total")
+                fixed("Total")
                 {
-                    GridLayout = Columns;
 
 
                     Caption = 'Total experience';
-
-                    field("Years of Experience"; "Years of Experience")
+                    group("yr1")
                     {
-                        Editable = false;
+                        field("Years of Experience"; "Years of Experience")
+                        {
+                            Editable = false;
+                        }
                     }
-                    field("Months of Experience"; "Months of Experience")
+                    group("yr2")
                     {
-                        Editable = false;
+                        field("Months of Experience"; "Months of Experience")
+                        {
+                            Editable = false;
+                        }
                     }
-                    field("Days of Experience"; "Days of Experience")
+                    group("yr3")
                     {
-                        Editable = false;
+                        field("Days of Experience"; "Days of Experience")
+                        {
+                            Editable = false;
+                        }
                     }
                 }
             }
