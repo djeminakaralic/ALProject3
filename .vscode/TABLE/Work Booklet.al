@@ -24,8 +24,6 @@ table 50208 "Work Booklet"
             begin
 
                 //HR01 start
-
-                //blma
                 IF "Employee ID" <> '' THEN BEGIN
                     T_Employee.SETFILTER("Employee ID", "Employee ID");
                     IF T_Employee.FINDFIRST THEN BEGIN
@@ -1044,21 +1042,6 @@ table 50208 "Work Booklet"
                 //  MESSAGE(FORMAT(Employee."Returned to Company"));
             END;
         END;
-        //BH proba update
-        WorkBooklet.RESET;
-        WorkBooklet.SETFILTER(Coefficient, '<>%1', 1);
-        WorkBooklet.SETFILTER(Status, '<>%1', WorkBooklet.Status::Terminated);
-        IF WorkBooklet.FINDSET THEN
-            REPEAT
-                IF WorkBooklet."Ending Date" = 0D THEN
-                    WorkBooklet."Ending Date" := TODAY;
-                WorkBooklet.VALIDATE(Coefficient, WorkBooklet.Coefficient);
-                WorkBooklet.MODIFY;
-
-            UNTIL WorkBooklet.NEXT = 0;
-        //MESSAGE(Text0001);
-        //MESSAGE('Završeno');
-        //BH proba update
     end;
 
     trigger OnInsert()
@@ -1154,21 +1137,6 @@ table 50208 "Work Booklet"
                 Employee.MODIFY;
             END;
         END;
-        //BH proba update
-        WorkBooklet.RESET;
-        WorkBooklet.SETFILTER(Coefficient, '<>%1', 1);
-        WorkBooklet.SETFILTER(Status, '<>%1', WorkBooklet.Status::Terminated);
-        IF WorkBooklet.FINDSET THEN
-            REPEAT
-                IF WorkBooklet."Ending Date" = 0D THEN
-                    WorkBooklet."Ending Date" := TODAY;
-                WorkBooklet.VALIDATE(Coefficient, WorkBooklet.Coefficient);
-                WorkBooklet.MODIFY;
-
-            UNTIL WorkBooklet.NEXT = 0;
-        //MESSAGE(Text0001);
-        //MESSAGE('Završeno');// //
-        //BH proba update 
     end;
 
     trigger OnRename()
