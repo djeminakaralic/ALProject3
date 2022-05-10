@@ -391,7 +391,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Days of Experience"; "Days of Experience")
                         {
                             Editable = false;
-                            Caption = 'Military Days Card';
+                            Caption = 'Total Days Card';
                         }
                     }
                 }
