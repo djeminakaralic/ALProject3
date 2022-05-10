@@ -70,7 +70,7 @@ table 50104 "Employee Absence Reg"
                 if "From Date" <> 0D then
                     IF "To Date" = 0D then
                         ERROR(Text005);
-
+                //Text005
 
             end;
         }
