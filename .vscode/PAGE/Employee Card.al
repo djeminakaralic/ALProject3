@@ -375,6 +375,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Years of Experience"; "Years of Experience")
                         {
                             Editable = false;
+                            Caption = 'Total Years Card';
                         }
                     }
                     group("MonthsF")
@@ -382,6 +383,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Months of Experience"; "Months of Experience")
                         {
                             Editable = false;
+                            Caption = 'Total Months Card';
                         }
                     }
                     group("DaysF")
@@ -389,6 +391,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Days of Experience"; "Days of Experience")
                         {
                             Editable = false;
+                            Caption = 'Military Days Card';
                         }
                     }
                 }
@@ -411,14 +414,17 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         field("Military Years of Service"; "Military Years of Service")
                         {
                             Editable = false;
+                            Caption = 'Military Years Card';
                         }
                         field("Military Months of Service"; "Military Months of Service")
                         {
                             Editable = false;
+                            Caption = 'Military Months Card';
                         }
                         field("Military Days of Service"; "Military Days of Service")
                         {
                             Editable = false;
+                            Caption = 'Military Days Card';
                         }
                     }
 
