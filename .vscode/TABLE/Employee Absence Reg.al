@@ -74,8 +74,6 @@ table 50104 "Employee Absence Reg"
                 IF "To Date" <> 0D THEN
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
-
-
             end;
         }
 
@@ -90,13 +88,21 @@ table 50104 "Employee Absence Reg"
                 /*IF "To Date" < "From Date" THEN
                     FIELDERROR("To Date");?*/
 
-                IF "To Date" <> 0D THEN BEGIN
+                /*IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
                         ERROR(Text001);
 
                     IF "From Date" > "To Date" then
                         ERROR(Text003);
-                END;
+                END;*/
+
+                IF "To Date" <> 0D THEN
+                    IF "From Date" = 0D THEN
+                        ERROR(Text001);
+
+                IF "To Date" <> 0D THEN
+                    IF "From Date" > "To Date" then
+                        ERROR(Text003);
             end;
 
         }
