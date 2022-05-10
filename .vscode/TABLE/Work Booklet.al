@@ -1167,7 +1167,7 @@ table 50208 "Work Booklet"
 
             UNTIL WorkBooklet.NEXT = 0;
         //MESSAGE(Text0001);
-        //MESSAGE('Završeno');//
+        //MESSAGE('Završeno');// //
         //BH proba update 
     end;
 
