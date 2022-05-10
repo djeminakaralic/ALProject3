@@ -8,7 +8,6 @@ table 50104 "Employee Absence Reg"
     fields
     {
 
-
         field(1; "First Name"; Text[30])
         {
             Caption = 'First Name';
@@ -67,11 +66,6 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text002);
                 END;
 
-
-                /*if "From Date" <> 0D then
-                    IF "To Date" = 0D then
-                        ERROR(Text004);*/
-
             end;
         }
 
@@ -103,17 +97,6 @@ table 50104 "Employee Absence Reg"
             Caption = 'Employee No.';
             NotBlank = true;
             TableRelation = Employee;
-
-            /*trigger OnValidate()
-            begin
-                IF "Employee No." <> '' THEN BEGIN
-                    Employee.SETFILTER("No.", "Employee No.");
-                    IF Employee.FINDFIRST THEN BEGIN
-                        "First Name" := Employee."First Name";
-                        "Last Name" := Employee."Last Name";
-                    END;
-                END;
-            end;*/
 
             trigger OnValidate()
             begin

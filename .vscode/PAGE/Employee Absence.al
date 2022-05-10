@@ -323,7 +323,7 @@ page 51129 "Employee Absence"
             ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text005);
+            Error(Text001);
     end;
 
 
@@ -337,10 +337,8 @@ page 51129 "Employee Absence"
             ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text005);
+            Error(Text001);
     end;
-
-
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
@@ -365,8 +363,6 @@ page 51129 "Employee Absence"
         //TestDateValid; //DODANO
         //OnAfterGetCurrRecord;
     end;*/
-
-
 
     trigger OnOpenPage()
     begin
@@ -784,12 +780,12 @@ end;*/
          EXIT(TRUE);*/
     end;
 
-    procedure GetEmployeeName(): Text[250]
+    /*procedure GetEmployeeName(): Text[250]
     begin
         IF recEmployee.GET("Employee No.") THEN BEGIN
             EXIT(recEmployee.FullName);
         END;
-    end;
+    end;*/
 
     /*local procedure PrintVacationResolution()  MOŽDA TREBA
     var
