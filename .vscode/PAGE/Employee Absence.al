@@ -322,6 +322,9 @@ page 51129 "Employee Absence"
         IF "To Date" = 0D then
             ERROR(Text005);
 
+        IF "Cause of Absence Code" = '' then
+            Error(Text006);
+
 
 
     end;
@@ -374,6 +377,8 @@ page 51129 "Employee Absence"
     var
         Text004: Label 'Starting Date field cannot be blank.';
         Text005: Label 'Ending Date field cannot be blank.';
+        Text006: Label 'Cause of Absence Code field cannot be blank.';
+
         HRSetup: Record "Human Resources Setup";
         //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
