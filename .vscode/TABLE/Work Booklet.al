@@ -1167,8 +1167,8 @@ table 50208 "Work Booklet"
 
             UNTIL WorkBooklet.NEXT = 0;
         //MESSAGE(Text0001);
-        //MESSAGE('Završeno');
-        //BH proba update
+        //MESSAGE('Završeno');//
+        //BH proba update 
     end;
 
     trigger OnRename()
