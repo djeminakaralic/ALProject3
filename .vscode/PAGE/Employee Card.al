@@ -364,21 +364,34 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Group("Total experience")
 
             {
-                Caption = 'Total experience';
+                fixed("Total")
+                {
 
-                field("Years of Experience"; "Years of Experience")
-                {
-                    Editable = false;
-                }
-                field("Months of Experience"; "Months of Experience")
-                {
-                    Editable = false;
-                }
-                field("Days of Experience"; "Days of Experience")
-                {
-                    Editable = false;
-                }
 
+                    Caption = 'Total experience';
+                    group("YearsF")
+                    {
+
+                        field("Years of Experience"; "Years of Experience")
+                        {
+                            Editable = false;
+                        }
+                    }
+                    group("MonthsF")
+                    {
+                        field("Months of Experience"; "Months of Experience")
+                        {
+                            Editable = false;
+                        }
+                    }
+                    group("DaysF")
+                    {
+                        field("Days of Experience"; "Days of Experience")
+                        {
+                            Editable = false;
+                        }
+                    }
+                }
             }
             group("MILITARY EXPERIENCE")
             {
@@ -1191,6 +1204,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
     actions
     {
+        modify("Ledger E&ntries")
+        {
+            Visible = false;
+        }
+        modify(PayEmployee)
+        {
+            Visible = false;
+
+        }
         // Add changes to page actions here
 
         addafter(Dimensions)

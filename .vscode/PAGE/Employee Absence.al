@@ -157,74 +157,72 @@ page 51129 "Employee Absence"
     {
         area(navigation)
         {
-            group("A&bsence")
+
+            /*action("Co&mments")
             {
-                Caption = 'A&bsence';
-                /*action("Co&mments")
-                {
-                    Caption = 'Co&mments';
-                    Image = ViewComments;
-                    RunObject = Page "Human Resource Comment Sheet";
-                    /* RunPageLink = Table Name=CONST(Employee Absence),
-                                   Table Line No.=FIELD(Entry No.);*/
-                /*}*/
+                Caption = 'Co&mments';
+                Image = ViewComments;
+                RunObject = Page "Human Resource Comment Sheet";
+                /* RunPageLink = Table Name=CONST(Employee Absence),
+                               Table Line No.=FIELD(Entry No.);*/
+            /*}*/
 
-                /*action("Overview by &Categories") STAJALO
-                {
-                    Caption = 'Overview by &Categories';
-                    "Absence Overview by Categories";
-                    RunPageLink = "Employee No." = FIELD("Employee No.");
+            /*action("Overview by &Categories") STAJALO
+            {
+                Caption = 'Overview by &Categories';
+                "Absence Overview by Categories";
+                RunPageLink = "Employee No." = FIELD("Employee No.");
 
-                }*/
-                /*action("Overview by &Periods")
-                {
-                    Caption = 'Overview by &Periods';
-                    RunObject = Page "Absence Overview by Periods";
-                }*/
+            }*/
+            /*action("Overview by &Periods")
+            {
+                Caption = 'Overview by &Periods';
+                RunObject = Page "Absence Overview by Periods";
+            }*/
 
-                /*action("&Reset Quantity")
-                {
-                    Caption = '&Reset Quantity';
-                    Image = UnApply;
-                    ShortCutKey = 'F7';
+            /*action("&Reset Quantity")
+            {
+                Caption = '&Reset Quantity';
+                Image = UnApply;
+                ShortCutKey = 'F7';
 
-                    trigger OnAction()
-                    begin
-                        ResetQuantity;
-                    end;
-                }*/
+                trigger OnAction()
+                begin
+                    ResetQuantity;
+                end;
+            }*/
 
-                action("&Approve All")
-                {
-                    Caption = '&Approve All';
-                    Image = Approve;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    ShortCutKey = 'F9';
+            action("&Approve All")
+            {
+                Caption = '&Approve All';
+                Image = Approve;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ShortCutKey = 'F9';
 
-                    trigger OnAction()
-                    begin
-                        SetApprove(TRUE);
-                    end;
-                }
-
-                action("&Unapprove All")
-                {
-                    Caption = '&Unapprove All';
-                    Image = ResetStatus;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    ShortCutKey = 'Ctrl+F9';
-
-                    trigger OnAction()
-                    begin
-                        SetApprove(FALSE);
-                    end;
-                }
-
+                trigger OnAction()
+                begin
+                    SetApprove(TRUE);
+                end;
             }
+
+            action("&Unapprove All")
+            {
+                Caption = '&Unapprove All';
+                Image = ResetStatus;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ShortCutKey = 'Ctrl+F9';
+
+                trigger OnAction()
+                begin
+                    SetApprove(FALSE);
+                end;
+            }
+
+            //}
         }
         area(processing)
         {
@@ -318,23 +316,36 @@ page 51129 "Employee Absence"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        //EXIT(TestRecordValid);
+        IF "From Date" = 0D then
+            Error(Text001);
 
+        IF "To Date" = 0D then
+            ERROR(Text004);
+
+        IF "Cause of Absence Code" = '' then
+            Error(Text001);
     end;
+
 
     trigger OnModifyRecord(): Boolean
     begin
         //EXIT(TestRecordValid);
+        IF "From Date" = 0D then
+            Error(Text001);
+
+        IF "To Date" = 0D then
+            ERROR(Text004);
+
+        IF "Cause of Absence Code" = '' then
+            Error(Text001);
     end;
-
-
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
     end;
 
-
+    //komentar
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
         recEmployee.RESET;
@@ -353,8 +364,6 @@ page 51129 "Employee Absence"
         //OnAfterGetCurrRecord;
     end;*/
 
-
-
     trigger OnOpenPage()
     begin
         //  GetInitialFilters;
@@ -368,7 +377,8 @@ page 51129 "Employee Absence"
     end;
 
     var
-
+        Text004: Label 'Ending Date field cannot be blank.';
+        Text005: Label 'Cause of Absence Code field cannot be blank.';
         HRSetup: Record "Human Resources Setup";
         //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
@@ -381,7 +391,7 @@ page 51129 "Employee Absence"
         recEmplAbsenceTemp: Record "Employee Absence" temporary;
         Dim1Filter: Code[250];
         Dim2Filter: Code[250];
-        //"Dimension Value List"; STAJALO
+        //"Dimension Value List"; 
         recDimValue: Record "Dimension Value";
         EmployeeFilter: Code[250];
         FormEmployeeList: Page "Employee List";
@@ -770,12 +780,12 @@ end;*/
          EXIT(TRUE);*/
     end;
 
-    procedure GetEmployeeName(): Text[250]
+    /*procedure GetEmployeeName(): Text[250]
     begin
         IF recEmployee.GET("Employee No.") THEN BEGIN
             EXIT(recEmployee.FullName);
         END;
-    end;
+    end;*/
 
     /*local procedure PrintVacationResolution()  MOŽDA TREBA
     var
