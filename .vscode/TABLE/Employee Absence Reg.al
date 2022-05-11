@@ -16,7 +16,6 @@ table 50104 "Employee Absence Reg"
         field(2; "Last Name"; Text[50])
         {
             Caption = 'Last Name';
-
         }
 
         field(3; "Days"; Integer)
@@ -26,11 +25,6 @@ table 50104 "Employee Absence Reg"
         field(4; Approved; Boolean)
         {
             Caption = 'Approved';
-        }
-
-        field(5; "Bound to Year"; Integer)
-        {
-            Caption = 'Bound to Year';
         }
 
         field(6; "Description"; Code[50])
@@ -86,7 +80,6 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text003);
                 END;
-
             end;
 
         }
@@ -96,17 +89,6 @@ table 50104 "Employee Absence Reg"
             Caption = 'Employee No.';
             NotBlank = true;
             TableRelation = Employee;
-
-            /*trigger OnValidate()
-            begin
-                IF "Employee No." <> '' THEN BEGIN
-                    Employee.SETFILTER("No.", "Employee No.");
-                    IF Employee.FINDFIRST THEN BEGIN
-                        "First Name" := Employee."First Name";
-                        "Last Name" := Employee."Last Name";
-                    END;
-                END;
-            end;*/
 
             trigger OnValidate()
             begin
@@ -136,9 +118,8 @@ table 50104 "Employee Absence Reg"
             //Clustered = TRUE;
         }
     }
-    //komentar
+
     var
-        Msg: Label 'Hello from my method';
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
@@ -154,28 +135,13 @@ table 50104 "Employee Absence Reg"
         if EmployeeAbsence.FindLast then
             "Entry No." := EmployeeAbsence."Entry No." + 1
         else begin
-            //CheckBaseUOM;
             "Entry No." := 1;
         end;
     end;
 
 }
 
-/*modify("Cause of Absence Code")
-{
-    trigger OnAfterValidate()
-        var myInt: Integer;
-        begin
-            CauseOfAbsence.reset();
-            CauseOfAbsence.SetFilter(Code, '%1', "Cause of Absence Code");
-            if CauseOfAbsence.FindFirst() then begin
-                "Short Code" := CauseOfAbsence."Short Code";
-            end
-            else begin
-                "Short Code" := '';
-            end;
-        end;
-}*/
+
 
 
 

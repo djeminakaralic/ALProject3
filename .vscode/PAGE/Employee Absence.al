@@ -281,15 +281,15 @@ page 51129 "Employee Absence"
         //OnAfterGetCurrRecord;
     end;*/
 
-    trigger OnOpenPage()
+    /*trigger OnOpenPage()
     begin
         //  GetInitialFilters;
-    end;
+    end;*/
 
-    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    /*trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         //SaveFilters;
-    end;
+    end;*/
 
     var
         Text004: Label 'Ending Date field cannot be blank.';

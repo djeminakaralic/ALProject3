@@ -5003,11 +5003,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType BlockedErr</note>
         </trans-unit>
-        <trans-unit id="Table 1229655105 - NamedType 3004040435" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Hello from my method</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Msg</note>
-        </trans-unit>
         <trans-unit id="Table 1229655105 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date field cannot be blank.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5027,11 +5022,6 @@
           <source>Approved</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Approved - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1229655105 - Field 580168218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bound to Year</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Bound to Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - Field 1504045620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cause of Absence Code</source>
