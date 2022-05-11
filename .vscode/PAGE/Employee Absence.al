@@ -383,9 +383,23 @@ page 51129 "Employee Absence"
     begin
     end;*/
 
-    trigger OnQueryClosePage(CloseAction: Action): Boolean
+    /*trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        Approved := true;
+
+    end;*/
+
+    trigger OnClosePage()
+    begin
+        Rec.FINDFIRST;
+        BEGIN
+            IF Rec."Approved" = TRUE THEN BEGIN
+                REPEAT
+                    Rec."Approved" := FALSE;
+                    Rec.MODIFY;
+                UNTIL Rec.NEXT = 0;
+            END
+        END;
+
     end;
 
     var
@@ -761,9 +775,9 @@ end;*/
 END;
 end;*/
 
-    procedure TestVacationOK(): Boolean
+    /*procedure TestVacationOK(): Boolean
     var
-        // l_Vacation: Record payrol;
+         l_Vacation: Record payrol;
         l_AvailableHours: Decimal;
         l_Absence: Record "Employee Absence";
     begin
@@ -771,24 +785,24 @@ end;*/
              EXIT(TRUE);
          IF "Bound to Year" <= 0 THEN
              FIELDERROR("Bound to Year");*/
-        /* IF NOT l_Vacation.GET("Employee No.", "Bound to Year") THEN
-             FIELDERROR("Bound to Year");
-         l_AvailableHours := l_Vacation."Available Hours";
-         l_Absence.RESET;
-         l_Absence.SETCURRENTKEY("Employee No.", "Work Type", "Bound to Year");
-         l_Absence.SETRANGE("Employee No.", "Employee No.");
-         l_Absence.SETRANGE("Work Type", l_Absence."Work Type"::Vacation);
-         l_Absence.SETRANGE("Bound to Year", "Bound to Year");
-         l_Absence.SETFILTER("Entry No.", '<> %1', "Entry No.");
-         IF l_Absence.FIND('-') THEN
-             REPEAT
-                 l_AvailableHours -= l_Absence."Quantity (Base)";
-             UNTIL l_Absence.NEXT = 0;
-         l_AvailableHours -= "Quantity (Base)";
-         IF l_AvailableHours < 0 THEN
-             FIELDERROR("Quantity (Base)");
-         EXIT(TRUE);*/
-    end;
+    /* IF NOT l_Vacation.GET("Employee No.", "Bound to Year") THEN
+         FIELDERROR("Bound to Year");
+     l_AvailableHours := l_Vacation."Available Hours";
+     l_Absence.RESET;
+     l_Absence.SETCURRENTKEY("Employee No.", "Work Type", "Bound to Year");
+     l_Absence.SETRANGE("Employee No.", "Employee No.");
+     l_Absence.SETRANGE("Work Type", l_Absence."Work Type"::Vacation);
+     l_Absence.SETRANGE("Bound to Year", "Bound to Year");
+     l_Absence.SETFILTER("Entry No.", '<> %1', "Entry No.");
+     IF l_Absence.FIND('-') THEN
+         REPEAT
+             l_AvailableHours -= l_Absence."Quantity (Base)";
+         UNTIL l_Absence.NEXT = 0;
+     l_AvailableHours -= "Quantity (Base)";
+     IF l_AvailableHours < 0 THEN
+         FIELDERROR("Quantity (Base)");
+     EXIT(TRUE);
+end;*/
 
     /*procedure GetEmployeeName(): Text[250]
     begin
@@ -817,7 +831,7 @@ end;*/
         CurrPage.UPDATE(TRUE);
     end;*/
 
-    procedure SetApprove(inNewValue: Boolean)
+    /*procedure SetApprove(inNewValue: Boolean)
     begin
         txtView := Rec.GETVIEW;
         FILTERGROUP(2);
@@ -841,7 +855,7 @@ end;*/
         FILTERGROUP(0);
         Rec.SETVIEW(txtView);
         txtView := '';
-    end;
+    end;*/
 
     /*procedure SetEmployeeFilter(NewFilter: Code[250])
     begin
