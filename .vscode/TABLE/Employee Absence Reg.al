@@ -1,7 +1,6 @@
 table 50104 "Employee Absence Reg"
 {
-    Caption = 'Sample table';
-    //DataPerCompany = true;
+    Caption = 'Employee Absence Reg';
     DrillDownPageID = "Employee Absence";
     LookupPageID = "Employee Absence";
 
@@ -18,8 +17,10 @@ table 50104 "Employee Absence Reg"
             Caption = 'Last Name';
         }
 
-        field(3; "Days"; Integer)
+        field(3; "Quantity"; Integer)
         {
+            Caption = 'Quantity';
+
         }
 
         field(4; Approved; Boolean)
@@ -98,13 +99,7 @@ table 50104 "Employee Absence Reg"
             end;
         }
 
-        field(11; "Quantity"; Integer)
-        {
-            Caption = 'Quantity';
-
-        }
-
-        field(12; "Entry No."; Integer)
+        field(11; "Entry No."; Integer)
         {
             Caption = 'Entry No.';
         }
@@ -127,7 +122,6 @@ table 50104 "Employee Absence Reg"
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
-
 
     trigger OnInsert()
     begin
