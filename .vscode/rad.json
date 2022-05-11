@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 ﻿{"Added":[],"Modified":[{"Id":50129,"Kind":16,"Name":"EmployeeCard","PackagePath":"/src/.vscode/PAGE/Employee%20Card.al"}],"Removed":[{"Id":0,"Kind":12,"Name":"Work booklet","PackagePath":"/src/.vscode/PAGE/Employee%20Card.al"}]}
-=======
-﻿{"Added":[],"Modified":[{"Id":50104,"Kind":10,"Name":"Employee Absence Reg","PackagePath":"/src/.vscode/TABLE/Employee%20Absence%20Reg.al"}],"Removed":[]}
->>>>>>> e6344e78b5dea311567aea393b1097eed72259ca
-=======
-﻿{"Added":[],"Modified":[{"Id":50104,"Kind":10,"Name":"Employee Absence Reg","PackagePath":"/src/.vscode/TABLE/Employee%20Absence%20Reg.al"},{"Id":51129,"Kind":12,"Name":"Employee Absence","PackagePath":"/src/.vscode/PAGE/Employee%20Absence.al"}],"Removed":[]}
->>>>>>> c4515953425429a6dd47bc2c4943e996f7f21b51
