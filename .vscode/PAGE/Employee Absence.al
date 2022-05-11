@@ -197,6 +197,7 @@ page 51129 "Employee Absence"
                         IF Rec."Approved" = FALSE THEN BEGIN
                             REPEAT
                                 Rec."Approved" := TRUE;
+                                //Rec.Quantity := Employee."Hours In Day";
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
@@ -341,6 +342,8 @@ page 51129 "Employee Absence"
 
         IF "Cause of Absence Code" = '' then
             Error(Text007);
+
+        //OVDJE KOD ZA RAČUNANJE KOLIČINE        
     end;
 
 
@@ -390,16 +393,28 @@ page 51129 "Employee Absence"
 
     trigger OnClosePage()
     begin
-        Rec.FINDFIRST;
-        BEGIN
-            IF Rec."Approved" = TRUE THEN BEGIN
-                REPEAT
-                    Rec."Approved" := FALSE;
-                    Rec.MODIFY;
-                UNTIL Rec.NEXT = 0;
-            END
-        END;
+        //OVDJE PISATI KOD ZA TABELU
 
+
+
+
+        /*
+        Rec.FINDFIRST;
+                    BEGIN
+                        IF Rec."Approved" = TRUE THEN BEGIN
+                            REPEAT
+                                Rec."Approved" := FALSE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+                        ELSE BEGIN
+                            REPEAT
+                                Rec."Approved" := TRUE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0
+                        END;
+                    END;
+        */
     end;
 
     var

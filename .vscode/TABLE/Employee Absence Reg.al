@@ -37,7 +37,7 @@ table 50104 "Employee Absence Reg"
             begin
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
-                //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
+                //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");                
             end;
         }
         field(8; "From Date"; Date)
@@ -85,6 +85,7 @@ table 50104 "Employee Absence Reg"
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
+
             end;
         }
 
@@ -110,7 +111,6 @@ table 50104 "Employee Absence Reg"
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
-
 
     trigger OnInsert()
     begin
