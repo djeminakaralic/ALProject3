@@ -9,6 +9,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         modify(Payments)
         {
             Visible = false;
+            //aida
+
         }
         modify("Employment Date")
         {
