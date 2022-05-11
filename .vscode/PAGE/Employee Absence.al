@@ -356,10 +356,10 @@ page 51129 "Employee Absence"
             Error(Text007);
     end;
 
-    trigger OnNewRecord(BelowxRec: Boolean)
+    /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-    end;
+    end;*/
 
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
@@ -385,7 +385,7 @@ page 51129 "Employee Absence"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        //SaveFilters;
+        Approved := true;
     end;
 
     var

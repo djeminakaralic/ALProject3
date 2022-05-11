@@ -121,7 +121,6 @@ table 50104 "Employee Absence Reg"
             "Entry No." := 1;
         end;
     end;
-
 }
 
 
