@@ -196,9 +196,9 @@ page 51129 "Employee Absence"
             {
                 Caption = '&Approve All';
                 Image = Approve;
-                //  Promoted = true;
-                //PromotedCategory = Process;
-                //PromotedIsBig = true;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
                 ShortCutKey = 'F9';
 
                 trigger OnAction()
