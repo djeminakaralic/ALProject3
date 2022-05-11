@@ -4994,7 +4994,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Education - Seminars - Field Serial Number - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Employee Absence Reg</source>
+          <source>Sample table</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Property Caption</note>
         </trans-unit>
@@ -5002,6 +5002,11 @@
           <source>You cannot register absence because the employee is blocked due to privacy.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType BlockedErr</note>
+        </trans-unit>
+        <trans-unit id="Table 1229655105 - NamedType 3004040435" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hello from my method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Msg</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date field cannot be blank.</source>
@@ -5023,10 +5028,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Approved - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1229655105 - Field 580168218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bound to Year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Bound to Year - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1229655105 - Field 1504045620 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cause of Absence Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Cause of Absence Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1229655105 - Field 2218805241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Days - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -22457,6 +22472,11 @@
           <source>&amp;Unapprove All</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Action &amp;Unapprove All - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3164093577 - Action 900325078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Edit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Action &amp;Edit - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4279708401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Bood Donations</source>

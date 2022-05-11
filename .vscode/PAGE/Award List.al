@@ -15,7 +15,6 @@ page 50202 "Award List"
                 field(Category; Category)
                 {
                     ApplicationArea = all;
-                    //sada
                 }
                 field("Category Name"; "Category Name")
                 {

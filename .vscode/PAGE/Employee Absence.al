@@ -1,5 +1,7 @@
 page 51129 "Employee Absence"
 {
+    // // Added fields "In Addition to Regular Work"
+
     Caption = 'Employee Absence';
     DataCaptionFields = "Employee No.";
     DelayedInsert = true;
@@ -7,6 +9,7 @@ page 51129 "Employee Absence"
     SaveValues = true;
     SourceTable = "Employee Absence Reg";
     //SourceTableView = SORTING("Employee No.", From Date);
+
 
     layout
     {
@@ -33,7 +36,7 @@ page 51129 "Employee Absence"
 
                 trigger OnLookup(var Text: Text): Boolean
                 begin
-                    EXIT(DimFilterLookup(Text, 1));A
+                    EXIT(DimFilterLookup(Text, 1));
                 end;
 
                 trigger OnValidate()
@@ -77,15 +80,31 @@ page 51129 "Employee Absence"
             }*/
             repeater(s)
             {
-                field("Entry No."; "Entry No.")
+                /*field("Entry No."; "Entry No.")
                 {
                     Editable = false;
                     Visible = false;
-                }
+                }*/
                 field("Employee No."; "Employee No.")
                 {
 
+                    /*trigger OnValidate()
+                    begin
+
+
+                        IF "Employee No." <> '' THEN BEGIN
+                            //Employee.SETFILTER("Employee No.", "empl");
+                            IF Employee.FINDFIRST THEN BEGIN
+                                "First Name" := Employee."First Name";
+                                "Last Name" := Employee."Last Name";
+                            END;
+                        END;
+
+                    end;*/
+
+
                 }
+
                 field("First Name"; "First Name")
                 {
                     Editable = false;
@@ -95,30 +114,41 @@ page 51129 "Employee Absence"
                 {
                     Editable = false;
                 }
+                /*field(GetEmployeeName; GetEmployeeName)
+                {
+                    Caption = 'Name';
+                }*/
+
                 field("From Date"; "From Date")
                 {
+
 
                 }
                 field("To Date"; "To Date")
                 {
 
                 }
+
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
-
                 }
+
                 field(Description; Description)
                 {
 
                 }
+
                 field("Quantity"; "Quantity")
                 {
 
                 }
+
+
                 field(Approved; Approved)
                 {
                     Editable = true;
                 }
+
             }
         }
     }
@@ -173,22 +203,7 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
-                    //SetApprove(TRUE); SAMO JE OVO BILO TU 
-                    Rec.FINDFIRST;
-                    BEGIN
-                        IF Rec."Approved" = FALSE THEN BEGIN
-                            REPEAT
-                                Rec."Approved" := TRUE;
-                                Rec.MODIFY;
-                            UNTIL Rec.NEXT = 0;
-                        END
-                        /*ELSE BEGIN
-                            REPEAT
-                                Rec."Approved" := FALSE;
-                                Rec.MODIFY;
-                            UNTIL Rec.NEXT = 0
-                        END;*/
-                    END;
+                    SetApprove(TRUE);
                 end;
             }
 
@@ -203,34 +218,101 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
-                    //SetApprove(FALSE); SAMO JE OVO BILO TU
-                    Rec.FINDFIRST;
-                    BEGIN
-                        IF Rec."Approved" = TRUE THEN BEGIN
-                            REPEAT
-                                Rec."Approved" := FALSE;
-                                Rec.MODIFY;
-                            UNTIL Rec.NEXT = 0;
-                        END
-                        /*ELSE BEGIN
-                            REPEAT
-                                Rec."Approved" := TRUE;
-                                Rec.MODIFY;
-                            UNTIL Rec.NEXT = 0
-                        END;*/
-                    END;
+                    SetApprove(FALSE);
                 end;
             }
 
             //}
         }
+        area(processing)
+        {
+            /*action("Previous Year")
+            {
+                Caption = 'Previous Year';
+            Image = PreviousRecord;
+            Promoted = true;
+            PromotedCategory = Process;
+            PromotedIsBig = true;
+            ToolTip = 'Previous Year';
 
+                trigger OnAction()
+    begin
+        CurrPage.SAVERECORD;
+        //PrevYear;
+        CurrPage.UPDATE(FALSE);
+    end;
+
+            
+            /*action("Next Year")
+            {
+                Caption = 'Next Year';
+                Image = NextRecord;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Next Year';
+
+                trigger OnAction()
+                begin
+                    CurrPage.SAVERECORD;
+                    //NextYear;
+                    CurrPage.UPDATE(FALSE);
+                end;
+            }
+
+            action("Previous Month")
+            {
+                Caption = 'Previous Month';
+                Image = PreviousRecord;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Previous Month';
+
+                trigger OnAction()
+                begin
+                    CurrPage.SAVERECORD;
+                    //PrevMonth;
+                    CurrPage.UPDATE(FALSE);
+                end;
+            }*/
+
+            /*action("Next Month")
+            {
+                Caption = 'Next Month';
+                Image = NextRecord;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Next Month';
+
+                trigger OnAction()
+                begin
+                    CurrPage.SAVERECORD;
+                    //NextMonth;
+                    CurrPage.UPDATE(FALSE);
+                end;
+            }*/
+
+            action("&Edit")
+            {
+                Caption = '&Edit';
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = false;
+
+                trigger OnAction()
+                begin
+                    SetEditable(NOT CurrPage.EDITABLE);
+                end;
+            }
+        }
     }
 
-    /*trigger OnAfterGetRecord()
+    trigger OnAfterGetRecord()
     begin
         //OnAfterGetCurrRecord;
-    end;*/
+    end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -258,11 +340,12 @@ page 51129 "Employee Absence"
             Error(Text005);
     end;
 
-    /*trigger OnNewRecord(BelowxRec: Boolean)
+    trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-    end;*/
+    end;
 
+    //komentar
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
         recEmployee.RESET;
@@ -281,15 +364,17 @@ page 51129 "Employee Absence"
         //OnAfterGetCurrRecord;
     end;*/
 
-    /*trigger OnOpenPage()
+    trigger OnOpenPage()
     begin
         //  GetInitialFilters;
-    end;*/
 
-    /*trigger OnQueryClosePage(CloseAction: Action): Boolean
+
+    end;
+
+    trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
         //SaveFilters;
-    end;*/
+    end;
 
     var
         Text004: Label 'Ending Date field cannot be blank.';
@@ -323,6 +408,7 @@ page 51129 "Employee Absence"
         SettingNewFilters: Boolean;
         [InDataSet]
         ChangeAllowedVisible: Boolean;
+
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 
@@ -358,7 +444,7 @@ page 51129 "Employee Absence"
         EXIT(FALSE);
     end;*/
 
-    /*procedure EmployeeLookup(var Text: Text[1024]; WithDimFilters: Boolean) ret: Boolean
+    procedure EmployeeLookup(var Text: Text[1024]; WithDimFilters: Boolean) ret: Boolean
     begin
         recEmployee.RESET;
         recEmployee."No." := Text;
@@ -383,7 +469,7 @@ page 51129 "Employee Absence"
             EXIT(TRUE);
         END;
         EXIT(FALSE);
-    end;*/
+    end;
 
     /* local procedure GetInitialFilters()
     begin
@@ -665,7 +751,7 @@ end;*/
 END;
 end;*/
 
-    /*procedure TestVacationOK(): Boolean
+    procedure TestVacationOK(): Boolean
     var
         // l_Vacation: Record payrol;
         l_AvailableHours: Decimal;
@@ -675,24 +761,24 @@ end;*/
              EXIT(TRUE);
          IF "Bound to Year" <= 0 THEN
              FIELDERROR("Bound to Year");*/
-    /* IF NOT l_Vacation.GET("Employee No.", "Bound to Year") THEN
-         FIELDERROR("Bound to Year");
-     l_AvailableHours := l_Vacation."Available Hours";
-     l_Absence.RESET;
-     l_Absence.SETCURRENTKEY("Employee No.", "Work Type", "Bound to Year");
-     l_Absence.SETRANGE("Employee No.", "Employee No.");
-     l_Absence.SETRANGE("Work Type", l_Absence."Work Type"::Vacation);
-     l_Absence.SETRANGE("Bound to Year", "Bound to Year");
-     l_Absence.SETFILTER("Entry No.", '<> %1', "Entry No.");
-     IF l_Absence.FIND('-') THEN
-         REPEAT
-             l_AvailableHours -= l_Absence."Quantity (Base)";
-         UNTIL l_Absence.NEXT = 0;
-     l_AvailableHours -= "Quantity (Base)";
-     IF l_AvailableHours < 0 THEN
-         FIELDERROR("Quantity (Base)");
-     EXIT(TRUE);*/
-    //end;
+        /* IF NOT l_Vacation.GET("Employee No.", "Bound to Year") THEN
+             FIELDERROR("Bound to Year");
+         l_AvailableHours := l_Vacation."Available Hours";
+         l_Absence.RESET;
+         l_Absence.SETCURRENTKEY("Employee No.", "Work Type", "Bound to Year");
+         l_Absence.SETRANGE("Employee No.", "Employee No.");
+         l_Absence.SETRANGE("Work Type", l_Absence."Work Type"::Vacation);
+         l_Absence.SETRANGE("Bound to Year", "Bound to Year");
+         l_Absence.SETFILTER("Entry No.", '<> %1', "Entry No.");
+         IF l_Absence.FIND('-') THEN
+             REPEAT
+                 l_AvailableHours -= l_Absence."Quantity (Base)";
+             UNTIL l_Absence.NEXT = 0;
+         l_AvailableHours -= "Quantity (Base)";
+         IF l_AvailableHours < 0 THEN
+             FIELDERROR("Quantity (Base)");
+         EXIT(TRUE);*/
+    end;
 
     /*procedure GetEmployeeName(): Text[250]
     begin
@@ -721,7 +807,7 @@ end;*/
         CurrPage.UPDATE(TRUE);
     end;*/
 
-    /*procedure SetApprove(inNewValue: Boolean)
+    procedure SetApprove(inNewValue: Boolean)
     begin
         txtView := Rec.GETVIEW;
         FILTERGROUP(2);
@@ -745,13 +831,15 @@ end;*/
         FILTERGROUP(0);
         Rec.SETVIEW(txtView);
         txtView := '';
-    end;*/
+    end;
 
     /*procedure SetEmployeeFilter(NewFilter: Code[250])
     begin
         NewEmployeeFilter := NewFilter;
         SettingNewFilters := TRUE;
     end;*/
+
+
 
     /*procedure SetDim1Filter(NewFilter: Code[250])
     begin
@@ -765,7 +853,7 @@ end;*/
         SettingNewFilters := TRUE;
     end;*/
 
-    /*procedure YearOnAfterValidate()
+    procedure YearOnAfterValidate()
     begin
         CurrPage.SAVERECORD;
         SetPeriod;
@@ -777,7 +865,7 @@ end;*/
         CurrPage.SAVERECORD;
         SetPeriod;
         CurrPage.UPDATE(FALSE);
-    end;*/
+    end;
 
     /*local procedure Dim1FilterOnAfterValidate()
     begin
@@ -814,6 +902,7 @@ end;*/
         END;
     end;*/
 
+
     /*procedure EmployeeNoOnAfterInput(var Text: Text[1024])
     begin
         recEmployee.RESET;
@@ -823,4 +912,5 @@ end;*/
             Text := recEmployee."No.";
         END;
     end;*/
+
 }
