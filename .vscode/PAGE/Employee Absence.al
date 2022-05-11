@@ -357,7 +357,6 @@ page 51129 "Employee Absence"
 
     trigger OnModifyRecord(): Boolean
     begin
-        //EXIT(TestRecordValid);
         IF "From Date" = 0D then
             Error(Text001);
 
@@ -373,7 +372,6 @@ page 51129 "Employee Absence"
 
     end;
 
-    //komentar
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
         recEmployee.RESET;
@@ -392,12 +390,9 @@ page 51129 "Employee Absence"
         //OnAfterGetCurrRecord;
     end;*/
 
-    trigger OnOpenPage()
+    /*trigger OnOpenPage()
     begin
-        //  GetInitialFilters;
-
-
-    end;
+    end;*/
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
@@ -414,7 +409,6 @@ page 51129 "Employee Absence"
         Month: Integer;
         CurrPeriodStartDate: Date;
         CurrPeriodEndDate: Date;
-
         recEmplAbsence: Record "Employee Absence";
         recEmplAbsenceTemp: Record "Employee Absence" temporary;
         Dim1Filter: Code[250];
@@ -436,7 +430,6 @@ page 51129 "Employee Absence"
         SettingNewFilters: Boolean;
         [InDataSet]
         ChangeAllowedVisible: Boolean;
-
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 
@@ -881,7 +874,7 @@ end;*/
         SettingNewFilters := TRUE;
     end;*/
 
-    procedure YearOnAfterValidate()
+    /*procedure YearOnAfterValidate()
     begin
         CurrPage.SAVERECORD;
         SetPeriod;
@@ -893,7 +886,7 @@ end;*/
         CurrPage.SAVERECORD;
         SetPeriod;
         CurrPage.UPDATE(FALSE);
-    end;
+    end;*/
 
     /*local procedure Dim1FilterOnAfterValidate()
     begin

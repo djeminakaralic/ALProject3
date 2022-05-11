@@ -10,35 +10,28 @@ table 50104 "Employee Absence Reg"
         field(1; "First Name"; Text[30])
         {
             Caption = 'First Name';
-
         }
-
         field(2; "Last Name"; Text[50])
         {
             Caption = 'Last Name';
-
         }
-
         field(3; "Days"; Integer)
         {
-        }
 
+        }
         field(4; Approved; Boolean)
         {
             Caption = 'Approved';
         }
-
-        field(5; "Bound to Year"; Integer)
+        field(5; "Entry No."; Integer)
         {
-            Caption = 'Bound to Year';
+            Caption = 'Entry No.';
         }
-
         field(6; "Description"; Code[50])
         {
             Caption = 'Description';
             Editable = false;
         }
-
         field(7; "Cause of Absence Code"; Code[10])
         {
             Caption = 'Cause of Absence Code';
@@ -51,7 +44,6 @@ table 50104 "Employee Absence Reg"
                 //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
             end;
         }
-
         field(8; "From Date"; Date)
         {
             Caption = 'From Date';
@@ -67,7 +59,6 @@ table 50104 "Employee Absence Reg"
                 END;
             end;
         }
-
         field(9; "To Date"; Date)
         {
             Caption = 'To Date';
@@ -88,9 +79,7 @@ table 50104 "Employee Absence Reg"
                 END;
 
             end;
-
         }
-
         field(10; "Employee No."; Code[20])
         {
             Caption = 'Employee No.';
@@ -115,18 +104,11 @@ table 50104 "Employee Absence Reg"
                 "Last Name" := Employee."Last Name";
             end;
         }
-
         field(11; "Quantity"; Integer)
         {
             Caption = 'Quantity';
 
         }
-
-        field(12; "Entry No."; Integer)
-        {
-            Caption = 'Entry No.';
-        }
-
     }
 
     keys
@@ -136,7 +118,7 @@ table 50104 "Employee Absence Reg"
             //Clustered = TRUE;
         }
     }
-    //komentar
+
     var
         Msg: Label 'Hello from my method';
         CauseOfAbsence: Record "Cause of Absence";
@@ -154,7 +136,6 @@ table 50104 "Employee Absence Reg"
         if EmployeeAbsence.FindLast then
             "Entry No." := EmployeeAbsence."Entry No." + 1
         else begin
-            //CheckBaseUOM;
             "Entry No." := 1;
         end;
     end;
