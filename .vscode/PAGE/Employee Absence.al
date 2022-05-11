@@ -203,7 +203,6 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
-                    //SetApprove(TRUE); SAMO JE OVO BILO TU 
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Approved" = FALSE THEN BEGIN
@@ -233,7 +232,6 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
-                    //SetApprove(FALSE); SAMO JE OVO BILO TU
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Approved" = TRUE THEN BEGIN
@@ -339,10 +337,10 @@ page 51129 "Employee Absence"
         }
     }
 
-    trigger OnAfterGetRecord()
+    /*trigger OnAfterGetRecord()
     begin
-        //OnAfterGetCurrRecord;
-    end;
+        
+    end;*/
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -353,7 +351,7 @@ page 51129 "Employee Absence"
             ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text005);
+            Error(Text007);
     end;
 
 
@@ -367,7 +365,7 @@ page 51129 "Employee Absence"
             ERROR(Text004);
 
         IF "Cause of Absence Code" = '' then
-            Error(Text005);
+            Error(Text007);
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -408,7 +406,7 @@ page 51129 "Employee Absence"
 
     var
         Text004: Label 'Ending Date field cannot be blank.';
-        Text005: Label 'Cause of Absence Code field cannot be blank.';
+        Text007: Label 'Cause of Absence Code field cannot be blank.';
         HRSetup: Record "Human Resources Setup";
         //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
