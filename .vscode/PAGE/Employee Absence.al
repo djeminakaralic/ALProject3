@@ -182,12 +182,12 @@ page 51129 "Employee Absence"
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
-                        ELSE BEGIN
+                        /*ELSE BEGIN
                             REPEAT
                                 Rec."Approved" := FALSE;
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0
-                        END;
+                        END;*/
                     END;
                 end;
             }
@@ -212,12 +212,12 @@ page 51129 "Employee Absence"
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
-                        ELSE BEGIN
+                        /*ELSE BEGIN
                             REPEAT
                                 Rec."Approved" := TRUE;
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0
-                        END;
+                        END;*/
                     END;
                 end;
             }
