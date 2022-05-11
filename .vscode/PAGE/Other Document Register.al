@@ -7,7 +7,7 @@ page 50089 "Other Document Register"
     UsageCategory = Lists;
     ApplicationArea = all;
 
-    layout
+    layout//
     {
         area(content)
         {
