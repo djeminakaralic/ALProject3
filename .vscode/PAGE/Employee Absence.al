@@ -80,31 +80,15 @@ page 51129 "Employee Absence"
             }*/
             repeater(s)
             {
-                /*field("Entry No."; "Entry No.")
+                field("Entry No."; "Entry No.")
                 {
                     Editable = false;
-                    Visible = false;
-                }*/
+                    //Visible = false;
+                }
                 field("Employee No."; "Employee No.")
                 {
 
-                    /*trigger OnValidate()
-                    begin
-
-
-                        IF "Employee No." <> '' THEN BEGIN
-                            //Employee.SETFILTER("Employee No.", "empl");
-                            IF Employee.FINDFIRST THEN BEGIN
-                                "First Name" := Employee."First Name";
-                                "Last Name" := Employee."Last Name";
-                            END;
-                        END;
-
-                    end;*/
-
-
                 }
-
                 field("First Name"; "First Name")
                 {
                     Editable = false;
@@ -114,41 +98,30 @@ page 51129 "Employee Absence"
                 {
                     Editable = false;
                 }
-                /*field(GetEmployeeName; GetEmployeeName)
-                {
-                    Caption = 'Name';
-                }*/
-
                 field("From Date"; "From Date")
                 {
-
 
                 }
                 field("To Date"; "To Date")
                 {
 
                 }
-
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
-                }
 
+                }
                 field(Description; Description)
                 {
 
                 }
-
                 field("Quantity"; "Quantity")
                 {
 
                 }
-
-
                 field(Approved; Approved)
                 {
                     Editable = true;
                 }
-
             }
         }
     }
@@ -206,7 +179,6 @@ page 51129 "Employee Absence"
                     //SetApprove(TRUE); SAMO JE OVO BILO TU 
                     Rec.FINDFIRST;
                     BEGIN
-                        //filter := Rec.GETFILTERS;
                         IF Rec."Approved" = FALSE THEN BEGIN
                             REPEAT
                                 Rec."Approved" := TRUE;
@@ -237,7 +209,6 @@ page 51129 "Employee Absence"
                     //SetApprove(FALSE); SAMO JE OVO BILO TU
                     Rec.FINDFIRST;
                     BEGIN
-                        //filter := Rec.GETFILTERS;
                         IF Rec."Approved" = TRUE THEN BEGIN
                             REPEAT
                                 Rec."Approved" := FALSE;
@@ -757,7 +728,7 @@ end;*/
         CurrPage.UPDATE(TRUE);
     end;*/
 
-    procedure SetApprove(inNewValue: Boolean)
+    /*procedure SetApprove(inNewValue: Boolean)
     begin
         txtView := Rec.GETVIEW;
         FILTERGROUP(2);
@@ -781,7 +752,7 @@ end;*/
         FILTERGROUP(0);
         Rec.SETVIEW(txtView);
         txtView := '';
-    end;
+    end;*/
 
     /*procedure SetEmployeeFilter(NewFilter: Code[250])
     begin
