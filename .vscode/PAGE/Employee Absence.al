@@ -36,7 +36,7 @@ page 51129 "Employee Absence"
 
                 trigger OnLookup(var Text: Text): Boolean
                 begin
-                    EXIT(DimFilterLookup(Text, 1));
+                    EXIT(DimFilterLookup(Text, 1));A
                 end;
 
                 trigger OnValidate()
@@ -196,9 +196,9 @@ page 51129 "Employee Absence"
             {
                 Caption = '&Approve All';
                 Image = Approve;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+                //  Promoted = true;
+                //PromotedCategory = Process;
+                //PromotedIsBig = true;
                 ShortCutKey = 'F9';
 
                 trigger OnAction()
@@ -224,89 +224,7 @@ page 51129 "Employee Absence"
 
             //}
         }
-        area(processing)
-        {
-            /*action("Previous Year")
-            {
-                Caption = 'Previous Year';
-            Image = PreviousRecord;
-            Promoted = true;
-            PromotedCategory = Process;
-            PromotedIsBig = true;
-            ToolTip = 'Previous Year';
 
-                trigger OnAction()
-    begin
-        CurrPage.SAVERECORD;
-        //PrevYear;
-        CurrPage.UPDATE(FALSE);
-    end;
-
-            
-            /*action("Next Year")
-            {
-                Caption = 'Next Year';
-                Image = NextRecord;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Next Year';
-
-                trigger OnAction()
-                begin
-                    CurrPage.SAVERECORD;
-                    //NextYear;
-                    CurrPage.UPDATE(FALSE);
-                end;
-            }
-
-            action("Previous Month")
-            {
-                Caption = 'Previous Month';
-                Image = PreviousRecord;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Previous Month';
-
-                trigger OnAction()
-                begin
-                    CurrPage.SAVERECORD;
-                    //PrevMonth;
-                    CurrPage.UPDATE(FALSE);
-                end;
-            }*/
-
-            /*action("Next Month")
-            {
-                Caption = 'Next Month';
-                Image = NextRecord;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Next Month';
-
-                trigger OnAction()
-                begin
-                    CurrPage.SAVERECORD;
-                    //NextMonth;
-                    CurrPage.UPDATE(FALSE);
-                end;
-            }*/
-
-            action("&Edit")
-            {
-                Caption = '&Edit';
-                Promoted = true;
-                PromotedCategory = Process;
-                Visible = false;
-
-                trigger OnAction()
-                begin
-                    SetEditable(NOT CurrPage.EDITABLE);
-                end;
-            }
-        }
     }
 
     trigger OnAfterGetRecord()
