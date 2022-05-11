@@ -22473,11 +22473,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Action &amp;Unapprove All - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3164093577 - Action 900325078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&amp;Edit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Action &amp;Edit - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 4279708401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Bood Donations</source>
           <note from="Developer" annotates="general" priority="2"></note>

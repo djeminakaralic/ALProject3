@@ -203,7 +203,23 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
-                    SetApprove(TRUE);
+                    //SetApprove(TRUE); SAMO JE OVO BILO TU 
+                    Rec.FINDFIRST;
+                    BEGIN
+                        //filter := Rec.GETFILTERS;
+                        IF Rec."Approved" = FALSE THEN BEGIN
+                            REPEAT
+                                Rec."Approved" := TRUE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+                        ELSE BEGIN
+                            REPEAT
+                                Rec."Approved" := FALSE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0
+                        END;
+                    END;
                 end;
             }
 
