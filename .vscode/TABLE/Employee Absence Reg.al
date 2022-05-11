@@ -58,7 +58,6 @@ table 50104 "Employee Absence Reg"
 
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
-
                 END;
             end;
         }
