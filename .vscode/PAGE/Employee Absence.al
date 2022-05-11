@@ -80,11 +80,11 @@ page 51129 "Employee Absence"
             }*/
             repeater(s)
             {
-                /*field("Entry No."; "Entry No.")
+                field("Entry No."; "Entry No.")
                 {
                     Editable = false;
                     Visible = false;
-                }*/
+                }
                 field("Employee No."; "Employee No.")
                 {
 
@@ -101,15 +101,11 @@ page 51129 "Employee Absence"
                         END;
 
                     end;*/
-
-
                 }
-
                 field("First Name"; "First Name")
                 {
                     Editable = false;
                 }
-
                 field("Last Name"; "Last Name")
                 {
                     Editable = false;
@@ -118,37 +114,30 @@ page 51129 "Employee Absence"
                 {
                     Caption = 'Name';
                 }*/
-
                 field("From Date"; "From Date")
                 {
-
 
                 }
                 field("To Date"; "To Date")
                 {
 
                 }
-
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
-                }
 
+                }
                 field(Description; Description)
                 {
 
                 }
-
                 field("Quantity"; "Quantity")
                 {
 
                 }
-
-
                 field(Approved; Approved)
                 {
                     Editable = true;
                 }
-
             }
         }
     }

@@ -40,6 +40,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Visible = false;
         }
 
+
         addafter(Personal)
         {
 
@@ -557,6 +558,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
         }
+<<<<<<< HEAD
         addafter("No.")
         {
             field("Employee ID"; "Employee ID")
@@ -567,11 +569,20 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
+=======
+>>>>>>> e6344e78b5dea311567aea393b1097eed72259ca
         addafter("Gender")
         {
             group("Birth Data")
             {
+<<<<<<< HEAD
 
+=======
+                field("Employee ID"; "Employee ID")
+                {
+
+                }
+>>>>>>> e6344e78b5dea311567aea393b1097eed72259ca
 
             }
 
