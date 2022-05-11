@@ -40,6 +40,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Visible = false;
         }
 
+
         addafter(Personal)
         {
 
@@ -557,24 +558,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
         }
-        addafter("No.")
-        {
-            field("Employee ID"; "Employee ID")
-            {
-
-            }
-        }
-        moveafter("Birth Data"; "Birth Date");
-            
-        
         addafter("Gender")
         {
             group("Birth Data")
             {
-                
-                
-            }
-            
+                field("Employee ID"; "Employee ID")
+                {
+
+                }
 
             }
             group("Employement Data")
@@ -1249,7 +1240,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = Workdays;
 
                 RunObject = page "Work booklet";
-                                RunPageLink = "Employee No." = FIELD("No.");
+                RunPageLink = "Employee No." = FIELD("No.");
                 //  RunObject = report "";
             } // Add changes to page actions here
 
@@ -1258,14 +1249,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Caption = 'Wage Amounts';
                 Image = AmountByPeriod;
                 RunObject = page "Wage Amounts";
-                                RunPageLink = "Employee No." = field("No.");
+                RunPageLink = "Employee No." = field("No.");
             }
             action("Employee Default dimension")
             {
                 Caption = 'Employee Default dimension';
                 Image = Dimensions;
                 RunObject = page "Employee Default Dimension";
-                                RunPageLink = "No." = field("No.");
+                RunPageLink = "No." = field("No.");
 
             }
 
@@ -1275,7 +1266,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Caption = 'Employee Absence';
                 Image = Workdays;
                 RunObject = page "Employee Absence";
-                                RunPageLink = "Employee No." = FIELD("No.");
+                RunPageLink = "Employee No." = FIELD("No.");
             }
             //ED 01 END
 
@@ -1290,70 +1281,70 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         WA: Record "Wage Addition";
         UnionEmployees: record "Union Employees";
         UnionEmployeesPage: page "Union Employees";
-                                UserPersonalisation: Record "User Personalization";
-                                UserPersonalisation2: record "User Personalization";
-                                showMC: Boolean;
-                                TerminationVisible: Boolean;
-                                EmploymentAbroadVisible: Boolean;
-                                Educ: Record "Additional Education";
-                                EducationHistoryPage: Page "Education History";
-                                EmployeeDisability: record "Employee Level Of Disability";
+        UserPersonalisation: Record "User Personalization";
+        UserPersonalisation2: record "User Personalization";
+        showMC: Boolean;
+        TerminationVisible: Boolean;
+        EmploymentAbroadVisible: Boolean;
+        Educ: Record "Additional Education";
+        EducationHistoryPage: Page "Education History";
+        EmployeeDisability: record "Employee Level Of Disability";
 
-                                EmployeeDisabilityPage: page "Employee Level Of Disability";
-                                EndDate: Date;
-                                AdditionalEducation: record "Additional Education";
-                                PersonalDocumentsPage: Page "Personal Documents";
-                                EmployeeDisability1: Record "Employee Level Of Disability";
-                                PersonalDocumentsNat: Record "Personal Documents";
-                                show2: Boolean;
-                                show: Boolean;
-                                emp: Record employee;
-                                PersonalDocumentsCit2: Record "Personal Documents";
-                                PersonalDocumentsCit1: Record "Personal Documents";
-                                //FirstDayOfWeek:
-                                //FirstDayOfWeek:
-                                age: Page "ORG Dijelovi";
-                                //WAPage: page "Wage AdditWag"Calculaged" Addition Calculated";
+        EmployeeDisabilityPage: page "Employee Level Of Disability";
+        EndDate: Date;
+        AdditionalEducation: record "Additional Education";
+        PersonalDocumentsPage: Page "Personal Documents";
+        EmployeeDisability1: Record "Employee Level Of Disability";
+        PersonalDocumentsNat: Record "Personal Documents";
+        show2: Boolean;
+        show: Boolean;
+        emp: Record employee;
+        PersonalDocumentsCit2: Record "Personal Documents";
+        PersonalDocumentsCit1: Record "Personal Documents";
+        //FirstDayOfWeek:
+        //FirstDayOfWeek:
+        age: Page "ORG Dijelovi";
+        //WAPage: page "Wage AdditWag"Calculaged" Addition Calculated";
 
 
-                                DayOfWeekInput: DotNet FirstDayOfWeek;
-                                WeekOfYearInput: DotNet FirstWeekOfYear;
-                                //WAPage: page "Wage Addition Calculated";
-                                //WAPage: page "Wage Addition Calculated";
-                                ThisYearFirst: Date;
-                                AgeT: Decimal;
-                                ThisYear: Integer;
-                                EC: Record "Employment Contract";
-                                ContractType: Text[250];
-                                MothersMaidenName: Text[100];
-                                FathersName: Text[100];
-                                MotherName: Text[100];
-                                ThisMonthLast: Date;
-                                NextMonthFirst: Date;
-                                ////WPAgeDVPagAPaJeblations";
-                                ////WPAgeDVPagAPaJeblations";
-                                RelativesEmployees: Integer;
-                                EmployeeRelative: Record "Employee Relative";
-                                EmployeeRelativePage: Page "Employee Relatives";
-                                UnionEmployees1: Record "Union Employees";
-                                //WDVPAge: Page "Job Violations";
-                                //WDVPAge: Page "Job Violations";
-                                ManagementLevel: Code[10];
-                                Position: Record Position;
-                                TerminationDate: Date;
+        DayOfWeekInput: DotNet FirstDayOfWeek;
+        WeekOfYearInput: DotNet FirstWeekOfYear;
+        //WAPage: page "Wage Addition Calculated";
+        //WAPage: page "Wage Addition Calculated";
+        ThisYearFirst: Date;
+        AgeT: Decimal;
+        ThisYear: Integer;
+        EC: Record "Employment Contract";
+        ContractType: Text[250];
+        MothersMaidenName: Text[100];
+        FathersName: Text[100];
+        MotherName: Text[100];
+        ThisMonthLast: Date;
+        NextMonthFirst: Date;
+        ////WPAgeDVPagAPaJeblations";
+        ////WPAgeDVPagAPaJeblations";
+        RelativesEmployees: Integer;
+        EmployeeRelative: Record "Employee Relative";
+        EmployeeRelativePage: Page "Employee Relatives";
+        UnionEmployees1: Record "Union Employees";
+        //WDVPAge: Page "Job Violations";
+        //WDVPAge: Page "Job Violations";
+        ManagementLevel: Code[10];
+        Position: Record Position;
+        TerminationDate: Date;
 
-                                EmployeeContractLedger: Record "Employee Contract Ledger";
-                                EmployeeContractLedgerPage: Page "Employee Contract Ledger";
-                                hide: Boolean;
-                                enable: Boolean;
-                                WorkBooklet: Record "Work Booklet";
+        EmployeeContractLedger: Record "Employee Contract Ledger";
+        EmployeeContractLedgerPage: Page "Employee Contract Ledger";
+        hide: Boolean;
+        enable: Boolean;
+        WorkBooklet: Record "Work Booklet";
 
-                                isVisible: Boolean;
-                                WageCalculation: Record "Wage Calculation";
-                                WorkBookletPage: page "Work booklet";
-                                WageCalcSub: Page "Wage Calculation Subform";
-                                WageCalc: Record "Wage Calculation";
-                                Text010: Label 'Probation period start date cannot be before employment date.';
+        isVisible: Boolean;
+        WageCalculation: Record "Wage Calculation";
+        WorkBookletPage: page "Work booklet";
+        WageCalcSub: Page "Wage Calculation Subform";
+        WageCalc: Record "Wage Calculation";
+        Text010: Label 'Probation period start date cannot be before employment date.';
         EmploymentDate: Date;
         PersonalDocuments: record "Personal Documents";
 }
