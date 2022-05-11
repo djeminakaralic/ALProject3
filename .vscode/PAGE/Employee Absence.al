@@ -1,7 +1,5 @@
 page 51129 "Employee Absence"
 {
-    // // Added fields "In Addition to Regular Work"
-
     Caption = 'Employee Absence';
     DataCaptionFields = "Employee No.";
     DelayedInsert = true;
@@ -9,7 +7,6 @@ page 51129 "Employee Absence"
     SaveValues = true;
     SourceTable = "Employee Absence Reg";
     //SourceTableView = SORTING("Employee No.", From Date);
-
 
     layout
     {
@@ -230,10 +227,10 @@ page 51129 "Employee Absence"
 
     }
 
-    trigger OnAfterGetRecord()
+    /*trigger OnAfterGetRecord()
     begin
         //OnAfterGetCurrRecord;
-    end;
+    end;*/
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -261,12 +258,11 @@ page 51129 "Employee Absence"
             Error(Text005);
     end;
 
-    trigger OnNewRecord(BelowxRec: Boolean)
+    /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-    end;
+    end;*/
 
-    //komentar
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
         recEmployee.RESET;
@@ -288,8 +284,6 @@ page 51129 "Employee Absence"
     trigger OnOpenPage()
     begin
         //  GetInitialFilters;
-
-
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -329,7 +323,6 @@ page 51129 "Employee Absence"
         SettingNewFilters: Boolean;
         [InDataSet]
         ChangeAllowedVisible: Boolean;
-
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 
@@ -365,7 +358,7 @@ page 51129 "Employee Absence"
         EXIT(FALSE);
     end;*/
 
-    procedure EmployeeLookup(var Text: Text[1024]; WithDimFilters: Boolean) ret: Boolean
+    /*procedure EmployeeLookup(var Text: Text[1024]; WithDimFilters: Boolean) ret: Boolean
     begin
         recEmployee.RESET;
         recEmployee."No." := Text;
@@ -390,7 +383,7 @@ page 51129 "Employee Absence"
             EXIT(TRUE);
         END;
         EXIT(FALSE);
-    end;
+    end;*/
 
     /* local procedure GetInitialFilters()
     begin
@@ -672,7 +665,7 @@ end;*/
 END;
 end;*/
 
-    procedure TestVacationOK(): Boolean
+    /*procedure TestVacationOK(): Boolean
     var
         // l_Vacation: Record payrol;
         l_AvailableHours: Decimal;
@@ -682,24 +675,24 @@ end;*/
              EXIT(TRUE);
          IF "Bound to Year" <= 0 THEN
              FIELDERROR("Bound to Year");*/
-        /* IF NOT l_Vacation.GET("Employee No.", "Bound to Year") THEN
-             FIELDERROR("Bound to Year");
-         l_AvailableHours := l_Vacation."Available Hours";
-         l_Absence.RESET;
-         l_Absence.SETCURRENTKEY("Employee No.", "Work Type", "Bound to Year");
-         l_Absence.SETRANGE("Employee No.", "Employee No.");
-         l_Absence.SETRANGE("Work Type", l_Absence."Work Type"::Vacation);
-         l_Absence.SETRANGE("Bound to Year", "Bound to Year");
-         l_Absence.SETFILTER("Entry No.", '<> %1', "Entry No.");
-         IF l_Absence.FIND('-') THEN
-             REPEAT
-                 l_AvailableHours -= l_Absence."Quantity (Base)";
-             UNTIL l_Absence.NEXT = 0;
-         l_AvailableHours -= "Quantity (Base)";
-         IF l_AvailableHours < 0 THEN
-             FIELDERROR("Quantity (Base)");
-         EXIT(TRUE);*/
-    end;
+    /* IF NOT l_Vacation.GET("Employee No.", "Bound to Year") THEN
+         FIELDERROR("Bound to Year");
+     l_AvailableHours := l_Vacation."Available Hours";
+     l_Absence.RESET;
+     l_Absence.SETCURRENTKEY("Employee No.", "Work Type", "Bound to Year");
+     l_Absence.SETRANGE("Employee No.", "Employee No.");
+     l_Absence.SETRANGE("Work Type", l_Absence."Work Type"::Vacation);
+     l_Absence.SETRANGE("Bound to Year", "Bound to Year");
+     l_Absence.SETFILTER("Entry No.", '<> %1', "Entry No.");
+     IF l_Absence.FIND('-') THEN
+         REPEAT
+             l_AvailableHours -= l_Absence."Quantity (Base)";
+         UNTIL l_Absence.NEXT = 0;
+     l_AvailableHours -= "Quantity (Base)";
+     IF l_AvailableHours < 0 THEN
+         FIELDERROR("Quantity (Base)");
+     EXIT(TRUE);*/
+    //end;
 
     /*procedure GetEmployeeName(): Text[250]
     begin
@@ -760,8 +753,6 @@ end;*/
         SettingNewFilters := TRUE;
     end;*/
 
-
-
     /*procedure SetDim1Filter(NewFilter: Code[250])
     begin
         NewDim1Filter := NewFilter;
@@ -774,7 +765,7 @@ end;*/
         SettingNewFilters := TRUE;
     end;*/
 
-    procedure YearOnAfterValidate()
+    /*procedure YearOnAfterValidate()
     begin
         CurrPage.SAVERECORD;
         SetPeriod;
@@ -786,7 +777,7 @@ end;*/
         CurrPage.SAVERECORD;
         SetPeriod;
         CurrPage.UPDATE(FALSE);
-    end;
+    end;*/
 
     /*local procedure Dim1FilterOnAfterValidate()
     begin
@@ -823,7 +814,6 @@ end;*/
         END;
     end;*/
 
-
     /*procedure EmployeeNoOnAfterInput(var Text: Text[1024])
     begin
         recEmployee.RESET;
@@ -833,5 +823,4 @@ end;*/
             Text := recEmployee."No.";
         END;
     end;*/
-
 }
