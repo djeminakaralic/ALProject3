@@ -83,7 +83,7 @@ page 51129 "Employee Absence"
                 field("Entry No."; "Entry No.")
                 {
                     Editable = false;
-                    //Visible = false;
+                    Visible = false;
                 }
                 field("Employee No."; "Employee No.")
                 {
