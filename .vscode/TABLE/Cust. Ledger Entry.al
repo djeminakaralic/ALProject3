@@ -3,7 +3,7 @@ tableextension 50107 CustLedgerEntryExtends extends "Cust. Ledger Entry"
 
     fields
     {
-        //    VAT Base (retro.)
+        //    VAT Base (retro.) new
         field(50000; "VAT Date"; Date)
         {
 
