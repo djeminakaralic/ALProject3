@@ -743,11 +743,10 @@ table 50043 Department
             Caption = 'ORG Part';
             TableRelation = "ORG Dijelovi";
         }
-        field(21; "Department Type"; Option)
+        field(21; "Department Type"; enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(22; Amount; Decimal)
         {
