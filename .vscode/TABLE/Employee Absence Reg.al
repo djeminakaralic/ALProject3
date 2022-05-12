@@ -110,23 +110,17 @@ table 50104 "Employee Absence Reg"
                 Employee.Get("Employee No.");
                 IF "From Date" = "To Date" then begin
                     Quantity := Employee."Hours In Day";
-
                 end
-
-
-
                 ELSE begin
                     LoopDate := "From Date";
-                    //repeat
-
-                    //LopDate := LoopDate + 1;
-                    Days := Days + 1;
-
-                    //until LoopDate = "To Date";
+                    repeat
+                        BaseCalendarChange.Get(LoopDate);
+                        If BaseCalendarChange.Nonworking = false then
+                            Days := Days + 1;
+                        LoopDate := LoopDate + 1;
+                    until LoopDate > "To Date";
                     Quantity := Employee."Hours In Day" * Days;
                 end;
-
-
 
                 //treba otici u table 7601 "Base Calendar Change" - stavljena u var gdje je boolean field Nonworking
 
