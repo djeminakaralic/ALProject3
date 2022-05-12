@@ -1,8 +1,8 @@
 tableextension 50067 EmployeeQualification extends "Employee Qualification"
 
 {
-    // LookupPageId = Employee_Qualifications_HR;
-    //DrillDownPageId = Employee_Qualifications_HR;
+    LookupPageId = Employee_Qualifications_HR;
+    DrillDownPageId = Employee_Qualifications_HR;
 
     fields
     {
