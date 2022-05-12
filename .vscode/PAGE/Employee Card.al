@@ -558,13 +558,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
         }
-        addafter("No.")
-        {
-            field("Employee ID"; "Employee ID")
-            {
-
-            }
-        }
 
 
 
@@ -573,7 +566,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             group("Birth Data")
             {
 
+
             }
+
 
 
 
@@ -790,6 +785,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 
             }*/
 
+        }
+        addbefore("Living information")
+        {
+            field("Employee ID"; "Employee ID")
+            {
+
+            }
         }
         addafter("Gender")
         {
