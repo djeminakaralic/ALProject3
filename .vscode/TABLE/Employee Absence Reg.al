@@ -104,7 +104,7 @@ table 50104 "Employee Absence Reg"
                 END;
 
                 Employee.Get("Employee No.");
-                Days := "From Date" - "To Date";
+                Days := "To Date" - "From Date";
                 Quantity := Employee."Hours In Day" * Days;
 
                 //treba otici u table 7601 "Base Calendar Change" gdje je boolean field Nonworking
