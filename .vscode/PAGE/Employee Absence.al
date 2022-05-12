@@ -362,6 +362,8 @@ page 51129 "Employee Absence"
         Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
     end;
 
+    //komentar
+
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
