@@ -104,7 +104,10 @@ table 50104 "Employee Absence Reg"
                 END;
 
                 Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
+                Days := "From Date" - "To Date";
+                Quantity := Employee."Hours In Day" * Days;
+
+                //treba otici u table 7601 "Base Calendar Change" gdje je boolean field Nonworking
 
             end;
         }
@@ -133,6 +136,8 @@ table 50104 "Employee Absence Reg"
     }
 
     var
+        Days: Integer;
+        BaseCalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
