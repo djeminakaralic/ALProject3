@@ -1,7 +1,5 @@
 page 51129 "Employee Absence"
 {
-    // // Added fields "In Addition to Regular Work"
-
     Caption = 'Employee Absence';
     DataCaptionFields = "Employee No.";
     DelayedInsert = true;
@@ -373,23 +371,7 @@ page 51129 "Employee Absence"
 
     trigger OnClosePage()
     begin
-        /*
- Rec.FINDFIRST;
-             BEGIN
-                 IF Rec."Approved" = TRUE THEN BEGIN
-                     REPEAT
-                         Rec."Approved" := FALSE;
-                         Rec.MODIFY;
-                     UNTIL Rec.NEXT = 0;
-                 END
-                 ELSE BEGIN
-                     REPEAT
-                         Rec."Approved" := TRUE;
-                         Rec.MODIFY;
-                     UNTIL Rec.NEXT = 0
-                 END;
-             END;
- */
+
     end;
 
     var
