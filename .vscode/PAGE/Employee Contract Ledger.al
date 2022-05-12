@@ -153,11 +153,7 @@ page 50051 "Employee Contract Ledger"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
-                field("Branch Agency"; "Branch Agency")
-                {
-                    Editable = true;
-                    ApplicationArea = all;
-                }
+
                 field("Org Dio"; "Org Dio")
                 {
                     //  BlankZero = true;
@@ -170,67 +166,22 @@ page 50051 "Employee Contract Ledger"
                     Visible = false;
                     ApplicationArea = all;
                 }
-                field("GF rada code"; "GF rada code")
-                {
-                    Visible = false;
-                    ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
-                        /*EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER(Status,'Active');
-                        EmployeeContractLedger.SETFILTER("Employee No.","Employee No.");
-                        EmployeeContractLedger.SETFILTER("Org. Structure","Org. Structure");
-                        IF ("GF rada"<>'') AND ("Org Dio"='') THEN BEGIN
-                          OrgDijelovi.RESET;
-                          OrgDijelovi.SETFILTER(Active,'1');
-                          OrgDijelovi.SETFILTER(Code,"Org Dio");
-                          IF OrgDijelovi.FINDFIRST THEN
-                          "Phisical Department Desc":= OrgDijelovi.City
-                        {ELSE BEGIN
-                        VALIDATE("Phisical Department Desc","Phisical Department Desc");
-                         END;}
-                         END;*/
-
-                    end;
-                }
                 field("Org Unit Name"; "Org Unit Name")
                 {
 
                     ShowMandatory = true;
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
 
-                        CurrPage.UPDATE;
-                    end;
                 }
-                field("GF of work Description"; "GF of work Description")
-                {
 
-                    ShowMandatory = true;
-                    ApplicationArea = all;
-
-                    trigger OnValidate()
-                    begin
-
-                        CurrPage.UPDATE;
-                    end;
-                }
                 field("Phisical Department Desc"; "Phisical Department Desc")
                 {
                     ApplicationArea = all;
                 }
-                field(Region; Region)
-                {
-                    Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("Regionalni Head Office"; "Regionalni Head Office")
-                {
-                    ApplicationArea = all;
-                }
+
+
                 field("Org Entity Code"; "Org Entity Code")
                 {
                     Visible = IsVisible;
@@ -261,11 +212,7 @@ page 50051 "Employee Contract Ledger"
                     ShowMandatory = true;
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
 
-                        CurrPage.UPDATE;
-                    end;
                 }
                 field("Engagement Type"; "Engagement Type")
                 {
@@ -283,10 +230,7 @@ page 50051 "Employee Contract Ledger"
 
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
-                        //CurrPage.UPDATE;
-                    end;
+
                 }
                 field("Starting Date"; "Starting Date")
                 {
@@ -384,24 +328,7 @@ page 50051 "Employee Contract Ledger"
                     ShowMandatory = true;
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
-                        /*IF Brutto<>0 THEN BEGIN
-                          CALCFIELDS(Region);
-                        PayRange.SETFILTER("Pay Grade",'%1',Region);
-                        IF PayRange.FINDFIRST THEN BEGIN
-                          IF Brutto<PayRange."Min Region" THEN
-                           MESSAGE(BruttoError);
-                          IF Brutto>PayRange."Max Region" THEN
-                           MESSAGE (BruttoError);
-                        END;
-                        CurrPage.UPDATE;
-                        END;*/
 
-                        //CurrPage.UPDATE;
-                        CurrPage.UPDATE;
-
-                    end;
                 }
                 field(Netto; Netto)
                 {
@@ -490,68 +417,13 @@ page 50051 "Employee Contract Ledger"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
-                field("Prohibition of Competition"; "Prohibition of Competition")
-                {
-                    Visible = true;
-                    ApplicationArea = all;
-                }
-                field("POC Starting Date"; "POC Starting Date")
-                {
-                    Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("POC Ending Date"; "POC Ending Date")
-                {
-                    Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field(IS; IS)
-                {
-                    Visible = false;
-                    ApplicationArea = all;
-                }
-                field("IS Risk Materiality"; "IS Risk Materiality")
-                {
-                    ApplicationArea = all;
-                }
-                field("IS Date From"; "IS Date From")
-                {
-                    ApplicationArea = all;
-                }
-                field("IS Date To"; "IS Date To")
-                {
-                    ApplicationArea = all;
-                }
-                field("Key Function"; "Key Function")
-                {
-                    ApplicationArea = all;
-                }
-                field("Key Function From"; "Key Function From")
-                {
 
-                    Editable = true;
-                    Visible = true;
-                    ApplicationArea = all;
-                }
-                field("Key Function To"; "Key Function To")
-                {
 
-                    Editable = true;
-                    Visible = true;
-                    ApplicationArea = all;
-                }
-                field("Control Function"; "Control Function")
-                {
-                    ApplicationArea = all;
-                }
-                field("Control Function From"; "Control Function From")
-                {
-                    ApplicationArea = all;
-                }
-                field("Control Function To"; "Control Function To")
-                {
-                    ApplicationArea = all;
-                }
+
+
+
+
+
                 field("Way of Employment"; "Way of Employment")
                 {
                     Visible = true;
@@ -645,78 +517,34 @@ page 50051 "Employee Contract Ledger"
                     StyleExpr = TRUE;
                     ApplicationArea = all;
                 }
-                field("Agremeent Code"; "Agremeent Code")
-                {
-                    Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("Agreement Name"; "Agreement Name")
-                {
-                    ShowMandatory = true;
-                    ApplicationArea = all;
-
-                    trigger OnValidate()
-                    begin
-                        //CurrPage.UPDATE;
-
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field("Comment for contract"; "Comment for contract")
-                {
-
-                    ApplicationArea = all;
-                }
-                field("Attachment No."; "Attachment No." <> 0)
-                {
-
-                    ApplicationArea = all;
-
-                    trigger OnAssistEdit()
-                    begin
-                        IF "Attachment No." <> 0 THEN
-                            OpenAttachment;
 
 
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Change; Change)
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
-                field("Certifications and solutions C"; "Certifications and solutions C")
-                {
-                    Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("Cert and solu name"; "Cert and solu name")
-                {
-                    ApplicationArea = all;
-                }
-                field("Other Attachment No."; "Other Attachment No." <> 0)
-                {
 
-                    ApplicationArea = all;
 
-                    trigger OnAssistEdit()
-                    begin
-                        IF "Other Attachment No." <> 0 THEN
-                            OpenAttachment1;
 
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field("Change other documents"; "Change other documents")
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
-                field("Number of certification"; "Number of certification")
-                {
-                    ApplicationArea = all;
-                }
+                /* 
+                  field("Other Attachment No."; "Other Attachment No." <> 0)
+                  {
+
+                      ApplicationArea = all;
+
+                      trigger OnAssistEdit()
+                      begin
+                          IF "Other Attachment No." <> 0 THEN
+                              OpenAttachment1;
+
+                          CurrPage.UPDATE;
+                      end;
+                  }
+                  field("Change other documents"; "Change other documents")
+                  {
+                      Editable = false;
+                      ApplicationArea = all;
+                  }
+                  field("Number of certification"; "Number of certification")
+                  {
+                      ApplicationArea = all;
+                  }*/
                 field("Additional Position"; "Additional Position")
                 {
                     Visible = true;
@@ -726,30 +554,16 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
+                /*
                 field("Number of protocol for documen"; "Number of protocol for documen")
                 {
                     ApplicationArea = all;
-                }
+                }*/
                 field(Status; Status)
                 {
                     ApplicationArea = all;
                 }
-                field("Sent Mail Termination"; "Sent Mail Termination")
-                {
-                    ApplicationArea = all;
-                }
-                field("Sent Mail Duration"; "Sent Mail Duration")
-                {
-                    ApplicationArea = all;
-                }
-                field("Sent Mail Change Pos"; "Sent Mail Change Pos")
-                {
-                    ApplicationArea = all;
-                }
-                field("Sent Mail Employment"; "Sent Mail Employment")
-                {
-                    ApplicationArea = all;
-                }
+
                 field(Superior1; Superior1)
                 {
                     ApplicationArea = all;
@@ -1572,939 +1386,15 @@ page 50051 "Employee Contract Ledger"
     begin
         CurrPage.UPDATE;
         IsUpadate := FALSE;
-        /*IF "No."<>0 THEN BEGIN
-        IF (("GF of work Description"='') AND ("Org Unit Name"='')) THEN
-          ERROR ('Morate unijeti Org. jed!');
-        TESTFIELD ("Position Description");
-        IF ("Engagement Type"<>'EXTERNI ANGAZMAN') THEN BEGIN
-          IF  (("Management Level"<>"Management Level"::CEO) AND ("Management Level"<>"Management Level"::Exe)) THEN
-        TESTFIELD (Brutto);
-        END;
-         TESTFIELD("Starting Date");
+        IF "No." <> 0 THEN BEGIN
+
+            TESTFIELD("Starting Date");
         END;
         OrgF.RESET;
-        OrgF.SETFILTER(Status,'%1',OrgF.Status::Active);
+        OrgF.SETFILTER(Status, '%1', OrgF.Status::Active);
         IF OrgF.FINDLAST THEN BEGIN
-          OrgC:=OrgF.Code;
-          END;
-        
-        // IF WORKDATE>=CALCDATE('<-1D>',OrgShema."Date From") THEN BEGIN
-        
-         //REPORT.RUNMODAL(50050, FALSE, TRUE);
-         {*****************************************"TERMINATION"*******************************************}
-         IF COMPANYNAME='RAIFFAISEN BANK' THEN BEGIN
-        
-           EmailBodyText5:='';
-        ECL4.RESET;
-        ECL4.SETFILTER("Show Record",'%1',TRUE);
-        ECL4.SETFILTER("Position Description",'<>%1','');
-        ECL4.SETFILTER("Starting Date",'<>%1',0D);
-        ECL4.SETFILTER("Grounds for Term. Code",'<>%1','');
-        ECL4.SETFILTER("Grounds for Term. Description",'<>%1','');
-        ECL4.SETFILTER("Sent Mail Termination",'%1',FALSE);
-        ECL4.SETFILTER("Ending Date",'<=%1',CALCDATE('<+1D>',WORKDATE));
-        IF ECL4.FINDFIRST THEN BEGIN
-          NemaNiko:=FALSE;
-        
-           EmailBodyText5+='<p><span style="font-size: 9.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-           EmailBodyText5+='<br /> <br />Molim da poduzmete sve aktivnosti iz svoje nadleznosti u vezi sa prestankom rada/angazmana navedene osobe.';
-           EmailBodyText5+='<br /> <br />';
-            EmailBodyText5+='<br /> <br />';
-            EmailBodyText5 += '<table cellpadding="5" style="border-collapse: collapse;border-left: solid 1px black;  " border="1">';
-        // EmailBodyText2 += '<tr style="Border:solid 1px black;"><span style="font-size: 10.0pt;">';
-         EmailBodyText5 += '<tr style="Border:solid 1px black;">';
-           EmailBodyText5+='<td style="border-left:solid 0px black;width:250px" style="border-bottom:solid 1px black" ><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-           EmailBodyText5+=' <td width="250 "style="border-bottom:solid 1px black" align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-           EmailBodyText5+='<td  style="border-bottom:solid 1px black ;width:200px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;  JMBG  &nbsp</strong> </td>';
-           EmailBodyText5+='<td  width="270" style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;"> ORGANIZACIONA PRIPADNOST&nbsp</strong></td>';
-           EmailBodyText5+='<td   width="250" style="border-bottom:solid 1px black;width:250px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;RADNO&nbsp; MJESTO&nbsp;</strong></td>';
-           EmailBodyText5+='<td style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;ZADNJI RADNI DAN&nbsp;&nbsp;</strong></td>';
-           EmailBodyText5+='<td style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;"> VRSTA ANGAZMANA/PERSON TYPE/&nbsp</strong></td>';
-           EmailBodyText5+='<td style="border-bottom:solid 1px black;width:250px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;   ROLA  &nbsp;&nbsp;&nbsp;</strong></td>';
-           EmailBodyText5+='<td style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;">Neposredni &nbsp; rukovodilac&nbsp</strong></td>';
-           EmailBodyText5+='</tr>';
-        
-        ECL5.RESET;
-        ECL5.SETFILTER("Show Record",'%1',TRUE);
-        ECL5.SETFILTER("Position Description",'<>%1','');
-        ECL5.SETFILTER("Starting Date",'<>%1',0D);
-        ECL5.SETFILTER("Grounds for Term. Code",'<>%1','');
-        ECL5.SETFILTER("Grounds for Term. Description",'<>%1','');
-        ECL5.SETFILTER("Sent Mail Termination",'%1',FALSE);
-        ECL5.SETFILTER("Ending Date",'<=%1',CALCDATE('<+1D>',WORKDATE));
-        IF ECL5.FINDSET THEN REPEAT
-           IF IsUpadate=FALSE THEN BEGIN
-            REPORT.RUNMODAL(50050, FALSE, TRUE);
-            IsUpadate:=TRUE;
-            END;
-            NemaNiko:=TRUE;
-        
-        
-          CLEAR(TextMsg);
-          CLEAR(IStream);
-          CLEAR(Mail);
-        
-          IF ECL5."Team Description"<>'' THEN BEGIN
-            OrgUnit:=ECL5."Sector Description"+'/'+ ECL5."Department Cat. Description"+'/'+ ECL5."Group Description"+'/'+ECL5."Team Description";
-          END;
-          IF (ECL5."Group Description"<>'') AND (ECL5."Team Description"='') THEN BEGIN
-            OrgUnit:=ECL5."Sector Description"+'/'+ ECL5."Department Cat. Description"+'/'+ ECL5."Group Description";
-          END;
-          IF (ECL5."Department Cat. Description"<>'') AND (ECL5."Group Description"='') AND (ECL5."Team Description"='') THEN BEGIN
-            OrgUnit:= ECL5."Sector Description"+'/'+ ECL5."Department Cat. Description";
-          END;
-          IF (ECL5."Sector Description"<>'') AND (ECL5."Department Cat. Description"='') AND (ECL5."Group Description"='') AND (ECL5."Team Description"='') THEN BEGIN
-            OrgUnit:=ECL5."Sector Description"
-          END;
-          IF (ECL5."Sector Description"='') AND (ECL5."Department Cat. Description"='') AND (ECL5."Group Description"='') AND (ECL5."Team Description"='') THEN BEGIN
-            OrgUnit:='';
-            WorkPlace:='';
-          END;
-          IF ECL5."Org Unit Name"<>'' THEN BEGIN
-            WorkPlace:=ECL5."Org Unit Name";
-          END
-          ELSE BEGIN
-            WorkPlace:=ECL5."GF of work Description";
-          END;
-        
-        IF ECL5."Org Unit Name"<>'' THEN
-          MjestoRada:=ECL5."Org Unit Name";
-        IF ECL5."GF of work Description"<>'' THEN
-          MjestoRada:=ECL5."GF of work Description";
-        
-          StartingDate:=ECL5."Starting Date";
-          ECL5.CALCFIELDS("Residence/Network");
-          ECL5.CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-           ECL5.CALCFIELDS("Manager 2 First Name","Manager 2 Last Name");
-          ManagerFull:=ECL5."Manager 1 First Name"+' '+ECL5."Manager 1 Last Name";
-          IF  ECL5."Manager 1 First Name"='' THEN
-              ManagerFull:=ECL5."Manager 2 First Name"+' '+ECL5."Manager 2 Last Name";
-          Emp.SETFILTER("No.",'%1',ECL5."Employee No.");
-        
-          IF Emp.FINDFIRST THEN BEGIN
-            Emp.CALCFIELDS("Role Code");
-            Emp.CALCFIELDS("Role Name");
-          END;
-        
-          PositionMenuOrginal.RESET;
-        PositionMenuOrginal.SETFILTER(Code,'%1',ECL5."Position Code");
-        PositionMenuOrginal.SETFILTER(Description,'%1',ECL5."Position Description");
-        PositionMenuOrginal.SETFILTER("Org. Structure",'%1',OrgF.Code);
-        IF PositionMenuOrginal.FINDFIRST THEN BEGIN
-        RoleCode:=PositionMenuOrginal.Role;
-        RoleName:=PositionMenuOrginal."Role Name";
+            OrgC := OrgF.Code;
         END;
-        
-        IF ECL5."Engagement Type"='EXTERNI ANGAZMAN' THEN
-         Tip:='Eksterni saradnik'
-         ELSE
-         Tip:='Zaposlenik';
-        
-          //EmailBodyText2+= '<tr><span style="font-size: 10.0pt;">';
-          EmailBodyText5+= '<tr>';
-          EmailBodyText5+=STRSUBSTNO('<td style="border-left:solid 0px black;" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-          EmailBodyText5+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-          EmailBodyText5+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>',Emp."Employee ID");
-          EmailBodyText5+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit);
-           EmailBodyText5+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>' ,ECL5."Position Description");
-          EmailBodyText5+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',FORMAT(ECL5."Ending Date",0,'<Day,2>.<Month,2>.<Year4>.'));
-          EmailBodyText5+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',Tip);
-          EmailBodyText5+=STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>',RoleCode+'-'+RoleName);
-          EmailBodyText5+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-           EmailBodyText5+='</tr>';
-              ECLCHange.RESET;
-           ECLCHange.SETFILTER("Employee No.",'%1',ECL5."Employee No.");
-           ECLCHange.SETFILTER("No.",'%1',ECL5."No.");
-           IF ECLCHange.FINDFIRST THEN BEGIN
-             ECLCHange."Sent Mail Termination":=TRUE;
-             ECLCHange.MODIFY;
-             END;
-           UNTIL ECL5.NEXT=0;
-        
-              EmailBodyText5+='</table>';
-               // SMTPMail.CreateMessage('HR test','test.hr@raiffeisengroup.ba','infodom.test@raiffeisengroup.ba','Obavijest o pocetku rada na novoj poziciji',EmailBodyText2,TRUE);
-                HRsetup.GET;
-        
-            SMTPMail.CreateMessage(HRsetup."Sender Name",HRsetup."E-mail Sender",HRsetup."E-mail Receiver",'Obavjest o prestanku radnog odnosa/angazmana',EmailBodyText5,TRUE);
-            IF NemaNiko=TRUE THEN
-           SMTPMail.Send();
-        END;
-        
-        
-        
-        SETFILTER("Org. Structure",'%1',OrgC);
-        SETFILTER("Show Record",'%1',TRUE);
-        SETFILTER("Position Description",'<>%1','');
-        SETFILTER("Starting Date",'<=%1',WORKDATE);
-        IF FINDFIRST THEN BEGIN
-        
-        ECL.RESET;
-        ECL.SETFILTER("Show Record",'%1',TRUE);
-        ECL.SETFILTER("Position Description",'<>%1','');
-        ECL.SETFILTER("Starting Date",'<=%1',WORKDATE);
-        ECL.SETFILTER("Reason for Change",'%1',"Reason for Change"::"New Contract");
-        ECL.SETFILTER(Active,'%1',TRUE);
-        ECL.SETFILTER("Sent Mail Employment",'%1',FALSE);
-        ECL.SETFILTER("Grounds for Term. Code",'%1','');
-        ECL.SETFILTER("Manner of Term. Code",'%1','');
-        IF ECL.FINDFIRST THEN BEGIN
-        
-        
-        
-         EmailBodyText+='<p><span style="font-size: 9.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-         EmailBodyText+='<br /> <br /> Molim da poduzmete potrebne aktivnosti u vezi sa pocetkom rada/angazmana navedene osobe. ';
-         EmailBodyText+='<br /> <br />';
-          EmailBodyText+='<br /> <br />';
-          EmailBodyText += '<table cellpadding="5" style="border-collapse: collapse; border-left: solid 1px black; " border="1">';
-         //EmailBodyText += '<tr style="Border:solid 1px black;"><span style="font-size: 10.0pt;">';
-         EmailBodyText += '<tr style="Border:solid 1px black;">';
-         EmailBodyText+='<td style="border-left:solid 0px black;width:250px" style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-         EmailBodyText+=' <td width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-         EmailBodyText+='<td style="border-bottom:solid 1px black;width:200px" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; MATICNI &nbsp; &nbsp; BROJ&nbsp</strong> </td>';
-         EmailBodyText+='<td width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;"> ORGANIZACIJSKA PRIPADNOST&nbsp</strong></td>';
-         EmailBodyText+='<td width="250"style="border-bottom:solid 1px black;width:250px" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;RADNO&nbsp;  MJESTO&nbsp;</strong></td>';
-         EmailBodyText+='<td style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;MJESTO&nbsp;  RADA&nbsp;</strong></td>';;
-         EmailBodyText+='<td style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;"> VRSTA ANGAZMANA/PERSON TYPE/&nbsp</strong></td>';
-         EmailBodyText+='<td  width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">DATUM POCETKA RADA/ANGAZMANA&nbsp</strong> </td>';
-         EmailBodyText+='<td width="250" style="border-bottom:solid 1px black;width:250px" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;   ROLA   &nbsp;&nbsp;&nbsp;</strong></td>';
-         EmailBodyText+='<td width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; Neposredni  &nbsp; rukovodilac&nbsp</strong></td>';
-         EmailBodyText+='</tr>';
-        
-        ECL1.SETFILTER("Show Record",'%1',TRUE);
-        ECL1.SETFILTER("Position Description",'<>%1','');
-        ECL1.SETFILTER("Starting Date",'<=%1',WORKDATE);
-        ECL1.SETFILTER("Reason for Change",'%1',"Reason for Change"::"New Contract");
-        ECL1.SETFILTER("Sent Mail Employment",'%1',FALSE);
-        ECL1.SETFILTER(Active,'%1',TRUE);
-        ECL1.SETFILTER("Grounds for Term. Code",'%1','');
-        ECL1.SETFILTER("Manner of Term. Code",'%1','');
-        
-        IF ECL1.FINDSET THEN REPEAT
-           IF IsUpadate=FALSE THEN BEGIN
-            REPORT.RUNMODAL(50050, FALSE, TRUE);
-            IsUpadate:=TRUE;
-            END;
-        
-        
-          CLEAR(TextMsg);
-          CLEAR(IStream);
-          CLEAR(Mail);
-        
-        
-            IF ECL1."Team Description"<>'' THEN BEGIN
-               OrgUnit:=ECL1."Sector Description"+'/'+ ECL1."Department Cat. Description"+'/'+ ECL1."Group Description"+'/'+ECL1."Team Description";
-                  END;
-            IF (ECL1."Group Description"<>'') AND (ECL1."Team Description"='') THEN BEGIN
-                 OrgUnit:=ECL1."Sector Description"+'/'+ ECL1."Department Cat. Description"+'/'+ ECL1."Group Description";
-        
-              END;
-            IF (ECL1."Department Cat. Description"<>'') AND (ECL1."Group Description"='') AND (ECL1."Team Description"='') THEN BEGIN
-              OrgUnit:= ECL1."Sector Description"+'/'+ ECL1."Department Cat. Description";
-        
-              END;
-              IF (ECL1."Sector Description"<>'') AND (ECL1."Department Cat. Description"='') AND (ECL1."Group Description"='') AND (ECL1."Team Description"='') THEN BEGIN
-                OrgUnit:=ECL1."Sector Description";
-        
-                END;
-            IF (ECL1."Sector Description"='') AND (ECL1."Department Cat. Description"='') AND (ECL1."Group Description"='') AND (ECL1."Team Description"='') THEN BEGIN
-              OrgUnit:='';
-              END;
-              PositionPlace:=ECL1."Position Description";
-              StartingDate:=ECL1."Starting Date";
-              ECL1.CALCFIELDS("Residence/Network");
-              ECL1.CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-               ECL1.CALCFIELDS("Manager 2 First Name","Manager 2 Last Name");
-          ManagerFull:=ECL1."Manager 1 First Name"+' '+ECL1."Manager 1 Last Name";
-          IF ECL1."Manager 1 First Name"='' THEN
-             ManagerFull:=ECL1."Manager 2 First Name"+' '+ECL1."Manager 2 Last Name";
-          Tip:='';
-         Emp.SETFILTER("No.",'%1',ECL1."Employee No.");
-          IF Emp.FINDFIRST THEN BEGIN
-           // Emp.CALCFIELDS("Role Code");
-           // Emp.CALCFIELDS("Role Name");*/
-        /*
-     PositionMenuOrginal.RESET;
-     PositionMenuOrginal.SETFILTER(Code,'%1',ECL1."Position Code");
-     PositionMenuOrginal.SETFILTER(Description,'%1',ECL1."Position Description");
-     PositionMenuOrginal.SETFILTER("Org. Structure",'%1',OrgF.Code);
-     IF PositionMenuOrginal.FINDFIRST THEN BEGIN
-     RoleCode:=PositionMenuOrginal.Role;
-     RoleName:=PositionMenuOrginal."Role Name";
-     END;
-
-
-     IF ECL1."Engagement Type"='EXTERNI ANGAZMAN' THEN
-      Tip:='Eksterni saradnik'
-      ELSE
-      Tip:='Zaposlenik';
-
-
-
-       END;
-
-     IF ECL1."Org Unit Name"<>'' THEN
-       MjestoRada:=ECL1."Org Unit Name";
-     IF ECL1."GF of work Description"<>'' THEN
-       MjestoRada:=ECL1."GF of work Description";
-
-       EmailBodyText+= '<tr>';
-
-      EmailBodyText+=STRSUBSTNO('<td style="border-left:solid 0px black;" style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-      EmailBodyText+=STRSUBSTNO('<td style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-      EmailBodyText+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black;width:250px" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',Emp."Employee ID");
-      EmailBodyText+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit);
-      EmailBodyText+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black;width:250px" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>' ,PositionPlace);
-      EmailBodyText+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF" ><span style="font-size: 10.0pt;">%1</td>',MjestoRada+'/'+ECL1."Phisical Department Desc");
-      EmailBodyText+=STRSUBSTNO('<td style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',Tip);
-      EmailBodyText+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>', FORMAT(StartingDate,0,'<Day,2>.<Month,2>.<Year4>.'));
-      EmailBodyText+=STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px"  bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',RoleCode+'-'+RoleName);
-       EmailBodyText+=STRSUBSTNO('<td style="border-bottom:solid 1px black" bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-        EmailBodyText+='</tr>';
-        ECLCHange.RESET;
-        ECLCHange.SETFILTER("Employee No.",'%1',ECL1."Employee No.");
-        ECLCHange.SETFILTER("No.",'%1',ECL1."No.");
-        IF ECLCHange.FINDFIRST THEN BEGIN
-          ECLCHange."Sent Mail Employment":=TRUE;
-          ECLCHange.MODIFY;
-          END;
-       UNTIL ECL1.NEXT=0;
-
-        EmailBodyText+='</table>';
-        HRsetup.GET;
-         SMTPMail.CreateMessage(HRsetup."Sender Name",HRsetup."E-mail Sender",HRsetup."E-mail Receiver",'Obavijest o zaposljavanju/angazmanu',EmailBodyText,TRUE);
-
-       SMTPMail.Send();
-
-      END;
-
-
-     {*****************************************"CHANGE POSITION PLACE"*******************************************}
-
-     ECL4.RESET;
-     ECL4.SETFILTER("Show Record",'%1',TRUE);
-     ECL4.SETFILTER("Position Description",'<>%1','');
-     ECL4.SETFILTER("Starting Date",'<>%1',0D);
-     ECL4.SETFILTER("Reason for Change",'%1|%2|%3|%4|%5|%6|%7|%8|%9|%10',3,7,8,9,10,12,4,11,15,16);
-     ECL4.SETFILTER(Active,'%1',TRUE);
-     ECL4.SETFILTER("Sent Mail Change Pos",'%1',FALSE);
-     ECL4.SETFILTER("Grounds for Term. Code",'%1','');
-     ECL4.SETFILTER("Manner of Term. Code",'%1','');
-     IF ECL4.FINDFIRST THEN BEGIN
-
-
-        EmailBodyText2+='<p><span style="font-size: 9.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-        EmailBodyText2+='<br /> <br />Molim da poduzmete sve aktivnosti iz svoje nadleznosti u vezi sa pocetkom rada navedene osobe na novoj poziciji i/ili organizaciji.';
-        EmailBodyText2+='<br /> <br />';
-         EmailBodyText2+='<br /> <br />';
-         EmailBodyText2 += '<table cellpadding="5" style="border-collapse: collapse;border-left: solid 1px black;  " border="1">';
-     // EmailBodyText2 += '<tr style="Border:solid 1px black;"><span style="font-size: 10.0pt;">';
-      EmailBodyText2 += '<tr style="Border:solid 1px black;">';
-        EmailBodyText2+='<td style="border-left:solid 0px black;width:250px" style="border-bottom:solid 1px black" ><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-        EmailBodyText2+=' <td width="250" style="border-bottom:solid 1px black" align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-        EmailBodyText2+='<td style="border-bottom:solid 1px black ;width:200px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;  JMBG  &nbsp</strong> </td>';
-        EmailBodyText2+='<td  width="270" style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;"> NOVI RASPORED &nbsp</strong></td>';
-        EmailBodyText2+='<td style="border-bottom:solid 1px black;width:250px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;VAZI&nbsp; OD&nbsp;</strong></td>';
-        EmailBodyText2+='<td style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; MJESTO  &nbsp;  RADA&nbsp;</strong></td>';
-        EmailBodyText2+='<td style="border-bottom:solid 1px black;width:250px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;   ROLA  &nbsp;&nbsp;&nbsp;</strong></td>';
-        EmailBodyText2+='<td style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;">Neposredni &nbsp; rukovodilac&nbsp</strong></td>';
-        EmailBodyText2+='</tr>';
-
-     ECL5.RESET;
-     ECL5.SETFILTER("Show Record",'%1',TRUE);
-     ECL5.SETFILTER("Position Description",'<>%1','');
-     ECL5.SETFILTER("Starting Date",'<>%1',0D);
-     ECL5.SETFILTER("Reason for Change",'%1|%2|%3|%4|%5|%6|%7|%8|%9|%10',3,7,8,9,10,12,4,11,15,16);
-     ECL5.SETFILTER(Active,'%1',TRUE);
-     ECL5.SETFILTER("Sent Mail Change Pos",'%1',FALSE);
-     ECL5.SETFILTER("Grounds for Term. Code",'%1','');
-     ECL5.SETFILTER("Manner of Term. Code",'%1','');
-     IF ECL5.FINDSET THEN REPEAT
-        IF IsUpadate=FALSE THEN BEGIN
-         REPORT.RUNMODAL(50050, FALSE, TRUE);
-         IsUpadate:=TRUE;
-         END;
-
-       CLEAR(TextMsg);
-       CLEAR(IStream);
-       CLEAR(Mail);
-
-       IF ECL5."Team Description"<>'' THEN BEGIN
-         OrgUnit:=ECL5."Sector Description"+'/'+ ECL5."Department Cat. Description"+'/'+ ECL5."Group Description"+'/'+ECL5."Team Description";
-       END;
-       IF (ECL5."Group Description"<>'') AND (ECL5."Team Description"='') THEN BEGIN
-         OrgUnit:=ECL5."Sector Description"+'/'+ ECL5."Department Cat. Description"+'/'+ ECL5."Group Description";
-       END;
-       IF (ECL5."Department Cat. Description"<>'') AND (ECL5."Group Description"='') AND (ECL5."Team Description"='') THEN BEGIN
-         OrgUnit:= ECL5."Sector Description"+'/'+ ECL5."Department Cat. Description";
-       END;
-       IF (ECL5."Sector Description"<>'') AND (ECL5."Department Cat. Description"='') AND (ECL5."Group Description"='') AND (ECL5."Team Description"='') THEN BEGIN
-         OrgUnit:=ECL5."Sector Description"
-       END;
-       IF (ECL5."Sector Description"='') AND (ECL5."Department Cat. Description"='') AND (ECL5."Group Description"='') AND (ECL5."Team Description"='') THEN BEGIN
-         OrgUnit:='';
-         WorkPlace:='';
-       END;
-       IF ECL5."Org Unit Name"<>'' THEN BEGIN
-         WorkPlace:=ECL5."Org Unit Name";
-       END
-       ELSE BEGIN
-         WorkPlace:=ECL5."GF of work Description";
-       END;
-
-     IF ECL5."Org Unit Name"<>'' THEN
-       MjestoRada:=ECL5."Org Unit Name";
-     IF ECL5."GF of work Description"<>'' THEN
-       MjestoRada:=ECL5."GF of work Description";
-
-       StartingDate:=ECL5."Starting Date";
-       ECL5.CALCFIELDS("Residence/Network");
-       ECL5.CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-        ECL5.CALCFIELDS("Manager 2 First Name","Manager 2 Last Name");
-       ManagerFull:=ECL5."Manager 1 First Name"+' '+ECL5."Manager 1 Last Name";
-       IF  ECL5."Manager 1 First Name"='' THEN
-           ManagerFull:=ECL5."Manager 2 First Name"+' '+ECL5."Manager 2 Last Name";
-       Emp.SETFILTER("No.",'%1',ECL5."Employee No.");
-
-       IF Emp.FINDFIRST THEN BEGIN
-         Emp.CALCFIELDS("Role Code");
-         Emp.CALCFIELDS("Role Name");
-       END;
-
-       PositionMenuOrginal.RESET;
-     PositionMenuOrginal.SETFILTER(Code,'%1',ECL5."Position Code");
-     PositionMenuOrginal.SETFILTER(Description,'%1',ECL5."Position Description");
-     PositionMenuOrginal.SETFILTER("Org. Structure",'%1',OrgF.Code);
-     IF PositionMenuOrginal.FINDFIRST THEN BEGIN
-     RoleCode:=PositionMenuOrginal.Role;
-     RoleName:=PositionMenuOrginal."Role Name";
-     END;
-
-       //EmailBodyText2+= '<tr><span style="font-size: 10.0pt;">';
-       EmailBodyText2+= '<tr>';
-       EmailBodyText2+=STRSUBSTNO('<td style="border-left:solid 0px black;" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-       EmailBodyText2+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-       EmailBodyText2+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black ;width:250px" ><span style="font-size: 10.0pt;">%1</td>',Emp."Employee ID");
-       EmailBodyText2+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit+'/'+ECL5."Position Description");
-       EmailBodyText2+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',FORMAT(StartingDate,0,'<Day,2>.<Month,2>.<Year4>.'));
-       EmailBodyText2+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',MjestoRada+'/'+ECL5."Phisical Department Desc");
-       EmailBodyText2+=STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>',RoleCode+'-'+RoleName);
-       EmailBodyText2+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-        EmailBodyText2+='</tr>';
-           ECLCHange.RESET;
-        ECLCHange.SETFILTER("Employee No.",'%1',ECL5."Employee No.");
-        ECLCHange.SETFILTER("No.",'%1',ECL5."No.");
-        IF ECLCHange.FINDFIRST THEN BEGIN
-          ECLCHange."Sent Mail Change Pos":=TRUE;
-          ECLCHange.MODIFY;
-          END;
-        UNTIL ECL5.NEXT=0;
-
-           EmailBodyText2+='</table>';
-
-            // SMTPMail.CreateMessage('HR test','test.hr@raiffeisengroup.ba','infodom.test@raiffeisengroup.ba','Obavijest o pocetku rada na novoj poziciji',EmailBodyText2,TRUE);
-               HRsetup.GET;
-         SMTPMail.CreateMessage(HRsetup."Sender Name",HRsetup."E-mail Sender",HRsetup."E-mail Receiver",'Obavijest o pocetku rada na novoj poziciji',EmailBodyText2,TRUE);
-        SMTPMail.Send();
-     END;
-
-
-
-
-
-
-
-
-
-          {**********************************************DURATION************************************************}
-     ECL2.RESET;
-     ECL2.SETFILTER("Show Record",'%1',TRUE);
-     ECL2.SETFILTER("Position Description",'<>%1','');
-     ECL2.SETFILTER("Starting Date",'<>%1',0D);
-     //ECL2.SETFILTER("Reason for Change",'%1|%2|%3|%4|%5|%6|%7|%8|%9|%10',3,7,8,9,10,12,4,11,15,16);
-     ECL2.SETFILTER("Sent Mail Change Pos",'%1',TRUE);
-     ECL2.SETFILTER("Sent Mail Duration",'%1',FALSE);
-     ECL2.SETFILTER("Grounds for Term. Code",'%1','');
-     ECL2.SETFILTER("Manner of Term. Code",'%1','');
-     IF ECL2.FINDFIRST THEN BEGIN
-
-
-      EmailBodyText1+='<p><span style="font-size: 10.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-        EmailBodyText1+='<br /> <br />Molim da poduzmete sve aktivnosti iz svoje nadleznosti, u vezi sa izmjenom trenutnog rasporeda koji vazi do datuma kako je navedeno u tabeli';
-        EmailBodyText1+='<br /> <br />';
-         EmailBodyText1+='<br /> <br />';
-           EmailBodyText1 += '<table cellpadding="5" style="border-collapse: collapse; border-left: solid 1px black;   " border="1">';
-        // EmailBodyText1 += '<tr style="Border:solid 1px black;"><span style="font-size: 10.0pt;">';
-         EmailBodyText1 += '<tr style="Border:solid 1px black;">';
-        EmailBodyText1+='<td style="border-left:solid 0px black;width:250px" style="border-bottom:solid 1px black"><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-        EmailBodyText1+=' <td width="250" style="border-bottom:solid 1px black" align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-        EmailBodyText1+='<td  style="border-bottom:solid 1px black;width:200px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;   JMBG  &nbsp; &nbsp</strong> </td>';
-        EmailBodyText1+='<td  width="270" style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;"> STARI RASPORED&nbsp</strong></td>';
-        EmailBodyText1+='<td style="border-bottom:solid 1px black;width:250px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;VAZI &nbsp; DO&nbsp;</strong></td>';
-        EmailBodyText1+='<td style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; MJESTO RADA &nbsp;&nbsp;</strong></td>';
-        EmailBodyText1+='<td style="border-bottom:solid 1px black;width:250px" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;  ROLA   &nbsp;&nbsp;&nbsp;</strong></td>';
-        EmailBodyText1+='<td style="border-bottom:solid 1px black" align="center" ><strong><span style="font-size: 10.0pt;">Neposredni &nbsp; rukovodilac&nbsp</strong></td>';
-        EmailBodyText1+='</tr>';
-
-
-     ECL3.RESET;
-     ECL3.SETFILTER("Show Record",'%1',TRUE);
-     ECL3.SETFILTER("Position Description",'<>%1','');
-     ECL3.SETFILTER("Starting Date",'<>%1',0D);
-     //ECL3.SETFILTER("Reason for Change",'%1|%2|%3|%4|%5|%6|%7|%8|%9|%10',3,7,8,9,10,12,4,11,15,16);
-     //ECL3.SETFILTER(Active,'%1',TRUE);
-     ECL3.SETFILTER("Sent Mail Duration",'%1',FALSE);
-     ECL3.SETFILTER("Sent Mail Change Pos",'%1',TRUE);
-     ECL3.SETFILTER("Grounds for Term. Code",'%1','');
-     ECL3.SETFILTER("Manner of Term. Code",'%1','');
-      IF ECL3.FINDSET THEN REPEAT
-         IF IsUpadate=FALSE THEN BEGIN
-         REPORT.RUNMODAL(50050, FALSE, TRUE);
-         IsUpadate:=TRUE;
-         END;
-
-         CLEAR(TextMsg);
-         CLEAR(IStream);
-         CLEAR(Mail);
-
-      EMPCL1.RESET;
-      EMPCL1.SETFILTER("Employee No.",ECL3."Employee No.");
-     // EMPCL1.SETFILTER("Org. Structure",'%1',OrgC);
-      //EMPCL1.SETFILTER("Starting Date",'<=%1',WORKDATE);
-      //EMPCL1.SETFILTER(Active,'%1',TRUE);
-       EMPCL1.SETFILTER("No.",'<>%1',ECL3."No.");
-           EMPCL1.SETCURRENTKEY("Starting Date");
-           EMPCL1.ASCENDING;
-
-         IF EMPCL1.FINDLAST THEN BEGIN
-
-
-       //  IF EMPCL1."No."=ECL3."No." THEN BEGIN
-        // EMPCL1.NEXT(-1);
-        // Found:=TRUE;
-
-          IF EMPCL1."Team Description"<>'' THEN BEGIN
-           OrgUnit:=EMPCL1."Sector Description"+'/'+ EMPCL1."Department Cat. Description"+'/'+ EMPCL1."Group Description"+'/'+EMPCL1."Team Description";
-         END;
-         IF (EMPCL1."Group Description"<>'') AND (EMPCL1."Team Description"='') THEN BEGIN
-
-         OrgUnit:= EMPCL1."Sector Description"+'/'+ EMPCL1."Department Cat. Description"+'/'+EMPCL1."Group Description";
-         END;
-         IF  (EMPCL1."Group Description"='') AND (EMPCL1."Team Description"='') AND (EMPCL1."Department Cat. Description"<>'') THEN BEGIN
-         OrgUnit:= EMPCL1."Sector Description"+'/'+EMPCL1."Department Cat. Description";
-         END;
-         IF (EMPCL1."Group Description"='') AND (EMPCL1."Team Description"='') AND (EMPCL1."Department Cat. Description"='') AND (EMPCL1."Sector Description"<>'') THEN BEGIN
-           OrgUnit:= EMPCL1."Sector Description";
-           END;
-        EMPCL1.CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-         EMPCL1.CALCFIELDS("Manager 2 First Name","Manager 2 Last Name");
-       ManagerFull:=EMPCL1."Manager 1 First Name"+' '+EMPCL1."Manager 1 Last Name";
-       IF EMPCL1."Manager 1 First Name"='' THEN
-         ManagerFull:=EMPCL1."Manager 2 First Name"+' '+EMPCL1."Manager 2 Last Name";
-       EndingDateOFPosition:=EMPCL1."Ending Date";
-       EMPCL1.CALCFIELDS("Residence/Network");
-       Reg:=FORMAT(EMPCL1."Regionalni Head Office");
-
-
-         //  UNTIL (Found=TRUE) OR (EMPCL1.NEXT = 0);
-
-
-     EMPCL1.CALCFIELDS("Residence/Network");
-     "PositionPlace¸2":=EMPCL1."Position Description";
-
-     Emp.SETFILTER("No.",'%1',EMPCL1."Employee No.");
-       IF Emp.FINDFIRST THEN BEGIN
-       Emp.CALCFIELDS("Role Code");
-       Emp.CALCFIELDS("Role Name");
-       END;
-       IF EMPCL1."Org Unit Name"<>'' THEN
-       MjestoRada:=EMPCL1."Org Unit Name";
-     IF EMPCL1."GF of work Description"<>'' THEN
-       MjestoRada:=EMPCL1."GF of work Description";
-
-
-     PositionMenuOrginal.RESET;
-     PositionMenuOrginal.SETFILTER(Code,'%1',EMPCL1."Position Code");
-     PositionMenuOrginal.SETFILTER(Description,'%1',EMPCL1."Position Description");
-     PositionMenuOrginal.SETFILTER("Org. Structure",'%1',EMPCL1."Org. Structure");
-     IF PositionMenuOrginal.FINDFIRST THEN BEGIN
-     RoleCode:=PositionMenuOrginal.Role;
-     RoleName:=PositionMenuOrginal."Role Name";
-     END;
-
-         EmailBodyText1+= '<tr>';
-       EmailBodyText1+=STRSUBSTNO('<td style="border-left:solid 0px black;" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-       EmailBodyText1+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-       EmailBodyText1+=STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', Emp."Employee ID");
-       EmailBodyText1+=STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit+'/' + "PositionPlace¸2");
-       EmailBodyText1+=STRSUBSTNO('<td style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>' ,FORMAT(EndingDateOFPosition,0,'<Day,2>.<Month,2>.<Year4>.'));
-       EmailBodyText1+=STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', MjestoRada+'/'+ EMPCL1."Phisical Department Desc");
-       EmailBodyText1+=STRSUBSTNO('<td style="border-bottom:solid 1px black ;width:250px" ><span style="font-size: 10.0pt;">%1</td>',RoleCode+'-'+RoleName);
-       EmailBodyText1+=STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-         EmailBodyText1+='</tr>';
-            ECLCHange.RESET;
-        ECLCHange.SETFILTER("Employee No.",'%1',ECL3."Employee No.");
-        ECLCHange.SETFILTER("No.",'%1',ECL3."No.");
-        IF ECLCHange.FINDFIRST THEN BEGIN
-          ECLCHange."Sent Mail Duration":=TRUE;
-          ECLCHange.MODIFY;
-          END;
-            END;
-     UNTIL ECL3.NEXT=0;
-       EmailBodyText1+='</table>';
-           HRsetup.GET;
-         SMTPMail.CreateMessage(HRsetup."Sender Name",HRsetup."E-mail Sender",HRsetup."E-mail Receiver",'Obavijest o trajanju rasporeda na trenutnoj poziciji',EmailBodyText1,TRUE);
-        SMTPMail.Send();
-       END;
-
-
-
-
-
-
-
-         END;
-
-
-
-
-
-
-
-
-     END;
-
-
-
-
-
-
-
-
-
-
-     */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        {*****************************************"Employment"*******************************************}
-         IF ("Reason for Change"="Reason for Change"::"New Contract") AND ("Sent Mail Employment"=FALSE)AND ("Position Description"<>'') AND ("Starting Date"<>0D)
-          THEN BEGIN
-         EmailBodyText+='<p><span style="font-size: 12.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-         EmailBodyText+='<br /> <br /> Molim da poduzmete potrebne aktivnosti u vezi sa pocetkom rada/angazmana navedene osobe. ';
-         EmailBodyText+='<br /> <br />';
-         EmailBodyText += '<table border="?1" cellspacing="0" cellpadding="0" align="center"><span style="font-size: 10.0pt;">';
-         EmailBodyText += '<tr><span style="font-size: 10.0pt;">';
-         EmailBodyText+='<td bgcolor="#FFFFFF"><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-         EmailBodyText+=' <td bgcolor="#FFFFFF" align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; MATICNI BROJ&nbsp</strong> </td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;"> ORGANIZACIJSKA PRIPADNOST&nbsp</strong></td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;RADNO&nbsp; MJESTO&nbsp;</strong></td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;MJESTO&nbsp; RADA&nbsp;</strong></td>';;
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;"> VRSTA ANGAZMANA/PERSON TYPE/&nbsp</strong></td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">DATUM POCETKA RADA/ANGAZMANA&nbsp</strong> </td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;ROLA&nbsp;&nbsp;&nbsp;</strong></td>';
-         EmailBodyText+='<td bgcolor="#FFFFFF" align="center" ><strong><span style="font-size: 10.0pt;">Neposredni rukovodilac&nbsp</strong></td>';
-         EmailBodyText+='</tr>';
-        
-          counter+=1;
-          CLEAR(TextMsg);
-          CLEAR(IStream);
-          CLEAR(Mail);
-        
-        
-            IF "Team Description"<>'' THEN BEGIN
-               OrgUnit:="Sector Description"+'/'+ "Department Cat. Description"+'/'+ "Group Description"+'/'+"Team Description";
-                  END;
-            IF ("Group Description"<>'') AND ("Team Description"='') THEN BEGIN
-                 OrgUnit:="Sector Description"+'/'+ "Department Cat. Description"+'/'+ "Group Description";
-        
-              END;
-            IF ("Department Cat. Description"<>'') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-              OrgUnit:= "Sector Description"+'/'+ "Department Cat. Description";
-        
-              END;
-              IF ("Sector Description"<>'') AND ("Department Cat. Description"='') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-                OrgUnit:="Sector Description";
-        
-                END;
-            IF ("Sector Description"='') AND ("Department Cat. Description"='') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-              OrgUnit:='';
-              END;
-              PositionPlace:="Position Description";
-              StartingDate:="Starting Date";
-              CALCFIELDS("Residence/Network");
-              CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-          ManagerFull:="Manager 1 First Name"+' '+"Manager 1 Last Name";
-          Tip:='';
-          Emp.SETFILTER("No.",'%1',"Employee No.");
-          IF Emp.FINDFIRST THEN BEGIN
-            Emp.CALCFIELDS("Role Code");
-            Emp.CALCFIELDS("Role Name");
-        
-          IF Emp.Status=Status::Active THEN
-            Tip:='Zaposlenik';
-          END;
-        
-        
-        EmailBodyText+= '<tr><span style="font-size: 10.0pt;">';
-        
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',Emp."Employee ID");
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit);
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>' ,"Position Description");
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF" ><span style="font-size: 10.0pt;">%1</td>', "Phisical Department Desc");
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',Tip);
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>', FORMAT(StartingDate,0,'<Day,2>.<Month,2>.<Year4>.'));
-         EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',Emp."Role Code"+'-'+Emp."Role Name");
-          EmailBodyText+=STRSUBSTNO('<td bgcolor="#FFFFFF"><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-          EmailBodyText += '</tr><span style="font-size: 10.0pt;">';
-              EmailBodyText+='</table>';
-           SMTPMail.CreateMessage('HR test','infodom.test@raiffeisengroup.ba','enisa.manjo@raiffeisengroup.ba','Obavijest o zaposljavanju/angazmanu',EmailBodyText,TRUE);
-           SMTPMail.Send();
-           "Sent Mail Employment":=TRUE;
-            END;
-        
-        {*****************************************"CHANGE POSITION PLACE"*******************************************}
-        
-         IF (("Reason for Change"=3) OR ("Reason for Change"=7) OR ("Reason for Change"=8)
-                                     OR ("Reason for Change"=9) OR ("Reason for Change"=10)
-                                     OR ("Reason for Change"=12)) AND ("Sent Mail Change Pos"=FALSE) AND ("Position Description"<>'') AND ("Starting Date"<>0D)
-          THEN BEGIN
-        
-           EmailBodyText+='<p><span style="font-size: 12.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-           EmailBodyText+='<br /> <br />Molim da poduzmete sve aktivnosti iz svoje nadleznosti u vezi sa pocetkom rada navedene osobe na novoj poziciji i/ili organizaciji.';
-           EmailBodyText+='<br /> <br />';
-           EmailBodyText += '<table border="1" bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" align="center"><span style="font-size: 10.0pt;">';
-           EmailBodyText += '<tr><span style="font-size: 10.0pt;">';
-           EmailBodyText+='<td><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-           EmailBodyText+=' <td align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; JMBG &nbsp</strong> </td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;"> NOVI RASPORED&nbsp</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;VAZI&nbsp; ODASSA&nbsp;</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;MJESTO&nbsp; RADA&nbsp;</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;ROLA&nbsp;&nbsp;&nbsp;</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">Neposredni rukovodilac&nbsp</strong></td>';
-           EmailBodyText+='</tr>';
-        
-          counter+=1;
-          CLEAR(TextMsg);
-          CLEAR(IStream);
-          CLEAR(Mail);
-        
-          IF "Team Description"<>'' THEN BEGIN
-            OrgUnit:="Sector Description"+'/'+ "Department Cat. Description"+'/'+ "Group Description"+'/'+"Team Description";
-          END;
-          IF ("Group Description"<>'') AND ("Team Description"='') THEN BEGIN
-            OrgUnit:="Sector Description"+'/'+ "Department Cat. Description"+'/'+ "Group Description";
-          END;
-          IF ("Department Cat. Description"<>'') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-            OrgUnit:= "Sector Description"+'/'+ "Department Cat. Description";
-          END;
-          IF ("Sector Description"<>'') AND ("Department Cat. Description"='') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-            OrgUnit:=EmpCL."Sector Description"
-          END;
-          IF ("Sector Description"='') AND ("Department Cat. Description"='') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-            OrgUnit:='';
-            WorkPlace:='';
-          END;
-          IF "Org Unit Name"<>'' THEN BEGIN
-            WorkPlace:="Org Unit Name";
-          END
-          ELSE BEGIN
-            WorkPlace:="GF of work Description";
-          END;
-        
-          StartingDate:="Starting Date";
-          CALCFIELDS("Residence/Network");
-          CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-          ManagerFull:="Manager 1 First Name"+' '+"Manager 1 Last Name";
-          Emp.SETFILTER("No.",'%1',"Employee No.");
-        
-          IF Emp.FINDFIRST THEN BEGIN
-            Emp.CALCFIELDS("Role Code");
-            Emp.CALCFIELDS("Role Name");
-          END;
-        
-          EmailBodyText+= '<tr><span style="font-size: 10.0pt;">';
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',Emp."Employee ID");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit);
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',FORMAT(StartingDate,0,'<Day,2>.<Month,2>.<Year4>.'));
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', FORMAT("Residence/Network") +'/'+FORMAT("Regionalni Head Office"));
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',Emp."Role Code"+'-'+Emp."Role Name");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-          EmailBodyText += '</tr><span style="font-size: 10.0pt;">';
-        
-              EmailBodyText+='</table>';
-                SMTPMail.CreateMessage('HR test','infodom.test@raiffeisengroup.ba','infodom.test@raiffeisengroup.ba','Obavijest o pocetku rada na novoj poziciji',EmailBodyText,TRUE);
-           SMTPMail.Send();
-         "Sent Mail Change Pos":=TRUE;
-            END;
-        
-         {**********************************************TERMINATION************************************************}
-        
-        
-        IF ("Grounds for Term. Code"<>'') AND ("Sent Mail Termination"=FALSE) AND ("Position Description"<>'') AND ("Starting Date"<>0D)  THEN BEGIN
-        
-            EmailBodyText+='<p><span style="font-size: 12.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-            EmailBodyText+='<br /> <br />Molim da poduzmete sve aktivnosti iz svoje nadleznosti u vezi sa prestankom rada/angazmana navedene osobe. ';
-            EmailBodyText+='<br /> <br />';
-            EmailBodyText += '<table border="1"  bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" align="center"><span style="font-size: 10.0pt;">';
-            EmailBodyText += '<tr><span style="font-size: 10.0pt;">';
-            EmailBodyText+='<td><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-            EmailBodyText+=' <td align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; JMBG &nbsp</strong> </td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;"> ORGANIZACIONA PRIPADNOST&nbsp</strong></td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;RADNO&nbsp; MJESTO&nbsp;</strong></td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;ZADNJI RADNI DAN&nbsp;&nbsp;</strong></td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">VRSTA ANGAZMANA/PERSON TYPE/&nbsp</strong></td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;ROLA&nbsp;&nbsp;&nbsp;</strong></td>';
-            EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">Neposredni rukovodilac&nbsp</strong></td>';
-            EmailBodyText+='</tr>';
-        
-            counter+=1;
-            CLEAR(TextMsg);
-            CLEAR(IStream);
-            CLEAR(Mail);
-        
-            IF "Team Description"<>'' THEN BEGIN
-               OrgUnit:="Sector Description"+'/'+ "Department Cat. Description"+'/'+ "Group Description"+'/'+"Team Description";
-            END;
-            IF ("Group Description"<>'') AND ("Team Description"='') THEN BEGIN
-                 OrgUnit:="Sector Description"+'/'+ "Department Cat. Description"+'/'+ "Group Description";
-              END;
-            IF ("Department Cat. Description"<>'') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-              OrgUnit:= "Sector Description"+'/'+ "Department Cat. Description";
-              END;
-              IF ("Sector Description"<>'') AND ("Department Cat. Description"='') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-                OrgUnit:="Sector Description"
-                END;
-            IF ("Sector Description"='') AND ("Department Cat. Description"='') AND ("Group Description"='') AND ("Team Description"='') THEN BEGIN
-              OrgUnit:='';
-              END;
-        
-           PositionPlace:="Position Description";
-           Tip:='';
-         CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-          ManagerFull:="Manager 1 First Name"+' '+"Manager 1 Last Name";
-          Emp.SETFILTER("No.",'%1',EmpCL."Employee No.");
-          IF Emp.FINDFIRST THEN BEGIN
-          Emp.CALCFIELDS("Role Code");
-          Emp.CALCFIELDS("Role Name");
-          IF ((Emp.Status=Emp.Status::Active) OR (Emp.Status=Emp.Status::Terminated)) THEN Tip:='Zaposlenik';
-          END;
-        
-         EmailBodyText+= '<tr><span style="font-size: 10.0pt;">';
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',Emp."Employee ID");
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit);
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>' ,PositionPlace);
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', FORMAT(EmpCL."Ending Date",0,'<Day,2>.<Month,2>.<Year4>.'));
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Tip);
-         EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',Emp."Role Code"+'-'+Emp."Role Name");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',EmpCL."Manager 1 First Name"+' '+EmpCL."Manager 1 Last Name");
-          EmailBodyText += '</tr><span style="font-size: 10.0pt;">';
-        
-            SMTPMail.CreateMessage('HR test','infodom.test@raiffeisengroup.ba','infodom.test@raiffeisengroup.ba','Obavjest o prestanku radnog odnosa/angazmana',EmailBodyText,TRUE);
-           SMTPMail.Send();
-           "Sent Mail Termination":=TRUE;
-            END;
-             {**********************************************DURATION************************************************}
-        
-        IF ("Reason for Change"="Reason for Change"::"New Contract") AND (Status=Status::Active) AND ("Ending Date"=0D) AND ("Sent Mail Duration"=FALSE) AND ("Sent Mail Change Pos"=TRUE) AND ("Position Description"<>'') AND ("Starting Date"<>0D) THEN BEGIN
-           EmailBodyText+='<p><span style="font-size: 10.0pt; font-family: "Tahoma">Po&scaron;tovani,';
-           EmailBodyText+='<br /> <br />Molim da poduzmete sve aktivnosti iz svoje nadleznosti, u vezi sa izmjenom trenutnog rasporeda koji vazi do datuma kako je navedeno u tabeli';
-           EmailBodyText+='<br /> <br />';
-           EmailBodyText += '<table border="1"  bgcolor="#FFFFFF" cellspacing="0" cellpadding="0" align="center"><span style="font-size: 10.0pt;">';
-           EmailBodyText += '<tr><span style="font-size: 10.0pt;">';
-           EmailBodyText+='<td><strong><span style="font-size: 10.0pt;"> &nbsp;DOSIJE&nbsp</strong></td>';
-           EmailBodyText+=' <td align="center" > <strong><span style="font-size: 10.0pt;">PREZIME I IME&nbsp</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp; JMBG &nbsp</strong> </td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;"> STARI RASPORED&nbsp</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;VAZI DO&nbsp;</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;MJESTO RADA&nbsp;&nbsp;</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">&nbsp;ROLA&nbsp;&nbsp;&nbsp;</strong></td>';
-           EmailBodyText+='<td align="center" ><strong><span style="font-size: 10.0pt;">Neposredni rukovodilac&nbsp</strong></td>';
-           EmailBodyText+='</tr>';
-        
-            counter+=1;
-            CLEAR(TextMsg);
-            CLEAR(IStream);
-            CLEAR(Mail);
-              EMPCL1.SETFILTER("Employee No.",Rec."Employee No.");
-            IF EMPCL1.FINDSET THEN
-            REPEAT
-            Found:=FALSE;
-            IF EMPCL1."No."=Rec."No." THEN BEGIN
-            EMPCL1.NEXT(-1);
-            Found:=TRUE;
-             IF EMPCL1."Team Description"<>'' THEN BEGIN
-              OrgUnit:=EMPCL1."Sector Description"+'/'+ EMPCL1."Department Cat. Description"+'/'+ EMPCL1."Group Description"+'/'+EMPCL1."Team Description";
-            END;
-            IF (EMPCL1."Group Description"<>'') AND (EMPCL1."Team Description"='') THEN BEGIN
-        
-            OrgUnit:= EMPCL1."Sector Description"+'/'+ EMPCL1."Department Cat. Description"+'/'+EMPCL1."Group Description";
-            END;
-            IF  (EMPCL1."Group Description"='') AND (EMPCL1."Team Description"='') AND (EMPCL1."Department Cat. Description"<>'') THEN BEGIN
-            OrgUnit:= EMPCL1."Sector Description"+'/'+EMPCL1."Department Cat. Description";
-            END;
-            IF (EMPCL1."Group Description"='') AND (EMPCL1."Team Description"='') AND (EMPCL1."Department Cat. Description"='') AND (EMPCL1."Sector Description"<>'') THEN BEGIN
-              OrgUnit:= EMPCL1."Sector Description";
-              END;
-           EMPCL1.CALCFIELDS("Manager 1 First Name","Manager 1 Last Name");
-          ManagerFull:=EMPCL1."Manager 1 First Name"+' '+EMPCL1."Manager 1 Last Name";
-          EndingDateOFPosition:=EMPCL1."Ending Date";
-          EMPCL1.CALCFIELDS("Residence/Network");
-          Reg:=FORMAT(EMPCL1."Regionalni Head Office");
-        
-              END;
-              UNTIL (Found=TRUE) OR (EMPCL1.NEXT = 0);
-        
-        EMPCL1.CALCFIELDS("Residence/Network");
-        
-        Emp.SETFILTER("No.",'%1',Rec."Employee No.");
-          IF Emp.FINDFIRST THEN BEGIN
-          Emp.CALCFIELDS("Role Code");
-          Emp.CALCFIELDS("Role Name");
-          END;
-        
-          EmailBodyText+= '<tr><span style="font-size: 10.0pt;">';
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."First Name"+' '+Emp."Last Name");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', Emp."Employee ID");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>' ,OrgUnit);
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>' ,FORMAT(EndingDateOFPosition,0,'<Day,2>.<Month,2>.<Year4>.'));
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>', FORMAT(EMPCL1."Residence/Network") +'/'+Reg);
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',Emp."Role Code"+'-'+Emp."Role Name");
-          EmailBodyText+=STRSUBSTNO('<td><span style="font-size: 10.0pt;">%1</td>',ManagerFull);
-          EmailBodyText += '</tr><span style="font-size: 10.0pt;">';
-          EmailBodyText+='</table>';
-        
-          SMTPMail.CreateMessage('HR test','infodom.test@raiffeisengroup.ba','infodom.test@raiffeisengroup.ba','Obavijest o trajanju rasporeda na trenutnoj poziciji',EmailBodyText,TRUE);
-          SMTPMail.Send();
-          "Sent Mail Duration":=TRUE;
-          END;
-          */
-        //CurrPage.UPDATE;
-
 
 
     end;
