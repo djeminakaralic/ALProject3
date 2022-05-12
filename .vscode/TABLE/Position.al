@@ -625,25 +625,25 @@ table 50135 Position
         field(50348; "Department Name"; Text[250])
         {
             Caption = 'Department Name';
-            TableRelation = IF ("Sector  Description" = FILTER(<> ''),
-                                "Department Category" = FILTER('')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
-                                                                                              "Department Type" = CONST(Sector),
-                                                                                              "Sector  Description" = FIELD("Sector  Description"))
-            ELSE
-            IF ("Group Description" = FILTER(''),
-                                                                                                       "Department Category" = FILTER(<> '')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
-                                                                                                                                                                       "Department Type" = CONST(Department),
-                                                                                                                                                                       "Department Categ.  Description" = FIELD("Department Categ.  Description"))
-            ELSE
-            IF ("Group Description" = FILTER(<> ''),
-                                                                                                                                                                                "Team Code" = FILTER('')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
-                                                                                                                                                                                                                                    "Department Type" = CONST("Group"),
-                                                                                                                                                                                                                                    "Group Description" = FIELD("Group Description"))
-            ELSE
-            IF ("Team Description" = FILTER(<> '')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
-                                                                                                                                                                                                                                                                                                          "Department Type" = CONST("Team"),
-                                                                                                                                                                                                                                                                                                          "Team Description" = FIELD("Team Description"));
-
+            /*   TableRelation = IF ("Sector  Description" = FILTER(<> ''),
+                                   "Department Category" = FILTER('')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
+                                                                                                 "Department Type" = CONST(Sector),
+                                                                                                 "Sector  Description" = FIELD("Sector  Description"))
+               ELSE
+               IF ("Group Description" = FILTER(''),
+                                                                                                          "Department Category" = FILTER(<> '')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
+                                                                                                                                                                          "Department Type" = CONST(Department),
+                                                                                                                                                                          "Department Categ.  Description" = FIELD("Department Categ.  Description"))
+               ELSE
+               IF ("Group Description" = FILTER(<> ''),
+                                                                                                                                                                                   "Team Code" = FILTER('')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
+                                                                                                                                                                                                                                       "Department Type" = CONST("Group"),
+                                                                                                                                                                                                                                       "Group Description" = FIELD("Group Description"))
+               ELSE
+               IF ("Team Description" = FILTER(<> '')) Department.Description WHERE("ORG Shema" = FIELD("Org. Structure"),
+                                                                                                                                                                                                                                                                                                             "Department Type" = CONST("Team"),
+                                                                                                                                                                                                                                                                                                             "Team Description" = FIELD("Team Description"));
+   */
             trigger OnLookup()
             begin
                 IF ("Department Category" <> '') AND ("Group Code" = '') THEN BEGIN
@@ -2974,7 +2974,7 @@ table 50135 Position
         PosIDText: Text;
         ECL: Record "Employee Contract Ledger";
         Department: Record "Department";
-       // SD: Record "Segmentation Data";
+        // SD: Record "Segmentation Data";
         WDV: Record "Work Duties Violation";
         WDVM: Record "Work Duties Violation";
         WDVR: Record "Work Duties Violation";
