@@ -42,6 +42,12 @@ table 50104 "Employee Absence Reg"
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
                 //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
+
+                IF "From Date" = 0D then
+                    Error(Text001);
+
+                IF "To Date" = 0D then
+                    ERROR(Text004);
             end;
         }
         field(8; "From Date"; Date)
@@ -49,16 +55,17 @@ table 50104 "Employee Absence Reg"
             Caption = 'From Date';
             trigger OnValidate()
             begin
+
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
                         ERROR(Text001);
 
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
-                END;
 
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
+                    Employee.Get("Employee No.");
+                    Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
+                END;
 
             end;
         }
@@ -118,6 +125,7 @@ table 50104 "Employee Absence Reg"
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
+        Text004: Label 'Ending Date field cannot be blank.';
 
     trigger OnInsert()
     begin

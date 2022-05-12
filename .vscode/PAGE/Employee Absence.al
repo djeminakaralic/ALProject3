@@ -324,23 +324,19 @@ page 51129 "Employee Absence"
         IF "Cause of Absence Code" = '' then
             Error(Text007);
 
-
-
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
-        /*IF "From Date" = 0D then
+        IF "From Date" = 0D then
             Error(Text001);
 
         IF "To Date" = 0D then
-            ERROR(Text004);*/
+            ERROR(Text004);
 
-        IF "Cause of Absence Code" = '' then
-            Error(Text007);
+        /*IF "Cause of Absence Code" = '' then
+            Error(Text007);*/
 
-        Employee.Get("Employee No.");
-        Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
     end;
 
     /*trigger OnNewRecord(BelowxRec: Boolean)
@@ -377,28 +373,23 @@ page 51129 "Employee Absence"
 
     trigger OnClosePage()
     begin
-        //OVDJE PISATI KOD ZA TABELU
-
-
-
-
         /*
-        Rec.FINDFIRST;
-                    BEGIN
-                        IF Rec."Approved" = TRUE THEN BEGIN
-                            REPEAT
-                                Rec."Approved" := FALSE;
-                                Rec.MODIFY;
-                            UNTIL Rec.NEXT = 0;
-                        END
-                        ELSE BEGIN
-                            REPEAT
-                                Rec."Approved" := TRUE;
-                                Rec.MODIFY;
-                            UNTIL Rec.NEXT = 0
-                        END;
-                    END;
-        */
+ Rec.FINDFIRST;
+             BEGIN
+                 IF Rec."Approved" = TRUE THEN BEGIN
+                     REPEAT
+                         Rec."Approved" := FALSE;
+                         Rec.MODIFY;
+                     UNTIL Rec.NEXT = 0;
+                 END
+                 ELSE BEGIN
+                     REPEAT
+                         Rec."Approved" := TRUE;
+                         Rec.MODIFY;
+                     UNTIL Rec.NEXT = 0
+                 END;
+             END;
+ */
     end;
 
     var
