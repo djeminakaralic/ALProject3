@@ -103,26 +103,47 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
-
                 //Days := "To Date" - "From Date";
+                /*  Days := 0;
+                  LoopDate := "From Date";
+                  Employee.Get("Employee No.");
+                  IF "From Date" = "To Date" then begin
+                      Quantity := Employee."Hours In Day";
+                  end
+                  ELSE begin
+                      LoopDate := "From Date";
+                      repeat
+                      BaseCalendarChange.Reset();
+                          BaseCalendarChange.SetCurrentKey(Date);
+                          BaseCalendarChange.Get(LoopDate);
+                          If BaseCalendarChange.Nonworking = false then
+                              Days := Days + 1;
+                          LoopDate := LoopDate + 1;
+                      until LoopDate > "To Date";
+                      Quantity := Employee."Hours In Day" * Days;
+                  end;*/
+
                 Days := 0;
-                LoopDate := "From Date";
+                CustomizedCalendarChange.Reset();
+                CustomizedCalendarChange.SetFilter(Date, '%1..%2', "From Date", "To Date");
+                if CustomizedCalendarChange.FindFirst() then
+                    Days := CustomizedCalendarChange.Count;
                 Employee.Get("Employee No.");
-                IF "From Date" = "To Date" then begin
-                    Quantity := Employee."Hours In Day";
-                end
-                ELSE begin
-                    LoopDate := "From Date";
-                    repeat
-                        BaseCalendarChange.Get(LoopDate);
-                        If BaseCalendarChange.Nonworking = false then
-                            Days := Days + 1;
-                        LoopDate := LoopDate + 1;
-                    until LoopDate > "To Date";
-                    Quantity := Employee."Hours In Day" * Days;
-                end;
+                Quantity := Employee."Hours In Day" * Days;
+
+
+
+
 
                 //treba otici u table 7601 "Base Calendar Change" - stavljena u var gdje je boolean field Nonworking
+
+                BaseCalendarChange.Reset();
+                if BaseCalendarChange.FindSet() then
+                    repeat
+
+                        Message(Format(BaseCalendarChange.Day));
+                    until BaseCalendarChange.Next() = 0;
+
 
             end;
         }
@@ -153,6 +174,7 @@ table 50104 "Employee Absence Reg"
     var
         Days: Integer;
         LoopDate: Date;
+        CustomizedCalendarChange: Record "Customized Calendar Change";
         BaseCalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";

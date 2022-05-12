@@ -49,6 +49,7 @@ codeunit 50304 "Absence Fill"
             CalendarChange.SETFILTER(CalendarChange.Date, FORMAT(Datum."Period Start"))
         ELSE
             CalendarChange.SETFILTER(CalendarChange.Day, '%1', Datum."Period No.");
+
         IF CalendarChange.FINDFIRST THEN
             IF Recurrence = 1 THEN
                 InsertIt := CalendarChange."Paid Holiday"
