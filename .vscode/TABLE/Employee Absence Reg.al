@@ -123,11 +123,11 @@ table 50104 "Employee Absence Reg"
                       Quantity := Employee."Hours In Day" * Days;
                   end;*/
 
-                Days := 0;
+                Days := 5;
                 CustomizedCalendarChange.Reset();
-                CustomizedCalendarChange.SetFilter(Date, '%1..%2', "From Date", "To Date");
+                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', "From Date", "To Date");
                 if CustomizedCalendarChange.FindFirst() then
-                    Days := CustomizedCalendarChange.Count;
+                    Days := CustomizedCalendarChange.Count();
                 Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
 
@@ -137,12 +137,12 @@ table 50104 "Employee Absence Reg"
 
                 //treba otici u table 7601 "Base Calendar Change" - stavljena u var gdje je boolean field Nonworking
 
-                BaseCalendarChange.Reset();
+                /*BaseCalendarChange.Reset();
                 if BaseCalendarChange.FindSet() then
                     repeat
 
                         Message(Format(BaseCalendarChange.Day));
-                    until BaseCalendarChange.Next() = 0;
+                    until BaseCalendarChange.Next() = 0;*/
 
 
             end;
