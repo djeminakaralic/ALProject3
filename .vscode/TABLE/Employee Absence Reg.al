@@ -103,11 +103,32 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
-                Employee.Get("Employee No.");
-                Days := "To Date" - "From Date";
-                Quantity := Employee."Hours In Day" * Days;
 
-                //treba otici u table 7601 "Base Calendar Change" gdje je boolean field Nonworking
+                //Days := "To Date" - "From Date";
+                Days := 0;
+                LoopDate := "From Date";
+                Employee.Get("Employee No.");
+                IF "From Date" = "To Date" then begin
+                    Quantity := Employee."Hours In Day";
+
+                end
+
+
+
+                ELSE begin
+                    LoopDate := "From Date";
+                    //repeat
+
+                    //LopDate := LoopDate + 1;
+                    Days := Days + 1;
+
+                    //until LoopDate = "To Date";
+                    Quantity := Employee."Hours In Day" * Days;
+                end;
+
+
+
+                //treba otici u table 7601 "Base Calendar Change" - stavljena u var gdje je boolean field Nonworking
 
             end;
         }
@@ -137,6 +158,7 @@ table 50104 "Employee Absence Reg"
 
     var
         Days: Integer;
+        LoopDate: Date;
         BaseCalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
