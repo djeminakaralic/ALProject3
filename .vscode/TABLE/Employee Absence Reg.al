@@ -56,7 +56,7 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
                 END;
-                Quantity := Employee."Hours In Day";
+
             end;
         }
         field(9; "To Date"; Date)
@@ -78,7 +78,7 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
-                Quantity := Employee."Hours In Day";
+
             end;
         }
         field(10; "Employee No."; Code[20])
@@ -94,7 +94,6 @@ table 50104 "Employee Absence Reg"
                 "Last Name" := Employee."Last Name";
             end;
         }
-
 
     }
 

@@ -343,7 +343,8 @@ page 51129 "Employee Absence"
             Error(Text007);
 
         //OVDJE KOD ZA RAČUNANJE KOLIČINE 
-        //Quantity := Employee."Hours In Day";
+        Employee.Get("Employee No.");
+        Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
     end;
 
 
