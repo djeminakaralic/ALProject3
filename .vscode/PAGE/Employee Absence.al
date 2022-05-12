@@ -197,7 +197,6 @@ page 51129 "Employee Absence"
                         IF Rec."Approved" = FALSE THEN BEGIN
                             REPEAT
                                 Rec."Approved" := TRUE;
-                                //Rec.Quantity := Employee."Hours In Day";
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
@@ -343,7 +342,8 @@ page 51129 "Employee Absence"
         IF "Cause of Absence Code" = '' then
             Error(Text007);
 
-        //OVDJE KOD ZA RAČUNANJE KOLIČINE        
+        //OVDJE KOD ZA RAČUNANJE KOLIČINE 
+        //Quantity := Employee."Hours In Day";
     end;
 
 
@@ -378,7 +378,7 @@ page 51129 "Employee Absence"
                 END;
             END;
         END;
-        //TestDateValid; //DODANO
+        //TestDateValid; 
         //OnAfterGetCurrRecord;
     end;*/
 
