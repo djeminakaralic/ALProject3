@@ -21,11 +21,31 @@ table 50104 "Employee Absence Reg"
         field(4; Approved; Boolean)
         {
             Caption = 'Approved';
+
+            trigger OnValidate()
+            begin
+
+                /*IF Rec."Approved" = TRUE THEN BEGIN
+
+                
+                REPEAT
+                EmployeeAbsence.INIT;
+                EmployeeAbsence."Employee No." := Rec."Employee No.";
+                EmployeeAbsence."First Name":=Rec."First Name";
+                EmployeeAbsence."Last Name":=Rec."Last Name";
+                EmployeeAbsence."Cause of Absence Code":=Rec."Cause of Absence Code";
+                EmployeeAbsence.Description:=Rec.Description;
+                EmployeeAbsence."Real Date":=
+                EmployeeAbsence.Insert();
+                UNTIL
+
+                END;*/
+
+            end;
         }
         field(5; "Entry No."; Integer)
         {
             Caption = 'Entry No.';
-
         }
         field(6; "Description"; Code[50])
         {
@@ -74,11 +94,6 @@ table 50104 "Employee Absence Reg"
             Caption = 'To Date';
             trigger OnValidate()
             begin
-                //IF (xRec."To Date" <> "To Date") AND ("To Date" <> 0D) THEN
-                //FillHours(FIELDNO("To Date"));
-
-                /*IF "To Date" < "From Date" THEN
-                    FIELDERROR("To Date");?*/
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
@@ -121,7 +136,8 @@ table 50104 "Employee Absence Reg"
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
-        EmployeeAbsence: Record "Employee Absence Reg";
+        EmployeeAbsenceReg: Record "Employee Absence Reg";
+        EmployeeAbsence: Record "Employee Absence";
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
@@ -129,10 +145,10 @@ table 50104 "Employee Absence Reg"
 
     trigger OnInsert()
     begin
-        EmployeeAbsence.Reset();
-        EmployeeAbsence.SetCurrentKey("Entry No.");
-        if EmployeeAbsence.FindLast then
-            "Entry No." := EmployeeAbsence."Entry No." + 1
+        EmployeeAbsenceReg.Reset();
+        EmployeeAbsenceReg.SetCurrentKey("Entry No.");
+        if EmployeeAbsenceReg.FindLast then
+            "Entry No." := EmployeeAbsenceReg."Entry No." + 1
         else begin
             "Entry No." := 1;
         end;
