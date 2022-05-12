@@ -347,7 +347,6 @@ page 51129 "Employee Absence"
         Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
     end;
 
-
     trigger OnModifyRecord(): Boolean
     begin
         IF "From Date" = 0D then
@@ -358,6 +357,9 @@ page 51129 "Employee Absence"
 
         IF "Cause of Absence Code" = '' then
             Error(Text007);
+
+        Employee.Get("Employee No.");
+        Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
     end;
 
     /*trigger OnNewRecord(BelowxRec: Boolean)
