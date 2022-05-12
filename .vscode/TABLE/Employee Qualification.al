@@ -9,6 +9,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         // Add changes to table fields here
         field(50000; Active; Boolean)
         {
+
         }
         field(50001; Switch; Option)
         {

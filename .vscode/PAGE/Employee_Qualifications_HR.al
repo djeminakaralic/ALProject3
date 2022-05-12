@@ -1,17 +1,48 @@
 pageextension 50119 Employee_Qualifications_HR extends "Employee Qualifications"
 {
+
     layout
-    { }
+    {
+        modify("Qualification Code")
+        {
+            visible = visibleQualification;
+        }
+        modify(Description)
+        {
+            visible = visibleQualification;
+        }
+
+        addafter("Course Grade")
+        {
+            field("Computer Knowledge Code"; "Computer Knowledge Code")
+            {
+                Visible = visibleComputer;
+            }
+            field("Computer Knowledge Description"; "Computer Knowledge Description")
+            {
+                visible = visibleComputer;
+            }
+            field("Language Code"; "Language Code")
+            {
+                Visible = visibleLanguage;
+            }
+            field("Language Level"; "Language Level")
+            {
+                Visible = visibleLanguage;
+            }
+            field("Language Name"; "Language Name")
+            {
+                Visible = visibleLanguage;
+            }
+        }
+    }
+
+
+
+
 
     trigger OnOpenPage()
-    var
-        myInt: Integer;
-        Filter: Text;
-        Filter1: Text;
-        Filter2: Text;
-        visibleQualification: Boolean;
-        visibleLanguage: Boolean;
-        visibleComputer: Boolean;
+
     begin
         Filter := Rec.GETFILTER("Qualification Code");
         Filter1 := Rec.GETFILTER("Computer Knowledge Code");
@@ -41,7 +72,14 @@ pageextension 50119 Employee_Qualifications_HR extends "Employee Qualifications"
 
     end;
 
-
+    var
+        myInt: Integer;
+        Filter: Text;
+        Filter1: Text;
+        Filter2: Text;
+        visibleQualification: Boolean;
+        visibleLanguage: Boolean;
+        visibleComputer: Boolean;
 
 
 }
