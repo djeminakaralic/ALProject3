@@ -10,7 +10,6 @@ page 51129 "Employee Absence"
     SourceTable = "Employee Absence Reg";
     //SourceTableView = SORTING("Employee No.", From Date);
 
-
     layout
     {
         area(content)
@@ -88,19 +87,6 @@ page 51129 "Employee Absence"
                 field("Employee No."; "Employee No.")
                 {
 
-                    /*trigger OnValidate()
-                    begin
-
-
-                        IF "Employee No." <> '' THEN BEGIN
-                            //Employee.SETFILTER("Employee No.", "empl");
-                            IF Employee.FINDFIRST THEN BEGIN
-                                "First Name" := Employee."First Name";
-                                "Last Name" := Employee."Last Name";
-                            END;
-                        END;
-
-                    end;*/
                 }
                 field("First Name"; "First Name")
                 {
@@ -110,10 +96,6 @@ page 51129 "Employee Absence"
                 {
                     Editable = false;
                 }
-                /*field(GetEmployeeName; GetEmployeeName)
-                {
-                    Caption = 'Name';
-                }*/
                 field("From Date"; "From Date")
                 {
 
@@ -311,7 +293,7 @@ page 51129 "Employee Absence"
                 end;
             }*/
 
-            action("&Edit")
+            /*action("&Edit")
             {
                 Caption = '&Edit';
                 Promoted = true;
@@ -322,7 +304,7 @@ page 51129 "Employee Absence"
                 begin
                     SetEditable(NOT CurrPage.EDITABLE);
                 end;
-            }
+            }*/
         }
     }
 
@@ -333,27 +315,26 @@ page 51129 "Employee Absence"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        IF "From Date" = 0D then
+        /*IF "From Date" = 0D then
             Error(Text001);
 
         IF "To Date" = 0D then
-            ERROR(Text004);
+            ERROR(Text004);*/
 
         IF "Cause of Absence Code" = '' then
             Error(Text007);
 
-        //OVDJE KOD ZA RAČUNANJE KOLIČINE 
-        Employee.Get("Employee No.");
-        Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
+
+
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
-        IF "From Date" = 0D then
+        /*IF "From Date" = 0D then
             Error(Text001);
 
         IF "To Date" = 0D then
-            ERROR(Text004);
+            ERROR(Text004);*/
 
         IF "Cause of Absence Code" = '' then
             Error(Text007);
@@ -361,8 +342,6 @@ page 51129 "Employee Absence"
         Employee.Get("Employee No.");
         Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
     end;
-
-    //komentar
 
     /*trigger OnNewRecord(BelowxRec: Boolean)
     begin
@@ -447,8 +426,8 @@ page 51129 "Employee Absence"
         Text002: Label 'Set Approved to %1 for %2 records?';
         txtView: Text[1024];
         txtView2: Text[1024];
-        NewDim1Filter: Code[250];
-        NewDim2Filter: Code[250];
+        //NewDim1Filter: Code[250];
+        //NewDim2Filter: Code[250];
         NewEmployeeFilter: Code[250];
         SettingNewFilters: Boolean;
         [InDataSet]
@@ -634,7 +613,7 @@ end;*/
         SetPeriod;
     end;*/
 
-    procedure SetPeriod()
+    /*procedure SetPeriod()
     begin
         IF (Year IN [1900 .. 2999]) AND (Month IN [0 .. 12]) THEN BEGIN
             IF (Month = 0) THEN Month := 1;
@@ -653,9 +632,9 @@ end;*/
             SETRANGE("From Date");
             //FILTERGROUP(0);
         END;
-    end;
+    end;*/
 
-    procedure SetEmployee()
+    /*procedure SetEmployee()
     begin
         IF EmployeeFilter <> '' THEN BEGIN
             SETRANGE("Employee No.");
@@ -668,7 +647,7 @@ end;*/
             SETRANGE("Employee No.");
             //FILTERGROUP(0);
         END;
-    end;
+    end;*/
 
     /*local procedure SetGlobalDim1()
     begin

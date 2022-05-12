@@ -1,7 +1,6 @@
 table 50104 "Employee Absence Reg"
 {
     Caption = 'Sample table';
-    //DataPerCompany = true;
     DrillDownPageID = "Employee Absence";
     LookupPageID = "Employee Absence";
 
@@ -26,6 +25,7 @@ table 50104 "Employee Absence Reg"
         field(5; "Entry No."; Integer)
         {
             Caption = 'Entry No.';
+
         }
         field(6; "Description"; Code[50])
         {
@@ -41,7 +41,7 @@ table 50104 "Employee Absence Reg"
             begin
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
-                //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");                
+                //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
             end;
         }
         field(8; "From Date"; Date)
@@ -56,6 +56,9 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
                 END;
+
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
 
             end;
         }
@@ -78,6 +81,8 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * ("To Date" - "From Date");
 
             end;
         }
@@ -116,6 +121,7 @@ table 50104 "Employee Absence Reg"
 
     trigger OnInsert()
     begin
+        EmployeeAbsence.Reset();
         EmployeeAbsence.SetCurrentKey("Entry No.");
         if EmployeeAbsence.FindLast then
             "Entry No." := EmployeeAbsence."Entry No." + 1
