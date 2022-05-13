@@ -605,6 +605,7 @@ table 50135 Position
             Caption = 'Defaul Dimension';
         }
 
+
         field(50345; Systemized; Boolean)
         {
             Caption = 'Systemized';

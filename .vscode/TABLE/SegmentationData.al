@@ -1,6 +1,8 @@
-table 50088 "Segmentation Data 2"
+table 50152 "Segmentation Data"
 {
     Caption = 'Segmentation Data';
+    DrillDownPageID = 5221;
+    LookupPageID = 5221;
 
     fields
     {
@@ -14,7 +16,7 @@ table 50088 "Segmentation Data 2"
         {
             Caption = 'Segmentation Code';
             NotBlank = true;
-            TableRelation = "Quality Measure";
+            TableRelation = "Segmentation Codes";
 
             trigger OnValidate()
             begin
@@ -27,7 +29,7 @@ table 50088 "Segmentation Data 2"
             Caption = 'Line No.';
             NotBlank = true;
         }
-        field(4; Description; Text[50])
+        field(4; Description; Text[250])
         {
             Caption = 'Description';
         }
@@ -39,10 +41,10 @@ table 50088 "Segmentation Data 2"
         field(50000; "Segmentation Name"; Code[250])
         {
             Caption = 'Segmentation Name';
-            //ĐKTableRelation = Position.Field50007 WHERE (Code=FIELD("Position No.""));
+            TableRelation = Position.Description WHERE(Code = FIELD("Position No."));
             //This property is currently not supported
             //TestTableRelation = false;
-            //  ValidateTableRelation = false;
+            ValidateTableRelation = false;
         }
         field(50001; "Starting Date"; Date)
         {
@@ -108,7 +110,6 @@ table 50088 "Segmentation Data 2"
     }
 
     keys
-
     {
         key(Key1; "Position No.", "Segmentation Code", "Line No.", "Segmentation Name", "Starting Date", "Ending Date")
         {
@@ -121,6 +122,6 @@ table 50088 "Segmentation Data 2"
 
     var
         Text000: Label 'You can not delete confidential information if there are comments associated with it.';
-        Confidential: Record "Quality Measure";
+        Confidential: Record "Segmentation Codes";
 }
 

@@ -43,6 +43,175 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+        addafter("Gender")
+        {
+            group("Employement Data")
+            {
+                field(DepartmentName; EmployeeContractLedger."Department Name")
+                {
+                    Caption = 'Department Name';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(SectorDescription; EmployeeContractLedger."Sector Description")
+                {
+                    Caption = 'Sector Description';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Služba; EmployeeContractLedger."Department Cat. Description")
+                {
+                    Caption = 'Služba';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Odjel; EmployeeContractLedger."Group Description")
+                {
+                    Caption = 'Odjel';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(PositionName; EmployeeContractLedger."Position Description")
+                {
+                    Caption = 'Position';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(StatusP; EmployeeContractLedger.Status)
+                {
+                    Caption = 'Status';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Smjena; EmployeeContractLedger."Rad u smjenama")
+                {
+                    Caption = 'Rad u smjenama';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Superior1; EmployeeContractLedger.Superior1)
+                {
+                    Caption = 'Superior 1';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(Superior2; EmployeeContractLedger.Superior2)
+                {
+                    Caption = 'Superior 2';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+            }
+        }
         addafter("Address & Contact")
         {
             group("Potential Employe")
@@ -85,196 +254,246 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
         addafter("Potential Employe")
         {
-            group("Work Experience")
+            group("Brought experience ")
             {
 
-                Caption = 'Work Experience';
+                Caption = 'Brought experience';
                 //The GridLayout property is only supported on controls of type Grid
-
-
-
-                grid("Work Experience ")
+                grid("Brought experience  ")
                 {
 
-                    GridLayout = Columns;
-                    Visible = hide;
-                    Group("Total experience")
-
+                    GridLayout = Rows;
+                    group("Brought experience   ")
                     {
-                        Caption = 'Prethodni staž - godine';
+
+
+
+                        Caption = 'Brought experience';
+
+
+
 
                         field("Brought Years of Experience"; "Brought Years of Experience")
                         {
                             Editable = false;
-                            ApplicationArea = all;
+                            Caption = 'Brought Years Card';
                         }
-                        field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Brought Years of Experience E"; "Brought Years of Experience E")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Brought Years Total"; "Brought Years Total")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Style = Strong;
-
-                        }
-
-
-                    }
-                    group("Brought experience in Company")
-                    {
-
-                        Caption = 'Brought experience in Company';
-
                         field("Brought Months of Experience"; "Brought Months of Experience")
                         {
                             Editable = false;
-                            ApplicationArea = all;
+                            Caption = 'Brought Months Card';
                         }
-                        field("Brought Months of Exp.in Curr."; "Brought Months of Exp.in Curr.")
+                        field("Brought Days of Experience"; "Brought Days of Experience")
                         {
                             Editable = false;
-                            ApplicationArea = all;
+                            Caption = 'Brought Days Card';
                         }
-                        field("Brought Months of Experience E"; "Brought Months of Experience E")
+                    }
+                    group("Brought Years in Company")
+                    {
+
+
+
+                        Caption = 'Brought Years in Curr. Company';
+
+                        field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.")
                         {
                             Editable = false;
-                            ApplicationArea = all;
+                            Caption = 'Brought Years Comp Card';
+                        }
+                        field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.")
+                        {
+                            Editable = false;
+                            Caption = 'Brought Months Comp Card';
+                        }
+                        field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.")
+                        {
+                            Editable = false;
+                            Caption = 'Brought Days Comp Card';
+                        }
+                    }
+                    group("Brought Total")
+                    {
+
+
+
+                        Caption = 'Brought Total';
+
+                        field("Brought Years Total"; "Brought Years Total")
+                        {
+                            Editable = false;
+                            Caption = 'Brought Years Total Card';
                         }
                         field("Brought Months Total"; "Brought Months Total")
                         {
                             Editable = false;
-                            ApplicationArea = all;
-                            Style = Strong;
-                        }
-                    }
-
-                    group("Brought Experience in Company Total")
-                    {
-                        Caption = 'Brought Experience in Company total';
-
-                        field("Brought Days of Experience"; "Brought Days of Experience")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Brought Days of Exp.in Curr."; "Brought Days of Exp.in Curr.")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Brought Days of Experience E"; "Brought Days of Experience E")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
+                            Caption = 'Brought Months Total Card';
                         }
                         field("Brought Days Total"; "Brought Days Total")
                         {
                             Editable = false;
-                            ApplicationArea = all;
-                            Style = Strong;
+                            Caption = 'Brought Days Total Card';
                         }
-
                     }
+
+
 
 
                 }
 
+
+
             }
-
-
-
-            group("tes")
+            group("Current Company")
             {
-                Caption = 'Current WOrk Experice';
-                grid("Work Experience Company")
+
+                Caption = 'Work Experience in Company';
+                //BH 01 start
+                grid("Work Experience in Company")
                 {
+                    GridLayout = Rows;
 
-                    GridLayout = Columns;
-                    Visible = hide;
-                    Group("Total experience Company")
-
+                    group("Experience in Company")
                     {
-                        Caption = 'Year Total experience';
+                        Caption = 'Experience in Company';
 
                         field("Years of Experience in Company"; "Years of Experience in Company")
                         {
                             Editable = false;
-                            ApplicationArea = all;
                         }
-                        field("Current Years Total"; "Current Years Total")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Years of Experience"; "Years of Experience")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Style = Strong;
-                        }
-
-                    }
-                    group("Total experience in Company")
-                    {
-
-                        Caption = 'Brought experience in Company';
-
                         field("Months of Exp. in Company"; "Months of Exp. in Company")
                         {
                             Editable = false;
-                            ApplicationArea = all;
                         }
-
-
-                        field("Current Months Total"; "Current Months Total")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Months of Experience"; "Months of Experience")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Style = Strong;
-                        }
-
-                    }
-
-                    group("Brought Experience in Company Total2")
-                    {
-                        Caption = 'Brought Experience in Company total';
-
                         field("Days of Experience in Company"; "Days of Experience in Company")
                         {
                             Editable = false;
-                            ApplicationArea = all;
-
                         }
 
+                    }
+                    group("Current Total")
+                    {
+                        Caption = 'Current Total';
+
+                        field("Current Years Total"; "Current Years Total")
+                        {
+                            Editable = false;
+                        }
+                        field("Current Months Total"; "Current Months Total")
+                        {
+                            Editable = false;
+                        }
                         field("Current Days Total"; "Current Days Total")
                         {
                             Editable = false;
-                            ApplicationArea = all;
                         }
+
+                    }
+
+
+                }
+                //BH 01 end
+
+            }
+            Group("Total experience")
+
+            {
+                fixed("Total")
+                {
+
+
+                    Caption = 'Total experience';
+                    group("Godine")
+                    {
+
+                        field("Years of Experience"; "Years of Experience")
+                        {
+                            Editable = false;
+                            Caption = 'Total Years Card';
+                        }
+                    }
+                    group("Mjeseci")
+                    {
+                        field("Months of Experience"; "Months of Experience")
+                        {
+                            Editable = false;
+                            Caption = 'Total Months Card';
+                        }
+                    }
+                    group("Dani")
+                    {
                         field("Days of Experience"; "Days of Experience")
                         {
                             Editable = false;
-                            ApplicationArea = all;
-                            Style = Strong;
+                            Caption = 'Total Days Card';
                         }
-
-
                     }
                 }
             }
+            group("MILITARY EXPERIENCE")
+            {
+
+                Caption = 'Military Experience';
+                //BH 01 start
+                grid("Experience with military")
+                {
+                    GridLayout = Rows;
+                    group("Military service")
+                    {
+
+
+
+                        Caption = 'Military service';
+
+                        field("Military Years of Service"; "Military Years of Service")
+                        {
+                            Editable = false;
+                            Caption = 'Military Years Card';
+                        }
+                        field("Military Months of Service"; "Military Months of Service")
+                        {
+                            Editable = false;
+                            Caption = 'Military Months Card';
+                        }
+                        field("Military Days of Service"; "Military Days of Service")
+                        {
+                            Editable = false;
+                            Caption = 'Military Days Card';
+                        }
+                    }
+
+                    group("Work experience with military")
+                    {
+
+
+
+                        Caption = 'Work experience with military';
+
+                        field("Years with military"; "Years with military")
+                        {
+                            Editable = false;
+                            Caption = 'With Military Years Card';
+                        }
+                        field("Months with military"; "Months with military")
+                        {
+                            Editable = false;
+                            Caption = 'With Military Months Card';
+                        }
+                        field("Days with military"; "Days with military")
+                        {
+                            Editable = false;
+                            Caption = 'With Military Days Card';
+                        }
+                    }
+
+
+
+
+                }
+                //BH 01 end
+
+            }
+
 
 
             group("Family")
@@ -2594,7 +2813,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     LookupPageID = "Employee Award List";
                     ApplicationArea = all;
                 }
-                field(Clauses; Clauses)
+                /*field(Clauses; Clauses)
                 {
                     DrillDownPageID = Clauses;
                     LookupPageID = Clauses;
@@ -2605,7 +2824,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     DrillDownPageID = "Lawsuits/Labor Disputes List";
                     ApplicationArea = all;
                     LookupPageID = "Lawsuits/Labor Disputes List";
-                }
+                }*/
 
 
 
@@ -2653,10 +2872,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                         end;
                     }
-                    field("Employment Date2"; "Employment Date")
+                    /*field("Employment Date2"; "Employment Date")
                     {
                         ApplicationArea = all;
-                    }
+                    }*/
 
                     field(EmployeeContractLedgerBrutto; EmployeeContractLedger.Brutto)
                     {
@@ -3138,7 +3357,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         }
         addafter("&Picture")
         {
-            action("Import picture")
+            /*action("Import picture")
             {
                 Caption = 'Import picture';
                 ApplicationArea = all;
@@ -3146,7 +3365,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = report picture_import;
 
 
-            }
+            }*/
 
 
         }
@@ -3232,13 +3451,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Work Permit');
             }
-            action("Brought Work experience")
+            /*action("Brought Work experience")
             {
                 Caption = 'Brought Work experience';
                 Image = CalendarChanged;
                 RunObject = Page "Brought Work experience";
                 ApplicationArea = all;
-            }
+            }*/
             action("Work Booklet3")
             {
                 Caption = 'Work Booklet';
@@ -3277,7 +3496,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageView = WHERE("Show Record" = FILTER(true));
                 Visible = true;
             }
-            action("Career Development")
+            /*action("Career Development")
             {
                 Caption = 'Career Development';
                 Image = MovementWorksheet;
@@ -3285,7 +3504,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Career Development";
                 RunPageLink = "Employee No." = FIELD("No.");
                 Visible = false;
-            }
+            }*/
             action(Qualifications2)
             {
                 Caption = 'Qualifications';
@@ -3294,14 +3513,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Employee Qualifications";
                 RunPageLink = "Employee No." = FIELD("No.");
             }
-            action("Additional Activity")
+            /*action("Additional Activity")
             {
                 Caption = 'Additional Activity';
                 Image = "Action";
                 ApplicationArea = all;
                 RunObject = Page "Employee Activities";
                 RunPageLink = "Employee No." = FIELD("No.");
-            }
+            }*/
             action(Unions2)
             {
                 Caption = 'Unions';
@@ -3346,7 +3565,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 Caption = 'Employee Computer Knowledge';
                 Image = Account;
-                RunObject = Page "Employee Computer Knowledges";
+                RunObject = Page "Employee Qualifications";
                 RunPageLink = "Employee No." = FIELD("No.");
             }
             action("Page Misc. Article Information")
@@ -3368,22 +3587,22 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Education History";
                 RunPageLink = "Employee ID" = FIELD("Employee ID");
             }
-            action("Health Check")
+            /*action("Health Check")
             {
                 Caption = 'Health Check';
                 Image = Receipt;
                 ApplicationArea = all;
                 RunObject = Page "Health Check";
                 RunPageLink = "Employee No" = FIELD("No.");
-            }
+            }*/
             //ED 01 START
-            action("Employee absence")
+            /*action("Employee absence")
             {
                 Caption = 'Employee Absence';
                 Image = Workdays;
                 RunObject = page "Employee Absence";
                 RunPageLink = "Employee No." = FIELD("No.");
-            }
+            }*/
             //ED 01 END
 
         }
@@ -3446,12 +3665,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     TerminationDate := EmployeeContractLedger."Ending Date"
                 ELSE
                     TerminationDate := 0D;
-                showMC := EmployeeContractLedger."Manager Contract";
+                /*showMC := EmployeeContractLedger."Manager Contract";
                 Position.RESET;
                 Position.SETFILTER("Employee No.", '%1', "No.");
                 IF Position.FINDLAST THEN BEGIN
-                    Position.CALCFIELDS("SAP 1");
-                    Position.CALCFIELDS("SAP 2");
+                    //Position.CALCFIELDS("SAP 1");
+                    //Position.CALCFIELDS("SAP 2");
                     ManagementLevel := '';
                     SegmentationGroup.RESET;
 
@@ -3460,8 +3679,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     SegmentationGroup.SETFILTER(Coefficient, '<>%1', 0);
                     SegmentationGroup.SETFILTER("Ending Date", '%1', 0D);
                     IF SegmentationGroup.FIND('+') THEN
-                        ManagementLevel := FORMAT(SegmentationGroup."Management Level");
-                END;
+                        ManagementLevel := FORMAT(SegmentationGroup."Management Level");*/
 
 
                 //ContractType:='';
@@ -3873,9 +4091,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 UnionEmployees1."Union Name" := '';
         END;
 
-        CareerDevelopment.RESET;
-        CareerDevelopment.SETFILTER("Employee No.", "No.");
-        IF CareerDevelopment.FINDLAST THEN;
+        /* CareerDevelopment.RESET;
+         CareerDevelopment.SETFILTER("Employee No.", "No.");
+         IF CareerDevelopment.FINDLAST THEN;*/
 
     end;
 
