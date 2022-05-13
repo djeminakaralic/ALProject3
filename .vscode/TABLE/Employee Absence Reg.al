@@ -26,7 +26,7 @@ table 50104 "Employee Absence Reg"
             begin
 
                 IF Rec."Approved" = TRUE THEN BEGIN
-                    Days := 5;
+                    Days := 3;
                     Employee.Get("Employee No.");
                     Quantity := Employee."Hours In Day" * Days;
                 end;

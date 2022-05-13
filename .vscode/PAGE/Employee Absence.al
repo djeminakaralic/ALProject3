@@ -176,7 +176,7 @@ page 51129 "Employee Absence"
                     BEGIN
                         IF Rec."Approved" = FALSE THEN BEGIN
                             REPEAT
-                                Rec."Approved" := TRUE;
+                                Validate(Rec."Approved", TRUE);
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
