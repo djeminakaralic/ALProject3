@@ -25,7 +25,7 @@ table 50104 "Employee Absence Reg"
             trigger OnValidate()
             begin
 
-                IF Rec."Approved" = TRUE THEN BEGIN
+                /*IF Rec."Approved" = TRUE THEN BEGIN
                     Days := 3;
                     Employee.Get("Employee No.");
                     Quantity := Employee."Hours In Day" * Days;
@@ -43,7 +43,7 @@ table 50104 "Employee Absence Reg"
                     //EmployeeAbsence."Real Date":=
                     EmployeeAbsence.Insert();
                     //UNTIL
-                END;
+                END;*/
 
             end;
         }
@@ -130,23 +130,25 @@ table 50104 "Employee Absence Reg"
                 Days := 0;
                 CustomizedCalendarChange.Reset();
                 //CustomizedCalendarChange.SetFilter(Nonworking, '%1', true);
-                //CustomizedCalendarChange.SetFilter(date, '%1..%2', "From Date", "To Date");    
-                CustomizedCalendarChange.SETFILTER(Date, '%1', "From Date");
-                /*if CustomizedCalendarChange.FindFirst() then
+                CustomizedCalendarChange.SetFilter(Date, '%1..%2', "From Date", "To Date");
+
+
+                if CustomizedCalendarChange.FindFirst() then
                     repeat
-                        Days := Days + 1;
-                        Message(Format(CustomizedCalendarChange.Day));
-                    //until CustomizedCalendarChange.Next() = 0;
-                    until Days = 5;
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;*/
-                if CustomizedCalendarChange.FindSet() then
-                    repeat
+                        Days := CustomizedCalendarChange.Count;
                         Message(Format(CustomizedCalendarChange.Day));
                     until CustomizedCalendarChange.Next() = 0;
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * Days;
 
 
-                //treba otici u table 7601 "Base Calendar Change" - stavljena u var gdje je boolean field Nonworking
+                /*if CustomizedCalendarChange.FindSet() then
+                    repeat
+                        Message(Format(CustomizedCalendarChange.Date));
+                    until CustomizedCalendarChange.Next() = 0;*/
+
+
+                //treba otici u table CustomizedCalendarChange - stavljena u var gdje je boolean field Nonworking
 
                 /*BaseCalendarChange.Reset();
                 if BaseCalendarChange.FindSet() then
