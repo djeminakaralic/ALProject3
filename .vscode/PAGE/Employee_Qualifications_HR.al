@@ -1,50 +1,121 @@
-pageextension 50119 Employee_Qualifications_HR extends "Employee Qualifications"
+page 50213 Employee_Qualifications_HR
 {
 
-
-
+    PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
+    SourceTable = "Employee Qualification";
 
     layout
     {
+        area(Content)
+        {
 
-        modify("Qualification Code")
-        {
-            visible = visibleQualification;
-        }
-        modify(Description)
-        {
-            visible = visibleQualification;
-        }
+            field("Employee No."; "Employee No.")
+            {
+                ApplicationArea = All;
 
-        addafter("Course Grade")
-        {
+            }
+            field("Employee Name"; "Employee Name")
+            {
+                ApplicationArea = all;
+            }
             field("Computer Knowledge Code"; "Computer Knowledge Code")
             {
+                ApplicationArea = all;
                 Visible = visibleComputer;
+
             }
             field("Computer Knowledge Description"; "Computer Knowledge Description")
             {
-                visible = visibleComputer;
+                ApplicationArea = all;
+                Visible = visibleComputer;
             }
             field("Language Code"; "Language Code")
             {
-                Visible = visibleLanguage;
-            }
-            field("Language Level"; "Language Level")
-            {
+                ApplicationArea = all;
                 Visible = visibleLanguage;
             }
             field("Language Name"; "Language Name")
             {
+                ApplicationArea = all;
                 Visible = visibleLanguage;
             }
-        }
+            field("Language Level"; "Language Level")
+            {
+                ApplicationArea = all;
+                Visible = visibleLanguage;
+            }
+            field("Qualification Code"; "Qualification Code")
+            {
+                ApplicationArea = all;
+                Visible = visibleQualification;
+            }
+            field(Description; Description)
+            {
+                ApplicationArea = all;
+                Visible = visibleQualification;
+            }
+            field("Institution/Company"; "Institution/Company")
+            {
+                ApplicationArea = all;
+            }
+            field("Decision No."; "Decision No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Exam Passed"; "Exam Passed")
+            {
+                ApplicationArea = all;
+            }
+            field("From Date"; "From Date")
+            {
+                ApplicationArea = all;
+            }
+            field("To Date"; "To Date")
+            {
+                ApplicationArea = all;
+            }
+            field(Comment; Comment)
+            {
+                ApplicationArea = all;
+            }
+            field("Sector Description"; "Sector Description")
+            {
+                ApplicationArea = all;
+            }
+            field("Department Category"; "Department Category")
+            {
+                ApplicationArea = all;
+            }
+            field("Group Description"; "Group Description")
+            {
+                ApplicationArea = all;
+            }
+            field("Team Description"; "Team Description")
+            {
+                ApplicationArea = all;
+            }
 
+
+        }
     }
 
+    actions
+    {
+        area(Processing)
+        {
+            action(ActionName)
+            {
+                ApplicationArea = All;
 
+                trigger OnAction()
+                begin
 
-
+                end;
+            }
+        }
+    }
 
 
     trigger OnOpenPage()

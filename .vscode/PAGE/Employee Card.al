@@ -1428,7 +1428,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            group("Additional Work Activity2")
+            /*group("Additional Work Activity2")
             {
                 Caption = 'Additional Work Activity';
                 Editable = show;
@@ -1464,7 +1464,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         EmployeeActivitiesPage.RUN;
                         CurrPage.UPDATE;
                     end;
-                }*/
+                }
                 field("Additional Work Activity Res."; "Additional Work Activity Res.")
                 {
 
@@ -1492,7 +1492,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                /*field("Date From";
+                field("Date From";
                 EmployeeActivities1."Date From")
                 {
                     ApplicationArea = all;
@@ -1529,614 +1529,614 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     end;
                 }
             }*/
-                group("Employment Abroad")
-                {
+            group("Employment Abroad")
+            {
 
+                Caption = 'Employment Abroad';
+                Editable = show;
+                Visible = show;
+                field("Employment AbroadECL";
+                EmployeeContractLedger."Employment Abroad")
+                {
                     Caption = 'Employment Abroad';
-                    Editable = show;
-                    Visible = show;
-                    field("Employment AbroadECL";
-                    EmployeeContractLedger."Employment Abroad")
-                    {
-                        Caption = 'Employment Abroad';
-                        Editable = false;
-                        Importance = Promoted;
+                    Editable = false;
+                    Importance = Promoted;
 
-                        trigger OnDrillDown()
-                        begin
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(StartDate; StartDate)
-                    {
-                        Caption = 'Date From';
-                        Editable = false;
-                        ApplicationArea = all;
-                        Enabled = true;
-                        Importance = Promoted;
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(StartDate; StartDate)
+                {
+                    Caption = 'Date From';
+                    Editable = false;
+                    ApplicationArea = all;
+                    Enabled = true;
+                    Importance = Promoted;
 
-                        trigger OnDrillDown()
-                        begin
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(EndDate; EndDate)
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(EndDate; EndDate)
+                {
+                    Caption = 'Date To';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field("Employment Abroad City";
+                EmployeeContractLedger."Employment Abroad City")
+                {
+                    Caption = 'Employment Abroad City';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field("Empl. Abroad Country/Region";
+                EmployeeContractLedger."Empl.Abroad Country/Region")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employment Abroad Country/Region';
+                    Editable = false;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field("Employment Abroad Remark"; "Employment Abroad Remark")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employment Abroad Remark';
+                    MultiLine = true;
+                }
+            }
+
+
+            group(PLATE)
+            {
+
+                //ĐK
+                group("Bank data")
+
+                {
+                    Caption = 'Bank Data';
+                    field("Work Experience Percentage"; Rec."Work Experience Percentage")
                     {
-                        Caption = 'Date To';
-                        Editable = false;
-                        Importance = Promoted;
+                        ApplicationArea = all;
+                    }
+                    field("Send PayList"; "Send PayList")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Contact Center"; "Contact Center")
+                    {
+                        ApplicationArea = all;
+                        Visible = false;
+                    }
+                    field("Bank No."; Rec."Bank No.")
+                    {
+                        Caption = 'Bank No.';
+                        ApplicationArea = all;
+                    }
+                    field("Bank Account Code"; "Bank Account Code")
+                    {
                         ApplicationArea = all;
 
-                        trigger OnDrillDown()
-                        begin
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
                     }
-                    field("Employment Abroad City";
-                    EmployeeContractLedger."Employment Abroad City")
-                    {
-                        Caption = 'Employment Abroad City';
-                        Editable = false;
-                        Importance = Promoted;
-                        ApplicationArea = all;
-                        trigger OnDrillDown()
-                        begin
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field("Empl. Abroad Country/Region";
-                    EmployeeContractLedger."Empl.Abroad Country/Region")
-                    {
-                        ApplicationArea = all;
-                        Caption = 'Employment Abroad Country/Region';
-                        Editable = false;
 
-                        trigger OnDrillDown()
-                        begin
-                            EmployeeContractLedger.RESET;
-                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Employment Abroad", '%1', TRUE);
-                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                            EmployeeContractLedgerPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
+                    field("Bank Account No.2"; Rec."Bank Account No.")
+
+                    {
+                        Caption = 'Bank Account No.';
+                        ApplicationArea = all;
+                        //ĐK  TableRelation = "Wage/Reduction Bank Accounts"."No.";
+                        Visible = false;
                     }
-                    field("Employment Abroad Remark"; "Employment Abroad Remark")
+                    field("Refer To Number"; Rec."Refer To Number")
                     {
                         ApplicationArea = all;
-                        Caption = 'Employment Abroad Remark';
-                        MultiLine = true;
+                        Visible = false;
+                    }
+
+
+                }
+                group(General2)
+                {
+                    Caption = 'General';
+                    //The GridLayout property is only supported on controls of type Grid
+
+                    field("Hours In Day"; Rec."Hours In Day")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Transport Allowance"; "Transport Allowance")
+                    {
+                        ApplicationArea = all;
+
+                    }
+                    field("Transport Amount Planned"; "Transport Amount Planned")
+                    {
+                        ApplicationArea = all;
+                    }
+
+                    field("Transport Amount"; Rec."Transport Amount")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Municipality Code for salary"; "Municipality Code for salary")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Org Entity Code"; "Org Entity Code")
+                    {
+                        ApplicationArea = all;
+                    }
+
+                    field("For Calculation"; Rec."For Calculation")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Calculate Wage Addition"; "Calculate Wage Addition")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(Meal; Rec.Meal)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Wage Type"; "Wage Type")
+                    {
+                        ApplicationArea = all;
+                    }
+
+                    field("Operator No."; "Operator No.")
+                    {
+                        ApplicationArea = all;
+                    }
+
+
+                }
+                group("PORESKA OLAKŠICA")
+                {
+                    field("Tax Deduction"; Rec."Tax Deduction")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Benefit Coefficient"; "Benefit Coefficient")
+                    {
+                        ApplicationArea = all;
+                        DrillDown = true;
+                        trigger OnDrillDown()
+                        begin
+                            WageCalc.RESET;
+                            WageCalc.SETFILTER("Employee No.", "No.");
+                            WageCalcSub.SETTABLEVIEW(WageCalc);
+                            WageCalcSub.RUN;
+                            CurrPage.UPDATE;
+                        end;
+
+
+                    }
+
+                    field("Tax Deduction Amount"; Rec."Tax Deduction Amount")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                    }
+                    field("Iznos poreske kartice"; "Iznos poreske kartice")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("Iznos ličnog odbitka"; "Iznos ličnog odbitka")
+                    {
+                        ApplicationArea = all;
+                    }
+                }
+                group(Posting)
+                {
+                    Caption = 'Posting';
+
+
+                    field("Contribution Category Code"; Rec."Contribution Category Code")
+                    {
+                        ApplicationArea = all;
+
+                    }
+                    field("Wage Posting Group"; Rec."Wage Posting Group")
+                    {
+                        ApplicationArea = all;
+
                     }
                 }
 
 
-                group(PLATE)
+
+                //ĐK
+
+            }
+            group(Union)
+            {
+                Caption = 'Union';
+                Visible = show;
+                field("Union Member"; "Union Member")
                 {
+                    ApplicationArea = all;
 
-                    //ĐK
-                    group("Bank data")
-
-                    {
-                        Caption = 'Bank Data';
-                        field("Work Experience Percentage"; Rec."Work Experience Percentage")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Send PayList"; "Send PayList")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Contact Center"; "Contact Center")
-                        {
-                            ApplicationArea = all;
-                            Visible = false;
-                        }
-                        field("Bank No."; Rec."Bank No.")
-                        {
-                            Caption = 'Bank No.';
-                            ApplicationArea = all;
-                        }
-                        field("Bank Account Code"; "Bank Account Code")
-                        {
-                            ApplicationArea = all;
-
-                        }
-
-                        field("Bank Account No.2"; Rec."Bank Account No.")
-
-                        {
-                            Caption = 'Bank Account No.';
-                            ApplicationArea = all;
-                            //ĐK  TableRelation = "Wage/Reduction Bank Accounts"."No.";
-                            Visible = false;
-                        }
-                        field("Refer To Number"; Rec."Refer To Number")
-                        {
-                            ApplicationArea = all;
-                            Visible = false;
-                        }
-
-
-                    }
-                    group(General2)
-                    {
-                        Caption = 'General';
-                        //The GridLayout property is only supported on controls of type Grid
-
-                        field("Hours In Day"; Rec."Hours In Day")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Transport Allowance"; "Transport Allowance")
-                        {
-                            ApplicationArea = all;
-
-                        }
-                        field("Transport Amount Planned"; "Transport Amount Planned")
-                        {
-                            ApplicationArea = all;
-                        }
-
-                        field("Transport Amount"; Rec."Transport Amount")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Municipality Code for salary"; "Municipality Code for salary")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Org Entity Code"; "Org Entity Code")
-                        {
-                            ApplicationArea = all;
-                        }
-
-                        field("For Calculation"; Rec."For Calculation")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Calculate Wage Addition"; "Calculate Wage Addition")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field(Meal; Rec.Meal)
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Wage Type"; "Wage Type")
-                        {
-                            ApplicationArea = all;
-                        }
-
-                        field("Operator No."; "Operator No.")
-                        {
-                            ApplicationArea = all;
-                        }
-
-
-                    }
-                    group("PORESKA OLAKŠICA")
-                    {
-                        field("Tax Deduction"; Rec."Tax Deduction")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Benefit Coefficient"; "Benefit Coefficient")
-                        {
-                            ApplicationArea = all;
-                            DrillDown = true;
-                            trigger OnDrillDown()
-                            begin
-                                WageCalc.RESET;
-                                WageCalc.SETFILTER("Employee No.", "No.");
-                                WageCalcSub.SETTABLEVIEW(WageCalc);
-                                WageCalcSub.RUN;
-                                CurrPage.UPDATE;
-                            end;
-
-
-                        }
-
-                        field("Tax Deduction Amount"; Rec."Tax Deduction Amount")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                        }
-                        field("Iznos poreske kartice"; "Iznos poreske kartice")
-                        {
-                            ApplicationArea = all;
-                        }
-                        field("Iznos ličnog odbitka"; "Iznos ličnog odbitka")
-                        {
-                            ApplicationArea = all;
-                        }
-                    }
-                    group(Posting)
-                    {
-                        Caption = 'Posting';
-
-
-                        field("Contribution Category Code"; Rec."Contribution Category Code")
-                        {
-                            ApplicationArea = all;
-
-                        }
-                        field("Wage Posting Group"; Rec."Wage Posting Group")
-                        {
-                            ApplicationArea = all;
-
-                        }
-                    }
-
-
-
-                    //ĐK
-
+                    trigger OnDrillDown()
+                    begin
+                        UnionEmployees.RESET;
+                        UnionEmployees.SETFILTER("Employee No.", "No.");
+                        UnionEmployees.SETFILTER(Active, '%1', TRUE);
+                        UnionEmployeesPage.SETTABLEVIEW(UnionEmployees);
+                        UnionEmployeesPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
                 }
-                group(Union)
+                field(Unions; Unions)
                 {
-                    Caption = 'Union';
-                    Visible = show;
-                    field("Union Member"; "Union Member")
-                    {
-                        ApplicationArea = all;
-
-                        trigger OnDrillDown()
-                        begin
-                            UnionEmployees.RESET;
-                            UnionEmployees.SETFILTER("Employee No.", "No.");
-                            UnionEmployees.SETFILTER(Active, '%1', TRUE);
-                            UnionEmployeesPage.SETTABLEVIEW(UnionEmployees);
-                            UnionEmployeesPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
-                    field(Unions; Unions)
-                    {
-                        Editable = false;
-                        ApplicationArea = all;
-                    }
+                    Editable = false;
+                    ApplicationArea = all;
                 }
-                group("Additional Payments")
+            }
+            group("Additional Payments")
+            {
+                Caption = 'Additional Payments';
+                Visible = show2;
+                group("Incentive Current Month3")
                 {
-                    Caption = 'Additional Payments';
-                    Visible = show2;
-                    group("Incentive Current Month3")
+                    Caption = 'Incentive Current Month';
+                    field("Incentive Current Month"; "Incentive Current Month")
                     {
                         Caption = 'Incentive Current Month';
-                        field("Incentive Current Month"; "Incentive Current Month")
-                        {
-                            Caption = 'Incentive Current Month';
-                            Editable = false;
-                            ApplicationArea = all;
+                        Editable = false;
+                        ApplicationArea = all;
 
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
 
-                                WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Incentive Current Month Brutto"; "Incentive Current Month Brutto")
-                        {
-                            Caption = 'Incentive Current Month';
-                            Editable = false;
-                            ApplicationArea = all;
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Month Of Current Incentive"; "Month Of Current Incentive")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Month od Current Incentive';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Year Of Current Incentive"; "Year Of Current Incentive")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Year od Current Incentive';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
+                            WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
                     }
-                    group("Incentive Current Month2")
+                    field("Incentive Current Month Brutto"; "Incentive Current Month Brutto")
                     {
                         Caption = 'Incentive Current Month';
-                        Visible = show2;
+                        Editable = false;
+                        ApplicationArea = all;
 
-                        field("Incentive Cumulative"; "Incentive Cumulative")
-                        {
-                            Caption = 'Incentive Cumulative';
-                            Editable = false;
-                            ApplicationArea = all;
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
 
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Incentive Cumulative Brutto"; "Incentive Cumulative Brutto")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Incentive cumulativ Brutto';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Year Of Cumulative Incentive"; "Year Of Cumulative Incentive")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Year incentive cumulativ Brutto';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Number of Paid ncentives"; "Number of Paid ncentives")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Number of Paid incentives';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
+                            WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
                     }
-                }
-                group("Additional Payments Bonus")
-                {
-                    Caption = 'Additional Payments';
-                    group(Regres3)
+                    field("Month Of Current Incentive"; "Month Of Current Incentive")
                     {
-                        Caption = 'Regres';
-                        field("Bonus Current Month"; "Bonus Current Month")
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Regres Cumulative';
-                            Editable = false;
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Month od Current Incentive';
 
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER(Regres, '%1', TRUE);
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
 
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Bonus Cumulative Brutto"; "Bonus Cumulative Brutto")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Bonus Cumulative brutto';
+                            WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Year Of Current Incentive"; "Year Of Current Incentive")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Year od Current Incentive';
 
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER(Regres, '%1', TRUE);
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
 
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Bonus Payment Date"; "Bonus Payment Date")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Bonus Payment Date';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER(Regres, '%1', TRUE);
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
+                            WA.SETRANGE("Closing Date", ThisMonthFirst, ThisMonthLast);
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
                     }
                 }
-                group("Additional Payments Regres")
+                group("Incentive Current Month2")
                 {
-                    Caption = 'Additional Payments';
+                    Caption = 'Incentive Current Month';
                     Visible = show2;
-                    group(Regres2)
+
+                    field("Incentive Cumulative"; "Incentive Cumulative")
                     {
-                        Caption = 'Regres';
-                        Visible = show2;
-                        field("Regres Cumulative"; "Regres Cumulative")
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Regres Cumulative';
-                            Editable = false;
+                        Caption = 'Incentive Cumulative';
+                        Editable = false;
+                        ApplicationArea = all;
 
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER(Regres, '%1', TRUE);
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
 
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Regres Cumulative Brutto"; "Regres Cumulative Brutto")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Regres Cumulative brutto';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER(Regres, '%1', TRUE);
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field("Regres Payment Date"; "Regres Payment Date")
-                        {
-                            Editable = false;
-                            ApplicationArea = all;
-                            Caption = 'Regres Payment date';
-
-                            trigger OnDrillDown()
-                            begin
-                                WA.RESET;
-                                WA.SETFILTER("Employee No.", "No.");
-                                WA.SETFILTER(Regres, '%1', TRUE);
-
-                                WAPage.SETTABLEVIEW(WA);
-                                WAPage.RUN;
-                                CurrPage.UPDATE;
-                            end;
-                        }
-                        field(Regres; Regres)
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Regres yes';
-                        }
-                        field("Regres Date"; "Regres Date")
-                        {
-
-                            ApplicationArea = all;
-                            Caption = 'Regres Date';
-                            trigger OnValidate()
-                            begin
-                                CurrPage.UPDATE;
-                            end;
-                        }
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
                     }
+                    field("Incentive Cumulative Brutto"; "Incentive Cumulative Brutto")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Incentive cumulativ Brutto';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Year Of Cumulative Incentive"; "Year Of Cumulative Incentive")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Year incentive cumulativ Brutto';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Number of Paid ncentives"; "Number of Paid ncentives")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Number of Paid incentives';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER("Wage Addition Type", '%1', 'INC*');
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                }
+            }
+            group("Additional Payments Bonus")
+            {
+                Caption = 'Additional Payments';
+                group(Regres3)
+                {
+                    Caption = 'Regres';
+                    field("Bonus Current Month"; "Bonus Current Month")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Regres Cumulative';
+                        Editable = false;
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER(Regres, '%1', TRUE);
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Bonus Cumulative Brutto"; "Bonus Cumulative Brutto")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Bonus Cumulative brutto';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER(Regres, '%1', TRUE);
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Bonus Payment Date"; "Bonus Payment Date")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Bonus Payment Date';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER(Regres, '%1', TRUE);
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                }
+            }
+            group("Additional Payments Regres")
+            {
+                Caption = 'Additional Payments';
+                Visible = show2;
+                group(Regres2)
+                {
+                    Caption = 'Regres';
+                    Visible = show2;
+                    field("Regres Cumulative"; "Regres Cumulative")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Regres Cumulative';
+                        Editable = false;
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER(Regres, '%1', TRUE);
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Regres Cumulative Brutto"; "Regres Cumulative Brutto")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Regres Cumulative brutto';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER(Regres, '%1', TRUE);
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field("Regres Payment Date"; "Regres Payment Date")
+                    {
+                        Editable = false;
+                        ApplicationArea = all;
+                        Caption = 'Regres Payment date';
+
+                        trigger OnDrillDown()
+                        begin
+                            WA.RESET;
+                            WA.SETFILTER("Employee No.", "No.");
+                            WA.SETFILTER(Regres, '%1', TRUE);
+
+                            WAPage.SETTABLEVIEW(WA);
+                            WAPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field(Regres; Regres)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Regres yes';
+                    }
+                    field("Regres Date"; "Regres Date")
+                    {
+
+                        ApplicationArea = all;
+                        Caption = 'Regres Date';
+                        trigger OnValidate()
+                        begin
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                }
+            }
+
+        }
+
+
+        /*addafter("Brought Days of Experience")
+        {
+            Group("Total experience Company3")
+
+            {
+                Caption = 'Year Total experience';
+
+                field("Years of Experience"; "Years of Experience")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
+                }
+                field("Months of Experience"; "Months of Experience")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
+                }
+                field("Days of Experience"; "Days of Experience")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
                 }
 
             }
 
+        }*/
 
-            /*addafter("Brought Days of Experience")
-            {
-                Group("Total experience Company3")
-
-                {
-                    Caption = 'Year Total experience';
-
-                    field("Years of Experience"; "Years of Experience")
-                    {
-                        Editable = false;
-                        ApplicationArea = all;
-                    }
-                    field("Months of Experience"; "Months of Experience")
-                    {
-                        Editable = false;
-                        ApplicationArea = all;
-                    }
-                    field("Days of Experience"; "Days of Experience")
-                    {
-                        Editable = false;
-                        ApplicationArea = all;
-                    }
-
-                }
-
-            }*/
-        }
 
 
 
@@ -2788,7 +2788,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 {
                     ApplicationArea = all;
                 }
-                field("Job Violations"; "Job Violations")
+                /*field("Job Violations"; "Job Violations")
                 {
                     Editable = false;
                     ApplicationArea = all;
@@ -2802,7 +2802,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         WDVPAge.RUN;
                         CurrPage.UPDATE;
                     end;
-                }
+                }*/
                 field("Disciplinary Measured"; "Disciplinary Measured")
                 {
                     ApplicationArea = all;
@@ -3793,7 +3793,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             END;
         END;
 
-        IF "No." <> '' THEN BEGIN
+        /*IF "No." <> '' THEN BEGIN
             EmployeeActivities1.RESET;
             EmployeeActivities1.SETFILTER("Employee No.", "No.");
             EmployeeActivities1.SETFILTER(Active, '%1', TRUE);
@@ -3804,7 +3804,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 EmployeeActivities1."Date From" := 0D;
                 EmployeeActivities1."Date To" := 0D;
             END;
-        END;
+        END;*/
 
         IF "No." <> '' THEN BEGIN
             UnionEmployees1.RESET;
@@ -3908,7 +3908,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     TerminationDate := EmployeeContractLedger."Ending Date"
                 ELSE
                     TerminationDate := 0D;
-                Position.RESET;
+                /*Position.RESET;
                 Position.SETFILTER("Employee No.", '%1', "No.");
                 IF Position.FINDLAST THEN BEGIN
                     Position.CALCFIELDS("SAP 1");
@@ -3922,7 +3922,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     SegmentationGroup.SETFILTER("Ending Date", '%1', 0D);
                     IF SegmentationGroup.FIND('+') THEN
                         ManagementLevel := FORMAT(SegmentationGroup."Management Level");
-                END;
+                END;*/
 
                 ContractType := '';
                 EC.SETFILTER(Code, '%1', EmployeeContractLedger."Contract Type");
@@ -4058,7 +4058,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             END;
         END;
 
-        IF "No." <> '' THEN BEGIN
+        /*IF "No." <> '' THEN BEGIN
             EmployeeActivities1.RESET;
             EmployeeActivities1.SETFILTER("Employee No.", "No.");
             EmployeeActivities1.SETFILTER(Active, '%1', TRUE);
@@ -4068,7 +4068,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 EmployeeActivities1."Date From" := 0D;
                 EmployeeActivities1."Date To" := 0D;
             END;
-        END;
+        END;*/
         EmploymentDate := 0D;
         wb.RESET;
         wb.SETFILTER("Employee No.", "No.");
@@ -4166,7 +4166,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         DayOfWeekInput: DotNet FirstDayOfWeek;
         WeekOfYearInput: DotNet FirstWeekOfYear;
         ThisMonthFirst: Date;
-        //WAPage: page "Wage Addition Calculated";
+        WAPage: page "Wage Addition Calculated";
         ThisYearFirst: Date;
         AgeT: Decimal;
         ThisYear: Integer;
