@@ -25,10 +25,14 @@ table 50104 "Employee Absence Reg"
             trigger OnValidate()
             begin
 
-                /*IF Rec."Approved" = TRUE THEN BEGIN
+                IF Rec."Approved" = TRUE THEN BEGIN
+                    Days := 5;
+                    Employee.Get("Employee No.");
+                    Quantity := Employee."Hours In Day" * Days;
+                end;
 
-                
-                REPEAT
+
+                /*REPEAT
                 EmployeeAbsence.INIT;
                 EmployeeAbsence."Employee No." := Rec."Employee No.";
                 EmployeeAbsence."First Name":=Rec."First Name";
@@ -128,13 +132,19 @@ table 50104 "Employee Absence Reg"
                 //CustomizedCalendarChange.SetFilter(Nonworking, '%1', true);
                 //CustomizedCalendarChange.SetFilter(date, '%1..%2', "From Date", "To Date");    
                 CustomizedCalendarChange.SETFILTER(Date, '%1', "From Date");
-                if CustomizedCalendarChange.FindFirst() then
-                    //repeat
+                /*if CustomizedCalendarChange.FindFirst() then
+                    repeat
                         Days := Days + 1;
-                Message(Format(CustomizedCalendarChange.Day));
-                //until CustomizedCalendarChange.Next() = 0;
+                        Message(Format(CustomizedCalendarChange.Day));
+                    //until CustomizedCalendarChange.Next() = 0;
+                    until Days = 5;
                 Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
+                Quantity := Employee."Hours In Day" * Days;*/
+                if CustomizedCalendarChange.FindSet() then
+                    repeat
+                        Message(Format(CustomizedCalendarChange.Day));
+                    until CustomizedCalendarChange.Next() = 0;
+
 
                 //treba otici u table 7601 "Base Calendar Change" - stavljena u var gdje je boolean field Nonworking
 
@@ -142,7 +152,7 @@ table 50104 "Employee Absence Reg"
                 if BaseCalendarChange.FindSet() then
                     repeat
 
-                        Message(Format(BaseCalendarChange.Day));
+                        
                     until BaseCalendarChange.Next() = 0;*/
 
             end;
