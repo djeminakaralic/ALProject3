@@ -138,8 +138,11 @@ table 50104 "Employee Absence Reg"
                     until CustomizedCalendarChange.Next() = 0;*/
 
 
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', "From Date", "To Date");
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
+                /*CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', "From Date", "To Date");
+                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);*/
+
+                BaseCalendarChange.SetFilter(BaseCalendarChange.Date, '%1..%2', "From Date", "To Date");
+                //BaseCalendarChange.SetFilter(BaseCalendarChange.Nonworking, '%1', false);
 
                 //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
 
@@ -147,8 +150,8 @@ table 50104 "Employee Absence Reg"
                 CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
 
 
-                if CustomizedCalendarChange.FindFirst() then begin
-                    Days := CustomizedCalendarChange.Count;
+                if BaseCalendarChange.FindFirst() then begin
+                    Days := BaseCalendarChange.Count;
                 end;
 
                 /*BaseCalendarChange.Reset();
