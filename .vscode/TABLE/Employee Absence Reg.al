@@ -134,7 +134,7 @@ table 50104 "Employee Absence Reg"
 
                 //CalendarChange.SetFilter(CalendarChange.Date, '%1..%2', Format(EmployeeAbsenceReg."From Date"), Format(EmployeeAbsenceReg."To Date"));
                 CalendarChange.SetFilter(CalendarChange.Date, '%1..%2', EmployeeAbsenceReg."From Date", EmployeeAbsenceReg."To Date");
-                //CalendarChange.SetFilter(CalendarChange.Nonworking, '%1', false);
+                CalendarChange.SetFilter(CalendarChange.Nonworking, '%1', false);
 
                 //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
 
