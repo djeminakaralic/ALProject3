@@ -129,9 +129,9 @@ table 50104 "Employee Absence Reg"
 
                 Days := 0;
                 CustomizedCalendarChange.Reset();
-                //CustomizedCalendarChange.SetFilter(Nonworking, '%1', true);
-                CustomizedCalendarChange.SetFilter(Date, '%1..%2', "From Date", "To Date");
 
+                CustomizedCalendarChange.SetFilter(Date, '%1..%2', "From Date", "To Date");
+                CustomizedCalendarChange.SetFilter(Nonworking, '%1', true);
 
                 if CustomizedCalendarChange.FindFirst() then
                     repeat
