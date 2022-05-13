@@ -131,11 +131,10 @@ table 50104 "Employee Absence Reg"
                 CustomizedCalendarChange.Reset();
                 CustomizedCalendarChange.SetFilter(Date, '%1..%2', "From Date", "To Date");
                 CustomizedCalendarChange.SetFilter(Nonworking, '%1', false);
-                if CustomizedCalendarChange.FindFirst() then begin
-                    repeat
+                if CustomizedCalendarChange.FindFirst() then 
+                    
                         Days := CustomizedCalendarChange.Count;
-                        Message(Format(CustomizedCalendarChange.Day));
-                    until CustomizedCalendarChange.Next() = 0;
+                        
                 end;
                 Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
