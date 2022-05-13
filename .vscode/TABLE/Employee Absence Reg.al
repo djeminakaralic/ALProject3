@@ -109,6 +109,9 @@ table 50104 "Employee Absence Reg"
                 END;
 
                 CompanyInformation.Get();
+                //CalendarManagement.SetSource(compa);
+
+                
 
 
 
@@ -193,8 +196,9 @@ table 50104 "Employee Absence Reg"
         CalendarManagement: Codeunit "Calendar Management";
         Days: Integer;
         LoopDate: Date;
-        CustomizedCalendarChange: Record "Customized Calendar Change";
         CompanyInformation:Record "Company Information";
+        
+        CustomizedCalendarChange: Record "Customized Calendar Change";
         
         CheckDate: Date;
         CalendarChange: Record "Base Calendar Change";
