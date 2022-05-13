@@ -110,8 +110,21 @@ table 50104 "Employee Absence Reg"
 
                 CompanyInformation.Get();
                 //CalendarManagement.SetSource(compa);
+                CalendarManagement.SetSource(CompanyInformation, CustomizedCalendarChange);
+                Days := ("To Date" - "From Date") + 1;
+                NonWorkingDays := 0;
+                CheckDate := "From Date";
+                repeat
+                    if CalendarManagement.IsNonworkingDay(CheckDate, CustomizedCalendarChange) then
+                        NonWorkingDays += 1;
+                    CheckDate := CalcDate('1D', CheckDate);
+                until (CheckDate > "To Date");
+                WorkingDays := Days - NonWorkingDays;
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * Days;
 
-                
+
+
 
 
 
@@ -195,11 +208,13 @@ table 50104 "Employee Absence Reg"
     var
         CalendarManagement: Codeunit "Calendar Management";
         Days: Integer;
+        WorkingDays: Integer;
+        NonWorkingDays: Integer;
         LoopDate: Date;
-        CompanyInformation:Record "Company Information";
-        
+        CompanyInformation: Record "Company Information";
+
         CustomizedCalendarChange: Record "Customized Calendar Change";
-        
+
         CheckDate: Date;
         CalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
