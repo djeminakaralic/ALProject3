@@ -128,30 +128,42 @@ table 50104 "Employee Absence Reg"
                   end;*/
 
                 Days := 1;
-                CustomizedCalendarChange.Reset();
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', "From Date", "To Date");
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
-                if CustomizedCalendarChange.FindFirst() then begin
-                    Days := CustomizedCalendarChange.Count;
-                end;
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
 
+                /*CustomizedCalendarChange.Reset();
 
-                /*if CustomizedCalendarChange.FindSet() then
+                if CustomizedCalendarChange.FindSet() then
                     repeat
+
                         Message(Format(CustomizedCalendarChange.Date));
                     until CustomizedCalendarChange.Next() = 0;*/
 
 
-                //treba otici u table CustomizedCalendarChange - stavljena u var gdje je boolean field Nonworking
+                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', "From Date", "To Date");
+                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
+
+                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
+
+                /*CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '>=%1', "From Date");
+                CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
+
+
+                if CustomizedCalendarChange.FindFirst() then begin
+                    Days := CustomizedCalendarChange.Count;
+                end;
 
                 /*BaseCalendarChange.Reset();
                 if BaseCalendarChange.FindSet() then
                     repeat
 
-                        
+                        Message(Format(CustomizedCalendarChange.Day));
                     until BaseCalendarChange.Next() = 0;*/
+
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * Days;
+
+                //treba otici u table CustomizedCalendarChange - stavljena u var gdje je boolean field Nonworking
+
+
 
             end;
         }
