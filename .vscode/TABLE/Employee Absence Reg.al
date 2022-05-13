@@ -29,21 +29,21 @@ table 50104 "Employee Absence Reg"
                     Days := 3;
                     Employee.Get("Employee No.");
                     Quantity := Employee."Hours In Day" * Days;
-                end;
 
 
-                /*REPEAT
-                EmployeeAbsence.INIT;
-                EmployeeAbsence."Employee No." := Rec."Employee No.";
-                EmployeeAbsence."First Name":=Rec."First Name";
-                EmployeeAbsence."Last Name":=Rec."Last Name";
-                EmployeeAbsence."Cause of Absence Code":=Rec."Cause of Absence Code";
-                EmployeeAbsence.Description:=Rec.Description;
-                EmployeeAbsence."Real Date":=
-                EmployeeAbsence.Insert();
-                UNTIL
 
-                END;*/
+                    //REPEAT
+                    EmployeeAbsence.INIT;
+                    Validate("Employee No.", Rec."Employee No.");
+                    Validate("First Name", Rec."First Name");
+                    Validate("Last Name", Rec."Last Name");
+                    Validate("Cause of Absence Code", Rec."Cause of Absence Code");
+                    Validate(Description, Rec.Description);
+
+                    //EmployeeAbsence."Real Date":=
+                    EmployeeAbsence.Insert();
+                    //UNTIL
+                END;
 
             end;
         }
