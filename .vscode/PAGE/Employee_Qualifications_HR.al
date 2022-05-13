@@ -1,8 +1,12 @@
 pageextension 50119 Employee_Qualifications_HR extends "Employee Qualifications"
 {
 
+
+
+
     layout
     {
+
         modify("Qualification Code")
         {
             visible = visibleQualification;
@@ -35,7 +39,9 @@ pageextension 50119 Employee_Qualifications_HR extends "Employee Qualifications"
                 Visible = visibleLanguage;
             }
         }
+
     }
+
 
 
 
@@ -83,6 +89,7 @@ pageextension 50119 Employee_Qualifications_HR extends "Employee Qualifications"
 
 
 }
+
 
 
 
