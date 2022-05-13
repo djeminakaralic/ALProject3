@@ -108,6 +108,10 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
+                CompanyInformation.Get();
+
+
+
                 //Days := "To Date" - "From Date";
                 /*  Days := 0;
                   LoopDate := "From Date";
@@ -128,22 +132,25 @@ table 50104 "Employee Absence Reg"
                       Quantity := Employee."Hours In Day" * Days;
                   end;*/
 
-                Days := 1;
+                /*Days := 1;
 
                 CalendarChange.Reset();
 
                 CalendarChange.SetFilter(CalendarChange.Date, '%1..%2', EmployeeAbsenceReg."From Date", EmployeeAbsenceReg."To Date");
                 CalendarChange.SetFilter(CalendarChange.Nonworking, '%1', false);
 
-                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
-
-                /*CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '>=%1', "From Date");
-                CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
-
-
                 if CalendarChange.FindFirst() then begin
                     Days := CalendarChange.Count;
                 end;
+
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * Days;
+                
+                
+                                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
+
+                /*CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '>=%1', "From Date");
+                CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
 
                 /*CalendarChange.Reset();
                 if CalendarChange.FindSet() then
@@ -151,9 +158,6 @@ table 50104 "Employee Absence Reg"
 
                         Message(Format(CalendarChange.Day));
                     until CalendarChange.Next() = 0;*/
-
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
 
                 //treba otici u table CalendarChange - stavljena u var gdje je boolean field Nonworking
 
@@ -190,8 +194,10 @@ table 50104 "Employee Absence Reg"
         Days: Integer;
         LoopDate: Date;
         CustomizedCalendarChange: Record "Customized Calendar Change";
+        CompanyInformation:Record "Company Information";
+        
+        CheckDate: Date;
         CalendarChange: Record "Base Calendar Change";
-
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
