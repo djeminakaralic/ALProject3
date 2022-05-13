@@ -186,6 +186,7 @@ table 50104 "Employee Absence Reg"
     }
 
     var
+        CalendarManagement: Codeunit "Calendar Management";
         Days: Integer;
         LoopDate: Date;
         CustomizedCalendarChange: Record "Customized Calendar Change";
