@@ -1291,8 +1291,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
     }
 
     var
-
-    var
         myInt: Integer;
         StartDate: Date;
         WA: Record "Wage Addition";
