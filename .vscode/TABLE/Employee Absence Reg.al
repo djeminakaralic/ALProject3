@@ -26,24 +26,37 @@ table 50104 "Employee Absence Reg"
             begin
 
                 IF Rec."Approved" = TRUE THEN BEGIN
-                    /*//test da li ovdje trebam prebaciti u novu tabelu
-                    Days := 3;
-                     Employee.Get("Employee No.");
-                     Quantity := Employee."Hours In Day" * Days;*/
+                    //test da li ovdje trebam prebaciti u novu tabelu
+                    /*Days := 3;
+                    Employee.Get("Employee No.");
+                    Quantity := Employee."Hours In Day" * Days;*/
 
-                    //REPEAT
-                    EmployeeAbsence.INIT;
-                    Validate("Employee No.", Rec."Employee No.");
-                    Validate("First Name", Rec."First Name");
-                    Validate("Last Name", Rec."Last Name");
-                    Validate("Cause of Absence Code", Rec."Cause of Absence Code");
-                    Validate(Description, Rec.Description);
+                    HelpDate := "From Date";
 
-                    EmployeeAbsence.Insert();
-                    //UNTIL
+                    //ovdje provjeriti je li datum radni dan ili neradni, razlog izostanka spremiti u Cause of absence code
+                    REPEAT
+                        EmployeeAbsence.INIT;
+                        Validate("Employee No.", Rec."Employee No.");
+                        Validate("First Name", Rec."First Name");
+                        Validate("Last Name", Rec."Last Name");
+                        Validate("Cause of Absence Code", Rec."Cause of Absence Code");
+                        Validate(Description, Rec.Description);
+
+                        EmployeeAbsence."Real Date" := HelpDate;
+                        HelpDate += 1;
+
+                        EmployeeAbsence.Insert();
+                    UNTIL HelpDate = "To Date";
                 END;
 
                 IF Rec."Approved" = false THEN BEGIN
+                    EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
+                    //EmployeeAbsence.SetFilter(, '%1..%2', Rec."From Date", Rec."To Date");
+
+                    EmployeeAbsence.SetFilter("Cause of Absence Code", "Cause of Absence Code");
+                    IF EmployeeAbsence.FindFirst() then begin
+                        EmployeeAbsence.DeleteAll();
+                    end;
 
 
                 END;
@@ -203,6 +216,7 @@ table 50104 "Employee Absence Reg"
     }
 
     var
+        HelpDate: Date;
         CalendarManagement: Codeunit "Calendar Management";
         Days: Integer;
         WorkingDays: Integer;
