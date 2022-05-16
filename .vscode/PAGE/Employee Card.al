@@ -43,175 +43,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
-        addafter("Gender")
-        {
-            group("Employement Data")
-            {
-                field(DepartmentName; EmployeeContractLedger."Department Name")
-                {
-                    Caption = 'Department Name';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
 
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(SectorDescription; EmployeeContractLedger."Sector Description")
-                {
-                    Caption = 'Sector Description';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Služba; EmployeeContractLedger."Department Cat. Description")
-                {
-                    Caption = 'Služba';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Odjel; EmployeeContractLedger."Group Description")
-                {
-                    Caption = 'Odjel';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(PositionName; EmployeeContractLedger."Position Description")
-                {
-                    Caption = 'Position';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(StatusP; EmployeeContractLedger.Status)
-                {
-                    Caption = 'Status';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Smjena; EmployeeContractLedger."Rad u smjenama")
-                {
-                    Caption = 'Rad u smjenama';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Superior1; EmployeeContractLedger.Superior1)
-                {
-                    Caption = 'Superior 1';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-
-                field(Superior2; EmployeeContractLedger.Superior2)
-                {
-                    Caption = 'Superior 2';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-            }
-        }
         addafter("Address & Contact")
         {
             group("Potential Employe")
@@ -2468,6 +2300,171 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
+                field(DepartmentName; EmployeeContractLedger."Department Name")
+                {
+                    Caption = 'Department Name';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(SectorDescription; EmployeeContractLedger."Sector Description")
+                {
+                    Caption = 'Sector Description';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Služba; EmployeeContractLedger."Department Cat. Description")
+                {
+                    Caption = 'Služba';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Odjel; EmployeeContractLedger."Group Description")
+                {
+                    Caption = 'Odjel';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(PositionName; EmployeeContractLedger."Position Description")
+                {
+                    Caption = 'Position';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(StatusP; EmployeeContractLedger.Status)
+                {
+                    Caption = 'Status';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Smjena; EmployeeContractLedger."Rad u smjenama")
+                {
+                    Caption = 'Rad u smjenama';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Superior1; EmployeeContractLedger.Superior1)
+                {
+                    Caption = 'Superior 1';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(Superior2; EmployeeContractLedger.Superior2)
+                {
+                    Caption = 'Superior 2';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
                 field(ECLManagementLevel; EmployeeContractLedger."Management Level")
                 {
                     Caption = 'Management Level';
@@ -2593,7 +2590,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(ECLGroup; EmployeeContractLedger.Group)
+                /*field(ECLGroup; EmployeeContractLedger.Group)
                 {
                     Caption = 'Group';
                     Editable = false;
@@ -2677,7 +2674,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         EmpPage.RUN;
                         CurrPage.UPDATE;
                     end;
-                }
+                }*/
                 field(ECLDepartmentCity; EmployeeContractLedger."Department City")
                 {
                     Caption = 'Department City';
