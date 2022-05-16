@@ -5058,6 +5058,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Last Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1229655105 - Field 806193894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. per Unit of Measure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Qty. per Unit of Measure - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1229655105 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5067,6 +5072,11 @@
           <source>To Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field To Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1229655105 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Unit of Measure Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2701905267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Activities</source>

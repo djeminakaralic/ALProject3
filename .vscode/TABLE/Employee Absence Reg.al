@@ -81,7 +81,7 @@ table 50104 "Employee Absence Reg"
             begin
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
-                //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
+                VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
 
                 IF "From Date" = 0D then
                     Error(Text001);
@@ -172,7 +172,8 @@ table 50104 "Employee Absence Reg"
                 end;
 
                 Employee.Reset();
-                Employee.Get("Employee No.");
+                Employee.SetFilter("No.", '%1', "Employee No.");
+                //Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
 
                 //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
@@ -205,6 +206,26 @@ table 50104 "Employee Absence Reg"
             end;
         }
 
+        field(11; "Unit of Measure Code"; Code[10])
+        {
+            Caption = 'Unit of Measure Code';
+            TableRelation = "Human Resource Unit of Measure";
+
+            trigger OnValidate()
+            begin
+                HumanResUnitOfMeasure.Get("Unit of Measure Code");
+                "Qty. per Unit of Measure" := HumanResUnitOfMeasure."Qty. per Unit of Measure";
+                Validate(Quantity);
+            end;
+        }
+
+        field(12; "Qty. per Unit of Measure"; Decimal)
+        {
+            Caption = 'Qty. per Unit of Measure';
+            DecimalPlaces = 0 : 5;
+            Editable = false;
+            InitValue = 1;
+        }
     }
 
     keys
@@ -217,6 +238,7 @@ table 50104 "Employee Absence Reg"
 
     var
         HelpDate: Date;
+        HumanResUnitOfMeasure: Record "Human Resource Unit of Measure";
         CalendarManagement: Codeunit "Calendar Management";
         Days: Integer;
         WorkingDays: Integer;
