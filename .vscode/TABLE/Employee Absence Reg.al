@@ -33,8 +33,9 @@ table 50104 "Employee Absence Reg"
 
                     /*HelpDate := "From Date";
 
-                    //ovdje provjeriti je li datum radni dan ili neradni, razlog izostanka spremiti u Cause of absence code
+                    
                     REPEAT
+                    //ovdje provjeriti je li datum radni dan ili neradni,ako je radni spremiti u tabelu + razlog izostanka spremiti u polje Cause of absence code
                         EmployeeAbsence.INIT;
                         Validate("Employee No.", Rec."Employee No.");
                         Validate("First Name", Rec."First Name");
