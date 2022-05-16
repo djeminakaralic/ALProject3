@@ -25,12 +25,11 @@ table 50104 "Employee Absence Reg"
             trigger OnValidate()
             begin
 
-                /*IF Rec."Approved" = TRUE THEN BEGIN
+                IF Rec."Approved" = TRUE THEN BEGIN
+                    /*//test da li ovdje trebam prebaciti u novu tabelu
                     Days := 3;
-                    Employee.Get("Employee No.");
-                    Quantity := Employee."Hours In Day" * Days;
-
-
+                     Employee.Get("Employee No.");
+                     Quantity := Employee."Hours In Day" * Days;*/
 
                     //REPEAT
                     EmployeeAbsence.INIT;
@@ -39,12 +38,15 @@ table 50104 "Employee Absence Reg"
                     Validate("Last Name", Rec."Last Name");
                     Validate("Cause of Absence Code", Rec."Cause of Absence Code");
                     Validate(Description, Rec.Description);
-                    
 
-                    //EmployeeAbsence."Real Date":=
                     EmployeeAbsence.Insert();
                     //UNTIL
-                END;*/
+                END;
+
+                IF Rec."Approved" = false THEN BEGIN
+
+
+                END;
 
             end;
         }
@@ -149,17 +151,16 @@ table 50104 "Employee Absence Reg"
                 CustomizedCalendarChange.Reset();
 
                 CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', Rec."From Date", Rec."To Date");
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
+                //CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
 
                 if CustomizedCalendarChange.FindFirst() then begin
-                    Message(Format(CustomizedCalendarChange."Recurring System"));
+                    Message(Format(CustomizedCalendarChange.Day));
                     Days := CustomizedCalendarChange.Count;
                 end;
 
                 Employee.Reset();
                 Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
-
 
                 //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
 
