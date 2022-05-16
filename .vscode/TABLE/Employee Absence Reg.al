@@ -27,9 +27,9 @@ table 50104 "Employee Absence Reg"
 
                 IF Rec."Approved" = TRUE THEN BEGIN
                     //test da li ovdje trebam prebaciti u novu tabelu
-                    Days := 3;
+                    /*Days := 3;
                     Employee.Get("Employee No.");
-                    Quantity := Employee."Hours In Day" * Days;
+                    Quantity := Employee."Hours In Day" * Days;*/
 
                     /*HelpDate := "From Date";
 
@@ -167,11 +167,12 @@ table 50104 "Employee Absence Reg"
 
                 CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', Rec."From Date", Rec."To Date");
                 //CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
+                Days := CustomizedCalendarChange.Count;
 
-                if CustomizedCalendarChange.FindFirst() then begin
+                /*if CustomizedCalendarChange.FindFirst() then begin //ovdje find first nije usao u petlju nakon filtera datuma
                     Message(Format(CustomizedCalendarChange.Day));
                     Days := CustomizedCalendarChange.Count;
-                end;
+                end;*/
 
                 /*Employee.Reset();
                 Employee.SetFilter("No.", '%1', "Employee No.");*/
