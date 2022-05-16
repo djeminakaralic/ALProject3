@@ -3590,13 +3590,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No" = FIELD("No.");
             }*/
             //ED 01 START
-            /*action("Employee absence")
+            action("Employee absence")
             {
                 Caption = 'Employee Absence';
                 Image = Workdays;
                 RunObject = page "Employee Absence";
                 RunPageLink = "Employee No." = FIELD("No.");
-            }*/
+            }
             //ED 01 END
 
         }

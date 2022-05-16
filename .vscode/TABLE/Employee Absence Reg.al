@@ -109,7 +109,7 @@ table 50104 "Employee Absence Reg"
                 END;
 
                 CompanyInformation.Get();
-                //CalendarManagement.SetSource(compa);
+                CompanyInformation.TestField("Base Calendar Code");
                 CalendarManagement.SetSource(CompanyInformation, CustomizedCalendarChange);
                 Days := ("To Date" - "From Date") + 1;
                 NonWorkingDays := 0;
@@ -212,9 +212,7 @@ table 50104 "Employee Absence Reg"
         NonWorkingDays: Integer;
         LoopDate: Date;
         CompanyInformation: Record "Company Information";
-
         CustomizedCalendarChange: Record "Customized Calendar Change";
-
         CheckDate: Date;
         CalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
