@@ -25,26 +25,26 @@ table 50104 "Employee Absence Reg"
             trigger OnValidate()
             begin
 
-                /*IF Rec."Approved" = TRUE THEN BEGIN
-                    Days := 3;
-                    Employee.Get("Employee No.");
-                    Quantity := Employee."Hours In Day" * Days;
+                //IF Rec."Approved" = TRUE THEN BEGIN
+                Days := 3;
+                Employee.Get("Employee No.");
+                Quantity := Employee."Hours In Day" * Days;
 
 
+                /*
+                                    //REPEAT
+                                    EmployeeAbsence.INIT;
+                                    Validate("Employee No.", Rec."Employee No.");
+                                    Validate("First Name", Rec."First Name");
+                                    Validate("Last Name", Rec."Last Name");
+                                    Validate("Cause of Absence Code", Rec."Cause of Absence Code");
+                                    Validate(Description, Rec.Description);
 
-                    //REPEAT
-                    EmployeeAbsence.INIT;
-                    Validate("Employee No.", Rec."Employee No.");
-                    Validate("First Name", Rec."First Name");
-                    Validate("Last Name", Rec."Last Name");
-                    Validate("Cause of Absence Code", Rec."Cause of Absence Code");
-                    Validate(Description, Rec.Description);
-                    
 
-                    //EmployeeAbsence."Real Date":=
-                    EmployeeAbsence.Insert();
-                    //UNTIL
-                END;*/
+                                    //EmployeeAbsence."Real Date":=
+                                    EmployeeAbsence.Insert();
+                                    //UNTIL
+                                END;*/
 
             end;
         }
