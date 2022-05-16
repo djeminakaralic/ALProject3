@@ -44,7 +44,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Visible = false;
         }
 
-        addafter("Address & Contact")
+        /*addafter("Address & Contact")
         {
             group("Potential Employe")
 
@@ -78,13 +78,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
             }
 
-        }
+        }*/
 
 
 
 
 
-        addafter("Potential Employe")
+        addafter("Address & Contact")
         {
             group("Brought experience ")
             {
@@ -2064,11 +2064,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
             }
 
-            field("External employer Status"; "External employer Status")
+            /*field("External employer Status"; "External employer Status")
             {
                 ApplicationArea = all;
             }
-            /*field("Returned to Company"; "Returned to Company")
+            field("Returned to Company"; "Returned to Company")
             {
                 ApplicationArea = all;
                 DrillDown = true;
