@@ -108,9 +108,9 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
-                CompanyInformation.Get();
-                CompanyInformation.TestField("Base Calendar Code");
-                CalendarManagement.SetSource(CompanyInformation, CustomizedCalendarChange);
+                /*CompanyInformation.Get();
+                CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+                //CalendarManagement.SetSource(CompanyInformation, CustomizedCalendarChange);
                 Days := ("To Date" - "From Date") + 1;
                 NonWorkingDays := 0;
                 CheckDate := "From Date";
@@ -121,15 +121,11 @@ table 50104 "Employee Absence Reg"
                 until (CheckDate > "To Date");
                 WorkingDays := Days - NonWorkingDays;
                 Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
-
-
-
-
+                Quantity := Employee."Hours In Day" * Days;*/
 
 
                 //Days := "To Date" - "From Date";
-                /*  Days := 0;
+                /* Days := 0;
                   LoopDate := "From Date";
                   Employee.Get("Employee No.");
                   IF "From Date" = "To Date" then begin
@@ -148,22 +144,24 @@ table 50104 "Employee Absence Reg"
                       Quantity := Employee."Hours In Day" * Days;
                   end;*/
 
-                /*Days := 1;
+                Days := 1;
 
-                CalendarChange.Reset();
+                CustomizedCalendarChange.Reset();
 
-                CalendarChange.SetFilter(CalendarChange.Date, '%1..%2', EmployeeAbsenceReg."From Date", EmployeeAbsenceReg."To Date");
-                CalendarChange.SetFilter(CalendarChange.Nonworking, '%1', false);
+                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', Rec."From Date", Rec."To Date");
+                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
 
-                if CalendarChange.FindFirst() then begin
-                    Days := CalendarChange.Count;
+                if CustomizedCalendarChange.FindFirst() then begin
+                    Message(Format(CustomizedCalendarChange."Recurring System"));
+                    Days := CustomizedCalendarChange.Count;
                 end;
 
+                Employee.Reset();
                 Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
-                
-                
-                                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
+
+
+                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
 
                 /*CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '>=%1', "From Date");
                 CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
@@ -176,8 +174,6 @@ table 50104 "Employee Absence Reg"
                     until CalendarChange.Next() = 0;*/
 
                 //treba otici u table CalendarChange - stavljena u var gdje je boolean field Nonworking
-
-
 
             end;
         }
@@ -214,6 +210,7 @@ table 50104 "Employee Absence Reg"
         CompanyInformation: Record "Company Information";
         CustomizedCalendarChange: Record "Customized Calendar Change";
         CheckDate: Date;
+        Calendar: Record "Base Calendar";
         CalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
