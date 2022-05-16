@@ -306,6 +306,7 @@ codeunit 50304 "Absence Fill"
                         Description := WageSetup."Holiday Description";
                         "RS Code" := RSHoliday;
                     END;
+                    //komentar
 
                     Quantity := Employee."Hours In Day";
 
