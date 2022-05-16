@@ -31,9 +31,7 @@ table 50104 "Employee Absence Reg"
                     Employee.Get("Employee No.");
                     Quantity := Employee."Hours In Day" * Days;*/
 
-                    /*HelpDate := "From Date";
-
-                    
+                    /*HelpDate := "From Date";                 
                     REPEAT
                     //ovdje provjeriti je li datum radni dan ili neradni,ako je radni spremiti u tabelu + razlog izostanka spremiti u polje Cause of absence code
                         EmployeeAbsence.INIT;
@@ -53,12 +51,10 @@ table 50104 "Employee Absence Reg"
                 IF Rec."Approved" = false THEN BEGIN
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
 
-
                     EmployeeAbsence.SetFilter("Cause of Absence Code", "Cause of Absence Code");
                     IF EmployeeAbsence.FindFirst() then begin
                         EmployeeAbsence.DeleteAll();
                     end;
-
 
                 END;
 
@@ -172,9 +168,6 @@ table 50104 "Employee Absence Reg"
                     Days := CustomizedCalendarChange.Count;
                 end;*/
 
-                /*Employee.Reset();
-                Employee.SetFilter("No.", '%1', "Employee No.");*/
-
                 Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
 
@@ -190,7 +183,7 @@ table 50104 "Employee Absence Reg"
                         Message(Format(CalendarChange.Day));
                     until CalendarChange.Next() = 0;*/
 
-                //treba otici u table CalendarChange - stavljena u var gdje je boolean field Nonworking
+                //treba otici u table gdje je boolean field Nonworking
 
             end;
         }

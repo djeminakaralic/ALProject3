@@ -32083,11 +32083,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work Permit2 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2112275570 - Control 1913498537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Employee ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Employee ID - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 3380366379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Birth Information</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32317,11 +32312,6 @@
           <source>Ending Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control TerminationDate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2112275570 - Control 3117367689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Potential Employe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Potential Employe - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 3155679852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Additional Payments</source>
@@ -32822,6 +32812,11 @@
           <source>Union</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Union - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Control 1913498537 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Employee ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Employee ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2229753117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Import Worksheete</source>
