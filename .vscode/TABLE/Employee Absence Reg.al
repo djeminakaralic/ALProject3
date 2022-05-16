@@ -27,11 +27,11 @@ table 50104 "Employee Absence Reg"
 
                 IF Rec."Approved" = TRUE THEN BEGIN
                     //test da li ovdje trebam prebaciti u novu tabelu
-                    /*Days := 3;
+                    Days := 3;
                     Employee.Get("Employee No.");
-                    Quantity := Employee."Hours In Day" * Days;*/
+                    Quantity := Employee."Hours In Day" * Days;
 
-                    HelpDate := "From Date";
+                    /*HelpDate := "From Date";
 
                     //ovdje provjeriti je li datum radni dan ili neradni, razlog izostanka spremiti u Cause of absence code
                     REPEAT
@@ -46,7 +46,7 @@ table 50104 "Employee Absence Reg"
                         HelpDate += 1;
 
                         EmployeeAbsence.Insert();
-                    UNTIL HelpDate = "To Date";
+                    UNTIL HelpDate = "To Date";*/
                 END;
 
                 IF Rec."Approved" = false THEN BEGIN
@@ -159,6 +159,7 @@ table 50104 "Employee Absence Reg"
                       Quantity := Employee."Hours In Day" * Days;
                   end;*/
 
+                //isti ovaj kod i on validate za from date ili napisati funkciju!!!
                 Days := 1;
 
                 CustomizedCalendarChange.Reset();
@@ -171,9 +172,10 @@ table 50104 "Employee Absence Reg"
                     Days := CustomizedCalendarChange.Count;
                 end;
 
-                Employee.Reset();
-                Employee.SetFilter("No.", '%1', "Employee No.");
-                //Employee.Get("Employee No.");
+                /*Employee.Reset();
+                Employee.SetFilter("No.", '%1', "Employee No.");*/
+
+                Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
 
                 //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
