@@ -2231,15 +2231,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 ApplicationArea = all;
             }
-            field(Status2; Status)
-            {
-                ApplicationArea = all;
-            }
+
             field("External employer Status"; "External employer Status")
             {
                 ApplicationArea = all;
             }
-            field("Returned to Company"; "Returned to Company")
+            /*field("Returned to Company"; "Returned to Company")
             {
                 ApplicationArea = all;
                 DrillDown = true;
@@ -2255,11 +2252,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     CurrPage.UPDATE;
 
                 end;
-            }
-            field("Temporary Contract Type"; "Temporary Contract Type")
-            {
-                ApplicationArea = all;
-            }
+            }*/
+
         }
 
 
@@ -3240,14 +3234,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
-            field(Size; Rec.Size)
+            /*field(Size; Rec.Size)
             {
                 ApplicationArea = all;
-            }
-            field("Clothing size"; Rec."Clothing size") { ApplicationArea = all; }
-            field("Shoe size"; Rec."Shoe size") { ApplicationArea = all; }
+            }*/
+            //field("Clothing size"; Rec."Clothing size") { ApplicationArea = all; }
+            //field("Shoe size"; Rec."Shoe size") { ApplicationArea = all; }
             // field("Last Date Modified2"; Rec."Last Date Modified") { ApplicationArea = all; }
-            field("Salesperson Code"; Rec."Salesperson Code") { ApplicationArea = all; Visible = false; }
+            //field("Salesperson Code"; Rec."Salesperson Code") { ApplicationArea = all; Visible = false; }
         }
 
         moveafter("E-mail user"; "Company E-Mail")
