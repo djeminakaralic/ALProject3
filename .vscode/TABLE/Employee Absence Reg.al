@@ -127,22 +127,6 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text003);
                 END;
 
-                /*CompanyInformation.Get();
-                CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
-                //CalendarManagement.SetSource(CompanyInformation, CustomizedCalendarChange);
-                Days := ("To Date" - "From Date") + 1;
-                NonWorkingDays := 0;
-                CheckDate := "From Date";
-                repeat
-                    if CalendarManagement.IsNonworkingDay(CheckDate, CustomizedCalendarChange) then
-                        NonWorkingDays += 1;
-                    CheckDate := CalcDate('1D', CheckDate);
-                until (CheckDate > "To Date");
-                WorkingDays := Days - NonWorkingDays;
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;*/
-
-
                 //Days := "To Date" - "From Date";
                 /* Days := 0;
                   LoopDate := "From Date";
@@ -164,7 +148,7 @@ table 50104 "Employee Absence Reg"
                   end;*/
 
 
-                CustomizedCalendarChange.Reset();
+                /*CustomizedCalendarChange.Reset();
 
                 CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', Rec."From Date", Rec."To Date");
                 CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
@@ -175,7 +159,7 @@ table 50104 "Employee Absence Reg"
                     Days := CustomizedCalendarChange.Count;
                 end;*/
 
-                Employee.Get("Employee No.");
+                /*Employee.Get("Employee No.");
                 Quantity := Employee."Hours In Day" * Days;
 
                 //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
