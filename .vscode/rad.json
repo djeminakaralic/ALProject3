@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Id":50104,"Kind":10,"Name":"Employee Absence Reg","PackagePath":"/src/.vscode/TABLE/Employee%20Absence%20Reg.al"}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50094,"Kind":17,"Name":"CountryRegion","PackagePath":"/src/.vscode/TABLE/Country_region.al"},{"Id":50129,"Kind":16,"Name":"EmployeeCard","PackagePath":"/src/.vscode/PAGE/Employee%20Card.al"},{"Id":50147,"Kind":12,"Name":"Education History","PackagePath":"/src/.vscode/REPORT/Education%20History.al"}],"Removed":[]}

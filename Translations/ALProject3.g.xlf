@@ -22693,11 +22693,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Education History - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 355837244 - Control 3153800446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;Department Categroy&gt;</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Education History - Control Department Cat.Description - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 355837244 - Control 1955082680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Full Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
