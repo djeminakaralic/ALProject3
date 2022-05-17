@@ -63,7 +63,8 @@ table 50006 Municipality
         field(8; "Country/Region Code"; Code[10])
         {
             Caption = 'Country/Region Code';
-            TableRelation = "Country/Region".Code;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Post Code"."Country/Region Code" WHERE(City = FIELD(City)));
         }
         field(9; "Entity Code"; Code[10])
         {
@@ -158,9 +159,9 @@ table 50006 Municipality
         key(Key2; City)
         {
         }
-        key(Key3; "Country/Region Code")
-        {
-        }
+        /* key(Key3; "Country/Region Code")
+         {
+         }*/
         key(Key4; Name)
         {
         }
