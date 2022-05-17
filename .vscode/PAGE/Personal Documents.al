@@ -7,12 +7,21 @@ page 50093 "Personal Documents"
     UsageCategory = Lists;
     ApplicationArea = all;
 
+
+
     layout
     {
         area(content)
         {
             repeater(Group)
             {
+                field("Employee No."; "Employee No.")
+                {
+
+                    ApplicationArea = all;
+                    Editable = false;
+
+                }
                 field("Citizenship Option"; "Citizenship Option")
                 {
                     ApplicationArea = all;
@@ -77,12 +86,7 @@ page 50093 "Personal Documents"
                 {
                     ApplicationArea = all;
                 }
-                field("Employee No."; "Employee No.")
-                {
 
-                    ApplicationArea = all;
-                    Editable = false;
-                }
                 field("Employee  First Name"; "Employee  First Name")
                 {
                     ApplicationArea = all;
@@ -131,6 +135,7 @@ page 50093 "Personal Documents"
 
     trigger OnOpenPage()
     begin
+
         Filter := Rec.GETFILTER(Switch);
 
         IF (Filter = 'Citizenship') OR (Filter = 'Državljanstvo') THEN BEGIN

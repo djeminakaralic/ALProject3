@@ -4,6 +4,7 @@ table 50121 "Personal Documents"
     DrillDownPageID = "Personal Documents";
     LookupPageID = "Personal Documents";
 
+
     fields
     {
         field(1; "Code"; Code[10])

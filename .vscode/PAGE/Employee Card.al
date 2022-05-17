@@ -3379,6 +3379,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "No." = field("No.");
                 Promoted = true;
 
+
             }
 
             action(Nationality)
@@ -3596,10 +3597,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = Employee;
                 Promoted = true;
                 ApplicationArea = all;
+                RunPageLink = "Employee No." = FIELD("No.");
+                RunObject = Page "Education History";
+
                 //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedIsBig = false;
-                RunObject = Page "Education History";
-                RunPageLink = "Employee ID" = FIELD("Employee ID");
 
             }
             /*action("Health Check")
