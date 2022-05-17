@@ -30,6 +30,7 @@ table 50104 "Employee Absence Reg"
 
                 IF Rec."Approved" = true then begin
                     IF "From Date" <> "To Date" then begin
+                        EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                         if EmployeeAbsence.FindFirst() then
                             Error(Text005);
@@ -93,6 +94,7 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
 
+                    EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     if EmployeeAbsence.FindFirst() then
                         Error(Text005);
@@ -113,6 +115,7 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text003);
 
+                    EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     if EmployeeAbsence.FindFirst() then
                         Error(Text005);
