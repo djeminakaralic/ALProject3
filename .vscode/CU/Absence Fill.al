@@ -231,7 +231,6 @@ codeunit 50304 "Absence Fill"
     end;
 
     procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee")
-    //komentar
     var
         FromDateFilter: Date;
         ToDateFilter: Date;

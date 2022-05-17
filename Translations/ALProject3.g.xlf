@@ -5019,7 +5019,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text004</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Date exists.</source>
+          <source>A leave for this period already exists.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text005</note>
         </trans-unit>

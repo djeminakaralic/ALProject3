@@ -129,6 +129,10 @@ table 50104 "Employee Absence Reg"
 
                     IF "From Date" > "To Date" then
                         ERROR(Text003);
+
+                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    if EmployeeAbsence.FindFirst() then
+                        Error(Text005);
                 END;
 
                 //Days := "To Date" - "From Date";
@@ -248,7 +252,7 @@ table 50104 "Employee Absence Reg"
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
         Text004: Label 'Ending Date field cannot be blank.';
-        Text005: Label 'Date exists.';
+        Text005: Label 'A leave for this period already exists.';
 
     trigger OnInsert()
     begin
