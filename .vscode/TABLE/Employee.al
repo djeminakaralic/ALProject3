@@ -126,8 +126,7 @@ tableextension 50071 EmployeeExtension extends Employee
         }
         field(503560; "Dial Code Emergency"; Code[10])
         {
-            TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Home"),
-                                                    Type = FILTER('Fixed'));
+            TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Home"));
 
             trigger OnValidate()
             begin
