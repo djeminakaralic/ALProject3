@@ -7,6 +7,10 @@ pageextension 50169 PostCode extends "Post Codes"
         {
             Visible = false;
         }
+        modify(TimeZone)
+        {
+            Visible = false;
+        }
         addafter(City)
         {
             field("Canton Code"; "Canton Code")

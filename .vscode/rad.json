@@ -1,1 +1,1 @@
-﻿{"Added":[{"Id":50169,"Kind":16,"Name":"PostCode","PackagePath":"/src/.vscode/PAGE/PostCode.al"}],"Modified":[{"Id":50145,"Kind":17,"Name":"PostCode","PackagePath":"/src/.vscode/TABLE/Post%20Code.al"}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50006,"Kind":12,"Name":"Municipalities","PackagePath":"/src/.vscode/PAGE/Municipalities.al"},{"Id":50006,"Kind":10,"Name":"Municipality","PackagePath":"/src/.vscode/TABLE/Municipality.al"}],"Removed":[]}

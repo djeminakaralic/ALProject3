@@ -31,6 +31,7 @@ page 50006 Municipalities
                 field("Canton Code"; "Canton Code")
                 {
                     ApplicationArea = all;
+
                 }
                 field("Country/Region Code"; "Country/Region Code")
                 {
