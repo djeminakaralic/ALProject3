@@ -23,9 +23,16 @@ table 50104 "Employee Absence Reg"
             Caption = 'Approved';
 
             trigger OnValidate()
+            var
+                AbsenceFIll: Codeunit "Absence Fill";
+                EmployeeA: Record Employee;
             begin
 
                 IF Rec."Approved" = TRUE THEN BEGIN
+                    EmployeeA.GET(Rec."Employee No.");
+                    AbsenceFIll.FillAbsence2("From Date", "To Date", EmployeeA);
+
+
                     //test da li ovdje trebam prebaciti u novu tabelu
                     /*Days := 3;
                     Employee.Get("Employee No.");
@@ -48,7 +55,7 @@ table 50104 "Employee Absence Reg"
                     UNTIL HelpDate = "To Date";*/
                 END;
 
-                IF Rec."Approved" = false THEN BEGIN
+                /*IF Rec."Approved" = false THEN BEGIN
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
 
                     EmployeeAbsence.SetFilter("Cause of Absence Code", "Cause of Absence Code");
@@ -56,7 +63,7 @@ table 50104 "Employee Absence Reg"
                         EmployeeAbsence.DeleteAll();
                     end;
 
-                END;
+                END;*/
 
             end;
         }
@@ -156,14 +163,14 @@ table 50104 "Employee Absence Reg"
                       Quantity := Employee."Hours In Day" * Days;
                   end;*/
 
-                //isti ovaj kod i on validate za from date ili napisati funkciju!!!
+
                 CustomizedCalendarChange.Reset();
 
                 CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', Rec."From Date", Rec."To Date");
                 CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
                 Days := CustomizedCalendarChange.Count;
 
-                /*if CustomizedCalendarChange.FindFirst() then begin //ovdje find first nije usao u petlju nakon filtera datuma
+                /*if CustomizedCalendarChange.FindFirst() then begin 
                     Message(Format(CustomizedCalendarChange.Day));
                     Days := CustomizedCalendarChange.Count;
                 end;*/

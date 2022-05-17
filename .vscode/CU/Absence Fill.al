@@ -230,6 +230,179 @@ codeunit 50304 "Absence Fill"
         Window.CLOSE;
     end;
 
+    procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee")
+    var
+        FromDateFilter: Date;
+        ToDateFilter: Date;
+        CheckThem: Boolean;
+        RSWorkday: Code[2];
+        RSHoliday: Code[2];
+        AbsenceEmp: Record "Employee Absence";
+        AbsenceTemp: Record "Employee Absence";
+        InsertDay: Boolean;
+        InsertAnnual: Boolean;
+        InsertWeekly: Boolean;
+        TempEntry: Integer;
+        EmploymentContract: Record "Employment Contract";
+        HoursInDay: Decimal;
+    begin
+        AbsenceEmp.RESET;
+        AbsenceEmp.LOCKTABLE;
+        AbsenceTemp.RESET;
+        AbsenceTemp.DELETEALL;
+
+
+
+        WageSetup.GET;
+        Cause.GET(WageSetup."Workday Code");
+        RSWorkday := Cause."Insurance Basis";
+        Cause.GET(WageSetup."Holiday Code");
+        RSHoliday := Cause."Insurance Basis";
+
+
+        IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN
+            ERROR(Txt001);
+
+        CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+
+        AbsenceEmp.RESET;
+        IF AbsenceEmp.FIND('+') THEN
+            LastEntry := AbsenceEmp."Entry No."
+        ELSE
+            LastEntry := 0;
+        LastEntry := LastEntry + 1;
+
+        Datum.RESET;
+        Datum.SETFILTER("Period Type", '%1', 0);
+        Datum.SETRANGE("Period Start", StartDate2, EndDate2);
+        Datum.FINDFIRST;
+
+        TempEntry := 1;
+
+
+
+        REPEAT
+
+            InsertAnnual := FALSE;
+            InsertWeekly := FALSE;
+
+            CheckCalendar(InsertAnnual, 1);
+            CheckCalendar(InsertWeekly, 2);
+
+            IF InsertWeekly THEN
+                WITH AbsenceTemp DO BEGIN
+                    INIT;
+                    "Entry No." := TempEntry;
+                    "Employee No." := Employee."No.";
+                    "From Date" := Datum."Period Start";
+                    "To Date" := Datum."Period Start";
+                    IF InsertAnnual THEN BEGIN
+                        "Cause of Absence Code" := WageSetup."Workday Code";
+                        Description := WageSetup."Workday Description";
+                        "RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSHoliday;
+                    END;
+                    //komentar
+
+                    Quantity := Employee."Hours In Day";
+
+
+                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    INSERT;
+                    TempEntry := TempEntry + 1;
+                END;
+        UNTIL Datum.NEXT = 0;
+
+        /*EmploymentContract.RESET;
+
+        CurrRecNo := 0;
+        TotalRecNo := Employee.COUNTAPPROX;
+
+        Window.OPEN('Obrada radnih sati\@1@@@@@@@@@@@@@@@@@@@@@  :: Radnici\');
+        Window.UPDATE(1, 0);
+
+
+        IF Employee.FINDFIRST THEN
+            REPEAT
+
+                CurrRecNo += 1;
+                Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
+                wb.SETFILTER("Employee No.", '%1', Employee."No.");
+                wb.SETFILTER("Current Company", '%1', TRUE);
+                IF Employee."Returned to Company" THEN BEGIN
+                    IF wb.FIND('-') THEN BEGIN
+                        IF (((wb."Ending Date" > StartDate))) then begin //ĐKOR ((wb."Ending Date">010115D) AND (wb."Ending Date"<311215D)))) THEN BEGIN
+                            IF (wb."Starting Date" >= StartDate) THEN
+                                FromDateFilter := wb."Starting Date"
+                            ELSE
+                                FromDateFilter := StartDate;
+                        END;
+                        //  MESSAGE(Employee."No.");
+                        //MESSAGE(FORMAT(FromDateFilter));
+                    END
+
+                END;
+
+                IF NOT Employee."Returned to Company" THEN BEGIN
+                    IF wb.FIND('+') THEN BEGIN
+                        IF (wb."Starting Date" >= StartDate) THEN
+                            FromDateFilter := wb."Starting Date"
+                        ELSE
+                            FromDateFilter := StartDate;
+                    END;
+                END;
+                wb2.SETFILTER("Employee No.", '%1', Employee."No.");
+                wb2.SETFILTER("Current Company", '%1', TRUE);
+                IF wb2.FIND('+') THEN BEGIN
+                    IF (wb2."Ending Date" <= EndDate) THEN
+                        ToDateFilter := wb2."Ending Date"
+                    ELSE
+                        ToDateFilter := EndDate;
+                END;
+
+
+
+                AbsenceTemp.RESET;
+                AbsenceTemp.SETRANGE("From Date", FromDateFilter, ToDateFilter);
+                IF AbsenceTemp.FINDFIRST THEN
+                    REPEAT
+                        AbsenceEmp.RESET;
+                        AbsenceEmp.SETFILTER("Employee No.", Employee."No.");
+                        AbsenceEmp.SETRANGE("From Date", AbsenceTemp."From Date");
+                        InsertDay := TRUE;
+                        IF AbsenceEmp.FINDFIRST THEN
+                            REPEAT
+                                Cause.GET(AbsenceEmp."Cause of Absence Code");
+                                InsertDay := InsertDay AND Cause."Added To Hour Pool"; //boolean +
+                            UNTIL AbsenceEmp.NEXT = 0;
+                        IF InsertDay THEN BEGIN
+                            AbsenceEmp.TRANSFERFIELDS(AbsenceTemp);
+                            AbsenceEmp."Entry No." := LastEntry;
+                            AbsenceEmp."Employee No." := Employee."No.";
+
+                            AbsenceEmp."Statistics Group Code" := Employee."Statistics Group Code";
+
+                            IF HoursInDay <> 0 THEN
+                                AbsenceEmp.Quantity := HoursInDay;
+
+                            AbsenceEmp.INSERT;
+                            LastEntry := LastEntry + 1;
+                        END;
+                    UNTIL AbsenceTemp.NEXT = 0;
+            UNTIL Employee.NEXT = 0
+        ELSE BEGIN
+            Window.CLOSE;
+            MESSAGE(Txt002);
+            EXIT;
+        END;
+
+        Window.CLOSE;*/
+    end;
+
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
     var
         DateText: Text[30];
