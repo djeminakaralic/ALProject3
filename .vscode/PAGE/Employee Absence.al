@@ -110,10 +110,6 @@ page 51129 "Employee Absence"
                 {
 
                 }
-                field("Quantity"; "Quantity")
-                {
-
-                }
                 field(Approved; Approved)
                 {
                     Editable = true;
