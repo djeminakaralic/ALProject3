@@ -175,6 +175,7 @@ table 50104 "Employee Absence Reg"
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
         Text004: Label 'Ending Date field cannot be blank.';
         Text005: Label 'A leave for this period already exists.';
+        Text006: Label 'Selected record has already been deleted.';
 
     trigger OnInsert()
     begin
@@ -190,9 +191,10 @@ table 50104 "Employee Absence Reg"
     trigger OnDelete()
     begin
         if Rec.Approved = true then begin
-            EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
+            /*EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
             EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-            EmployeeAbsence.DeleteAll();
+            EmployeeAbsence.DeleteAll();*/
+            Error(Text006);
         end;
     end;
 }

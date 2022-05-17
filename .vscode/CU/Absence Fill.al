@@ -302,7 +302,6 @@ codeunit 50304 "Absence Fill"
                     LastEntry := LastEntry + 1;
                 END;
         UNTIL Datum.NEXT = 0;
-
     end;
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
