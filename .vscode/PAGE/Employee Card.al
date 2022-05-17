@@ -10,6 +10,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+        modify("Phone No.2")
+        {
+            Visible = false;
+        }
         modify("Privacy Blocked")
         {
             Visible = false;
@@ -572,7 +576,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                     }
                 }
-                /*field("Company Phone No."; "Company Phone No.")
+                field("Company Phone No."; "Company Phone No.")
                 {
                     Importance = Standard;
                     Visible = false;
@@ -582,7 +586,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     Importance = Standard;
                     Visible = false;
                     ApplicationArea = all;
-                }*/
+                }
 
                 group("Email")
                 {
