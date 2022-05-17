@@ -70,6 +70,9 @@ table 50104 "Employee Absence Reg"
 
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
+
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
                 VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
@@ -86,6 +89,8 @@ table 50104 "Employee Absence Reg"
             Caption = 'From Date';
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
@@ -107,6 +112,8 @@ table 50104 "Employee Absence Reg"
             Caption = 'To Date';
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
