@@ -31953,6 +31953,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort MIP 1023 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2335677835 - Control 2700225649 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3648392431">
+          <source>CIPS Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension AlternativeAddress - Control CIPS Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2335677835 - Control 925121817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3648392431">
+          <source>Current Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension AlternativeAddress - Control Current Address - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
