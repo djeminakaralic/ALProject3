@@ -42,8 +42,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50265; "Employee Languages"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Employee Qualification" WHERE("Employee No." = FIELD("No."),
-                                                                "Language Code" = FILTER(<> '')));
+            CalcFormula = Count("Employee Qualification" WHERE("Employee No." = FIELD("No."), "Language Code" = FILTER(<> '')));
             Caption = 'Employee Languages';
             Editable = false;
 
