@@ -69,7 +69,7 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                field("Team Description"; "Team Description")
+                /*field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
                 }
@@ -85,7 +85,7 @@ page 50147 "Education History"
                 field("Sector Description"; "Sector Description")
                 {
                     ApplicationArea = all;
-                }
+                }*/
             }
         }
     }

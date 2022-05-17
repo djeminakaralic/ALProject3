@@ -1571,10 +1571,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                     }
 
-                    field("Operator No."; "Operator No.")
+                    /*field("Operator No."; "Operator No.")
                     {
                         ApplicationArea = all;
-                    }
+                    }*/
 
 
                 }
