@@ -40,39 +40,6 @@ table 50104 "Employee Absence Reg"
                     EmployeeAbsence.DeleteAll();
                 end;
 
-
-                //test da li ovdje trebam prebaciti u novu tabelu
-                /*Days := 3;
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;*/
-
-                /*HelpDate := "From Date";                 
-                REPEAT
-                //ovdje provjeriti je li datum radni dan ili neradni,ako je radni spremiti u tabelu + razlog izostanka spremiti u polje Cause of absence code
-                    EmployeeAbsence.INIT;
-                    Validate("Employee No.", Rec."Employee No.");
-                    Validate("First Name", Rec."First Name");
-                    Validate("Last Name", Rec."Last Name");
-                    Validate("Cause of Absence Code", Rec."Cause of Absence Code");
-                    Validate(Description, Rec.Description);
-
-                    EmployeeAbsence."Real Date" := HelpDate;
-                    HelpDate += 1;
-
-                    EmployeeAbsence.Insert();
-                UNTIL HelpDate = "To Date";*/
-
-
-                /*IF Rec."Approved" = false THEN BEGIN
-                    EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
-
-                    EmployeeAbsence.SetFilter("Cause of Absence Code", "Cause of Absence Code");
-                    IF EmployeeAbsence.FindFirst() then begin
-                        EmployeeAbsence.DeleteAll();
-                    end;
-
-                END;*/
-
             end;
         }
         field(5; "Entry No."; Integer)
@@ -118,7 +85,6 @@ table 50104 "Employee Absence Reg"
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     if EmployeeAbsence.FindFirst() then
                         Error(Text005);
-
                 END;
 
             end;
@@ -140,56 +106,6 @@ table 50104 "Employee Absence Reg"
                     if EmployeeAbsence.FindFirst() then
                         Error(Text005);
                 END;
-
-                //Days := "To Date" - "From Date";
-                /* Days := 0;
-                  LoopDate := "From Date";
-                  Employee.Get("Employee No.");
-                  IF "From Date" = "To Date" then begin
-                      Quantity := Employee."Hours In Day";
-                  end
-                  ELSE begin
-                      LoopDate := "From Date";
-                      repeat
-                      BaseCalendarChange.Reset();
-                          BaseCalendarChange.SetCurrentKey(Date);
-                          BaseCalendarChange.Get(LoopDate);
-                          If BaseCalendarChange.Nonworking = false then
-                              Days := Days + 1;
-                          LoopDate := LoopDate + 1;
-                      until LoopDate > "To Date";
-                      Quantity := Employee."Hours In Day" * Days;
-                  end;*/
-
-
-                /*CustomizedCalendarChange.Reset();
-
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Date, '%1..%2', Rec."From Date", Rec."To Date");
-                CustomizedCalendarChange.SetFilter(CustomizedCalendarChange.Nonworking, '%1', false);
-                Days := CustomizedCalendarChange.Count;
-
-                /*if CustomizedCalendarChange.FindFirst() then begin 
-                    Message(Format(CustomizedCalendarChange.Day));
-                    Days := CustomizedCalendarChange.Count;
-                end;*/
-
-                /*Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
-
-                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
-
-                /*CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '>=%1', "From Date");
-                CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
-
-                /*CalendarChange.Reset();
-                if CalendarChange.FindSet() then
-                    repeat
-
-                        Message(Format(CalendarChange.Day));
-                    until CalendarChange.Next() = 0;*/
-
-                //treba otici u table gdje je boolean field Nonworking
-
             end;
         }
         field(10; "Employee No."; Code[20])
@@ -232,23 +148,12 @@ table 50104 "Employee Absence Reg"
     {
         key(PrimaryKey; "Employee No.", "Entry No.")
         {
-            //Clustered = TRUE;
+
         }
     }
 
     var
-        HelpDate: Date;
         HumanResUnitOfMeasure: Record "Human Resource Unit of Measure";
-        CalendarManagement: Codeunit "Calendar Management";
-        Days: Integer;
-        WorkingDays: Integer;
-        NonWorkingDays: Integer;
-        LoopDate: Date;
-        CompanyInformation: Record "Company Information";
-        CustomizedCalendarChange: Record "Customized Calendar Change";
-        CheckDate: Date;
-        Calendar: Record "Base Calendar";
-        CalendarChange: Record "Base Calendar Change";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
