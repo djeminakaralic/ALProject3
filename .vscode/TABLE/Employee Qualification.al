@@ -40,7 +40,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         field(50004; "Language Code"; Code[10])
         {
             Caption = 'Language code';
-            TableRelation = Languages.Code;
+            TableRelation = Languages;
 
             /*trigger OnValidate()
             begin
@@ -146,7 +146,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         Qualification: Record "Qualification";
         Employee: Record "Employee";
         EmployeeQualification: Record "Employee Qualification";
-        Languages: Record "Languages";
+        Languages: Record Languages;
         ComputerKnowledge: Record "Computer Knowledge";
         Text001: Label 'Start Date must have value.';
         Text002: Label 'End Date must not be before Start date.';

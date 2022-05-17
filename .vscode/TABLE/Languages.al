@@ -22,8 +22,6 @@ table 50051 Languages
         }
     }
 
-    fieldgroups
-    {
-    }
+
 }
 
