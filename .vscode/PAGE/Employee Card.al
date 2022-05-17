@@ -10,6 +10,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+        modify("Privacy Blocked")
+        {
+            Visible = false;
+        }
 
 
         modify(Personal)
