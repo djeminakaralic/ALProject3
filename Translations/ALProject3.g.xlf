@@ -36779,7 +36779,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue DR(treći ciklus visokog obrazovanja(480ECTS)) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 244841840 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Empty</source>
+          <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue Empty - Property Caption</note>
         </trans-unit>
@@ -36793,15 +36793,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue II stepen PKV(polukvalifikovan radnik) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 3783173321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SSS/III (srednja stručna sprema/III stepen)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 2643362198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>III stepen SSS(srednja stručna sprema)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue SSS/III (srednja stručna sprema/III stepen) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue III stepen SSS(srednja stručna sprema) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 1616173349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SSS/IV (srednja stručna sprema/IV stepen)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 3678162836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IV stepen SSS(srednja stručna sprema)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue SSS/IV (srednja stručna sprema/IV stepen) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue IV stepen SSS(srednja stručna sprema) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 244841840 - EnumValue 3671774886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>V stepen VKV (visokokvalifikovan radnik)</source>

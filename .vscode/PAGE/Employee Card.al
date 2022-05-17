@@ -413,6 +413,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Number of Children"; "Number of Children")
                     {
                         ApplicationArea = all;
+
                     }
                     field("Spouse Name"; "Spouse Name")
                     {

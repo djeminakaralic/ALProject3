@@ -257,9 +257,9 @@ codeunit 50002 "Wage Calculation"
                                                 CalcTemp."Education Level" := 'NK';
                                             Employee."Education Level"::"II stepen PKV(polukvalifikovan radnik)":
                                                 CalcTemp."Education Level" := 'KV';
-                                            Employee."Education Level"::"SSS/III (srednja stručna sprema/III stepen)":
+                                            Employee."Education Level"::"III stepen SSS(srednja stručna sprema)":
                                                 CalcTemp."Education Level" := 'SSS';
-                                            Employee."Education Level"::"SSS/IV (srednja stručna sprema/IV stepen)":
+                                            Employee."Education Level"::"IV stepen SSS(srednja stručna sprema)":
                                                 CalcTemp."Education Level" := 'SSS';
                                             Employee."Education Level"::"V stepen VKV (visokokvalifikovan radnik)":
                                                 CalcTemp."Education Level" := 'VKV';
