@@ -7,9 +7,10 @@ page 50212 "Computer Knowledge"
 
     layout
     {
+
         area(Content)
         {
-            group(GroupName)
+            repeater(Control1)
             {
                 field("Program Code"; "Program Code")
                 {
@@ -22,6 +23,7 @@ page 50212 "Computer Knowledge"
                 }
             }
         }
+
     }
 
     actions
