@@ -29,6 +29,9 @@ table 50104 "Employee Absence Reg"
             begin
 
                 IF Rec."Approved" = true then begin
+                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    if EmployeeAbsence.FindFirst() then
+                        Error(Text005);
                     EmployeeA.GET(Rec."Employee No.");
                     AbsenceFIll.FillAbsence2("From Date", "To Date", EmployeeA);
                 end;
