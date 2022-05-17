@@ -22718,11 +22718,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text004</note>
         </trans-unit>
-        <trans-unit id="Page 3164093577 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Selected record has already been approved.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text006</note>
-        </trans-unit>
         <trans-unit id="Page 3164093577 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cause of Absence Code field cannot be blank.</source>
           <note from="Developer" annotates="general" priority="2"></note>
