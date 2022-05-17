@@ -131,6 +131,9 @@ page 51129 "Employee Absence"
 
     trigger OnModifyRecord(): Boolean
     begin
+        IF Approved = true then
+            error(Text006);
+
         IF "From Date" = 0D then
             Error(Text001);
 
@@ -153,4 +156,5 @@ page 51129 "Employee Absence"
         ChangeAllowedVisible: Boolean;
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+        Text006: Label 'Selected record has already been approved.';
 }
