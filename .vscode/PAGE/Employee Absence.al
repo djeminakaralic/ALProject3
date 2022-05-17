@@ -163,40 +163,4 @@ page 51129 "Employee Absence"
         ChangeAllowedVisible: Boolean;
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
-
-    procedure SetEditable(NewEditable: Boolean)
-    begin
-        CurrPage.EDITABLE(NewEditable);
-        ChangeAllowedVisible := CurrPage.EDITABLE;
-        IF (NOT CurrPage.EDITABLE) THEN
-            IF Rec.NEXT <> 0 THEN Rec.NEXT(-1);
-    end;
-
-    procedure EmployeeLookup(var Text: Text[1024]; WithDimFilters: Boolean) ret: Boolean
-    begin
-        recEmployee.RESET;
-        recEmployee."No." := Text;
-        IF WithDimFilters THEN BEGIN
-            recEmployee.SETFILTER("Global Dimension 1 Code", Dim1Filter);
-            recEmployee.SETFILTER("Global Dimension 2 Code", Dim2Filter);
-        END;
-        CLEAR(FormEmployeeList);
-        FormEmployeeList.LOOKUPMODE := TRUE;
-        FormEmployeeList.SETTABLEVIEW(recEmployee);
-        FormEmployeeList.SETRECORD(recEmployee);
-        IF ACTION::LookupOK = FormEmployeeList.RUNMODAL THEN BEGIN
-            FormEmployeeList.GETRECORD(recEmployee);
-            IF (STRLEN(Text) > 0) THEN BEGIN
-                IF Text[STRLEN(Text)] IN ['.', '|', '&'] THEN
-                    Text += recEmployee."No."
-                ELSE
-                    Text := recEmployee."No.";
-            END ELSE BEGIN
-                Text := recEmployee."No.";
-            END;
-            EXIT(TRUE);
-        END;
-        EXIT(FALSE);
-    end;
-
 }
