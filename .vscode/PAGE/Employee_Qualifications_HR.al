@@ -1,152 +1,111 @@
 page 50213 Employee_Qualifications_HR
 {
 
-    AutoSplitKey = true;
-    Caption = 'Employee Qualifications';
-    DataCaptionFields = "Employee No.";
     PageType = List;
+    ApplicationArea = All;
+    UsageCategory = Administration;
     SourceTable = "Employee Qualification";
 
     layout
     {
-        area(Content)
+        area(content)
         {
+            repeater(Control1)
+            {
 
-            field("Employee No."; "Employee No.")
-            {
-                ApplicationArea = All;
+                field("Employee No."; "Employee No.")
+                {
+                    ApplicationArea = All;
 
-            }
-            field("Employee Name"; "Employee Name")
-            {
-                ApplicationArea = all;
-            }
-            field("Computer Knowledge Code"; "Computer Knowledge Code")
-            {
-                ApplicationArea = all;
-                Visible = visibleComputer;
+                }
+                field("Employee Name"; "Employee Name")
+                {
+                    ApplicationArea = all;
+                }
+                field("Computer Knowledge Code"; "Computer Knowledge Code")
+                {
+                    ApplicationArea = all;
+                    Visible = visibleComputer;
 
-            }
-            field("Computer Knowledge Description"; "Computer Knowledge Description")
-            {
-                ApplicationArea = all;
-                Visible = visibleComputer;
-            }
-            field("Language Code"; "Language Code")
-            {
-                ApplicationArea = all;
-                Visible = visibleLanguage;
-            }
-            field("Language Name"; "Language Name")
-            {
-                ApplicationArea = all;
-                Visible = visibleLanguage;
-            }
-            field("Language Level"; "Language Level")
-            {
-                ApplicationArea = all;
-                Visible = visibleLanguage;
-            }
-            field("Qualification Code"; "Qualification Code")
-            {
-                ApplicationArea = all;
-                Visible = visibleQualification;
-            }
-            field(Description; Description)
-            {
-                ApplicationArea = all;
-                Visible = visibleQualification;
-            }
-            field("Institution/Company"; "Institution/Company")
-            {
-                ApplicationArea = all;
-            }
-            field("Decision No."; "Decision No.")
-            {
-                ApplicationArea = all;
-            }
-            field("Exam Passed"; "Exam Passed")
-            {
-                ApplicationArea = all;
-            }
-            field("From Date"; "From Date")
-            {
-                ApplicationArea = all;
-            }
-            field("To Date"; "To Date")
-            {
-                ApplicationArea = all;
-            }
-            field(Comment; Comment)
-            {
-                ApplicationArea = all;
-            }
-            field("Sector Description"; "Sector Description")
-            {
-                ApplicationArea = all;
-            }
-            field("Department Category"; "Department Category")
-            {
-                ApplicationArea = all;
-            }
-            field("Group Description"; "Group Description")
-            {
-                ApplicationArea = all;
-            }
-            field("Team Description"; "Team Description")
-            {
-                ApplicationArea = all;
+                }
+                field("Computer Knowledge Description"; "Computer Knowledge Description")
+                {
+                    ApplicationArea = all;
+                    Visible = visibleComputer;
+                }
+                field("Language Code"; "Language Code")
+                {
+                    ApplicationArea = all;
+                    Visible = visibleLanguage;
+                }
+                field("Language Name"; "Language Name")
+                {
+                    ApplicationArea = all;
+                    Visible = visibleLanguage;
+                }
+                field("Language Level"; "Language Level")
+                {
+                    ApplicationArea = all;
+                    Visible = visibleLanguage;
+                }
+                field("Qualification Code"; "Qualification Code")
+                {
+                    ApplicationArea = all;
+                    Visible = visibleQualification;
+                }
+                field(Description; Description)
+                {
+                    ApplicationArea = all;
+                    Visible = visibleQualification;
+                }
+                field("Institution/Company"; "Institution/Company")
+                {
+                    ApplicationArea = all;
+                }
+                field("Decision No."; "Decision No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Exam Passed"; "Exam Passed")
+                {
+                    ApplicationArea = all;
+                }
+                field("From Date"; "From Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("To Date"; "To Date")
+                {
+                    ApplicationArea = all;
+                }
+                field(Comment; Comment)
+                {
+                    ApplicationArea = all;
+                }
+                field("Sector Description"; "Sector Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Department Category"; "Department Category")
+                {
+                    ApplicationArea = all;
+                }
+                field("Group Description"; "Group Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Team Description"; "Team Description")
+                {
+                    ApplicationArea = all;
+                }
             }
 
 
-        }
-        area(factboxes)
-        {
-            systempart(Control1900383207; Links)
-            {
-                ApplicationArea = RecordLinks;
-                Visible = false;
-            }
-            systempart(Control1905767507; Notes)
-            {
-                ApplicationArea = Notes;
-                Visible = true;
-            }
         }
     }
 
     actions
     {
-        area(navigation)
-        {
-            group("Q&ualification")
-            {
-                Caption = 'Q&ualification';
-                Image = Certificate;
-                action("Co&mments")
-                {
-                    ApplicationArea = Comments;
-                    Caption = 'Co&mments';
-                    Image = ViewComments;
-                    RunObject = Page "Human Resource Comment Sheet";
-                    RunPageLink = "Table Name" = CONST("Employee Qualification"),
-                                  "No." = FIELD("Employee No."),
-                                  "Table Line No." = FIELD("Line No.");
-                    ToolTip = 'View or add comments for the record.';
-                }
-                separator(Action23)
-                {
-                }
-                action("Q&ualification Overview")
-                {
-                    ApplicationArea = BasicHR;
-                    Caption = 'Q&ualification Overview';
-                    Image = QualificationOverview;
-                    RunObject = Page "Qualification Overview";
-                    ToolTip = 'View qualifications that are registered for the employee.';
-                }
-            }
-        }
         area(Processing)
         {
             action(ActionName)
@@ -160,8 +119,6 @@ page 50213 Employee_Qualifications_HR
             }
         }
     }
-
-
 
 
     trigger OnOpenPage()

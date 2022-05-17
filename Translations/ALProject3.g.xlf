@@ -22974,39 +22974,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Surname - Control Last Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1173212382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Employee Qualifications</source>
+          <source>Employee_Qualifications_HR</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1173212382 - Action 291230057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Q&amp;ualification</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Action Q&amp;ualification - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1173212382 - Action 541409633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Action23</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Action Action23 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1173212382 - Action 3000180178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View or add comments for the record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Action Co&amp;mments - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1173212382 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Co&amp;mments</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Action Co&amp;mments - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1173212382 - Action 258089416 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View qualifications that are registered for the employee.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Action Q&amp;ualification Overview - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1173212382 - Action 258089416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Q&amp;ualification Overview</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee_Qualifications_HR - Action Q&amp;ualification Overview - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1173212382 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ActionName</source>
