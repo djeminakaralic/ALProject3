@@ -107,9 +107,9 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
 
-                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    /*EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     if EmployeeAbsence.FindFirst() then
-                        Error(Text005);
+                        Error(Text005);*/
 
                     /*Employee.Get("Employee No.");
                     Quantity := Employee."Hours In Day" * ("To Date" - "From Date");*/
