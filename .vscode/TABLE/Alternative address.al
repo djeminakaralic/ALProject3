@@ -262,7 +262,7 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
 
             trigger OnValidate()
             begin
-                // PostCode.ValidateCity1("City CIPS", "Post Code CIPS", "Country/Region Code CIPS", (CurrFieldNo <> 0) AND GUIALLOWED);
+                PostCode.ValidateCity1("City CIPS", "Post Code CIPS", "Country/Region Code CIPS", (CurrFieldNo <> 0) AND GUIALLOWED);
                 PostCode.RESET;
                 PostCode.SETFILTER(City, "City CIPS");
                 IF PostCode.FINDFIRST THEN BEGIN
@@ -367,7 +367,7 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
 
             trigger OnValidate()
             begin
-                //  PostCode.ValidatePostCode1("City CIPS", "Post Code CIPS", "Country/Region Code CIPS", (CurrFieldNo <> 0) AND GUIALLOWED);
+                PostCode.ValidatePostCode1("City CIPS", "Post Code CIPS", "Country/Region Code CIPS", (CurrFieldNo <> 0) AND GUIALLOWED);
                 PostCode.RESET;
                 PostCode.SETFILTER(Code, "Post Code CIPS");
                 IF PostCode.FINDFIRST THEN BEGIN
@@ -642,6 +642,8 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
             CalcFormula = Lookup(Employee.Status WHERE("No." = FIELD("Employee No.")));
             Caption = 'Status';
 
+            //OptionCaption = 'Active,Inactive,Unpaid,Terminated';
+            //OptionMembers = Active,Inactive,Unpaid,Terminated;
         }
         field(50021; "Employment Date"; Date)
         {

@@ -35893,6 +35893,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PostCode - Field For Calculation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3374398455 - Field 1534677530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
+          <source>Health Check Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PostCode - Field Health Check Amount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3374398455 - Field 367525473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
           <source>RS - High Tax Percentage</source>
           <note from="Developer" annotates="general" priority="2"></note>
