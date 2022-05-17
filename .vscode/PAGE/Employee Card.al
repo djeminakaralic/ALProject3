@@ -3586,13 +3586,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 Caption = 'Education History';
                 Image = Employee;
-                Promoted = false;
+                Promoted = true;
                 ApplicationArea = all;
                 //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedIsBig = false;
                 RunObject = Page "Education History";
                 RunPageLink = "Employee ID" = FIELD("Employee ID");
-                Promoted = true;
+
             }
             /*action("Health Check")
             {
