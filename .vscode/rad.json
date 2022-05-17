@@ -1,1 +1,1 @@
-﻿{"Added":[{"Id":50172,"Kind":16,"Name":"Country_Region","PackagePath":"/src/.vscode/PAGE/Country_Regions.al"}],"Modified":[],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50006,"Kind":12,"Name":"Municipalities","PackagePath":"/src/.vscode/PAGE/Municipalities.al"},{"Id":50006,"Kind":10,"Name":"Municipality","PackagePath":"/src/.vscode/TABLE/Municipality.al"}],"Removed":[]}

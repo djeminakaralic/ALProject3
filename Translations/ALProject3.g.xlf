@@ -8708,6 +8708,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 316116824 - Field 4275838024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canton Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field Canton Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 316116824 - Field 714791889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>City</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8728,6 +8733,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field DP Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 316116824 - Field 4176166317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DP Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field DP Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 316116824 - Field 687280210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entity Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8738,15 +8748,100 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 316116824 - Field 4210024933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 552754254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 2934631699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 12 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 3572328316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 13 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 316116824 - Field 75997020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>For Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 316116824 - Field 3733267699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 3095571082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 4 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 2457874465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 1820177848 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 1182481231 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 2157995894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 1520299277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation 9 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 2615934855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation FA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 3411255401 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation FA 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 4048952018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For Calculation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field For Calculation FA 3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 2393253273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Date Modified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field Last Date Modified - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 316116824 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 1041173801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Operator No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field Operator No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 316116824 - Field 4273381193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Short Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Municipality - Field Short Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 316116824 - Field 2297078986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax Number</source>
