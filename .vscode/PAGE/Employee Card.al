@@ -13,6 +13,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         modify("Privacy Blocked")
         {
             Visible = false;
+
+        }
+        modify("Middle Name")
+        {
+            visible = false;
         }
 
 
@@ -424,7 +429,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 }
 
-                group("Relatives Group")
+                /*group("Relatives Group")
                 {
                     Caption = 'Relative group';
                     field("Relatives Employees"; "Relatives Employees")
@@ -455,10 +460,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                  CurrPage.UPDATE;
 
                              end;*/
-                    }
-                }
-
             }
+
 
             group(Communication)
             {
@@ -488,6 +491,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
+
                     }
                 }
                 group(Mobile)
@@ -509,8 +513,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             ShowCaption = false;
                             ApplicationArea = all;
                         }
-
-
 
                     }
                 }
@@ -570,7 +572,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                     }
                 }
-                field("Company Phone No."; "Company Phone No.")
+                /*field("Company Phone No."; "Company Phone No.")
                 {
                     Importance = Standard;
                     Visible = false;
@@ -580,7 +582,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     Importance = Standard;
                     Visible = false;
                     ApplicationArea = all;
-                }
+                }*/
+
                 group("Email")
                 {
                     Caption = 'Email';
@@ -1652,7 +1655,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            group("Additional Payments")
+            /*group("Additional Payments")
             {
                 Caption = 'Additional Payments';
                 Visible = show2;
@@ -1941,7 +1944,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         end;
                     }
                 }
-            }
+            }*/
 
         }
 
@@ -1982,10 +1985,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 ApplicationArea = all;
             }
-            field("Employee with 2 JIB"; "Employee with 2 JIB")
+            /*field("Employee with 2 JIB"; "Employee with 2 JIB")
             {
                 ApplicationArea = all;
-            }
+            }*/
 
 
             field("Employee ID"; Rec."Employee ID")
@@ -2304,7 +2307,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(DepartmentName; EmployeeContractLedger."Department Name")
+                /*field(DepartmentName; EmployeeContractLedger."Department Name")
                 {
                     Caption = 'Department Name';
                     Editable = false;
@@ -2376,24 +2379,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(PositionName; EmployeeContractLedger."Position Description")
-                {
-                    Caption = 'Position';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
 
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
                 field(StatusP; EmployeeContractLedger.Status)
                 {
                     Caption = 'Status';
@@ -2411,7 +2397,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
                     end;
-                }
+                }*/
                 field(Smjena; EmployeeContractLedger."Rad u smjenama")
                 {
                     Caption = 'Rad u smjenama';
@@ -2779,7 +2765,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                     Width = 250;
                 }
-                field("Employee Benefits"; "Employee Benefits")
+                /*field("Employee Benefits"; "Employee Benefits")
                 {
                     ApplicationArea = all;
                 }
@@ -2797,7 +2783,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         WDVPAge.RUN;
                         CurrPage.UPDATE;
                     end;
-                }*/
+                }
                 field("Disciplinary Measured"; "Disciplinary Measured")
                 {
                     ApplicationArea = all;
@@ -2807,7 +2793,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     DrillDownPageID = "Employee Award List";
                     LookupPageID = "Employee Award List";
                     ApplicationArea = all;
-                }
+                }*/
                 /*field(Clauses; Clauses)
                 {
                     DrillDownPageID = Clauses;
@@ -3138,7 +3124,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-                    field(EmployeeContractLedgerExitInterview; EmployeeContractLedger."Exit Interview")
+                    /*field(EmployeeContractLedgerExitInterview; EmployeeContractLedger."Exit Interview")
                     {
                         Caption = 'Exit Interview';
                         Editable = false;
@@ -3156,7 +3142,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
                         end;
-                    }
+                    }*/
                 }
             }
         }
