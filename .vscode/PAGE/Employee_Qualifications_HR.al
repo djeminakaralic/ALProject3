@@ -18,6 +18,12 @@ page 50213 Employee_Qualifications_HR
                     ApplicationArea = All;
 
                 }
+                field("Line No."; "Line No.")
+                {
+                    ApplicationArea = all;
+
+                }
+
                 field("Employee Name"; "Employee Name")
                 {
                     ApplicationArea = all;
