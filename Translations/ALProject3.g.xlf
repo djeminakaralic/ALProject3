@@ -22613,11 +22613,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text001</note>
         </trans-unit>
-        <trans-unit id="Page 3164093577 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Set Approved to %1 for %2 records?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType Text002</note>
-        </trans-unit>
         <trans-unit id="Page 3164093577 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ending Date field cannot be blank.</source>
           <note from="Developer" annotates="general" priority="2"></note>

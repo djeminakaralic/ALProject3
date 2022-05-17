@@ -6,7 +6,6 @@ page 51129 "Employee Absence"
     PageType = Worksheet;
     SaveValues = true;
     SourceTable = "Employee Absence Reg";
-    //SourceTableView = SORTING("Employee No.", From Date);
 
     layout
     {
@@ -117,8 +116,6 @@ page 51129 "Employee Absence"
                     END;
                 end;
             }
-
-            //}
         }
         area(processing)
         {
@@ -142,22 +139,15 @@ page 51129 "Employee Absence"
     end;
 
     var
-        Text004: Label 'Ending Date field cannot be blank.';
-        Text007: Label 'Cause of Absence Code field cannot be blank.';
         Employee: Record "Employee";
         CurrPeriodStartDate: Date;
         CurrPeriodEndDate: Date;
         recEmplAbsence: Record "Employee Absence";
         recEmplAbsenceTemp: Record "Employee Absence" temporary;
-        Dim1Filter: Code[250];
-        Dim2Filter: Code[250];
-        recDimValue: Record "Dimension Value";
-        EmployeeFilter: Code[250];
-        FormEmployeeList: Page "Employee List";
-        recEmployee: Record "Employee";
         Text001: Label 'Set filters do not allow entry';
+        Text004: Label 'Ending Date field cannot be blank.';
+        Text007: Label 'Cause of Absence Code field cannot be blank.';
         CauseOfAbsence: Record "Cause of Absence";
-        Text002: Label 'Set Approved to %1 for %2 records?';
         SettingNewFilters: Boolean;
         [InDataSet]
         ChangeAllowedVisible: Boolean;
