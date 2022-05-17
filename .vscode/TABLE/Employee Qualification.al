@@ -42,7 +42,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
             Caption = 'Language code';
             TableRelation = Languages.Code;
 
-            trigger OnValidate()
+            /*trigger OnValidate()
             begin
                 IF "Language Code" <> '' THEN BEGIN
                     Languages.RESET;
@@ -52,7 +52,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
                 END
                 ELSE
                     "Language Name" := '';
-            end;
+            end;*/
         }
         field(50005; "Language Level"; Option)
         {
@@ -63,6 +63,8 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         field(50006; "Language Name"; Text[50])
         {
             Caption = 'Language Name';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Languages.Description where(Code = field("Language Code")));
             Editable = false;
         }
         field(50007; "Exam Passed"; Boolean)
