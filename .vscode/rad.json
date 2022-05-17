@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Id":52045,"Kind":17,"Name":"AlternativeAddess_ext","PackagePath":"/src/.vscode/TABLE/Alternative%20address.al"},{"Id":50145,"Kind":17,"Name":"PostCode","PackagePath":"/src/.vscode/TABLE/Post%20Code.al"}],"Removed":[{"Id":50136,"Kind":17,"Name":"PostCodeext","PackagePath":"/src/.vscode/TABLE/PostCodeext.al"}]}
+﻿{"Added":[{"Id":50172,"Kind":16,"Name":"Country_Region","PackagePath":"/src/.vscode/PAGE/Country_Regions.al"}],"Modified":[],"Removed":[]}
