@@ -12,69 +12,6 @@ page 51129 "Employee Absence"
     {
         area(content)
         {
-            /*field(EmployeeFilter; EmployeeFilter)
-            {
-                Caption = 'Employee No.';
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    EXIT(EmployeeLookup(Text, FALSE));
-                end;
-
-                trigger OnValidate()
-                begin
-                    EmployeeFilterOnAfterValidate;
-                end;
-            }*/
-
-            /*field(Dim1Filter; Dim1Filter)
-            {
-                CaptionClass = '1,2,1';
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    EXIT(DimFilterLookup(Text, 1));
-                end;
-
-                trigger OnValidate()
-                begin
-                    Dim1FilterOnAfterValidate;
-                end;
-            }*/
-            /*field(Dim2Filter; Dim2Filter)
-            {
-                CaptionClass = '1,2,2';
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    EXIT(DimFilterLookup(Text, 2));
-                end;
-
-                trigger OnValidate()
-                begin
-                    Dim2FilterOnAfterValidate;
-                end;
-            }*/
-            /*field(Year; Year)
-            {
-                BlankZero = true;
-                Caption = 'Year';
-
-                trigger OnValidate()
-                begin
-                    YearOnAfterValidate;
-                end;
-            }*/
-            /*field(Month; Month)
-            {
-                BlankZero = true;
-                Caption = 'Month';
-
-                trigger OnValidate()
-                begin
-                    MonthOnAfterValidate;
-                end;
-            }*/
             repeater(s)
             {
                 field("Entry No."; "Entry No.")
@@ -185,38 +122,7 @@ page 51129 "Employee Absence"
         }
         area(processing)
         {
-            /*action("Previous Year")
-            {
-                Caption = 'Previous Year';
-            Image = PreviousRecord;
-            Promoted = true;
-            PromotedCategory = Process;
-            PromotedIsBig = true;
-            ToolTip = 'Previous Year';
 
-                trigger OnAction()
-    begin
-        CurrPage.SAVERECORD;
-        //PrevYear;
-        CurrPage.UPDATE(FALSE);
-    end;
-
-            
-           
-
-
-            /*action("&Edit")
-            {
-                Caption = '&Edit';
-                Promoted = true;
-                PromotedCategory = Process;
-                Visible = false;
-
-                trigger OnAction()
-                begin
-                    SetEditable(NOT CurrPage.EDITABLE);
-                end;
-            }*/
         }
     }
 
@@ -238,11 +144,7 @@ page 51129 "Employee Absence"
     var
         Text004: Label 'Ending Date field cannot be blank.';
         Text007: Label 'Cause of Absence Code field cannot be blank.';
-        HRSetup: Record "Human Resources Setup";
-        //UnitOfMeasure: Record "Human Resource Unit of Measure";
         Employee: Record "Employee";
-        Year: Integer;
-        Month: Integer;
         CurrPeriodStartDate: Date;
         CurrPeriodEndDate: Date;
         recEmplAbsence: Record "Employee Absence";
@@ -254,12 +156,8 @@ page 51129 "Employee Absence"
         FormEmployeeList: Page "Employee List";
         recEmployee: Record "Employee";
         Text001: Label 'Set filters do not allow entry';
-        CalendarMgt: Codeunit "Absence Fill";
         CauseOfAbsence: Record "Cause of Absence";
         Text002: Label 'Set Approved to %1 for %2 records?';
-        txtView: Text[1024];
-        txtView2: Text[1024];
-        NewEmployeeFilter: Code[250];
         SettingNewFilters: Boolean;
         [InDataSet]
         ChangeAllowedVisible: Boolean;
