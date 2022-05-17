@@ -123,40 +123,6 @@ page 51129 "Employee Absence"
         area(navigation)
         {
 
-            /*action("Co&mments")
-            {
-                Caption = 'Co&mments';
-                Image = ViewComments;
-                RunObject = Page "Human Resource Comment Sheet";
-                /* RunPageLink = Table Name=CONST(Employee Absence),
-                               Table Line No.=FIELD(Entry No.);*/
-            /*}*/
-
-            /*action("Overview by &Categories") STAJALO
-            {
-                Caption = 'Overview by &Categories';
-                "Absence Overview by Categories";
-                RunPageLink = "Employee No." = FIELD("Employee No.");
-
-            }*/
-            /*action("Overview by &Periods")
-            {
-                Caption = 'Overview by &Periods';
-                RunObject = Page "Absence Overview by Periods";
-            }*/
-
-            /*action("&Reset Quantity")
-            {
-                Caption = '&Reset Quantity';
-                Image = UnApply;
-                ShortCutKey = 'F7';
-
-                trigger OnAction()
-                begin
-                    ResetQuantity;
-                end;
-            }*/
-
             action("&Approve All")
             {
                 Caption = '&Approve All';
@@ -236,56 +202,8 @@ page 51129 "Employee Absence"
     end;
 
             
-            /*action("Next Year")
-            {
-                Caption = 'Next Year';
-                Image = NextRecord;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Next Year';
+           
 
-                trigger OnAction()
-                begin
-                    CurrPage.SAVERECORD;
-                    //NextYear;
-                    CurrPage.UPDATE(FALSE);
-                end;
-            }
-
-            action("Previous Month")
-            {
-                Caption = 'Previous Month';
-                Image = PreviousRecord;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Previous Month';
-
-                trigger OnAction()
-                begin
-                    CurrPage.SAVERECORD;
-                    //PrevMonth;
-                    CurrPage.UPDATE(FALSE);
-                end;
-            }*/
-
-            /*action("Next Month")
-            {
-                Caption = 'Next Month';
-                Image = NextRecord;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Next Month';
-
-                trigger OnAction()
-                begin
-                    CurrPage.SAVERECORD;
-                    //NextMonth;
-                    CurrPage.UPDATE(FALSE);
-                end;
-            }*/
 
             /*action("&Edit")
             {
@@ -302,22 +220,10 @@ page 51129 "Employee Absence"
         }
     }
 
-    /*trigger OnAfterGetRecord()
-    begin
-        
-    end;*/
-
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        /*IF "From Date" = 0D then
-            Error(Text001);
-
-        IF "To Date" = 0D then
-            ERROR(Text004);*/
-
         IF "Cause of Absence Code" = '' then
             Error(Text007);
-
     end;
 
     trigger OnModifyRecord(): Boolean
@@ -327,47 +233,6 @@ page 51129 "Employee Absence"
 
         IF "To Date" = 0D then
             ERROR(Text004);
-
-        /*IF "Cause of Absence Code" = '' then
-            Error(Text007);*/
-
-    end;
-
-    /*trigger OnNewRecord(BelowxRec: Boolean)
-    begin
-
-    end;*/
-
-    /*trigger OnNewRecord(BelowxRec: Boolean)
-    begin
-        recEmployee.RESET;
-        recEmployee.SETFILTER("No.", EmployeeFilter);
-        IF (recEmployee.COUNT = 1) THEN BEGIN
-            recEmployee.FIND('-');
-            "Employee No." := recEmployee."No.";
-        END ELSE BEGIN
-            IF (BelowxRec) AND (xRec."Employee No." <> '') THEN BEGIN
-                IF recEmployee.GET(xRec."Employee No.") THEN BEGIN
-                    "Employee No." := xRec."Employee No.";
-                END;
-            END;
-        END;
-        //TestDateValid; 
-        //OnAfterGetCurrRecord;
-    end;*/
-
-    /*trigger OnOpenPage()
-    begin
-    end;*/
-
-    /*trigger OnQueryClosePage(CloseAction: Action): Boolean
-    begin
-
-    end;*/
-
-    trigger OnClosePage()
-    begin
-
     end;
 
     var
