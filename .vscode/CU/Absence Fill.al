@@ -230,7 +230,7 @@ codeunit 50304 "Absence Fill"
         Window.CLOSE;
     end;
 
-    procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee")
+    procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -285,13 +285,20 @@ codeunit 50304 "Absence Fill"
                     "From Date" := Datum."Period Start";
                     "To Date" := Datum."Period Start";
                     IF InsertAnnual THEN BEGIN
+                        Cause.Get(CauseCode);
+                        "Cause of Absence Code" := CauseCode;
+                        Description := Cause.Description;
+                        /*
                         "Cause of Absence Code" := WageSetup."Workday Code";
-                        Description := WageSetup."Workday Description";
+                        Description := WageSetup."Workday Description";*/
                         "RS Code" := RSWorkday;
                     END
                     ELSE BEGIN
-                        "Cause of Absence Code" := WageSetup."Holiday Code";
-                        Description := WageSetup."Holiday Description";
+                        /*"Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";*/
+                        Cause.Get(CauseCode);
+                        "Cause of Absence Code" := CauseCode;
+                        Description := Cause.Description;
                         "RS Code" := RSHoliday;
                     END;
 
