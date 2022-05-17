@@ -5028,6 +5028,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text006</note>
         </trans-unit>
+        <trans-unit id="Table 1229655105 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cause of absence field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text007</note>
+        </trans-unit>
         <trans-unit id="Table 1229655105 - Field 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approved</source>
           <note from="Developer" annotates="general" priority="2"></note>

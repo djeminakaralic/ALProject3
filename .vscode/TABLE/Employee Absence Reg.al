@@ -176,9 +176,13 @@ table 50104 "Employee Absence Reg"
         Text004: Label 'Ending Date field cannot be blank.';
         Text005: Label 'A leave for this period already exists.';
         Text006: Label 'Selected record has already been approved.';
+        Text007: Label 'Cause of absence field cannot be blank.';
 
     trigger OnInsert()
     begin
+        if rec."Cause of Absence Code" = '' then
+            Error(Text007);
+
         EmployeeAbsenceReg.Reset();
         EmployeeAbsenceReg.SetCurrentKey("Entry No.");
         if EmployeeAbsenceReg.FindLast then
