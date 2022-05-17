@@ -175,7 +175,7 @@ table 50104 "Employee Absence Reg"
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
         Text004: Label 'Ending Date field cannot be blank.';
         Text005: Label 'A leave for this period already exists.';
-        Text006: Label 'Selected record has already been deleted.';
+        Text006: Label 'Selected record has already been approved.';
 
     trigger OnInsert()
     begin

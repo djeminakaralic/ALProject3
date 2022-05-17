@@ -5024,7 +5024,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text005</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Selected record has already been deleted.</source>
+          <source>Selected record has already been approved.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - NamedType Text006</note>
         </trans-unit>
