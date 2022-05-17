@@ -239,6 +239,7 @@ codeunit 50304 "Absence Fill"
         RSHoliday: Code[2];
         AbsenceEmp: Record "Employee Absence";
         AbsenceTemp: Record "Employee Absence";
+        AbsenceReg: Record "Employee Absence Reg";
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
@@ -297,6 +298,7 @@ codeunit 50304 "Absence Fill"
                     "From Date" := Datum."Period Start";
                     "To Date" := Datum."Period Start";
                     IF InsertAnnual THEN BEGIN
+                        //"Cause of Absence Code":= 
                         "Cause of Absence Code" := WageSetup."Workday Code";
                         Description := WageSetup."Workday Description";
                         "RS Code" := RSWorkday;
@@ -306,10 +308,8 @@ codeunit 50304 "Absence Fill"
                         Description := WageSetup."Holiday Description";
                         "RS Code" := RSHoliday;
                     END;
-                    //komentar
 
                     Quantity := Employee."Hours In Day";
-
 
                     "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
                     INSERT;
