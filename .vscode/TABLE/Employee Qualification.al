@@ -42,7 +42,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
             Caption = 'Language code';
             TableRelation = Languages;
 
-            /*trigger OnValidate()
+            trigger OnValidate()
             begin
                 IF "Language Code" <> '' THEN BEGIN
                     Languages.RESET;
@@ -52,7 +52,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
                 END
                 ELSE
                     "Language Name" := '';
-            end;*/
+            end;
         }
         field(50005; "Language Level"; Option)
         {

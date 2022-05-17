@@ -1,7 +1,8 @@
 table 50051 Languages
 {
     Caption = 'Languages';
-    LookupPageID = "Languages";
+    LookupPageID = "Language";
+    DrillDownPageId = Language;
 
     fields
     {
