@@ -34,7 +34,6 @@ table 50104 "Employee Absence Reg"
                 end;
 
                 If Rec."Approved" = false then begin
-
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     EmployeeAbsence.DeleteAll();
