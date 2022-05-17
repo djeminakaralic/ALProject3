@@ -231,7 +231,6 @@ codeunit 50304 "Absence Fill"
     end;
 
     procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee")
-    //komentar
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -239,28 +238,21 @@ codeunit 50304 "Absence Fill"
         RSWorkday: Code[2];
         RSHoliday: Code[2];
         AbsenceEmp: Record "Employee Absence";
-        AbsenceTemp: Record "Employee Absence";
         AbsenceReg: Record "Employee Absence Reg";
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
-        TempEntry: Integer;
         EmploymentContract: Record "Employment Contract";
         HoursInDay: Decimal;
     begin
         AbsenceEmp.RESET;
         AbsenceEmp.LOCKTABLE;
-        AbsenceTemp.RESET;
-        AbsenceTemp.DELETEALL;
-
-
 
         WageSetup.GET;
         Cause.GET(WageSetup."Workday Code");
         RSWorkday := Cause."Insurance Basis";
         Cause.GET(WageSetup."Holiday Code");
         RSHoliday := Cause."Insurance Basis";
-
 
         IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN
             ERROR(Txt001);
@@ -279,12 +271,7 @@ codeunit 50304 "Absence Fill"
         Datum.SETRANGE("Period Start", StartDate2, EndDate2);
         Datum.FINDFIRST;
 
-        TempEntry := 1;
-
-
-
         REPEAT
-
             InsertAnnual := FALSE;
             InsertWeekly := FALSE;
 
@@ -292,14 +279,13 @@ codeunit 50304 "Absence Fill"
             CheckCalendar(InsertWeekly, 2);
 
             IF InsertWeekly THEN
-                WITH AbsenceTemp DO BEGIN
+                WITH AbsenceEmp DO BEGIN
                     INIT;
-                    "Entry No." := TempEntry;
+                    "Entry No." := LastEntry;
                     "Employee No." := Employee."No.";
                     "From Date" := Datum."Period Start";
                     "To Date" := Datum."Period Start";
                     IF InsertAnnual THEN BEGIN
-                        //"Cause of Absence Code":= 
                         "Cause of Absence Code" := WageSetup."Workday Code";
                         Description := WageSetup."Workday Description";
                         "RS Code" := RSWorkday;
@@ -314,7 +300,7 @@ codeunit 50304 "Absence Fill"
 
                     "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
                     INSERT;
-                    TempEntry := TempEntry + 1;
+                    LastEntry := LastEntry + 1;
                 END;
         UNTIL Datum.NEXT = 0;
 
