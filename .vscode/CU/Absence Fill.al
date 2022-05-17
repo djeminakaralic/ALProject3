@@ -242,7 +242,6 @@ codeunit 50304 "Absence Fill"
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
-        EmploymentContract: Record "Employment Contract";
         HoursInDay: Decimal;
     begin
         AbsenceEmp.RESET;
