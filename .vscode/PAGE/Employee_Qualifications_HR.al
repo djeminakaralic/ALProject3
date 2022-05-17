@@ -1,9 +1,10 @@
 page 50213 Employee_Qualifications_HR
 {
 
+    AutoSplitKey = true;
+    Caption = 'Employee Qualifications';
+    DataCaptionFields = "Employee No.";
     PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "Employee Qualification";
 
     layout
@@ -99,10 +100,53 @@ page 50213 Employee_Qualifications_HR
 
 
         }
+        area(factboxes)
+        {
+            systempart(Control1900383207; Links)
+            {
+                ApplicationArea = RecordLinks;
+                Visible = false;
+            }
+            systempart(Control1905767507; Notes)
+            {
+                ApplicationArea = Notes;
+                Visible = true;
+            }
+        }
     }
 
     actions
     {
+        area(navigation)
+        {
+            group("Q&ualification")
+            {
+                Caption = 'Q&ualification';
+                Image = Certificate;
+                action("Co&mments")
+                {
+                    ApplicationArea = Comments;
+                    Caption = 'Co&mments';
+                    Image = ViewComments;
+                    RunObject = Page "Human Resource Comment Sheet";
+                    RunPageLink = "Table Name" = CONST("Employee Qualification"),
+                                  "No." = FIELD("Employee No."),
+                                  "Table Line No." = FIELD("Line No.");
+                    ToolTip = 'View or add comments for the record.';
+                }
+                separator(Action23)
+                {
+                }
+                action("Q&ualification Overview")
+                {
+                    ApplicationArea = BasicHR;
+                    Caption = 'Q&ualification Overview';
+                    Image = QualificationOverview;
+                    RunObject = Page "Qualification Overview";
+                    ToolTip = 'View qualifications that are registered for the employee.';
+                }
+            }
+        }
         area(Processing)
         {
             action(ActionName)
@@ -116,6 +160,8 @@ page 50213 Employee_Qualifications_HR
             }
         }
     }
+
+
 
 
     trigger OnOpenPage()
