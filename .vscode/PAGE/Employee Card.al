@@ -357,7 +357,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                             EmployeeRelative.RESET;
                             EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER("Relative Code", 'OTAC');
+                            EmployeeRelative.SETFILTER(Relation, 'Father');
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
@@ -374,7 +374,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                             EmployeeRelative.RESET;
                             EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER("Relative Code", 'MAJKA');
+                            EmployeeRelative.SETFILTER(Relation, 'Mother');
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
@@ -388,7 +388,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         begin
                             EmployeeRelative.RESET;
                             EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER("Relative Code", 'MAJKA');
+                            EmployeeRelative.SETFILTER(Relation, 'Mother');
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
