@@ -242,7 +242,6 @@ codeunit 50304 "Absence Fill"
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
-        TempEntry: Integer;
         EmploymentContract: Record "Employment Contract";
         HoursInDay: Decimal;
     begin
@@ -272,10 +271,7 @@ codeunit 50304 "Absence Fill"
         Datum.SETRANGE("Period Start", StartDate2, EndDate2);
         Datum.FINDFIRST;
 
-        TempEntry := 1;
-
         REPEAT
-
             InsertAnnual := FALSE;
             InsertWeekly := FALSE;
 
