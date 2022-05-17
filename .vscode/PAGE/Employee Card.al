@@ -3251,21 +3251,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Promoted = false;
         }
-        modify(Dimensions)
-        {
-            Promoted = true;
-        }
-        modify(PayEmployee)
-        {
-            Promoted = true;
-        }
         modify("Co&mments")
         {
             Promoted = false;
-        }
-        modify("&Relatives")
-        {
-            Promoted = true;
         }
 
         modify(Dimensions)
@@ -3274,34 +3262,34 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         }
         modify("&Confidential Information")
         {
-            //Promoted = false;
+            Promoted = false;
             Visible = false;
         }
-        /*modify("Q&ualifications")
+        modify("Q&ualifications")
         {
             Promoted = false;
-        }*/
+        }
         modify("A&bsences")
         {
             Promoted = false;
         }
         modify("Ledger E&ntries")
         {
-            //Promoted = false;
+            Promoted = false;
             Visible = false;
         }
         modify(Attachments)
         {
-            // Promoted = false;
+            Promoted = false;
         }
         modify(PayEmployee)
         {
-            // Promoted = false;
+            Promoted = false;
             Visible = false;
         }
         modify(Contact)
         {
-            // Promoted = false;
+            Promoted = false;
             Visible = false;
         }
 
