@@ -144,18 +144,11 @@ page 51129 "Employee Absence"
     var
         Employee: Record "Employee";
         EmployeeAbsenceReg: Record "Employee Absence Reg";
-        CurrPeriodStartDate: Date;
-        CurrPeriodEndDate: Date;
         recEmplAbsence: Record "Employee Absence";
         recEmplAbsenceTemp: Record "Employee Absence" temporary;
         Text001: Label 'Set filters do not allow entry';
         Text004: Label 'Ending Date field cannot be blank.';
         Text007: Label 'Cause of Absence Code field cannot be blank.';
         CauseOfAbsence: Record "Cause of Absence";
-        SettingNewFilters: Boolean;
-        [InDataSet]
-        ChangeAllowedVisible: Boolean;
-        WageAllowed: Boolean;
-        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
     //ED 01 END
 }

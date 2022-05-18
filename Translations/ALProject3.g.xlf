@@ -22703,11 +22703,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3164093577 - NamedType 4033777787" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You do not have permission to access this report. Please contact your system administrator.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - NamedType error1</note>
-        </trans-unit>
         <trans-unit id="Page 3164093577 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set filters do not allow entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
