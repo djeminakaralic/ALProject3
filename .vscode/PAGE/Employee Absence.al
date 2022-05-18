@@ -70,17 +70,15 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
+
                     Rec.FINDFIRST;
                     BEGIN
-
                         IF Rec."Approved" = FALSE THEN BEGIN
                             REPEAT
                                 Validate(Rec."Approved", TRUE);
                                 Rec.MODIFY;
-
                             UNTIL Rec.NEXT = 0;
-                        END;
-
+                        END
                         /*ELSE BEGIN
                             REPEAT
                                 Rec."Approved" := FALSE;
@@ -102,6 +100,7 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
+
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Approved" = TRUE THEN BEGIN
@@ -143,6 +142,7 @@ page 51129 "Employee Absence"
 
     var
         Employee: Record "Employee";
+        EmployeeAbsenceReg: Record "Employee Absence Reg";
         CurrPeriodStartDate: Date;
         CurrPeriodEndDate: Date;
         recEmplAbsence: Record "Employee Absence";
