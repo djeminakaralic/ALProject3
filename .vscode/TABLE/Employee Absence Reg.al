@@ -138,17 +138,13 @@ table 50104 "Employee Absence Reg"
 
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
+
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
-
-                EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
-                EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-                if EmployeeAbsence.FindFirst() then
-                    Error(Text005);
             end;
-
-
         }
 
         field(11; "Unit of Measure Code"; Code[10])

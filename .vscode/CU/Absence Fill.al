@@ -310,6 +310,13 @@ codeunit 50304 "Absence Fill"
                     LastEntry := LastEntry + 1;
                 END;
         UNTIL Datum.NEXT = 0;
+
+        /*repeat
+        //krenuti od prvog dana u mjesecu, provjeriti ima li za njega odsustvo
+        //ako nema odsustvo staviti da je sifra uzroka izostanka redovan rad iz wage setup
+         "Cause of Absence Code" := WageSetup."Workday Code";
+                        Description := WageSetup."Workday Description";
+        until ;*/
     end;
     //ED 01 END
 
