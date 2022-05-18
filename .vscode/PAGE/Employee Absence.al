@@ -1,4 +1,5 @@
 page 51129 "Employee Absence"
+//ED 01 START
 {
     Caption = 'Employee Absence';
     DataCaptionFields = "Employee No.";
@@ -156,4 +157,5 @@ page 51129 "Employee Absence"
         ChangeAllowedVisible: Boolean;
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+    //ED 01 END
 }

@@ -1,4 +1,5 @@
 table 50104 "Employee Absence Reg"
+//ED 01 START
 {
     Caption = 'Sample table';
     DrillDownPageID = "Employee Absence";
@@ -211,6 +212,7 @@ table 50104 "Employee Absence Reg"
             Error(Text006);
         end;
     end;
+    //ED 01 END
 }
 
 

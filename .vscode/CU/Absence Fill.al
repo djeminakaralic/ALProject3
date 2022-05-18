@@ -230,6 +230,7 @@ codeunit 50304 "Absence Fill"
         Window.CLOSE;
     end;
 
+    //ED 01 START
     procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
     var
         FromDateFilter: Date;
@@ -310,6 +311,7 @@ codeunit 50304 "Absence Fill"
                 END;
         UNTIL Datum.NEXT = 0;
     end;
+    //ED 01 END
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
     var
