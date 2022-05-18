@@ -70,9 +70,14 @@ table 50104 "Employee Absence Reg"
             TableRelation = "Cause of Absence";
 
             trigger OnValidate()
+            var
+                WageSetup: Record "Wage Setup";
             begin
                 IF Approved = true then
                     error(Text006);
+
+                /*if Rec."Cause of Absence Code"<>WageSetup."Overtime Code" then
+                Hours.visib*/
 
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
@@ -171,6 +176,7 @@ table 50104 "Employee Absence Reg"
         field(13; "Hours"; Integer)
         {
             Caption = 'Hours';
+
         }
     }
 
