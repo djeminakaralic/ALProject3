@@ -171,6 +171,11 @@ table 50104 "Employee Absence Reg"
             Editable = false;
             InitValue = 1;
         }
+
+        field(13; "Hours"; Integer)
+        {
+            Caption = 'Hours';
+        }
     }
 
     keys

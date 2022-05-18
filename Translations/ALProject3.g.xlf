@@ -5068,6 +5068,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field From Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1229655105 - Field 1333289741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hours</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Hours - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1229655105 - Field 4068742839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Name</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -51,6 +51,10 @@ page 51129 "Employee Absence"
                 {
                     Editable = true;
                 }
+                field(Hours; Hours)
+                {
+
+                }
             }
         }
     }
@@ -139,11 +143,6 @@ page 51129 "Employee Absence"
 
         IF "To Date" = 0D then
             ERROR(Text004);
-
-        /*EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
-        //EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-        if EmployeeAbsence.FindFirst() then
-            Error(Text005);*/
     end;
 
     var
