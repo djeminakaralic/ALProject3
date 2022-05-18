@@ -4989,7 +4989,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Education - Seminars - Field Serial Number - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1229655105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sample table</source>
+          <source>Employee Absence Reg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Property Caption</note>
         </trans-unit>

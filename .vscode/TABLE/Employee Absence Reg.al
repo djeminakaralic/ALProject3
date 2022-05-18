@@ -1,7 +1,7 @@
 table 50104 "Employee Absence Reg"
 //ED 01 START
 {
-    Caption = 'Sample table';
+    Caption = 'Employee Absence Reg';
     DrillDownPageID = "Employee Absence";
     LookupPageID = "Employee Absence";
 
