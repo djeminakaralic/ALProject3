@@ -10,6 +10,7 @@ page 51129 "Employee Absence"
 
     layout
     {
+
         area(content)
         {
             repeater(s)
@@ -41,13 +42,14 @@ page 51129 "Employee Absence"
                 }
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
-                    trigger OnValidate()
+                    /*trigger OnValidate()
                     var
                         WageSetup: Record "Wage Setup";
                     begin
-                        if Rec."Cause of Absence Code" <> WageSetup."Overtime Code" then
+                        if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
                             VisibleHours := true;
-                    end;
+                        else VisibleHours := false;
+                    end;*/
                 }
                 field(Description; Description)
                 {
@@ -149,6 +151,11 @@ page 51129 "Employee Absence"
 
         IF "To Date" = 0D then
             ERROR(Text004);
+    end;
+
+    trigger OnOpenPage()
+    begin
+        VisibleHours := true;
     end;
 
     var
