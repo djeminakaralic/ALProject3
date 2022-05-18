@@ -47,13 +47,13 @@ page 51129 "Employee Absence"
                 {
 
                 }
-                field(Approved; Approved)
-                {
-                    Editable = true;
-                }
                 field(Hours; Hours)
                 {
 
+                }
+                field(Approved; Approved)
+                {
+                    Editable = true;
                 }
             }
         }
