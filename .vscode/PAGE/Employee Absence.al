@@ -22,7 +22,10 @@ page 51129 "Employee Absence"
                 }
                 field("Employee No."; "Employee No.")
                 {
-
+                    trigger OnValidate()
+                    begin
+                        EditableHours := false;
+                    end;
                 }
                 field("First Name"; "First Name")
                 {
@@ -42,14 +45,13 @@ page 51129 "Employee Absence"
                 }
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
-                    /*trigger OnValidate()
+                    trigger OnValidate()
                     var
                         WageSetup: Record "Wage Setup";
                     begin
                         if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
-                            VisibleHours := true;
-                        else VisibleHours := false;
-                    end;*/
+                            EditableHours := true;
+                    end;
                 }
                 field(Description; Description)
                 {
@@ -57,7 +59,7 @@ page 51129 "Employee Absence"
                 }
                 field(Hours; Hours)
                 {
-                    Visible = VisibleHours;
+                    Editable = EditableHours;
                 }
                 field(Approved; Approved)
                 {
@@ -153,14 +155,9 @@ page 51129 "Employee Absence"
             ERROR(Text004);
     end;
 
-    trigger OnOpenPage()
-    begin
-        VisibleHours := true;
-    end;
-
     var
         Employee: Record "Employee";
-        VisibleHours: Boolean;
+        EditableHours: Boolean;
         EmployeeAbsenceReg: Record "Employee Absence Reg";
         recEmplAbsence: Record "Employee Absence";
         recEmplAbsenceTemp: Record "Employee Absence" temporary;
