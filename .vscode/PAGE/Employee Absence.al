@@ -1,4 +1,5 @@
 page 51129 "Employee Absence"
+//ED 01 START
 {
     Caption = 'Employee Absence';
     DataCaptionFields = "Employee No.";
@@ -70,6 +71,7 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
+
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Approved" = FALSE THEN BEGIN
@@ -99,6 +101,7 @@ page 51129 "Employee Absence"
 
                 trigger OnAction()
                 begin
+
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Approved" = TRUE THEN BEGIN
@@ -140,6 +143,7 @@ page 51129 "Employee Absence"
 
     var
         Employee: Record "Employee";
+        EmployeeAbsenceReg: Record "Employee Absence Reg";
         CurrPeriodStartDate: Date;
         CurrPeriodEndDate: Date;
         recEmplAbsence: Record "Employee Absence";
@@ -153,4 +157,5 @@ page 51129 "Employee Absence"
         ChangeAllowedVisible: Boolean;
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+    //ED 01 END
 }
