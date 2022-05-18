@@ -70,14 +70,9 @@ table 50104 "Employee Absence Reg"
             TableRelation = "Cause of Absence";
 
             trigger OnValidate()
-            var
-                WageSetup: Record "Wage Setup";
             begin
                 IF Approved = true then
                     error(Text006);
-
-                /*if Rec."Cause of Absence Code"<>WageSetup."Overtime Code" then
-                Hours.visib*/
 
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
@@ -176,7 +171,6 @@ table 50104 "Employee Absence Reg"
         field(13; "Hours"; Integer)
         {
             Caption = 'Hours';
-
         }
     }
 
@@ -202,6 +196,8 @@ table 50104 "Employee Absence Reg"
         Text005: Label 'A leave for this period already exists.';
         Text006: Label 'Selected record has already been approved.';
         Text007: Label 'Cause of absence field cannot be blank.';
+
+        VisibleHours: Boolean;
 
     trigger OnInsert()
     begin

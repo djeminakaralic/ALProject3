@@ -14,6 +14,7 @@ codeunit 50304 "Absence Fill"
         Cause: Record "Cause of Absence";
         LastEntry: Integer;
         WageSetup: Record "Wage Setup";
+
         DailyHours1: Decimal;
         LastArray: Integer;
         AddArray: Boolean;
