@@ -147,10 +147,10 @@ page 51129 "Employee Absence"
         IF "Cause of Absence Code" = '' then
             Error(Text007);
 
-        WageSetup.Get();
+        /*WageSetup.Get();
         if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
             IF Hours = 0 then
-                Error(Text008);
+                Error(Text008);*/
     end;
 
     trigger OnModifyRecord(): Boolean
