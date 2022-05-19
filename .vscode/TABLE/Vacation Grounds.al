@@ -520,8 +520,9 @@ table 50162 "Vacation Grounds"
         }
         field(22; "Max Days"; Decimal)
         {
-            /*CalcFormula = Max(OpRisk.Quantity WHERE(Employee No.=FIELD(Employee No.)));
-            FieldClass = FlowField;*/
+            FieldClass = FlowField;
+            CalcFormula = Max(OpRisk.Quantity WHERE("Employee No." = FIELD("Employee No.")));
+
         }
         field(23; "Used Days"; Integer)
         {
