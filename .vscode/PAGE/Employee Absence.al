@@ -143,6 +143,13 @@ page 51129 "Employee Absence"
     begin
         IF "Cause of Absence Code" = '' then
             Error(Text007);
+
+        WageSetup.Get();
+        if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
+            IF Hours = 0 then
+                Error(Text008);
+
+
     end;
 
     trigger OnModifyRecord(): Boolean
@@ -164,6 +171,7 @@ page 51129 "Employee Absence"
         Text001: Label 'Set filters do not allow entry';
         Text004: Label 'Ending Date field cannot be blank.';
         Text007: Label 'Cause of Absence Code field cannot be blank.';
+        Text008: Label 'Hours field cannot be blank.';
         CauseOfAbsence: Record "Cause of Absence";
     //ED 01 END
 }
