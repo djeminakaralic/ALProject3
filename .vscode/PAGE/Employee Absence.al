@@ -152,8 +152,9 @@ page 51129 "Employee Absence"
             Error(Text007);
 
         CauseOfAbsence.Get("Cause of Absence Code");
-        if NOT (CauseOfAbsence."Added To Hour Pool") then
-            Error(Text008);
+        if CauseOfAbsence."Added To Hour Pool" then
+            if Hours = 0 then
+                Error(Text008);
     end;
 
     trigger OnModifyRecord(): Boolean
