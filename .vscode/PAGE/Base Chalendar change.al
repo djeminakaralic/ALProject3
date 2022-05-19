@@ -13,6 +13,8 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
                     Question := Text000;
                     if "Paid Holiday" then
                         Answer := Dialog.Confirm(Question, true);
+                    /*if Answer then
+                    AbsenceFill. pozvati funkciju fill holiday*/
                 end;
 
             }
@@ -25,6 +27,7 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
     }
 
     var
+        AbsenceFill: Codeunit "Absence Fill";
         Question: Text;
         Text000: Label 'Do you want to set paid holiday for all employees?';
         Answer: Boolean;
