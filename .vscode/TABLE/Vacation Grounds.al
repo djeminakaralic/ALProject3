@@ -2,6 +2,8 @@ table 50162 "Vacation Grounds"
 {
     Caption = 'Vacation Grounds';
 
+
+
     fields
     {
         field(1; "Employee No."; Code[10])
