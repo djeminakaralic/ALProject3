@@ -1245,7 +1245,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            group("Solidarity Fund")
+            /*group("Solidarity Fund")
             {
                 Caption = 'Solidarity Fund';
                 field("Internal Solidarity Fund"; "Internal Solidarity Fund")
@@ -1273,7 +1273,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            /*group("Additional Work Activity2")
+            group("Additional Work Activity2")
             {
                 Caption = 'Additional Work Activity';
                 Editable = show;
@@ -1639,7 +1639,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //ĐK
 
             }
-            group(Union)
+            /*group(Union)
             {
                 Caption = 'Union';
                 Visible = show;
@@ -1663,7 +1663,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            /*group("Additional Payments")
+            group("Additional Payments")
             {
                 Caption = 'Additional Payments';
                 Visible = show2;
