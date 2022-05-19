@@ -1,7 +1,5 @@
 pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
 {
-
-
     layout
     {
         addafter(Nonworking)
