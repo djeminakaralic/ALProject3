@@ -1756,7 +1756,7 @@ tableextension 50071 EmployeeExtension extends Employee
 
             end;
         }
-        field(50302; "Full Phone No."; Text[8])
+        field(50302; "Full Phone No."; Text[16])
         {
             Caption = 'Phone No.';
             ExtendedDatatype = PhoneNo;
