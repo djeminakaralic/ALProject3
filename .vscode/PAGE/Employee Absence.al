@@ -66,6 +66,7 @@ page 51129 "Employee Absence"
                 field(Hours; Hours)
                 {
                     Editable = EditableHours;
+                    BlankZero = true;
                 }
                 field(Approved; Approved)
                 {
