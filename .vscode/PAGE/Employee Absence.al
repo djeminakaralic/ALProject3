@@ -46,9 +46,8 @@ page 51129 "Employee Absence"
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
                     trigger OnValidate()
-                    var
-                        WageSetup: Record "Wage Setup";
                     begin
+                        WageSetup.Get();
                         if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
                             EditableHours := true;
                     end;
@@ -157,6 +156,7 @@ page 51129 "Employee Absence"
 
     var
         Employee: Record "Employee";
+        WageSetup: Record "Wage Setup";
         EditableHours: Boolean;
         EmployeeAbsenceReg: Record "Employee Absence Reg";
         recEmplAbsence: Record "Employee Absence";
