@@ -22,10 +22,10 @@ page 51129 "Employee Absence"
                 }
                 field("Employee No."; "Employee No.")
                 {
-                    /*trigger OnValidate()
+                    trigger OnValidate()
                     begin
                         EditableHours := false;
-                    end;*/
+                    end;
                 }
                 field("First Name"; "First Name")
                 {
