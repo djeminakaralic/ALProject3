@@ -12,21 +12,23 @@ table 50151 Sector
 
             trigger OnValidate()
             begin
-                /*IF Code <> xRec.Code THEN BEGIN
-                  HumanResSetup.GET;
-                  NoSeriesMgt.TestManual(HumanResSetup."B-1 Nos.");
-                  "No. Series" := '';
-                END;*/
-                //EVALUATE(Order,Code);
-                /*Dep.SETFILTER(Code,'%1',xRec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",xRec.Description)
-                    THEN
-                    Dep.RENAME(Rec.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",Rec.Description)
-                      UNTIL Dep.NEXT=0;*/
-                "Department Type" := "Department Type"::Sector;
 
+
+                IF Code <> xRec.Code THEN BEGIN
+                    Dep.Reset();
+                    Dep.SETFILTER(Code, '%1', xRec.Code);
+                    Dep.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF Dep.FINDSET THEN
+                        REPEAT
+                            IF Dep.GET(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", xRec.Description)
+                                                 THEN
+                                Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description)
+
+                        until Dep.Next() = 0;
+
+                    "Department Type" := "Department Type"::Sector;
+
+                end;
             end;
         }
         field(2; Description; Text[250])
@@ -35,15 +37,22 @@ table 50151 Sector
 
             trigger OnValidate()
             begin
-                /*Dep.SETFILTER(Code,'%1',Rec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",xRec.Description)
-                    THEN BEGIN
-                    Dep.RENAME(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",Rec.Description) ;
-                      //Dep.Description:=Rec.Description;
-                      END;
-                      UNTIL Dep.NEXT=0;*/
+
+                IF Description <> xRec.Description THEN BEGIN
+                    Dep.Reset();
+                    Dep.SETFILTER(Description, '%1', xRec.Description);
+                    Dep.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF Dep.FINDSET THEN
+                        REPEAT
+                            IF Dep.GET(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", xRec.Description)
+                                                 THEN
+                                Dep.RENAME(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description)
+
+                        until Dep.Next() = 0;
+
+
+                end;
+
 
             end;
         }
@@ -129,8 +138,6 @@ table 50151 Sector
 
             trigger OnValidate()
             begin
-                /*IF NOT DimMgt.CheckDim("Dimension Code") THEN
-                  ERROR(DimMgt.GetDimErr);*/
 
             end;
         }
@@ -163,6 +170,12 @@ table 50151 Sector
         }
         field(500405; Parent; Text[250])
         {
+        }
+        field(500406; CEO; Boolean)
+        {
+
+            TableRelation = Sector.Code WHERE("Org Shema" = FIELD("ORG Shema"), CEO = const(true));
+
         }
     }
 

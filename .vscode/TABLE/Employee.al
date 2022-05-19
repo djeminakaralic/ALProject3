@@ -1186,6 +1186,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50108; "Brought Years of Experience"; Integer)
         {
             Caption = 'Brought Years of Experience';
+            
         }
         field(50109; "Brought Months of Experience"; Integer)
         {

@@ -20,7 +20,12 @@ table 50043 Department
                 SectorT.SETFILTER("Org Shema", '%1', "ORG Shema");
                 IF SectorT.FINDFIRST THEN BEGIN
                     Zapis := SectorT.COUNT;
-                    "Department Type" := 8;
+
+                    if SectorT.CEO = true then
+                        Rec."Department Type" := Rec."Department Type"::CEO
+                    else
+                        Rec."Department Type" := Rec."Department Type"::Sector;
+
                     IF Zapis = 1 THEN BEGIN
                         VALIDATE("Sector  Description", SectorT.Description);
                         Description := SectorT.Description;
@@ -38,61 +43,44 @@ table 50043 Department
                     END;
                 END;
 
-                //odjel
+                //Služba
                 DepartmentCategoryT.RESET;
                 DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
                 DepartmentCategoryT.SETFILTER(Code, '%1', Rec.Code);
                 IF DepartmentCategoryT.FINDFIRST THEN BEGIN
                     Zapis := DepartmentCategoryT.COUNT;
-                    "Department Type" := 4;
-                    IF Zapis = 1 THEN BEGIN
-                        Description := DepartmentCategoryT.Description;
-                        VALIDATE("Department Categ.  Description", DepartmentCategoryT.Description);
-                        Dep.RESET;
-                        Dep.SETFILTER(Description, '%1', DepartmentCategoryT.Description);
-                        Dep.SETFILTER("ORG Shema", '%1', "ORG Shema");
-                        IF Dep.FINDFIRST THEN BEGIN
-                            "Managing Org 1" := Dep."Department Category";
-                            "Managing Org 2" := Dep.Sector;
-                            "Managing Org 3" := COPYSTR(Dep.Sector, 1, 2);
+                    "Department Type" := "Department Type"::"Department Category";
 
-                        END
-                        ELSE BEGIN
-                            "Managing Org 1" := '';
-                            "Managing Org 2" := '';
-                            "Managing Org 3" := '';
-                        END;
+                    Description := DepartmentCategoryT.Description;
+                    VALIDATE("Department Categ.  Description", DepartmentCategoryT.Description);
+                    Validate("Sector  Description", DepartmentCategoryT."Sector Belongs");
+                    Dep.RESET;
+                    Dep.SETFILTER(Description, '%1', DepartmentCategoryT.Description);
+                    Dep.SETFILTER("ORG Shema", '%1', "ORG Shema");
+                    IF Dep.FINDFIRST THEN BEGIN
+                        "Managing Org 1" := Dep."Department Category";
+                        "Managing Org 2" := Dep.Sector;
+                        "Managing Org 3" := COPYSTR(Dep.Sector, 1, 2);
 
-                        String := FORMAT(Rec.Code);
-                        Brojac := 0;
-                        FOR i := 1 TO STRLEN(Rec.Code) DO BEGIN
-                            IF String[i] = '.' THEN BEGIN
-                                Brojac := Brojac + 1;
-                                IF Brojac = 2 THEN
-                                    j := i;
-                            END;
-                        END;
-                        IF j <> 0 THEN BEGIN
-                            SectorT.RESET;
-                            SectorT.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, j));
-                            SectorT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                            IF SectorT.FINDFIRST THEN BEGIN
-                                VALIDATE("Sector  Description", SectorT.Description);
-                                SectorT.RESET;
-                                SectorT.SETFILTER(Description, '%1', SectorT.Description);
-                                IF SectorT.FINDFIRST THEN
-                                    Sector := SectorT.Code;
-                            END;
-                        END;
+                    END
+                    ELSE BEGIN
+                        "Managing Org 1" := '';
+                        "Managing Org 2" := '';
+                        "Managing Org 3" := '';
                     END;
+
+
+
                 END;
 
+                //Odjel
                 GroupT.RESET;
                 GroupT.SETFILTER("Org Shema", '%1', "ORG Shema");
                 GroupT.SETFILTER(Code, '%1', Rec.Code);
                 IF GroupT.FINDFIRST THEN BEGIN
-                    Zapis := GroupT.COUNT;
-                    "Department Type" := 2;
+
+
+                    "Department Type" := "Department Type"::Group;
                     IF Zapis = 1 THEN BEGIN
                         Description := GroupT.Description;
                         VALIDATE("Group Description", GroupT.Description);
@@ -114,121 +102,25 @@ table 50043 Department
                         END;
 
                         "Group Code" := Rec.Code;
-                        String := FORMAT(Rec.Code);
-                        Brojac := 0;
-                        FOR i := 1 TO STRLEN(Rec.Code) DO BEGIN
-                            IF String[i] = '.' THEN BEGIN
-                                Brojac := Brojac + 1;
-                                IF Brojac = 2 THEN
-                                    j := i;
-                                IF Brojac = 3 THEN
-                                    K := i;
-                            END;
-                        END;
-                        IF j <> 0 THEN BEGIN
-                            SectorT.RESET;
-                            SectorT.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, j));
-                            SectorT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                            IF SectorT.FINDFIRST THEN BEGIN
-                                VALIDATE("Sector  Description", SectorT.Description);
-                                SectorT.RESET;
-                                SectorT.SETFILTER(Description, '%1', SectorT.Description);
-                                IF SectorT.FINDFIRST THEN
-                                    Sector := SectorT.Code;
-                            END;
-                        END;
-                        IF K <> 0 THEN BEGIN
-                            DepartmentCategoryT.RESET;
-                            DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                            DepartmentCategoryT.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, K));
-                            IF DepartmentCategoryT.FINDFIRST THEN BEGIN
-                                IF DepartmentCategoryT.COUNT = 1 THEN BEGIN
-                                    VALIDATE("Department Categ.  Description", DepartmentCategoryT.Description);
-                                END;
-                            END;
-                        END;
 
 
-                    END;
-                END;
 
-                TeamT.RESET;
-                TeamT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                TeamT.SETFILTER(Code, '%1', Rec.Code);
-                IF TeamT.FINDFIRST THEN BEGIN
-                    Zapis := TeamT.COUNT;
-                    "Team Code" := Rec.Code;
-                    "Department Type" := 9;
-                    IF Zapis = 1 THEN BEGIN
-                        Description := TeamT.Name;
-                        VALIDATE("Team Description", TeamT.Name);
-                        Dep.RESET;
-                        Dep.SETFILTER(Description, '%1', TeamT.Name);
-                        Dep.SETFILTER("ORG Shema", '%1', "ORG Shema");
-                        IF Dep.FINDFIRST THEN BEGIN
-                            "Managing Org 1" := Dep."Team Code";
-                            "Managing Org 2" := Dep."Group Code";
-                            "Managing Org 3" := Dep."Department Category";
-                            "Managing Org 4" := Dep.Sector;
-                            "Managing Org 5" := COPYSTR(Dep.Sector, 1, 2);
 
-                        END
-                        ELSE BEGIN
-                            "Managing Org 1" := '';
-                            "Managing Org 2" := '';
-                            "Managing Org 3" := '';
-                            "Managing Org 4" := '';
-                            "Managing Org 5" := '';
-                        END;
-                    END;
-                    String := FORMAT(Rec.Code);
-                    Brojac := 0;
-                    FOR i := 1 TO STRLEN(Rec.Code) DO BEGIN
-                        IF String[i] = '.' THEN BEGIN
-                            Brojac := Brojac + 1;
-                            IF Brojac = 2 THEN
-                                j := i;
-                            IF Brojac = 3 THEN
-                                K := i;
-                            IF Brojac = 4 THEN
-                                z := i;
-                        END;
-                    END;
-                    IF j <> 0 THEN BEGIN
-                        SectorT.RESET;
-                        SectorT.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, j));
-                        SectorT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                        IF SectorT.FINDFIRST THEN BEGIN
-                            VALIDATE("Sector  Description", SectorT.Description);
-                            SectorT.RESET;
-                            SectorT.SETFILTER(Description, '%1', SectorT.Description);
-                            IF SectorT.FINDFIRST THEN
-                                Sector := SectorT.Code;
-                        END;
-                    END;
-                    IF K <> 0 THEN BEGIN
+
+                        VALIDATE("Department Categ.  Description", GroupT."Belongs to Department Category");
+                        //Služba
                         DepartmentCategoryT.RESET;
                         DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                        DepartmentCategoryT.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, K));
+                        DepartmentCategoryT.SETFILTER(Description, '%1', GroupT."Belongs to Department Category");
                         IF DepartmentCategoryT.FINDFIRST THEN BEGIN
-                            IF DepartmentCategoryT.COUNT = 1 THEN BEGIN
-                                VALIDATE("Department Categ.  Description", DepartmentCategoryT.Description);
-                            END;
-                        END;
-                    END;
-                    IF z <> 0 THEN BEGIN
-                        GroupT.RESET;
-                        GroupT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                        GroupT.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, z));
-                        IF GroupT.FINDFIRST THEN BEGIN
-                            IF GroupT.COUNT = 1 THEN BEGIN
-                                VALIDATE("Group Description", GroupT.Description);
-                            END;
-                        END;
-                        "Team Code" := Rec.Code;
-                    END;
+                            VALIDATE("Sector  Description", DepartmentCategoryT."Sector Belongs");
+                        end
+                        else begin
+                            Validate("Sector  Description", '');
+                        end;
 
 
+                    END;
                 END;
             end;
         }
@@ -236,119 +128,7 @@ table 50043 Department
         {
             Caption = 'Description';
 
-            trigger OnValidate()
-            begin
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK   WPConnSetup.FINDFIRST();
 
-                        /*
-                        đk                        CREATE(conn, TRUE, TRUE);
-
-                                                conn.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                                          + ';PWD=' + WPConnSetup.Password + ';AllowNtlm=' + FORMAT(WPConnSetup.AllowNtlm));
-
-                                                CREATE(comm, TRUE, TRUE);
-
-                                                lvarActiveConnection := conn;
-                                                comm.ActiveConnection := lvarActiveConnection;
-
-                                                comm.CommandText := 'dbo.Department_Update';
-                                                comm.CommandType := 4;
-                                                comm.CommandTimeout := 0;
-
-                                                param := comm.CreateParameter('@OldCode', 200, 1, 30, xRec.Code);
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@Code', 200, 1, 30, Code);
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@Description', 200, 1, 100, Description);
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@Type', 200, 1, 30, Type);
-                                                comm.Parameters.Append(param);
-
-                                                param := comm.CreateParameter('@B_1', 200, 1, 30, Sector);
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('B_1_description', 200, 1, 250, "Sector  Description");
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@B_1_regions', 200, 1, 30, "Department Category");
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@B_1_regions_description', 200, 1, 250, "Department Categ.  Description");
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@stream', 200, 1, 30, "Group Code");
-                                                comm.Parameters.Append(param);
-                                                param := comm.CreateParameter('@stream_description', 200, 1, 250, "Group Description");
-                                                comm.Parameters.Append(param);
-                                                comm.Execute;
-                                                conn.Close;
-                                                CLEAR(conn);
-                                                CLEAR(comm);
-                                                  đk */
-                    END;
-                END;
-
-
-                /*NewDepartment.SETFILTER(Code,'%1',Rec.Code);
-                NewDepartment.SETFILTER(Description,'%1',Rec.Description);
-                NewDepartment.SETFILTER("ORG Shema",'%1',"ORG Shema");
-                IF NewDepartment.FINDFIRST THEN BEGIN */
-                /*IF "Department Type"=4 THEN BEGIN
-                  DepartmentCategory.SETFILTER("Org Shema",'%1',"ORG Shema");
-                  IF DepartmentCategory.FIND('-') THEN BEGIN
-                  DepartmentCategory.INIT;
-                  DepartmentCategory.Code:=Rec.Code;
-                  DepartmentCategory.Description:=Rec.Description;
-                  DepartmentCategory."Org Shema":="ORG Shema";
-                  DepartmentCategory.INSERT;
-                  END;
-                  NewDepartment.SETFILTER(Code,'%1',Rec.Code);
-                  NewDepartment.SETFILTER(Description,'%1',Rec.Description);
-                  NewDepartment.SETFILTER("ORG Shema",'%1',"ORG Shema");
-                  IF NewDepartment.FIND('-') THEN BEGIN
-                  "Department Category":=Rec.Code;
-                  "Department Categ.  Description":=Rec.Description;
-                  END;
-                  END;
-                  IF "Department Type"=8 THEN BEGIN
-                    SectorNew.SETFILTER("Org Shema",'%1',"ORG Shema");
-                    IF SectorNew.FIND('-') THEN BEGIN
-                      SectorNew.INIT;
-                      SectorNew.Code:=Rec.Code;
-                      SectorNew.Description:=Rec.Description;
-                      SectorNew."Org Shema":="ORG Shema";
-                      SectorNew.INSERT;
-                      Sector:=Rec.Code;
-                     "Sector  Description":=Rec.Description;
-                      END;
-                      END;
-                        IF "Department Type"=2 THEN BEGIN
-                        GroupNew.SETFILTER("Org Shema",'%1',"ORG Shema");
-                        IF GroupNew.FIND('-') THEN BEGIN
-                          GroupNew.INIT;
-                          GroupNew.Code:=Rec.Code;
-                          GroupNew.Description:=Rec.Description;
-                          GroupNew."Org Shema":=Rec."ORG Shema";
-                          GroupNew.INSERT;
-                          "Group Code":=Rec.Code;
-                          "Group Description":=Rec.Description;
-                  END;
-                  END;
-                          IF "Department Type"=9 THEN BEGIN
-                            Team1.SETFILTER("Org Shema",'%1',"ORG Shema");
-                            IF Team1.FIND('-') THEN BEGIN
-                              Team1.INIT;
-                              Team1.Code:=Rec.Code;
-                              Team1.Description:=Rec.Description;
-                              Team1."Org Shema":=Rec."ORG Shema";
-                              Team1.INSERT;
-                              "Team Code":=Rec.Code;
-                              "Team Description":=Rec.Description;
-                              END;
-                              END;
-                               //  END;*/
-
-            end;
         }
         field(3; Type; Option)
         {
@@ -394,54 +174,6 @@ table 50043 Department
                 ELSE
                     "Sector  Description" := '';
 
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK WPConnSetup.FINDFIRST();
-
-
-                        /* đk   CREATE(conn, TRUE, TRUE);
-
-                           conn.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                     + ';PWD=' + WPConnSetup.Password + ';AllowNtlm=' + FORMAT(WPConnSetup.AllowNtlm));
-
-                           CREATE(comm, TRUE, TRUE);
-
-                           lvarActiveConnection := conn;
-                           comm.ActiveConnection := lvarActiveConnection;
-
-                           comm.CommandText := 'dbo.Department_Update';
-                           comm.CommandType := 4;
-                           comm.CommandTimeout := 0;
-
-                           param := comm.CreateParameter('@OldCode', 200, 1, 30, xRec.Code);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Code', 200, 1, 30, Code);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Description', 200, 1, 100, Description);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Type', 200, 1, 30, Type);
-                           comm.Parameters.Append(param);
-
-                           param := comm.CreateParameter('@B_1', 200, 1, 30, Sector);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('B_1_description', 200, 1, 250, "Sector  Description");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@B_1_regions', 200, 1, 30, "Department Category");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@B_1_regions_description', 200, 1, 250, "Department Categ.  Description");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@stream', 200, 1, 30, "Group Code");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@stream_description', 200, 1, 250, "Group Description");
-                           comm.Parameters.Append(param);
-                           comm.Execute;
-                           conn.Close;
-                           CLEAR(conn);
-                           CLEAR(comm) đk */
-                    END;
-                END;
             end;
         }
         field(9; "Department Category"; Code[20])
@@ -463,54 +195,7 @@ table 50043 Department
                 END
                 ELSE
                     "Department Categ.  Description" := '';
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK  WPConnSetup.FINDFIRST();
 
-
-                        /*đk   CREATE(conn, TRUE, TRUE);
-
-                           conn.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                     + ';PWD=' + WPConnSetup.Password + ';AllowNtlm=' + FORMAT(WPConnSetup.AllowNtlm));
-
-                           CREATE(comm, TRUE, TRUE);
-
-                           lvarActiveConnection := conn;
-                           comm.ActiveConnection := lvarActiveConnection;
-
-                           comm.CommandText := 'dbo.Department_Update';
-                           comm.CommandType := 4;
-                           comm.CommandTimeout := 0;
-
-                           param := comm.CreateParameter('@OldCode', 200, 1, 30, xRec.Code);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Code', 200, 1, 30, Code);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Description', 200, 1, 100, Description);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Type', 200, 1, 30, Type);
-                           comm.Parameters.Append(param);
-
-                           param := comm.CreateParameter('@B_1', 200, 1, 30, Sector);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('B_1_description', 200, 1, 250, "Sector  Description");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@B_1_regions', 200, 1, 30, "Department Category");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@B_1_regions_description', 200, 1, 250, "Department Categ.  Description");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@stream', 200, 1, 30, "Group Code");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@stream_description', 200, 1, 250, "Group Description");
-                           comm.Parameters.Append(param);
-                           comm.Execute;
-                           conn.Close;
-                           CLEAR(conn);
-                           CLEAR(comm);*/
-                    END;
-                END;
             end;
         }
         field(10; "Group Code"; Code[30])
@@ -522,54 +207,7 @@ table 50043 Department
             trigger OnValidate()
             begin
 
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK WPConnSetup.FINDFIRST();
 
-
-                        /*   CREATE(conn, TRUE, TRUE);
-
-                           conn.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                     + ';PWD=' + WPConnSetup.Password + ';AllowNtlm=' + FORMAT(WPConnSetup.AllowNtlm));
-
-                           CREATE(comm, TRUE, TRUE);
-
-                           lvarActiveConnection := conn;
-                           comm.ActiveConnection := lvarActiveConnection;
-
-                           comm.CommandText := 'dbo.Department_Update';
-                           comm.CommandType := 4;
-                           comm.CommandTimeout := 0;
-
-                           param := comm.CreateParameter('@OldCode', 200, 1, 30, xRec.Code);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Code', 200, 1, 30, Code);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Description', 200, 1, 100, Description);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@Type', 200, 1, 30, Type);
-                           comm.Parameters.Append(param);
-
-                           param := comm.CreateParameter('@B_1', 200, 1, 30, Sector);
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('B_1_description', 200, 1, 250, "Sector  Description");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@B_1_regions', 200, 1, 30, "Department Category");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@B_1_regions_description', 200, 1, 250, "Department Categ.  Description");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@stream', 200, 1, 30, "Group Code");
-                           comm.Parameters.Append(param);
-                           param := comm.CreateParameter('@stream_description', 200, 1, 250, "Group Description");
-                           comm.Parameters.Append(param);
-                           comm.Execute;
-                           conn.Close;
-                           CLEAR(conn);
-                           CLEAR(comm);*/
-                    END;
-                END;
             end;
         }
         field(11; "Sector  Description"; Text[130])
@@ -655,32 +293,6 @@ table 50043 Department
             CalcFormula = Lookup("ORG Dijelovi"."Municipality Code" WHERE("Code" = FIELD("ORG Dio")));
             Caption = 'Municipality';
 
-
-
-            trigger OnValidate()
-            begin
-                /*ECL.SETFILTER( ECL."Employee No.","Employee No.");
-                      IF ECL.FINDLAST THEN BEGIN
-                      Emp.RESET;
-                      Emp.SETFILTER("No.","Employee No.");
-                      IF Emp.FINDFIRST() THEN
-                       BEGIN
-                        Emp."Inactive Date":=ECL."Ending Date";
-                        Emp."Probation Period End":=ECL."Ending Date";
-                        Emp.MODIFY;
-                       END;
-                      END;*/
-
-                /*ECL.SETFILTER("Employee No.",Emp."No.");
-                IF ECL.FINDFIRST THEN BEGIN
-                 Department.SETFILTER(Code,ECL."Department Code");
-                 IF Department.FINDFIRST THEN BEGIN
-                 WC.SETFILTER("Employee No.",ECL."Employee No.");
-                  WC."Department Municipality":=Department.Municipality;
-                  END;
-                  END;*/
-
-            end;
         }
         field(15; "Department ID"; Text[50])
         {
@@ -703,39 +315,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK    WPConnSetup.FINDFIRST();
 
-                        /* CREATE(conn, TRUE, TRUE);
-
-                         conn.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                    + ';PWD=' + WPConnSetup.Password);
-
-                         CREATE(comm, TRUE, TRUE);
-
-                         lvarActiveConnection := conn;
-                         comm.ActiveConnection := lvarActiveConnection;
-
-                         comm.CommandText := 'dbo.DepartmentUser_Update';
-                         comm.CommandType := 4;
-                         comm.CommandTimeout := 0;
-                         param := comm.CreateParameter('@DepartmentCode', 200, 1, 30, Code);
-                         comm.Parameters.Append(param);
-                         param := comm.CreateParameter('@Timesheets_admin', 200, 1, 30, "Timesheets administrator");
-                         comm.Parameters.Append(param);
-                         param := comm.CreateParameter('@AdminOld', 200, 1, 30, xRec."Timesheets administrator");
-                         comm.Parameters.Append(param);
-
-
-                         comm.Execute;
-                         conn.Close;
-                         CLEAR(conn);
-                         CLEAR(comm);*/
-                    END;
-                END;
             end;
         }
         field(20; "ORG Dio"; Code[10])
@@ -758,39 +338,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK    WPConnSetup.FINDFIRST();
 
-                        /*  CREATE(connAdm2, TRUE, TRUE);
-
-                          connAdm2.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                     + ';PWD=' + WPConnSetup.Password);
-
-                          CREATE(commAdm2, TRUE, TRUE);
-
-                          lvarActiveConnectionAdm2 := connAdm2;
-                          commAdm2.ActiveConnection := lvarActiveConnectionAdm2;
-
-                          commAdm2.CommandText := 'dbo.DepartmentUser_Update_Admin2';
-                          commAdm2.CommandType := 4;
-                          commAdm2.CommandTimeout := 0;
-                          paramAdm2 := commAdm2.CreateParameter('@DepartmentCode', 200, 1, 30, Code);
-                          commAdm2.Parameters.Append(paramAdm2);
-                          paramAdm2 := commAdm2.CreateParameter('@Timesheets_admin', 200, 1, 30, "Timesheets administrator 2");
-                          commAdm2.Parameters.Append(paramAdm2);
-                          paramAdm2 := commAdm2.CreateParameter('@AdminOld', 200, 1, 30, xRec."Timesheets administrator 2");
-                          commAdm2.Parameters.Append(paramAdm2);
-
-
-                          commAdm2.Execute;
-                          connAdm2.Close;
-                          CLEAR(connAdm2);
-                          CLEAR(commAdm2);*/
-                    END;
-                END;
             end;
         }
         field(24; "Timesheets Manager"; Code[10])
@@ -800,39 +348,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                IF COMPANYNAME = 'SB' THEN BEGIN
-                    OS.SETFILTER(Code, '%1', "ORG Shema");
-                    OS.SETFILTER(Status, '%1', OS.Status::Active);
-                    IF OS.FINDFIRST THEN BEGIN
-                        //ĐK     WPConnSetup.FINDFIRST();
 
-                        /*  CREATE(conn, TRUE, TRUE);
-
-                          conn.Open('PROVIDER=' + WPConnSetup.Provider + ';SERVER=' + WPConnSetup.Server + ';DATABASE=' + WPConnSetup.Database + ';UID=' + WPConnSetup.UID
-                                     + ';PWD=' + WPConnSetup.Password);
-
-                          CREATE(comm, TRUE, TRUE);
-
-                          lvarActiveConnection := conn;
-                          comm.ActiveConnection := lvarActiveConnection;
-
-                          comm.CommandText := 'dbo.DepartmentUser_Update_AdminManager';
-                          comm.CommandType := 4;
-                          comm.CommandTimeout := 0;
-                          param := comm.CreateParameter('@DepartmentCode', 200, 1, 30, Code);
-                          comm.Parameters.Append(param);
-                          param := comm.CreateParameter('@Timesheets_admin', 200, 1, 30, "Timesheets Manager");
-                          comm.Parameters.Append(param);
-                          param := comm.CreateParameter('@AdminOld', 200, 1, 30, xRec."Timesheets Manager");
-                          comm.Parameters.Append(param);
-
-
-                          comm.Execute;
-                          conn.Close;
-                          CLEAR(conn);
-                          CLEAR(comm);*/
-                    END;
-                END;
             end;
         }
         field(25; AmountHealth; Decimal)
@@ -844,21 +360,10 @@ table 50043 Department
         field(27; "Cnfidential Clerk 1"; Code[10])
         {
             Caption = 'Cnfidential Clerk 1';
-            //ĐK   TableRelation = "Confidential Clerks"."Employee No.";
 
             trigger OnValidate()
             begin
-                /*  Position.SETFILTER("Employee No.", '%1', "Cnfidential Clerk 1");
-                  IF Position.FIND('-') THEN BEGIN
-                      "Confidential Clerk 1 Position" := Position.Position;
-                      "Confidential Clerk 1 Full Name" := Position."Employee Full Name";
-                      MODIFY;
-                  END
-                  ELSE BEGIN
-                      "Confidential Clerk 1 Position" := '';
-                      "Confidential Clerk 1 Full Name" := '';
-                      MODIFY;
-                  END;*/
+
             end;
         }
         field(28; "Confidential Clerk 1 Position"; Text[250])
@@ -872,17 +377,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*    Position2.SETFILTER("Employee No.", '%1', "Cnfidential Clerk 2");
-                    IF Position2.FIND('-') THEN BEGIN
-                        "Confidential Clerk 2 Position" := Position2.Position;
-                        "Confidential Clerk 2 Full Name" := Position2."Employee Full Name";
-                        MODIFY;
-                    END
-                    ELSE BEGIN
-                        "Confidential Clerk 2 Position" := '';
-                        "Confidential Clerk 2 Full Name" := '';
-                        MODIFY;
-                    END;*/
+
             end;
         }
         field(30; "Confidential Clerk 2 Position"; Text[250])
@@ -934,8 +429,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*IF NOT DimMgt.CheckDim("Dimension Code") THEN
-                  ERROR(DimMgt.GetDimErr);*/
+
 
             end;
         }
@@ -947,8 +441,6 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*IF NOT DimMgt.CheckDimValue("Dimension Code","Dimension Value Code") THEN
-                  ERROR(DimMgt.GetDimErr);*/
 
             end;
         }
@@ -1023,17 +515,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*  Position.SETFILTER("Employee No.", '%1', "Signatory 1");
-                  IF Position.FIND('-') THEN BEGIN
-                      "Signatory 1 Position" := Position.Position; //Pozicija potpisnika = Confidential Clerk.position
-                      "Signatory 1 Full Name" := Position."Employee Full Name"; //Ime i prezime potpisnika:=Confidential Clerk. Employee Full Name
-                      MODIFY;
-                  END
-                  ELSE BEGIN
-                      "Signatory 1 Position" := '';
-                      "Signatory 1 Full Name" := '';
-                      MODIFY;
-                  END;*/
+
             end;
         }
         field(46; "Signatory 2"; Code[10])
@@ -1043,17 +525,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*   Position.SETFILTER("Employee No.", '%1', "Signatory 2");
-                   IF Position.FIND('-') THEN BEGIN
-                       "Signatory 2 Position" := Position.Position;
-                       "Signatory 2 Full Name" := Position."Employee Full Name";
-                       MODIFY;
-                   END
-                   ELSE BEGIN
-                       "Signatory 2 Position" := '';
-                       "Signatory 2 Full Name" := '';
-                       MODIFY;
-                   END;*/
+
             end;
         }
         field(47; "Signatory 1 Position"; Text[250])
@@ -1081,16 +553,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*    Position.SETFILTER("Employee No.", '%1', "Signatory 1 Contr With Benef");
-                    IF Position.FIND('-') THEN BEGIN
-                        "Signatory 1 With Benef Name" := Position."Employee Full Name";
 
-                        MODIFY;
-                    END
-                    ELSE BEGIN
-                        "Signatory 1 With Benef Name" := '';
-                        MODIFY;
-                    END;*/
             end;
         }
         field(52; "Signatory 1 With Benef Name"; Text[250])
@@ -1104,16 +567,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*  Position.SETFILTER("Employee No.", '%1', "Signatory 2 Contr With Benef");
-                  IF Position.FIND('-') THEN BEGIN
-                      "Signatory 2 With Benef Name" := Position."Employee Full Name";
 
-                      MODIFY;
-                  END
-                  ELSE BEGIN
-                      "Signatory 2 With Benef Name" := '';
-                      MODIFY;
-                  END;*/
             end;
         }
         field(54; "Signatory 2 With Benef Name"; Text[250])
@@ -1126,18 +580,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*IF Rec."Changing Department" THEN BEGIN
-                  Dep.SETFILTER("ORG Shema",'%1',Rec."ORG Shema");
-                  Dep.SETFILTER(Code,'%1',Rec.Code);
-                  Dep.SETFILTER("Changing Department",'%1',FALSE);
-                  IF Dep.FINDSET THEN REPEAT
-                    Dep."Changing Department":=TRUE;
-                   Dep.MODIFY(TRUE);
-                
-                     Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description");
-                    UNTIL Dep.NEXT=0;
-                    END;
-                    */
+
 
             end;
         }
@@ -1151,18 +594,7 @@ table 50043 Department
 
             trigger OnValidate()
             begin
-                /*IF Rec."Changing Department" THEN BEGIN
-                  Dep.SETFILTER("ORG Shema",'%1',Rec."ORG Shema");
-                  Dep.SETFILTER(Code,'%1',Rec.Code);
-                  Dep.SETFILTER("Changing Department",'%1',FALSE);
-                  IF Dep.FINDSET THEN REPEAT
-                    Dep."Changing Department":=TRUE;
-                   Dep.MODIFY(TRUE);
-                
-                     Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description");
-                    UNTIL Dep.NEXT=0;
-                    END;
-                    */
+
 
             end;
         }
@@ -1239,35 +671,33 @@ table 50043 Department
 
     trigger OnDelete()
     begin
+        //zabraniti da obrišu šta ne smiju
+        SectorT.RESET;
+        SectorT.SETFILTER(Code, '%1', Rec.Code);
+        SectorT.SETFILTER("Org Shema", '%1', "ORG Shema");
+        IF SectorT.FINDFIRST THEN BEGIN
+            Error('Prvobitno morate obrisati podatke u šifarniku Sektora!');
+        end;
 
-        OS.SETFILTER(Code, '%1', "ORG Shema");
-        OS.SETFILTER(Status, '%1', OS.Status::Active);
-        IF OS.FINDFIRST THEN BEGIN
-            //ĐK      WPConnSetup.FINDFIRST();
+
+        DepartmentCategoryT.RESET;
+        DepartmentCategoryT.SETFILTER(Code, '%1', Rec.Code);
+        DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
+        IF DepartmentCategoryT.FINDFIRST THEN BEGIN
+            Error('Prvobitno morate obrisati podatke u šifarniku Službe!');
+        end;
 
 
-            /*  CREATE(conn, TRUE, TRUE);
 
-              conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
-                        +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
+        GroupT.RESET;
+        GroupT.SETFILTER(Code, '%1', Rec.Code);
+        GroupT.SETFILTER("Org Shema", '%1', "ORG Shema");
+        IF GroupT.FINDFIRST THEN BEGIN
+            Error('Prvobitno morate obrisati podatke u šifarniku Odjeli!');
+        end;
 
-              CREATE(comm,TRUE, TRUE);
 
-              lvarActiveConnection := conn;
-              comm.ActiveConnection := lvarActiveConnection;
 
-              comm.CommandText := 'dbo.Department_Delete';
-              comm.CommandType := 4;
-              comm.CommandTimeout := 0;
-
-              param:=comm.CreateParameter('@Code', 200, 1, 30, Rec.Code);
-              comm.Parameters.Append(param);
-
-              comm.Execute;
-              conn.Close;
-              CLEAR(conn);
-              CLEAR(comm);*/
-        END;
 
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15)
@@ -1277,61 +707,6 @@ table 50043 Department
     begin
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15);
-
-
-
-
-        OS.SETFILTER(Code, '%1', "ORG Shema");
-        OS.SETFILTER(Status, '%1', OS.Status::Active);
-        IF OS.FINDFIRST THEN BEGIN
-            //ĐK       WPConnSetup.FINDFIRST();
-
-
-            /* CREATE(conn, TRUE, TRUE);
-
-             conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
-                       +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
-
-             CREATE(comm,TRUE, TRUE);
-
-             lvarActiveConnection := conn;
-             comm.ActiveConnection := lvarActiveConnection;
-
-             comm.CommandText := 'dbo.Department_Insert';
-             comm.CommandType := 4;
-             comm.CommandTimeout := 0;
-
-
-             param:=comm.CreateParameter('@Code', 200, 1, 30, Code);
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@Description', 200, 1, 100, Description);
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@Type', 200, 1, 30, Type);
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@B_1', 200, 1, 30, Sector);
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('B_1_description', 200, 1, 250, "Sector  Description");
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@B_1_regions', 200, 1, 30, "Department Category");
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@B_1_regions_description', 200, 1, 250, "Department Categ.  Description");
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@stream', 200, 1, 30, "Group Code");
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@stream_description', 200, 1, 250, "Group Description");
-             comm.Parameters.Append(param);
-
-             param:=comm.CreateParameter('@Team', 200, 1, 30, "Team Code");
-             comm.Parameters.Append(param);
-             param:=comm.CreateParameter('@Team_description', 200, 1, 250, "Team Description");
-             comm.Parameters.Append(param);
-
-             comm.Execute;
-             conn.Close;
-             CLEAR(conn);
-             CLEAR(comm);*/
-
-        END;
     end;
 
     trigger OnModify()
@@ -1341,10 +716,7 @@ table 50043 Department
     end;
 
     var
-        //ĐK  WPConnSetup: Record "Web portal connection setup";
-        /* ĐK conn: Automation ;
-        comm: Automation ;
-        param: Automation ;*/
+
         lvarActiveConnection: Variant;
         "B-1Rec": Record "Sector";
         "B-1WithRegions": Record "Department Category";
@@ -1354,16 +726,13 @@ table 50043 Department
         ECL: Record "Employee Contract Ledger";
         Department: Record "Department";
         Emp: Record "Employee";
-        /* connAdm2: Automation ;
-         commAdm2: Automation ;
-         paramAdm2: Automation ;*/
+
         lvarActiveConnectionAdm2: Variant;
-        // Position: Record "Confidential Clerks";
-        // Position2: Record "Confidential Clerks";
+
         OS: Record "ORG Shema";
         TeamRec: Record "TeamT";
         LengthCode: Integer;
-        // Tip: Record "Type";
+
         Dep: Record "Department";
         DC: Record "Department Category";
         TEAM: Record "TeamT";

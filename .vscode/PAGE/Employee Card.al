@@ -1,8 +1,11 @@
 pageextension 50129 EmployeeCard extends "Employee Card"
 {
 
+
+
     layout
     {
+
 
 
 
@@ -277,6 +280,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         {
                             Editable = false;
                             Caption = 'Brought Years Card';
+
+
                         }
                         field("Brought Months of Experience"; "Brought Months of Experience")
                         {
@@ -987,6 +992,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         WorkBookletPage.SETTABLEVIEW(WorkBooklet);
                         WorkBookletPage.RUN;
                         CurrPage.UPDATE;
+
                     end;
                 }
                 field("Work Experience Document"; "Work Experience Document")
@@ -3465,7 +3471,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Work booklet";
                 RunPageLink = "Employee No." = FIELD("No.");
-                RunPageMode = View;
+                RunPageMode = Viewwork;
+
             }
             action("Alternative Addresses (Current)")
             {

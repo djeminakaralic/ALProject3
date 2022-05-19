@@ -96,7 +96,7 @@ page 50051 "Employee Contract Ledger"
 
                     Editable = false;
                     Enabled = false;
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("<Team Description>"; "Team Description")
@@ -104,6 +104,7 @@ page 50051 "Employee Contract Ledger"
 
                     ShowMandatory = true;
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("<Group>"; Group)
                 {

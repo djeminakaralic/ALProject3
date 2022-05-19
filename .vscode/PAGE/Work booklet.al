@@ -10,6 +10,7 @@ page 50163 "Work booklet"
     SourceTable = "Work Booklet";
     UsageCategory = Lists;
     ApplicationArea = all;
+    RefreshOnActivate = true;
 
     layout
     {
@@ -211,36 +212,32 @@ page 50163 "Work booklet"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        UserPersonalization.RESET;
-        UserPersonalization.SETFILTER("User ID", '%1', USERID);
-        IF UserPersonalization.FINDFIRST THEN BEGIN
-            IF UserPersonalization."Profile ID" <> 'LEGAL' THEN BEGIN
-                R_BroughtExperience.SetEmp(Rec."Employee No.");
-                R_BroughtExperience.RUN;
-                CALCFIELDS(Status);
-                IF (Rec.Status = Rec.Status::Active) THEN BEGIN
 
-                    R_WorkExperience.SetEmp("Employee No.", TODAY);
-                    R_WorkExperience.RUN;
-                    SETCURRENTKEY("Starting Date");
-                    ASCENDING(FALSE);
+        R_BroughtExperience.SetEmp(Rec."Employee No.");
+        R_BroughtExperience.RUN;
+        CALCFIELDS(Status);
+        IF (Rec.Status = Rec.Status::Active) THEN BEGIN
 
-
-                END
-                ELSE BEGIN
-                    Employee2.RESET;
-                    Employee2.SETFILTER("No.", '%1', Rec."Employee No.");
-                    Employee2.SETFILTER("External employer Status", '%1', Employee2."External employer Status"::Active);
-                    IF Employee2.FINDFIRST THEN BEGIN
-                        R_WorkExperience.SetEmp("Employee No.", TODAY);
-                        R_WorkExperience.RUN;
-                        SETCURRENTKEY("Starting Date");
-                        ASCENDING(FALSE);
-                    END;
-                END;
+            R_WorkExperience.SetEmp("Employee No.", TODAY);
+            R_WorkExperience.RUN;
+            SETCURRENTKEY("Starting Date");
+            ASCENDING(FALSE);
+        END
+        ELSE BEGIN
+            Employee2.RESET;
+            Employee2.SETFILTER("No.", '%1', Rec."Employee No.");
+            Employee2.SETFILTER("External employer Status", '%1', Employee2."External employer Status"::Active);
+            IF Employee2.FINDFIRST THEN BEGIN
+                R_WorkExperience.SetEmp("Employee No.", TODAY);
+                R_WorkExperience.RUN;
+                SETCURRENTKEY("Starting Date");
+                ASCENDING(FALSE);
             END;
         END;
-    end;
+    END;
+
+
+
 
     var
         t_CompInfo: Record "Company Information";

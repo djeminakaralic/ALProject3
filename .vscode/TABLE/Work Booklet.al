@@ -880,7 +880,7 @@ table 50208 "Work Booklet"
 
             trigger OnValidate()
             begin
-                R_WorkExperience.SetEmpNo("Employee No.");
+                R_WorkExperience.SetEmp("Employee No.", rec."Ending Date");
                 R_WorkExperience.RUN;
             end;
         }
@@ -1137,6 +1137,8 @@ table 50208 "Work Booklet"
                 Employee.MODIFY;
             END;
         END;
+
+
     end;
 
     trigger OnRename()
@@ -1153,10 +1155,12 @@ table 50208 "Work Booklet"
     var
         EmpContrLedg: Record "Work Booklet";
         T_Employee: Record "Employee";
+        R_BroughtExperience: Report "Update Brought Experience";
         T_Department: Record "Department";
         Text001: Label 'Starting Date field cannot be blank.';
         t_CompInfo: Record "Company Information";
         enable: Boolean;
+        Employee2: Record Employee;
         Company: Record "Company Information";
         WorkBooklet: Record "Work Booklet";
         Employee: Record "Employee";
@@ -1171,7 +1175,7 @@ table 50208 "Work Booklet"
         UkupniDani: Integer;
         UkupniMjeseci: Integer;
         UkupnoGodine: Integer;
-        R_WorkExperience: Report "Work exp.in Comp.by Emp";
+        R_WorkExperience: Report "Work experience in Company";
         Empl: Record "Employee";
         ECL: Record "Employee Contract Ledger";
         WageSetup: Record "Wage Setup";
