@@ -47,9 +47,12 @@ page 51129 "Employee Absence"
                 {
                     trigger OnValidate()
                     begin
-                        WageSetup.Get();
-                        if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
+                        CauseOfAbsence.Get("Cause of Absence Code");
+                        if CauseOfAbsence."Added To Hour Pool" then
                             EditableHours := true;
+                        /*WageSetup.Get();
+                        if Rec."Cause of Absence Code"= WageSetup."Overtime Code" then
+                            EditableHours := true;*/
                     end;
                 }
                 field(Description; Description)
@@ -148,8 +151,6 @@ page 51129 "Employee Absence"
         if Rec."Cause of Absence Code" = WageSetup."Overtime Code" then
             IF Hours = 0 then
                 Error(Text008);
-
-
     end;
 
     trigger OnModifyRecord(): Boolean
