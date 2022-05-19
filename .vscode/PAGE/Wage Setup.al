@@ -114,9 +114,9 @@ page 50016 "Wage Setup"
                 field("Workday Description"; "Workday Description")
                 {
                 }
-                field("Overtime Code"; "Overtime Code")
+                /*field("Overtime Code"; "Overtime Code")
                 {
-                }
+                }*/
                 field("Hours in Day"; "Hours in Day")
                 {
                 }
