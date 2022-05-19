@@ -33088,6 +33088,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Added To Hour Pool - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 338175974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Business trip</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Bussiness trip - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 1010396995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Calculated Sick Leave</source>
           <note from="Developer" annotates="general" priority="2"></note>

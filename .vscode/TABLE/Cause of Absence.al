@@ -34,6 +34,10 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         {
             Caption = 'Vacation';
         }
+        field(50016; "Bussiness trip"; Boolean)
+        {
+            Caption = 'Business trip';
+        }
         field(50008; "Insurance Basis"; Code[2])
         {
             Caption = 'Insurance Basis';
