@@ -1613,8 +1613,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50240; "Country/Region Code of Birth"; Code[10])
         {
             Caption = 'Country/Region Code of Birth';
-            FieldClass = FlowField;
-            CalcFormula = lookup(Municipality."Country/Region Code" where(Code = field("Municipality Code of Birth")));
+            TableRelation = "Country/Region".Code;
         }
         field(50191; Nationallity; Code[10])
         {
@@ -1654,7 +1653,7 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Brought Years Total';
             Editable = false;
         }
-        field(50252; "Company Phone No."; text[8])
+        field(50252; "Company Phone No."; text[30])
         {
             Caption = 'Company Phone No.';
         }
