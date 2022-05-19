@@ -232,7 +232,7 @@ codeunit 50304 "Absence Fill"
     end;
 
     //ED 01 START
-    procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
+    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
     var
         FromDateFilter: Date;
         ToDateFilter: Date;

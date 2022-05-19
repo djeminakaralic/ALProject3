@@ -44,7 +44,7 @@ table 50104 "Employee Absence Reg"
                     end;
 
                     EmployeeA.GET(Rec."Employee No.");
-                    AbsenceFIll.FillAbsence2("From Date", "To Date", EmployeeA, Rec."Cause of Absence Code");
+                    AbsenceFIll.EmployeeAbsence("From Date", "To Date", EmployeeA, Rec."Cause of Absence Code");
                 end;
 
                 If Rec."Approved" = false then begin
