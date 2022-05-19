@@ -2,7 +2,7 @@ page 50059 "Vacation Usage Plan"
 {
     Caption = 'Vacation Usage Plan';
     PageType = List;
-    SourceTable = "Vacation Grounds2";
+    SourceTable = "Vacation Grounds";
 
     layout
     {
@@ -29,9 +29,9 @@ page 50059 "Vacation Usage Plan"
                 field("Days based on Work experience"; "Days based on Work experience")
                 {
                 }
-                field("Based on Working Conditions"; "Based on Working Conditions")
-                {
-                }
+                /* field("Based on Working Conditions"; "Based on Working Conditions")
+                 {
+                 }*/
                 field("Days based on Disability"; "Days based on Disability")
                 {
                 }
