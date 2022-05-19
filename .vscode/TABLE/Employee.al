@@ -1614,7 +1614,6 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Country/Region Code of Birth';
             FieldClass = FlowField;
-
             CalcFormula = lookup(Municipality."Country/Region Code" where(Code = field("Municipality Code of Birth")));
         }
         field(50191; Nationallity; Code[10])
