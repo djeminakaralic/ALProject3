@@ -350,12 +350,7 @@ codeunit 50304 "Absence Fill"
 
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
-        AbsenceEmp.RESET;
-        IF AbsenceEmp.FIND('+') THEN
-            LastEntry := AbsenceEmp."Entry No."
-        ELSE
-            LastEntry := 0;
-        LastEntry := LastEntry + 1;
+
 
         /*Datum.RESET;
         Datum.SETFILTER("Period Type", '%1', 0);
@@ -386,6 +381,12 @@ codeunit 50304 "Absence Fill"
                     //Message('App published: Hello world');
                 end
                 else begin
+                    AbsenceEmp.RESET;
+                    IF AbsenceEmp.FIND('+') THEN
+                        LastEntry := AbsenceEmp."Entry No."
+                    ELSE
+                        LastEntry := 0;
+                    LastEntry := LastEntry + 1;
                     AbsenceEmp.Init();
                     AbsenceEmp."Entry No." := LastEntry;
                     AbsenceEmp."Employee No." := Employee."No.";
@@ -408,6 +409,7 @@ codeunit 50304 "Absence Fill"
 
                     AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
                     AbsenceEmp.Insert();
+
                 end;
             /*IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
