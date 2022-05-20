@@ -16043,6 +16043,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds - Field Order - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 635647321 - Field 56735747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds - Field Position - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 635647321 - Field 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sector</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds - Field Sector - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 635647321 - Field 2561328176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mail Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32013,6 +32023,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Vacation statistics - Control Year - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3979115579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VacationDecision</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3979115579 - Control 3098735757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Broj dokumenta</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control BrojDokumenta - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3979115579 - Control 780753521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum rješenja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control DatumRjesenja - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3270716795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ukupni obracun staža</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32202,6 +32227,11 @@
           <source>Work Permit</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work Permit2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Action 3161238922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Rjesenja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Rjesenja - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 575469177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Brought experience</source>
