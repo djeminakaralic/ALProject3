@@ -7,7 +7,7 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
-      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>e62df515-bc62-45cc-95dd-20794a097794</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
