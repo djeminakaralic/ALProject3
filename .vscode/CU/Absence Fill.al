@@ -329,9 +329,8 @@ codeunit 50304 "Absence Fill"
         RSHoliday: Code[2];
         AbsenceEmp: Record "Employee Absence";
         AbsenceReg: Record "Employee Absence Reg";
-        Employee: Record Employee;
         CauseOfAbsence: Record "Cause of Absence";
-        WageSetup: Record "Wage Setup";
+        Employee: Record Employee;
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
@@ -351,72 +350,67 @@ codeunit 50304 "Absence Fill"
 
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
+        AbsenceEmp.RESET;
+        IF AbsenceEmp.FIND('+') THEN
+            LastEntry := AbsenceEmp."Entry No."
+        ELSE
+            LastEntry := 0;
+        LastEntry := LastEntry + 1;
+
         /*Datum.RESET;
         Datum.SETFILTER("Period Type", '%1', 0);
         Datum.SETRANGE("Period Start", StartDate2, EndDate2);
         Datum.FINDFIRST;*/
 
+        //REPEAT
         InsertAnnual := FALSE;
         InsertWeekly := FALSE;
 
         CheckCalendar(InsertAnnual, 1);
         CheckCalendar(InsertWeekly, 2);
 
-        /*Employee.Get();
-        Employee.SetFilter(Status, '%1', 0);*/
-        //PROVJERITI OVO NIJE DOBRO!!!
-        Employee.FindFirst();
-        repeat
-
-            IF InsertWeekly THEN
+        Employee.SetFilter(Status, '%1', 0); //ovdje staviti filter na samo aktivne zaposlene
+        if Employee.FindFirst() then
+            repeat //ova petlja uzima jednog po jednog zaposlenog 
+                AbsenceEmp.Reset();
+                AbsenceEmp.SetFilter(AbsenceEmp."Employee No.", '%1', Employee."No."); //trazim ovog zaposlenog u registraciji izostanaka
+                AbsenceEmp.SetFilter("From Date", '%1', HolidayDate); //trazim odsustvo na ovaj datum
+                if AbsenceEmp.FindFirst() then begin //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
+                                                     //za bolovanje je sick leave = true, a za službeni put je business trip = true
+                                                     //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
+                    CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                    if CauseOfAbsence."Bussiness trip" OR CauseOfAbsence."Sick Leave" then
+                        Message('App published: Hello world');
+                end;
+            /*IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
-                    AbsenceEmp.SetFilter("From Date", '%1', HolidayDate);
-                    IF AbsenceEmp.FindFirst() then //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
-                                                   //za bolovanje je sick leave = true, a za službeni put je business trip = true
-                                                   //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
+                    INIT;
+                    "Entry No." := LastEntry;
+                    "Employee No." := Employee."No.";
+                    "From Date" := Datum."Period Start";
+                    "To Date" := Datum."Period Start";
+                    IF InsertAnnual THEN BEGIN
+                        WageSetup.Get();
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        WageSetup.Get();
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSHoliday;
+                    END;
 
-                        //iz ovog recorda uzeti cause of absence i provjeriti sta je označeno u tabeli cause of absence
+                    Quantity := Employee."Hours In Day";
 
-
-
-                        Message('App published: Hello world')
-                    /*else begin
-                        //ako odsustvo na ovaj datum ne postoji radim insert
-                        AbsenceEmp.RESET;
-                        IF AbsenceEmp.FIND('+') THEN
-                            LastEntry := AbsenceEmp."Entry No."
-                        ELSE
-                            LastEntry := 0;
-                        LastEntry := LastEntry + 1;
-                        INIT;
-                        "Entry No." := LastEntry;
-                        "Employee No." := Employee."No.";
-                        "From Date" := Datum."Period Start";
-                        "To Date" := Datum."Period Start";
-                        IF InsertAnnual THEN BEGIN
-                            WageSetup.Get();
-                            "Cause of Absence Code" := WageSetup."Holiday Code";
-                            Description := WageSetup."Holiday Description";
-                            "RS Code" := RSWorkday;
-                        END
-                        ELSE BEGIN
-                            WageSetup.Get();
-                            "Cause of Absence Code" := WageSetup."Holiday Code";
-                            Description := WageSetup."Holiday Description";
-                            "RS Code" := RSHoliday;
-                        END;
-
-                        Quantity := Employee."Hours In Day";
-
-                        "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
-                        INSERT;
-                        //LastEntry := LastEntry + 1;
-                    end;*/
-                END;
-        until Employee.Next() = 0;
-        //Message('App published: Hello world');
+                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    INSERT;
+                    LastEntry := LastEntry + 1;
+                END;*/
+            until Employee.Next() = 0;
+        //UNTIL Datum.NEXT = 0;
     end;
-
     //ED 01 END
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
