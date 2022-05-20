@@ -362,7 +362,9 @@ codeunit 50304 "Absence Fill"
         CheckCalendar(InsertAnnual, 1);
         CheckCalendar(InsertWeekly, 2);
 
-        Employee.SetFilter(Status, '%1', 0); //PROVJERITI OVO NIJE DOBRO!!!
+        /*Employee.Get();
+        Employee.SetFilter(Status, '%1', 0);*/
+        //PROVJERITI OVO NIJE DOBRO!!!
         Employee.FindFirst();
         repeat
 
@@ -378,7 +380,7 @@ codeunit 50304 "Absence Fill"
 
 
                         Message('App published: Hello world')
-                    else begin
+                    /*else begin
                         //ako odsustvo na ovaj datum ne postoji radim insert
                         AbsenceEmp.RESET;
                         IF AbsenceEmp.FIND('+') THEN
@@ -409,7 +411,7 @@ codeunit 50304 "Absence Fill"
                         "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
                         INSERT;
                         //LastEntry := LastEntry + 1;
-                    end;
+                    end;*/
                 END;
         until Employee.Next() = 0;
         //Message('App published: Hello world');
