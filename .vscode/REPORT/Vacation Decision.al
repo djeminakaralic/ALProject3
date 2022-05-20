@@ -1,7 +1,7 @@
 report 50109 VacationDecision
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './adna.rdlc';
+    RDLCLayout = './adna.rdl';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     //EnableExternalAssemblies = 'Yes';
