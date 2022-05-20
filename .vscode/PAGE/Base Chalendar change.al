@@ -1,15 +1,27 @@
 pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
 {
-    //#BasicHR
-
-
     layout
     {
-        // Add changes to page layout here
         addafter(Nonworking)
         {
             field("Paid Holiday"; "Paid Holiday")
             {
+                trigger OnValidate()
+                begin
+                    Question := Text000;
+                    if "Paid Holiday" then
+                        Answer := Dialog.Confirm(Question, true);
+
+                    /*
+                    šaljem funkciji datum, čitavu tabelu employee, dohvatim holiday code iz wagesetup
+
+
+
+
+                    */
+                    /*if Answer then
+                    AbsenceFill. pozvati funkciju fill holiday*/
+                end;
 
             }
         }
@@ -21,5 +33,8 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
     }
 
     var
-        myInt: Integer;
+        AbsenceFill: Codeunit "Absence Fill";
+        Question: Text;
+        Text000: Label 'Do you want to set paid holiday for all employees?';
+        Answer: Boolean;
 }

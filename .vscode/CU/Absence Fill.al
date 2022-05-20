@@ -232,7 +232,7 @@ codeunit 50304 "Absence Fill"
     end;
 
     //ED 01 START
-    procedure FillAbsence2(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
+    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -319,6 +319,93 @@ codeunit 50304 "Absence Fill"
                         Description := WageSetup."Workday Description";
         until ;*/
     end;
+
+    /*procedure FillHoliday(HolidayDate: Date; var Employee: Record "Employee"; CauseCode: Code[10])
+    var
+        FromDateFilter: Date;
+        ToDateFilter: Date;
+        CheckThem: Boolean;
+        RSWorkday: Code[2];
+        RSHoliday: Code[2];
+        AbsenceEmp: Record "Employee Absence";
+        AbsenceReg: Record "Employee Absence Reg";
+        InsertDay: Boolean;
+        InsertAnnual: Boolean;
+        InsertWeekly: Boolean;
+        HoursInDay: Decimal;
+    begin
+        AbsenceEmp.RESET;
+        AbsenceEmp.LOCKTABLE;
+
+        WageSetup.GET;
+        Cause.GET(WageSetup."Workday Code");
+        RSWorkday := Cause."Insurance Basis";
+        Cause.GET(WageSetup."Holiday Code");
+        RSHoliday := Cause."Insurance Basis";
+
+        IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN
+            ERROR(Txt001);
+
+        CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+
+        AbsenceEmp.RESET;
+        IF AbsenceEmp.FIND('+') THEN
+            LastEntry := AbsenceEmp."Entry No."
+        ELSE
+            LastEntry := 0;
+        LastEntry := LastEntry + 1;
+
+        Datum.RESET;
+        Datum.SETFILTER("Period Type", '%1', 0);
+        Datum.SETRANGE("Period Start", StartDate2, EndDate2);
+        Datum.FINDFIRST;
+
+        REPEAT
+            InsertAnnual := FALSE;
+            InsertWeekly := FALSE;
+
+            CheckCalendar(InsertAnnual, 1);
+            CheckCalendar(InsertWeekly, 2);
+
+            IF InsertWeekly THEN
+                WITH AbsenceEmp DO BEGIN
+                    INIT;
+                    "Entry No." := LastEntry;
+                    "Employee No." := Employee."No.";
+                    "From Date" := Datum."Period Start";
+                    "To Date" := Datum."Period Start";
+                    IF InsertAnnual THEN BEGIN
+                        Cause.Get(CauseCode);
+                        "Cause of Absence Code" := CauseCode;
+                        Description := Cause.Description;
+                        /*
+                        "Cause of Absence Code" := WageSetup."Workday Code";
+                        Description := WageSetup."Workday Description";*/
+    /*"RS Code" := RSWorkday;
+END
+ELSE BEGIN
+
+    Cause.Get(CauseCode);
+    "Cause of Absence Code" := CauseCode;
+    Description := Cause.Description;
+    "RS Code" := RSHoliday;
+END;
+
+Quantity := Employee."Hours In Day";
+
+"Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+INSERT;
+LastEntry := LastEntry + 1;
+END;
+UNTIL Datum.NEXT = 0;
+
+/*repeat
+//krenuti od prvog dana u mjesecu, provjeriti ima li za njega odsustvo
+//ako nema odsustvo staviti da je sifra uzroka izostanka redovan rad iz wage setup
+"Cause of Absence Code" := WageSetup."Workday Code";
+    Description := WageSetup."Workday Description";
+until ;*/
+    //end;
     //ED 01 END
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
