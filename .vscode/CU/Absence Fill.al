@@ -384,6 +384,30 @@ codeunit 50304 "Absence Fill"
                     AbsenceEmp.Description := WageSetup."Holiday Description";
                     AbsenceEmp.Modify();
                     //Message('App published: Hello world');
+                end
+                else begin
+                    AbsenceEmp.Init();
+                    AbsenceEmp."Entry No." := LastEntry;
+                    AbsenceEmp."Employee No." := Employee."No.";
+                    AbsenceEmp."From Date" := HolidayDate;
+                    AbsenceEmp."To Date" := HolidayDate;
+                    IF InsertAnnual THEN BEGIN
+                        WageSetup.Get();
+                        AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
+                        AbsenceEmp.Description := WageSetup."Holiday Description";
+                        AbsenceEmp."RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        WageSetup.Get();
+                        AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
+                        AbsenceEmp.Description := WageSetup."Holiday Description";
+                        AbsenceEmp."RS Code" := RSHoliday;
+                    END;
+
+                    AbsenceEmp.Quantity := Employee."Hours In Day";
+
+                    AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    AbsenceEmp.Insert();
                 end;
             /*IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
