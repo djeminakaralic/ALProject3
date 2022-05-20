@@ -330,6 +330,7 @@ codeunit 50304 "Absence Fill"
         AbsenceEmp: Record "Employee Absence";
         AbsenceReg: Record "Employee Absence Reg";
         Employee: Record Employee;
+        CauseOfAbsence: Record "Cause of Absence";
         WageSetup: Record "Wage Setup";
         InsertDay: Boolean;
         InsertAnnual: Boolean;
@@ -350,13 +351,10 @@ codeunit 50304 "Absence Fill"
 
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
-
-
         /*Datum.RESET;
         Datum.SETFILTER("Period Type", '%1', 0);
         Datum.SETRANGE("Period Start", StartDate2, EndDate2);
         Datum.FINDFIRST;*/
-
 
         InsertAnnual := FALSE;
         InsertWeekly := FALSE;
@@ -375,7 +373,7 @@ codeunit 50304 "Absence Fill"
                                                    //za bolovanje je sick leave = true, a za službeni put je business trip = true
                                                    //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
 
-
+                        //iz ovog recorda uzeti cause of absence i provjeriti sta je označeno u tabeli cause of absence
 
 
 
