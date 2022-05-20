@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -7,8 +7,7 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
-      <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>0008ed87-c113-4f36-9fa7-8f18eddaf2f5</rd:DataSourceID>
+      <rd:DataSourceID>6377477f-f934-43c6-8430-244051557b56</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -19,12 +18,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>22.37689cm</Width>
+                  <Width>6.47157in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>25.87669cm</Height>
+                  <Height>7.73405in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -178,6 +177,8 @@
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
+                                  <LeftIndent>0cm</LeftIndent>
+                                  <RightIndent>0cm</RightIndent>
                                   <Style>
                                     <TextAlign>Center</TextAlign>
                                   </Style>
@@ -297,6 +298,15 @@
                                     </TextRun>
                                     <TextRun>
                                       <Value> u trajanju </Value>
+                                      <Style>
+                                        <FontStyle>Normal</FontStyle>
+                                        <FontWeight>Normal</FontWeight>
+                                        <TextDecoration>None</TextDecoration>
+                                        <Color>#000000</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Fields!Yearofvac.Value</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -749,6 +759,8 @@
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
+                                  <LeftIndent>0cm</LeftIndent>
+                                  <RightIndent>0cm</RightIndent>
                                   <Style>
                                     <TextAlign>Left</TextAlign>
                                   </Style>
@@ -1127,6 +1139,8 @@
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
+                                  <LeftIndent>0cm</LeftIndent>
+                                  <RightIndent>0cm</RightIndent>
                                   <Style>
                                     <TextAlign>Left</TextAlign>
                                   </Style>
@@ -1143,6 +1157,8 @@
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
+                                  <LeftIndent>0cm</LeftIndent>
+                                  <RightIndent>0cm</RightIndent>
                                   <Style>
                                     <TextAlign>Left</TextAlign>
                                   </Style>
@@ -1369,7 +1385,6 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Left>0.03611cm</Left>
             <Height>7.73405in</Height>
             <Width>6.47157in</Width>
             <Style>
@@ -1380,53 +1395,346 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>7.73405in</Height>
+        <Height>21.15773cm</Height>
         <Style />
       </Body>
-      <Width>6.5in</Width>
+      <Width>16.43779cm</Width>
       <Page>
+        <PageHeight>27.94cm</PageHeight>
+        <PageWidth>21.59cm</PageWidth>
+        <LeftMargin>2.5cm</LeftMargin>
+        <RightMargin>2.5cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
   </ReportSections>
-  <Code>Public Function BlankZero(ByVal Value As Decimal)
-    if Value = 0 then
-        Return ""
-    end if
-    Return Value
+  <Code>Public Function TextOnlyJustify(text As String, font As System.Drawing.Font, bIndent As Boolean, width As Single) As String
+    Dim bmp As New System.Drawing.Bitmap(1024, 1024)
+    Dim gr = System.Drawing.Graphics.FromImage(bmp)
+    Dim sRtn As New System.Text.StringBuilder()
+ 
+    Dim paragraphs As String() = text.Split(ControlChars.NewLine)
+ 
+    For Each paragraph As String In paragraphs
+        Dim words As String() = paragraph.Split(" "C)
+        Dim start_word As Integer = 0
+        Dim indent As Single = If(bIndent, 40F, 0F)
+ 
+        ' Repeat until we run out of text or room.
+        While True
+            ' See how many words will fit.
+            ' Start with just the next word.
+            Dim line As String = words(start_word)
+ 
+            ' Add more words until the line won't fit.
+            Dim end_word As Integer = start_word + 1
+            While end_word &lt; words.Length
+                ' See if the next word fits.
+                Dim test_line As String = (line &amp; Convert.ToString(" ")) + words(end_word)
+                Dim line_size As System.Drawing.SizeF = gr.MeasureString(test_line, font)
+                If line_size.Width&gt; width Then
+                    ' The line is too wide. Don't use the last word.
+                    end_word -= 1
+                    Exit While
+                Else
+                    ' The word fits. Save the test line.
+                    line = test_line
+                End If
+ 
+                ' Try the next word.
+                end_word += 1
+            End While
+ 
+            ' See if this is the last line in the paragraph.
+            If (end_word = words.Length) Then
+                ' This is the last line. Don't justify it.
+                sRtn.Append(line)
+            Else
+                ' This is not the last line. Justify it.
+ 
+                sRtn.Append(TextLine(gr, line, font, width, True))
+            End If
+ 
+            ' Start the next line at the next word.
+            start_word = end_word + 1
+            If start_word &gt;= words.Length Then
+                Exit While
+            End If
+ 
+            ' Don't indent subsequent lines in this paragraph.
+            indent = 0
+        End While
+ 
+        ' Add a gap after the paragraph.
+        sRtn.Append(vbLf &amp; vbCr)
+    Next
+ 
+    Return sRtn.ToString()
 End Function
 
-Public Function BlankPos(ByVal Value As Decimal)
-    if Value &gt; 0 then
-        Return ""
-    end if
-    Return Value
+Public Function TextLine(gr As System.Drawing.Graphics, line As String, font As System.Drawing.Font, width As Single, justification As Boolean) As String
+    Dim sLine As New System.Text.StringBuilder()
+    ' See if we should use full justification.
+    If justification Then
+        ' Justify the text.
+        ' Break the text into words.
+        Dim words As String() = line.Split(" "c)
+ 
+        ' Add a space to each word and get their lengths.
+        Dim word_width As Single() = New Single(words.Length - 1) {}
+        Dim total_width As Single = 0
+        For i As Integer = 0 To words.Length - 1
+            ' See how wide this word is.
+            Dim size As System.Drawing.SizeF = gr.MeasureString(words(i), font)
+            word_width(i) = size.Width
+            total_width += word_width(i)
+        Next
+ 
+        ' Get the additional spacing between words.
+        Dim extra_space As Single = width - total_width
+        Dim num_spaces As Integer = words.Length - 1
+        If words.Length &gt; 1 Then
+            extra_space /= (num_spaces-1)
+        End If
+ 
+        For i2 As Integer = 1 To 100
+            Dim sTest As String = line.Replace(" ", New String(ChrW(&amp;H200A), i2))
+            If gr.MeasureString(sTest, font).Width &gt; width Then
+ 
+                For i3 As Integer = words.Length To 1 Step -1
+                    sTest = line.Replace(" ", New String(ChrW(&amp;H200A), i2 - 1))
+                    Dim sTemp = ReplaceSome(sTest, New String(ChrW(&amp;H200A), i2 - 1), New String(ChrW(&amp;H200A), i2), i3)
+                    If gr.MeasureString(sTemp, font).Width &lt; width Then
+                        Console.WriteLine("{0}, size: {1}", line, gr.MeasureString(sTemp, font).Width)
+                        Return sTemp + ControlChars.CrLf
+                    End If
+                Next
+ 
+                Console.WriteLine("{0}, size: {1}", line, gr.MeasureString(line.Replace(" ", New String(ChrW(&amp;H200A), i2 - 1)), font).Width)
+                Return line.Replace(" ", New String(ChrW(&amp;H200A), i2 - 1)) + ControlChars.CrLf
+            End If
+        Next
+ 
+ 
+    Else
+        Return line
+    End If
 End Function
 
-Public Function BlankZeroAndPos(ByVal Value As Decimal)
-    if Value &gt;= 0 then
-        Return ""
-    end if
-    Return Value
+Private Function ReplaceSome(s As String, repl As String, wth As String, num As Integer) As String
+ 
+    ReplaceSome = String.Empty
+    Dim s2 As String() = s.Split(repl, num, StringSplitOptions.RemoveEmptyEntries)
+ 
+    For t As Integer = 0 To s2.Length - 2
+        ReplaceSome += s2(t) + wth
+    Next
+ 
+    ReplaceSome += s2(s2.Length - 1)
 End Function
 
-Public Function BlankNeg(ByVal Value As Decimal)
-    if Value &lt; 0 then
-        Return ""
-    end if
-    Return Value
+Public Function FixSpelling(ByVal s As String) As String
+ Dim strBuilder As New System.Text.StringBuilder(s)
+ If s.Contains("******") Then
+ strBuilder.Replace("******", "        ")
+ Return strBuilder.ToString()
+ Else :
+ Return s
+ End If
 End Function
 
-Public Function BlankNegAndZero(ByVal Value As Decimal)
-    if Value &lt;= 0 then
-        Return ""
-    end if
-    Return Value
+
+Public Function BoldValueStart(ByVal s As String) As String
+ Dim strBuilder As New System.Text.StringBuilder(s)
+ If s.Contains("'") Then
+ strBuilder.Replace("'", "&lt;b&gt;")
+ Return strBuilder.ToString()
+ Else :
+ Return s
+ End If
 End Function
+
+Public Function BoldValueEnd(ByVal s As String) As String
+ Dim strBuilder As New System.Text.StringBuilder(s)
+ If s.Contains(";") Then
+ strBuilder.Replace(";", "&lt;/b&gt;")
+ Return strBuilder.ToString()
+ Else :
+ Return s
+ End If
+End Function
+
+
+Public Function SpaceAdd(ByVal s As String) As String
+ Dim strBuilder As New System.Text.StringBuilder(s)
+ If s.Contains("-") Then
+ strBuilder.Replace("-", "    -")
+ Return strBuilder.ToString()
+ Else :
+ Return s
+ End If
+End Function
+
+
+Public Function Spaceing(ByVal s As String) As String
+ Dim strBuilder As New System.Text.StringBuilder(s)
+ If s.Contains("&amp;nbsp") Then
+ strBuilder.Replace("&amp;nbsp", "        ")
+ Return strBuilder.ToString()
+ Else :
+ Return s
+ End If
+End Function
+
+
+Public Function TabValue(ByVal s As String) As String
+ Dim strBuilder As New System.Text.StringBuilder(s)
+ If s.Contains("&amp;emsp") Then
+ strBuilder.Replace("&amp;emsp", "&amp;emsp;")
+ Return strBuilder.ToString()
+ Else :
+ Return s
+ End If
+End Function
+
+
+Public Function TextOnlyJustifyIndent(text As String, font As System.Drawing.Font, bIndent As Boolean, width As Single) As String
+    Dim bmp As New System.Drawing.Bitmap(1024, 1024)
+    Dim gr = System.Drawing.Graphics.FromImage(bmp)
+    Dim sRtn As New System.Text.StringBuilder()
+ 
+    Dim paragraphs As String() = text.Split(ControlChars.NewLine)
+ 
+    For Each paragraph As String In paragraphs
+        Dim words As String() = paragraph.Split(" "C)
+        Dim start_word As Integer = 0
+        Dim indent As Single = If(bIndent, 40F, 0F)
+ 
+        ' Repeat until we run out of text or room.
+        While True
+            ' See how many words will fit.
+            ' Start with just the next word.
+            Dim line As String = words(start_word)
+ 
+            ' Add more words until the line won't fit.
+            Dim end_word As Integer = start_word + 1
+            While end_word &lt; words.Length
+                ' See if the next word fits.
+                Dim test_line As String = (line &amp; Convert.ToString(" ")) + words(end_word)
+                Dim line_size As System.Drawing.SizeF = gr.MeasureString(test_line, font)
+                If line_size.Width + indent &gt; width Then
+                    ' The line is too wide. Don't use the last word.
+                    end_word -= 1
+                    Exit While
+                Else
+                    ' The word fits. Save the test line.
+                    line = test_line
+                End If
+ 
+                ' Try the next word.
+                end_word += 1
+            End While
+ 
+            ' See if this is the last line in the paragraph.
+            If (end_word = words.Length) Then
+                ' This is the last line. Don't justify it.
+                sRtn.Append(line)
+            Else
+                ' This is not the last line. Justify it.
+ 
+                sRtn.Append(TextLine(gr, line, font, width - indent, True))
+            End If
+ 
+            ' Start the next line at the next word.
+            start_word = end_word + 1
+            If start_word &gt;= words.Length Then
+                Exit While
+            End If
+ 
+            ' Don't indent subsequent lines in this paragraph.
+            indent = 0
+        End While
+ 
+        ' Add a gap after the paragraph.
+        sRtn.Append(vbLf &amp; vbCr)
+    Next
+ 
+    Return sRtn.ToString()
+End Function
+
+Function GetText(text As String, width As Integer) As String
+     Dim palabras As String() = text.Split(" "c)
+     Dim sb1 As New System.Text.StringBuilder()
+     Dim sb2 As New System.Text.StringBuilder()
+     Dim length As Integer = palabras.Length
+     Dim resultado As New System.Collections.Generic.List(Of String)()
+     Dim i As Integer = 0
+     While i &lt; length
+         sb1.AppendFormat("{0} ", palabras(i))
+         If sb1.ToString().Length &gt; width Then
+             resultado.Add(sb2.ToString())
+             sb1 = New System.Text.StringBuilder()
+             sb2 = New System.Text.StringBuilder()
+             System.Math.Max(System.Threading.Interlocked.Decrement(i), i + 1)
+         Else
+             sb2.AppendFormat("{0} ", palabras(i))
+         End If
+         System.Math.Max(System.Threading.Interlocked.Increment(i), i - 1)
+     End While
+     resultado.Add(sb2.ToString())
+
+     Dim resultado2 As New System.Collections.Generic.List(Of String)()
+     Dim temp As String
+
+     Dim index1 As Integer, index2 As Integer, salto As Integer
+     Dim target As String
+     Dim limite As Integer = resultado.Count     
+     For Each item As String In resultado        
+         target = " "
+         temp = item.ToString().TrimEnd()
+         index1 = 0
+         index2 = 0
+         salto = 2
+
+         If limite &lt;= 1 Then
+             resultado2.Add(temp)
+             Exit For
+         End If
+         While temp.Length &lt;= width
+             If temp.IndexOf(target, index2) &lt; 0 Then
+                 index1 = 0
+                 index2 = 0
+                 target = target + " "
+                 System.Math.Max(System.Threading.Interlocked.Increment(salto), salto - 1)
+             End If
+             index1 = temp.IndexOf(target, index2)
+             temp = temp.Insert(temp.IndexOf(target, index2), " ")
+
+             index2 = index1 + salto
+         End While
+         System.Math.Max(System.Threading.Interlocked.Decrement(limite), limite + 1)
+         resultado2.Add(temp)
+     Next
+
+     Dim builder As New System.Text.StringBuilder()
+     For Each item As String In resultado2
+         builder.Append(item).Append(chr(10))
+    Next
+     Return builder.ToString()
+End Function
+
+
 </Code>
   <Language>=User!Language</Language>
+  <CodeModules>
+    <CodeModule>System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</CodeModule>
+    <CodeModule>System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</CodeModule>
+  </CodeModules>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
