@@ -320,6 +320,90 @@ codeunit 50304 "Absence Fill"
         until ;*/
     end;
 
+    procedure FillHoliday(HolidayDate: Date)
+    var
+        FromDateFilter: Date;
+        ToDateFilter: Date;
+        CheckThem: Boolean;
+        RSWorkday: Code[2];
+        RSHoliday: Code[2];
+        AbsenceEmp: Record "Employee Absence";
+        AbsenceReg: Record "Employee Absence Reg";
+        Employee: Record Employee;
+        WageSetup: Record "Wage Setup";
+        InsertDay: Boolean;
+        InsertAnnual: Boolean;
+        InsertWeekly: Boolean;
+        HoursInDay: Decimal;
+    begin
+        AbsenceEmp.RESET;
+        AbsenceEmp.LOCKTABLE;
+
+        WageSetup.GET;
+        Cause.GET(WageSetup."Workday Code");
+        RSWorkday := Cause."Insurance Basis";
+        Cause.GET(WageSetup."Holiday Code");
+        RSHoliday := Cause."Insurance Basis";
+
+        IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN
+            ERROR(Txt001);
+
+        CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+
+
+
+        AbsenceEmp.RESET;
+        IF AbsenceEmp.FIND('+') THEN
+            LastEntry := AbsenceEmp."Entry No."
+        ELSE
+            LastEntry := 0;
+        LastEntry := LastEntry + 1;
+
+        /*Datum.RESET;
+        Datum.SETFILTER("Period Type", '%1', 0);
+        Datum.SETRANGE("Period Start", StartDate2, EndDate2);
+        Datum.FINDFIRST;*/
+
+
+        InsertAnnual := FALSE;
+        InsertWeekly := FALSE;
+
+        CheckCalendar(InsertAnnual, 1);
+        CheckCalendar(InsertWeekly, 2);
+
+        //Employee.SetFilter(Status, '%1', 'Aktivan');
+        Employee.FindFirst();
+        repeat
+
+            IF InsertWeekly THEN
+                WITH AbsenceEmp DO BEGIN
+                    INIT;
+                    "Entry No." := LastEntry;
+                    "Employee No." := Employee."No.";
+                    "From Date" := Datum."Period Start";
+                    "To Date" := Datum."Period Start";
+                    IF InsertAnnual THEN BEGIN
+                        WageSetup.Get();
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        WageSetup.Get();
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSHoliday;
+                    END;
+
+                    Quantity := Employee."Hours In Day";
+
+                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    INSERT;
+                    LastEntry := LastEntry + 1;
+                END;
+        until Employee.Next() = 0;
+    end;
+
     //ED 01 END
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
