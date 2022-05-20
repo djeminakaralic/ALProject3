@@ -70,15 +70,21 @@ report 50109 VacationDecision
                 {
 
                 }
+
+                trigger OnAfterGetRecord()
+                begin
+                    CalcFields(Position, Sector);
+                end;
             }
 
             trigger OnPreDataItem()
             begin
                 DatumRjesenjaT := FORMAT(DatumRjesenja, 0, '<Day,2>.<Month,2>.<Year4>.');
                 Year := FORMAT(DatumRjesenja, 0, '<Year4>.');
-                DataItem5.CalcFields(Position, Sector);
+
 
             end;
+
 
 
 
