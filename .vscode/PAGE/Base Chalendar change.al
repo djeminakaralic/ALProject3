@@ -12,15 +12,8 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
                     if "Paid Holiday" then
                         Answer := Dialog.Confirm(Question, true);
 
-                    /*
-                    šaljem funkciji datum, čitavu tabelu employee, dohvatim holiday code iz wagesetup
-
-
-
-
-                    */
-                    /*if Answer then
-                    AbsenceFill. pozvati funkciju fill holiday*/
+                    if Answer then
+                        AbsenceFill.FillHoliday(Rec.Date);
                 end;
 
             }

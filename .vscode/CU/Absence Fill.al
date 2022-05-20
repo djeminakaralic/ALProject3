@@ -372,12 +372,17 @@ codeunit 50304 "Absence Fill"
         CheckCalendar(InsertWeekly, 2);
 
         //Employee.SetFilter(Status, '%1', 'Aktivan');
-        Employee.FindFirst();
+        /*Employee.FindFirst();
         repeat
 
             IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
-                    INIT;
+                    AbsenceEmp.SetFilter("From Date", '%1', HolidayDate);
+                    IF AbsenceEmp.FindFirst() then
+                        //provjeriti je li bolovanje ili službeni put
+                        //ako jeste jedno od to dvoje, ne radim inser
+                        //za sve ostalo radim update (postoji odustvo na taj dan) ili insert (odsustvo ne postoji)
+                        INIT;
                     "Entry No." := LastEntry;
                     "Employee No." := Employee."No.";
                     "From Date" := Datum."Period Start";
@@ -401,7 +406,8 @@ codeunit 50304 "Absence Fill"
                     INSERT;
                     LastEntry := LastEntry + 1;
                 END;
-        until Employee.Next() = 0;
+        until Employee.Next() = 0;*/
+        Message('App published: Hello world');
     end;
 
     //ED 01 END
