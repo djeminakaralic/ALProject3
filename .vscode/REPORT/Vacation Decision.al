@@ -1,7 +1,7 @@
 report 50109 VacationDecision
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './adna.rdl';
+    RDLCLayout = './adna.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     //EnableExternalAssemblies = 'Yes';
@@ -11,7 +11,7 @@ report 50109 VacationDecision
     {
         dataitem(DataItem1; Employee)
         {
-            RequestFilterFields = "No.";
+            //RequestFilterFields = "No.";
             column(No; "No.")
             {
             }
@@ -35,7 +35,7 @@ report 50109 VacationDecision
             }
             dataitem(DataItem5; "Vacation Grounds")
             {
-                RequestFilterFields = "Employee No.";
+                //RequestFilterFields = "Employee No.";
                 column(WorkEXpDays; "Days based on Work experience")
                 {
 
