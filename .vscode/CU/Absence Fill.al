@@ -350,8 +350,6 @@ codeunit 50304 "Absence Fill"
 
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
-
-
         AbsenceEmp.RESET;
         IF AbsenceEmp.FIND('+') THEN
             LastEntry := AbsenceEmp."Entry No."
@@ -371,17 +369,21 @@ codeunit 50304 "Absence Fill"
         CheckCalendar(InsertAnnual, 1);
         CheckCalendar(InsertWeekly, 2);
 
-        //Employee.SetFilter(Status, '%1', 'Aktivan');
-        /*Employee.FindFirst();
+        Employee.SetFilter(Status, '%1', 0); //PROVJERITI OVO NIJE DOBRO!!!
+        Employee.FindFirst();
         repeat
 
             IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
                     AbsenceEmp.SetFilter("From Date", '%1', HolidayDate);
-                    IF AbsenceEmp.FindFirst() then
-                        //provjeriti je li bolovanje ili službeni put
-                        //ako jeste jedno od to dvoje, ne radim inser
-                        //za sve ostalo radim update (postoji odustvo na taj dan) ili insert (odsustvo ne postoji)
+                    IF AbsenceEmp.FindFirst() then //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
+                                                   //za bolovanje je sick leave = true, a za službeni put je business trip = true
+                                                   //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
+
+
+
+
+                        //ako odsustvo na ovaj datum ne postoji radim insert
                         INIT;
                     "Entry No." := LastEntry;
                     "Employee No." := Employee."No.";
@@ -406,8 +408,8 @@ codeunit 50304 "Absence Fill"
                     INSERT;
                     LastEntry := LastEntry + 1;
                 END;
-        until Employee.Next() = 0;*/
-        Message('App published: Hello world');
+        until Employee.Next() = 0;
+        //Message('App published: Hello world');
     end;
 
     //ED 01 END
