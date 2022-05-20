@@ -320,7 +320,7 @@ codeunit 50304 "Absence Fill"
         until ;*/
     end;
 
-    procedure FillHoliday(HolidayDate: Date; var Employee: Record "Employee")
+    procedure FillHoliday(HolidayDate: Date)
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -329,6 +329,7 @@ codeunit 50304 "Absence Fill"
         RSHoliday: Code[2];
         AbsenceEmp: Record "Employee Absence";
         AbsenceReg: Record "Employee Absence Reg";
+        Employee: Record Employee;
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
@@ -367,34 +368,43 @@ codeunit 50304 "Absence Fill"
         CheckCalendar(InsertAnnual, 1);
         CheckCalendar(InsertWeekly, 2);
 
+        //ovdje staviti filter na samo aktivne zaposlene
         if Employee.FindFirst() then
-            repeat
-                IF InsertWeekly THEN
-                    WITH AbsenceEmp DO BEGIN
-                        INIT;
-                        "Entry No." := LastEntry;
-                        "Employee No." := Employee."No.";
-                        "From Date" := Datum."Period Start";
-                        "To Date" := Datum."Period Start";
-                        IF InsertAnnual THEN BEGIN
-                            WageSetup.Get();
-                            "Cause of Absence Code" := WageSetup."Holiday Code";
-                            Description := WageSetup."Holiday Description";
-                            "RS Code" := RSWorkday;
-                        END
-                        ELSE BEGIN
-                            WageSetup.Get();
-                            "Cause of Absence Code" := WageSetup."Holiday Code";
-                            Description := WageSetup."Holiday Description";
-                            "RS Code" := RSHoliday;
-                        END;
-
-                        Quantity := Employee."Hours In Day";
-
-                        "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
-                        INSERT;
-                        LastEntry := LastEntry + 1;
+            repeat //ova petlja uzima jednog po jednog zaposlenog 
+                AbsenceEmp.Reset();
+                AbsenceEmp.SetFilter(AbsenceEmp."Employee No.", '%1', Employee."No."); //trazim ovog zaposlenog u registraciji izostanaka
+                AbsenceEmp.SetFilter("From Date", '%1', HolidayDate); //trazim odsustvo na ovaj datum
+                if AbsenceEmp.FindFirst() then begin //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
+                                                     //za bolovanje je sick leave = true, a za službeni put je business trip = true
+                                                     //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
+                    Message('App published: Hello world');
+                end;
+            /*IF InsertWeekly THEN
+                WITH AbsenceEmp DO BEGIN
+                    INIT;
+                    "Entry No." := LastEntry;
+                    "Employee No." := Employee."No.";
+                    "From Date" := Datum."Period Start";
+                    "To Date" := Datum."Period Start";
+                    IF InsertAnnual THEN BEGIN
+                        WageSetup.Get();
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        WageSetup.Get();
+                        "Cause of Absence Code" := WageSetup."Holiday Code";
+                        Description := WageSetup."Holiday Description";
+                        "RS Code" := RSHoliday;
                     END;
+
+                    Quantity := Employee."Hours In Day";
+
+                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    INSERT;
+                    LastEntry := LastEntry + 1;
+                END;*/
             until Employee.Next() = 0;
         //UNTIL Datum.NEXT = 0;
 
