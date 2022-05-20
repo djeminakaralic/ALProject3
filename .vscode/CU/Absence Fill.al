@@ -350,12 +350,7 @@ codeunit 50304 "Absence Fill"
 
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
-        AbsenceEmp.RESET;
-        IF AbsenceEmp.FIND('+') THEN
-            LastEntry := AbsenceEmp."Entry No."
-        ELSE
-            LastEntry := 0;
-        LastEntry := LastEntry + 1;
+
 
         /*Datum.RESET;
         Datum.SETFILTER("Period Type", '%1', 0);
@@ -383,30 +378,40 @@ codeunit 50304 "Absence Fill"
 
 
 
+
+                        Message('App published: Hello world')
+                    else begin
                         //ako odsustvo na ovaj datum ne postoji radim insert
+                        AbsenceEmp.RESET;
+                        IF AbsenceEmp.FIND('+') THEN
+                            LastEntry := AbsenceEmp."Entry No."
+                        ELSE
+                            LastEntry := 0;
+                        LastEntry := LastEntry + 1;
                         INIT;
-                    "Entry No." := LastEntry;
-                    "Employee No." := Employee."No.";
-                    "From Date" := Datum."Period Start";
-                    "To Date" := Datum."Period Start";
-                    IF InsertAnnual THEN BEGIN
-                        WageSetup.Get();
-                        "Cause of Absence Code" := WageSetup."Holiday Code";
-                        Description := WageSetup."Holiday Description";
-                        "RS Code" := RSWorkday;
-                    END
-                    ELSE BEGIN
-                        WageSetup.Get();
-                        "Cause of Absence Code" := WageSetup."Holiday Code";
-                        Description := WageSetup."Holiday Description";
-                        "RS Code" := RSHoliday;
-                    END;
+                        "Entry No." := LastEntry;
+                        "Employee No." := Employee."No.";
+                        "From Date" := Datum."Period Start";
+                        "To Date" := Datum."Period Start";
+                        IF InsertAnnual THEN BEGIN
+                            WageSetup.Get();
+                            "Cause of Absence Code" := WageSetup."Holiday Code";
+                            Description := WageSetup."Holiday Description";
+                            "RS Code" := RSWorkday;
+                        END
+                        ELSE BEGIN
+                            WageSetup.Get();
+                            "Cause of Absence Code" := WageSetup."Holiday Code";
+                            Description := WageSetup."Holiday Description";
+                            "RS Code" := RSHoliday;
+                        END;
 
-                    Quantity := Employee."Hours In Day";
+                        Quantity := Employee."Hours In Day";
 
-                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
-                    INSERT;
-                    LastEntry := LastEntry + 1;
+                        "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                        INSERT;
+                        //LastEntry := LastEntry + 1;
+                    end;
                 END;
         until Employee.Next() = 0;
         //Message('App published: Hello world');
