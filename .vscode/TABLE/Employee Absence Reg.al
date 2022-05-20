@@ -50,6 +50,7 @@ table 50104 "Employee Absence Reg"
                 If Rec."Approved" = false then begin
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+
                     EmployeeAbsence.DeleteAll();
                 end;
 
@@ -189,6 +190,7 @@ table 50104 "Employee Absence Reg"
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
         EmployeeAbsenceReg: Record "Employee Absence Reg";
         EmployeeAbsence: Record "Employee Absence";
+        WageSetup: Record "Wage Setup";
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
@@ -196,7 +198,6 @@ table 50104 "Employee Absence Reg"
         Text005: Label 'A leave for this period already exists.';
         Text006: Label 'Selected record has already been approved.';
         Text007: Label 'Cause of absence field cannot be blank.';
-
         VisibleHours: Boolean;
 
     trigger OnInsert()
