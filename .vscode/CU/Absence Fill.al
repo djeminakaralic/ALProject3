@@ -360,40 +360,43 @@ codeunit 50304 "Absence Fill"
         Datum.SETRANGE("Period Start", StartDate2, EndDate2);
         Datum.FINDFIRST;*/
 
-        REPEAT
-            InsertAnnual := FALSE;
-            InsertWeekly := FALSE;
+        //REPEAT
+        InsertAnnual := FALSE;
+        InsertWeekly := FALSE;
 
-            CheckCalendar(InsertAnnual, 1);
-            CheckCalendar(InsertWeekly, 2);
+        CheckCalendar(InsertAnnual, 1);
+        CheckCalendar(InsertWeekly, 2);
 
-            IF InsertWeekly THEN
-                WITH AbsenceEmp DO BEGIN
-                    INIT;
-                    "Entry No." := LastEntry;
-                    "Employee No." := Employee."No.";
-                    "From Date" := Datum."Period Start";
-                    "To Date" := Datum."Period Start";
-                    IF InsertAnnual THEN BEGIN
-                        WageSetup.Get();
-                        "Cause of Absence Code" := WageSetup."Holiday Code";
-                        Description := WageSetup."Holiday Description";
-                        "RS Code" := RSWorkday;
-                    END
-                    ELSE BEGIN
-                        WageSetup.Get();
-                        "Cause of Absence Code" := WageSetup."Holiday Code";
-                        Description := WageSetup."Holiday Description";
-                        "RS Code" := RSHoliday;
+        if Employee.FindFirst() then
+            repeat
+                IF InsertWeekly THEN
+                    WITH AbsenceEmp DO BEGIN
+                        INIT;
+                        "Entry No." := LastEntry;
+                        "Employee No." := Employee."No.";
+                        "From Date" := Datum."Period Start";
+                        "To Date" := Datum."Period Start";
+                        IF InsertAnnual THEN BEGIN
+                            WageSetup.Get();
+                            "Cause of Absence Code" := WageSetup."Holiday Code";
+                            Description := WageSetup."Holiday Description";
+                            "RS Code" := RSWorkday;
+                        END
+                        ELSE BEGIN
+                            WageSetup.Get();
+                            "Cause of Absence Code" := WageSetup."Holiday Code";
+                            Description := WageSetup."Holiday Description";
+                            "RS Code" := RSHoliday;
+                        END;
+
+                        Quantity := Employee."Hours In Day";
+
+                        "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                        INSERT;
+                        LastEntry := LastEntry + 1;
                     END;
-
-                    Quantity := Employee."Hours In Day";
-
-                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
-                    INSERT;
-                    LastEntry := LastEntry + 1;
-                END;
-        UNTIL Datum.NEXT = 0;
+            until Employee.Next() = 0;
+        //UNTIL Datum.NEXT = 0;
 
 
     end;
