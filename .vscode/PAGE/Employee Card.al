@@ -3320,6 +3320,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Visible = false;
         }
 
+
         addafter(Dimensions)
         {
 
@@ -3365,6 +3366,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+
+
         addafter("&Relatives")
         {
             //List of Surnames
@@ -3623,6 +3626,19 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             }
             //ED 01 END
 
+        }
+        addafter("Employee absence")
+        {
+            action(Rjesenja)
+            {
+                Caption = 'Rjesenja';
+                Image = Report;
+                RunObject = report VacationDecision;
+                ApplicationArea = all;
+                //RunPageLink = "Employee No." = field("Employee No.");
+                Promoted = true;
+
+            }
         }
 
     }

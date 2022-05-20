@@ -565,6 +565,21 @@ table 50162 "Vacation Grounds"
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
             end;
         }
+        field(29; Position; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Description" where("Employee No." = field("Employee No."), Active = const(true)));
+
+
+
+        }
+        field(30; Sector; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Sector Description" where("Employee No." = field("Employee No."), Active = const(true)));
+
+
+        }
     }
 
     keys
