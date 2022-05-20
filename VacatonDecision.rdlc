@@ -11,67 +11,6 @@
       <rd:DataSourceID>0008ed87-c113-4f36-9fa7-8f18eddaf2f5</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="No">
-          <DataField>No</DataField>
-        </Field>
-        <Field Name="FirstName">
-          <DataField>FirstName</DataField>
-        </Field>
-        <Field Name="LastName">
-          <DataField>LastName</DataField>
-        </Field>
-        <Field Name="Year">
-          <DataField>Year</DataField>
-        </Field>
-        <Field Name="BrojDokumenta">
-          <DataField>BrojDokumenta</DataField>
-        </Field>
-        <Field Name="DatumRjesenja">
-          <DataField>DatumRjesenja</DataField>
-        </Field>
-        <Field Name="Company_logo">
-          <DataField>Company_logo</DataField>
-        </Field>
-        <Field Name="WorkEXpDays">
-          <DataField>WorkEXpDays</DataField>
-        </Field>
-        <Field Name="YearofVac">
-          <DataField>YearofVac</DataField>
-        </Field>
-        <Field Name="NumberofDays">
-          <DataField>NumberofDays</DataField>
-        </Field>
-        <Field Name="Disability">
-          <DataField>Disability</DataField>
-        </Field>
-        <Field Name="StartFirstpart">
-          <DataField>StartFirstpart</DataField>
-        </Field>
-        <Field Name="EndFirstpart">
-          <DataField>EndFirstpart</DataField>
-        </Field>
-        <Field Name="Start2part">
-          <DataField>Start2part</DataField>
-        </Field>
-        <Field Name="End2part">
-          <DataField>End2part</DataField>
-        </Field>
-        <Field Name="Position">
-          <DataField>Position</DataField>
-        </Field>
-        <Field Name="Sector">
-          <DataField>Sector</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -80,12 +19,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>6.47157in</Width>
+                  <Width>22.37689cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>7.73405in</Height>
+                  <Height>25.87669cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -358,15 +297,6 @@
                                     </TextRun>
                                     <TextRun>
                                       <Value> u trajanju </Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>=Fields!Yearofvac.Value</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1459,12 +1389,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1504,4 +1428,65 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="No">
+          <DataField>No</DataField>
+        </Field>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
+        </Field>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+        </Field>
+        <Field Name="BrojDokumenta">
+          <DataField>BrojDokumenta</DataField>
+        </Field>
+        <Field Name="DatumRjesenja">
+          <DataField>DatumRjesenja</DataField>
+        </Field>
+        <Field Name="Company_logo">
+          <DataField>Company_logo</DataField>
+        </Field>
+        <Field Name="WorkEXpDays">
+          <DataField>WorkEXpDays</DataField>
+        </Field>
+        <Field Name="YearofVac">
+          <DataField>YearofVac</DataField>
+        </Field>
+        <Field Name="NumberofDays">
+          <DataField>NumberofDays</DataField>
+        </Field>
+        <Field Name="Disability">
+          <DataField>Disability</DataField>
+        </Field>
+        <Field Name="StartFirstpart">
+          <DataField>StartFirstpart</DataField>
+        </Field>
+        <Field Name="EndFirstpart">
+          <DataField>EndFirstpart</DataField>
+        </Field>
+        <Field Name="Start2part">
+          <DataField>Start2part</DataField>
+        </Field>
+        <Field Name="End2part">
+          <DataField>End2part</DataField>
+        </Field>
+        <Field Name="Position">
+          <DataField>Position</DataField>
+        </Field>
+        <Field Name="Sector">
+          <DataField>Sector</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
