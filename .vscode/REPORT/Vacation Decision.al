@@ -1,7 +1,7 @@
 report 50109 VacationDecision
 {
     DefaultLayout = RDLC;
-    RDLCLayout = '.\VacatonDecision.rdl';
+    RDLCLayout = './VacatonDecision.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     //EnableExternalAssemblies = 'Yes';
