@@ -368,7 +368,7 @@ codeunit 50304 "Absence Fill"
         CheckCalendar(InsertAnnual, 1);
         CheckCalendar(InsertWeekly, 2);
 
-        //ovdje staviti filter na samo aktivne zaposlene
+        Employee.SetFilter(Status, '%1', 0); //ovdje staviti filter na samo aktivne zaposlene
         if Employee.FindFirst() then
             repeat //ova petlja uzima jednog po jednog zaposlenog 
                 AbsenceEmp.Reset();
