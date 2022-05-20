@@ -329,6 +329,7 @@ codeunit 50304 "Absence Fill"
         RSHoliday: Code[2];
         AbsenceEmp: Record "Employee Absence";
         AbsenceReg: Record "Employee Absence Reg";
+        CauseOfAbsence: Record "Cause of Absence";
         Employee: Record Employee;
         InsertDay: Boolean;
         InsertAnnual: Boolean;
@@ -377,7 +378,9 @@ codeunit 50304 "Absence Fill"
                 if AbsenceEmp.FindFirst() then begin //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
                                                      //za bolovanje je sick leave = true, a za službeni put je business trip = true
                                                      //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
-                    Message('App published: Hello world');
+                    CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                    if CauseOfAbsence."Bussiness trip" OR CauseOfAbsence."Sick Leave" then
+                        Message('App published: Hello world');
                 end;
             /*IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
@@ -407,11 +410,7 @@ codeunit 50304 "Absence Fill"
                 END;*/
             until Employee.Next() = 0;
         //UNTIL Datum.NEXT = 0;
-
-
     end;
-
-
     //ED 01 END
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
