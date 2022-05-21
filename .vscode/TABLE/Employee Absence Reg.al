@@ -39,8 +39,11 @@ table 50104 "Employee Absence Reg"
 
                     IF "From Date" = "To Date" then begin
                         EmployeeAbsence.SetFilter("From Date", '%1', Rec."From Date");
-                        if EmployeeAbsence.FindFirst() then
-                            Error(Text005);
+                        if EmployeeAbsence.FindFirst() then begin
+                            WageSetup.Get();
+                            if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                                Error(Text005);
+                        end;
                     end;
 
                     EmployeeA.GET(Rec."Employee No.");
@@ -101,10 +104,11 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
 
-                    EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
-                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-                    if EmployeeAbsence.FindFirst() then
-                        Error(Text005);
+                    if EmployeeAbsence.FindFirst() then begin
+                        WageSetup.Get();
+                        if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                            Error(Text005);
+                    end;
                 END;
 
             end;
@@ -127,8 +131,8 @@ table 50104 "Employee Absence Reg"
                     EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     if EmployeeAbsence.FindFirst() then begin
-                        CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                        if not (CauseOfAbsence.Holiday) then
+                        WageSetup.Get();
+                        if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
                             Error(Text005);
                     end;
 
