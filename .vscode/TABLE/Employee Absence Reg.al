@@ -33,8 +33,11 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" <> "To Date" then begin
                         EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-                        if EmployeeAbsence.FindFirst() then
-                            Error(Text005);
+                        if EmployeeAbsence.FindFirst() then begin
+                            WageSetup.Get();
+                            if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                                Error(Text005);
+                        end;
                     end;
 
                     IF "From Date" = "To Date" then begin
@@ -53,7 +56,6 @@ table 50104 "Employee Absence Reg"
                 If Rec."Approved" = false then begin
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-
                     EmployeeAbsence.DeleteAll();
                 end;
 
