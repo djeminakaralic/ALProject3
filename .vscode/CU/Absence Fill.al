@@ -279,7 +279,7 @@ codeunit 50304 "Absence Fill"
             CheckCalendar(InsertAnnual, 1);
             CheckCalendar(InsertWeekly, 2);
 
-            AbsenceEmp.Reset(); //ovdje trazim postoji li unesen praznik na taj datum, treba ga preskočiti
+            /*AbsenceEmp.Reset(); //ovdje trazim postoji li unesen praznik na taj datum, treba ga preskočiti
             AbsenceEmp.SetFilter("Employee No.", '%1', Employee."No.");
             AbsenceEmp.SetFilter("From Date", '%1', Datum."Period Start");
             if AbsenceEmp.FindFirst() then begin
@@ -287,7 +287,7 @@ codeunit 50304 "Absence Fill"
                 if AbsenceEmp."Cause of Absence Code" = WageSetup."Holiday Code" then
                     Datum.Next();
             end;
-            AbsenceEmp.Reset();
+            AbsenceEmp.Reset();*/
 
             IF InsertWeekly THEN
                 WITH AbsenceEmp DO BEGIN
