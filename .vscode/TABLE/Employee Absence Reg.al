@@ -56,6 +56,9 @@ table 50104 "Employee Absence Reg"
                 If Rec."Approved" = false then begin
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    //iz kalendara će svaki postavljeni praznik povući kao cause of absence iz wage setup holiday code
+                    //dakle trebam otaviti samo odsustva gdje je cause <> holiday code
+                    EmployeeAbsence.SetFilter("Cause of Absence Code", '<>%1', WageSetup."Holiday Code");
                     EmployeeAbsence.DeleteAll();
                 end;
 
