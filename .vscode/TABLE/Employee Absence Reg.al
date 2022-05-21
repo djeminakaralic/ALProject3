@@ -126,8 +126,12 @@ table 50104 "Employee Absence Reg"
 
                     EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-                    if EmployeeAbsence.FindFirst() then
-                        Error(Text005);
+                    if EmployeeAbsence.FindFirst() then begin
+                        CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                        if not (CauseOfAbsence.Holiday) then
+                            Error(Text005);
+                    end;
+
                 END;
             end;
         }
