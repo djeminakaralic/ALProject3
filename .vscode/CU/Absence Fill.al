@@ -241,6 +241,7 @@ codeunit 50304 "Absence Fill"
         RSHoliday: Code[2];
         AbsenceEmp: Record "Employee Absence";
         AbsenceReg: Record "Employee Absence Reg";
+        CauseOfAbsence: Record "Cause of Absence";
         InsertDay: Boolean;
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
@@ -284,8 +285,13 @@ codeunit 50304 "Absence Fill"
             AbsenceEmp.SetFilter("From Date", '%1', Datum."Period Start");
             if AbsenceEmp.FindFirst() then begin
                 WageSetup.Get();
+
+                CauseOfAbsence.Get(CauseCode);
+
                 if AbsenceEmp."Cause of Absence Code" = WageSetup."Holiday Code" then
-                    Datum.Next();
+                    if CauseOfAbsence."Sick Leave" = false then
+                        if CauseOfAbsence."Bussiness trip" = false then
+                            Datum.Next();
             end;
             AbsenceEmp.Reset();
 
