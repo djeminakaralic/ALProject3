@@ -384,11 +384,13 @@ codeunit 50304 "Absence Fill"
                                                      //za bolovanje je sick leave = true, a za službeni put je business trip = true
                                                      //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
                     CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
-                    if CauseOfAbsence."Bussiness trip" = false AND CauseOfAbsence."Sick Leave" = false then begin //izostanak se treba modify na praznik
-                        AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
-                        AbsenceEmp.Description := WageSetup."Holiday Description";
-                        AbsenceEmp.Modify();
-                    end;
+                    if NOT (CauseOfAbsence."Bussiness trip")
+                    then
+                        if NOT (CauseOfAbsence."Sick Leave") then begin //izostanak se treba modify na praznik
+                            AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
+                            AbsenceEmp.Description := WageSetup."Holiday Description";
+                            AbsenceEmp.Modify();
+                        end;
                     //Message('App published: Hello world');
                 end
                 else begin
