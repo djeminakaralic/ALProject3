@@ -1465,9 +1465,6 @@ End Function
         <Field Name="YearofVac">
           <DataField>YearofVac</DataField>
         </Field>
-        <Field Name="NumberofDays">
-          <DataField>NumberofDays</DataField>
-        </Field>
         <Field Name="Disability">
           <DataField>Disability</DataField>
         </Field>
@@ -1482,12 +1479,6 @@ End Function
         </Field>
         <Field Name="End2part">
           <DataField>End2part</DataField>
-        </Field>
-        <Field Name="Position">
-          <DataField>Position</DataField>
-        </Field>
-        <Field Name="Sector">
-          <DataField>Sector</DataField>
         </Field>
       </Fields>
       <Query>

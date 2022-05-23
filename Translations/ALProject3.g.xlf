@@ -16168,6 +16168,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field Legal Grounds - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2893313959 - Field 3755995277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Millitary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field Millitary - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2893313959 - Field 1678529375 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mother with more children</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field MotherWithMoreCH - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2893313959 - Field 56735747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field Position - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2893313959 - Field 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field Sector - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2893313959 - Field 4052402218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Single Parent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field SingleParent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2893313959 - Field 1388771161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Special Circumstances</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds2 - Field SpecialCircumstances - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2893313959 - Field 1209869869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date of I part</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -26,7 +26,7 @@ table 50062 "Vacation Grounds2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
         field(3; "Legal Grounds"; Integer)
@@ -36,7 +36,7 @@ table 50062 "Vacation Grounds2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
         field(4; "Days based on Work experience"; Integer)
@@ -45,7 +45,7 @@ table 50062 "Vacation Grounds2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
         field(8; "Days based on Disability"; Integer)
@@ -54,7 +54,7 @@ table 50062 "Vacation Grounds2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
         field(9; "Total days"; Integer)
@@ -101,8 +101,60 @@ table 50062 "Vacation Grounds2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
+        }
+        field(20; "Position"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."),
+                                                                                 Active = CONST(true)));
+            Caption = 'Position ID';
+
+        }
+        field(21; Sector; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Sector Description" WHERE("Employee No." = FIELD("Employee No."),
+                                                                                 Active = CONST(true)));
+            Caption = 'Position ID';
+
+        }
+        field(22; SpecialCircumstances; integer)
+        {
+            Caption = 'Special Circumstances';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(23; SingleParent; integer)
+        {
+            Caption = 'Single Parent';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(24; MotherWithMoreCH; integer)
+        {
+            Caption = 'Mother with more children';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(25; Millitary; integer)
+        {
+            Caption = 'Millitary';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Working Conditions" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
         }
     }
 
@@ -121,5 +173,9 @@ table 50062 "Vacation Grounds2"
         t_Employee: Record "Employee";
         PositionRec: Record "Position";
         EmployeeRec: Record "Employee";
+
+
+
+
 }
 
