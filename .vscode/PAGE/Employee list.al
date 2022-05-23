@@ -130,7 +130,21 @@ pageextension 50149 EmployeeList extends "Employee List"
         addafter("Co&mments")
         {
 
+            //ED 01 START
+            action("Base Calendar List")
+            {
+                Caption = 'Base Calendar List';
+                Image = CalendarChanged;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
+                trigger OnAction()
+                begin
+                    BaseCalendarList.Run();
+                end;
+            }
+            //ED 01 END
 
             action("Update Work Experience")
             {
@@ -188,6 +202,10 @@ pageextension 50149 EmployeeList extends "Employee List"
 
         R_WorkExperience: Report "Work experience in Company";
         R_BroughtExperience: Report "Update Brought Experience";
+
+        //ED 01 START
+        BaseCalendarList: Page "Base Calendar List";
+        //ED 01 END
         //BH 01 start
         // R_MilitaryService: Report "MilitaryService";
         //BH 01 end

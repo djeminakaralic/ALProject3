@@ -2,6 +2,14 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
 {
     layout
     {
+        addafter(Day)
+        {
+            field("Holiday Cause of Absence"; "Holiday Cause of Absence")
+            {
+
+            }
+        }
+
         addafter(Nonworking)
         {
             field("Paid Holiday"; "Paid Holiday")
