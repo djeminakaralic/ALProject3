@@ -21,7 +21,7 @@ report 50109 VacationDecision
             column(LastName; "Last Name")
             {
             }
-            /*column(Year; Year)
+            column(Year1; Year1)
             {
             }
             column(BrojDokumenta; BrojDokumenta)
@@ -32,20 +32,15 @@ report 50109 VacationDecision
             }
             column(Company_logo; CompanyInformation.Picture)
             {
-            }*/
+            }
             dataitem(DataItem5; "Vacation Grounds2")
             {
-                //RequestFilterFields = "Employee No.";
+                RequestFilterFields = "Employee No.";
                 column(WorkEXpDays; "Days based on Work experience")
                 {
 
                 }
                 column(YearofVac; "Year")
-                {
-
-                }
-            }
-                /*column(NumberofDays; "Number of days")
                 {
 
                 }
@@ -75,21 +70,22 @@ report 50109 VacationDecision
                 trigger OnAfterGetRecord()
                 begin
                     CalcFields(Position, Sector);
-                end;*/
-            
-
-            trigger OnPreDataItem()
-            begin
-                DatumRjesenjaT := FORMAT(DatumRjesenja, 0, '<Day,2>.<Month,2>.<Year4>.');
-                Year := FORMAT(DatumRjesenja, 0, '<Year4>.');
+                end;
 
 
-            end;
+                trigger OnPreDataItem()
+                begin
+                    DatumRjesenjaT := FORMAT(DatumRjesenja, 0, '<Day,2>.<Month,2>.<Year4>.');
+                    Year1 := FORMAT(DatumRjesenja, 0, '<Year4>.');
 
 
+                end;
 
 
 
+
+
+            }
         }
     }
 
@@ -115,16 +111,16 @@ report 50109 VacationDecision
         {
 
         }
-    
 
-        labels
-        {
-        }
     }
+    labels
+    {
+    }
+
 
     var
 
-        Year: Text;
+        Year1: Text;
         DatumRjesenja: Date;
         DatumRjesenjaT: Text;
         BrojDokumenta: Text;

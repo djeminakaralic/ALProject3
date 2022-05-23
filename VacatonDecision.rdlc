@@ -1447,8 +1447,8 @@ End Function
         <Field Name="LastName">
           <DataField>LastName</DataField>
         </Field>
-        <Field Name="Year">
-          <DataField>Year</DataField>
+        <Field Name="Year1">
+          <DataField>Year1</DataField>
         </Field>
         <Field Name="BrojDokumenta">
           <DataField>BrojDokumenta</DataField>
@@ -1479,6 +1479,12 @@ End Function
         </Field>
         <Field Name="End2part">
           <DataField>End2part</DataField>
+        </Field>
+        <Field Name="Position">
+          <DataField>Position</DataField>
+        </Field>
+        <Field Name="Sector">
+          <DataField>Sector</DataField>
         </Field>
       </Fields>
       <Query>
