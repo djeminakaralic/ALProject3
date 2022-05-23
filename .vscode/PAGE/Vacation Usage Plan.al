@@ -2,7 +2,7 @@ page 50059 "Vacation Usage Plan"
 {
     Caption = 'Vacation Usage Plan';
     PageType = List;
-    SourceTable = "Vacation Grounds";
+    SourceTable = "Vacation Ground 2";
 
     layout
     {
@@ -38,9 +38,9 @@ page 50059 "Vacation Usage Plan"
                 field("Total days"; "Total days")
                 {
                 }
-                field(Type; Type)
+                /*field(Type; Type)
                 {
-                }
+                }*/
                 field(Year; Year)
                 {
                 }

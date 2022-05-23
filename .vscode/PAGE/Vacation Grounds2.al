@@ -28,6 +28,10 @@ page 50132 "Vacation Grounds2"
                 {
                     ApplicationArea = all;
                 }
+                field(Sector; Sector)
+                {
+                    ApplicationArea = all;
+                }
                 field("Legal Grounds"; "Legal Grounds")
                 {
                     ApplicationArea = all;
@@ -41,6 +45,22 @@ page 50132 "Vacation Grounds2"
                     ApplicationArea = all;
                 }
                 field("Days based on Disability"; "Days based on Disability")
+                {
+                    ApplicationArea = all;
+                }
+                field(MotherWithMoreCH; MotherWithMoreCH)
+                {
+                    ApplicationArea = all;
+                }
+                field(Millitary; Millitary)
+                {
+                    ApplicationArea = all;
+                }
+                field(SingleParent; SingleParent)
+                {
+                    ApplicationArea = all;
+                }
+                field(SpecialCircumstances; SpecialCircumstances)
                 {
                     ApplicationArea = all;
                 }
