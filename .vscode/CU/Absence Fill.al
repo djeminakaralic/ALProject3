@@ -368,14 +368,13 @@ codeunit 50304 "Absence Fill"
 
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
-        //REPEAT
         InsertAnnual := FALSE;
         InsertWeekly := FALSE;
 
         CheckCalendar(InsertAnnual, 1);
         CheckCalendar(InsertWeekly, 2);
 
-        Employee.SetFilter(Status, '%1', 0); //ovdje staviti filter na samo aktivne zaposlene
+        Employee.SetFilter("For Calculation", '%1', true); //filter na samo aktivne zaposlene
         if Employee.FindFirst() then
             repeat //ova petlja uzima jednog po jednog zaposlenog 
                 AbsenceEmp.Reset();
@@ -425,7 +424,6 @@ codeunit 50304 "Absence Fill"
 
                 end;
             until Employee.Next() = 0;
-        //UNTIL Datum.NEXT = 0;
     end;
     //ED 01 END
 
