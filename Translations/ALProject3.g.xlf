@@ -32803,6 +32803,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control TerminationDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 1311530375 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Base Calendar List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Base Calendar List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2229753117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Import Worksheete</source>
           <note from="Developer" annotates="general" priority="2"></note>
