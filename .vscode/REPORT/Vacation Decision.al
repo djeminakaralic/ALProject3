@@ -11,7 +11,7 @@ report 50109 VacationDecision
     {
         dataitem(DataItem1; Employee)
         {
-            //RequestFilterFields = "No.";
+            RequestFilterFields = "No.";
             column(No; "No.")
             {
             }
@@ -46,6 +46,26 @@ report 50109 VacationDecision
                 }
                 column(Disability; "Days based on Disability")
                 {
+                }
+                column(Millitary; Millitary)
+                {
+
+                }
+                column(MotherWithMoreCH; MotherWithMoreCH)
+                {
+
+                }
+                column(SingleParent; SingleParent)
+                {
+
+                }
+                column(SpecialCircumstances; SpecialCircumstances)
+                {
+
+                }
+                column(Total_days; "Total days")
+                {
+
                 }
                 column(StartFirstpart; "Starting Date of I part")
                 {
@@ -104,6 +124,10 @@ report 50109 VacationDecision
                 {
                     Caption = 'Datum rješenja';
                 }
+                field(BrojDanaPrviDio; BrojDanaPrviDio)
+                {
+                    Caption = 'Broj dana prvog dijela';
+                }
             }
         }
 
@@ -124,6 +148,7 @@ report 50109 VacationDecision
         DatumRjesenja: Date;
         DatumRjesenjaT: Text;
         BrojDokumenta: Text;
+        BrojDanaPrviDio: Integer;
         CompanyInformation: Record "Company Information";
 
 }

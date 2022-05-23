@@ -380,7 +380,7 @@ table 50015 "Vacation Ground 2"
             FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Sector Description" WHERE("Employee No." = FIELD("Employee No."),
                                                                                  Active = CONST(true)));
-            Caption = 'Position ID';
+            Caption = 'Sector';
 
         }
         field(7; SpecialCircumstances; integer)

@@ -1468,6 +1468,21 @@ End Function
         <Field Name="Disability">
           <DataField>Disability</DataField>
         </Field>
+        <Field Name="Millitary">
+          <DataField>Millitary</DataField>
+        </Field>
+        <Field Name="MotherWithMoreCH">
+          <DataField>MotherWithMoreCH</DataField>
+        </Field>
+        <Field Name="SingleParent">
+          <DataField>SingleParent</DataField>
+        </Field>
+        <Field Name="SpecialCircumstances">
+          <DataField>SpecialCircumstances</DataField>
+        </Field>
+        <Field Name="Total_days">
+          <DataField>Total_days</DataField>
+        </Field>
         <Field Name="StartFirstpart">
           <DataField>StartFirstpart</DataField>
         </Field>

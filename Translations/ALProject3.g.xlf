@@ -15949,7 +15949,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Position Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2891291690 - Field 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Position ID</source>
+          <source>Sector</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Sector - Property Caption</note>
         </trans-unit>
@@ -32082,6 +32082,11 @@
           <source>VacationDecision</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3979115579 - Control 2601728924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Broj dana prvog dijela</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control BrojDanaPrviDio - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3979115579 - Control 3098735757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Broj dokumenta</source>
