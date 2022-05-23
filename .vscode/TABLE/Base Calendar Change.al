@@ -9,6 +9,13 @@ tableextension 50167 BaseCalendarChange extends "Base Calendar Change"
         {
             Caption = 'Paid Holiday';
         }
+
+        field(50001; "Holiday Cause of Absence"; Code[10])
+        {
+            Caption = 'Holiday Cause of Absence';
+            TableRelation = "Cause of Absence";
+
+        }
     }
 
 

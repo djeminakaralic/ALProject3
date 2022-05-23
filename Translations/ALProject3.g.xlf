@@ -33118,6 +33118,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Attachment_Ext - Field File Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2378348555 - Field 2807374237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1657483931">
+          <source>Holiday Cause of Absence</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension BaseCalendarChange - Field Holiday Cause of Absence - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2378348555 - Field 1821571094 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1657483931">
           <source>Paid Holiday</source>
           <note from="Developer" annotates="general" priority="2"></note>
