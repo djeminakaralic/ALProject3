@@ -32098,6 +32098,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control DatumRjesenja - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3979115579 - Control 1541270971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ranije iskorišteni dani odmora</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control RanijeIskoristeniDani - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3270716795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ukupni obracun staža</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -4,7 +4,7 @@ report 50109 VacationDecision
     RDLCLayout = './VacatonDecision.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    //EnableExternalAssemblies = 'Yes';
+    EnableExternalAssemblies = true;
     PreviewMode = PrintLayout;
 
     dataset
@@ -67,6 +67,10 @@ report 50109 VacationDecision
                 {
 
                 }
+                column(Legal_Grounds; "Legal Grounds")
+                {
+
+                }
                 column(StartFirstpart; "Starting Date of I part")
                 {
                 }
@@ -86,10 +90,28 @@ report 50109 VacationDecision
                 {
 
                 }
+                column(BrojDanaPrviDio; BrojDanaPrviDio)
+                {
+
+                }
+                column(DanJavljanjanaposao; DanJavljanjanaposao)
+                {
+
+                }
+                column(DrugiDioDana; DrugiDioDana)
+                {
+
+                }
+                column(RanijeIskoristeniDani; RanijeIskoristeniDani)
+                {
+
+                }
 
                 trigger OnAfterGetRecord()
                 begin
                     CalcFields(Position, Sector);
+                    DanJavljanjanaposao := "Ending Date of I part" + 1;
+                    DrugiDioDana := "Total days" - BrojDanaPrviDio;
                 end;
 
 
@@ -128,6 +150,10 @@ report 50109 VacationDecision
                 {
                     Caption = 'Broj dana prvog dijela';
                 }
+                field(RanijeIskoristeniDani; RanijeIskoristeniDani)
+                {
+                    Caption = 'Ranije iskorišteni dani odmora';
+                }
             }
         }
 
@@ -149,6 +175,9 @@ report 50109 VacationDecision
         DatumRjesenjaT: Text;
         BrojDokumenta: Text;
         BrojDanaPrviDio: Integer;
+        DanJavljanjanaposao: Date;
+        DrugiDioDana: Integer;
+        RanijeIskoristeniDani: Integer;
         CompanyInformation: Record "Company Information";
 
 }
