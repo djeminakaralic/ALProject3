@@ -289,9 +289,14 @@ codeunit 50304 "Absence Fill"
 
                 CauseOfAbsence.Get(CauseCode);
 
-                if AbsenceEmp."Cause of Absence Code" = WageSetup."Holiday Code" then
-                    if CauseOfAbsence."Sick Leave" = false AND CauseOfAbsence."Bussiness trip" = false then
-                        Datum.Next();
+                if AbsenceEmp."Cause of Absence Code" = WageSetup."Holiday Code" then //pronadjen je praznik na jedan datum
+                    if CauseOfAbsence."Sick Leave" = false AND CauseOfAbsence."Bussiness trip" = false then //novo odsustvo nije bolovanje ili sp
+                        Datum.Next()
+                    else begin //novo odsustvo je sp ili bolovanje i treba pregaziti praznik
+                        AbsenceEmp."Cause of Absence Code" := CauseCode;
+                        AbsenceEmp.Description := CauseOfAbsence.Description;
+                        AbsenceEmp.Modify();
+                    end;
             end;
             AbsenceEmp.Reset();
 
