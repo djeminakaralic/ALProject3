@@ -236,6 +236,8 @@ codeunit 50304 "Absence Fill"
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
+        LastDate: Date;
+        FirstDate: Date;
         CheckThem: Boolean;
         RSWorkday: Code[2];
         RSHoliday: Code[2];
@@ -246,6 +248,7 @@ codeunit 50304 "Absence Fill"
         InsertAnnual: Boolean;
         InsertWeekly: Boolean;
         HoursInDay: Decimal;
+        Holiday: Boolean;
     begin
         AbsenceEmp.RESET;
         AbsenceEmp.LOCKTABLE;
@@ -285,12 +288,27 @@ codeunit 50304 "Absence Fill"
             AbsenceEmp.SetFilter("Employee No.", '%1', Employee."No.");
             AbsenceEmp.SetFilter("From Date", '%1', Datum."Period Start");
             if AbsenceEmp.FindFirst() then begin
-                WageSetup.Get();
+                /*WageSetup.Get();
 
                 CauseOfAbsence.Reset();
                 CauseOfAbsence.Get(CauseCode);
 
                 if AbsenceEmp."Cause of Absence Code" = WageSetup."Holiday Code" then //pronadjen je praznik na jedan datum
+                    if NOT (CauseOfAbsence."Sick Leave" OR CauseOfAbsence."Bussiness trip") then //novo odsustvo nije bolovanje ili sp, pa ostaje praznik
+                        Datum.Next()
+                    else begin //novo odsustvo je sp ili bolovanje i treba pregaziti praznik
+                        AbsenceEmp."Cause of Absence Code" := CauseCode;
+                        AbsenceEmp.Description := CauseOfAbsence.Description;
+                        AbsenceEmp.Modify();
+                        Datum.Next(); //prelazi na sljedeći datum da se ne bi dupliralo
+                    end;*/
+                CauseOfAbsence.Reset();
+                CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                Holiday := CauseOfAbsence.Holiday;
+
+                CauseOfAbsence.Get(CauseCode);
+
+                if Holiday then //pronadjen je praznik na jedan datum
                     if NOT (CauseOfAbsence."Sick Leave" OR CauseOfAbsence."Bussiness trip") then //novo odsustvo nije bolovanje ili sp, pa ostaje praznik
                         Datum.Next()
                     else begin //novo odsustvo je sp ili bolovanje i treba pregaziti praznik
@@ -330,12 +348,34 @@ codeunit 50304 "Absence Fill"
                 END;
         UNTIL Datum.NEXT = 0;
 
-        /*repeat
-        //krenuti od prvog dana u mjesecu, provjeriti ima li za njega odsustvo
-        //ako nema odsustvo staviti da je sifra uzroka izostanka redovan rad iz wage setup
-         "Cause of Absence Code" := WageSetup."Workday Code";
-                        Description := WageSetup."Workday Description";
-        until ;*/
+        //odavde novi kod
+
+        /*LastDate := CALCDATE('CM', StartDate2);
+        FirstDate := CALCDATE('-CM', StartDate2);
+
+        AbsenceEmp.RESET;
+        IF AbsenceEmp.FIND('+') THEN
+            LastEntry := AbsenceEmp."Entry No."
+        ELSE
+            LastEntry := 0;
+        LastEntry := LastEntry + 1;
+
+        repeat
+            //krenuti od prvog dana u mjesecu, provjeriti ima li za njega odsustvo
+            //ako nema odsustvo staviti da je sifra uzroka izostanka redovan rad iz wage setup
+            AbsenceEmp.Init();
+            AbsenceEmp."Entry No." := LastEntry;
+            AbsenceEmp."Employee No." := Employee."No.";
+            AbsenceEmp."From Date" := FirstDate;
+            AbsenceEmp."To Date" := FirstDate;
+            AbsenceEmp."Cause of Absence Code" := WageSetup."Workday Code";
+            AbsenceEmp.Description := WageSetup."Workday Description";
+            FirstDate := FirstDate + 1;
+            AbsenceEmp.Quantity := Employee."Hours In Day";
+            AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+            AbsenceEmp.Insert();
+            LastEntry := LastEntry + 1;
+        until FirstDate = LastDate;*/
     end;
 
     procedure FillHoliday(HolidayDate: Date; HolidayCauseOfAbsence: Code[10]; Description: Text[30])

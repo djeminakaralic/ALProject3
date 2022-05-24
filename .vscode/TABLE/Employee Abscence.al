@@ -198,8 +198,6 @@ tableextension 51921 MyExtension extends "Employee Absence"
 
     var
         myInt: Integer;
-
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
-
 }
