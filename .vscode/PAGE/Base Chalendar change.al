@@ -20,7 +20,7 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
                     if "Paid Holiday" then
                         Answer := Dialog.Confirm(Question, true);
 
-                    if Answer then begin
+                    if Answer AND "Paid Holiday" then begin
                         AbsenceFill.FillHoliday(Rec.Date, rec."Holiday Cause of Absence", rec.Description);
                         Message(Text009); //registracija izostanaka je završena
                     end;
