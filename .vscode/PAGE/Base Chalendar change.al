@@ -21,7 +21,7 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
                         Answer := Dialog.Confirm(Question, true);
 
                     if Answer then
-                        AbsenceFill.FillHoliday(Rec.Date);
+                        AbsenceFill.FillHoliday(Rec.Date, rec."Holiday Cause of Absence", rec.Description);
                 end;
 
             }
