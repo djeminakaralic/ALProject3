@@ -26,11 +26,27 @@ report 50117 "Fill The Whole Month"
                         EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No."); //trazim odsustvo za 
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate);
                         if NOT EmployeeAbsence.FindFirst() then begin
-                            CauseOfAbsence.Reset();
-                            CauseOfAbsence.Get(WageSetup."Workday Code");
+                            WageSetup.Get();
+                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, WageSetup."Workday Code");
+                        end
+                        else begin
 
-                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, CauseOfAbsence.Code);
+                            Datum.RESET;
+                            Datum.SETFILTER("Period Type", '%1', 0);
+                            Datum.SETRANGE("Period Start", StartingDate, EndingDate);
+                            Datum.FINDFIRST;
 
+                            repeat
+                                EmployeeAbsence.Reset();
+                                EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
+                                EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start");
+                                if NOT EmployeeAbsence.FindFirst() then begin
+                                    WageSetup.Get();
+                                    AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", Employee, WageSetup."Workday Code");
+                                end;
+
+
+                            until Datum.NEXT = 0;
                         end;
                     until Employee.Next() = 0;
 
@@ -91,6 +107,7 @@ report 50117 "Fill The Whole Month"
         WageSetup: Record "Wage Setup";
         AbsenceFill: Codeunit "Absence Fill";
         CauseOfAbsence: Record "Cause of Absence";
+        Datum: Record "Date";
         StartingDate: Date;
         EndingDate: Date;
         LastEntry: Integer;
