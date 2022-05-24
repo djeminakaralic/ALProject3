@@ -26688,6 +26688,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 2100255337 - NamedType 1706842703" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registration of absences is completed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - NamedType Text0000</note>
+        </trans-unit>
         <trans-unit id="Report 2100255337 - NamedType 2344539320" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Card is updated.</source>
           <note from="Developer" annotates="general" priority="2"></note>

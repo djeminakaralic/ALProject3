@@ -56,9 +56,7 @@ report 50117 "Fill The Whole Month"
 
             trigger OnAfterGetRecord()
             var
-                EmployeeCL: Record "Work Booklet";
             begin
-
                 Message(Text0001);
             end;
 
@@ -87,60 +85,33 @@ report 50117 "Fill The Whole Month"
 
     trigger OnPostReport()
     begin
-        WorkBooklet.RESET;
-        WorkBooklet.SETFILTER(Coefficient, '<>%1', 1);
-        WorkBooklet.SETFILTER(Status, '<>%1', WorkBooklet.Status::Terminated);
-        IF WorkBooklet.FINDSET THEN
-            REPEAT
-                IF WorkBooklet."Ending Date" = 0D THEN
-                    WorkBooklet."Ending Date" := TODAY;
-                WorkBooklet.VALIDATE(Coefficient, WorkBooklet.Coefficient);
-                WorkBooklet.MODIFY;
-
-            UNTIL WorkBooklet.NEXT = 0;
-        //MESSAGE(Text0001);
-        MESSAGE('Završeno');
+        MESSAGE(Text0000);
     end;
 
 
     var
-        zadnji: Text[100];
-        Str: Text[100];
-        position: Integer;
-        lenght: Integer;
-        UkupniDani: Integer;
-        UkupnoGodine: Integer;
+        Employee: Record Employee;
+        EmployeeAbsence: Record "Employee Absence";
+        Text0000: Label 'Registration of absences is completed.';
+
+
+
+
+
         t_WorkBooklet: Record "Work Booklet";
-        UkupniMjeseci: Integer;
-        UkupniDaniBEZ: Integer;
-        UkupnoGodineBEZ: Integer;
-        UkupniMjeseciBEZ: Integer;
         EmployeeCL: Record "Work Booklet";
         DateRec: Date;
-        EmployeeRec: Record "Employee";
+
         Text0001: Label 'Employee Card is updated.';
-        wb: Record "Work Booklet";
+
         HumanResourcesSetup: Record "Human Resources Setup";
-        EndingDate: Date;
+
         WageSetup: Record "Wage Setup";
-        t_WorkBookletCurrent: Record "Work Booklet";
-        WorkBooklet: Record "Work Booklet";
-        TrenutniDani: Integer;
-        TrenutniMjeseci: Integer;
-        TrenutneGodine: Integer;
-        BroughtTotal: Integer;
-        BroughtTotalDays: Integer;
-        BroughtTotalMonths: Integer;
-        BroughtTotalYears: Integer;
+
+
         ECL: Record "Employee Contract Ledger";
         EmpNo: Code[10];
-        UkupniSaVojnimGodine: Integer;
-        UkupniSaVojnimMjeseci: Integer;
-        UkupniSaVojnimDani: Integer;
 
-        SviVojniGodine: Integer;
-        SviVojniMjeseci: Integer;
-        SviVojniDani: Integer;
 
     procedure SetEndingDate(Date: Date)
     begin
@@ -148,9 +119,5 @@ report 50117 "Fill The Whole Month"
 
     end;
 
-    procedure SetEmp(EmployeeNo: Code[10]; Date: Date)
-    begin
 
-
-    end;
 }
