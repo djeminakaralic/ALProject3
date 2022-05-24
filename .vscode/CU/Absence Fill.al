@@ -348,34 +348,6 @@ codeunit 50304 "Absence Fill"
                 END;
         UNTIL Datum.NEXT = 0;
 
-        //odavde novi kod
-
-        /*LastDate := CALCDATE('CM', StartDate2);
-        FirstDate := CALCDATE('-CM', StartDate2);
-
-        AbsenceEmp.RESET;
-        IF AbsenceEmp.FIND('+') THEN
-            LastEntry := AbsenceEmp."Entry No."
-        ELSE
-            LastEntry := 0;
-        LastEntry := LastEntry + 1;
-
-        repeat
-            //krenuti od prvog dana u mjesecu, provjeriti ima li za njega odsustvo
-            //ako nema odsustvo staviti da je sifra uzroka izostanka redovan rad iz wage setup
-            AbsenceEmp.Init();
-            AbsenceEmp."Entry No." := LastEntry;
-            AbsenceEmp."Employee No." := Employee."No.";
-            AbsenceEmp."From Date" := FirstDate;
-            AbsenceEmp."To Date" := FirstDate;
-            AbsenceEmp."Cause of Absence Code" := WageSetup."Workday Code";
-            AbsenceEmp.Description := WageSetup."Workday Description";
-            FirstDate := FirstDate + 1;
-            AbsenceEmp.Quantity := Employee."Hours In Day";
-            AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
-            AbsenceEmp.Insert();
-            LastEntry := LastEntry + 1;
-        until FirstDate = LastDate;*/
     end;
 
     procedure FillHoliday(HolidayDate: Date; HolidayCauseOfAbsence: Code[10]; Description: Text[30])
