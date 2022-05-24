@@ -19,9 +19,21 @@ report 50117 "Fill The Whole Month"
             }
 
             trigger OnAfterGetRecord()
-            var
             begin
-                Message("Employee No.");
+                Employee.SetFilter("For Calculation", '%1', true);
+                if Employee.FindFirst() then
+                    repeat
+                        EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
+                        EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate);
+                        if EmployeeAbsence.FindFirst() then
+                            Message('Pronasao!');
+
+
+                    until Employee.Next() = 0;
+
+
+
+
             end;
 
             trigger OnPreDataItem()
