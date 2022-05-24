@@ -108,24 +108,4 @@ report 50117 "Fill The Whole Month"
         LastEntry: Integer;
         Text0000: Label 'Registration of absences is completed.';
 
-
-
-
-
-
-
-
-        Text0001: Label 'Employee Card is updated.';
-
-
-
-
-
-    procedure SetEndingDate(Date: Date)
-    begin
-
-
-    end;
-
-
 }

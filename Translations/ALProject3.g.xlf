@@ -26693,11 +26693,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - NamedType Text0000</note>
         </trans-unit>
-        <trans-unit id="Report 2100255337 - NamedType 2344539320" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Employee Card is updated.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - NamedType Text0001</note>
-        </trans-unit>
         <trans-unit id="Report 2100255337 - RequestPage 2516438534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insert Dates</source>
           <note from="Developer" annotates="general" priority="2"></note>
