@@ -106,18 +106,44 @@ report 50109 VacationDecision
                 {
 
                 }
+                column(StartFirstpartT; StartFirstpartT)
+                {
+
+                }
+                column(EndFirstpartT; EndFirstpartT)
+                {
+
+                }
+                column(StartSecondpartT; StartSecondpartT)
+                {
+
+                }
+                column(EndSecondpartT; EndSecondpartT)
+                {
+
+                }
+                column(DanJavljanjanaposaoT; DanJavljanjanaposaoT)
+                {
+
+                }
 
                 trigger OnAfterGetRecord()
                 begin
                     CalcFields(Position, Sector);
                     DanJavljanjanaposao := "Ending Date of I part" + 1;
                     DrugiDioDana := "Total days" - BrojDanaPrviDio;
+                    StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
+                    EndFirstpartT := FORMAT("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
+                    StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
+                    EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
+                    DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
                 end;
 
 
                 trigger OnPreDataItem()
                 begin
                     DatumRjesenjaT := FORMAT(DatumRjesenja, 0, '<Day,2>.<Month,2>.<Year4>.');
+
                     Year1 := FORMAT(DatumRjesenja, 0, '<Year4>.');
 
 
@@ -176,8 +202,14 @@ report 50109 VacationDecision
         BrojDokumenta: Text;
         BrojDanaPrviDio: Integer;
         DanJavljanjanaposao: Date;
+        DanJavljanjanaposaoT: Text;
+        StartFirstpartT: Text;
+        EndFirstpartT: Text;
+        StartSecondpartT: Text;
+        EndSecondpartT: Text;
         DrugiDioDana: Integer;
         RanijeIskoristeniDani: Integer;
+
         CompanyInformation: Record "Company Information";
 
 }
