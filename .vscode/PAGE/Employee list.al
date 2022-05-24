@@ -156,8 +156,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                 trigger OnAction()
                 begin
-                    //R_WorkExperience.RUN;
-                    //R_BroughtExperience.RUN;
+                    FillTheWholeMonth.Run();
                 end;
             }
 
@@ -219,9 +218,8 @@ pageextension 50149 EmployeeList extends "Employee List"
         R_BroughtExperience: Report "Update Brought Experience";
 
 
-        //ED 01 START
-
-
+        //ED 01 START       
+        FillTheWholeMonth: Report "Fill The Whole Month";
 
         BaseCalendarList: Page "Base Calendar List";
         //ED 01 END

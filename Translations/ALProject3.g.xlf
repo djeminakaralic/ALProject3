@@ -26683,6 +26683,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ExportGIP - 1022 - NamedType Txt008</note>
         </trans-unit>
+        <trans-unit id="Report 2100255337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fill The Whole Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2100255337 - NamedType 2344539320" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Card is updated.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - NamedType Text0001</note>
+        </trans-unit>
         <trans-unit id="Report 1531074158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GIP-1022 </source>
           <note from="Developer" annotates="general" priority="2"></note>
