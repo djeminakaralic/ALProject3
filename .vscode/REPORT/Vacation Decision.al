@@ -130,6 +130,7 @@ report 50109 VacationDecision
                 trigger OnAfterGetRecord()
                 begin
                     CalcFields("Position Name", Sector);
+                    DanJavljanjanaposao := "Ending Date of I part";
                     DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
                     //Message(FORMAT(DanJavljanjanaposao));
                     DrugiDioDana := "Total days" - BrojDanaPrviDio;
@@ -137,7 +138,7 @@ report 50109 VacationDecision
                     EndFirstpartT := FORMAT("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
-                    //DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
+                    DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
                 end;
 
 

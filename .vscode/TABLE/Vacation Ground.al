@@ -341,10 +341,7 @@ table 50015 "Vacation Ground 2"
         {
             Caption = 'Work experience';
 
-            trigger OnValidate()
-            begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
-            end;
+
         }
         field(3; "Legal Grounds"; Integer)
         {
