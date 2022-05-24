@@ -22,7 +22,6 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
 
                     if Answer then begin
                         AbsenceFill.FillHoliday(Rec.Date, rec."Holiday Cause of Absence", rec.Description);
-
                         Message(Text009); //registracija izostanaka je završena
                     end;
                 end;
