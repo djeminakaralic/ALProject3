@@ -338,7 +338,7 @@ codeunit 50304 "Absence Fill"
         until ;*/
     end;
 
-    procedure FillHoliday(HolidayDate: Date)
+    procedure FillHoliday(HolidayDate: Date; HolidayCauseOfAbsence: Code[10]; Description: Text[30])
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -387,8 +387,8 @@ codeunit 50304 "Absence Fill"
                     if NOT (CauseOfAbsence."Bussiness trip")
                     then
                         if NOT (CauseOfAbsence."Sick Leave") then begin //izostanak se treba modify na praznik
-                            AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
-                            AbsenceEmp.Description := WageSetup."Holiday Description";
+                            AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                            AbsenceEmp.Description := Description;
                             AbsenceEmp.Modify();
                         end;
                 end
@@ -406,14 +406,14 @@ codeunit 50304 "Absence Fill"
                     AbsenceEmp."To Date" := HolidayDate;
                     IF InsertAnnual THEN BEGIN
                         WageSetup.Get();
-                        AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
-                        AbsenceEmp.Description := WageSetup."Holiday Description";
+                        AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                        AbsenceEmp.Description := Description;
                         AbsenceEmp."RS Code" := RSWorkday;
                     END
                     ELSE BEGIN
                         WageSetup.Get();
-                        AbsenceEmp."Cause of Absence Code" := WageSetup."Holiday Code";
-                        AbsenceEmp.Description := WageSetup."Holiday Description";
+                        AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                        AbsenceEmp.Description := Description;
                         AbsenceEmp."RS Code" := RSHoliday;
                     END;
 
