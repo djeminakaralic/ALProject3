@@ -20,8 +20,11 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
                     if "Paid Holiday" then
                         Answer := Dialog.Confirm(Question, true);
 
-                    if Answer then
+                    if Answer then begin
                         AbsenceFill.FillHoliday(Rec.Date, rec."Holiday Cause of Absence", rec.Description);
+
+                        Message(Text009); //registracija izostanaka je završena
+                    end;
                 end;
 
             }
@@ -36,6 +39,8 @@ pageextension 50121 BaseChalendarChange extends "Base Calendar Changes"
     var
         AbsenceFill: Codeunit "Absence Fill";
         Question: Text;
-        Text000: Label 'Do you want to set paid holiday for all employees?';
+        Finish: Text;
         Answer: Boolean;
+        Text000: Label 'Do you want to set paid holiday for all employees?';
+        Text009: Label 'Registration of absences is completed.';
 }

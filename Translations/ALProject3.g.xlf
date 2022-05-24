@@ -32158,6 +32158,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BaseChalendarChange - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1418896891 - NamedType 3921243024" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1418896891">
+          <source>Registration of absences is completed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BaseChalendarChange - NamedType Text009</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
