@@ -17,47 +17,11 @@ report 50117 "Fill The Whole Month"
             column(BroughtDaysofExperience_Employee; DataItem1."Brought Days of Experience")
             {
             }
-            column(YearsofExperienceinCompany_Employee; DataItem1."Years of Experience in Company")
-            {
-            }
-            column(MonthsofExpinCompany_Employee; DataItem1."Months of Exp. in Company")
-            {
-            }
-            column(DaysofExperienceinCompany_Employee; DataItem1."Days of Experience in Company")
-            {
-            }
-            column(YearsofExperience_Employee; DataItem1."Years of Experience")
-            {
-            }
-            column(MonthsofExperience_Employee; DataItem1."Months of Experience")
-            {
-            }
-            column(DaysofExperience_Employee; DataItem1."Days of Experience")
-            {
-            }
-            column(Military_Years_of_Service; DataItem1."Military Years of Service")
-            {
-            }
-            column(Military_Months_of_Service; DataItem1."Military Months of Service")
-            {
-            }
-            column(Military_Days_of_Service; DataItem1."Military Days of Service")
-            {
-            }
-            column(Experience_With_Military_Years; DataItem1."Years with military")
-            {
-            }
-            column(Experience_With_Military_Months; DataItem1."Months with military")
-            {
-            }
-            column(Experience_With_Military_Days; DataItem1."Days with military")
-            {
-            }
 
             trigger OnAfterGetRecord()
             var
             begin
-                Message(Text0001);
+                Message("Employee No.");
             end;
 
             trigger OnPreDataItem()
@@ -111,25 +75,20 @@ report 50117 "Fill The Whole Month"
         EmployeeAbsence: Record "Employee Absence";
         StartingDate: Date;
         EndingDate: Date;
+        LastEntry: Integer;
         Text0000: Label 'Registration of absences is completed.';
 
 
 
 
 
-        t_WorkBooklet: Record "Work Booklet";
-        EmployeeCL: Record "Work Booklet";
+
 
 
         Text0001: Label 'Employee Card is updated.';
 
-        HumanResourcesSetup: Record "Human Resources Setup";
-
         WageSetup: Record "Wage Setup";
 
-
-        ECL: Record "Employee Contract Ledger";
-        EmpNo: Code[10];
 
 
     procedure SetEndingDate(Date: Date)
