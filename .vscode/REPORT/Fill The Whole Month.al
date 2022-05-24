@@ -70,6 +70,7 @@ report 50117 "Fill The Whole Month"
     requestpage
     {
         Caption = 'Insert Dates';
+        ShowFilter = false;
 
         layout
         {
