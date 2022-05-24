@@ -156,8 +156,8 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                 trigger OnAction()
                 begin
-                    R_WorkExperience.RUN;
-                    R_BroughtExperience.RUN;
+                    //R_WorkExperience.RUN;
+                    //R_BroughtExperience.RUN;
                 end;
             }
 
