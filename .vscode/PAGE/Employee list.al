@@ -146,6 +146,21 @@ pageextension 50149 EmployeeList extends "Employee List"
             }
             //ED 01 END
 
+            action("Fill The Whole Month")
+            {
+                Caption = 'Fill The Whole Month';
+                Image = CalendarMachine;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    R_WorkExperience.RUN;
+                    R_BroughtExperience.RUN;
+                end;
+            }
+
             action("Update Work Experience")
             {
                 Caption = 'Update Work Experience';
@@ -203,7 +218,11 @@ pageextension 50149 EmployeeList extends "Employee List"
         R_WorkExperience: Report "Work experience in Company";
         R_BroughtExperience: Report "Update Brought Experience";
 
+
         //ED 01 START
+
+
+
         BaseCalendarList: Page "Base Calendar List";
         //ED 01 END
         //BH 01 start
