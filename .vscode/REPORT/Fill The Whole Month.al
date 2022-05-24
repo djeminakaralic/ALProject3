@@ -25,8 +25,8 @@ report 50117 "Fill The Whole Month"
                     repeat
                         EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate);
-                        if EmployeeAbsence.FindFirst() then
-                            Message('Pronasao!');
+                        if NOT EmployeeAbsence.FindFirst() then
+                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, WageSetup."Workday Code");
 
 
                     until Employee.Next() = 0;
@@ -85,6 +85,8 @@ report 50117 "Fill The Whole Month"
     var
         Employee: Record Employee;
         EmployeeAbsence: Record "Employee Absence";
+        WageSetup: Record "Wage Setup";
+        AbsenceFill: Codeunit "Absence Fill";
         StartingDate: Date;
         EndingDate: Date;
         LastEntry: Integer;
@@ -99,7 +101,7 @@ report 50117 "Fill The Whole Month"
 
         Text0001: Label 'Employee Card is updated.';
 
-        WageSetup: Record "Wage Setup";
+
 
 
 
