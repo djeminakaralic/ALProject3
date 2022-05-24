@@ -109,10 +109,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox8">
@@ -193,10 +193,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox37">
@@ -206,7 +206,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Radniku "+Fields!FirstName.Value+" "+Fields!LastName.Value+" - "+Fields!Position.Value+", "+Fields!StartFirstpartT.Value+" u KJKP ''Sarajevogas'' d.o.o. određuje se godišnji odmor za godinu "+FORMAT(Fields!Year1.Value)+" u trajanju od "+FORMAT(Fields!Total_days.Value)+" radnih dana.",new System.Drawing.Font("Arial",11), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("Radniku "+Fields!FirstName.Value+" "+Fields!LastName.Value+" - "+Fields!Position.Value+" u KJKP ''Sarajevogas'' d.o.o. određuje se godišnji odmor za godinu "+FORMAT(Fields!Year1.Value)+" u trajanju od "+FORMAT(Fields!Total_days.Value)+" radnih dana.",new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -291,10 +291,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox41">
@@ -524,10 +524,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox35">
@@ -593,10 +593,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox9">
@@ -985,10 +985,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox39">
@@ -1073,10 +1073,10 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
+                                <PaddingLeft>0pt</PaddingLeft>
+                                <PaddingRight>0pt</PaddingRight>
+                                <PaddingTop>0pt</PaddingTop>
+                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox49">
@@ -1169,10 +1169,10 @@
                                     <Border>
                                       <Style>None</Style>
                                     </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
+                                    <PaddingLeft>0pt</PaddingLeft>
+                                    <PaddingRight>0pt</PaddingRight>
+                                    <PaddingTop>0pt</PaddingTop>
+                                    <PaddingBottom>0pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
                               </ReportItems>
