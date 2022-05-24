@@ -69,9 +69,23 @@ report 50117 "Fill The Whole Month"
 
     requestpage
     {
+        Caption = 'Insert Dates';
 
         layout
         {
+            area(content)
+            {
+                field(StartingDate; StartingDate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'NewCode';
+                }
+                field(EndingDate; EndingDate)
+                {
+                    ApplicationArea = all;
+                    Caption = 'New Description';
+                }
+            }
         }
 
         actions
@@ -92,6 +106,8 @@ report 50117 "Fill The Whole Month"
     var
         Employee: Record Employee;
         EmployeeAbsence: Record "Employee Absence";
+        StartingDate: Date;
+        EndingDate: Date;
         Text0000: Label 'Registration of absences is completed.';
 
 
@@ -100,7 +116,7 @@ report 50117 "Fill The Whole Month"
 
         t_WorkBooklet: Record "Work Booklet";
         EmployeeCL: Record "Work Booklet";
-        DateRec: Date;
+
 
         Text0001: Label 'Employee Card is updated.';
 
