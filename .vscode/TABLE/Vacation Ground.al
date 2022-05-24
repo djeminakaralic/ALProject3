@@ -584,8 +584,10 @@ table 50015 "Vacation Ground 2"
         }
         field(29; "Position Name"; Text[250])
         {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."),
+                                                                                 Active = CONST(true)));
             Caption = 'Position Name';
-            TableRelation = "Position Menu".Description;
         }
         field(30; Duration; Integer)
         {
