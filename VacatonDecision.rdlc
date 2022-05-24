@@ -122,7 +122,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("U skladu sa Zakonom o radu (''Službene novine F BiH'', broj 26/16 i 89/18) i članovima 37. i 38. Pravilnika o radu, a na osnovu člana 47. Statuta KJKP ''Sarajevogas''-a d.o.o. Sarajevo, donosim", new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("U skladu sa Zakonom o radu (''Službene novine F BiH'', broj 26/16 i 89/18) i članovima 37. i 38. Pravilnika o radu, a na osnovu člana 47. Statuta KJKP ''Sarajevogas''-a d.o.o. Sarajevo, donosim", new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -537,124 +537,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Prvi dio radnik ce koristiti od </Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>=Fields!StartFirstpartT.Value</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value> godine do </Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>=Fields!EndFirstpartT.Value</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value> godine(</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>=Fields!BrojDanaPrviDio.Value</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value> radna dana)</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>, s tim da se javi na posao </Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>=Fields!DanJavljanjanaposaoT.Value</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>Red</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value> godine</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>, dok ce drugi dio (</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>=Fields!DrugiDioDana.Value</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value> radnih dana) </Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Bold</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                    <TextRun>
-                                      <Value>koristiti u terminu koji ce biti naknadno odreden od strane izvršnog direktora za _______ poslove.</Value>
+                                      <Value>=Code.TextOnlyJustify("Prvi dio radnik će koristiti od "+Fields!StartFirstpartT.Value+" godine do "+Fields!EndFirstpartT.Value+" godine("+FORMAT(Fields!BrojDanaPrviDio.Value)+" radna dana), s tim da se javi na posao "+Fields!DanJavljanjanaposaoT.Value+" godine, dok će drugi dio ("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji ce biti naknadno odreden od strane izvršnog direktora za _______ poslove.",new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1115,7 +998,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Radnik ima pravo koristiti jedan /1/ dan godišnjeg odmora kad on to želi, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("Radnik ima pravo koristiti jedan /1/ dan godišnjeg odmora kad on to želi, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1124,7 +1007,7 @@
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Osim jednog dana iz stava 1. ovog člana, radnik ima pravo na korištenje ukupno dva /2/ dana godišnjeg odmora u kalendarskoj godini tokom vjerskog praznika Bajrama ili Božića, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("Osim jednog dana iz stava 1. ovog člana, radnik ima pravo na korištenje ukupno dva /2/ dana godišnjeg odmora u kalendarskoj godini tokom vjerskog praznika Bajrama ili Božića, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1133,7 +1016,7 @@
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("U slučaju kada radnik iskoristi neki od dana iz stava 1. i 2. ovog člana, skraćuje mu se drugi dio godišnjeg odmora za broj dana koje je radnik po tom osnovu iskoristio.", new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("U slučaju kada radnik iskoristi neki od dana iz stava 1. i 2. ovog člana, skraćuje mu se drugi dio godišnjeg odmora za broj dana koje je radnik po tom osnovu iskoristio.", new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1203,7 +1086,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Za vrijeme korištenja godišnjeg odmora radniku će se isplaćivati naknada plaće u skladu sa važećim propisima i opštim aktima preduzeća.", new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("Za vrijeme korištenja godišnjeg odmora radniku će se isplaćivati naknada plaće u skladu sa važećim propisima i opštim aktima preduzeća.", new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1235,7 +1118,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("POUKA O PRAVNOM LIJEKU: Protiv ovog Rješenja radnik može podnijeti prigovor Upravi Preduzeća u roku od 30 dana od dana prijema istog.", new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("POUKA O PRAVNOM LIJEKU: Protiv ovog Rješenja radnik može podnijeti prigovor Upravi Preduzeća u roku od 30 dana od dana prijema istog.", new System.Drawing.Font("Arial",11), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
