@@ -131,6 +131,7 @@ report 50109 VacationDecision
                 begin
                     CalcFields("Position Name", Sector);
                     DanJavljanjanaposao := "Ending Date of I part" + 1;
+                    Message(FORMAT(DanJavljanjanaposao));
                     DrugiDioDana := "Total days" - BrojDanaPrviDio;
                     StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndFirstpartT := FORMAT("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
