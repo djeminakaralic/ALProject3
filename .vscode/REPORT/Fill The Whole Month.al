@@ -8,7 +8,7 @@ report 50117 "Fill The Whole Month"
     {
         dataitem(DataItem1; "Employee")
         {
-            column(BroughtYearsofExperience_Employee; DataItem1."Brought Years of Experience")
+            /*column(BroughtYearsofExperience_Employee; DataItem1."Brought Years of Experience")
             {
             }
             column(BroughtMonthsofExperience_Employee; DataItem1."Brought Months of Experience")
@@ -16,7 +16,7 @@ report 50117 "Fill The Whole Month"
             }
             column(BroughtDaysofExperience_Employee; DataItem1."Brought Days of Experience")
             {
-            }
+            }*/
 
             trigger OnAfterGetRecord()
             begin
@@ -44,14 +44,9 @@ report 50117 "Fill The Whole Month"
                                     WageSetup.Get();
                                     AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", Employee, WageSetup."Workday Code");
                                 end;
-
-
                             until Datum.NEXT = 0;
                         end;
                     until Employee.Next() = 0;
-
-
-
 
             end;
 
