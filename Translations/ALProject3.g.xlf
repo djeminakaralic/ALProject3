@@ -26704,12 +26704,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - RequestPage RequestOptionsPage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2100255337 - Control 3592094765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New Description</source>
+          <source>Ending Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Control EndingDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2100255337 - Control 543275552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>NewCode</source>
+          <source>Starting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Control StartingDate - Property Caption</note>
         </trans-unit>

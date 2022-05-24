@@ -2,7 +2,7 @@ report 50117 "Fill The Whole Month"
 {
     Caption = 'Fill The Whole Month';
     ProcessingOnly = true;
-    UseRequestPage = false;
+    UseRequestPage = true;
 
     dataset
     {
@@ -75,16 +75,18 @@ report 50117 "Fill The Whole Month"
         {
             area(content)
             {
+
                 field(StartingDate; StartingDate)
                 {
                     ApplicationArea = all;
-                    Caption = 'NewCode';
+                    Caption = 'Starting Date';
                 }
                 field(EndingDate; EndingDate)
                 {
                     ApplicationArea = all;
-                    Caption = 'New Description';
+                    Caption = 'Ending Date';
                 }
+
             }
         }
 
