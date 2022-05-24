@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>6.47157in</Width>
+                  <Width>6.48578in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -109,10 +109,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox8">
@@ -193,10 +189,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox37">
@@ -291,10 +283,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox41">
@@ -478,7 +466,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox21</rd:DefaultName>
-                              <Top>16.26239cm</Top>
+                              <Top>15.94489cm</Top>
                               <Left>8.87348cm</Left>
                               <Height>0.52944cm</Height>
                               <Width>7.2887cm</Width>
@@ -515,7 +503,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox22</rd:DefaultName>
-                              <Top>16.79183cm</Top>
+                              <Top>16.47433cm</Top>
                               <Left>8.87348cm</Left>
                               <Height>0.5559cm</Height>
                               <Width>7.28892cm</Width>
@@ -524,10 +512,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox35">
@@ -537,7 +521,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Prvi dio radnik će koristiti od "+Fields!StartFirstpartT.Value+" godine do "+Fields!EndFirstpartT.Value+" godine ("+FORMAT(Fields!BrojDanaPrviDio.Value)+" radna dana), s tim da se javi na posao "+Fields!DanJavljanjanaposaoT.Value+" godine, dok će drugi dio ("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za ____ poslove.",new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("Prvi dio radnik će koristiti od "+Fields!StartFirstpartT.Value+" godine do "+Fields!EndFirstpartT.Value+" godine ("+FORMAT(Fields!BrojDanaPrviDio.Value)+" radna dana), s tim da se javi na posao "+Fields!DanJavljanjanaposaoT.Value+" godine, dok će drugi dio ("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za ____ poslove.",new System.Drawing.Font("Arial",12), true,795)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -545,11 +529,6 @@
                                         <Color>#000000</Color>
                                       </Style>
                                     </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
-                                <Paragraph>
-                                  <TextRuns>
                                     <TextRun>
                                       <Value>Radnik je ranije iskoristio </Value>
                                       <Style>
@@ -578,9 +557,7 @@
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
-                                  <Style>
-                                    <TextAlign>Left</TextAlign>
-                                  </Style>
+                                  <Style />
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox35</rd:DefaultName>
@@ -593,10 +570,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox9">
@@ -736,7 +709,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Legal_Grounds.Value</Value>
+                                      <Value>=FORMAT(Fields!Legal_Grounds.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -761,7 +734,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!WorkEXpDays.Value</Value>
+                                      <Value>=FORMAT(Fields!WorkEXpDays.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -786,7 +759,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!SpecialCircumstances.Value</Value>
+                                      <Value>=FORMAT(Fields!SpecialCircumstances.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -811,7 +784,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Disability.Value</Value>
+                                      <Value>=FORMAT(Fields!Disability.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -836,7 +809,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!SingleParent.Value</Value>
+                                      <Value>=FORMAT(Fields!SingleParent.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -870,7 +843,7 @@
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                      <Value>=Fields!MotherWithMoreCH.Value</Value>
+                                      <Value>=FORMAT(Fields!MotherWithMoreCH.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -895,7 +868,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Millitary.Value</Value>
+                                      <Value>=FORMAT(Fields!Millitary.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -920,7 +893,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Total_days.Value</Value>
+                                      <Value>=FORMAT(Fields!Total_days.Value)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -945,7 +918,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox8</rd:DefaultName>
                               <Top>7.54788cm</Top>
-                              <Left>8.87393cm</Left>
+                              <Left>8.23893cm</Left>
                               <Height>1.10624cm</Height>
                               <Width>7.5641cm</Width>
                               <ZIndex>14</ZIndex>
@@ -985,10 +958,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox39">
@@ -1034,7 +1003,7 @@
                               <Top>12.00747cm</Top>
                               <Left>0.0087cm</Left>
                               <Height>1.58778cm</Height>
-                              <Width>16.42038cm</Width>
+                              <Width>16.46519cm</Width>
                               <ZIndex>16</ZIndex>
                               <Style>
                                 <Border>
@@ -1073,10 +1042,6 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>0pt</PaddingLeft>
-                                <PaddingRight>0pt</PaddingRight>
-                                <PaddingTop>0pt</PaddingTop>
-                                <PaddingBottom>0pt</PaddingBottom>
                               </Style>
                             </Textbox>
                             <Textbox Name="Textbox49">
@@ -1087,22 +1052,6 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Code.TextOnlyJustify("Za vrijeme korištenja godišnjeg odmora radniku će se isplaćivati naknada plaće u skladu sa važećim propisima i opštim aktima preduzeća.", new System.Drawing.Font("Arial",12), true,795)</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>General</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value />
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1169,10 +1118,6 @@
                                     <Border>
                                       <Style>None</Style>
                                     </Border>
-                                    <PaddingLeft>0pt</PaddingLeft>
-                                    <PaddingRight>0pt</PaddingRight>
-                                    <PaddingTop>0pt</PaddingTop>
-                                    <PaddingBottom>0pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
                               </ReportItems>
@@ -1244,7 +1189,7 @@
             </Filters>
             <Left>0.03611cm</Left>
             <Height>7.73405in</Height>
-            <Width>6.47157in</Width>
+            <Width>6.48578in</Width>
             <Style>
               <Border>
                 <Color>White</Color>

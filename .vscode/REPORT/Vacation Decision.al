@@ -33,7 +33,7 @@ report 50109 VacationDecision
             column(Company_logo; CompanyInformation.Picture)
             {
             }
-            dataitem(DataItem5; "Vacation Grounds2")
+            dataitem(DataItem5; "Vacation Ground 2")
             {
                 RequestFilterFields = "Employee No.";
                 column(WorkEXpDays; "Days based on Work experience")
@@ -83,7 +83,7 @@ report 50109 VacationDecision
                 column(End2part; "Ending Date of II part")
                 {
                 }
-                column(Position; Position)
+                column(Position; "Position Name")
                 {
                 }
                 column(Sector; Sector)
@@ -129,7 +129,7 @@ report 50109 VacationDecision
 
                 trigger OnAfterGetRecord()
                 begin
-                    CalcFields(Position, Sector);
+                    CalcFields("Position Name", Sector);
                     DanJavljanjanaposao := "Ending Date of I part" + 1;
                     DrugiDioDana := "Total days" - BrojDanaPrviDio;
                     StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
