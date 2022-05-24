@@ -23,12 +23,15 @@ report 50117 "Fill The Whole Month"
                 Employee.SetFilter("For Calculation", '%1', true);
                 if Employee.FindFirst() then
                     repeat
-                        EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
+                        EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No."); //trazim odsustvo za 
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate);
-                        if NOT EmployeeAbsence.FindFirst() then
-                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, WageSetup."Workday Code");
+                        if NOT EmployeeAbsence.FindFirst() then begin
+                            CauseOfAbsence.Reset();
+                            CauseOfAbsence.Get(WageSetup."Workday Code");
 
+                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, CauseOfAbsence.Code);
 
+                        end;
                     until Employee.Next() = 0;
 
 
@@ -87,6 +90,7 @@ report 50117 "Fill The Whole Month"
         EmployeeAbsence: Record "Employee Absence";
         WageSetup: Record "Wage Setup";
         AbsenceFill: Codeunit "Absence Fill";
+        CauseOfAbsence: Record "Cause of Absence";
         StartingDate: Date;
         EndingDate: Date;
         LastEntry: Integer;
