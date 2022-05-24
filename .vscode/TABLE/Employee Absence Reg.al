@@ -34,8 +34,13 @@ table 50104 "Employee Absence Reg"
                         EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                         if EmployeeAbsence.FindFirst() then begin
-                            WageSetup.Get();
+                            /*WageSetup.Get();
                             if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                                Error(Text005);*/
+                            //Sada uzroci izostanka.
+                            CauseOfAbsence.Reset();
+                            CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                            if CauseOfAbsence.Holiday = false then
                                 Error(Text005);
                         end;
                     end;
@@ -43,8 +48,12 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" = "To Date" then begin
                         EmployeeAbsence.SetFilter("From Date", '%1', Rec."From Date");
                         if EmployeeAbsence.FindFirst() then begin
-                            WageSetup.Get();
+                            /*WageSetup.Get();
                             if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                                Error(Text005);*/
+                            CauseOfAbsence.Reset();
+                            CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                            if CauseOfAbsence.Holiday = false then
                                 Error(Text005);
                         end;
                     end;
@@ -111,8 +120,11 @@ table 50104 "Employee Absence Reg"
                         ERROR(Text002);
 
                     if EmployeeAbsence.FindFirst() then begin
-                        WageSetup.Get();
+                        /*WageSetup.Get();
                         if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                            Error(Text005);*/
+                        CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                        if CauseOfAbsence.Holiday = false then
                             Error(Text005);
                     end;
                 END;
@@ -137,8 +149,11 @@ table 50104 "Employee Absence Reg"
                     EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
                     if EmployeeAbsence.FindFirst() then begin
-                        WageSetup.Get();
+                        /*WageSetup.Get();
                         if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                            Error(Text005);*/
+                        CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                        if CauseOfAbsence.Holiday = false then
                             Error(Text005);
                     end;
 
