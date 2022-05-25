@@ -97,10 +97,10 @@ page 51130 "Work Performance"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Rec."Quality of performed work" := "Quality of performed work"::"3";
-        Rec."Scope of performed work" := "Scope of performed work"::"3";
-        Rec."Deadline for completion of work" := "Deadline for completion of work"::"3";
-        Rec."Attitude towards work obligations" := "Attitude towards work obligations"::"3";
+        Validate(Rec."Quality of performed work", "Quality of performed work"::"3");
+        Validate(Rec."Scope of performed work", "Scope of performed work"::"3");
+        Validate(Rec."Deadline for completion of work", "Deadline for completion of work"::"3");
+        Validate(Rec."Attitude towards work obligations", "Attitude towards work obligations"::"3");
         Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
     end;
 

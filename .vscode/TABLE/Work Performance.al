@@ -23,7 +23,7 @@ table 50099 "Work Performance"
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
 
-                SetGrade("Quality of performed work");
+                /*SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
                 RealScopeGrade := RealOptionGrade;
@@ -31,7 +31,7 @@ table 50099 "Work Performance"
                 RealDeadlineGrade := RealOptionGrade;
                 SetGrade("Attitude towards work obligations");
                 RealAttitudeGrade := RealOptionGrade;
-                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
+                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;*/
             end;
         }
         field(3; "First Name"; Text[30])
