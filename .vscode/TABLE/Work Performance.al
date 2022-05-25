@@ -22,6 +22,16 @@ table 50099 "Work Performance"
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
+
+                SetGrade("Quality of performed work");
+                RealQualityGrade := RealOptionGrade;
+                SetGrade("Scope of performed work");
+                RealScopeGrade := RealOptionGrade;
+                SetGrade("Deadline for completion of work");
+                RealDeadlineGrade := RealOptionGrade;
+                SetGrade("Attitude towards work obligations");
+                RealAttitudeGrade := RealOptionGrade;
+                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
             end;
         }
         field(3; "First Name"; Text[30])
@@ -139,8 +149,6 @@ table 50099 "Work Performance"
         Text006: Label 'Selected record has already been approved.';
         Text007: Label 'Cause of absence field cannot be blank.';
         VisibleHours: Boolean;
-
-
 
     trigger OnInsert()
     begin
