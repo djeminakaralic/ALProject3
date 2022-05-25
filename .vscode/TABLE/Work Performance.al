@@ -37,24 +37,44 @@ table 50099 "Work Performance"
             Caption = 'Quality of performed work';
             OptionCaption = '1,2,3,4,5';
             OptionMembers = "1","2","3","4","5";
+
+            trigger OnValidate()
+            begin
+                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+            end;
         }
         field(6; "Scope of performed work"; Option)
         {
             Caption = 'Scope of performed work';
             OptionCaption = '1,2,3,4,5';
             OptionMembers = "1","2","3","4","5";
+
+            trigger OnValidate()
+            begin
+                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+            end;
         }
         field(7; "Deadline for completion of work"; Option)
         {
             Caption = 'Deadline for completion of work';
             OptionCaption = '1,2,3,4,5';
             OptionMembers = "1","2","3","4","5";
+
+            trigger OnValidate()
+            begin
+                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+            end;
         }
         field(8; "Attitude towards work obligations"; Option)
         {
             Caption = 'Attitude towards work obligations';
             OptionCaption = '1,2,3,4,5';
             OptionMembers = "1","2","3","4","5";
+
+            trigger OnValidate()
+            begin
+                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+            end;
         }
         field(9; "Grade"; Decimal)
         {

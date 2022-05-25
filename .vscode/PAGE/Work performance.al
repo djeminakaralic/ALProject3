@@ -38,34 +38,18 @@ page 51130 "Work Performance"
                 field("Quality of performed work"; "Quality of performed work")
                 {
                     Editable = true;
-                    trigger OnValidate()
-                    begin
-                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
-                    end;
                 }
                 field("Scope of performed work"; "Scope of performed work")
                 {
                     Editable = true;
-                    trigger OnValidate()
-                    begin
-                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
-                    end;
                 }
                 field("Deadline for completion of work"; "Deadline for completion of work")
                 {
                     Editable = true;
-                    trigger OnValidate()
-                    begin
-                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
-                    end;
                 }
                 field("Attitude towards work obligations"; "Attitude towards work obligations")
                 {
                     Editable = true;
-                    trigger OnValidate()
-                    begin
-                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
-                    end;
                 }
                 field(Grade; Grade)
                 {
