@@ -13563,6 +13563,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sector - Field Belongs - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2662995888 - Field 1611336899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sector - Field CEO - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2662995888 - Field 2371602809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Changing Department</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23517,11 +23522,6 @@
           <source>Sector</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Sector - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2066736455 - Action 641678258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Teams</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Teams - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2066736455 - Action 330108014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Org. structure and positions</source>
