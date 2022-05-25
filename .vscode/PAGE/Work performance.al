@@ -55,9 +55,13 @@ page 51130 "Work performance"
                 {
                     Editable = true;
                 }
+                field("Increase in basic salary(%)"; "Increase in basic salary(%)")
+                {
+                    Editable = false;
+                }
                 field(Approved; Approved)
                 {
-                    Editable = true;
+                    Editable = false;
                 }
                 /*
                 field("Cause of Absence Code"; "Cause of Absence Code")
