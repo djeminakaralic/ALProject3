@@ -976,7 +976,16 @@
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Osim jednog dana iz stava 1. ovog člana, radnik ima pravo na korištenje ukupno dva /2/ dana godišnjeg odmora u kalendarskoj godini tokom vjerskog praznika Bajrama ili Božića,s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",12), true,795)</Value>
+                                      <Value>=Code.TextOnlyJustify("Osim jednog dana iz stava 1. ovog člana, radnik ima pravo na korištenje ukupno dva /2/ dana godišnjeg", new System.Drawing.Font("Arial",12), true,795)</Value>
+                                      <Style>
+                                        <FontStyle>Normal</FontStyle>
+                                        <FontWeight>Normal</FontWeight>
+                                        <TextDecoration>None</TextDecoration>
+                                        <Color>#000000</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Code.TextOnlyJustify(" odmora u kalendarskoj godini tokom vjerskog praznika Bajrama ili Božića, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",12), true,795)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
