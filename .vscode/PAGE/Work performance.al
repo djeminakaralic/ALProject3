@@ -1,7 +1,7 @@
-page 51130 "Work performance"
+page 51130 "Work Performance"
 //ED 01 START
 {
-    Caption = 'Work performance';
+    Caption = 'Work Performance';
     DataCaptionFields = "Employee No.";
     DelayedInsert = true;
     PageType = Worksheet;

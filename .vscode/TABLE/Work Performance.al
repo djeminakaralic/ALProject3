@@ -1,9 +1,9 @@
-table 50099 "Work performance"
+table 50099 "Work Performance"
 //ED 01 START
 {
-    Caption = 'Work performance';
-    DrillDownPageID = "Work performance";
-    LookupPageID = "Work performance";
+    Caption = 'Work Performance';
+    DrillDownPageID = "Work Performance";
+    LookupPageID = "Work Performance";
 
     fields
     {
@@ -307,6 +307,11 @@ table 50099 "Work performance"
     trigger OnDelete()
     begin
 
+    end;
+
+    procedure CalculateIncrease(CurrQuality: Integer; CurrScope: Integer; CurrDeadline: Integer; CurrAttitude: Integer; CurrGrade: Decimal)
+    begin
+        //if CurrQuality<=2 OR Curr
     end;
     //ED 01 END
 }
