@@ -63,34 +63,6 @@ page 51130 "Work Performance"
                 {
                     Editable = true;
                 }
-                /*
-                field("Cause of Absence Code"; "Cause of Absence Code")
-                {
-                    trigger OnValidate()
-                    begin
-                        CauseOfAbsence.Get("Cause of Absence Code");
-                        if CauseOfAbsence."Added To Hour Pool" then
-                            EditableHours := true
-                        else begin
-                            EditableHours := false;
-                            Hours := 0;
-                        end;
-                        
-                    end;
-                }
-                field(Description; Description)
-                {
-
-                }
-                field(Hours; Hours)
-                {
-                    Editable = EditableHours;
-                    BlankZero = true;
-                }
-                field(Approved; Approved)
-                {
-                    Editable = true;
-                }*/
             }
         }
     }
