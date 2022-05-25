@@ -26133,11 +26133,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Work performance - NamedType Text008</note>
         </trans-unit>
-        <trans-unit id="Page 4131443331 - Action 2992685501 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&amp;Unapprove All</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Work performance - Action &amp;Unapprove All - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 3169680945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Additions</source>
           <note from="Developer" annotates="general" priority="2"></note>

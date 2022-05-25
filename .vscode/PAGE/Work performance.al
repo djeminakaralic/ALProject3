@@ -24,7 +24,7 @@ page 51130 "Work performance"
                 {
                     trigger OnValidate()
                     begin
-                        EditableHours := false;
+                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations") / 4;
                     end;
                 }
                 field("First Name"; "First Name")
@@ -100,7 +100,7 @@ page 51130 "Work performance"
         area(navigation)
         {
 
-            action("&Unapprove All")
+            /*action("&Unapprove All")
             {
                 Caption = '&Unapprove All';
                 Image = ResetStatus;
@@ -110,7 +110,7 @@ page 51130 "Work performance"
                 ShortCutKey = 'Ctrl+F9';
 
 
-            }
+            }*/
         }
         area(processing)
         {
@@ -128,6 +128,7 @@ page 51130 "Work performance"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
+
         /*IF "Cause of Absence Code" = '' then
             Error(Text007);
 
@@ -139,6 +140,7 @@ page 51130 "Work performance"
 
     trigger OnModifyRecord(): Boolean
     begin
+        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations") / 4;
         /*IF "From Date" = 0D then
             Error(Text001);
 
