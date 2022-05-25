@@ -1,5 +1,6 @@
 report 50117 "Fill The Whole Month"
 {
+    //ED 01 START
     Caption = 'Fill The Whole Month';
     ProcessingOnly = true;
     UseRequestPage = true;
@@ -23,28 +24,28 @@ report 50117 "Fill The Whole Month"
                 Employee.SetFilter("For Calculation", '%1', true);
                 if Employee.FindFirst() then
                     repeat
-                        EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No."); //trazim odsustvo za 
-                        EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate);
-                        if NOT EmployeeAbsence.FindFirst() then begin
+                        EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No."); //trazim odsustvo za jednog zaposlenog
+                        EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate); //filter na unesene datume u request page-u
+                        if NOT EmployeeAbsence.FindFirst() then begin //u tabeli nema nijednog odsustva za ovog zaposlenog
                             WageSetup.Get();
                             AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, WageSetup."Workday Code");
                         end
-                        else begin
+                        else begin //pronađeno je barem 1 odsustvo
 
                             Datum.RESET;
                             Datum.SETFILTER("Period Type", '%1', 0);
-                            Datum.SETRANGE("Period Start", StartingDate, EndingDate);
+                            Datum.SETRANGE("Period Start", StartingDate, EndingDate); //uzimam dane izmedju unesenih datuma
                             Datum.FINDFIRST;
 
                             repeat
                                 EmployeeAbsence.Reset();
                                 EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
                                 EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start");
-                                if NOT EmployeeAbsence.FindFirst() then begin
+                                if NOT EmployeeAbsence.FindFirst() then begin //nije pronadjeno odustvo na ovaj dan
                                     WageSetup.Get();
                                     AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", Employee, WageSetup."Workday Code");
                                 end;
-                            until Datum.NEXT = 0;
+                            until Datum.NEXT = 0; //sljedeći datum
                         end;
                     until Employee.Next() = 0;
 
@@ -107,5 +108,5 @@ report 50117 "Fill The Whole Month"
         EndingDate: Date;
         LastEntry: Integer;
         Text0000: Label 'Registration of absences is completed.';
-
+    //ED 01 END
 }
