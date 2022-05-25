@@ -24,7 +24,7 @@ page 51130 "Work performance"
                 {
                     trigger OnValidate()
                     begin
-                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+
                     end;
                 }
                 field("First Name"; "First Name")
@@ -38,18 +38,34 @@ page 51130 "Work performance"
                 field("Quality of performed work"; "Quality of performed work")
                 {
                     Editable = true;
+                    trigger OnValidate()
+                    begin
+                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                    end;
                 }
                 field("Scope of performed work"; "Scope of performed work")
                 {
                     Editable = true;
+                    trigger OnValidate()
+                    begin
+                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                    end;
                 }
                 field("Deadline for completion of work"; "Deadline for completion of work")
                 {
                     Editable = true;
+                    trigger OnValidate()
+                    begin
+                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                    end;
                 }
                 field("Attitude towards work obligations"; "Attitude towards work obligations")
                 {
                     Editable = true;
+                    trigger OnValidate()
+                    begin
+                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                    end;
                 }
                 field(Grade; Grade)
                 {
@@ -118,12 +134,18 @@ page 51130 "Work performance"
         }
     }
 
+    trigger OnDeleteRecord(): Boolean
+    begin
+
+    end;
+
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Rec."Quality of performed work" := "Quality of performed work"::"3";
         Rec."Scope of performed work" := "Scope of performed work"::"3";
         Rec."Deadline for completion of work" := "Deadline for completion of work"::"3";
         Rec."Attitude towards work obligations" := "Attitude towards work obligations"::"3";
+        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -140,7 +162,7 @@ page 51130 "Work performance"
 
     trigger OnModifyRecord(): Boolean
     begin
-        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+
         /*IF "From Date" = 0D then
             Error(Text001);
 

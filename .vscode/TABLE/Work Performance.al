@@ -19,9 +19,6 @@ table 50099 "Work performance"
 
             trigger OnValidate()
             begin
-                /*IF Approved = true then
-                    error(Text006);*/
-
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
@@ -38,7 +35,7 @@ table 50099 "Work performance"
         field(5; "Quality of performed work"; Option)
         {
             Caption = 'Quality of performed work';
-            OptionCaption = '1,,2,3,4,5';
+            OptionCaption = '1,2,3,4,5';
             OptionMembers = "1","2","3","4","5";
         }
         field(6; "Scope of performed work"; Option)
@@ -70,6 +67,13 @@ table 50099 "Work performance"
         field(11; Approved; Boolean)
         {
             Caption = 'Approved';
+
+            trigger OnValidate()
+            begin
+                if Approved then begin
+
+                end;
+            end;
         }
 
 
