@@ -35,14 +35,31 @@ page 51130 "Work performance"
                 {
                     Editable = false;
                 }
-                /*field("From Date"; "From Date")
+                field("Quality of performed work"; "Quality of performed work")
                 {
-
+                    Editable = true;
                 }
-                field("To Date"; "To Date")
+                field("Scope of performed work"; "Scope of performed work")
                 {
-
+                    Editable = true;
                 }
+                field("Deadline for completion of work"; "Deadline for completion of work")
+                {
+                    Editable = true;
+                }
+                field("Attitude towards work obligations"; "Attitude towards work obligations")
+                {
+                    Editable = true;
+                }
+                field(Grade; Grade)
+                {
+                    Editable = true;
+                }
+                field(Approved; Approved)
+                {
+                    Editable = true;
+                }
+                /*
                 field("Cause of Absence Code"; "Cause of Absence Code")
                 {
                     trigger OnValidate()
@@ -96,6 +113,14 @@ page 51130 "Work performance"
 
         }
     }
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        Rec."Quality of performed work" := "Quality of performed work"::"3";
+        Rec."Scope of performed work" := "Scope of performed work"::"3";
+        Rec."Deadline for completion of work" := "Deadline for completion of work"::"3";
+        Rec."Attitude towards work obligations" := "Attitude towards work obligations"::"3";
+    end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
