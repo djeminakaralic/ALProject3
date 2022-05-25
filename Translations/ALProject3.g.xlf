@@ -21784,7 +21784,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Attitude towards work obligations - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - Field 4125903188 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>1,2,3,4,5</source>
+          <source>1,2,3,3.5,4,4.5,5</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Attitude towards work obligations - Property OptionCaption</note>
         </trans-unit>
@@ -21794,7 +21794,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Deadline for completion of work - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - Field 3701536959 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>1,2,3,4,5</source>
+          <source>1,2,3,3.5,4,4.5,5</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Deadline for completion of work - Property OptionCaption</note>
         </trans-unit>
@@ -21834,7 +21834,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Quality of performed work - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - Field 308372495 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>1,2,3,4,5</source>
+          <source>1,2,3,3.5,4,4.5,5</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Quality of performed work - Property OptionCaption</note>
         </trans-unit>
@@ -21844,7 +21844,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Scope of performed work - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - Field 2443665998 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>1,2,3,4,5</source>
+          <source>1,2,3,3.5,4,4.5,5</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Scope of performed work - Property OptionCaption</note>
         </trans-unit>
