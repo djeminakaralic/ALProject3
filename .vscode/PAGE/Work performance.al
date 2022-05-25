@@ -24,7 +24,7 @@ page 51130 "Work performance"
                 {
                     trigger OnValidate()
                     begin
-                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations") / 4;
+                        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
                     end;
                 }
                 field("First Name"; "First Name")
@@ -53,7 +53,7 @@ page 51130 "Work performance"
                 }
                 field(Grade; Grade)
                 {
-                    Editable = true;
+                    Editable = false;
                 }
                 field("Increase in basic salary(%)"; "Increase in basic salary(%)")
                 {
@@ -61,7 +61,7 @@ page 51130 "Work performance"
                 }
                 field(Approved; Approved)
                 {
-                    Editable = false;
+                    Editable = true;
                 }
                 /*
                 field("Cause of Absence Code"; "Cause of Absence Code")
@@ -140,7 +140,7 @@ page 51130 "Work performance"
 
     trigger OnModifyRecord(): Boolean
     begin
-        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations") / 4;
+        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
         /*IF "From Date" = 0D then
             Error(Text001);
 

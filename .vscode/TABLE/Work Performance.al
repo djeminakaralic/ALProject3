@@ -38,7 +38,7 @@ table 50099 "Work performance"
         field(5; "Quality of performed work"; Option)
         {
             Caption = 'Quality of performed work';
-            OptionCaption = '1,2,3,4,5';
+            OptionCaption = '1,,2,3,4,5';
             OptionMembers = "1","2","3","4","5";
         }
         field(6; "Scope of performed work"; Option)
