@@ -49,8 +49,17 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
-                RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
+                //SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
+                //RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
+
+                SetGrade("Quality of performed work");
+                RealQualityGrade := RealOptionGrade;
+                SetGrade("Scope of performed work");
+                RealScopeGrade := RealOptionGrade;
+                SetGrade("Deadline for completion of work");
+                RealDeadlineGrade := RealOptionGrade;
+                SetGrade("Attitude towards work obligations");
+                RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
@@ -63,8 +72,14 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                SetGrade("Scope of performed work"); //zovem proceduru da prepozna koji je option
-                RealScopeGrade := RealOptionGrade; //smjestam taj decimalni broj
+                SetGrade("Quality of performed work");
+                RealQualityGrade := RealOptionGrade;
+                SetGrade("Scope of performed work");
+                RealScopeGrade := RealOptionGrade;
+                SetGrade("Deadline for completion of work");
+                RealDeadlineGrade := RealOptionGrade;
+                SetGrade("Attitude towards work obligations");
+                RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
@@ -77,8 +92,14 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                SetGrade("Deadline for completion of work"); //zovem proceduru da prepozna koji je option
-                RealDeadlineGrade := RealOptionGrade; //smjestam taj decimalni broj
+                SetGrade("Quality of performed work");
+                RealQualityGrade := RealOptionGrade;
+                SetGrade("Scope of performed work");
+                RealScopeGrade := RealOptionGrade;
+                SetGrade("Deadline for completion of work");
+                RealDeadlineGrade := RealOptionGrade;
+                SetGrade("Attitude towards work obligations");
+                RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
@@ -91,8 +112,14 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                SetGrade("Attitude towards work obligations"); //zovem proceduru da prepozna koji je option
-                RealAttitudeGrade := RealOptionGrade; //smjestam taj decimalni broj
+                SetGrade("Quality of performed work");
+                RealQualityGrade := RealOptionGrade;
+                SetGrade("Scope of performed work");
+                RealScopeGrade := RealOptionGrade;
+                SetGrade("Deadline for completion of work");
+                RealDeadlineGrade := RealOptionGrade;
+                SetGrade("Attitude towards work obligations");
+                RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);

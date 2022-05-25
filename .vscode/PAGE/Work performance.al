@@ -101,7 +101,7 @@ page 51130 "Work Performance"
         Validate(Rec."Scope of performed work", "Scope of performed work"::"3");
         Validate(Rec."Deadline for completion of work", "Deadline for completion of work"::"3");
         Validate(Rec."Attitude towards work obligations", "Attitude towards work obligations"::"3");
-        Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+        //Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
