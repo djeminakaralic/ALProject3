@@ -2,8 +2,8 @@ table 50099 "Work performance"
 //ED 01 START
 {
     Caption = 'Work performance';
-    DrillDownPageID = "Employee Absence";
-    LookupPageID = "Employee Absence";
+    DrillDownPageID = "Work performance";
+    LookupPageID = "Work performance";
 
     fields
     {
