@@ -3630,6 +3630,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No.");
                 Promoted = true;
             }
+
+            action("Work performance")
+            {
+                Caption = 'Work performance';
+                Image = ElectronicNumber;
+                RunObject = page "Work performance";
+                //RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
+            }
             //ED 01 END
 
         }

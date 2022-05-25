@@ -32468,6 +32468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work Booklet3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Action 4131443331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Work performance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work performance - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Action 1758672088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Work Permit</source>
           <note from="Developer" annotates="general" priority="2"></note>
