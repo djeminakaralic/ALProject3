@@ -120,14 +120,14 @@ report 50104 "Update Brought Experience"
                     "Brought Months of Experience" := ((UkupniMjeseci + "Brought Months of Experience 2") + ((UkupniDani + "Brought Days of Experience 2") DIV 30)) MOD 12;
                     "Brought Days of Experience" := (UkupniDani + "Brought Days of Experience 2") MOD 30;
 
-                    MODIFY;
+                    MODIFY(true);
                 END
                 ELSE BEGIN
 
                     "Brought Years of Experience" := "Brought Years of Experience 2";
                     "Brought Months of Experience" := "Brought Months of Experience 2";
                     "Brought Days of Experience" := "Brought Days of Experience 2";
-                    MODIFY;
+                    MODIFY(true);
                 END;
 
                 UkupnoGodineE := 0;
@@ -172,7 +172,7 @@ report 50104 "Update Brought Experience"
                     "Brought Months of Experience E" := ((UkupniMjeseciE + "Brought Months of Experience 2") + ((UkupniDaniE + "Brought Days of Experience 2") DIV 30)) MOD 12 +
                     ((UkupniMjeseciD + "Brought Months of Experience 2") + ((UkupniDaniD + "Brought Days of Experience 2") DIV 30)) MOD 12;
                     "Brought Days of Experience E" := (UkupniDaniE + "Brought Days of Experience 2") MOD 30 + (UkupniDaniD + "Brought Days of Experience 2") MOD 30;
-                    MODIFY;
+                    MODIFY(true);
 
 
                 END
@@ -182,7 +182,7 @@ report 50104 "Update Brought Experience"
                         "Brought Years of Experience E" := UkupnoGodine + (((UkupniMjeseci + "Brought Months of Experience 2") + ((UkupniDani + "Brought Days of Experience 2") DIV 30)) DIV 12);
                         "Brought Months of Experience E" := ((UkupniMjeseci + "Brought Months of Experience 2") + ((UkupniDani + "Brought Days of Experience 2") DIV 30)) MOD 12;
                         "Brought Days of Experience E" := (UkupniDani + "Brought Days of Experience 2") MOD 30;
-                        MODIFY;
+                        MODIFY(true);
 
                     END;
                 END;
@@ -213,7 +213,7 @@ report 50104 "Update Brought Experience"
                 "Military Years of Service" := VojneGodine + (((VojniMjeseci) + ((VojniDani) DIV 30)) DIV 12);
                 "Military Months of Service" := ((VojniMjeseci) + ((VojniDani) DIV 30)) MOD 12;
                 "Military Days of Service" := (VojniDani) MOD 30;
-                MODIFY;
+                MODIFY(true);
             end;
             //BH 01 end
 
@@ -245,7 +245,7 @@ report 50104 "Update Brought Experience"
 
     trigger OnPostReport()
     begin
-        //MESSAGE(Text0001);
+        MESSAGE(Text0001);
 
     end;
 

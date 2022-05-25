@@ -282,13 +282,7 @@ page 50003 "HR Role Center"
                     RunObject = Page "Group";
                     ApplicationArea = all;
                 }
-                action(Teams)
-                {
-                    ApplicationArea = all;
-                    Caption = 'Teams';
-                    Image = TeamSales;
-                    RunObject = Page "TeamsP";
-                }
+
                 action(Positions)
                 {
                     ApplicationArea = all;

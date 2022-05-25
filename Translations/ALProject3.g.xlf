@@ -26683,6 +26683,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report ExportGIP - 1022 - NamedType Txt008</note>
         </trans-unit>
+        <trans-unit id="Report 2100255337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fill The Whole Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2100255337 - NamedType 1706842703" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Registration of absences is completed.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - NamedType Text0000</note>
+        </trans-unit>
+        <trans-unit id="Report 2100255337 - RequestPage 2516438534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insert Dates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - RequestPage RequestOptionsPage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2100255337 - Control 3592094765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Control EndingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2100255337 - Control 543275552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Fill The Whole Month - Control StartingDate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1531074158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GIP-1022 </source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32877,6 +32902,11 @@
           <source>Base Calendar List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Base Calendar List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 2100255337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Fill The Whole Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Fill The Whole Month - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2229753117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Import Worksheete</source>

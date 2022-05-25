@@ -47,16 +47,16 @@ report 50115 "Work exp.in Comp.by Emp"
                 IF EndingDate = 0D THEN EndingDate := EndingDate;
                 wb.SETFILTER("Employee No.", '%1', "No.");
                 wb.SETFILTER("Current Company", '%1', TRUE);
-                IF wb.FIND('+') THEN BEGIN
+                IF wb.FindLast() THEN BEGIN
                     wb.CALCFIELDS(Status);
                     IF ((wb.Status.AsInteger() = 0) OR (wb.Status.AsInteger() = 1) OR (wb.Status.AsInteger() = 2) OR (wb.Status.AsInteger() = 3)) THEN BEGIN
                         IF ((wb."Current Company")) THEN
                             wb.VALIDATE("Ending Date", EndingDate);
-                        wb.MODIFY;
-                        //belma novo
+
+
                         wb.VALIDATE(Coefficient, wb.Coefficient);
                         wb.MODIFY;
-                        //belma novo
+
                     END;
                     /*ELSE BEGIN
                       ECL.SETFILTER("Employee No.",'%1',"No.");
