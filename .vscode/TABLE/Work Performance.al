@@ -196,7 +196,7 @@ table 50099 "Work Performance"
 
     end;
 
-    procedure CalculateIncrease(CurrQuality: Integer; CurrScope: Integer; CurrDeadline: Integer; CurrAttitude: Integer; CurrGrade: Decimal)
+    procedure CalculateIncrease(CurrQuality: Decimal; CurrScope: Decimal; CurrDeadline: Integer; CurrAttitude: Integer; CurrGrade: Decimal)
     begin
         if CurrQuality <= 2 then
             Rec."Increase in basic salary(%)" := 0
