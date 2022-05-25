@@ -40,14 +40,14 @@ report 50117 "Fill The Whole Month"
                             repeat
                                 EmployeeAbsence.Reset();
                                 EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
-                                EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start");
+                                EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start"); //jedan dan
                                 if NOT EmployeeAbsence.FindFirst() then begin //nije pronadjeno odustvo na ovaj dan
                                     WageSetup.Get();
                                     AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", Employee, WageSetup."Workday Code");
                                 end;
                             until Datum.NEXT = 0; //sljedeći datum
                         end;
-                    until Employee.Next() = 0;
+                    until Employee.Next() = 0; //sljedeci zaposlenik
 
             end;
 
