@@ -60,7 +60,7 @@ table 50099 "Work performance"
         {
             Caption = 'Grade';
         }
-        field(10; "Increase in basic salary(%)"; Integer)
+        field(10; "Increase in basic salary(%)"; Decimal)
         {
             Caption = 'Increase in basic salary(%)';
         }
