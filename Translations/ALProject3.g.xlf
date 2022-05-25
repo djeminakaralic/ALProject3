@@ -21728,6 +21728,126 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Duties Violation - Field Worker Activity Category - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 4131443331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work performance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 3621259247" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You cannot register absence because the employee is blocked due to privacy.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType BlockedErr</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date field cannot be after Ending Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date field cannot be before Starting Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text003</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text004</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 1370456556" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A leave for this period already exists.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text005</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 2008153173" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected record has already been approved.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text006</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - NamedType 2645849790" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cause of absence field cannot be blank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - NamedType Text007</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approved</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Approved - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 4125903188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attitude towards work obligations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Attitude towards work obligations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 4125903188 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>1,2,3,4,5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Attitude towards work obligations - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 3701536959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Deadline for completion of work</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Deadline for completion of work - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 3701536959 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>1,2,3,4,5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Deadline for completion of work - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 3444679095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field First Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 2817493743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grade</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Grade - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 2645948019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Increase in basic salary(%)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Increase in basic salary(%) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 4068742839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Last Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 308372495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality of performed work</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Quality of performed work - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 308372495 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ocjena 1,Ocjena 2,Ocjena 3,Ocjena 4,Ocjena 5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Quality of performed work - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 2443665998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Scope of performed work</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Scope of performed work - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4131443331 - Field 2443665998 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>1,2,3,4,5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work performance - Field Scope of performed work - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1830864280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>XML Wage Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
