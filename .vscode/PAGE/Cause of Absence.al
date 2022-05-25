@@ -38,6 +38,10 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             {
 
             }
+            field("Bussiness trip"; "Bussiness trip")
+            {
+
+            }
             field("Insurance Basis"; "Insurance Basis")
             {
 

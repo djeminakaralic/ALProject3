@@ -134,6 +134,7 @@ tableextension 51190 CompanyInfExt extends "Company Information"
         {
 
         }
+
         field(50009; "Chief Executive (Sign.)"; Text[50])
         {
             Caption = 'Chief Executive (Sign.)';
@@ -142,6 +143,7 @@ tableextension 51190 CompanyInfExt extends "Company Information"
         {
             Caption = 'Assistant Chief Exec. (Sign.)';
         }
+
         field(52015725; "National Classification Number"; Text[30])
         {
             Caption = 'National Classification Number';

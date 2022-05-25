@@ -1,6 +1,7 @@
 table 50104 "Employee Absence Reg"
+//ED 01 START
 {
-    Caption = 'Sample table';
+    Caption = 'Employee Absence Reg';
     DrillDownPageID = "Employee Absence";
     LookupPageID = "Employee Absence";
 
@@ -23,28 +24,60 @@ table 50104 "Employee Absence Reg"
             Caption = 'Approved';
 
             trigger OnValidate()
+            var
+                AbsenceFIll: Codeunit "Absence Fill";
+                EmployeeA: Record Employee;
             begin
 
-                /*IF Rec."Approved" = TRUE THEN BEGIN
-                    Days := 3;
-                    Employee.Get("Employee No.");
-                    Quantity := Employee."Hours In Day" * Days;
+                IF Rec."Approved" = true then begin
+                    IF "From Date" <> "To Date" then begin
+                        EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
+                        EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                        if EmployeeAbsence.FindFirst() then begin
+                            /*WageSetup.Get();
+                            if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                                Error(Text005);*/
+                            //Sada uzroci izostanka.
+                            CauseOfAbsence.Reset();
+                            CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                            if CauseOfAbsence.Holiday = false then
+                                Error(Text005);
+                        end;
+                    end;
 
+                    IF "From Date" = "To Date" then begin
+                        EmployeeAbsence.SetFilter("From Date", '%1', Rec."From Date");
+                        if EmployeeAbsence.FindFirst() then begin
+                            /*WageSetup.Get();
+                            if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                                Error(Text005);*/
+                            CauseOfAbsence.Reset();
+                            CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                            if CauseOfAbsence.Holiday = false then
+                                Error(Text005);
+                        end;
+                    end;
 
+                    EmployeeA.GET(Rec."Employee No.");
+                    AbsenceFIll.EmployeeAbsence("From Date", "To Date", EmployeeA, Rec."Cause of Absence Code");
+                end;
 
-                    //REPEAT
-                    EmployeeAbsence.INIT;
-                    Validate("Employee No.", Rec."Employee No.");
-                    Validate("First Name", Rec."First Name");
-                    Validate("Last Name", Rec."Last Name");
-                    Validate("Cause of Absence Code", Rec."Cause of Absence Code");
-                    Validate(Description, Rec.Description);
-                    
-
-                    //EmployeeAbsence."Real Date":=
-                    EmployeeAbsence.Insert();
-                    //UNTIL
-                END;*/
+                If Rec."Approved" = false then begin
+                    EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
+                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    //iz kalendara će svaki postavljeni praznik imati u šiframa izostanaka za holiday true
+                    //dakle trebam ostaviti samo odsustva gdje je causeofabsence.holiday = false
+                    if EmployeeAbsence.FindFirst() then
+                        repeat
+                            CauseOfAbsence.Reset();
+                            CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                            if CauseOfAbsence.Holiday = false then
+                                EmployeeAbsence.Delete();
+                        until EmployeeAbsence.Next() = 0;
+                    /*WageSetup.Get();
+                    EmployeeAbsence.SetFilter("Cause of Absence Code", '<>%1', WageSetup."Holiday Code");
+                    EmployeeAbsence.DeleteAll();*/
+                end;
 
             end;
         }
@@ -64,9 +97,12 @@ table 50104 "Employee Absence Reg"
 
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
+
                 CauseOfAbsence.GET("Cause of Absence Code");
                 Description := CauseOfAbsence.Description;
-                //VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
+                VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
 
                 IF "From Date" = 0D then
                     Error(Text001);
@@ -80,6 +116,8 @@ table 50104 "Employee Absence Reg"
             Caption = 'From Date';
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
@@ -88,8 +126,14 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
 
-                    /*Employee.Get("Employee No.");
-                    Quantity := Employee."Hours In Day" * ("To Date" - "From Date");*/
+                    if EmployeeAbsence.FindFirst() then begin
+                        /*WageSetup.Get();
+                        if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                            Error(Text005);*/
+                        CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                        if CauseOfAbsence.Holiday = false then
+                            Error(Text005);
+                    end;
                 END;
 
             end;
@@ -99,6 +143,8 @@ table 50104 "Employee Absence Reg"
             Caption = 'To Date';
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
 
                 IF "To Date" <> 0D THEN BEGIN
                     IF "From Date" = 0D THEN
@@ -106,79 +152,19 @@ table 50104 "Employee Absence Reg"
 
                     IF "From Date" > "To Date" then
                         ERROR(Text003);
+
+                    EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
+                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    if EmployeeAbsence.FindFirst() then begin
+                        /*WageSetup.Get();
+                        if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
+                            Error(Text005);*/
+                        CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                        if CauseOfAbsence.Holiday = false then
+                            Error(Text005);
+                    end;
+
                 END;
-
-                CompanyInformation.Get();
-                CompanyInformation.TestField("Base Calendar Code");
-                CalendarManagement.SetSource(CompanyInformation, CustomizedCalendarChange);
-                Days := ("To Date" - "From Date") + 1;
-                NonWorkingDays := 0;
-                CheckDate := "From Date";
-                repeat
-                    if CalendarManagement.IsNonworkingDay(CheckDate, CustomizedCalendarChange) then
-                        NonWorkingDays += 1;
-                    CheckDate := CalcDate('1D', CheckDate);
-                until (CheckDate > "To Date");
-                WorkingDays := Days - NonWorkingDays;
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
-
-
-
-
-
-
-                //Days := "To Date" - "From Date";
-                /*  Days := 0;
-                  LoopDate := "From Date";
-                  Employee.Get("Employee No.");
-                  IF "From Date" = "To Date" then begin
-                      Quantity := Employee."Hours In Day";
-                  end
-                  ELSE begin
-                      LoopDate := "From Date";
-                      repeat
-                      BaseCalendarChange.Reset();
-                          BaseCalendarChange.SetCurrentKey(Date);
-                          BaseCalendarChange.Get(LoopDate);
-                          If BaseCalendarChange.Nonworking = false then
-                              Days := Days + 1;
-                          LoopDate := LoopDate + 1;
-                      until LoopDate > "To Date";
-                      Quantity := Employee."Hours In Day" * Days;
-                  end;*/
-
-                /*Days := 1;
-
-                CalendarChange.Reset();
-
-                CalendarChange.SetFilter(CalendarChange.Date, '%1..%2', EmployeeAbsenceReg."From Date", EmployeeAbsenceReg."To Date");
-                CalendarChange.SetFilter(CalendarChange.Nonworking, '%1', false);
-
-                if CalendarChange.FindFirst() then begin
-                    Days := CalendarChange.Count;
-                end;
-
-                Employee.Get("Employee No.");
-                Quantity := Employee."Hours In Day" * Days;
-                
-                
-                                //CustomizedCalendarChange.SETRANGE(CustomizedCalendarChange.Date, "From Date", "To Date");
-
-                /*CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '>=%1', "From Date");
-                CustomizedCalendarChange.SETFILTER(CustomizedCalendarChange.Date, '<=%1', "To Date");*/
-
-                /*CalendarChange.Reset();
-                if CalendarChange.FindSet() then
-                    repeat
-
-                        Message(Format(CalendarChange.Day));
-                    until CalendarChange.Next() = 0;*/
-
-                //treba otici u table CalendarChange - stavljena u var gdje je boolean field Nonworking
-
-
-
             end;
         }
         field(10; "Employee No."; Code[20])
@@ -189,44 +175,72 @@ table 50104 "Employee Absence Reg"
 
             trigger OnValidate()
             begin
+                IF Approved = true then
+                    error(Text006);
+
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
             end;
         }
 
+        field(11; "Unit of Measure Code"; Code[10])
+        {
+            Caption = 'Unit of Measure Code';
+            TableRelation = "Human Resource Unit of Measure";
+
+            trigger OnValidate()
+            begin
+                HumanResUnitOfMeasure.Get("Unit of Measure Code");
+                "Qty. per Unit of Measure" := HumanResUnitOfMeasure."Qty. per Unit of Measure";
+                Validate(Quantity);
+            end;
+        }
+
+        field(12; "Qty. per Unit of Measure"; Decimal)
+        {
+            Caption = 'Qty. per Unit of Measure';
+            DecimalPlaces = 0 : 5;
+            Editable = false;
+            InitValue = 1;
+        }
+
+        field(13; "Hours"; Integer)
+        {
+            Caption = 'Hours';
+        }
     }
 
     keys
     {
         key(PrimaryKey; "Employee No.", "Entry No.")
         {
-            //Clustered = TRUE;
+
         }
     }
 
     var
-        CalendarManagement: Codeunit "Calendar Management";
-        Days: Integer;
-        WorkingDays: Integer;
-        NonWorkingDays: Integer;
-        LoopDate: Date;
-        CompanyInformation: Record "Company Information";
-        CustomizedCalendarChange: Record "Customized Calendar Change";
-        CheckDate: Date;
-        CalendarChange: Record "Base Calendar Change";
+        HumanResUnitOfMeasure: Record "Human Resource Unit of Measure";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
         EmployeeAbsenceReg: Record "Employee Absence Reg";
         EmployeeAbsence: Record "Employee Absence";
+        WageSetup: Record "Wage Setup";
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
         Text004: Label 'Ending Date field cannot be blank.';
+        Text005: Label 'A leave for this period already exists.';
+        Text006: Label 'Selected record has already been approved.';
+        Text007: Label 'Cause of absence field cannot be blank.';
+        VisibleHours: Boolean;
 
     trigger OnInsert()
     begin
+        if rec."Cause of Absence Code" = '' then
+            Error(Text007);
+
         EmployeeAbsenceReg.Reset();
         EmployeeAbsenceReg.SetCurrentKey("Entry No.");
         if EmployeeAbsenceReg.FindLast then
@@ -235,6 +249,17 @@ table 50104 "Employee Absence Reg"
             "Entry No." := 1;
         end;
     end;
+
+    trigger OnDelete()
+    begin
+        if Rec.Approved = true then begin
+            /*EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
+            EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+            EmployeeAbsence.DeleteAll();*/
+            Error(Text006);
+        end;
+    end;
+    //ED 01 END
 }
 
 

@@ -341,10 +341,7 @@ table 50015 "Vacation Ground 2"
         {
             Caption = 'Work experience';
 
-            trigger OnValidate()
-            begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
-            end;
+
         }
         field(3; "Legal Grounds"; Integer)
         {
@@ -352,7 +349,7 @@ table 50015 "Vacation Ground 2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
 
                 EVALUATE(Order, "Employee No.");
             end;
@@ -363,40 +360,84 @@ table 50015 "Vacation Ground 2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
-        field(8; "Days based on Disability"; Integer)
+        field(5; "Days based on Disability"; Integer)
         {
             Caption = 'Days based on Disability';
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
-        field(9; "Total days"; Integer)
+        field(6; Sector; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Sector Description" WHERE("Employee No." = FIELD("Employee No."),
+                                                                                 Active = CONST(true)));
+            Caption = 'Sector';
+
+        }
+        field(7; SpecialCircumstances; integer)
+        {
+            Caption = 'Special Circumstances';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(8; SingleParent; integer)
+        {
+            Caption = 'Single Parent';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(9; MotherWithMoreCH; integer)
+        {
+            Caption = 'Mother with more children';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(10; Millitary; integer)
+        {
+            Caption = 'Millitary';
+            trigger OnValidate()
+            begin
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+
+        }
+        field(11; "Total days"; Integer)
         {
             Caption = 'Total Days';
             Editable = true;
         }
-        field(11; Year; Integer)
+        field(12; Year; Integer)
         {
             Caption = 'Year';
         }
-        field(12; "First Name"; Text[50])
+        field(13; "First Name"; Text[50])
         {
             Caption = 'Ime';
         }
-        field(13; "Last Name"; Text[50])
+        field(14; "Last Name"; Text[50])
         {
             Caption = 'Prezime';
         }
-        field(14; "Starting Date of I part"; Date)
+        field(15; "Starting Date of I part"; Date)
         {
             Caption = 'Starting Date of I part';
         }
-        field(15; "Ending Date of I part"; Date)
+        field(16; "Ending Date of I part"; Date)
         {
             Caption = 'Ending Date of I part';
 
@@ -487,11 +528,11 @@ table 50015 "Vacation Ground 2"
 
             end;
         }
-        field(16; "Starting Date of II part"; Date)
+        field(17; "Starting Date of II part"; Date)
         {
             Caption = 'Starting Date of II part';
         }
-        field(17; "Ending Date of II part"; Date)
+        field(18; "Ending Date of II part"; Date)
         {
             Caption = 'Ending Date of II part';
         }
@@ -501,7 +542,7 @@ table 50015 "Vacation Ground 2"
 
             trigger OnValidate()
             begin
-                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
+                "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent - "Number of days";
             end;
         }
         field(21; "Order"; Integer)
@@ -540,8 +581,10 @@ table 50015 "Vacation Ground 2"
         }
         field(29; "Position Name"; Text[250])
         {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."),
+                                                                                 Active = CONST(true)));
             Caption = 'Position Name';
-            TableRelation = "Position Menu".Description;
         }
         field(30; Duration; Integer)
         {

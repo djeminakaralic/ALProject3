@@ -13,6 +13,19 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+        modify("Phone No.2")
+        {
+            Visible = false;
+        }
+        modify("Privacy Blocked")
+        {
+            Visible = false;
+
+        }
+        modify("Middle Name")
+        {
+            visible = false;
+        }
 
 
         modify(Personal)
@@ -46,176 +59,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
-        addafter("Gender")
-        {
-            group("Employement Data")
-            {
-                field(DepartmentName; EmployeeContractLedger."Department Name")
-                {
-                    Caption = 'Department Name';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
 
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(SectorDescription; EmployeeContractLedger."Sector Description")
-                {
-                    Caption = 'Sector Description';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Služba; EmployeeContractLedger."Department Cat. Description")
-                {
-                    Caption = 'Služba';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Odjel; EmployeeContractLedger."Group Description")
-                {
-                    Caption = 'Odjel';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(PositionName; EmployeeContractLedger."Position Description")
-                {
-                    Caption = 'Position';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(StatusP; EmployeeContractLedger.Status)
-                {
-                    Caption = 'Status';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Smjena; EmployeeContractLedger."Rad u smjenama")
-                {
-                    Caption = 'Rad u smjenama';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-                field(Superior1; EmployeeContractLedger.Superior1)
-                {
-                    Caption = 'Superior 1';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-
-                field(Superior2; EmployeeContractLedger.Superior2)
-                {
-                    Caption = 'Superior 2';
-                    Editable = false;
-                    Importance = Promoted;
-                    ApplicationArea = all;
-
-                    trigger OnDrillDown()
-                    begin
-
-                        EmployeeContractLedger.RESET;
-                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                        EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
-                    end;
-                }
-            }
-        }
-        addafter("Address & Contact")
+        /*addafter("Address & Contact")
         {
             group("Potential Employe")
 
@@ -249,13 +94,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
             }
 
-        }
+        }*/
 
 
 
 
 
-        addafter("Potential Employe")
+        addafter("Address & Contact")
         {
             group("Brought experience ")
             {
@@ -573,6 +418,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Number of Children"; "Number of Children")
                     {
                         ApplicationArea = all;
+
                     }
                     field("Spouse Name"; "Spouse Name")
                     {
@@ -593,7 +439,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 }
 
-                group("Relatives Group")
+                /*group("Relatives Group")
                 {
                     Caption = 'Relative group';
                     field("Relatives Employees"; "Relatives Employees")
@@ -624,10 +470,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                  CurrPage.UPDATE;
 
                              end;*/
-                    }
-                }
-
             }
+
 
             group(Communication)
             {
@@ -657,6 +501,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
+
                     }
                 }
                 group(Mobile)
@@ -678,8 +523,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             ShowCaption = false;
                             ApplicationArea = all;
                         }
-
-
 
                     }
                 }
@@ -750,6 +593,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     Visible = false;
                     ApplicationArea = all;
                 }
+
                 group("Email")
                 {
                     Caption = 'Email';
@@ -765,6 +609,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             Visible = true;
                             ApplicationArea = all;
                         }
+
 
 
                     }
@@ -1406,7 +1251,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            group("Solidarity Fund")
+            /*group("Solidarity Fund")
             {
                 Caption = 'Solidarity Fund';
                 field("Internal Solidarity Fund"; "Internal Solidarity Fund")
@@ -1434,7 +1279,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                 }
             }
-            /*group("Additional Work Activity2")
+            group("Additional Work Activity2")
             {
                 Caption = 'Additional Work Activity';
                 Editable = show;
@@ -1736,7 +1581,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Operator No."; "Operator No.")
                     {
                         ApplicationArea = all;
+                        Visible = false;
                     }
+
 
 
                 }
@@ -1798,7 +1645,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //ĐK
 
             }
-            group(Union)
+            /*group(Union)
             {
                 Caption = 'Union';
                 Visible = show;
@@ -2111,7 +1958,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         end;
                     }
                 }
-            }
+            }*/
 
         }
 
@@ -2152,10 +1999,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 ApplicationArea = all;
             }
-            field("Employee with 2 JIB"; "Employee with 2 JIB")
+            /*field("Employee with 2 JIB"; "Employee with 2 JIB")
             {
                 ApplicationArea = all;
-            }
+            }*/
 
 
             field("Employee ID"; Rec."Employee ID")
@@ -2237,11 +2084,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 ApplicationArea = all;
             }
-            field(Status2; Status)
-            {
-                ApplicationArea = all;
-            }
-            field("External employer Status"; "External employer Status")
+
+            /*field("External employer Status"; "External employer Status")
             {
                 ApplicationArea = all;
             }
@@ -2261,11 +2105,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     CurrPage.UPDATE;
 
                 end;
-            }
-            field("Temporary Contract Type"; "Temporary Contract Type")
-            {
-                ApplicationArea = all;
-            }
+            }*/
+
         }
 
 
@@ -2480,6 +2321,154 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
+                /*field(DepartmentName; EmployeeContractLedger."Department Name")
+                {
+                    Caption = 'Department Name';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(SectorDescription; EmployeeContractLedger."Sector Description")
+                {
+                    Caption = 'Sector Description';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Služba; EmployeeContractLedger."Department Cat. Description")
+                {
+                    Caption = 'Služba';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Odjel; EmployeeContractLedger."Group Description")
+                {
+                    Caption = 'Odjel';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(StatusP; EmployeeContractLedger.Status)
+                {
+                    Caption = 'Status';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }*/
+                field(Smjena; EmployeeContractLedger."Rad u smjenama")
+                {
+                    Caption = 'Rad u smjenama';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Superior1; EmployeeContractLedger.Superior1)
+                {
+                    Caption = 'Superior 1';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(Superior2; EmployeeContractLedger.Superior2)
+                {
+                    Caption = 'Superior 2';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
                 field(ECLManagementLevel; EmployeeContractLedger."Management Level")
                 {
                     Caption = 'Management Level';
@@ -2605,7 +2594,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(ECLGroup; EmployeeContractLedger.Group)
+                /*field(ECLGroup; EmployeeContractLedger.Group)
                 {
                     Caption = 'Group';
                     Editable = false;
@@ -2689,7 +2678,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         EmpPage.RUN;
                         CurrPage.UPDATE;
                     end;
-                }
+                }*/
                 field(ECLDepartmentCity; EmployeeContractLedger."Department City")
                 {
                     Caption = 'Department City';
@@ -2790,7 +2779,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     ApplicationArea = all;
                     Width = 250;
                 }
-                field("Employee Benefits"; "Employee Benefits")
+                /*field("Employee Benefits"; "Employee Benefits")
                 {
                     ApplicationArea = all;
                 }
@@ -2808,7 +2797,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         WDVPAge.RUN;
                         CurrPage.UPDATE;
                     end;
-                }*/
+                }
                 field("Disciplinary Measured"; "Disciplinary Measured")
                 {
                     ApplicationArea = all;
@@ -2818,7 +2807,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     DrillDownPageID = "Employee Award List";
                     LookupPageID = "Employee Award List";
                     ApplicationArea = all;
-                }
+                }*/
                 /*field(Clauses; Clauses)
                 {
                     DrillDownPageID = Clauses;
@@ -3149,7 +3138,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-                    field(EmployeeContractLedgerExitInterview; EmployeeContractLedger."Exit Interview")
+                    /*field(EmployeeContractLedgerExitInterview; EmployeeContractLedger."Exit Interview")
                     {
                         Caption = 'Exit Interview';
                         Editable = false;
@@ -3167,7 +3156,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
                         end;
-                    }
+                    }*/
                 }
             }
         }
@@ -3246,14 +3235,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
-            field(Size; Rec.Size)
+            /*field(Size; Rec.Size)
             {
                 ApplicationArea = all;
-            }
-            field("Clothing size"; Rec."Clothing size") { ApplicationArea = all; }
-            field("Shoe size"; Rec."Shoe size") { ApplicationArea = all; }
+            }*/
+            //field("Clothing size"; Rec."Clothing size") { ApplicationArea = all; }
+            //field("Shoe size"; Rec."Shoe size") { ApplicationArea = all; }
             // field("Last Date Modified2"; Rec."Last Date Modified") { ApplicationArea = all; }
-            field("Salesperson Code"; Rec."Salesperson Code") { ApplicationArea = all; Visible = false; }
+            //field("Salesperson Code"; Rec."Salesperson Code") { ApplicationArea = all; Visible = false; }
         }
 
         moveafter("E-mail user"; "Company E-Mail")
@@ -3269,6 +3258,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
     actions
     {
         // Add changes to page actions here
+
 
 
 
@@ -3336,6 +3326,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Visible = false;
         }
 
+
         addafter(Dimensions)
         {
 
@@ -3347,6 +3338,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = page "Wage Amounts";
                 ApplicationArea = all;
                 RunPageLink = "Employee No." = field("No.");
+                Promoted = true;
             }
             action("Employee Default dimension")
             {
@@ -3355,6 +3347,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = Dimensions;
                 RunObject = page "Employee Default Dimension";
                 RunPageLink = "No." = field("No.");
+                Promoted = true;
 
             }
 
@@ -3379,6 +3372,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             Visible = false;
         }
+
+
         addafter("&Relatives")
         {
             //List of Surnames
@@ -3391,6 +3386,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = List;
                 RunObject = Page "Employee Surname";
                 RunPageLink = "No." = field("No.");
+                Promoted = true;
+
 
             }
 
@@ -3402,6 +3399,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Personal Documents";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Nationality');
+
+                Promoted = true;
             }
             action(Citizenship)
             {
@@ -3411,6 +3410,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Personal Documents";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Citizenship');
+
+                Promoted = true;
             }
             action(Passport)
             {
@@ -3420,6 +3421,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Personal Documents";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Passport');
+                Promoted = true;
             }
             action("Residence Permit2")
             {
@@ -3429,6 +3431,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Personal Documents";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Residence Permit');
+                Promoted = true;
             }
             action("Social Security")
             {
@@ -3438,6 +3441,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Personal Documents";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Social Security');
+                Promoted = true;
             }
             action("ID Card")
             {
@@ -3447,6 +3451,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('IDCard');
+                Promoted = true;
             }
             action("Work Permit2")
             {
@@ -3456,6 +3461,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunPageLink = "Employee No." = FIELD("No."),
                                       Switch = FILTER('Work Permit');
+                Promoted = true;
             }
             /*action("Brought Work experience")
             {
@@ -3471,8 +3477,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Work booklet";
                 RunPageLink = "Employee No." = FIELD("No.");
-                RunPageMode = Viewwork;
-
+                RunPageMode = View;
+                Promoted = true;
             }
             action("Alternative Addresses (Current)")
             {
@@ -3482,6 +3488,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Alternative Address List";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       "Address Type" = FILTER('Current');
+                Promoted = true;
             }
             action("Alternative Addresses (CIPS)")
             {
@@ -3491,6 +3498,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Alternative Address List";
                 RunPageLink = "Employee No." = FIELD("No."),
                                       "Address Type" = FILTER(CIPS);
+                Promoted = true;
             }
             action("Page Employee Contract Ledger")
             {
@@ -3502,6 +3510,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageMode = Edit;
                 RunPageView = WHERE("Show Record" = FILTER(true));
                 Visible = true;
+                Promoted = true;
             }
             /*action("Career Development")
             {
@@ -3519,6 +3528,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Employee Qualifications";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             /*action("Additional Activity")
             {
@@ -3535,6 +3545,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Union Employees";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action("Employee Diseases2")
             {
@@ -3543,6 +3554,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Employee Diseases";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action("Employee Blood Donors")
             {
@@ -3551,6 +3563,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Employee Bood Donations";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action("Employee Level Of Disability")
             {
@@ -3559,6 +3572,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Employee Level Of Disability";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action(Languages)
             {
@@ -3567,6 +3581,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Employee languages";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action("Employee Computer Knowledge2")
             {
@@ -3574,6 +3589,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = Account;
                 RunObject = Page "Employee Qualifications";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action("Page Misc. Article Information")
             {
@@ -3582,17 +3598,20 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 RunObject = Page "Misc. Article Information";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             action("Education History")
             {
                 Caption = 'Education History';
                 Image = Employee;
-                Promoted = false;
+                Promoted = true;
                 ApplicationArea = all;
+                RunPageLink = "Employee No." = FIELD("No.");
+                RunObject = Page "Education History";
+
                 //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedIsBig = false;
-                RunObject = Page "Education History";
-                RunPageLink = "Employee ID" = FIELD("Employee ID");
+
             }
             /*action("Health Check")
             {
@@ -3609,9 +3628,23 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = Workdays;
                 RunObject = page "Employee Absence";
                 RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
             }
             //ED 01 END
 
+        }
+        addafter("Employee absence")
+        {
+            action(Rjesenja)
+            {
+                Caption = 'Rjesenja';
+                Image = Report;
+                RunObject = report VacationDecision;
+                ApplicationArea = all;
+                //RunPageLink = "Employee No." = field("Employee No.");
+                Promoted = true;
+
+            }
         }
 
     }

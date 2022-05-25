@@ -1,8 +1,8 @@
 tableextension 50067 EmployeeQualification extends "Employee Qualification"
 
 {
-    //LookupPageId = Employee_Qualifications_HR;
-    //DrillDownPageId = Employee_Qualifications_HR;
+    LookupPageId = Employee_Qualifications_HR;
+    DrillDownPageId = Employee_Qualifications_HR;
 
     fields
     {
@@ -40,7 +40,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         field(50004; "Language Code"; Code[10])
         {
             Caption = 'Language code';
-            TableRelation = Languages.Code;
+            TableRelation = Languages;
 
             trigger OnValidate()
             begin
@@ -63,6 +63,8 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         field(50006; "Language Name"; Text[50])
         {
             Caption = 'Language Name';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Languages.Description where(Code = field("Language Code")));
             Editable = false;
         }
         field(50007; "Exam Passed"; Boolean)
@@ -136,6 +138,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         }
 
 
+
     }
 
     var
@@ -144,7 +147,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         Qualification: Record "Qualification";
         Employee: Record "Employee";
         EmployeeQualification: Record "Employee Qualification";
-        Languages: Record "Languages";
+        Languages: Record Languages;
         ComputerKnowledge: Record "Computer Knowledge";
         Text001: Label 'Start Date must have value.';
         Text002: Label 'End Date must not be before Start date.';

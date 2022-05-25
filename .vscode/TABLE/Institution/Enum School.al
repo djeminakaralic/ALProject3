@@ -5,7 +5,7 @@ enum 50210 "School"
     //'Active,Inactive,Unpaid,Terminated,On boarding,Practicians'
     value(0; Empty)
     {
-        Caption = 'Empty';
+        Caption = '';
     }
     value(1; "I stepen NK(nekvalifikovani radnik)")
     {
@@ -17,17 +17,17 @@ enum 50210 "School"
         Caption = 'II stepen PKV(polukvalifikovan radnik)';
     }
 
-    value(3; "SSS/III (srednja stručna sprema/III stepen)")
+    value(3; "III stepen SSS(srednja stručna sprema)")
     {
-        Caption = 'SSS/III (srednja stručna sprema/III stepen)';
+        Caption = 'III stepen SSS(srednja stručna sprema)';
     }
     value(4; "V stepen VKV (visokokvalifikovan radnik)")
     {
         Caption = 'V stepen VKV (visokokvalifikovan radnik)';
     }
-    value(5; "SSS/IV (srednja stručna sprema/IV stepen)")
+    value(5; "IV stepen SSS(srednja stručna sprema)")
     {
-        Caption = 'SSS/IV (srednja stručna sprema/IV stepen)';
+        Caption = 'IV stepen SSS(srednja stručna sprema)';
     }
     value(6; "VI stepen VŠ tj. VŠS (viša škola tj. viša školska sprema)")
     {

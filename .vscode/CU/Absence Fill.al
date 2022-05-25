@@ -14,6 +14,7 @@ codeunit 50304 "Absence Fill"
         Cause: Record "Cause of Absence";
         LastEntry: Integer;
         WageSetup: Record "Wage Setup";
+
         DailyHours1: Decimal;
         LastArray: Integer;
         AddArray: Boolean;
@@ -229,6 +230,214 @@ codeunit 50304 "Absence Fill"
 
         Window.CLOSE;
     end;
+
+    //ED 01 START
+    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
+    var
+        FromDateFilter: Date;
+        ToDateFilter: Date;
+        LastDate: Date;
+        FirstDate: Date;
+        CheckThem: Boolean;
+        RSWorkday: Code[2];
+        RSHoliday: Code[2];
+        AbsenceEmp: Record "Employee Absence";
+        AbsenceReg: Record "Employee Absence Reg";
+        CauseOfAbsence: Record "Cause of Absence";
+        InsertDay: Boolean;
+        InsertAnnual: Boolean;
+        InsertWeekly: Boolean;
+        HoursInDay: Decimal;
+        Holiday: Boolean;
+    begin
+        AbsenceEmp.RESET;
+        AbsenceEmp.LOCKTABLE;
+
+        WageSetup.GET;
+        Cause.GET(WageSetup."Workday Code");
+        RSWorkday := Cause."Insurance Basis";
+        Cause.GET(WageSetup."Holiday Code");
+        RSHoliday := Cause."Insurance Basis";
+
+        IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN
+            ERROR(Txt001);
+
+        CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+
+        AbsenceEmp.RESET;
+        IF AbsenceEmp.FIND('+') THEN
+            LastEntry := AbsenceEmp."Entry No."
+        ELSE
+            LastEntry := 0;
+        LastEntry := LastEntry + 1;
+
+        Datum.RESET;
+        Datum.SETFILTER("Period Type", '%1', 0);
+        Datum.SETRANGE("Period Start", StartDate2, EndDate2);
+        Datum.FINDFIRST;
+
+        REPEAT
+            InsertAnnual := FALSE;
+            InsertWeekly := FALSE;
+
+            CheckCalendar(InsertAnnual, 1);
+            CheckCalendar(InsertWeekly, 2);
+
+            AbsenceEmp.Reset(); //ovdje trazim postoji li unesen praznik na taj datum, treba ga preskočiti 
+            //odim ako sada unosim službeni ili bolovanje, tada trebam pregaziti praznik
+            AbsenceEmp.SetFilter("Employee No.", '%1', Employee."No.");
+            AbsenceEmp.SetFilter("From Date", '%1', Datum."Period Start");
+            if AbsenceEmp.FindFirst() then begin
+                /*WageSetup.Get();
+
+                CauseOfAbsence.Reset();
+                CauseOfAbsence.Get(CauseCode);
+
+                if AbsenceEmp."Cause of Absence Code" = WageSetup."Holiday Code" then //pronadjen je praznik na jedan datum
+                    if NOT (CauseOfAbsence."Sick Leave" OR CauseOfAbsence."Bussiness trip") then //novo odsustvo nije bolovanje ili sp, pa ostaje praznik
+                        Datum.Next()
+                    else begin //novo odsustvo je sp ili bolovanje i treba pregaziti praznik
+                        AbsenceEmp."Cause of Absence Code" := CauseCode;
+                        AbsenceEmp.Description := CauseOfAbsence.Description;
+                        AbsenceEmp.Modify();
+                        Datum.Next(); //prelazi na sljedeći datum da se ne bi dupliralo
+                    end;*/
+                CauseOfAbsence.Reset();
+                CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                Holiday := CauseOfAbsence.Holiday;
+
+                CauseOfAbsence.Get(CauseCode);
+
+                if Holiday then //pronadjen je praznik na jedan datum
+                    if NOT (CauseOfAbsence."Sick Leave" OR CauseOfAbsence."Bussiness trip") then //novo odsustvo nije bolovanje ili sp, pa ostaje praznik
+                        Datum.Next()
+                    else begin //novo odsustvo je sp ili bolovanje i treba pregaziti praznik
+                        AbsenceEmp."Cause of Absence Code" := CauseCode;
+                        AbsenceEmp.Description := CauseOfAbsence.Description;
+                        AbsenceEmp.Modify();
+                        Datum.Next(); //prelazi na sljedeći datum da se ne bi dupliralo
+                    end;
+            end;
+            AbsenceEmp.Reset();
+
+            IF InsertWeekly THEN
+                WITH AbsenceEmp DO BEGIN
+                    INIT;
+                    "Entry No." := LastEntry;
+                    "Employee No." := Employee."No.";
+                    "From Date" := Datum."Period Start";
+                    "To Date" := Datum."Period Start";
+                    IF InsertAnnual THEN BEGIN
+                        Cause.Get(CauseCode);
+                        "Cause of Absence Code" := CauseCode;
+                        Description := Cause.Description;
+                        "RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        Cause.Get(CauseCode);
+                        "Cause of Absence Code" := CauseCode;
+                        Description := Cause.Description;
+                        "RS Code" := RSHoliday;
+                    END;
+
+                    Quantity := Employee."Hours In Day";
+
+                    "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    INSERT;
+                    LastEntry := LastEntry + 1;
+                END;
+        UNTIL Datum.NEXT = 0;
+
+    end;
+
+    procedure FillHoliday(HolidayDate: Date; HolidayCauseOfAbsence: Code[10]; Description: Text[30])
+    var
+        FromDateFilter: Date;
+        ToDateFilter: Date;
+        CheckThem: Boolean;
+        RSWorkday: Code[2];
+        RSHoliday: Code[2];
+        AbsenceEmp: Record "Employee Absence";
+        AbsenceReg: Record "Employee Absence Reg";
+        CauseOfAbsence: Record "Cause of Absence";
+        Employee: Record Employee;
+        InsertDay: Boolean;
+        InsertAnnual: Boolean;
+        InsertWeekly: Boolean;
+        HoursInDay: Decimal;
+    begin
+        AbsenceEmp.RESET;
+        AbsenceEmp.LOCKTABLE;
+
+        WageSetup.GET;
+        Cause.GET(WageSetup."Workday Code");
+        RSWorkday := Cause."Insurance Basis";
+        Cause.GET(WageSetup."Holiday Code");
+        RSHoliday := Cause."Insurance Basis";
+
+        IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN
+            ERROR(Txt001);
+
+        CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+
+        InsertAnnual := FALSE;
+        InsertWeekly := FALSE;
+
+        CheckCalendar(InsertAnnual, 1);
+        CheckCalendar(InsertWeekly, 2);
+
+        Employee.SetFilter("For Calculation", '%1', true); //filter na samo aktivne zaposlene
+        if Employee.FindFirst() then
+            repeat //ova petlja uzima jednog po jednog zaposlenog 
+                AbsenceEmp.Reset();
+                AbsenceEmp.SetFilter(AbsenceEmp."Employee No.", '%1', Employee."No."); //trazim ovog zaposlenog u registraciji izostanaka
+                AbsenceEmp.SetFilter("From Date", '%1', HolidayDate); //trazim odsustvo na ovaj datum
+                if AbsenceEmp.FindFirst() then begin //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
+                                                     //za bolovanje je sick leave = true, a za službeni put je business trip = true
+                                                     //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
+                    CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                    if NOT (CauseOfAbsence."Bussiness trip")
+                    then
+                        if NOT (CauseOfAbsence."Sick Leave") then begin //izostanak se treba modify na praznik
+                            AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                            AbsenceEmp.Description := Description;
+                            AbsenceEmp.Modify();
+                        end;
+                end
+                else begin
+                    AbsenceEmp.RESET;
+                    IF AbsenceEmp.FIND('+') THEN
+                        LastEntry := AbsenceEmp."Entry No."
+                    ELSE
+                        LastEntry := 0;
+                    LastEntry := LastEntry + 1;
+                    AbsenceEmp.Init();
+                    AbsenceEmp."Entry No." := LastEntry;
+                    AbsenceEmp."Employee No." := Employee."No.";
+                    AbsenceEmp."From Date" := HolidayDate;
+                    AbsenceEmp."To Date" := HolidayDate;
+                    IF InsertAnnual THEN BEGIN
+                        WageSetup.Get();
+                        AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                        AbsenceEmp.Description := Description;
+                        AbsenceEmp."RS Code" := RSWorkday;
+                    END
+                    ELSE BEGIN
+                        WageSetup.Get();
+                        AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                        AbsenceEmp.Description := Description;
+                        AbsenceEmp."RS Code" := RSHoliday;
+                    END;
+
+                    AbsenceEmp.Quantity := Employee."Hours In Day";
+
+                    AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                    AbsenceEmp.Insert();
+
+                end;
+            until Employee.Next() = 0;
+    end;
+    //ED 01 END
 
     procedure GetHourPool(CurrentMonth: Integer; CurrentYear: Integer; HoursInDay: Decimal) HourPool: Decimal
     var

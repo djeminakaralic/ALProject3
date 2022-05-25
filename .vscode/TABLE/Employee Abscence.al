@@ -130,9 +130,6 @@ tableextension 51921 MyExtension extends "Employee Absence"
         {
         }
 
-        field(50156; "Days"; Integer) //dodano
-        {
-        }
         field(50142; "Short Code"; Code[10])
         {
             Caption = 'Short Code';
@@ -201,8 +198,6 @@ tableextension 51921 MyExtension extends "Employee Absence"
 
     var
         myInt: Integer;
-
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
-
 }
