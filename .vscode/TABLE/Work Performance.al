@@ -39,7 +39,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
+                RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
+
+                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
             end;
         }
@@ -50,7 +53,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                SetGrade("Scope of performed work"); //zovem proceduru da prepozna koji je option
+                RealScopeGrade := RealOptionGrade; //smjestam taj decimalni broj
+
+                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
             end;
         }
@@ -61,7 +67,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                SetGrade("Deadline for completion of work"); //zovem proceduru da prepozna koji je option
+                RealDeadlineGrade := RealOptionGrade; //smjestam taj decimalni broj
+
+                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
             end;
         }
@@ -72,7 +81,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                Grade := ("Quality of performed work" + "Scope of performed work" + "Deadline for completion of work" + "Attitude towards work obligations" + 4) / 4;
+                SetGrade("Attitude towards work obligations"); //zovem proceduru da prepozna koji je option
+                RealAttitudeGrade := RealOptionGrade; //smjestam taj decimalni broj
+
+                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
             end;
         }
@@ -96,100 +108,6 @@ table 50099 "Work Performance"
             end;
         }
 
-
-
-
-
-
-        /*field(3; "Quantity"; Integer)
-        {
-            Caption = 'Quantity';
-        }
-        field(4; Approved; Boolean)
-        {
-            Caption = 'Approved';
-
-            trigger OnValidate()
-            var
-            /*AbsenceFIll: Codeunit "Absence Fill";
-            EmployeeA: Record Employee;*/
-        //begin
-
-        /*IF Rec."Approved" = true then begin
-            IF "From Date" <> "To Date" then begin
-                EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
-                EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-                if EmployeeAbsence.FindFirst() then begin
-
-                    CauseOfAbsence.Reset();
-                    CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                    if CauseOfAbsence.Holiday = false then
-                        Error(Text005);
-                end;
-            end;
-
-            IF "From Date" = "To Date" then begin
-                EmployeeAbsence.SetFilter("From Date", '%1', Rec."From Date");
-                if EmployeeAbsence.FindFirst() then begin
-
-                    CauseOfAbsence.Reset();
-                    CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                    if CauseOfAbsence.Holiday = false then
-                        Error(Text005);
-                end;
-            end;
-
-            EmployeeA.GET(Rec."Employee No.");
-            AbsenceFIll.EmployeeAbsence("From Date", "To Date", EmployeeA, Rec."Cause of Absence Code");
-        end;
-
-        If Rec."Approved" = false then begin
-            EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
-            EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
-
-            if EmployeeAbsence.FindFirst() then
-                repeat
-                    CauseOfAbsence.Reset();
-                    CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                    if CauseOfAbsence.Holiday = false then
-                        EmployeeAbsence.Delete();
-                until EmployeeAbsence.Next() = 0;
-
-        end;*/
-
-        /*end;
-    }
-    field(5; "Entry No."; Integer)
-    {
-        Caption = 'Entry No.';
-    }
-    field(6; "Description"; Code[50])
-    {
-        Caption = 'Description';
-        Editable = false;
-    }
-    field(7; "Cause of Absence Code"; Code[10])
-    {
-        Caption = 'Cause of Absence Code';
-        TableRelation = "Cause of Absence";
-
-        trigger OnValidate()
-        begin
-            IF Approved = true then
-                error(Text006);
-
-            CauseOfAbsence.GET("Cause of Absence Code");
-            Description := CauseOfAbsence.Description;
-            VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
-
-            IF "From Date" = 0D then
-                Error(Text001);
-
-            IF "To Date" = 0D then
-                ERROR(Text004);
-        end;
-    }
-    */
     }
 
     keys
@@ -208,6 +126,11 @@ table 50099 "Work Performance"
         EmployeeAbsenceReg: Record "Employee Absence Reg";
         EmployeeAbsence: Record "Employee Absence";
         WageSetup: Record "Wage Setup";
+        RealOptionGrade: Decimal;
+        RealQualityGrade: Decimal;
+        RealScopeGrade: Decimal;
+        RealDeadlineGrade: Decimal;
+        RealAttitudeGrade: Decimal;
         Text001: Label 'Starting Date field cannot be blank.';
         Text002: Label 'Starting Date field cannot be after Ending Date field.';
         Text003: Label 'Ending Date field cannot be before Starting Date field.';
@@ -216,6 +139,8 @@ table 50099 "Work Performance"
         Text006: Label 'Selected record has already been approved.';
         Text007: Label 'Cause of absence field cannot be blank.';
         VisibleHours: Boolean;
+
+
 
     trigger OnInsert()
     begin
@@ -251,6 +176,29 @@ table 50099 "Work Performance"
                         Rec."Increase in basic salary(%)" := 0
                     else
                         Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;
+    end;
+
+    procedure SetGrade(SentOption: Integer)   //on validate bilo koje ocjene moram prepoznati koja je to ocjena iz option
+    begin
+        if SentOption = 0 then
+            RealOptionGrade := 1.00
+        else
+            if SentOption = 1 then
+                RealOptionGrade := 2.00
+            else
+                if SentOption = 2 then
+                    RealOptionGrade := 3.00
+                else
+                    if SentOption = 3 then
+                        RealOptionGrade := 3.50
+                    else
+                        if SentOption = 4 then
+                            RealOptionGrade := 4.00
+                        else
+                            if SentOption = 5 then
+                                RealOptionGrade := 4.50
+                            else
+                                RealOptionGrade := 5.00
     end;
     //ED 01 END
 }
