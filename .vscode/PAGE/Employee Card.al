@@ -3621,6 +3621,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Health Check";
                 RunPageLink = "Employee No" = FIELD("No.");
             }*/
+
             //ED 01 START
             action("Employee absence")
             {
@@ -3634,7 +3635,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             action("Work performance")
             {
                 Caption = 'Work performance';
-                Image = ElectronicNumber;
+                Image = Evaluate;
                 RunObject = page "Work performance";
                 //RunPageLink = "Employee No." = FIELD("No.");
                 Promoted = true;
