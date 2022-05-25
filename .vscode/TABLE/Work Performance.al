@@ -159,6 +159,7 @@ table 50099 "Work Performance"
         HumanResUnitOfMeasure: Record "Human Resource Unit of Measure";
         CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
+        WorkPerformance: Record "Work Performance";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
         EmployeeAbsenceReg: Record "Employee Absence Reg";
         EmployeeAbsence: Record "Employee Absence";
@@ -179,16 +180,14 @@ table 50099 "Work Performance"
 
     trigger OnInsert()
     begin
-        /*if rec."Cause of Absence Code" = '' then
-            Error(Text007);
 
-        EmployeeAbsenceReg.Reset();
-        EmployeeAbsenceReg.SetCurrentKey("Entry No.");
-        if EmployeeAbsenceReg.FindLast then
-            "Entry No." := EmployeeAbsenceReg."Entry No." + 1
-        else begin
+        WorkPerformance.Reset();
+        WorkPerformance.SetCurrentKey("Entry No.");
+        if WorkPerformance.FindLast() then
+            "Entry No." := WorkPerformance."Entry No." + 1
+        else
             "Entry No." := 1;
-        end;*/
+
     end;
 
     trigger OnDelete()
