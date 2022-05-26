@@ -22,6 +22,8 @@ table 50099 "Work Performance"
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
+                /*WageAmounts.Get("Employee No.");
+                "Wage amount" := WageAmounts."Wage Amount";*/
             end;
         }
         field(3; "First Name"; Text[30])
@@ -92,6 +94,8 @@ table 50099 "Work Performance"
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(RealQualityGrade, RealScopeGrade, RealDeadlineGrade, RealAttitudeGrade, Rec.Grade);
             end;
+
+
         }
         field(8; "Attitude towards work obligations"; Option)
         {
@@ -145,6 +149,10 @@ table 50099 "Work Performance"
                 end;
             end;
         }
+        /*field(12; "Wage amount"; Decimal)
+        {
+            Caption = 'Wage amount';
+        }*/
 
     }
 
@@ -162,6 +170,7 @@ table 50099 "Work Performance"
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
         WageAdditionType: Record "Wage Addition Type";
         WageAddition: Record "Wage Addition";
+        WageAmounts: Record "Wage Amounts";
         RealOptionGrade: Decimal;
         RealQualityGrade: Decimal;
         RealScopeGrade: Decimal;
@@ -190,16 +199,17 @@ table 50099 "Work Performance"
                 if CurrDeadline = 3 then
                     if CurrAttitude = 3 then
                         rec."Increase in basic salary(%)" := 0;
-        if CurrQuality < 2 then
+
+        if CurrQuality < 3 then
             Rec."Increase in basic salary(%)" := 0
         else
-            if CurrScope < 2 then
+            if CurrScope < 3 then
                 Rec."Increase in basic salary(%)" := 0
             else
-                if CurrDeadline < 2 then
+                if CurrDeadline < 3 then
                     Rec."Increase in basic salary(%)" := 0
                 else
-                    if CurrAttitude < 2 then
+                    if CurrAttitude < 3 then
                         Rec."Increase in basic salary(%)" := 0
                     else
                         Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;

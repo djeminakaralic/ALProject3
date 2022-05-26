@@ -4,6 +4,7 @@ table 50188 "Wage Addition Type"
     DrillDownPageID = "Wage Addition Types";
     LookupPageID = "Wage Addition Types";
 
+
     fields
     {
         field(1; "Code"; Code[10])
