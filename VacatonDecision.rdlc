@@ -539,7 +539,7 @@
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                      <Value>=Fields!Used_days.Value</Value>
+                                      <Value>=Fields!Used_Days.Value</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
