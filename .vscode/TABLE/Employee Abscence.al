@@ -171,6 +171,8 @@ tableextension 51921 MyExtension extends "Employee Absence"
             Caption = 'Work Type';
             OptionMembers = " ","Vacation";
         }
+        
+        
 
 
         modify("Cause of Absence Code")
@@ -191,6 +193,12 @@ tableextension 51921 MyExtension extends "Employee Absence"
             end;
 
         }
+         
+
+
+        
+
+
 
 
     }
