@@ -27,6 +27,10 @@ page 50267 "Wage Addition Types"
                 field(Regres; Regres)
                 {
                 }
+                field(Incentive; Incentive)
+                {
+
+                }
                 field("Default Amount"; "Default Amount")
                 {
                 }
