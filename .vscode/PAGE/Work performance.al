@@ -32,11 +32,11 @@ page 51130 "Work Performance"
                 {
                     Editable = false;
                 }
-                field(Month; Month)
+                field("Month Of Performance"; "Month Of Performance")
                 {
                     Editable = true;
                 }
-                field(Year; Year)
+                field("Year Of Performance"; "Year Of Performance")
                 {
                     Editable = true;
                 }

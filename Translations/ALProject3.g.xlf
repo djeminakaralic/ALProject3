@@ -21818,10 +21818,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Last Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2583320483 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Month</source>
+        <trans-unit id="Table 2583320483 - Field 290138851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month Of Performance</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Month - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Month Of Performance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - Field 308372495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quality of performed work</source>
@@ -21843,10 +21843,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Scope of performed work - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 2583320483 - Field 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Year</source>
+        <trans-unit id="Table 2583320483 - Field 3770920666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year Of Performance</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Year - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Year Of Performance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1830864280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>XML Wage Calculation</source>

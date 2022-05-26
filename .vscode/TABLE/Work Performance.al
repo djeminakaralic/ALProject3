@@ -35,9 +35,9 @@ table 50099 "Work Performance"
         {
             Caption = 'Last Name';
         }
-        field(12; "Month"; Date)
+        field(12; "Month Of Performance"; Integer)
         {
-            Caption = 'Month';
+            Caption = 'Month Of Performance';
 
             trigger OnValidate()
             begin
@@ -45,9 +45,9 @@ table 50099 "Work Performance"
                     Error(Text002);
             end;
         }
-        field(13; "Year"; Integer)
+        field(13; "Year Of Performance"; Integer)
         {
-            Caption = 'Year';
+            Caption = 'Year Of Performance';
 
             trigger OnValidate()
             begin
