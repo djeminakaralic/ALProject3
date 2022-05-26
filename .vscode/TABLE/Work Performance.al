@@ -132,13 +132,11 @@ table 50099 "Work Performance"
             trigger OnValidate()
             begin
                 if Approved then begin
+                    //trebam provjeriti postoji li ovaj tip dodatka
 
-                    WorkPerformance.Reset();
-                    WorkPerformance.SetCurrentKey("Entry No.");
-                    if WorkPerformance.FindLast() then
-                        "Entry No." := WorkPerformance."Entry No." + 1
-                    else
-                        "Entry No." := 1;
+                    //ako ne postoji radim insert u tabelu wage addition type 
+                    //ovdje nema entry no, samo ima code kao key
+
                     /*WageAdditionType.Init(); //Tipovi dodataka na plate
                     //ubaciti provjeru postoji li ovdje
                     WageAdditionType.Taxable:=true; //obračunaj poreze
