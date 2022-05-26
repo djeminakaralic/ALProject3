@@ -179,12 +179,15 @@ table 50099 "Work Performance"
                     if WorkPerformance.FindFirst() then
                         Error(Text001);
 
-
                     //trebam provjeriti postoji li ovaj tip dodatka
-                    /*WageAdditionType.Reset();
+                    WageAdditionType.Reset();
                     WageAdditionType.SetFilter(Incentive, '%1', true);
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
                     //WageAdditionType.SetFilter();
+                    IF WageAdditionType.FindFirst() then
+                        Message('Pronašao!')
+                    else
+                        Message('Nisam pronašao!');
 
                     /*if NOT WageAdditionType.FindFirst() then begin
                         //ako ne postoji radim insert u tabelu wage addition type 
