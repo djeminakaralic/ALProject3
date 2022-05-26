@@ -443,6 +443,10 @@ table 50015 "Vacation Ground 2"
 
             trigger OnValidate()
             begin
+
+                "First Part" := (AbsenceFill.GetHourPoolForVacation("Starting Date of I part", "Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
+
+
                 /*WPConnSetup.FINDFIRST();
                 
                 
@@ -598,6 +602,12 @@ table 50015 "Vacation Ground 2"
         {
 
         }
+        field(33; "First Part"; Integer)
+        {
+
+
+        }
+
     }
 
     keys
@@ -628,6 +638,8 @@ table 50015 "Vacation Ground 2"
         UsedDays: Integer;
         Experience: Record "Points per Experience Years";
         SocialStatus: Record "Points per Disability Status";
+        AbsenceFill: Codeunit "Absence Fill";
+
         /*SQLConn: DotNet SqlConnection;
         ConnectionString: Text;
         SQLCommand: DotNet SqlCommand;

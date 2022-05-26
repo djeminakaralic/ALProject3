@@ -474,7 +474,7 @@ codeunit 50304 "Absence Fill"
         UNTIL Datum.NEXT = 0;
     end;
 
-    procedure GetHourPoolForVacation(StartDate: Integer; EndDate: Integer; HoursInDay: Decimal) HourPool: Decimal
+    procedure GetHourPoolForVacation(StartDateT: Date; EndDateT: Date; HoursInDay: Integer) HourPool: Decimal
     var
         DateText: Text[30];
         DateText2: Text[30];
