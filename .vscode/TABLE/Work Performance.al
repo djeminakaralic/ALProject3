@@ -147,9 +147,8 @@ table 50099 "Work Performance"
         Employee: Record "Employee";
         WorkPerformance: Record "Work Performance";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
-        EmployeeAbsenceReg: Record "Employee Absence Reg";
-        EmployeeAbsence: Record "Employee Absence";
-        WageSetup: Record "Wage Setup";
+        WageAdditionType: Record "Wage Addition Type";
+        WageAddition: Record "Wage Addition";
         RealOptionGrade: Decimal;
         RealQualityGrade: Decimal;
         RealScopeGrade: Decimal;
