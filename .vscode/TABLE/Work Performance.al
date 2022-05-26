@@ -19,6 +19,9 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+                if Rec.Approved then
+                    Error(Text002);
+
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
@@ -35,10 +38,22 @@ table 50099 "Work Performance"
         field(12; "Month"; Date)
         {
             Caption = 'Month';
+
+            trigger OnValidate()
+            begin
+                if Rec.Approved then
+                    Error(Text002);
+            end;
         }
         field(13; "Year"; Integer)
         {
             Caption = 'Year';
+
+            trigger OnValidate()
+            begin
+                if Rec.Approved then
+                    Error(Text002);
+            end;
         }
         field(5; "Quality of performed work"; Option)
         {
@@ -47,6 +62,9 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
 
                 SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
                 RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
@@ -68,6 +86,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
+
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -88,6 +110,11 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
+
+
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -110,6 +137,11 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
+
+
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -153,7 +185,8 @@ table 50099 "Work Performance"
                     WageAdditionType.SetFilter(Incentive, '%1', true);
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
                     //WageAdditionType.SetFilter();
-                    if NOT WageAdditionType.FindFirst() then begin
+
+                    /*if NOT WageAdditionType.FindFirst() then begin
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key
                         WageAdditionType.Init(); //Tipovi dodataka na plate
@@ -166,6 +199,8 @@ table 50099 "Work Performance"
                         //procenat bruto
                         WageAdditionType.Insert();
                     end;
+
+                    WageAdditionType.Reset();
 
                     /*WageAddition.Init(); //Lista dodataka na plate
                     WageAddition."Employee No." :=
@@ -204,6 +239,7 @@ table 50099 "Work Performance"
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
         Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
+        Text002: Label 'Selected record has already been approved.';
 
     trigger OnInsert()
     begin

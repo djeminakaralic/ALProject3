@@ -21758,6 +21758,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="Table 2583320483 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected record has already been approved.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType Text002</note>
+        </trans-unit>
         <trans-unit id="Table 2583320483 - Field 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approved</source>
           <note from="Developer" annotates="general" priority="2"></note>
