@@ -34,7 +34,7 @@ table 50099 "Work Performance"
         {
             Caption = 'Last Name';
         }
-        field(12; "Month"; Integer)
+        field(12; "Month"; Date)
         {
             Caption = 'Month';
         }
