@@ -195,18 +195,46 @@ table 50099 "Work Performance"
 
     end;
 
+
     procedure CalculateIncrease(CurrQuality: Decimal; CurrScope: Decimal; CurrDeadline: Integer; CurrAttitude: Integer; CurrGrade: Decimal)
     begin
-        if CurrQuality <= 2 then
+        if CurrQuality = 3 then
+            if CurrScope = 3 then
+                if CurrDeadline = 3 then
+                    if CurrAttitude = 3 then
+                        rec."Increase in basic salary(%)" := 0;
+        /*if CurrQuality < 2 then
             Rec."Increase in basic salary(%)" := 0
         else
-            if CurrScope <= 2 then
+            if CurrScope < 2 then
                 Rec."Increase in basic salary(%)" := 0
             else
-                if CurrDeadline <= 2 then
+                if CurrDeadline < 2 then
                     Rec."Increase in basic salary(%)" := 0
                 else
-                    if CurrAttitude <= 2 then
+                    if CurrAttitude < 2 then
+                        Rec."Increase in basic salary(%)" := 0
+                    else
+                        Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;*/
+    end;
+
+    procedure CalculateIncrease(CurrQuality: Decimal; CurrScope: Decimal; CurrDeadline: Decimal; CurrAttitude: Decimal; CurrGrade: Decimal)
+    begin
+        if CurrQuality = 3 then
+            if CurrScope = 3 then
+                if CurrDeadline = 3 then
+                    if CurrAttitude = 3 then
+                        rec."Increase in basic salary(%)" := 0;
+        if CurrQuality < 2 then
+            Rec."Increase in basic salary(%)" := 0
+        else
+            if CurrScope < 2 then
+                Rec."Increase in basic salary(%)" := 0
+            else
+                if CurrDeadline < 2 then
+                    Rec."Increase in basic salary(%)" := 0
+                else
+                    if CurrAttitude < 2 then
                         Rec."Increase in basic salary(%)" := 0
                     else
                         Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;
