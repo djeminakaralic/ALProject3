@@ -22,7 +22,6 @@ table 50099 "Work Performance"
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
-
             end;
         }
         field(3; "First Name"; Text[30])
