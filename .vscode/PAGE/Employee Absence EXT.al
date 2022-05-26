@@ -16,6 +16,8 @@ pageextension 50052 Absence extends "Employee Absences"
         }
     }
 
+
+
     var
         myInt: Integer;
 }
