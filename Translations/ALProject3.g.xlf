@@ -15988,6 +15988,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Used Days - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 1953798116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UsedDays</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field UsedDays - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1301322113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Work experience</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16132,6 +16137,11 @@
           <source>Used Days</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds - Field Used Days - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 635647321 - Field 1654880311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UsedDaysThisYearT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Grounds - Field UsedDaysThisYearT - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 635647321 - Field 2437616033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Valid Vacation</source>

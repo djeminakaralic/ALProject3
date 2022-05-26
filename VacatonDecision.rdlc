@@ -1643,6 +1643,9 @@ End Sub
         <Field Name="DanJavljanjanaposaoT">
           <DataField>DanJavljanjanaposaoT</DataField>
         </Field>
+        <Field Name="Used_Days">
+          <DataField>Used_Days</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
