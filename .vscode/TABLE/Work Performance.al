@@ -186,8 +186,16 @@ table 50099 "Work Performance"
                     WageAdditionType.SetFilter("Calculate Deduction", '%1', true); //PROVJERITI 
                     IF WageAdditionType.FindFirst() then
                         Message('Pronašao!')
-                    else
+                    else begin
+                        WorkPerformance.Reset();
+                        WorkPerformance.SetCurrentKey("Entry No.");
+                        if WorkPerformance.FindLast() then
+                            "Entry No." := WorkPerformance."Entry No." + 1
+                        else
+                            "Entry No." := 1;
                         Message('Nisam pronašao!');
+                    end;
+
 
                     /*if NOT WageAdditionType.FindFirst() then begin
                         //ako ne postoji radim insert u tabelu wage addition type 
@@ -214,10 +222,6 @@ table 50099 "Work Performance"
                 end;
             end;
         }
-        /*field(12; "Wage amount"; Decimal)
-        {
-            Caption = 'Wage amount';
-        }*/
 
     }
 
