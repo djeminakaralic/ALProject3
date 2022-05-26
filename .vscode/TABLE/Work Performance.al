@@ -186,7 +186,6 @@ table 50099 "Work Performance"
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
                     WageAdditionType.SetFilter("Calculation Type", '%1', 0);
                     IF WageAdditionType.FindFirst() then begin
-                        WageAdditionType.Get();
                         FoundType := WageAdditionType.Code;
                         Message('Pronašao!');
                     end
@@ -201,7 +200,8 @@ table 50099 "Work Performance"
                         //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init(); //Tipovi dodataka na plate
                         WageAdditionType.Code := FORMAT(LastEntry);
-                        WageAdditionType."Calculation Type" := 0;
+                        WageAdditionType.Description := 'Radni učinak';
+                        WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
                         WageAdditionType."Incentive" := true; //stimulacija
                         WageAdditionType."Taxable" := true; //obračunaj poreze
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
