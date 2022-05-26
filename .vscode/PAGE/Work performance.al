@@ -32,6 +32,14 @@ page 51130 "Work Performance"
                 {
                     Editable = false;
                 }
+                field(Month; Month)
+                {
+                    Editable = true;
+                }
+                field(Year; Year)
+                {
+                    Editable = true;
+                }
                 field("Quality of performed work"; "Quality of performed work")
                 {
                     Editable = true;

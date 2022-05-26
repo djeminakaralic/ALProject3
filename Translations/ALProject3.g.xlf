@@ -21808,6 +21808,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Last Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2583320483 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Month - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2583320483 - Field 308372495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quality of performed work</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21827,6 +21832,11 @@
           <source>1.00,2.00,3.00,3.50,4.00,4.50,5.00</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Scope of performed work - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2583320483 - Field 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1830864280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>XML Wage Calculation</source>

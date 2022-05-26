@@ -34,6 +34,14 @@ table 50099 "Work Performance"
         {
             Caption = 'Last Name';
         }
+        field(12; "Month"; Integer)
+        {
+            Caption = 'Month';
+        }
+        field(13; "Year"; Integer)
+        {
+            Caption = 'Year';
+        }
         field(5; "Quality of performed work"; Option)
         {
             Caption = 'Quality of performed work';
@@ -142,7 +150,7 @@ table 50099 "Work Performance"
                     WageAdditionType.Taxable := true; //obračunaj poreze
                     WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                     WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
-                    //obračunaj kao dio neta
+                    
                     //procenat bruto
                     WageAdditionType.Insert();
 
