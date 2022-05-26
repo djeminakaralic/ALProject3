@@ -183,7 +183,7 @@ table 50099 "Work Performance"
                     WageAdditionType.Reset();
                     WageAdditionType.SetFilter(Incentive, '%1', true);
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
-                    WageAdditionType.SetFilter("Calculate Deduction", '%1', true); //PROVJERITI 
+                    WageAdditionType.SetFilter("Calculation Type", '%1', 0);
                     IF WageAdditionType.FindFirst() then
                         Message('Pronašao!')
                     else begin
