@@ -23,15 +23,6 @@ table 50099 "Work Performance"
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
 
-                /*SetGrade("Quality of performed work");
-                RealQualityGrade := RealOptionGrade;
-                SetGrade("Scope of performed work");
-                RealScopeGrade := RealOptionGrade;
-                SetGrade("Deadline for completion of work");
-                RealDeadlineGrade := RealOptionGrade;
-                SetGrade("Attitude towards work obligations");
-                RealAttitudeGrade := RealOptionGrade;
-                Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;*/
             end;
         }
         field(3; "First Name"; Text[30])
@@ -49,12 +40,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
-                //SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
-                //RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
 
-                SetGrade("Quality of performed work");
-                RealQualityGrade := RealOptionGrade;
-                SetGrade("Scope of performed work");
+                SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
+                RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
+                SetGrade("Scope of performed work"); //isti je postupak za preostale 3 ocjene
                 RealScopeGrade := RealOptionGrade;
                 SetGrade("Deadline for completion of work");
                 RealDeadlineGrade := RealOptionGrade;
@@ -156,8 +145,6 @@ table 50099 "Work Performance"
     }
 
     var
-        HumanResUnitOfMeasure: Record "Human Resource Unit of Measure";
-        CauseOfAbsence: Record "Cause of Absence";
         Employee: Record "Employee";
         WorkPerformance: Record "Work Performance";
         BlockedErr: Label 'You cannot register absence because the employee is blocked due to privacy.';
@@ -169,25 +156,15 @@ table 50099 "Work Performance"
         RealScopeGrade: Decimal;
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
-        Text001: Label 'Starting Date field cannot be blank.';
-        Text002: Label 'Starting Date field cannot be after Ending Date field.';
-        Text003: Label 'Ending Date field cannot be before Starting Date field.';
-        Text004: Label 'Ending Date field cannot be blank.';
-        Text005: Label 'A leave for this period already exists.';
-        Text006: Label 'Selected record has already been approved.';
-        Text007: Label 'Cause of absence field cannot be blank.';
-        VisibleHours: Boolean;
 
     trigger OnInsert()
     begin
-
         WorkPerformance.Reset();
         WorkPerformance.SetCurrentKey("Entry No.");
         if WorkPerformance.FindLast() then
             "Entry No." := WorkPerformance."Entry No." + 1
         else
             "Entry No." := 1;
-
     end;
 
     trigger OnDelete()
@@ -217,7 +194,7 @@ table 50099 "Work Performance"
                         Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;
     end;
 
-    procedure SetGrade(SentOption: Integer)   //on validate bilo koje ocjene moram prepoznati koja je to decimalna ocjena iz option
+    procedure SetGrade(SentOption: Integer) //on validate bilo koje ocjene moram prepoznati koja je to decimalna ocjena iz option
     begin
         if SentOption = 0 then
             RealOptionGrade := 1.00
@@ -237,7 +214,7 @@ table 50099 "Work Performance"
                             if SentOption = 5 then
                                 RealOptionGrade := 4.50
                             else
-                                RealOptionGrade := 5.00
+                                RealOptionGrade := 5.00;
     end;
     //ED 01 END
 }
