@@ -17,6 +17,7 @@ tableextension 51921 MyExtension extends "Employee Absence"
         field(50003; "Vacation from Year"; Integer)
         {
             Caption = 'Vacation from Year';
+
         }
         field(50004; "First Name"; Text[30])
         {
@@ -124,6 +125,10 @@ tableextension 51921 MyExtension extends "Employee Absence"
         field(50140; Status; enum "Employee Abs ")
         {
             Caption = 'Status';
+            trigger OnValidate()
+            begin
+                "Vacation from Year" := DATE2DMY("To Date", 3);
+            end;
 
         }
         field(50141; "Order"; Integer)
@@ -171,8 +176,11 @@ tableextension 51921 MyExtension extends "Employee Absence"
             Caption = 'Work Type';
             OptionMembers = " ","Vacation";
         }
-        
-        
+
+
+
+
+
 
 
         modify("Cause of Absence Code")
@@ -192,11 +200,16 @@ tableextension 51921 MyExtension extends "Employee Absence"
 
             end;
 
+
+
         }
-         
 
 
-        
+
+
+
+
+
 
 
 
