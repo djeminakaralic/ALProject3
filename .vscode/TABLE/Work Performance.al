@@ -185,8 +185,10 @@ table 50099 "Work Performance"
                     WageAdditionType.SetFilter(Incentive, '%1', true);
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
                     WageAdditionType.SetFilter("Calculation Type", '%1', 0);
-                    IF WageAdditionType.FindFirst() then
-                        Message('Pronašao!')
+                    IF WageAdditionType.FindFirst() then begin
+                        WageAdditionType.Get();
+                        Message('Pronašao!');
+                    end
                     else begin
                         WorkPerformance.Reset();
                         WorkPerformance.SetCurrentKey("Entry No.");
