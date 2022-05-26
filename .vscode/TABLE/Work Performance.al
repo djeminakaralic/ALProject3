@@ -137,6 +137,10 @@ table 50099 "Work Performance"
                     WageAdditionType.Insert();
 
                     WageAddition.Init(); //Lista dodataka na plate
+                    WageAddition."Employee No.":=
+                    WageAdditionType.Get()
+                    WageAddition."Wage Addition Type":=
+
                     WageAddition.Insert();*/
                 end;
             end;
