@@ -43,6 +43,9 @@ page 50267 "Wage Addition Types"
                 field("Calculate Experience"; "Calculate Experience")
                 {
                 }
+                field("Calculate Deduction"; "Calculate Deduction")
+                {
+                }
                 field(Taxable; Taxable)
                 {
                 }
