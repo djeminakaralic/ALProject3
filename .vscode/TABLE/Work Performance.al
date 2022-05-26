@@ -187,31 +187,30 @@ table 50099 "Work Performance"
                     WageAdditionType.SetFilter("Calculation Type", '%1', 0);
                     IF WageAdditionType.FindFirst() then begin
                         WageAdditionType.Get();
+                        FoundType := WageAdditionType.Code;
                         Message('Pronašao!');
                     end
                     else begin
                         WorkPerformance.Reset();
                         WorkPerformance.SetCurrentKey("Entry No.");
                         if WorkPerformance.FindLast() then
-                            "Entry No." := WorkPerformance."Entry No." + 1
+                            LastEntry := WorkPerformance."Entry No." + 1
                         else
-                            "Entry No." := 1;
-                        Message('Nisam pronašao!');
-                    end;
-
-
-                    /*if NOT WageAdditionType.FindFirst() then begin
+                            LastEntry := 1;
                         //ako ne postoji radim insert u tabelu wage addition type 
-                        //ovdje nema entry no, samo ima code kao key
+                        //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init(); //Tipovi dodataka na plate
+                        WageAdditionType.Code := FORMAT(LastEntry);
+                        WageAdditionType."Calculation Type" := 0;
                         WageAdditionType."Incentive" := true; //stimulacija
                         WageAdditionType."Taxable" := true; //obračunaj poreze
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
-
+                        FoundType := WageAdditionType.Code;
 
                         //procenat bruto
                         WageAdditionType.Insert();
+                        Message('Nisam pronašao!');
                     end;
 
                     WageAdditionType.Reset();
@@ -248,6 +247,8 @@ table 50099 "Work Performance"
         RealScopeGrade: Decimal;
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
+        LastEntry: Integer;
+        FoundType: Code[10];
         Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
         Text002: Label 'Selected record has already been approved.';
 
