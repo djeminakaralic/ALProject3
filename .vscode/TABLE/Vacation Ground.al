@@ -594,6 +594,10 @@ table 50015 "Vacation Ground 2"
         {
             Caption = 'Insert Date';
         }
+        field(32; UsedDays; Integer)
+        {
+
+        }
     }
 
     keys

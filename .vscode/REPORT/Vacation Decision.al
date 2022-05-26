@@ -126,6 +126,10 @@ report 50109 VacationDecision
                 {
 
                 }
+                column(Used_Days; "Used Days")
+                {
+
+                }
 
                 trigger OnAfterGetRecord()
                 begin
@@ -156,6 +160,18 @@ report 50109 VacationDecision
 
 
             }
+            trigger OnAfterGetRecord()
+            begin
+
+
+                VACSetup.SETFILTER(Year, '%1', DATE2DMY(DatumRjesenja, 3));
+                IF VACSetup.FINDFIRST THEN BEGIN
+
+
+                    CurrDaysUsed := VacMgmt.CalculateDaysUsed("No.", DatumRjesenja);
+                end;
+            end;
+
         }
     }
 
@@ -213,5 +229,12 @@ report 50109 VacationDecision
         RanijeIskoristeniDani: Integer;
 
         CompanyInformation: Record "Company Information";
+        VacMgmt: Codeunit "VacationMgmt2";
+        CurrDaysUsed: Integer;
+
+        PlanGO: Record "Vacation Grounds";
+        VACSetup: Record "Vacation Setup";
+
+
 
 }

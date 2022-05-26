@@ -65,6 +65,8 @@ table 50162 "Vacation Grounds"
                             // PlanGO."Legal Grounds":=PlanGO."Legal Grounds"-PlanGO."Used Days";
                             "Legal Grounds" := "Legal Grounds" - UsedDaysThisYear;
                             Year := Year2;
+                            UsedDaysThisYearT := UsedDaysThisYear;
+
 
                         END;
                     END
@@ -131,6 +133,7 @@ table 50162 "Vacation Grounds"
 
 
                     END;
+
 
 
                     UsedDaysThisYear := 0;
@@ -580,6 +583,14 @@ table 50162 "Vacation Grounds"
 
 
         }
+        field(31; UsedDaysThisYearT; Integer)
+        {
+
+
+
+        }
+
+
     }
 
     keys
