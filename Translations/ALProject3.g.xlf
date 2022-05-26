@@ -21754,7 +21754,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType BlockedErr</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Work performance for the selected employee and selected month has already been entered</source>
+          <source>Work performance for the selected employee and selected month has already been entered.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType Text001</note>
         </trans-unit>

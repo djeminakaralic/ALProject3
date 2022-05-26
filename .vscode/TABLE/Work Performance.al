@@ -22,8 +22,6 @@ table 50099 "Work Performance"
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
-                /*WageAmounts.Get("Employee No.");
-                "Wage amount" := WageAmounts."Wage Amount";*/
             end;
         }
         field(3; "First Name"; Text[30])
@@ -143,28 +141,33 @@ table 50099 "Work Performance"
                     //prvo provjeriti postoji li u tabeli odobren učinak za ovog zaposlenog, ovu godinu i ovaj mjesec
                     WorkPerformance.Reset();
                     WorkPerformance.SetFilter("Employee No.", '%1', Rec."Employee No.");
-                    WorkPerformance.SetFilter(Month, '%1', Rec.Month);
-                    WorkPerformance.SetFilter(Year, '%1', Rec.Year);
+                    //WorkPerformance.SetFilter(Month, '%1', Rec.Month);
+                    //bWorkPerformance.SetFilter(Year, '%1', Rec.Year);
                     WorkPerformance.SetFilter(Approved, '%1', true);
                     if WorkPerformance.FindFirst() then
                         Error(Text001);
 
 
                     //trebam provjeriti postoji li ovaj tip dodatka
+                    WageAdditionType.Reset();
+                    WageAdditionType.SetFilter(Incentive, '%1', true);
+                    WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
+                    //WageAdditionType.SetFilter();
+                    if NOT WageAdditionType.FindFirst() then begin
+                        //ako ne postoji radim insert u tabelu wage addition type 
+                        //ovdje nema entry no, samo ima code kao key
+                        WageAdditionType.Init(); //Tipovi dodataka na plate
+                        WageAdditionType."Incentive" := true; //stimulacija
+                        WageAdditionType."Taxable" := true; //obračunaj poreze
+                        WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
+                        WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
 
-                    //ako ne postoji radim insert u tabelu wage addition type 
-                    //ovdje nema entry no, samo ima code kao key
 
-                    /*WageAdditionType.Init(); //Tipovi dodataka na plate
-                    WageAdditionType.Incentive := true; //stimulacija
-                    WageAdditionType.Taxable := true; //obračunaj poreze
-                    WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
-                    WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
-                    
-                    //procenat bruto
-                    WageAdditionType.Insert();
+                        //procenat bruto
+                        WageAdditionType.Insert();
+                    end;
 
-                    WageAddition.Init(); //Lista dodataka na plate
+                    /*WageAddition.Init(); //Lista dodataka na plate
                     WageAddition."Employee No." :=
                     WageAdditionType.Get()
                     WageAddition."Wage Addition Type" :=
@@ -200,7 +203,7 @@ table 50099 "Work Performance"
         RealScopeGrade: Decimal;
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
-        Text001: Label 'Work performance for the selected employee and selected month has already been entered';
+        Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
 
     trigger OnInsert()
     begin
