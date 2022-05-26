@@ -45,7 +45,7 @@ table 50099 "Work Performance"
         field(5; "Quality of performed work"; Option)
         {
             Caption = 'Quality of performed work';
-            OptionMembers = "1","2","3","3.5","4","4.5","5";
+            OptionMembers = "1.00","2.00","3.00","3.50","4.00","4.50","5.00";
 
             trigger OnValidate()
             begin
@@ -68,7 +68,7 @@ table 50099 "Work Performance"
         field(6; "Scope of performed work"; Option)
         {
             Caption = 'Scope of performed work';
-            OptionMembers = "1","2","3","3.5","4","4.5","5";
+            OptionMembers = "1.00","2.00","3.00","3.50","4.00","4.50","5.00";
 
             trigger OnValidate()
             begin
@@ -88,7 +88,7 @@ table 50099 "Work Performance"
         field(7; "Deadline for completion of work"; Option)
         {
             Caption = 'Deadline for completion of work';
-            OptionMembers = "1","2","3","3.5","4","4.5","5";
+            OptionMembers = "1.00","2.00","3.00","3.50","4.00","4.50","5.00";
 
             trigger OnValidate()
             begin
@@ -108,7 +108,7 @@ table 50099 "Work Performance"
         field(8; "Attitude towards work obligations"; Option)
         {
             Caption = 'Attitude towards work obligations';
-            OptionMembers = "1","2","3","3.5","4","4.5","5";
+            OptionMembers = "1.00","2.00","3.00","3.50","4.00","4.50","5.00";
 
             trigger OnValidate()
             begin
