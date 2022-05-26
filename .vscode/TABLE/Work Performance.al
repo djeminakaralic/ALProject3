@@ -140,6 +140,16 @@ table 50099 "Work Performance"
             trigger OnValidate()
             begin
                 if Approved then begin
+                    //prvo provjeriti postoji li u tabeli odobren učinak za ovog zaposlenog, ovu godinu i ovaj mjesec
+                    WorkPerformance.Reset();
+                    WorkPerformance.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    WorkPerformance.SetFilter(Month, '%1', Rec.Month);
+                    WorkPerformance.SetFilter(Year, '%1', Rec.Year);
+                    WorkPerformance.SetFilter(Approved, '%1', true);
+                    if WorkPerformance.FindFirst() then
+                        Error(Text001);
+
+
                     //trebam provjeriti postoji li ovaj tip dodatka
 
                     //ako ne postoji radim insert u tabelu wage addition type 
@@ -190,6 +200,7 @@ table 50099 "Work Performance"
         RealScopeGrade: Decimal;
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
+        Text001: Label 'Work performance for the selected employee and selected month has already been entered';
 
     trigger OnInsert()
     begin
