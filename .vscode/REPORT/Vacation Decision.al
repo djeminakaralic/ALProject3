@@ -33,10 +33,15 @@ report 50109 VacationDecision
             column(Company_logo; CompanyInformation.Picture)
             {
             }
+
             dataitem(DataItem5; "Vacation Ground 2")
             {
                 RequestFilterFields = "Employee No.";
                 column(WorkEXpDays; "Days based on Work experience")
+                {
+
+                }
+                column(FirstPart; FirstPart)
                 {
 
                 }
@@ -143,6 +148,8 @@ report 50109 VacationDecision
                     StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
+
+                    "First Part" := (AbsenceFill.GetHourPoolForVacation("Starting Date of I part", "Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
                 end;
 
 
@@ -224,6 +231,10 @@ report 50109 VacationDecision
 
         PlanGO: Record "Vacation Grounds";
         VACSetup: Record "Vacation Setup";
+        FirstPart: Integer;
+        AbsenceFill: Codeunit "Absence Fill";
+
+        EmployeeRec: Record Employee;
 
 
 

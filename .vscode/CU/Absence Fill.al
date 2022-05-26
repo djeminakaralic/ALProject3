@@ -497,7 +497,7 @@ codeunit 50304 "Absence Fill"
         CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
 
         Datum.SETFILTER("Period Type", '%1', 0);
-        Datum.SETRANGE("Period Start", VaactionG."Starting Date of I part", VaactionG."Ending Date of I part");
+        Datum.SETRANGE("Period Start", StartDateT, EndDateT);
         Datum.FINDFIRST;
         REPEAT
             InsertWeekly := FALSE;
