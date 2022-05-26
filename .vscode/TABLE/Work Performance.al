@@ -180,6 +180,7 @@ table 50099 "Work Performance"
                         Error(Text001);
 
                     //trebam provjeriti postoji li ovaj tip dodatka
+                    //kriteriji za podudaranje: procentualni tip kalkulacije, simulacija, isti iznos u %
                     WageAdditionType.Reset();
                     WageAdditionType.SetFilter(Incentive, '%1', true);
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
