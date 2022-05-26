@@ -1,4 +1,4 @@
-pageextension 50002 Absence extends "Employee Absences"
+pageextension 50052 Absence extends "Employee Absences"
 
 {
 
