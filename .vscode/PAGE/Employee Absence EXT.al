@@ -9,8 +9,13 @@ pageextension 50052 Absence extends "Employee Absences"
         {
             field("Vacation from Year"; "Vacation from Year")
             {
+                Visible = true;
+                ApplicationArea = all;
 
             }
         }
     }
+
+    var
+        myInt: Integer;
 }
