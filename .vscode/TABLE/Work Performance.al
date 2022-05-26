@@ -128,7 +128,16 @@ table 50099 "Work Performance"
             trigger OnValidate()
             begin
                 if Approved then begin
+                    /*WageAdditionType.Init(); //Tipovi dodataka na plate
+                    //ubaciti provjeru postoji li ovdje
+                    WageAdditionType.Taxable:=true; //obračunaj poreze
+                    WageAdditionType."Add. Taxable":=true; //obračunaj doprinose
+                    //obračunaj kao dio neta
+                    //procenat bruto
+                    WageAdditionType.Insert();
 
+                    WageAddition.Init(); //Lista dodataka na plate
+                    WageAddition.Insert();*/
                 end;
             end;
         }
