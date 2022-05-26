@@ -62,7 +62,7 @@ table 50099 "Work Performance"
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
-                CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
+                CalculateIncrease(RealQualityGrade, RealScopeGrade, RealDeadlineGrade, RealAttitudeGrade, Rec.Grade);
             end;
         }
         field(6; "Scope of performed work"; Option)
@@ -82,7 +82,7 @@ table 50099 "Work Performance"
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
-                CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
+                CalculateIncrease(RealQualityGrade, RealScopeGrade, RealDeadlineGrade, RealAttitudeGrade, Rec.Grade);
             end;
         }
         field(7; "Deadline for completion of work"; Option)
@@ -102,7 +102,7 @@ table 50099 "Work Performance"
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
-                CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
+                CalculateIncrease(RealQualityGrade, RealScopeGrade, RealDeadlineGrade, RealAttitudeGrade, Rec.Grade);
             end;
         }
         field(8; "Attitude towards work obligations"; Option)
@@ -122,7 +122,7 @@ table 50099 "Work Performance"
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
-                CalculateIncrease(Rec."Quality of performed work", Rec."Scope of performed work", Rec."Deadline for completion of work", Rec."Attitude towards work obligations", Rec.Grade);
+                CalculateIncrease(RealQualityGrade, RealScopeGrade, RealDeadlineGrade, RealAttitudeGrade, Rec.Grade);
             end;
         }
         field(9; "Grade"; Decimal)
@@ -195,29 +195,6 @@ table 50099 "Work Performance"
 
     end;
 
-
-    procedure CalculateIncrease(CurrQuality: Decimal; CurrScope: Decimal; CurrDeadline: Integer; CurrAttitude: Integer; CurrGrade: Decimal)
-    begin
-        if CurrQuality = 3 then
-            if CurrScope = 3 then
-                if CurrDeadline = 3 then
-                    if CurrAttitude = 3 then
-                        rec."Increase in basic salary(%)" := 0;
-        /*if CurrQuality < 2 then
-            Rec."Increase in basic salary(%)" := 0
-        else
-            if CurrScope < 2 then
-                Rec."Increase in basic salary(%)" := 0
-            else
-                if CurrDeadline < 2 then
-                    Rec."Increase in basic salary(%)" := 0
-                else
-                    if CurrAttitude < 2 then
-                        Rec."Increase in basic salary(%)" := 0
-                    else
-                        Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;*/
-    end;
-
     procedure CalculateIncrease(CurrQuality: Decimal; CurrScope: Decimal; CurrDeadline: Decimal; CurrAttitude: Decimal; CurrGrade: Decimal)
     begin
         if CurrQuality = 3 then
@@ -240,7 +217,7 @@ table 50099 "Work Performance"
                         Rec."Increase in basic salary(%)" := (CurrGrade - 3) * 10;
     end;
 
-    procedure SetGrade(SentOption: Integer)   //on validate bilo koje ocjene moram prepoznati koja je to ocjena iz option
+    procedure SetGrade(SentOption: Integer)   //on validate bilo koje ocjene moram prepoznati koja je to decimalna ocjena iz option
     begin
         if SentOption = 0 then
             RealOptionGrade := 1.00
