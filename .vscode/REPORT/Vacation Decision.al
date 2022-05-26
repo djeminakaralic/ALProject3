@@ -160,17 +160,7 @@ report 50109 VacationDecision
 
 
             }
-            trigger OnAfterGetRecord()
-            begin
 
-
-                VACSetup.SETFILTER(Year, '%1', DATE2DMY(DatumRjesenja, 3));
-                IF VACSetup.FINDFIRST THEN BEGIN
-
-
-                    CurrDaysUsed := VacMgmt.CalculateDaysUsed("No.", DatumRjesenja);
-                end;
-            end;
 
         }
     }
