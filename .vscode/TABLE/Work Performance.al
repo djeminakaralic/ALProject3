@@ -138,17 +138,18 @@ table 50099 "Work Performance"
                     //ovdje nema entry no, samo ima code kao key
 
                     /*WageAdditionType.Init(); //Tipovi dodataka na plate
-                    //ubaciti provjeru postoji li ovdje
-                    WageAdditionType.Taxable:=true; //obračunaj poreze
-                    WageAdditionType."Add. Taxable":=true; //obračunaj doprinose
+                    WageAdditionType.Incentive := true; //stimulacija
+                    WageAdditionType.Taxable := true; //obračunaj poreze
+                    WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
+                    WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                     //obračunaj kao dio neta
                     //procenat bruto
                     WageAdditionType.Insert();
 
                     WageAddition.Init(); //Lista dodataka na plate
-                    WageAddition."Employee No.":=
+                    WageAddition."Employee No." :=
                     WageAdditionType.Get()
-                    WageAddition."Wage Addition Type":=
+                    WageAddition."Wage Addition Type" :=
 
                     WageAddition.Insert();*/
                 end;
