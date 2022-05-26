@@ -173,15 +173,15 @@ table 50099 "Work Performance"
                     //prvo provjeriti postoji li u tabeli odobren učinak za ovog zaposlenog, ovu godinu i ovaj mjesec
                     WorkPerformance.Reset();
                     WorkPerformance.SetFilter("Employee No.", '%1', Rec."Employee No.");
-                    //WorkPerformance.SetFilter(Month, '%1', Rec.Month);
-                    //bWorkPerformance.SetFilter(Year, '%1', Rec.Year);
+                    WorkPerformance.SetFilter("Month Of Performance", '%1', Rec."Month Of Performance");
+                    WorkPerformance.SetFilter("Year Of Performance", '%1', Rec."Year Of Performance");
                     WorkPerformance.SetFilter(Approved, '%1', true);
                     if WorkPerformance.FindFirst() then
                         Error(Text001);
 
 
                     //trebam provjeriti postoji li ovaj tip dodatka
-                    WageAdditionType.Reset();
+                    /*WageAdditionType.Reset();
                     WageAdditionType.SetFilter(Incentive, '%1', true);
                     WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
                     //WageAdditionType.SetFilter();
