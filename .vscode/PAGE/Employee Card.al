@@ -3651,7 +3651,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Image = Report;
                 RunObject = report VacationDecision;
                 ApplicationArea = all;
-                RunPageLink = "Employee No." = field("Employee No.");
+                //RunPageLink = "Employee No." = field("Employee No.");
                 Promoted = true;
 
             }
