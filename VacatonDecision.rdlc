@@ -537,7 +537,8 @@
                                         <TextDecoration>None</TextDecoration>
                                         <Color>#000000</Color>
                                       </Style>
-                                      </TextRun>
+                                    </TextRun>
+                                    <TextRun>
                                       <Value>Radnik je ranije iskoristio </Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
