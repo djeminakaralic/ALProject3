@@ -233,7 +233,7 @@ table 50099 "Work Performance"
                         IF CCategory.FindSet() then begin
                             CCategory.CalcFields("From Brutto");
                             //Validate();
-                            //VALIDATE(Amount, (WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100)) * (1 - CCategory."From Brutto" / 100));
+                            //VALIDATE(WageAddition.Amount, (WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100)) * (1 - CCategory."From Brutto" / 100));
                         end;
 
                     end;
