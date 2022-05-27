@@ -226,7 +226,17 @@ table 50099 "Work Performance"
                     WageAddition.Description := WageAdditionType.Description;
 
                     WageAmounts.Reset();
+                    WageAmounts.SetFilter("Employee No.", Rec."Employee No.");
+                    if WageAmounts.FindLast() then begin
+                        //CCategory.SetFilter(Code, '%1', Rec.conti);
+                        //ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                        IF CCategory.FindSet() then begin
+                            CCategory.CalcFields("From Brutto");
+                            //Validate();
+                            //VALIDATE(Amount, (WAmounts."Wage Amount" * (WAT."Default Amount" / 100)) * (1 - ConCat."From Brutto" / 100));
+                        end;
 
+                    end;
 
                     WageAddition.Insert();
                 end;
@@ -250,6 +260,7 @@ table 50099 "Work Performance"
         WageAdditionType: Record "Wage Addition Type";
         WageAddition: Record "Wage Addition";
         WageAmounts: Record "Wage Amounts";
+        CCategory: Record "Contribution Category";
         RealOptionGrade: Decimal;
         RealQualityGrade: Decimal;
         RealScopeGrade: Decimal;
