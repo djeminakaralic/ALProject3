@@ -8,6 +8,7 @@ report 50109 VacationDecision
     EnableExternalAssemblies = true;
     PreviewMode = PrintLayout;
 
+
     dataset
     {
         dataitem(DataItem1; Employee)
@@ -191,6 +192,7 @@ report 50109 VacationDecision
     requestpage
     {
 
+
         layout
         {
             area(content)
@@ -203,6 +205,7 @@ report 50109 VacationDecision
                 {
                     Caption = 'Datum rješenja';
                 }
+
                 /*field(BrojDanaPrviDio; BrojDanaPrviDio)
                 {
                     Caption = 'Broj dana prvog dijela';
@@ -211,8 +214,12 @@ report 50109 VacationDecision
                 {
                     Caption = 'Ranije iskorišteni dani odmora';
                 }*/
+
             }
+
+
         }
+
 
         actions
         {
