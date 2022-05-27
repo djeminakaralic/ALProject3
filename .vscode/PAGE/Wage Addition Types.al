@@ -52,6 +52,10 @@ page 50267 "Wage Addition Types"
                 field("Add. Taxable"; "Add. Taxable")
                 {
                 }
+                field("Contribution Category Code"; "Contribution Category Code")
+                {
+
+                }
                 field("G/L Account No."; "G/L Account No.")
                 {
                 }
