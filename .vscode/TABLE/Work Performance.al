@@ -217,7 +217,7 @@ table 50099 "Work Performance"
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                         WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
-                                                                         //FoundType := WageAdditionType.Code;
+                        FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
                         Message('Nisam pronašao!');
                     end;
