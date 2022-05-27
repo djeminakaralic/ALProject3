@@ -88,15 +88,7 @@ page 50267 "Wage Addition Types"
         //INT1.0 end
     end;
 
-    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
-    begin
-        WageAdditionType.Reset();
-        WageAdditionType.SetCurrentKey("Entry No.");
-        if WageAdditionType.FindLast() then
-            Rec."Entry No." := WageAdditionType."Entry No." + 1
-        else
-            Rec."Entry No." := 1;
-    end;
+
 
     var
         UTemp: Record "User Setup";

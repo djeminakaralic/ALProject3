@@ -59,7 +59,6 @@ table 50099 "Work Performance"
             begin
                 if Rec.Approved then
                     Error(Text002);
-
             end;
         }
         field(5; "Quality of performed work"; Option)
@@ -197,20 +196,14 @@ table 50099 "Work Performance"
                         Message('Pronašao!');
                     end
                     else begin
-                        WageAdditionType.SetCurrentKey("Entry No.");
-                        if WageAdditionType.FindLast() then begin
-                            LastEntry := WageAdditionType."Entry No." + 1;
-                        end
-                        else
-                            LastEntry := 1;
-                        
+
                         WageAdditionType.Reset();
 
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init(); //Tipovi dodataka na plate
                         WageAdditionType.Code := FORMAT(LastEntry);
-                        WageAdditionType."Entry No." := LastEntry;
+
                         WageAdditionType.Description := 'Radni učinak';
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
                         WageAdditionType."Incentive" := true; //stimulacija

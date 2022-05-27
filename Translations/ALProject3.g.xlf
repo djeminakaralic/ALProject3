@@ -17183,11 +17183,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1059656092 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Entry No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Entry No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1059656092 - Field 3852983238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>G/L Account No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
