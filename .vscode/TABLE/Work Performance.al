@@ -223,9 +223,9 @@ table 50099 "Work Performance"
                     WageAdditionType.Reset();
                     WageAdditionType.Get(FoundType);
 
-                    //WageAddition.Init(); //Lista dodataka na plate
+                    WageAddition.Init(); //Lista dodataka na plate
 
-                    /*WageAddition."Wage Addition Type" := FoundType;
+                    WageAddition."Wage Addition Type" := FoundType;
                     WageAddition."Employee No." := Rec."Employee No.";
                     WageAddition."First Name" := Rec."First Name";
                     WageAddition."Last Name" := Rec."Last Name";
@@ -241,13 +241,13 @@ table 50099 "Work Performance"
                         IF CCategory.FindSet() then begin
                             CCategory.CalcFields("From Brutto");
                             //Validate();
-                            WageAddition.Amount := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
+                            //WageAddition.Amount := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
                         end;
 
                     end;
 
 
-                    WageAddition.Insert();*/
+                    WageAddition.Insert();
                 end;
             end;
         }
