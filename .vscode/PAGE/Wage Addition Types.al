@@ -88,9 +88,20 @@ page 50267 "Wage Addition Types"
         //INT1.0 end
     end;
 
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    begin
+        WageAdditionType.Reset();
+        WageAdditionType.SetCurrentKey("Entry No.");
+        if WageAdditionType.FindLast() then
+            Rec."Entry No." := WageAdditionType."Entry No." + 1
+        else
+            Rec."Entry No." := 1;
+    end;
+
     var
         UTemp: Record "User Setup";
         WageAllowed: Boolean;
+        WageAdditionType: Record "Wage Addition Type";
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 }
 

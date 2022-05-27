@@ -190,16 +190,21 @@ table 50099 "Work Performance"
                         Message('Pronašao!');
                     end
                     else begin
-                        WorkPerformance.Reset();
-                        WorkPerformance.SetCurrentKey("Entry No.");
-                        if WorkPerformance.FindLast() then
-                            LastEntry := WorkPerformance."Entry No." + 1
+                        WageAdditionType.SetCurrentKey("Entry No.");
+                        if WageAdditionType.FindLast() then begin
+                            Evaluate(LastEntry, WageAdditionType.Code);
+                            LastEntry := LastEntry + 1;
+                        end
                         else
                             LastEntry := 1;
+                        
+                        WageAdditionType.Reset();
+
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init(); //Tipovi dodataka na plate
                         WageAdditionType.Code := FORMAT(LastEntry);
+                        WageAdditionType."Entry No." := LastEntry;
                         WageAdditionType.Description := 'Radni učinak';
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
                         WageAdditionType."Incentive" := true; //stimulacija

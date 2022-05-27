@@ -181,8 +181,11 @@ table 50188 "Wage Addition Type"
         {
             Caption = 'Bruto executed';
         }
+        field(135; "Entry No."; Integer)
+        {
+            Caption = 'Entry No.';
+        }
     }
-
     keys
     {
         key(Key1; "Code")
