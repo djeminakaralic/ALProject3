@@ -3647,18 +3647,21 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
             action(Rješenja)
             {
-                Caption = 'Rjesenja';
+                Caption = 'Rješenja';
                 Image = Report;
                 RunObject = report VacationDecision;
                 ApplicationArea = all;
                 //RunPageLink = "Employee No." = field("Employee No.");
+
                 Promoted = true;
 
                 trigger OnAction()
                 begin
-                    emp.SetFilter("No.", xRec."No.");
-                    if emp.FindFirst() then
+                    employee.SetFilter("No.", xRec."No.");
+                    if employee.FindFirst() then begin
+                        VacationDecisionR.SETTABLEVIEW(employee);
                         VacationDecisionR.RUN;
+                    end;
 
                 end;
 
@@ -4261,6 +4264,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         WageCalc: Record "Wage Calculation";
         Text010: Label 'Probation period start date cannot be before employment date.';
         EmploymentDate: Date;
+        employee: Record Employee;
         PersonalDocuments: record "Personal Documents";
         VacationDecisionR: Report VacationDecision;
 }
