@@ -173,6 +173,12 @@ table 50099 "Work Performance"
             Caption = 'Approved';
 
             trigger OnValidate()
+            var
+                NextEntryNo: Integer;
+                WA: Record "Wage Addition";
+
+
+
             begin
                 if Approved then begin
                     //prvo provjeriti postoji li u tabeli odobren učinak za ovog zaposlenog, ovu godinu i ovaj mjesec
@@ -237,6 +243,13 @@ table 50099 "Work Performance"
                     WageAdditionType.Get(FoundType);
 
                     WageAddition.Init(); //Lista dodataka na plate
+
+                    NextEntryNo := 0;
+                    WA.SetFilter("Entry No.", '<>%1', 0);
+                    IF WA.FindLast() THEN
+                        WageAddition."Entry No." := WA."Entry No." + 1
+                    else
+                        WageAddition."Entry No." := 1;
 
                     WageAddition."Wage Addition Type" := FoundType;
                     WageAddition."Employee No." := Rec."Employee No.";
