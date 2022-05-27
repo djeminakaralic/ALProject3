@@ -202,7 +202,7 @@ table 50099 "Work Performance"
                         WageAdditionType.SetFilter(Incentive, '%1', true);
 
                         WageAdditionType.SetFilter("Calculation Type", '%1', 0);
-                        Counter := WageAddition.Count;
+                        Counter := WageAdditionType.Count;
                         Counter := Counter + 1;
 
                         WageAdditionType.Init();
