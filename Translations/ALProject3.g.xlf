@@ -32449,7 +32449,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work Permit2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Action 3195146101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Rjesenja</source>
+          <source>Rješenja</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Rješenja - Property Caption</note>
         </trans-unit>
