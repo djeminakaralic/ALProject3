@@ -21753,6 +21753,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType BlockedErr</note>
         </trans-unit>
+        <trans-unit id="Table 2583320483 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work performance for the selected employee and selected month has already been entered.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Table 2583320483 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected record has already been approved.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Table 2583320483 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The entered month is not valid.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - NamedType Text003</note>
+        </trans-unit>
         <trans-unit id="Table 2583320483 - Field 2913119229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approved</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21808,6 +21823,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Last Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2583320483 - Field 290138851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month Of Performance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Month Of Performance - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2583320483 - Field 308372495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quality of performed work</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21827,6 +21847,11 @@
           <source>1.00,2.00,3.00,3.50,4.00,4.50,5.00</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Scope of performed work - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2583320483 - Field 3770920666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year Of Performance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Year Of Performance - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1830864280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>XML Wage Calculation</source>

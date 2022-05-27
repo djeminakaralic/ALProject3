@@ -32,6 +32,14 @@ page 51130 "Work Performance"
                 {
                     Editable = false;
                 }
+                field("Month Of Performance"; "Month Of Performance")
+                {
+                    Editable = true;
+                }
+                field("Year Of Performance"; "Year Of Performance")
+                {
+                    Editable = true;
+                }
                 field("Quality of performed work"; "Quality of performed work")
                 {
                     Editable = true;
@@ -88,6 +96,10 @@ page 51130 "Work Performance"
         Validate(Rec."Scope of performed work", "Scope of performed work"::"3.00");
         Validate(Rec."Deadline for completion of work", "Deadline for completion of work"::"3.00");
         Validate(Rec."Attitude towards work obligations", "Attitude towards work obligations"::"3.00");
+        MonthFilter := DATE2DMY(WORKDATE, 2);
+        Validate(Rec."Month Of Performance", MonthFilter);
+        YearFilter := DATE2DMY(WORKDATE, 3);
+        Validate(Rec."Year Of Performance", YearFilter);
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -102,5 +114,7 @@ page 51130 "Work Performance"
 
     var
         Employee: Record "Employee";
+        MonthFilter: Integer;
+        YearFilter: Integer;
     //ED 01 END
 }

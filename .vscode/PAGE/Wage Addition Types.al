@@ -88,9 +88,12 @@ page 50267 "Wage Addition Types"
         //INT1.0 end
     end;
 
+
+
     var
         UTemp: Record "User Setup";
         WageAllowed: Boolean;
+        WageAdditionType: Record "Wage Addition Type";
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 }
 

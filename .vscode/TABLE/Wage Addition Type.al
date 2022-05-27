@@ -181,8 +181,8 @@ table 50188 "Wage Addition Type"
         {
             Caption = 'Bruto executed';
         }
-    }
 
+    }
     keys
     {
         key(Key1; "Code")

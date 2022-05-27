@@ -19,11 +19,12 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+                if Rec.Approved then
+                    Error(Text002);
+
                 Employee.GET("Employee No.");
                 "First Name" := Employee."First Name";
                 "Last Name" := Employee."Last Name";
-                /*WageAmounts.Get("Employee No.");
-                "Wage amount" := WageAmounts."Wage Amount";*/
             end;
         }
         field(3; "First Name"; Text[30])
@@ -34,6 +35,32 @@ table 50099 "Work Performance"
         {
             Caption = 'Last Name';
         }
+        field(12; "Month Of Performance"; Integer)
+        {
+            Caption = 'Month Of Performance';
+
+            trigger OnValidate()
+            begin
+                if Rec.Approved then
+                    Error(Text002);
+
+                if Rec."Month Of Performance" < 1 then
+                    Error(Text003);
+
+                if rec."Month Of Performance" > 12 then
+                    Error(Text003);
+            end;
+        }
+        field(13; "Year Of Performance"; Integer)
+        {
+            Caption = 'Year Of Performance';
+
+            trigger OnValidate()
+            begin
+                if Rec.Approved then
+                    Error(Text002);
+            end;
+        }
         field(5; "Quality of performed work"; Option)
         {
             Caption = 'Quality of performed work';
@@ -41,6 +68,9 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
 
                 SetGrade("Quality of performed work"); //zovem proceduru da prepozna koji je option
                 RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
@@ -62,6 +92,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
+
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -82,6 +116,11 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
+
+
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -104,6 +143,10 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             begin
+
+                if Rec.Approved then
+                    Error(Text002);
+
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -132,33 +175,73 @@ table 50099 "Work Performance"
             trigger OnValidate()
             begin
                 if Approved then begin
+                    //prvo provjeriti postoji li u tabeli odobren učinak za ovog zaposlenog, ovu godinu i ovaj mjesec
+                    WorkPerformance.Reset();
+                    WorkPerformance.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    WorkPerformance.SetFilter("Month Of Performance", '%1', Rec."Month Of Performance");
+                    WorkPerformance.SetFilter("Year Of Performance", '%1', Rec."Year Of Performance");
+                    WorkPerformance.SetFilter(Approved, '%1', true);
+                    if WorkPerformance.FindFirst() then
+                        Error(Text001);
+
                     //trebam provjeriti postoji li ovaj tip dodatka
+                    //kriteriji za podudaranje: procentualni tip kalkulacije, simulacija, isti iznos u %
+                    WageAdditionType.Reset();
+                    WageAdditionType.SetFilter(Incentive, '%1', true);
+                    WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
+                    WageAdditionType.SetFilter("Calculation Type", '%1', 0);
+                    IF WageAdditionType.FindFirst() then begin
+                        FoundType := WageAdditionType.Code;
+                        Message('Pronašao!');
+                    end
+                    else begin
 
-                    //ako ne postoji radim insert u tabelu wage addition type 
-                    //ovdje nema entry no, samo ima code kao key
+                        WageAdditionType.Reset();//Tipovi dodataka na plate
+                        //ako ne postoji radim insert u tabelu wage addition type 
+                        //ovdje nema entry no, samo ima code kao key 
+                        WageAdditionType.Init();
+                        WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)"; //standardni iznos
+                        WageAdditionType.Description := WorkPerformance.TableCaption; //opis
+                        WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
+                        WageAdditionType."Incentive" := true; //stimulacija
+                        WageAdditionType."Taxable" := true; //obračunaj poreze
+                        WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
+                        WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
+                        WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
+                        //FoundType := WageAdditionType.Code;
+                        WageAdditionType.Insert();
+                        Message('Nisam pronašao!');
+                    end;
 
-                    /*WageAdditionType.Init(); //Tipovi dodataka na plate
-                    WageAdditionType.Incentive := true; //stimulacija
-                    WageAdditionType.Taxable := true; //obračunaj poreze
-                    WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
-                    WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
-                    //obračunaj kao dio neta
-                    //procenat bruto
-                    WageAdditionType.Insert();
+                    WageAdditionType.Reset();
+                    WageAdditionType.Get(FoundType);
 
                     WageAddition.Init(); //Lista dodataka na plate
-                    WageAddition."Employee No." :=
-                    WageAdditionType.Get()
-                    WageAddition."Wage Addition Type" :=
+                    WageAddition."Wage Addition Type" := FoundType;
+                    WageAddition."Employee No." := Rec."Employee No.";
+                    WageAddition."First Name" := Rec."First Name";
+                    WageAddition."Last Name" := Rec."Last Name";
+                    WageAddition."Year of Wage" := Rec."Year Of Performance";
+                    WageAddition."Month of Wage" := Rec."Month Of Performance";
+                    WageAddition.Description := WageAdditionType.Description;
 
-                    WageAddition.Insert();*/
+                    WageAmounts.Reset();
+                    WageAmounts.SetFilter("Employee No.", Rec."Employee No.");
+                    if WageAmounts.FindLast() then begin
+                        //CCategory.SetFilter(Code, '%1', Rec.conti);
+                        //ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                        IF CCategory.FindSet() then begin
+                            CCategory.CalcFields("From Brutto");
+                            //Validate();
+                            //VALIDATE(Amount, (WAmounts."Wage Amount" * (WAT."Default Amount" / 100)) * (1 - ConCat."From Brutto" / 100));
+                        end;
+
+                    end;
+
+                    WageAddition.Insert();
                 end;
             end;
         }
-        /*field(12; "Wage amount"; Decimal)
-        {
-            Caption = 'Wage amount';
-        }*/
 
     }
 
@@ -177,11 +260,18 @@ table 50099 "Work Performance"
         WageAdditionType: Record "Wage Addition Type";
         WageAddition: Record "Wage Addition";
         WageAmounts: Record "Wage Amounts";
+        CCategory: Record "Contribution Category";
         RealOptionGrade: Decimal;
         RealQualityGrade: Decimal;
         RealScopeGrade: Decimal;
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
+        LastEntry: Integer;
+        FoundType: Code[10];
+        Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
+        Text002: Label 'Selected record has already been approved.';
+        Text003: Label 'The entered month is not valid.';
+
 
     trigger OnInsert()
     begin
