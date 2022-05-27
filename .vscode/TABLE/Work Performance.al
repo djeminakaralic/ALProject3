@@ -209,7 +209,6 @@ table 50099 "Work Performance"
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                         FoundType := WageAdditionType.Code;
-
                         //procenat bruto
                         WageAdditionType.Insert();
                         Message('Nisam pronašao!');
