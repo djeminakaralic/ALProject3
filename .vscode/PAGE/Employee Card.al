@@ -3654,6 +3654,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //RunPageLink = "Employee No." = field("Employee No.");
                 Promoted = true;
 
+                trigger OnAction()
+                begin
+                    emp.SetFilter("No.", xRec."No.");
+                    if emp.FindFirst() then
+                        VacationDecisionR.RUN;
+
+                end;
+
             }
         }
 
@@ -4254,4 +4262,5 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         Text010: Label 'Probation period start date cannot be before employment date.';
         EmploymentDate: Date;
         PersonalDocuments: record "Personal Documents";
+        VacationDecisionR: Report VacationDecision;
 }
