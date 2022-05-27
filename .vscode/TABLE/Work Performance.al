@@ -220,6 +220,19 @@ table 50099 "Work Performance"
                         Message('Nije pronadjeno!');
                     end;
 
+                    WageAmounts.Reset();
+                    WageAmounts.SetFilter("Employee No.", Rec."Employee No.");
+                    if WageAmounts.FindLast() then begin
+                        //CCategory.SetFilter(Code, '%1', Rec.conti);
+                        //ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                        IF CCategory.FindSet() then begin
+                            CCategory.CalcFields("From Brutto");
+                            //Validate();
+                            AmountVar := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
+                        end;
+
+                    end;
+
                     WageAdditionType.Reset();
                     WageAdditionType.Get(FoundType);
 
@@ -233,19 +246,8 @@ table 50099 "Work Performance"
                     WageAddition."Year of Wage" := Rec."Year Of Performance";
                     WageAddition."Month of Wage" := Rec."Month Of Performance";
                     WageAddition.Description := WageAdditionType.Description;
+                    WageAddition.Amount := AmountVar;
 
-                    WageAmounts.Reset();
-                    WageAmounts.SetFilter("Employee No.", Rec."Employee No.");
-                    if WageAmounts.FindLast() then begin
-                        //CCategory.SetFilter(Code, '%1', Rec.conti);
-                        //ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
-                        IF CCategory.FindSet() then begin
-                            CCategory.CalcFields("From Brutto");
-                            //Validate();
-                            //WageAddition.Amount := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
-                        end;
-
-                    end;
 
                     WageAddition.Insert();
                 end;
