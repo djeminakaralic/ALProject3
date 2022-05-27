@@ -199,7 +199,16 @@ table 50099 "Work Performance"
                         WageAdditionType.Reset();//Tipovi dodataka na plate
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
+                        WageAdditionType.SetFilter(Incentive, '%1', true);
+
+                        WageAdditionType.SetFilter("Calculation Type", '%1', 0);
+                        Counter := WageAddition.Count;
+                        Counter := Counter + 1;
+
+
                         WageAdditionType.Init();
+
+                        WageAdditionType.Code := 'stim' + FORMAT(Counter);
                         WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)"; //standardni iznos
                         WageAdditionType.Description := WorkPerformance.TableCaption; //opis
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
@@ -208,8 +217,7 @@ table 50099 "Work Performance"
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                         WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
-                        //WageAdditionType."Contribution Category Code"
-                        //FoundType := WageAdditionType.Code;
+                                                                         //FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
                         Message('Nisam pronašao!');
                     end;
@@ -217,8 +225,9 @@ table 50099 "Work Performance"
                     WageAdditionType.Reset();
                     WageAdditionType.Get(FoundType);
 
-                    WageAddition.Init(); //Lista dodataka na plate
-                    WageAddition."Wage Addition Type" := FoundType;
+                    //WageAddition.Init(); //Lista dodataka na plate
+
+                    /*WageAddition."Wage Addition Type" := FoundType;
                     WageAddition."Employee No." := Rec."Employee No.";
                     WageAddition."First Name" := Rec."First Name";
                     WageAddition."Last Name" := Rec."Last Name";
@@ -234,13 +243,13 @@ table 50099 "Work Performance"
                         IF CCategory.FindSet() then begin
                             CCategory.CalcFields("From Brutto");
                             //Validate();
-                            AmountVar := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
+                            WageAddition.Amount := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
                         end;
 
                     end;
-                    WageAddition.Amount := AmountVar;
 
-                    WageAddition.Insert();
+
+                    WageAddition.Insert();*/
                 end;
             end;
         }
@@ -270,6 +279,7 @@ table 50099 "Work Performance"
         RealAttitudeGrade: Decimal;
         AmountVar: Decimal;
         LastEntry: Integer;
+        Counter: Integer;
         FoundType: Code[10];
         Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
         Text002: Label 'Selected record has already been approved.';
