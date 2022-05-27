@@ -1,5 +1,6 @@
 report 50109 VacationDecision
 {
+    Caption = 'Rješenje GO';
     DefaultLayout = RDLC;
     RDLCLayout = './VacatonDecision.rdlc';
     UsageCategory = ReportsAndAnalysis;
@@ -146,7 +147,7 @@ report 50109 VacationDecision
                     DanJavljanjanaposao := "Ending Date of I part";
                     DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
                     //Message(FORMAT(DanJavljanjanaposao));
-                    DrugiDioDana := "Total days" - BrojDanaPrviDio;
+                    DrugiDioDana := "Total days" - FirstPart;
                     StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndFirstpartT := FORMAT("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
