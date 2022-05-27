@@ -530,15 +530,15 @@
                                       </Style>
                                     </TextRun>
                                     <TextRun>
-                                    <TextRun>
-                                      <Value>=Code.TextOnlyJustify("koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za ____ poslove.",new System.Drawing.Font("Arial",12), true,795)</Value>
-                                      <Style>
-                                        <FontStyle>Normal</FontStyle>
-                                        <FontWeight>Normal</FontWeight>
-                                        <TextDecoration>None</TextDecoration>
-                                        <Color>#000000</Color>
-                                      </Style>
-                                    </TextRun>
+                                      <TextRun>
+                                        <Value>=Code.TextOnlyJustify("koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za ____ poslove.",new System.Drawing.Font("Arial",12), true,795)</Value>
+                                        <Style>
+                                          <FontStyle>Normal</FontStyle>
+                                          <FontWeight>Normal</FontWeight>
+                                          <TextDecoration>None</TextDecoration>
+                                          <Color>#000000</Color>
+                                        </Style>
+                                      </TextRun>
                                       <Value>Radnik je ranije iskoristio </Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
