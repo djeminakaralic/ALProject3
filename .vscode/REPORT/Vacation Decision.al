@@ -147,21 +147,15 @@ report 50109 VacationDecision
                     DanJavljanjanaposao := "Ending Date of I part";
                     DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
                     //Message(FORMAT(DanJavljanjanaposao));
-                    DrugiDioDana := "Total days" - FirstPart;
+
                     StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndFirstpartT := FORMAT("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
 
-                    /*EmployeeRec.Reset();
-                    EmployeeRec.SetFilter("No.", DataItem5."Employee No.");
-                    if EmployeeRec.FindFirst() then begin*/
-
-
-
-
                     FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", DataItem1."Hours In Day")) / 8;
+                    DrugiDioDana := "Total days" - FirstPart;
 
 
 
