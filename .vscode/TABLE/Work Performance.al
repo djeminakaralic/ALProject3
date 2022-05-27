@@ -227,8 +227,9 @@ table 50099 "Work Performance"
 
                     WageAddition."Wage Addition Type" := FoundType;
                     WageAddition."Employee No." := Rec."Employee No.";
-                    WageAddition."First Name" := Rec."First Name";
-                    WageAddition."Last Name" := Rec."Last Name";
+                    Employee.Get(Rec."Employee No.");
+                    WageAddition."First Name" := Employee."First Name";
+                    WageAddition."Last Name" := Employee."Last Name";
                     WageAddition."Year of Wage" := Rec."Year Of Performance";
                     WageAddition."Month of Wage" := Rec."Month Of Performance";
                     WageAddition.Description := WageAdditionType.Description;
@@ -245,7 +246,6 @@ table 50099 "Work Performance"
                         end;
 
                     end;
-
 
                     WageAddition.Insert();
                 end;
