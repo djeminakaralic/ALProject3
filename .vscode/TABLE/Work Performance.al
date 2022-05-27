@@ -192,7 +192,7 @@ table 50099 "Work Performance"
                     WageAdditionType.SetFilter("Calculation Type", '%1', 0);
                     IF WageAdditionType.FindFirst() then begin
                         FoundType := WageAdditionType.Code;
-                        Message('Pronašao!');
+                        Message('Pronađeno!');
                     end
                     else begin
 
@@ -205,9 +205,7 @@ table 50099 "Work Performance"
                         Counter := WageAddition.Count;
                         Counter := Counter + 1;
 
-
                         WageAdditionType.Init();
-
                         WageAdditionType.Code := 'STIM' + FORMAT(Counter);
                         WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)"; //standardni iznos
                         WageAdditionType.Description := WorkPerformance.TableCaption; //opis
@@ -217,9 +215,9 @@ table 50099 "Work Performance"
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                         WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
-                                                                         //FoundType := WageAdditionType.Code;
+                        FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
-                        Message('Nisam pronašao!');
+                        Message('Nije pronadjeno!');
                     end;
 
                     WageAdditionType.Reset();
