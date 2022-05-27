@@ -223,8 +223,9 @@ table 50099 "Work Performance"
                     WageAddition."Last Name" := Rec."Last Name";
                     WageAddition."Year of Wage" := Rec."Year Of Performance";
                     WageAddition."Month of Wage" := Rec."Month Of Performance";
+                    WageAddition.Description := WageAdditionType.Description;
 
-
+                    WageAmounts.Reset();
 
 
                     WageAddition.Insert();
