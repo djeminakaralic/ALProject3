@@ -197,13 +197,10 @@ table 50099 "Work Performance"
                     end
                     else begin
 
-                        WageAdditionType.Reset();
-
+                        WageAdditionType.Reset();//Tipovi dodataka na plate
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
-                        WageAdditionType.Init(); //Tipovi dodataka na plate
-                                                 //WageAdditionType.Code := FORMAT(LastEntry);
-
+                        WageAdditionType.Init();
                         WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)";
                         WageAdditionType.Description := 'Radni učinak';
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
