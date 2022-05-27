@@ -202,8 +202,9 @@ table 50099 "Work Performance"
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init(); //Tipovi dodataka na plate
-                        WageAdditionType.Code := FORMAT(LastEntry);
+                                                 //WageAdditionType.Code := FORMAT(LastEntry);
 
+                        WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)";
                         WageAdditionType.Description := 'Radni učinak';
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
                         WageAdditionType."Incentive" := true; //stimulacija
