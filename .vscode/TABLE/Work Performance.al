@@ -208,7 +208,7 @@ table 50099 "Work Performance"
 
                         WageAdditionType.Init();
 
-                        WageAdditionType.Code := 'stim' + FORMAT(Counter);
+                        WageAdditionType.Code := 'STIM' + FORMAT(Counter);
                         WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)"; //standardni iznos
                         WageAdditionType.Description := WorkPerformance.TableCaption; //opis
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
