@@ -208,6 +208,7 @@ table 50099 "Work Performance"
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                         WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
+                        //WageAdditionType."Contribution Category Code"
                         //FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
                         Message('Nisam pronašao!');
@@ -233,10 +234,11 @@ table 50099 "Work Performance"
                         IF CCategory.FindSet() then begin
                             CCategory.CalcFields("From Brutto");
                             //Validate();
-                            //VALIDATE(WageAddition.Amount, (WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100)) * (1 - CCategory."From Brutto" / 100));
+                            AmountVar := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
                         end;
 
                     end;
+                    WageAddition.Amount := AmountVar;
 
                     WageAddition.Insert();
                 end;
@@ -266,6 +268,7 @@ table 50099 "Work Performance"
         RealScopeGrade: Decimal;
         RealDeadlineGrade: Decimal;
         RealAttitudeGrade: Decimal;
+        AmountVar: Decimal;
         LastEntry: Integer;
         FoundType: Code[10];
         Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
