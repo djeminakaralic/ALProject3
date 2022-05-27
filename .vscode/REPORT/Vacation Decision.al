@@ -203,14 +203,14 @@ report 50109 VacationDecision
                 {
                     Caption = 'Datum rješenja';
                 }
-                field(BrojDanaPrviDio; BrojDanaPrviDio)
+                /*field(BrojDanaPrviDio; BrojDanaPrviDio)
                 {
                     Caption = 'Broj dana prvog dijela';
                 }
                 field(RanijeIskoristeniDani; RanijeIskoristeniDani)
                 {
                     Caption = 'Ranije iskorišteni dani odmora';
-                }
+                }*/
             }
         }
 
