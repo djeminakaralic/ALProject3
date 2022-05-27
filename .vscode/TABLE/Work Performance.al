@@ -200,27 +200,34 @@ table 50099 "Work Performance"
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init();
-                        WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)";
-                        WageAdditionType.Description := WorkPerformance.TableCaption;
+                        WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)"; //standardni iznos
+                        WageAdditionType.Description := WorkPerformance.TableCaption; //opis
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
                         WageAdditionType."Incentive" := true; //stimulacija
                         WageAdditionType."Taxable" := true; //obračunaj poreze
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
-                        FoundType := WageAdditionType.Code;
-                        //procenat bruto
+                        WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
+                        //FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
                         Message('Nisam pronašao!');
                     end;
 
                     WageAdditionType.Reset();
+                    WageAdditionType.Get(FoundType);
 
-                    /*WageAddition.Init(); //Lista dodataka na plate
-                    WageAddition."Employee No." :=
-                    WageAdditionType.Get()
-                    WageAddition."Wage Addition Type" :=
+                    WageAddition.Init(); //Lista dodataka na plate
+                    WageAddition."Wage Addition Type" := FoundType;
+                    WageAddition."Employee No." := Rec."Employee No.";
+                    WageAddition."First Name" := Rec."First Name";
+                    WageAddition."Last Name" := Rec."Last Name";
+                    WageAddition."Year of Wage" := Rec."Year Of Performance";
+                    WageAddition."Month of Wage" := Rec."Month Of Performance";
 
-                    WageAddition.Insert();*/
+
+
+
+                    WageAddition.Insert();
                 end;
             end;
         }
