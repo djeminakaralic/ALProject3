@@ -147,7 +147,6 @@ table 50099 "Work Performance"
                 if Rec.Approved then
                     Error(Text002);
 
-
                 SetGrade("Quality of performed work");
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
@@ -202,7 +201,7 @@ table 50099 "Work Performance"
                         //ovdje nema entry no, samo ima code kao key 
                         WageAdditionType.Init();
                         WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)";
-                        WageAdditionType.Description := 'Radni učinak';
+                        WageAdditionType.Description := WorkPerformance.TableCaption;
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
                         WageAdditionType."Incentive" := true; //stimulacija
                         WageAdditionType."Taxable" := true; //obračunaj poreze
