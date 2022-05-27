@@ -37,6 +37,8 @@ report 50109 VacationDecision
             dataitem(DataItem5; "Vacation Ground 2")
             {
                 RequestFilterFields = "Employee No.";
+
+
                 column(WorkEXpDays; "Days based on Work experience")
                 {
 
@@ -136,8 +138,10 @@ report 50109 VacationDecision
 
                 }
 
+
                 trigger OnAfterGetRecord()
                 begin
+
                     CalcFields("Position Name", Sector);
                     DanJavljanjanaposao := "Ending Date of I part";
                     DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
@@ -149,7 +153,22 @@ report 50109 VacationDecision
                     EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
 
-                    "First Part" := (AbsenceFill.GetHourPoolForVacation("Starting Date of I part", "Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
+                    /*EmployeeRec.Reset();
+                    EmployeeRec.SetFilter("No.", DataItem5."Employee No.");
+                    if EmployeeRec.FindFirst() then begin*/
+
+
+
+
+                    FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", DataItem1."Hours In Day")) / 8;
+
+
+
+
+
+
+
+
                 end;
 
 
@@ -158,6 +177,8 @@ report 50109 VacationDecision
                     DatumRjesenjaT := FORMAT(DatumRjesenja, 0, '<Day,2>.<Month,2>.<Year4>.');
 
                     Year1 := FORMAT(DatumRjesenja, 0, '<Year4>.');
+
+
 
 
                 end;
@@ -235,6 +256,7 @@ report 50109 VacationDecision
         AbsenceFill: Codeunit "Absence Fill";
 
         EmployeeRec: Record Employee;
+        Vacation: Record "Vacation Ground 2";
 
 
 
