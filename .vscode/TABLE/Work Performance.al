@@ -43,6 +43,12 @@ table 50099 "Work Performance"
             begin
                 if Rec.Approved then
                     Error(Text002);
+
+                if Rec."Month Of Performance" < 1 then
+                    Error(Text003);
+
+                if rec."Month Of Performance" > 12 then
+                    Error(Text003);
             end;
         }
         field(13; "Year Of Performance"; Integer)
@@ -53,6 +59,7 @@ table 50099 "Work Performance"
             begin
                 if Rec.Approved then
                     Error(Text002);
+
             end;
         }
         field(5; "Quality of performed work"; Option)
@@ -192,8 +199,7 @@ table 50099 "Work Performance"
                     else begin
                         WageAdditionType.SetCurrentKey("Entry No.");
                         if WageAdditionType.FindLast() then begin
-                            Evaluate(LastEntry, WageAdditionType.Code);
-                            LastEntry := LastEntry + 1;
+                            LastEntry := WageAdditionType."Entry No." + 1;
                         end
                         else
                             LastEntry := 1;
@@ -256,6 +262,8 @@ table 50099 "Work Performance"
         FoundType: Code[10];
         Text001: Label 'Work performance for the selected employee and selected month has already been entered.';
         Text002: Label 'Selected record has already been approved.';
+        Text003: Label 'The entered month is not valid.';
+
 
     trigger OnInsert()
     begin
