@@ -208,8 +208,7 @@ table 50099 "Work Performance"
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
                         WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
-                        //WageAdditionType."Contribution Category Code"
-                        //FoundType := WageAdditionType.Code;
+                                                                         //FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
                         Message('Nisam pronašao!');
                     end;
@@ -234,11 +233,11 @@ table 50099 "Work Performance"
                         IF CCategory.FindSet() then begin
                             CCategory.CalcFields("From Brutto");
                             //Validate();
-                            AmountVar := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
+                            WageAddition.Amount := WageAmounts."Wage Amount" * (WageAdditionType."Default Amount" / 100) * (1 - CCategory."From Brutto" / 100);
                         end;
 
                     end;
-                    WageAddition.Amount := AmountVar;
+
 
                     WageAddition.Insert();
                 end;
