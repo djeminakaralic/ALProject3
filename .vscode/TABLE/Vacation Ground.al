@@ -15,18 +15,17 @@ table 50015 "Vacation Ground 2"
                 IF t_Employee.FIND('-') THEN BEGIN
                     "First Name" := t_Employee."First Name";
                     "Last Name" := t_Employee."Last Name";
-                    //"Work experience" := t_Employee."Years of Experience";
-                    "Work experience" := t_Employee."Current Years Total";
+                    "Work experience" := t_Employee."Years of Experience";
                 END;
 
-                CurrYear := DATE2DMY(WORKDATE, 3);
+                Year := DATE2DMY(WORKDATE, 3);
 
                 //OVO NIJE BIO KOMENTAR
                 /*VacationSetup.GET;                 
                 "Legal Grounds" := VacationSetup."Base Days";*/
 
-                VacationSetupHistory.Get(CurrYear);
-                "Legal Grounds" := VacationSetupHistory."Base Days";
+                VacationSetuphistory.Get(Year);
+                "Legal Grounds" := VacationSetuphistory."Base Days";
 
                 //"End Date of Year" := DMY2DATE(1, 12, CurrYear);
                 //LastDateOfMonth:=CALCDATE('-1D', CALCDATE('+1M',"End Date of Year"));
@@ -658,7 +657,7 @@ table 50015 "Vacation Ground 2"
         CurrYear: Integer;
         LastDateOfMonth: Date;
         VacationSetup: Record "Vacation Setup";
-        VacationSetupHistory: Record "Vacation setup history";
+        VacationSetuphistory: Record "Vacation setup history";
         VacationCalculation: Report "Vacation Calculation";
         UsedDaysThisYear: Integer;
         Year2: Integer;

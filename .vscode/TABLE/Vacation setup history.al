@@ -107,7 +107,8 @@ table 50189 "Vacation setup history"
 
     keys
     {
-        key(Key1; "Primary Key", Year)
+        //key(Key1; "Primary Key", Year)
+        key(Key1; Year)
         {
         }
     }
