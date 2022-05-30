@@ -256,7 +256,13 @@ report 50010 "Vacation Calculation2"
 
                             IF Absence.FINDSET THEN
                                 UsedDaysThisYear := Absence.COUNT;
-                            PlanGO."Total days" := PlanGO."Legal Grounds" - UsedDaysThisYear + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+
+                            //ED 02 START
+
+                            //ED 02 END
+
+
+                            PlanGO."Total days" := PlanGO."Legal Grounds" - UsedDaysThisYear + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                             EmployeeC.RESET;
@@ -475,7 +481,7 @@ report 50010 "Vacation Calculation2"
                                                 IF Absence.FINDSET THEN
                                                     UsedDaysThisYear := Absence.COUNT;
                                                 PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
                                                 PlanGO.MODIFY;
 
@@ -498,7 +504,7 @@ report 50010 "Vacation Calculation2"
                                                 IF Absence.FINDSET THEN
                                                     UsedDaysThisYear := Absence.COUNT;
                                                 PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                                 PlanGO.MODIFY;
@@ -638,7 +644,7 @@ report 50010 "Vacation Calculation2"
                                                     IF Absence.FINDSET THEN
                                                         UsedDaysThisYear := Absence.COUNT;
                                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                                     PlanGO.MODIFY;
@@ -662,7 +668,7 @@ report 50010 "Vacation Calculation2"
                                                     IF Absence.FINDSET THEN
                                                         UsedDaysThisYear := Absence.COUNT;
                                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                                     PlanGO.MODIFY;
@@ -924,7 +930,7 @@ report 50010 "Vacation Calculation2"
                                                     END;
 
 
-                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                                     PlanGO.MODIFY;
@@ -1133,7 +1139,7 @@ report 50010 "Vacation Calculation2"
                                     IF Absence.FINDSET THEN
                                         UsedDaysThisYear := Absence.COUNT;
                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
                                     PlanGO.MODIFY;
 
@@ -1156,7 +1162,7 @@ report 50010 "Vacation Calculation2"
                                     IF Absence.FINDSET THEN
                                         UsedDaysThisYear := Absence.COUNT;
                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                     PlanGO.MODIFY;
@@ -1295,7 +1301,7 @@ report 50010 "Vacation Calculation2"
                                         IF Absence.FINDSET THEN
                                             UsedDaysThisYear := Absence.COUNT;
                                         PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                         PlanGO.MODIFY;
@@ -1319,7 +1325,7 @@ report 50010 "Vacation Calculation2"
                                         IF Absence.FINDSET THEN
                                             UsedDaysThisYear := Absence.COUNT;
                                         PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                         PlanGO.MODIFY;
@@ -1593,7 +1599,7 @@ report 50010 "Vacation Calculation2"
                                         END;
 
 
-                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
 
 
                                         PlanGO.MODIFY;
