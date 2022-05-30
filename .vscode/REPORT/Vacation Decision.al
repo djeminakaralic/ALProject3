@@ -13,7 +13,7 @@ report 50109 VacationDecision
     {
         dataitem(DataItem1; Employee)
         {
-            RequestFilterFields = "No.";
+            //RequestFilterFields = "No.";
             column(No; "No.")
             {
             }
