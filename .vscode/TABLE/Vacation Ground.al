@@ -19,7 +19,7 @@ table 50015 "Vacation Ground 2"
                     "Work experience" := t_Employee."Current Years Total";
                 END;
 
-                CurrYear := DATE2DMY(TODAY, 3);
+                CurrYear := DATE2DMY(WORKDATE, 3);
 
                 //OVO NIJE BIO KOMENTAR
                 /*VacationSetup.GET;                 
@@ -31,10 +31,11 @@ table 50015 "Vacation Ground 2"
                 //"End Date of Year" := DMY2DATE(1, 12, CurrYear);
                 //LastDateOfMonth:=CALCDATE('-1D', CALCDATE('+1M',"End Date of Year"));
                 //MESSAGE(FORMAT(LastDateOfMonth));
+
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
                 EVALUATE(Order, "Employee No.");
 
-                EmployeeRec.RESET;
+                /*EmployeeRec.RESET;
                 EmployeeRec.SETFILTER("No.", '%1', "Employee No.");
                 IF EmployeeRec."Returned to Company" = FALSE THEN BEGIN
                     UsedDaysThisYear := 0;
@@ -336,7 +337,7 @@ table 50015 "Vacation Ground 2"
                         END;
                         Year := Year2;
                     END;
-                END;
+                END;*/
 
 
             end;
