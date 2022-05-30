@@ -261,7 +261,7 @@ page 50051 "Employee Contract Ledger"
                 }
                 field("Rad u smjenama"; "Rad u smjenama")
                 {
-
+                    ApplicationArea = all;
                 }
                 field("First Time Employed"; "First Time Employed")
                 {
