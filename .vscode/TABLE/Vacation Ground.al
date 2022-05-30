@@ -21,8 +21,13 @@ table 50015 "Vacation Ground 2"
 
                 CurrYear := DATE2DMY(TODAY, 3);
 
-                VacationSetup.GET;
-                "Legal Grounds" := VacationSetup."Base Days";
+                //OVO NIJE BIO KOMENTAR
+                /*VacationSetup.GET;                 
+                "Legal Grounds" := VacationSetup."Base Days";*/
+
+                VacationSetupHistory.Get(CurrYear);
+                "Legal Grounds" := VacationSetupHistory."Base Days";
+
                 //"End Date of Year" := DMY2DATE(1, 12, CurrYear);
                 //LastDateOfMonth:=CALCDATE('-1D', CALCDATE('+1M',"End Date of Year"));
                 //MESSAGE(FORMAT(LastDateOfMonth));
@@ -652,6 +657,7 @@ table 50015 "Vacation Ground 2"
         CurrYear: Integer;
         LastDateOfMonth: Date;
         VacationSetup: Record "Vacation Setup";
+        VacationSetupHistory: Record "Vacation setup history";
         VacationCalculation: Report "Vacation Calculation";
         UsedDaysThisYear: Integer;
         Year2: Integer;
@@ -675,9 +681,6 @@ table 50015 "Vacation Ground 2"
         param: Automation;
         lvarActiveConnection: Variant;*/
         Text01: Label 'You can''t insert number od used days more then available value!';
-
-
-
 
 }
 

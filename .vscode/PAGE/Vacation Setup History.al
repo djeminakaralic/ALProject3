@@ -12,6 +12,7 @@ page 50133 "Vacation setup history"
         {
             repeater(Group)
             {
+
                 field("Base Days"; "Base Days")
                 {
                     ApplicationArea = all;
