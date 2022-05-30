@@ -803,7 +803,6 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Prava/dopunska prava boraca';
             OptionCaption = ' ,Borac,"Pripadnik boračke populacije","Šehidski status"';
             OptionMembers = " ",Borac,"Pripadnik boračke populacije","Šehidski status";
-
         }
 
         field(501656; Canton; Code[20])
@@ -1184,7 +1183,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50108; "Brought Years of Experience"; Integer)
         {
             Caption = 'Brought Years of Experience';
-            
+
         }
         field(50109; "Brought Months of Experience"; Integer)
         {

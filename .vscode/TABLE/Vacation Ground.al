@@ -11,14 +11,16 @@ table 50015 "Vacation Ground 2"
 
             trigger OnValidate()
             begin
-                t_Employee.SETFILTER("No.", '%1', "Employee No.");
+                t_Employee.SETFILTER("No.", '%1', "Employee No."); //uzima jednog zaposlenog ciji No je unesen 
                 IF t_Employee.FIND('-') THEN BEGIN
-                    //"Work experience":=employee."Years of Experience";
                     "First Name" := t_Employee."First Name";
                     "Last Name" := t_Employee."Last Name";
-                    "Work experience" := t_Employee."Years of Experience";
+                    //"Work experience" := t_Employee."Years of Experience";
+                    "Work experience" := t_Employee."Current Years Total";
                 END;
+
                 CurrYear := DATE2DMY(TODAY, 3);
+
                 VacationSetup.GET;
                 "Legal Grounds" := VacationSetup."Base Days";
                 //"End Date of Year" := DMY2DATE(1, 12, CurrYear);
@@ -26,7 +28,6 @@ table 50015 "Vacation Ground 2"
                 //MESSAGE(FORMAT(LastDateOfMonth));
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
                 EVALUATE(Order, "Employee No.");
-
 
                 EmployeeRec.RESET;
                 EmployeeRec.SETFILTER("No.", '%1', "Employee No.");
@@ -84,8 +85,6 @@ table 50015 "Vacation Ground 2"
                                 Year := Year2;
 
                             END;
-
-
 
                             // po stepenu invalidnosti
 
