@@ -357,6 +357,7 @@ table 50015 "Vacation Ground 2"
         field(4; "Days based on Work experience"; Integer)
         {
             Caption = 'Days based on Work experience';
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -366,6 +367,7 @@ table 50015 "Vacation Ground 2"
         field(5; "Days based on Disability"; Integer)
         {
             Caption = 'Days based on Disability';
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -376,6 +378,7 @@ table 50015 "Vacation Ground 2"
         field(24; "Days based on Military service"; Integer)
         {
             Caption = 'Days based on Military service';
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -385,6 +388,7 @@ table 50015 "Vacation Ground 2"
         field(25; "Days based on Working conditions"; Integer)
         {
             Caption = 'Days based on  Working conditions';
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -439,7 +443,7 @@ table 50015 "Vacation Ground 2"
         field(11; "Total days"; Integer)
         {
             Caption = 'Total Days';
-            Editable = true;
+            Editable = false;
         }
         field(12; Year; Integer)
         {
