@@ -17,6 +17,7 @@ table 50099 "Work Performance"
             NotBlank = true;
             TableRelation = Employee;
 
+
             trigger OnValidate()
             begin
                 if Rec.Approved then

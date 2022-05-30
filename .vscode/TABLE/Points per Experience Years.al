@@ -6,7 +6,8 @@ table 50126 "Points per Experience Years"
     {
         field(1; No; Integer)
         {
-            AutoIncrement = false;
+            AutoIncrement = true;
+
             Caption = 'No';
         }
         field(2; Description; Text[50])
@@ -48,8 +49,22 @@ table 50126 "Points per Experience Years"
         }
     }
 
-    fieldgroups
-    {
-    }
+    trigger OnInsert()
+    begin
+        //PointsPerEY.Reset();
+        //PointsPerEY.SetFilter();
+
+    end;
+
+
+    /*WA.SetFilter("Entry No.", '<>%1', 0);
+            IF WA.FindLast() THEN
+                WageAddition."Entry No." := WA."Entry No." + 1
+            else
+                WageAddition."Entry No." := 1;*/
+
+
+    var
+        PointsPerEY: Record "Points per Experience Years";
 }
 
