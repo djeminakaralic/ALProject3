@@ -11,9 +11,7 @@ table 50063 "Points per Disability Status"
         field(2; Description; Text[100])
         {
             Caption = 'Description';
-            InitValue = '5';
             NotBlank = false;
-
         }
         field(4; Points; Integer)
         {
