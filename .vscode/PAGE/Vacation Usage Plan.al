@@ -29,20 +29,17 @@ page 50059 "Vacation Usage Plan"
                 field("Days based on Work experience"; "Days based on Work experience")
                 {
                 }
-                /* field("Based on Working Conditions"; "Based on Working Conditions")
-                 {
-                 }*/
                 field("Days based on Disability"; "Days based on Disability")
                 {
                 }
+                //ED 02 START
                 field("Days based on Military service"; "Days based on Military service")
                 {
-
                 }
                 field("Days based on Working conditions"; "Days based on Working conditions")
                 {
-
                 }
+                //ED 02 END
                 field("Total days"; "Total days")
                 {
                 }
