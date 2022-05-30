@@ -372,6 +372,25 @@ table 50015 "Vacation Ground 2"
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
+
+        field(24; "Days based on Military service"; Integer)
+        {
+            Caption = 'Days based on Military service';
+
+            trigger OnValidate()
+            begin
+                //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+        }
+        field(25; "Days based on Working conditions"; Integer)
+        {
+            Caption = 'Days based on  Working conditions';
+
+            trigger OnValidate()
+            begin
+                //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+        }
         field(6; Sector; Text[250])
         {
             FieldClass = FlowField;
