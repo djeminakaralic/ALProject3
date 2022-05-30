@@ -259,6 +259,10 @@ page 50051 "Employee Contract Ledger"
                     Editable = false;
                     ApplicationArea = all;
                 }
+                field("Rad u smjenama"; "Rad u smjenama")
+                {
+
+                }
                 field("First Time Employed"; "First Time Employed")
                 {
                     Visible = true;
