@@ -373,6 +373,7 @@ table 50015 "Vacation Ground 2"
             end;
         }
 
+
         field(24; "Days based on Military service"; Integer)
         {
             Caption = 'Days based on Military service';

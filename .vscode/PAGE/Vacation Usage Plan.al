@@ -35,6 +35,14 @@ page 50059 "Vacation Usage Plan"
                 field("Days based on Disability"; "Days based on Disability")
                 {
                 }
+                field("Days based on Military service"; "Days based on Military service")
+                {
+
+                }
+                field("Days based on Working conditions"; "Days based on Working conditions")
+                {
+
+                }
                 field("Total days"; "Total days")
                 {
                 }
