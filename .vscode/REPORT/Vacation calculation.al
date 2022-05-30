@@ -70,6 +70,8 @@ report 50110 "Vacation Calculation"
                                             PlanGO."Days based on Disability" := SocialStatus.Points;
                                             PlanGO.MODIFY;
                                         END;
+
+
                                     END
                                     ELSE BEGIN
                                         PlanGO."Days based on Disability" := 0;

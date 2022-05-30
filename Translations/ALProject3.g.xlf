@@ -15878,10 +15878,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Disability - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 4244162367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Days based on Military service</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Military service - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1207310212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Days based on Work experience</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Work experience - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 3443573266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Days based on  Working conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Working conditions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1637095154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Duration</source>

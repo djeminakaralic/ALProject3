@@ -11,24 +11,30 @@ table 50015 "Vacation Ground 2"
 
             trigger OnValidate()
             begin
-                t_Employee.SETFILTER("No.", '%1', "Employee No.");
+                t_Employee.SETFILTER("No.", '%1', "Employee No."); //uzima jednog zaposlenog ciji No je unesen 
                 IF t_Employee.FIND('-') THEN BEGIN
-                    //"Work experience":=employee."Years of Experience";
                     "First Name" := t_Employee."First Name";
                     "Last Name" := t_Employee."Last Name";
                     "Work experience" := t_Employee."Years of Experience";
                 END;
-                CurrYear := DATE2DMY(TODAY, 3);
-                VacationSetup.GET;
-                "Legal Grounds" := VacationSetup."Base Days";
+
+                Year := DATE2DMY(WORKDATE, 3);
+
+                //OVO NIJE BIO KOMENTAR
+                /*VacationSetup.GET;                 
+                "Legal Grounds" := VacationSetup."Base Days";*/
+
+                VacationSetuphistory.Get(Year);
+                "Legal Grounds" := VacationSetuphistory."Base Days";
+
                 //"End Date of Year" := DMY2DATE(1, 12, CurrYear);
                 //LastDateOfMonth:=CALCDATE('-1D', CALCDATE('+1M',"End Date of Year"));
                 //MESSAGE(FORMAT(LastDateOfMonth));
+
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
                 EVALUATE(Order, "Employee No.");
 
-
-                EmployeeRec.RESET;
+                /*EmployeeRec.RESET;
                 EmployeeRec.SETFILTER("No.", '%1', "Employee No.");
                 IF EmployeeRec."Returned to Company" = FALSE THEN BEGIN
                     UsedDaysThisYear := 0;
@@ -84,8 +90,6 @@ table 50015 "Vacation Ground 2"
                                 Year := Year2;
 
                             END;
-
-
 
                             // po stepenu invalidnosti
 
@@ -332,7 +336,7 @@ table 50015 "Vacation Ground 2"
                         END;
                         Year := Year2;
                     END;
-                END;
+                END;*/
 
 
             end;
@@ -340,8 +344,7 @@ table 50015 "Vacation Ground 2"
         field(2; "Work experience"; Integer)
         {
             Caption = 'Work experience';
-
-
+            Editable = false;
         }
         field(3; "Legal Grounds"; Integer)
         {
@@ -357,6 +360,7 @@ table 50015 "Vacation Ground 2"
         field(4; "Days based on Work experience"; Integer)
         {
             Caption = 'Days based on Work experience';
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -366,12 +370,35 @@ table 50015 "Vacation Ground 2"
         field(5; "Days based on Disability"; Integer)
         {
             Caption = 'Days based on Disability';
+            Editable = false;
 
             trigger OnValidate()
             begin
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
+        //ED 02 START
+        field(24; "Days based on Military service"; Integer)
+        {
+            Caption = 'Days based on Military service';
+            Editable = false;
+
+            trigger OnValidate()
+            begin
+                //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+        }
+        field(25; "Days based on Working conditions"; Integer)
+        {
+            Caption = 'Days based on  Working conditions';
+            Editable = false;
+
+            trigger OnValidate()
+            begin
+                //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
+            end;
+        }
+        //ED 02 END
         field(6; Sector; Text[250])
         {
             FieldClass = FlowField;
@@ -419,7 +446,7 @@ table 50015 "Vacation Ground 2"
         field(11; "Total days"; Integer)
         {
             Caption = 'Total Days';
-            Editable = true;
+            Editable = false;
         }
         field(12; Year; Integer)
         {
@@ -428,10 +455,12 @@ table 50015 "Vacation Ground 2"
         field(13; "First Name"; Text[50])
         {
             Caption = 'Ime';
+            Editable = false;
         }
         field(14; "Last Name"; Text[50])
         {
             Caption = 'Prezime';
+            Editable = false;
         }
         field(15; "Starting Date of I part"; Date)
         {
@@ -628,6 +657,7 @@ table 50015 "Vacation Ground 2"
         CurrYear: Integer;
         LastDateOfMonth: Date;
         VacationSetup: Record "Vacation Setup";
+        VacationSetuphistory: Record "Vacation setup history";
         VacationCalculation: Report "Vacation Calculation";
         UsedDaysThisYear: Integer;
         Year2: Integer;
@@ -651,9 +681,6 @@ table 50015 "Vacation Ground 2"
         param: Automation;
         lvarActiveConnection: Variant;*/
         Text01: Label 'You can''t insert number od used days more then available value!';
-
-
-
 
 }
 
