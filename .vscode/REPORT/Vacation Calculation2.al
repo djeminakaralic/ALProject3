@@ -53,7 +53,6 @@ report 50010 "Vacation Calculation2"
                                     PlanGO."Legal Grounds" := VacationSetup."Base Days RS";
                                 IF EmployeeC."Org Entity Code" = 'FBIH' THEN
                                     PlanGO."Legal Grounds" := VacationSetup."Base Days";
-
                             END;
                         END;
 
