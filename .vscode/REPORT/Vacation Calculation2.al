@@ -22,10 +22,10 @@ report 50010 "Vacation Calculation2"
                 EmployeeRec.SETFILTER("Termination Date", '%1|>=%2', 0D, Datee);
                 IF EmployeeRec.FINDFIRST THEN BEGIN
                     REPEAT
-
                         //  PlanGO.VALIDATE("Employee No.",EmployeeRec."No.");
                         PlanGO."First Name" := EmployeeRec."First Name";
                         PlanGO."Last Name" := EmployeeRec."Last Name";
+                        PlanGO."Work experience" := EmployeeRec."Total Brought Years"; //ED
                         PlanGO.Year := DATE2DMY(Datee, 3);
                         PlanGO."Employee No." := EmployeeRec."No.";
                         EVALUATE(Order, EmployeeRec."No.");
