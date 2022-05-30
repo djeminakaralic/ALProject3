@@ -174,10 +174,7 @@ table 50099 "Work Performance"
 
             trigger OnValidate()
             var
-                NextEntryNo: Integer;
                 WA: Record "Wage Addition";
-
-
 
             begin
                 if Approved then begin
@@ -244,7 +241,6 @@ table 50099 "Work Performance"
 
                     WageAddition.Init(); //Lista dodataka na plate
 
-                    NextEntryNo := 0;
                     WA.SetFilter("Entry No.", '<>%1', 0);
                     IF WA.FindLast() THEN
                         WageAddition."Entry No." := WA."Entry No." + 1
@@ -261,12 +257,10 @@ table 50099 "Work Performance"
                     WageAddition.Description := WageAdditionType.Description;
                     WageAddition.Amount := AmountVar;
 
-
                     WageAddition.Insert();
                 end;
             end;
         }
-
     }
 
     keys
