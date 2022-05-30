@@ -79,10 +79,12 @@ page 50059 "Vacation Usage Plan"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 //ĐK RunObject = Report 50012;
+                RunObject = report 50110;
 
                 trigger OnAction()
                 begin
                     CurrPage.UPDATE;
+                    Message('Pronasao!');
                 end;
             }
             action("Annual Leave Resolution")
