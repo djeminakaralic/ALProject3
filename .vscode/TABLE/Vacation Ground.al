@@ -340,8 +340,7 @@ table 50015 "Vacation Ground 2"
         field(2; "Work experience"; Integer)
         {
             Caption = 'Work experience';
-
-
+            Editable = false;
         }
         field(3; "Legal Grounds"; Integer)
         {
@@ -452,10 +451,12 @@ table 50015 "Vacation Ground 2"
         field(13; "First Name"; Text[50])
         {
             Caption = 'Ime';
+            Editable = false;
         }
         field(14; "Last Name"; Text[50])
         {
             Caption = 'Prezime';
+            Editable = false;
         }
         field(15; "Starting Date of I part"; Date)
         {
