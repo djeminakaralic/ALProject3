@@ -4256,13 +4256,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         ManagementLevel: Code[10];
         Position: Record Position;
         TerminationDate: Date;
-
         EmployeeContractLedger: Record "Employee Contract Ledger";
         EmployeeContractLedgerPage: Page "Employee Contract Ledger";
         hide: Boolean;
         enable: Boolean;
         WorkBooklet: Record "Work Booklet";
-
         isVisible: Boolean;
         WageCalculation: Record "Wage Calculation";
         WorkBookletPage: page "Work booklet";
