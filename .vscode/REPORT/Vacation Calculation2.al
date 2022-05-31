@@ -225,7 +225,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE) OR (EmployeeRec."Hours In Day" < 8)) THEN BEGIN
-                                    PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions" + 2;
+                                    PlanGO."Days based on Working conditions" := 2;
 
                                     EmployeeC.RESET;
                                     EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
@@ -239,7 +239,7 @@ report 50010 "Vacation Calculation2"
 
                                 END
                                 ELSE
-                                    PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
+                                    PlanGO."Days based on Working conditions" := 0;
                             end;
 
                             //Radnik mlađi od 18 godina
