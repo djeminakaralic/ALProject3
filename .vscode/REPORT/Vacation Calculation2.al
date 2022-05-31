@@ -225,8 +225,6 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN BEGIN
                                 IF ((EmployeeC."Rad u smjenama" = TRUE) OR (EmployeeRec."Hours In Day" < 8)) THEN BEGIN
-                                    //SocialStatus.SETFILTER("No.", '%1', '2');
-                                    //IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Working conditions" := 2;
 
                                     EmployeeC.RESET;
