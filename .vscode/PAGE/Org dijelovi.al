@@ -20,10 +20,12 @@ page 50186 "ORG Dijelovi"
                 field(GF; GF)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Order; Order)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Description; Description)
                 {
@@ -61,19 +63,7 @@ page 50186 "ORG Dijelovi"
                 {
                     ApplicationArea = all;
                 }
-                field(Region; Region)
-                {
-                    ApplicationArea = all;
-                }
-                field("Registration No."; "Registration No.")
-                {
-                    ApplicationArea = all;
-                }
                 field(Telephone; Telephone)
-                {
-                    ApplicationArea = all;
-                }
-                field("ORG ID"; "ORG ID")
                 {
                     ApplicationArea = all;
                 }
@@ -81,6 +71,23 @@ page 50186 "ORG Dijelovi"
                 {
                     ApplicationArea = all;
                 }
+                field(Region; Region)
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Registration No."; "Registration No.")
+                {
+                    ApplicationArea = all;
+                }
+
+
+
+                field("ORG ID"; "ORG ID")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("JIB Contributes"; "JIB Contributes")
                 {
                     ApplicationArea = all;
@@ -101,10 +108,12 @@ page 50186 "ORG Dijelovi"
                 field("Branch Agency"; "Branch Agency")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Regionalni Head Office"; "Regionalni Head Office")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Entity Code"; "Entity Code")
                 {

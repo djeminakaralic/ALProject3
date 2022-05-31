@@ -161,7 +161,7 @@ table 50113 "ORG Dijelovi"
         {
             Caption = 'Industrial Classification';
         }
-        field(50004; "Industrial Classification Name"; Text[30])
+        field(50004; "Industrial Classification Name"; Text[250])
         {
             Caption = 'Industrial Classification Name';
         }
