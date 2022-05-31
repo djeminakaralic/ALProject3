@@ -41,6 +41,7 @@ page 50087 "ORG Shema"
                 field("Change Org"; "Change Org")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                 }
                 field("Change Dimension"; "Change Dimension")
@@ -52,11 +53,13 @@ page 50087 "ORG Shema"
                 field("Sent Mail Systematization"; "Sent Mail Systematization")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                 }
                 field("Create date of org.prep"; "Create date of org.prep")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                 }
             }
