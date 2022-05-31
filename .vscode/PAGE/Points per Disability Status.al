@@ -15,7 +15,7 @@ page 50095 "Points per Disability Status"
                 field("No."; "No.")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+                    Visible = true;
                 }
                 //ED 02 START
                 field("Vacation Days Code"; "Vacation Days Code")
