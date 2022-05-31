@@ -27,7 +27,6 @@ page 50095 "Points per Disability Status"
                     ApplicationArea = all;
                 }
                 //ED 02 END
-
                 field(Description; Description)
                 {
                     ApplicationArea = all;
