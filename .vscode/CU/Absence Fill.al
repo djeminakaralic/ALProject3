@@ -7,6 +7,7 @@ codeunit 50304 "Absence Fill"
 
     var
         Calendar: Record "Base Calendar";
+        VaactionG: record "Vacation Grounds";
         CalendarChange: Record "Base Calendar Change";
         Datum: Record "Date";
         StartDate: Date;
@@ -471,6 +472,41 @@ codeunit 50304 "Absence Fill"
                 HourPool := HourPool + HoursInDay;
 
         UNTIL Datum.NEXT = 0;
+    end;
+
+    procedure GetHourPoolForVacation(StartDateT: Date; EndDateT: Date; HoursInDay: Integer) HourPool: Integer
+    var
+        DateText: Text[30];
+        DateText2: Text[30];
+        FromDateFilter: Date;
+        ToDateFilter: Date;
+        InsertWeekly: Boolean;
+    begin
+        HourPool := 0;
+
+        WageSetup.GET;
+
+        //StartDate := GetMonthRange(CurrentMonth, CurrentYear, TRUE);
+        //EndDate := GetMonthRange(CurrentMonth, CurrentYear, FALSE);
+
+        IF NOT Calendar.GET(WageSetup."Wage Calendar Code") THEN BEGIN
+            MESSAGE(Txt001);
+            EXIT;
+        END;
+
+        CalendarChange.SETFILTER("Base Calendar Code", Calendar.Code);
+
+        Datum.SETFILTER("Period Type", '%1', 0);
+        Datum.SETRANGE("Period Start", StartDateT, EndDateT);
+        Datum.FINDFIRST;
+        REPEAT
+            InsertWeekly := FALSE;
+            CheckCalendar(InsertWeekly, 2);
+            IF InsertWeekly THEN
+                HourPool := HourPool + HoursInDay;
+
+        UNTIL Datum.NEXT = 0;
+
     end;
 
     procedure GetMonthRange(CurrMonth: Integer; CurrYear: Integer; StartOrEnd: Boolean) ReturnDate: Date

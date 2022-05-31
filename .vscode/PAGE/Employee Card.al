@@ -437,6 +437,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         end;
                     }
 
+                    //ED 02 START
+                    field("Single parent/adopter"; "Single parent/adopter")
+                    {
+                        Editable = true;
+                    }
+                    //ED 02 END
                 }
 
                 /*group("Relatives Group")
@@ -3621,6 +3627,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunObject = Page "Health Check";
                 RunPageLink = "Employee No" = FIELD("No.");
             }*/
+
             //ED 01 START
             action("Employee absence")
             {
@@ -3630,19 +3637,39 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No.");
                 Promoted = true;
             }
+
+            action("Work performance")
+            {
+                Caption = 'Work performance';
+                Image = Evaluate;
+                RunObject = page "Work performance";
+                RunPageLink = "Employee No." = FIELD("No.");
+                Promoted = true;
+            }
             //ED 01 END
 
         }
         addafter("Employee absence")
         {
-            action(Rjesenja)
+            action(Rješenja)
             {
-                Caption = 'Rjesenja';
+                Caption = 'Rješenja';
                 Image = Report;
                 RunObject = report VacationDecision;
                 ApplicationArea = all;
                 //RunPageLink = "Employee No." = field("Employee No.");
+
                 Promoted = true;
+
+                trigger OnAction()
+                begin
+                    employee.SetFilter("No.", xRec."No.");
+                    if employee.FindFirst() then begin
+                        VacationDecisionR.SETTABLEVIEW(employee);
+                        VacationDecisionR.RUN;
+                    end;
+
+                end;
 
             }
         }
@@ -4229,13 +4256,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         ManagementLevel: Code[10];
         Position: Record Position;
         TerminationDate: Date;
-
         EmployeeContractLedger: Record "Employee Contract Ledger";
         EmployeeContractLedgerPage: Page "Employee Contract Ledger";
         hide: Boolean;
         enable: Boolean;
         WorkBooklet: Record "Work Booklet";
-
         isVisible: Boolean;
         WageCalculation: Record "Wage Calculation";
         WorkBookletPage: page "Work booklet";
@@ -4243,5 +4268,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         WageCalc: Record "Wage Calculation";
         Text010: Label 'Probation period start date cannot be before employment date.';
         EmploymentDate: Date;
+        employee: Record Employee;
         PersonalDocuments: record "Personal Documents";
+        VacationDecisionR: Report VacationDecision;
 }

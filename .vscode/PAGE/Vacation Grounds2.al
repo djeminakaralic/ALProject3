@@ -72,6 +72,15 @@ page 50132 "Vacation Grounds2"
                 {
                     ApplicationArea = all;
                 }
+                field("Used Days"; "Used Days")
+                {
+
+
+                }
+                field("First Part"; "First Part")
+                {
+
+                }
                 field(Year; Year)
                 {
                     ApplicationArea = all;

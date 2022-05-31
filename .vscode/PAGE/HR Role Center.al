@@ -424,6 +424,22 @@ page 50003 "HR Role Center"
                     Image = Filed;
                     RunObject = Page "Points per Disability Status";
                 }
+                //ED 02 START
+                action("Points per Military Service")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Points per Military Service';
+                    Image = Employee;
+                    RunObject = Page "Points per Disability Status";
+                }
+                action("Points per Working Conditions")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Points per Working Conditions';
+                    Image = WorkTax;
+                    RunObject = Page "Points per Disability Status";
+                }
+                //ED 02 END
                 action("Vacation statistic")
                 {
                     ApplicationArea = all;

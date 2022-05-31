@@ -1,5 +1,6 @@
 report 50109 VacationDecision
 {
+    Caption = 'Rješenje GO';
     DefaultLayout = RDLC;
     RDLCLayout = './VacatonDecision.rdlc';
     UsageCategory = ReportsAndAnalysis;
@@ -7,11 +8,12 @@ report 50109 VacationDecision
     EnableExternalAssemblies = true;
     PreviewMode = PrintLayout;
 
+
     dataset
     {
         dataitem(DataItem1; Employee)
         {
-            RequestFilterFields = "No.";
+            //RequestFilterFields = "No.";
             column(No; "No.")
             {
             }
@@ -33,10 +35,17 @@ report 50109 VacationDecision
             column(Company_logo; CompanyInformation.Picture)
             {
             }
+
             dataitem(DataItem5; "Vacation Ground 2")
             {
                 RequestFilterFields = "Employee No.";
+
+
                 column(WorkEXpDays; "Days based on Work experience")
+                {
+
+                }
+                column(FirstPart; FirstPart)
                 {
 
                 }
@@ -126,19 +135,36 @@ report 50109 VacationDecision
                 {
 
                 }
+                column(Used_Days; "Used Days")
+                {
+
+                }
+
 
                 trigger OnAfterGetRecord()
                 begin
+
                     CalcFields("Position Name", Sector);
                     DanJavljanjanaposao := "Ending Date of I part";
                     DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
                     //Message(FORMAT(DanJavljanjanaposao));
-                    DrugiDioDana := "Total days" - BrojDanaPrviDio;
+
                     StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndFirstpartT := FORMAT("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                     DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
+
+                    FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", DataItem1."Hours In Day")) / 8;
+                    DrugiDioDana := "Total days" - FirstPart;
+
+
+
+
+
+
+
+
                 end;
 
 
@@ -149,6 +175,8 @@ report 50109 VacationDecision
                     Year1 := FORMAT(DatumRjesenja, 0, '<Year4>.');
 
 
+
+
                 end;
 
 
@@ -156,11 +184,14 @@ report 50109 VacationDecision
 
 
             }
+
+
         }
     }
 
     requestpage
     {
+
 
         layout
         {
@@ -174,16 +205,21 @@ report 50109 VacationDecision
                 {
                     Caption = 'Datum rješenja';
                 }
-                field(BrojDanaPrviDio; BrojDanaPrviDio)
+
+                /*field(BrojDanaPrviDio; BrojDanaPrviDio)
                 {
                     Caption = 'Broj dana prvog dijela';
                 }
                 field(RanijeIskoristeniDani; RanijeIskoristeniDani)
                 {
                     Caption = 'Ranije iskorišteni dani odmora';
-                }
+                }*/
+
             }
+
+
         }
+
 
         actions
         {
@@ -213,5 +249,17 @@ report 50109 VacationDecision
         RanijeIskoristeniDani: Integer;
 
         CompanyInformation: Record "Company Information";
+        VacMgmt: Codeunit "VacationMgmt2";
+        CurrDaysUsed: Integer;
+
+        PlanGO: Record "Vacation Grounds";
+        VACSetup: Record "Vacation Setup";
+        FirstPart: Integer;
+        AbsenceFill: Codeunit "Absence Fill";
+
+        EmployeeRec: Record Employee;
+        Vacation: Record "Vacation Ground 2";
+
+
 
 }
