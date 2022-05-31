@@ -242,6 +242,27 @@ report 50010 "Vacation Calculation2"
                                     PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
                             end;
 
+                            //Radnik mlađi od 18 godina
+                            IF ((EmployeeRec.Age < 18)) THEN BEGIN
+                                SocialStatus.SETFILTER("No.", '%1', '4');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
+                                END;
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
+                                    PlanGO.MODIFY;
+                                END;
+                            END
+                            ELSE
+                                PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
+
+
                             //OVDJE ZA VOJNI STAŽ
                             /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
