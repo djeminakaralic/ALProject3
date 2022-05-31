@@ -264,12 +264,12 @@ report 50010 "Vacation Calculation2"
 
 
                             //OVDJE ZA VOJNI STAŽ
-                            /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
+                            MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
-                                IF (MilitaryMonths > 12 AND MilitaryMonths < 18) then
+                                IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then
                                     PlanGO."Days based on Military service" := 1
                                 ELSE
-                                    IF (MilitaryMonths > 18 AND MilitaryMonths < 30) then
+                                    IF ((MilitaryMonths > 18) AND (MilitaryMonths < 30)) then
                                         PlanGO."Days based on Military service" := 2
                                     ELSE
                                         PlanGO."Days based on Military service" := 3;
@@ -287,7 +287,7 @@ report 50010 "Vacation Calculation2"
                                 END;
                             END
                             ELSE
-                                PlanGO."Days based on Military service" := 0;*/
+                                PlanGO."Days based on Military service" := 0;
 
 
                             //roditelj djece sa posebnim potrebama
@@ -1414,8 +1414,6 @@ report 50010 "Vacation Calculation2"
 
 
                                         //kraj
-
-
 
                                     END
                                     ELSE BEGIN
