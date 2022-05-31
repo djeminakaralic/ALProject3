@@ -259,9 +259,7 @@ report 50010 "Vacation Calculation2"
                             IF Absence.FINDSET THEN
                                 UsedDaysThisYear := Absence.COUNT;
 
-                            //ED 02 START
 
-                            //ED 02 END
 
 
                             PlanGO."Total days" := PlanGO."Legal Grounds" - UsedDaysThisYear + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
