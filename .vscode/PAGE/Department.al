@@ -178,26 +178,32 @@ page 50069 Department
                 field("Signatory 1"; "Signatory 1")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 Full Name"; "Signatory 1 Full Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 Position"; "Signatory 1 Position")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2"; "Signatory 2")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2 Full Name"; "Signatory 2 Full Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2 Position"; "Signatory 2 Position")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 Contr With Benef"; "Signatory 1 Contr With Benef")
                 {
