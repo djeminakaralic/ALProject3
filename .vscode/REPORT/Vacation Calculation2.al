@@ -247,6 +247,25 @@ report 50010 "Vacation Calculation2"
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
                             //EmployeeRec."Hours In Day" < 8
+                            IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
+                                SocialStatus.SETFILTER("No.", '%1', '9');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Working conditions" := SocialStatus.Points;
+                                END;
+
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN
+                                    PlanGO.MODIFY;
+
+                            END
+                            ELSE
+                                PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
 
                             //Majka djeteta mlađeg od 7 godina
                             EmployeeRelative.Reset();
