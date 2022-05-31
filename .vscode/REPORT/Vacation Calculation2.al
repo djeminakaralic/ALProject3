@@ -196,6 +196,28 @@ report 50010 "Vacation Calculation2"
                             END;
 
 
+                            //OVDJE ZA VOJNI STAŽ
+                            /*IF ((EmployeeRec."Disabled Child" = TRUE)) THEN BEGIN
+                                SocialStatus.SETFILTER("No.", '%1', '2');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Military service" := SocialStatus.Points;
+                                END;
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
+
+                                    PlanGO.MODIFY;
+                                END;
+                            END
+                            ELSE
+                                PlanGO."Days based on Military service" := 0;*/
+
+
 
 
 
@@ -1971,6 +1993,7 @@ R_WorkExperience.RUN;
         Mjesec: Integer;
         i7: Integer;
         MjesecT: Integer;
+        MilitaryMonths: Integer;
         JobType: Record "Vacation setup history";
         Experience: Record "Points per Experience Years";
         Datttt: Date;

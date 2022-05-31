@@ -1309,6 +1309,12 @@ tableextension 50071 EmployeeExtension extends Employee
             Editable = false;
 
         }
+        //ED 02 START
+        field(50012; "Single parent/adopter"; Boolean)
+        {
+            Caption = 'Single parent/adopter';
+        }
+        //ED 02 END
         field(50251; "Relatives Employees"; Integer)
         {
             FieldClass = FlowField;

@@ -437,6 +437,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         end;
                     }
 
+                    //ED 02 START
+                    field("Single parent/adopter"; "Single parent/adopter")
+                    {
+                        Editable = true;
+                    }
+                    //ED 02 END
                 }
 
                 /*group("Relatives Group")
