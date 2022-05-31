@@ -15,8 +15,14 @@ page 50095 "Points per Disability Status"
                 field("No."; "No.")
                 {
                     ApplicationArea = all;
-                    Editable = true;
+                    Visible = true;
                 }
+                //ED 02 START
+                field(Category; Category)
+                {
+                    ApplicationArea = all;
+                }
+                //ED 02 END
                 field(Description; Description)
                 {
                     ApplicationArea = all;
