@@ -199,7 +199,7 @@ report 50010 "Vacation Calculation2"
                             IF ((EmployeeRec."Single parent/adopter" = TRUE)) THEN BEGIN
                                 SocialStatus.SETFILTER("No.", '%1', '2');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
-                                    PlanGO."Days based on Disability" := SocialStatus.Points;
+                                    PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
                                 END;
                                 EmployeeC.RESET;
                                 EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
@@ -213,7 +213,36 @@ report 50010 "Vacation Calculation2"
                                 END;
                             END
                             ELSE
-                                PlanGO."Days based on Disability" := 0;
+                                PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
+
+                            //Za rad u smjenama
+                            EmployeeC.RESET;
+                            EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                            EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                            EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                            EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                            EmployeeC.SETCURRENTKEY("Starting Date");
+                            EmployeeC.ASCENDING;
+                            If EmployeeC.FINDLAST THEN BEGIN
+                                IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
+                                    //SocialStatus.SETFILTER("No.", '%1', '2');
+                                    //IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions" + 2;
+
+                                    EmployeeC.RESET;
+                                    EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                    EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                    EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                    EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                    EmployeeC.SETCURRENTKEY("Starting Date");
+                                    EmployeeC.ASCENDING;
+                                    IF EmployeeC.FINDLAST THEN BEGIN
+                                        PlanGO.MODIFY;
+                                    END;
+                                END;
+                            END
+                            ELSE
+                                PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
 
 
                             //OVDJE ZA VOJNI STAŽ
