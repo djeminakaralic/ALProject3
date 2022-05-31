@@ -1,0 +1,201 @@
+page 50050 "Update Position"
+{
+    Caption = 'Update Position';
+    PageType = List;
+    SourceTable = "Position Menu";
+
+    layout
+    {
+        area(content)
+        {
+            repeater(Group)
+            {
+                field(Code; Code)
+                {
+                    ApplicationArea = all;
+                }
+                field(Description; Description)
+                {
+                    ApplicationArea = all;
+                }
+                field("Official Translation"; "Official Translation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Role Name"; "Role Name")
+                {
+                    ApplicationArea = all;
+                }
+                field(Role; Role)
+                {
+                    ApplicationArea = all;
+                }
+                field("BJF/GJF"; "BJF/GJF")
+                {
+                    ApplicationArea = all;
+                }
+                field("Management Level"; "Management Level")
+                {
+                    ApplicationArea = all;
+                }
+                field("Key Function"; "Key Function")
+                {
+                    ApplicationArea = all;
+                }
+                field("Control Function"; "Control Function")
+                {
+                    ApplicationArea = all;
+                }
+                field(Grade; Grade)
+                {
+                    ApplicationArea = all;
+                }
+                field("Number of benefits"; "Number of benefits")
+                {
+                    ApplicationArea = all;
+                }
+                field("Department Code"; "Department Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("Department Name"; "Department Name")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field("Org. Structure"; "Org. Structure")
+                {
+                    ApplicationArea = all;
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(processing)
+        {
+            /*ĐK action("Update Positions")
+             {
+                 Caption = 'Update Positions';
+                 Image = "Report";
+                 Promoted = true;
+                 PromotedCategory = Process;
+                 ApplicationArea = all;
+                 PromotedIsBig = true;
+
+                 trigger OnAction()
+                 begin
+                     IF NOT DimensionForReport.ISEMPTY THEN
+                         DimensionForReport.DELETEALL;
+
+
+
+                     DimensionCopy.RESET;
+                     DimensionCopy.SETFILTER("Position Code", '%1', Rec.Code);
+                     DimensionCopy.SETFILTER("Position Description", '%1', Rec.Description);
+                     DimensionCopy.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
+                     Department.RESET;
+                     Department.SETFILTER(Code, '%1', Rec."Department Code");
+                     Department.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
+                     IF Department.FINDFIRST THEN
+                         DimensionCopy.SETFILTER("Org Belongs", '%1', Department.Description);
+                     IF DimensionCopy.FINDSET THEN
+                         REPEAT
+                             DimensionForReport.INIT;
+                             DimensionForReport.TRANSFERFIELDS(DimensionCopy);
+                             DimensionForReport.INSERT;
+                         UNTIL DimensionCopy.NEXT = 0;
+                     COMMIT;
+
+                     IF NOT PositonBenefitsReport.ISEMPTY THEN
+                         PositonBenefitsReport.DELETEALL;
+                     BenefitsOrginal.RESET;
+                     BenefitsOrginal.SETFILTER("Position Code", '%1', Rec.Code);
+                     BenefitsOrginal.SETFILTER("Position Name", '%1', Rec.Description);
+                     BenefitsOrginal.SETFILTER("Org. Structure", '%1', Rec."Org. Structure");
+                     IF BenefitsOrginal.FINDSET THEN
+                         REPEAT
+                             PositonBenefitsReport.INIT;
+                             PositonBenefitsReport.TRANSFERFIELDS(BenefitsOrginal);
+                             PositonBenefitsReport.INSERT;
+                         UNTIL BenefitsOrginal.NEXT = 0;
+                     COMMIT;
+
+                     PositionMenuOrg.RESET;
+                     PositionMenuOrg.SETFILTER(Code, '%1', Rec.Code);
+                     PositionMenuOrg.SETFILTER(Description, '%1', Rec.Description);
+                     PositionMenuOrg.SETFILTER("Org. Structure", '%1', Rec."Org. Structure");
+                     PositionMenuOrg.SETFILTER("Department Code", '%1', Rec."Department Code");
+                     IF PositionMenuOrg.FINDFIRST THEN BEGIN
+                         DimensionPos.RESET;
+                         DimensionPos.SETFILTER("Position Code", '%1', Rec.Code);
+                         DimensionPos.SETFILTER("Position Description", '%1', Rec.Description);
+                         DimensionPos.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
+                         Department.RESET;
+                         Department.SETFILTER(Code, '%1', Rec."Department Code");
+                         Department.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
+                         IF Department.FINDFIRST THEN
+                             DimensionPos.SETFILTER("Org Belongs", '%1', Department.Description);
+                         IF DimensionPos.FIND('-') THEN
+                             Troskovni := DimensionPos."Dimension  Name"
+                         ELSE
+                             Troskovni := '';
+                         Department.RESET;
+                         Department.SETFILTER(Code, '%1', Rec."Department Code");
+                         Department.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
+                         IF Department.FINDFIRST THEN
+                             ReportActiveSys.SetParam(PositionMenuOrg.Code, PositionMenuOrg.Description, PositionMenuOrg.Grade, PositionMenuOrg."Role Name",
+                            PositionMenuOrg."BJF/GJF", PositionMenuOrg."Control Function", PositionMenuOrg."Key Function", PositionMenuOrg."Management Level", PositionMenuOrg."Org. Structure",
+                             Rec."Department Code", PositionMenuOrg."Official Translation", Troskovni, Department.Description);
+                         ReportActiveSys.RUN;
+                     END;
+                 end;
+             }*/
+        }
+    }
+
+    trigger OnOpenPage()
+    begin
+        OrgShema.RESET;
+        OrgShema.SETFILTER(Status, '%1', 0);
+        IF OrgShema.FINDLAST THEN BEGIN
+            SETFILTER("Org. Structure", '%1', OrgShema.Code);
+        END;
+    end;
+
+    var
+        OrgShema: Record "Org Shema";
+        position: Record "Position";
+        JobDesc: Record "Job description";
+        // TC: Record "Training TC";
+        OS: Record "Org Shema";
+        pos: Record "Position";
+        Pos2: Record "Position";
+        posC: Record "Position";
+        //R_Pos: Report "Position change";
+        OldCode: Code[20];
+        PositionNow: Record "Position";
+        PositionStart: Record "Position";
+        PositionMenu: Record "Position Menu";
+        EmployeeContractLedger: Record "Employee Contract Ledger";
+        pos1: Record "Position";
+        posecl: Record "Position";
+        PosCodeECL: Record "Position";
+        EmployeeContractLedger1: Record "Employee Contract Ledger";
+        PosCode: Record "Position";
+        PosNew: Record "Position";
+        PosCodeChange: Record "Position";
+        DimensionForReport: Record "Dimension Pos for report";
+        DimensionCopy: Record "Dimension for position";
+        PositonBenefitsReport: Record "Position Benefits report";
+        BenefitsOrginal: Record "Position Benefits";
+        PositionMenuOrg: Record "Position Menu";
+        // ReportActiveSys: Report "Active Systemization";
+        DimensionPos: Record "Dimension for position";
+        Troskovni: Text;
+        DimensionForReport5: Record "Dimension for report";
+        DimensionCopy5: Record "Dimension temporary";
+        Department: Record "Department";
+}
+

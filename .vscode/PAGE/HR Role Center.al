@@ -283,6 +283,14 @@ page 50003 "HR Role Center"
                     ApplicationArea = all;
                 }
 
+                action(PositionMenu)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Update Position';
+                    Image = DistributionGroup;
+                    RunObject = Page "Update Position";
+                }
+
                 action(Positions)
                 {
                     ApplicationArea = all;

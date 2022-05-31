@@ -41,6 +41,7 @@ page 50063 Group
                 field("Department Type"; "Department Type")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Residence/Network"; "Residence/Network")
                 {
