@@ -160,11 +160,10 @@ table 50082 Group
             OptionCaption = ' ,Residence,Network';
             OptionMembers = " ",Residence,Network;
         }
-        field(50017; "Department Type"; Option)
+        field(50017; "Department Type"; Enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(50018; "Belongs to Department Category"; Text[250])
         {
@@ -228,6 +227,7 @@ table 50082 Group
         END;
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15);
+        "Department Type" := "Department Type"::Group;
     end;
 
     trigger OnModify()

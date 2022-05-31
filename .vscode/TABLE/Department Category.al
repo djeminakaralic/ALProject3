@@ -22,7 +22,7 @@ table 50040 "Department Category"
                     Dep.RENAME(Rec.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description")
                       UNTIL Dep.NEXT=0;
                       */
-                "Department Type" := "Department Type"::Department;
+                "Department Type" := "Department Type"::"Department Category";
                 Dep.RESET;
                 Dep.SETFILTER(Code, '%1', COPYSTR(Code, 1, 4));
                 IF Dep.FINDFIRST THEN BEGIN
@@ -201,11 +201,10 @@ table 50040 "Department Category"
             OptionCaption = ' ,Residence,Network';
             OptionMembers = " ",Residence,Network;
         }
-        field(50017; "Department Type"; Option)
+        field(50017; "Department Type"; Enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(50018; "Sector Belongs"; Text[250])
         {
@@ -255,6 +254,7 @@ table 50040 "Department Category"
         END;
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15);
+        "Department Type" := "Department Type"::"Department Category";
     end;
 
     trigger OnModify()

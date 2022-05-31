@@ -29,6 +29,10 @@ page 50115 Sector
                 {
                     ApplicationArea = all;
                 }
+                field(CEO; CEO)
+                {
+                    ApplicationArea = all;
+                }
                 field(Identity; Identity)
                 {
                     ApplicationArea = all;
@@ -37,12 +41,13 @@ page 50115 Sector
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
-                     Visible = false;
+                    Visible = false;
                 }
                 field("Department Type"; "Department Type")
                 {
                     ApplicationArea = all;
-                    
+                    Visible = false;
+
                 }
                 field("ID for GPS"; "ID for GPS")
                 {
@@ -53,6 +58,7 @@ page 50115 Sector
                 {
                     ApplicationArea = all;
                 }
+
             }
         }
     }
