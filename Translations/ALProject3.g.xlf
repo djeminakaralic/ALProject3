@@ -2578,11 +2578,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Department Category - Field Department Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3544716464 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Department Category - Field Department Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 3544716464 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7132,11 +7127,6 @@
           <source>Department Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Group - Field Department Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 739346273 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Group - Field Department Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 739346273 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -13592,11 +13582,6 @@
           <source>Department Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sector - Field Department Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2662995888 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Sector - Field Department Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2662995888 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
