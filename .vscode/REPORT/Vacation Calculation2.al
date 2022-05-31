@@ -202,7 +202,7 @@ report 50010 "Vacation Calculation2"
 
 
                             //roditelj djece sa posebnim potrebama
-                            IF ((EmployeeRec."Disabled Child" = TRUE)) THEN BEGIN
+                            /*IF ((EmployeeRec."Disabled Child" = TRUE)) THEN BEGIN
                                 SocialStatus.SETFILTER("No.", '%1', '2');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Based on Disabled Child" := SocialStatus.Points;
@@ -220,7 +220,7 @@ report 50010 "Vacation Calculation2"
                                 END;
                             END
                             ELSE
-                                PlanGO."Based on Disabled Child" := 0;
+                                PlanGO."Based on Disabled Child" := 0;*/
 
 
                             /*VacationSetup.SETFILTER(Year,'%1',Year);
