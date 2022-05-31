@@ -223,7 +223,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
                             EmployeeC.SETCURRENTKEY("Starting Date");
                             EmployeeC.ASCENDING;
-                            If EmployeeC.FINDLAST THEN
+                            If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE) OR (EmployeeRec."Hours In Day" < 8)) THEN BEGIN
                                     PlanGO."Days based on Working conditions" := 2;
 
@@ -234,21 +234,25 @@ report 50010 "Vacation Calculation2"
                                     EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
                                     EmployeeC.SETCURRENTKEY("Starting Date");
                                     EmployeeC.ASCENDING;
-                                    IF EmployeeC.FINDLAST THEN BEGIN
+                                    IF EmployeeC.FINDLAST THEN
                                         PlanGO.MODIFY;
-                                    END;
 
                                 END
                                 ELSE
                                     PlanGO."Days based on Working conditions" := 0;
-
+                            end;
 
                             //OVDJE ZA VOJNI STAŽ
-                            /*IF ((EmployeeRec."Disabled Child" = TRUE)) THEN BEGIN
-                                SocialStatus.SETFILTER("No.", '%1', '2');
-                                IF SocialStatus.FINDFIRST THEN BEGIN
-                                    PlanGO."Days based on Military service" := SocialStatus.Points;
-                                END;
+                            /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
+                            IF ((MilitaryMonths <> 0)) THEN BEGIN
+                                IF (MilitaryMonths > 12 AND MilitaryMonths < 18) then
+                                    PlanGO."Days based on Military service" := 1
+                                ELSE
+                                    IF (MilitaryMonths > 18 AND MilitaryMonths < 30) then
+                                        PlanGO."Days based on Military service" := 2
+                                    ELSE
+                                        PlanGO."Days based on Military service" := 3;
+
                                 EmployeeC.RESET;
                                 EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
                                 EmployeeC.SETFILTER("Show Record", '%1', TRUE);
