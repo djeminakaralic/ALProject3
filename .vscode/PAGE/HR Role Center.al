@@ -429,14 +429,14 @@ page 50003 "HR Role Center"
                 {
                     ApplicationArea = all;
                     Caption = 'Points per Military Service';
-                    Image = Filed;
+                    Image = Employee;
                     RunObject = Page "Points per Disability Status";
                 }
                 action("Points per Working Conditions")
                 {
                     ApplicationArea = all;
                     Caption = 'Points per Working Conditions';
-                    Image = Filed;
+                    Image = WorkTax;
                     RunObject = Page "Points per Disability Status";
                 }
                 //ED 02 END
