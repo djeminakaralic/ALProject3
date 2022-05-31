@@ -21,7 +21,7 @@ table 50063 "Points per Disability Status"
         field(6; Category; Option)
         {
             Caption = 'Category';
-            //BOptionCaption = Disability,Military,Conditions;
+            //OptionCaption = Disability,Military,Conditions;
             OptionMembers = Disability,Military,Conditions;
         }
         //ED 02 END

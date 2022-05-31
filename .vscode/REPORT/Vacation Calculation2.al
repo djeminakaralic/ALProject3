@@ -215,7 +215,7 @@ report 50010 "Vacation Calculation2"
                             ELSE
                                 PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
 
-                            //Radnici na poslovima sa skraćenim radnim vremenom i radnici koji rade u smjenama
+                            //Radnici koji rade u smjenama 
                             EmployeeC.RESET;
                             EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
                             EmployeeC.SETFILTER("Show Record", '%1', TRUE);
@@ -224,8 +224,11 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.SETCURRENTKEY("Starting Date");
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
-                                IF ((EmployeeC."Rad u smjenama" = TRUE) OR (EmployeeRec."Hours In Day" < 8)) THEN BEGIN
-                                    PlanGO."Days based on Working conditions" := 2;
+                                IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
+                                    SocialStatus.SETFILTER("No.", '%1', '8');
+                                    IF SocialStatus.FINDFIRST THEN BEGIN
+                                        PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
+                                    END;
 
                                     EmployeeC.RESET;
                                     EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
@@ -241,6 +244,9 @@ report 50010 "Vacation Calculation2"
                                 ELSE
                                     PlanGO."Days based on Working conditions" := 0;
                             end;
+
+                            //Radnici na poslovima sa skraćenim radnim vremenom
+                            //EmployeeRec."Hours In Day" < 8
 
                             //Majka djeteta mlađeg od 7 godina
                             EmployeeRelative.Reset();
