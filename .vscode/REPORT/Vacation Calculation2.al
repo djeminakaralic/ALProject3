@@ -93,27 +93,27 @@ report 50010 "Vacation Calculation2"
                                 ELD.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
                                 ELD.SETFILTER(Active, '%1', TRUE);
                                 IF ELD.FINDFIRST THEN BEGIN
-                                    IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
+                                    /*IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
                                         Level := LevelValue
                                     ELSE
                                         Level := 0;
-                                    IF Level > 50 THEN BEGIN
-                                        SocialStatus.SETFILTER("No.", '%1', '1');
-                                        IF SocialStatus.FINDFIRST THEN BEGIN
-                                            PlanGO."Days based on Disability" := SocialStatus.Points;
-                                            EmployeeC.RESET;
-                                            EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                            EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                            EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                            EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                            EmployeeC.SETCURRENTKEY("Starting Date");
-                                            EmployeeC.ASCENDING;
-                                            IF EmployeeC.FINDLAST THEN BEGIN
+                                    IF Level > 50 THEN BEGIN*/
+                                    SocialStatus.SETFILTER("No.", '%1', '1');
+                                    IF SocialStatus.FINDFIRST THEN BEGIN
+                                        PlanGO."Days based on Disability" := SocialStatus.Points;
+                                        EmployeeC.RESET;
+                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                        EmployeeC.SETCURRENTKEY("Starting Date");
+                                        EmployeeC.ASCENDING;
+                                        IF EmployeeC.FINDLAST THEN BEGIN
 
-                                                PlanGO.MODIFY;
-                                            END;
+                                            PlanGO.MODIFY;
                                         END;
-                                    END
+                                    END //;
+                                    //END
                                     ELSE BEGIN
                                         PlanGO."Days based on Disability" := 0;
                                         EmployeeC.RESET;
@@ -151,6 +151,9 @@ report 50010 "Vacation Calculation2"
 
 
 
+
+
+
                             WBTemp.RESET;
                             WBTemp.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
                             IF WBTemp.FINDFIRST THEN BEGIN
@@ -158,7 +161,6 @@ report 50010 "Vacation Calculation2"
                                         Experience.SETFILTER(UpperLimit,'>=%1',WBTemp.Years);
                                         IF Experience.FINDFIRST THEN BEGIN*/
                                 // PlanGO."Days based on Work experience":=Experience.Vacation;
-
 
                                 AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
                                 Datttt := CALCDATE(AddDayyy, Datee);
@@ -413,7 +415,7 @@ report 50010 "Vacation Calculation2"
                                             //knjižici zaposlenik i treba da ima 4 dana.
                                             IF DATE2DMY(WB."Starting Date", 3) <> DATE2DMY(Datee, 3) THEN BEGIN
 
-                                                //početak  (Gledam koliko mjeseci ima u skladu sa 31.12.2019
+                                                //početak  (Gledam koliko mjeseci ima u skladu sa 31.12.2019)
 
                                                 Found1 := FALSE;
                                                 CountYears1 := 0;
@@ -431,7 +433,6 @@ report 50010 "Vacation Calculation2"
                                                     //već sam povecala za 1 god
                                                     Found1 := TRUE;
                                                     REPEAT
-
 
                                                         IF (TempDate1 <= CALCDATE('<+1D>', DMY2DATE(31, 12, DATE2DMY(WB."Starting Date", 3)))) AND (RecDate1.GET(RecDate1."Period Type"::Date, TempDate1)) THEN BEGIN
                                                             //ako zadovolji uslove treba povećati za +1G
