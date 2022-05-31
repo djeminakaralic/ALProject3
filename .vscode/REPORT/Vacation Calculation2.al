@@ -227,7 +227,7 @@ report 50010 "Vacation Calculation2"
                                 IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
                                     SocialStatus.SETFILTER("No.", '%1', '8');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
-                                        PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
+                                        PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                     END;
 
                                     EmployeeC.RESET;
