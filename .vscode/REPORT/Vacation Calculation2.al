@@ -290,7 +290,7 @@ report 50010 "Vacation Calculation2"
                                 PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
 
 
-                            //OVDJE ZA VOJNI STAŽ
+                            //Po osnovu učešća u oružanim snagama
                             MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
                                 IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then
