@@ -145,6 +145,8 @@ table 50043 Department
         {
             Caption = 'Address';
             FieldClass = Normal;
+            
+
         }
         field(6; City; Text[30])
         {
