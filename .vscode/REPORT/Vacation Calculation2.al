@@ -317,13 +317,25 @@ report 50010 "Vacation Calculation2"
                             //Po osnovu učešća u oružanim snagama
                             MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
-                                IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then
-                                    PlanGO."Days based on Military service" := 1
+                                IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then begin
+                                    SocialStatus.SETFILTER("No.", '%1', '5');
+                                    IF SocialStatus.FINDFIRST THEN BEGIN
+                                        PlanGO."Days based on Military service" := SocialStatus.Points;
+                                    END;
+                                end
                                 ELSE
-                                    IF ((MilitaryMonths > 18) AND (MilitaryMonths < 30)) then
-                                        PlanGO."Days based on Military service" := 2
-                                    ELSE
-                                        PlanGO."Days based on Military service" := 3;
+                                    IF ((MilitaryMonths > 18) AND (MilitaryMonths < 30)) then begin
+                                        SocialStatus.SETFILTER("No.", '%1', '6');
+                                        IF SocialStatus.FINDFIRST THEN BEGIN
+                                            PlanGO."Days based on Military service" := SocialStatus.Points;
+                                        END;
+                                    end
+                                    ELSE begin
+                                        SocialStatus.SETFILTER("No.", '%1', '7');
+                                        IF SocialStatus.FINDFIRST THEN BEGIN
+                                            PlanGO."Days based on Military service" := SocialStatus.Points;
+                                        END;
+                                    end;
 
                                 EmployeeC.RESET;
                                 EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
