@@ -540,7 +540,7 @@ table 50132 "Position Menu"
         {
             FieldClass = FlowField;
             CalcFormula = count("Position Minimal Education" where("Position Code" = field(Code), "Position Name" = field(Description), "Org Shema" = field("Org. Structure")));
-
+            Caption = 'School';
 
         }
 

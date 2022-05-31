@@ -54,6 +54,7 @@ page 50050 "Update Position"
                 }
                 field("Minimal Education Level"; "Minimal Education Level")
                 {
+                    Visible = false;
 
                 }
                 field(Grade; Grade)
@@ -62,7 +63,32 @@ page 50050 "Update Position"
                 }
                 field("Number of benefits"; "Number of benefits")
                 {
+
+
+                    /*
+                    Count("Position Benefits" WHERE("Position Code" = FIELD("Code"),
+                                                           "Position Name" = FIELD(Description),
+                                                           "Org. Structure" = FIELD("Org. Structure")));
+
+                                                           
+                                                           */
+
+
                     ApplicationArea = all;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        PositionBenefTable.RESET;
+                        PositionBenefTable.SETFILTER("Position Code", Rec.Code);
+                        PositionBenefTable.SETFILTER("Position Name", Description);
+                        PositionBenefTable.SETFILTER("Org. Structure", rec."Org. Structure");
+                        PositionBenefPage.SETTABLEVIEW(PositionBenefTable);
+                        PositionBenefPage.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
                 }
                 field("Department Code"; "Department Code")
                 {
@@ -232,5 +258,7 @@ page 50050 "Update Position"
         Department: Record "Department";
         UpdatePostTable: Record "Position Minimal Education";
         UpdatePositionPage: page "Positions Minimal Education";
+        PositionBenefTable: Record "Position Benefits";
+        PositionBenefPage: page "Position Benefits";
 }
 
