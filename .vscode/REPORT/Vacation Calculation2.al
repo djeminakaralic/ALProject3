@@ -246,7 +246,6 @@ report 50010 "Vacation Calculation2"
                             end;
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
-                            //EmployeeRec."Hours In Day" < 8
                             IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
                                 SocialStatus.SETFILTER("No.", '%1', '9');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
