@@ -477,49 +477,11 @@ table 50132 "Position Menu"
         field(50394; "Work Group"; Text[10])
         {
         }
-        field(50395; "Minimal Education Level"; Option)
+        field(50395; "Minimal Education Level"; enum School)
         {
             Caption = 'Education level';
-            OptionCaption = ' ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  ';
-            OptionMembers = Empty,NS,KV,VSS,MR,DR;
 
-            trigger OnValidate()
-            begin
 
-                /*WPConnSetup.FINDFIRST();
-                
-                
-                CREATE(conn, TRUE, TRUE);
-                
-                conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
-                          +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
-                
-                CREATE(comm,TRUE, TRUE);
-                
-                lvarActiveConnection := conn;
-                comm.ActiveConnection := lvarActiveConnection;
-                
-                comm.CommandText := 'dbo.Position_Insert';
-                comm.CommandType := 4;
-                comm.CommandTimeout := 0;
-                
-                param:=comm.CreateParameter('@OldCode', 200, 1, 10, xRec.Code);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@Code', 200, 1, 10, Code);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@Descriptiom', 200, 1, 100, Description);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@DepartmentCode', 200, 1, 10, "Department Code");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@EduLevel', 200, 1, 30, "Minimal Education Level");
-                comm.Parameters.Append(param);
-                
-                comm.Execute;
-                conn.Close;
-                CLEAR(conn);
-                CLEAR(comm);*/
-
-            end;
         }
         field(50396; "Position Menu Identity"; Integer)
         {
@@ -563,6 +525,27 @@ table 50132 "Position Menu"
         {
             Caption = 'ID for GPS';
         }
+
+        field(500405; "School of Graduation"; Text[250])
+        {
+            Caption = 'School of Graduation';
+            TableRelation = "Institution/Company".Description WHERE("Type" = FILTER("Education"));
+
+            trigger OnValidate()
+            begin
+
+            end;
+        }
+        field(500406; "School"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Position Minimal Education" where("Position Code" = field(Code), "Position Name" = field(Description), "Org Shema" = field("Org. Structure")));
+
+
+        }
+
+
+
     }
 
     keys

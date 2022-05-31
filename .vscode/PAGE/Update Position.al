@@ -21,18 +21,22 @@ page 50050 "Update Position"
                 field("Official Translation"; "Official Translation")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Role Name"; "Role Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Role; Role)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("BJF/GJF"; "BJF/GJF")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Management Level"; "Management Level")
                 {
@@ -41,10 +45,16 @@ page 50050 "Update Position"
                 field("Key Function"; "Key Function")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Control Function"; "Control Function")
                 {
                     ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Minimal Education Level"; "Minimal Education Level")
+                {
+
                 }
                 field(Grade; Grade)
                 {
@@ -66,6 +76,29 @@ page 50050 "Update Position"
                 field("Org. Structure"; "Org. Structure")
                 {
                     ApplicationArea = all;
+                }
+                field(School; School)
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    begin
+                        UpdatePostTable.RESET;
+                        UpdatePostTable.SETFILTER("Position Code", Rec.Code);
+                        UpdatePostTable.SETFILTER("Position Name", Description);
+                        UpdatePostTable.SETFILTER("Org Shema", rec."Org. Structure");
+                        UpdatePositionPage.SETTABLEVIEW(UpdatePostTable);
+                        UpdatePositionPage.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+
+
+
+
+
+
                 }
             }
         }
@@ -197,5 +230,7 @@ page 50050 "Update Position"
         DimensionForReport5: Record "Dimension for report";
         DimensionCopy5: Record "Dimension temporary";
         Department: Record "Department";
+        UpdatePostTable: Record "Position Minimal Education";
+        UpdatePositionPage: page "Positions Minimal Education";
 }
 
