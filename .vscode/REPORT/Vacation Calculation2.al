@@ -246,7 +246,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeRelative.Reset();
                             EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."Employee No.");
                             EmployeeRelative.SetFilter(Relation, '%1', 3);
-                            EmployeeRelative.SetFilter(Age, '%<1', 7);
+                            EmployeeRelative.SetFilter(Age, '<%1', 7);
                             IF EmployeeRelative.FindFirst() then
                                 PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + 2;
                             EmployeeRelative.Reset();
