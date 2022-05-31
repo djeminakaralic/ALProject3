@@ -11123,6 +11123,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Points - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3545058964 - Field 977452301 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vacation Days Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Vacation Days Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1348028838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Points Per Experience Years</source>
           <note from="Developer" annotates="general" priority="2"></note>

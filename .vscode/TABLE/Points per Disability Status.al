@@ -7,6 +7,7 @@ table 50063 "Points per Disability Status"
         field(1; "No."; Code[10])
         {
             Caption = 'No.';
+
         }
         field(2; Description; Text[100])
         {
@@ -18,7 +19,11 @@ table 50063 "Points per Disability Status"
             Caption = 'Points';
         }
         //ED 02 START
-        field(5; Category; Option)
+        field(5; "Vacation Days Code"; Code[10])
+        {
+            Caption = 'Vacation Days Code';
+        }
+        field(6; Category; Option)
         {
             Caption = 'Category';
             //OptionCaption = Disability, Military, Conditions;
