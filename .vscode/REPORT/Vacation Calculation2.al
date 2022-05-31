@@ -268,7 +268,7 @@ report 50010 "Vacation Calculation2"
 
                             //Majka djeteta mlađeg od 7 godina
                             EmployeeRelative.Reset();
-                            EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."Employee No.");
+                            EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
                             EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
                             EmployeeRelative.SetFilter(Age, '<%1', 7);
                             IF EmployeeRelative.FindFirst() then begin
