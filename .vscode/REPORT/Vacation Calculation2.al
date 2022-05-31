@@ -264,7 +264,9 @@ report 50010 "Vacation Calculation2"
                                     PlanGO.MODIFY;
                                 END;
 
-                            end;
+                            end
+                            ELSE
+                                PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
 
 
                             //Radnik mlađi od 18 godina
