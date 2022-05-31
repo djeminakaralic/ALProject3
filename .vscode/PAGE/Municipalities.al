@@ -24,6 +24,16 @@ page 50006 Municipalities
                 {
                     ApplicationArea = all;
                 }
+                field("DP Code"; "DP Code")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Entity Code"; "Entity Code")
+                {
+
+                }
+
                 field(City; City)
                 {
                     ApplicationArea = all;
@@ -37,6 +47,7 @@ page 50006 Municipalities
                 {
                     ApplicationArea = all;
                 }
+
 
 
             }
