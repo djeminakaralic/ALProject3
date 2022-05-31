@@ -51,9 +51,9 @@ page 50069 Department
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
-                    visible=false;
+                    visible = false;
 
-                    
+
                 }
                 field(City; City)
                 {
@@ -109,64 +109,65 @@ page 50069 Department
                 field("Team Code"; "Team Code")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Team Description"; "Team Description")
                 {
                     Editable = true;
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Entity of Agency"; "Entity of Agency")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Timesheets administrator"; "Timesheets administrator")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Timesheets administrator 2"; "Timesheets administrator 2")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Timesheets Manager"; "Timesheets Manager")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Cnfidential Clerk 1"; "Cnfidential Clerk 1")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Confidential Clerk 1 Full Name"; "Confidential Clerk 1 Full Name")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Confidential Clerk 1 Position"; "Confidential Clerk 1 Position")
                 {
                     Editable = false;
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Cnfidential Clerk 2"; "Cnfidential Clerk 2")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Confidential Clerk 2 Full Name"; "Confidential Clerk 2 Full Name")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Confidential Clerk 2 Position"; "Confidential Clerk 2 Position")
                 {
                     Editable = false;
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Start Date"; "Start Date")
 
@@ -201,23 +202,23 @@ page 50069 Department
                 field("Signatory 1 Contr With Benef"; "Signatory 1 Contr With Benef")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Signatory 1 With Benef Name"; "Signatory 1 With Benef Name")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
 
                 field("Signatory 2 Contr With Benef"; "Signatory 2 Contr With Benef")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Signatory 2 With Benef Name"; "Signatory 2 With Benef Name")
                 {
                     ApplicationArea = all;
-                      Visible = false;
+                    Visible = false;
                 }
                 field("Department Idenity"; "Department Idenity")
                 {

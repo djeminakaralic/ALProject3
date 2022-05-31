@@ -147,11 +147,10 @@ table 50151 Sector
             OptionCaption = ' ,Residence,Network';
             OptionMembers = " ",Residence,Network;
         }
-        field(50017; "Department Type"; Option)
+        field(50017; "Department Type"; Enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(50018; Belongs; Text[100])
         {
@@ -170,11 +169,23 @@ table 50151 Sector
         }
         field(500405; Parent; Text[250])
         {
+            Caption = 'Parent';
+            TableRelation = Sector.Description WHERE("Org Shema" = FIELD("ORG Shema"));
+
         }
         field(500406; CEO; Boolean)
         {
 
-            TableRelation = Sector.Code WHERE("Org Shema" = FIELD("ORG Shema"), CEO = const(true));
+
+            Caption = 'CEO';
+            trigger OnValidate()
+            begin
+                if CEO = true then
+                    "Department Type" := "Department Type"::CEO
+                else
+                    "Department Type" := "Department Type"::Sector;
+
+            end;
 
         }
     }
@@ -218,6 +229,11 @@ table 50151 Sector
         */
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15);
+        if CEO = true then
+            "Department Type" := "Department Type"::CEO
+        else
+            "Department Type" := "Department Type"::Sector;
+
 
     end;
 

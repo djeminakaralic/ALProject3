@@ -19,28 +19,22 @@ table 50043 Department
                 SectorT.SETFILTER(Code, '%1', Rec.Code);
                 SectorT.SETFILTER("Org Shema", '%1', "ORG Shema");
                 IF SectorT.FINDFIRST THEN BEGIN
-                    Zapis := SectorT.COUNT;
 
                     if SectorT.CEO = true then
                         Rec."Department Type" := Rec."Department Type"::CEO
                     else
                         Rec."Department Type" := Rec."Department Type"::Sector;
 
-                    IF Zapis = 1 THEN BEGIN
-                        VALIDATE("Sector  Description", SectorT.Description);
-                        Description := SectorT.Description;
-                        SectorT.RESET;
-                        SectorT.SETFILTER(Description, '%1', SectorT.Description);
-                        IF SectorT.FINDFIRST THEN
-                            Sector := SectorT.Code;
-                        IF STRLEN(Sector) = 2 THEN BEGIN
-                            "Managing Org 1" := SectorT.Code;
-                        END
-                        ELSE BEGIN
-                            "Managing Org 2" := SectorT.Code;
-                            "Managing Org 1" := COPYSTR(SectorT.Code, 1, 2);
-                        END;
-                    END;
+
+                    VALIDATE("Sector  Description", SectorT.Description);
+
+                    Description := SectorT.Description;
+                    SectorT.RESET;
+                    SectorT.SETFILTER(Description, '%1', SectorT.Description);
+                    IF SectorT.FINDFIRST THEN
+                        Sector := SectorT.Code;
+
+
                 END;
 
                 //Služba
@@ -48,27 +42,13 @@ table 50043 Department
                 DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
                 DepartmentCategoryT.SETFILTER(Code, '%1', Rec.Code);
                 IF DepartmentCategoryT.FINDFIRST THEN BEGIN
-                    Zapis := DepartmentCategoryT.COUNT;
+
                     "Department Type" := "Department Type"::"Department Category";
 
                     Description := DepartmentCategoryT.Description;
+
                     VALIDATE("Department Categ.  Description", DepartmentCategoryT.Description);
                     Validate("Sector  Description", DepartmentCategoryT."Sector Belongs");
-                    Dep.RESET;
-                    Dep.SETFILTER(Description, '%1', DepartmentCategoryT.Description);
-                    Dep.SETFILTER("ORG Shema", '%1', "ORG Shema");
-                    IF Dep.FINDFIRST THEN BEGIN
-                        "Managing Org 1" := Dep."Department Category";
-                        "Managing Org 2" := Dep.Sector;
-                        "Managing Org 3" := COPYSTR(Dep.Sector, 1, 2);
-
-                    END
-                    ELSE BEGIN
-                        "Managing Org 1" := '';
-                        "Managing Org 2" := '';
-                        "Managing Org 3" := '';
-                    END;
-
 
 
                 END;
@@ -81,47 +61,27 @@ table 50043 Department
 
 
                     "Department Type" := "Department Type"::Group;
-                    IF Zapis = 1 THEN BEGIN
-                        Description := GroupT.Description;
-                        VALIDATE("Group Description", GroupT.Description);
-                        Dep.RESET;
-                        Dep.SETFILTER(Description, '%1', GroupT.Description);
-                        Dep.SETFILTER("ORG Shema", '%1', "ORG Shema");
-                        IF Dep.FINDFIRST THEN BEGIN
-                            "Managing Org 1" := Dep."Group Code";
-                            "Managing Org 2" := Dep."Department Category";
-                            "Managing Org 3" := Dep.Sector;
-                            "Managing Org 4" := COPYSTR(Dep.Sector, 1, 2);
 
-                        END
-                        ELSE BEGIN
-                            "Managing Org 1" := '';
-                            "Managing Org 2" := '';
-                            "Managing Org 3" := '';
-                            "Managing Org 4" := '';
-                        END;
+                    Description := GroupT.Description;
+                    VALIDATE("Group Description", GroupT.Description);
 
-                        "Group Code" := Rec.Code;
+                    "Group Code" := Rec.Code;
+
+                    VALIDATE("Department Categ.  Description", GroupT."Belongs to Department Category");
+                    //Služba
+                    DepartmentCategoryT.RESET;
+                    DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
+                    DepartmentCategoryT.SETFILTER(Description, '%1', GroupT."Belongs to Department Category");
+                    IF DepartmentCategoryT.FINDFIRST THEN BEGIN
+                        VALIDATE("Sector  Description", DepartmentCategoryT."Sector Belongs");
+                    end
+                    else begin
+                        Validate("Sector  Description", '');
+                    end;
 
 
-
-
-
-                        VALIDATE("Department Categ.  Description", GroupT."Belongs to Department Category");
-                        //Služba
-                        DepartmentCategoryT.RESET;
-                        DepartmentCategoryT.SETFILTER("Org Shema", '%1', "ORG Shema");
-                        DepartmentCategoryT.SETFILTER(Description, '%1', GroupT."Belongs to Department Category");
-                        IF DepartmentCategoryT.FINDFIRST THEN BEGIN
-                            VALIDATE("Sector  Description", DepartmentCategoryT."Sector Belongs");
-                        end
-                        else begin
-                            Validate("Sector  Description", '');
-                        end;
-
-
-                    END;
                 END;
+            END;
             end;
         }
         field(2; Description; Text[130])
@@ -145,7 +105,7 @@ table 50043 Department
         {
             Caption = 'Address';
             FieldClass = Normal;
-            
+
 
         }
         field(6; City; Text[30])
@@ -171,10 +131,12 @@ table 50043 Department
                     "B-1Rec".SETFILTER("Org Shema", "ORG Shema");
                     IF "B-1Rec".FINDFIRST THEN
                         "Sector  Description" := "B-1Rec".Description;
-                    "Sector Identity" := "B-1Rec".Identity;
+
                 END
                 ELSE
                     "Sector  Description" := '';
+                if ("Department Type" = "Department Type"::CEO) or ("Department Type" = "Department Type"::Sector) then
+                    Description := Rec."Sector  Description";
 
             end;
         }
@@ -198,6 +160,9 @@ table 50043 Department
                 ELSE
                     "Department Categ.  Description" := '';
 
+                if ("Department Type" = "Department Type"::"Department Category") then
+                    Description := Rec."Department Categ.  Description";
+
             end;
         }
         field(10; "Group Code"; Code[30])
@@ -208,6 +173,15 @@ table 50043 Department
 
             trigger OnValidate()
             begin
+
+                GroupT.Reset();
+                GroupT.SetFilter(Code, '%1', Rec."Group Code");
+                GroupT.SetFilter("Org Shema", '%1', Rec."ORG Shema");
+                if GroupT.FindFirst() then begin
+                    "Group Description" := GroupT.Description;
+                    Validate("Group Description", "Group Description");
+
+                end
 
 
             end;
@@ -226,18 +200,22 @@ table 50043 Department
                     SectorR.SETFILTER("Org Shema", '%1', "ORG Shema");
                     IF SectorR.FINDFIRST THEN BEGIN
                         Sector := SectorR.Code;
-                        "Sector Identity" := SectorR.Identity;
+
                     END
                     ELSE BEGIN
                         Sector := '';
-                        "Sector Identity" := 0;
+
                     END;
                 END
                 ELSE BEGIN
                     "Sector  Description" := '';
                     Sector := '';
-                    "Sector Identity" := 0;
+
                 END;
+                if ("Department Type" = "Department Type"::CEO) or ("Department Type" = "Department Type"::Sector) then
+                    Description := Rec."Sector  Description";
+
+
             end;
         }
         field(12; "Department Categ.  Description"; Text[85])
@@ -255,13 +233,17 @@ table 50043 Department
                     "B-1WithRegions".SETFILTER("Org Shema", '%1', "ORG Shema");
                     IF "B-1WithRegions".FINDFIRST THEN BEGIN
                         "Department Category" := "B-1WithRegions".Code;
-                        "Department Idenity" := "B-1WithRegions".Identity;
+                        Validate("Sector  Description", "B-1WithRegions"."Sector Belongs");
+
                     END;
                 END;
                 IF "Department Categ.  Description" = '' THEN BEGIN
                     "Department Category" := '';
-                    "Department Idenity" := 0;
+                    Validate("Sector  Description", '');
+
                 END;
+                if ("Department Type" = "Department Type"::"Department Category") then
+                    Description := Rec."Department Categ.  Description";
             end;
         }
         field(13; "Group Description"; Text[85])
@@ -279,14 +261,29 @@ table 50043 Department
                     StreamRec.SETFILTER("Org Shema", '%1', "ORG Shema");
                     IF StreamRec.FINDFIRST THEN BEGIN
                         "Group Code" := StreamRec.Code;
-                        "Department Group identity" := StreamRec.Identity;
+                        Validate("Department Categ.  Description", StreamRec."Belongs to Department Category");
+
+                        DepartmentCategoryT.Reset();
+                        DepartmentCategoryT.SetFilter(Description, StreamRec."Belongs to Department Category");
+                        DepartmentCategoryT.SetFilter("Org Shema", StreamRec."Org Shema");
+                        if DepartmentCategoryT.FindFirst() then
+                            Validate("Sector  Description", DepartmentCategoryT."Sector Belongs")
+                        else
+                            Validate("Sector  Description", '');
+
                     END;
                 END
                 ELSE BEGIN
                     "Group Code" := '';
-                    "Department Group identity" := 0;
-                    "Group Description" := '';
+                    "Department Category" := '';
+                    "Department Categ.  Description" := '';
+                    "Sector Code" := '';
+                    "Sector  Description" := '';
+
                 END;
+
+                if ("Department Type" = "Department Type"::Group) then
+                    Description := Rec."Group Description";
             end;
         }
         field(14; Municipality; Code[20])
