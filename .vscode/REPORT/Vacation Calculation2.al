@@ -243,8 +243,17 @@ report 50010 "Vacation Calculation2"
                             end;
 
                             //Majka djeteta mlađeg od 7 godina
+                            EmployeeRelative.Reset();
                             EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."Employee No.");
-                            //EmployeeRelative.SetFilter("Relative Code", ); //da je dijete - sin ili kcerka
+                            EmployeeRelative.SetFilter(Relation, '%1', 3);
+                            EmployeeRelative.SetFilter(Age, '%<1', 7);
+                            IF EmployeeRelative.FindFirst() then
+                                PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + 2;
+                            EmployeeRelative.Reset();
+                            //EmployeeRelative.SetFilter(, '%1', FILTER('Child'));
+
+                            /*EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."Employee No.");
+                            EmployeeRelative.SetFilter(Relation, '%1', 'Child'); //da je dijete - sin ili kcerka
                             //EmployeeRelative.SetFilter(Age, '');
                             /*IF ((EmployeeRec.Age < 18)) THEN BEGIN
                                 SocialStatus.SETFILTER("No.", '%1', '4');
@@ -2118,6 +2127,7 @@ R_WorkExperience.RUN;
         WorkBooklet2: Record "Work Booklet";
         Dani: Decimal;
         StvarniStartDate: Date;
+        CChildren: integer;
         StvarniEndDate: Date;
         TrenutniDatumZaposlenja: Date;
         SocialStatus: Record "Points per Disability Status";
