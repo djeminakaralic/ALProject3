@@ -266,7 +266,7 @@ report 50010 "Vacation Calculation2"
 
                             end;
 
-                            EmployeeRelative.Reset();
+
 
                             /*IF ((EmployeeRec.Age < 18)) THEN BEGIN
                                 SocialStatus.SETFILTER("No.", '%1', '4');
