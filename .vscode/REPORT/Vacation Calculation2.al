@@ -223,7 +223,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
                             EmployeeC.SETCURRENTKEY("Starting Date");
                             EmployeeC.ASCENDING;
-                            If EmployeeC.FINDLAST THEN BEGIN
+                            If EmployeeC.FINDLAST THEN
                                 IF ((EmployeeC."Rad u smjenama" = TRUE) OR (EmployeeRec."Hours In Day" < 8)) THEN BEGIN
                                     PlanGO."Days based on Working conditions" := 2;
 
@@ -237,10 +237,10 @@ report 50010 "Vacation Calculation2"
                                     IF EmployeeC.FINDLAST THEN BEGIN
                                         PlanGO.MODIFY;
                                     END;
-                                END;
-                            END
-                            ELSE
-                                PlanGO."Days based on Working conditions" := 0;
+
+                                END
+                                ELSE
+                                    PlanGO."Days based on Working conditions" := 0;
 
 
                             //OVDJE ZA VOJNI STAŽ
