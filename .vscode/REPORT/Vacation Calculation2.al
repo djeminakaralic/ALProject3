@@ -247,14 +247,27 @@ report 50010 "Vacation Calculation2"
                             EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."Employee No.");
                             EmployeeRelative.SetFilter(Relation, '%1', 3);
                             EmployeeRelative.SetFilter(Age, '<%1', 7);
-                            IF EmployeeRelative.FindFirst() then
-                                PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + 2;
-                            EmployeeRelative.Reset();
-                            //EmployeeRelative.SetFilter(, '%1', FILTER('Child'));
+                            IF EmployeeRelative.FindFirst() then begin
+                                SocialStatus.SETFILTER("No.", '%1', '4');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
+                                END;
 
-                            /*EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."Employee No.");
-                            EmployeeRelative.SetFilter(Relation, '%1', 'Child'); //da je dijete - sin ili kcerka
-                            //EmployeeRelative.SetFilter(Age, '');
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
+                                    PlanGO.MODIFY;
+                                END;
+
+                            end;
+
+                            EmployeeRelative.Reset();
+
                             /*IF ((EmployeeRec.Age < 18)) THEN BEGIN
                                 SocialStatus.SETFILTER("No.", '%1', '4');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
