@@ -63,6 +63,14 @@ page 50186 "ORG Dijelovi"
                 {
                     ApplicationArea = all;
                 }
+                field(Telephone; Telephone)
+                {
+                    ApplicationArea = all;
+                }
+                field("Bank Account No."; "Bank Account No.")
+                {
+                    ApplicationArea = all;
+                }
                 field(Region; Region)
                 {
                     ApplicationArea = all;
@@ -72,18 +80,14 @@ page 50186 "ORG Dijelovi"
                 {
                     ApplicationArea = all;
                 }
-                field(Telephone; Telephone)
-                {
-                    ApplicationArea = all;
-                }
+
+
+
                 field("ORG ID"; "ORG ID")
                 {
                     ApplicationArea = all;
                 }
-                field("Bank Account No."; "Bank Account No.")
-                {
-                    ApplicationArea = all;
-                }
+
                 field("JIB Contributes"; "JIB Contributes")
                 {
                     ApplicationArea = all;
