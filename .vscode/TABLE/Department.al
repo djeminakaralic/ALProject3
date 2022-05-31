@@ -82,7 +82,7 @@ table 50043 Department
 
                 END;
             END;
-            end;
+
         }
         field(2; Description; Text[130])
         {
