@@ -248,7 +248,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeRelative.SetFilter(Relation, '%1', 3);
                             EmployeeRelative.SetFilter(Age, '<%1', 7);
                             IF EmployeeRelative.FindFirst() then begin
-                                SocialStatus.SETFILTER("No.", '%1', '4');
+                                SocialStatus.SETFILTER("No.", '%1', '3');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
                                 END;
