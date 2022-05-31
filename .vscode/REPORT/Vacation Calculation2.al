@@ -195,6 +195,26 @@ report 50010 "Vacation Calculation2"
 
                             END;
 
+                            //Za samohrane roditelje/usvojitelje
+                            IF ((EmployeeRec."Single parent/adopter" = TRUE)) THEN BEGIN
+                                SocialStatus.SETFILTER("No.", '%1', '2');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Disability" := SocialStatus.Points;
+                                END;
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
+                                    PlanGO.MODIFY;
+                                END;
+                            END
+                            ELSE
+                                PlanGO."Days based on Disability" := 0;
+
 
                             //OVDJE ZA VOJNI STAŽ
                             /*IF ((EmployeeRec."Disabled Child" = TRUE)) THEN BEGIN
@@ -216,11 +236,6 @@ report 50010 "Vacation Calculation2"
                             END
                             ELSE
                                 PlanGO."Days based on Military service" := 0;*/
-
-
-
-
-
 
 
                             //roditelj djece sa posebnim potrebama
