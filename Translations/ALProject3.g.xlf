@@ -23548,6 +23548,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Points per Experience Years - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 3300095566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Points per Military Service</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Points per Military Service - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 59812763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Points per Working Conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Points per Working Conditions - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2066736455 - Action 2317735697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vacation statistic</source>
           <note from="Developer" annotates="general" priority="2"></note>
