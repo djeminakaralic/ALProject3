@@ -110,8 +110,16 @@ page 50003 "HR Role Center"
                 action("Training Catalogue")
                 {
                     Caption = 'Training Catalogue';
-                    Image = Entries;
+                    Image = TaskList;
                     RunObject = Page "Trainings Catalogue";
+                    ApplicationArea = all;
+
+                }
+                action("Training Time Entry")
+                {
+                    Caption = 'Training time entries';
+                    Image = Entries;
+                    RunObject = Page "Training Time Entries";
                     ApplicationArea = all;
 
                 }
