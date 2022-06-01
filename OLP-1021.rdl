@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="EmpNo">
+          <DataField>EmpNo</DataField>
+        </Field>
+        <Field Name="EmpFirstName">
+          <DataField>EmpFirstName</DataField>
+        </Field>
+        <Field Name="EmpLastName">
+          <DataField>EmpLastName</DataField>
+        </Field>
+        <Field Name="EmpAddress">
+          <DataField>EmpAddress</DataField>
+        </Field>
+        <Field Name="EmpCity">
+          <DataField>EmpCity</DataField>
+        </Field>
+        <Field Name="EmpPostCode">
+          <DataField>EmpPostCode</DataField>
+        </Field>
+        <Field Name="EmpID">
+          <DataField>EmpID</DataField>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="CompanyAddress">
+          <DataField>CompanyAddress</DataField>
+        </Field>
+        <Field Name="CompanyRegistrationNo">
+          <DataField>CompanyRegistrationNo</DataField>
+        </Field>
+        <Field Name="CompCity">
+          <DataField>CompCity</DataField>
+        </Field>
+        <Field Name="CompPostCode">
+          <DataField>CompPostCode</DataField>
+        </Field>
+        <Field Name="RedBroj">
+          <DataField>RedBroj</DataField>
+        </Field>
+        <Field Name="PrihodKM">
+          <DataField>PrihodKM</DataField>
+        </Field>
+        <Field Name="PrihodKMFormat">
+          <DataField>PrihodKMFormat</DataField>
+        </Field>
+        <Field Name="DatumIsplate">
+          <DataField>DatumIsplate</DataField>
+        </Field>
+        <Field Name="PIO">
+          <DataField>PIO</DataField>
+        </Field>
+        <Field Name="PIOFormat">
+          <DataField>PIOFormat</DataField>
+        </Field>
+        <Field Name="Zdrav">
+          <DataField>Zdrav</DataField>
+        </Field>
+        <Field Name="ZdravFormat">
+          <DataField>ZdravFormat</DataField>
+        </Field>
+        <Field Name="Nezap">
+          <DataField>Nezap</DataField>
+        </Field>
+        <Field Name="NezapFormat">
+          <DataField>NezapFormat</DataField>
+        </Field>
+        <Field Name="PorezOdb">
+          <DataField>PorezOdb</DataField>
+        </Field>
+        <Field Name="PorezOdbFormat">
+          <DataField>PorezOdbFormat</DataField>
+        </Field>
+        <Field Name="UkupneStopeDopr">
+          <DataField>UkupneStopeDopr</DataField>
+        </Field>
+        <Field Name="UkupneStopeDoprFormat">
+          <DataField>UkupneStopeDoprFormat</DataField>
+        </Field>
+        <Field Name="TaxBasis">
+          <DataField>TaxBasis</DataField>
+        </Field>
+        <Field Name="TaxBasisFormat">
+          <DataField>TaxBasisFormat</DataField>
+        </Field>
+        <Field Name="Tax">
+          <DataField>Tax</DataField>
+        </Field>
+        <Field Name="TaxFormat">
+          <DataField>TaxFormat</DataField>
+        </Field>
+        <Field Name="StopeDopr">
+          <DataField>StopeDopr</DataField>
+        </Field>
+        <Field Name="StopeDoprFormat">
+          <DataField>StopeDoprFormat</DataField>
+        </Field>
+        <Field Name="Use">
+          <DataField>Use</DataField>
+        </Field>
+        <Field Name="UseFormat">
+          <DataField>UseFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

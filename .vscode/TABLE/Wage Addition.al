@@ -509,6 +509,138 @@ table 50032 "Wage Addition"
         {
             Caption = 'Management Level';
         }
+        field(50321; Meal; Boolean)
+        {
+            Caption = 'Meal';
+        }
+        field(50322; "No. Of Days"; Integer)
+        {
+            Caption = 'No. Of Days';
+
+            trigger OnValidate()
+            begin
+                IF Meal THEN BEGIN
+                    IF "Org Entity Code" = 'FBIH' THEN BEGIN
+                        WageSetup.SETFILTER("Meal Code FBIH", "Wage Addition Type");
+                        IF WageSetup.FINDFIRST THEN BEGIN
+                            VALIDATE(Amount, WageSetup.Meal * "No. Of Days");
+                            Response := CONFIRM('Da li želite unijeti i oporezivi dio?', TRUE);
+                            IF Response THEN BEGIN
+                                //  MESSAGE(FORMAT(Response));
+                                WAM.INIT;
+                                IF WAM2.FINDLAST THEN
+                                    WAM."Entry No." := WAM2."Entry No." + 1
+                                ELSE
+                                    WAM."Entry No." := 0;
+                                WAM.VALIDATE("Employee No.", "Employee No.");
+                                WAM.VALIDATE("Wage Addition Type", '821');
+                                WAM.VALIDATE("No. Of Days", "No. Of Days");
+                                WAM.VALIDATE(Amount, WageSetup."Meal Taxable FBiH Untaxable" * "No. Of Days");
+                                WAM.VALIDATE("Year of Wage", "Year of Wage");
+                                WAM.VALIDATE("Month of Wage", "Month of Wage");
+                                WAM.INSERT(TRUE);
+                            END;
+                        END;
+                    END;
+                    IF "Org Entity Code" = 'BD' THEN BEGIN
+                        WageSetup.SETFILTER("Meal Code FBiH Taxable", "Wage Addition Type");
+                        IF WageSetup.FINDFIRST THEN BEGIN
+                            VALIDATE(Amount, WageSetup."Meal Total BD" * "No. Of Days");
+                        END;
+                    END;
+
+                    IF "Org Entity Code" = 'RS' THEN BEGIN
+                        WageSetup.SETFILTER("Meal Code RS", "Wage Addition Type");
+                        IF WageSetup.FINDFIRST THEN BEGIN
+                            VALIDATE(Amount, WageSetup."Meal Total RS" * "No. Of Days");
+                        END;
+                    END;
+                END;
+            end;
+        }
+        field(50323; "System Entry"; Boolean)
+        {
+        }
+        field(50324; "Org Entity Code"; Code[10])
+        {
+            Caption = 'Org Entity Code';
+        }
+        field(50325; "Calculated on Brutto"; Boolean)
+        {
+            Caption = 'Calculated on Neto (base)';
+        }
+        field(50326; "No. Of Hours"; Decimal)
+        {
+            Caption = 'No. Of Days';
+
+            trigger OnValidate()
+            begin
+                IF Meal THEN BEGIN
+                    IF "Org Entity Code" = 'FBIH' THEN BEGIN
+                        WageSetup.SETFILTER("Meal Code FBIH", "Wage Addition Type");
+                        IF WageSetup.FINDFIRST THEN BEGIN
+                            VALIDATE(Amount, WageSetup.Meal * ("No. Of Hours" / 8));
+                            Response := CONFIRM('Da li želite unijeti i oporezivi dio?', TRUE);
+                            IF Response THEN BEGIN
+                                //  MESSAGE(FORMAT(Response));
+                                WAM.INIT;
+                                IF WAM2.FINDLAST THEN
+                                    WAM."Entry No." := WAM2."Entry No." + 1
+                                ELSE
+                                    WAM."Entry No." := 0;
+                                WAM.VALIDATE("Employee No.", "Employee No.");
+                                WAM.VALIDATE("Wage Addition Type", '821');
+                                WAM.VALIDATE("No. Of Days", "No. Of Days");
+                                WAM.VALIDATE("No. Of Hours", "No. Of Hours");
+                                IF emp.GET("Employee No.") THEN
+                                    WAM.VALIDATE(Amount, WageSetup."Meal Taxable FBiH Untaxable" * ("No. Of Hours" / emp."Hours In Day"));
+                                WAM.VALIDATE("Year of Wage", "Year of Wage");
+                                WAM.VALIDATE("Month of Wage", "Month of Wage");
+                                WAM.INSERT(TRUE);
+                            END;
+                        END;
+                    END;
+                    IF "Org Entity Code" = 'BD' THEN BEGIN
+                        WageSetup.SETFILTER("Meal Code FBiH Taxable", "Wage Addition Type");
+                        IF WageSetup.FINDFIRST THEN BEGIN
+                            IF emp.GET("Employee No.") THEN
+                                VALIDATE(Amount, WageSetup."Meal Total BD" * ("No. Of Hours" / emp."Hours In Day"));
+                        END;
+                    END;
+
+                    IF "Org Entity Code" = 'RS' THEN BEGIN
+                        WageSetup.SETFILTER("Meal Code RS", "Wage Addition Type");
+                        IF WageSetup.FINDFIRST THEN BEGIN
+                            IF emp.GET("Employee No.") THEN
+                                VALIDATE(Amount, WageSetup."Meal Total RS" * ("No. Of Hours" / emp."Hours In Day"));
+                        END;
+                    END;
+                END;
+            end;
+        }
+        field(50327; "Calculate Deduction"; Boolean)
+        {
+            Caption = 'Calculate Deduction';
+        }
+        field(50328; Bonus; Boolean)
+        {
+        }
+        field(50329; "Global Dimension 1 Code"; Code[20])
+        {
+            Caption = 'Global Dimension 1 Code';
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1));
+        }
+        field(50330; "Sent e-mail"; Boolean)
+        {
+            Caption = 'Sent e-mail';
+        }
+        field(50331; "RAD-1 Wage Excluded"; Boolean)
+        {
+            CalcFormula = Lookup("Wage Addition Type"."RAD-1 Wage Excluded" WHERE("Code" = FIELD("Wage Addition Type")));
+            FieldClass = FlowField;
+        }
+
+
     }
 
     keys
@@ -562,6 +694,13 @@ table 50032 "Wage Addition"
 
     var
         Txt001: Label '<Ne smijete mijenjati zakljucani red>';
+
+        WageSetup: Record "Wage Setup";
+        Response: Boolean;
+        WAM: Record "Wage Addition";
+        WAMOld: Record "Wage Addition";
+        WAM2: Record "Wage Addition";
+        WAmounts: Record "Wage Amounts";
         Txt002: Label '<Morate navesti tip dodatka>';
         WA: Record "Wage Addition";
         NextEntryNo: Integer;

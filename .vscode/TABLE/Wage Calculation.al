@@ -925,6 +925,42 @@ table 50018 "Wage Calculation"
         field(50360; "Education Level"; Text[30])
         {
         }
+        field(50364; "Send pay list"; Boolean)
+        {
+            Caption = 'Send pay list';
+        }
+        field(50371; "Org Jed"; Text[250])
+        {
+        }
+        field(50372; Munif; Text[50])
+        {
+        }
+
+        field(50390; "Iznos poreske kartice"; Decimal)
+        {
+
+
+        }
+
+        field(50391; "Iznos ličnog odbitka"; Decimal)
+        {
+
+
+        }
+        field(50363; "Contact Center"; Boolean)
+        {
+            Caption = 'Contact Center';
+        }
+        field(50370; "Regres Netto UnTax Separate"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition".Amount WHERE(Regres = FILTER(TRUE),
+                                                            "Employee No." = FIELD("Employee No."),
+                                                            "Wage Header No." = FIELD("Wage Header No."),
+                                                            Calculated = FILTER(TRUE),
+                                                            Taxable = FILTER(FALSE)));
+
+        }
     }
 
     keys

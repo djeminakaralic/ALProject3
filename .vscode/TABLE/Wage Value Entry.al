@@ -23,6 +23,7 @@ table 50030 "Wage Value Entry"
         {
             Caption = 'Document No.';
             Description = 'Wage Header No.';
+            TableRelation = "Wage Header";
         }
         field(7; Description; Text[50])
         {
@@ -50,7 +51,7 @@ table 50030 "Wage Value Entry"
             var
                 LoginMgt: Codeunit "User Management";
             begin
-                //đK    LoginMgt.LookupUserID("User ID");
+                //ĐK  LoginMgt.LookupUserID("User ID");
             end;
         }
         field(28; "Applies-to Entry"; Integer)
@@ -96,9 +97,9 @@ table 50030 "Wage Value Entry"
         field(105; "Entry Type"; Option)
         {
             Caption = 'Entry Type';
-            Description = 'Tax,Added Tax Per City,Net Wage,Contribution,Sick Leave-Company,Sick Leave-Fund,Reduction,Transport,Not Used-VAT,Meal to pay,Meal to refund';
-            OptionCaption = 'Tax,Added Tax Per City,Net Wage,Contribution,Sick Leave-Company,Sick Leave-Fund,Reduction,Transport,VAT,Untaxable,Use,Taxable';
-            OptionMembers = Tax,"Added Tax Per City","Net Wage",Contribution,"Sick Leave-Company","Sick Leave-Fund",Reduction,Transport,VAT,"Meal to pay","Meal to refund",Untaxable,Use,Taxable;
+            Description = 'Tax,Added Tax Per City,Net Wage,Contribution,Sick Leave-Company,Sick Leave-Fund,Reduction,Transport,Not Used-VAT,Meal to pay,Meal to refund,Work Experience';
+            OptionCaption = 'Tax,Added Tax Per City,Net Wage,Contribution,Sick Leave-Company,Sick Leave-Fund,Reduction,Transport,VAT,Untaxable,Use,Taxable,Work Experience';
+            OptionMembers = Tax,"Added Tax Per City","Net Wage",Contribution,"Sick Leave-Company","Sick Leave-Fund",Reduction,Transport,VAT,"Meal to pay","Meal to refund",Untaxable,Use,Taxable,"Work Experience";
         }
         field(106; "Contribution Type"; Code[10])
         {
@@ -183,12 +184,77 @@ table 50030 "Wage Value Entry"
         {
             Caption = 'Use Apportionment Account';
         }
+        field(203; Hours; Decimal)
+        {
+            Caption = 'Hours';
+            DecimalPlaces = 3 : 3;
+        }
+        field(204; "Cost Amount (Netto)"; Decimal)
+        {
+            Caption = 'Cost Amount (Actual)';
+            DecimalPlaces = 2 : 2;
+        }
+        field(205; "Cost Amount (Brutto)"; Decimal)
+        {
+            Caption = 'Cost Amount (Actual)';
+            DecimalPlaces = 2 : 2;
+        }
+        field(206; "Contribution Category Code"; Code[10])
+        {
+            Caption = 'Contribution Category Code';
+            TableRelation = "Contribution Category".Code;
+        }
+        field(207; "Department Name"; Text[100])
+        {
+            Caption = 'Department Name';
+            Editable = false;
+        }
+        field(208; "Department Code"; Code[20])
+        {
+            Caption = 'Department Code';
+        }
+        field(209; Difference; Decimal)
+        {
+        }
+        field(210; "RAD-1 Wage Excluded"; Boolean)
+        {
+            CalcFormula = Lookup("Wage Addition Type"."RAD-1 Wage Excluded" WHERE(Code = FIELD(Description)));
+            FieldClass = FlowField;
+        }
+        field(211; "RAD-1 Wage Other"; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Wage Addition Type"."RAD-1 Wage Other" WHERE(Code = FIELD("Wage Addition Type")));
+
+        }
+        field(212; "Year of Wage"; Integer)
+        {
+
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Wage Calculation"."Year of Wage" WHERE("Wage Header No." = FIELD("Document No.")));
+
+        }
+        field(213; "ECL Org"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Wage Calculation"."Org Jed" WHERE("Employee No." = FIELD("Employee No."),
+                                                                    "Wage Header No." = FIELD("Document No.")));
+
+        }
+        field(214; "ECL Mun"; Text[50])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Wage Calculation".Munif WHERE("Employee No." = FIELD("Employee No."),
+                                                                 "Wage Header No." = FIELD("Document No.")));
+
+        }
     }
 
     keys
     {
         key(Key1; "Entry No.")
         {
+            SumIndexFields = "Cost Amount (Netto)", "Cost Amount (Brutto)";
         }
         key(Key2; "Document No.", "Wage Header Entry No.", "Posting Date")
         {
@@ -215,7 +281,7 @@ table 50030 "Wage Value Entry"
 
     var
         GLSetup: Record "General Ledger Setup";
-        DimMgt: Codeunit "DimensionManagement";
+        //ĐK DimMgt: Codeunit "DimensionManagement";
         GLSetupRead: Boolean;
 
     procedure GetCurrencyCode(): Code[10]

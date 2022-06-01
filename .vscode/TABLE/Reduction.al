@@ -286,6 +286,10 @@ table 50023 Reduction
         {
             Caption = 'Paid Installments';
         }
+        field(50011; "Remaining Due"; Decimal)
+        {
+            Caption = 'Remaining Due';
+        }
     }
 
     keys

@@ -75,6 +75,13 @@ table 50020 "Tax Per Employee"
         {
             Caption = 'Payment Date';
         }
+        field(216; "JIB Contributes"; Text[30])
+        {
+            Caption = 'JIB Contributes';
+        }
+        field(50371; "JIB Contributes DL"; Text[30])
+        {
+        }
     }
 
     keys
