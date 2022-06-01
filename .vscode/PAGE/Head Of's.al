@@ -20,10 +20,12 @@ page 50065 "Head Of's"
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Team Code"; "Team Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Group Description"; "Group Description")
                 {
@@ -44,7 +46,7 @@ page 50065 "Head Of's"
                 field("Sector  Description"; "Sector  Description")
                 {
                     ApplicationArea = all;
-                    Caption = 'Sector Description';
+
                 }
                 field(Sector; Sector)
                 {

@@ -4,6 +4,7 @@ page 50052 "Positions Minimal Education"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Position Minimal Education";
+    Caption='Position Minimal Education';
 
     layout
     {

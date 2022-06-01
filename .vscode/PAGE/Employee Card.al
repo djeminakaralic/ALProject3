@@ -3485,6 +3485,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No.");
                 RunPageMode = View;
                 Promoted = true;
+
             }
             action("Alternative Addresses (Current)")
             {
@@ -4173,7 +4174,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Rec := xRec;
             xRec.TRANSFERFIELDS(Rec);
             CurrPage.UPDATE(FALSE);
-        END;
+        END
+        else begin
+            CurrPage.Update(true);
+        end;
 
     end;
 

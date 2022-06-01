@@ -223,7 +223,7 @@ table 50084 "Head Of's"
 
     keys
     {
-        key(Key1; "Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description")
+        key(Key1; "Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code")
         {
         }
     }

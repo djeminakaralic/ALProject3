@@ -88,6 +88,7 @@ page 50235 "Dimension for Position"
                 field("Sector Identity"; "Sector Identity")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
