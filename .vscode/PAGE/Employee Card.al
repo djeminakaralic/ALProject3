@@ -4187,11 +4187,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             Rec := xRec;
             xRec.TRANSFERFIELDS(Rec);
             CurrPage.UPDATE(FALSE);
-        END
-        else begin
-            CurrPage.Update(true);
-        end;
 
+
+        end;
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
