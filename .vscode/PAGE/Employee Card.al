@@ -3684,6 +3684,18 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 end;
 
             }
+            action("Employee Training Ledger")
+            {
+
+                Caption = 'Employee Training Ledger';
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = page "Employee Trainings Ledger";
+                RunPageLink = "Employee No." = field("Employee No.");
+            }
+
         }
 
     }

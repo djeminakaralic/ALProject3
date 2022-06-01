@@ -52,18 +52,12 @@ table 50033 "Training Catalogue"
         }
         field(11; "Daily rate home SUM"; Decimal)
         {
-            trigger OnValidate()
-            begin
-                "Daily rate home SUM" := "Daily rate home" * "Number of days";
-            end;
+
 
         }
         field(12; "Daily rate ino SUM"; Decimal)
         {
-            trigger OnValidate()
-            begin
-                "Daily rate ino SUM" := "Daily rate ino" * "Number of days";
-            end;
+
 
         }
         field(13; "Kotizacija"; Decimal)

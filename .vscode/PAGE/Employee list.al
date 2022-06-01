@@ -188,6 +188,18 @@ pageextension 50149 EmployeeList extends "Employee List"
                     XMLPortExample.Run;
                 end;
             }
+            action("Employee Trainings Ledger")
+            {
+                Caption = 'Employee Training Ledger';
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = page "Employee Trainings Ledger";
+
+
+            }
+
             /*action("Create Worksheet")
             {
                 Caption = 'Create Worksheet';

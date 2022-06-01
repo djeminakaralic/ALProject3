@@ -1,7 +1,7 @@
 page 50058 "Trainings Catalogue"
 {
 
-    Caption = 'Trainings Catalogue';
+    Caption = 'Katalog treninga';
     PageType = List;
     SourceTable = "Training Catalogue";
 
