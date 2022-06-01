@@ -23368,11 +23368,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Head Of's - Control Employee Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 279971287 - Control 1908209134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sector Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Head Of's - Control Sector  Description - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 279971287 - Action 4494671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>&amp;Show</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24734,7 +24729,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Positions - Action Training catalogue  -Position - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 426348693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Positions Minimal Education</source>
+          <source>Position Minimal Education</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education - Property Caption</note>
         </trans-unit>
