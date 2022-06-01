@@ -36,8 +36,36 @@ page 50095 "Points per Disability Status"
         }
     }
 
-    actions
-    {
-    }
+    trigger OnAfterGetRecord()
+    begin
+        IF Rec.Category = 0 THEN BEGIN
+            /*Rec.FILTERGROUP(2);
+            Rec.SETRANGE("Department Type", 8);
+            Rec.SETRANGE(Code, Rec.Code);
+            Rec.SETRANGE(Description, '%1', Rec.Description);
+
+            Rec.FILTERGROUP(0);*/
+            Message('Disability');
+        END;
+        IF Rec.Category = 1 THEN BEGIN
+            /*Rec.FILTERGROUP(2);
+            Rec.SETRANGE("Department Type", 4);
+            Rec.SETRANGE("Department Category", Rec."Department Category");
+            Rec.SETRANGE("Department Categ.  Description", Rec."Department Categ.  Description");
+            Rec.FILTERGROUP(0);*/
+            Message('Military');
+        END;
+        IF Rec.Category = 2 THEN BEGIN
+            /*Rec.FILTERGROUP(2);
+            Rec.SETRANGE("Department Type", 2);
+            Rec.SETRANGE("Group Code", Rec."Group Code");
+            Rec.SETRANGE("Group Description", Rec."Group Description");
+            Rec.FILTERGROUP(0);*/
+            Message('Conditions');
+        END;
+
+    end;
+
+
 }
 
