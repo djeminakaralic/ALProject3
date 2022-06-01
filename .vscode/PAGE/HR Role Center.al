@@ -107,6 +107,14 @@ page 50003 "HR Role Center"
                     RunObject = Page "Citizenship Description";
                     ApplicationArea = all;
                 }
+                action("Training Catalogue")
+                {
+                    Caption = 'Types Of Diseases';
+                    Image = Entries;
+                    RunObject = Page "Trainings Catalogue";
+                    ApplicationArea = all;
+
+                }
                 action("Types Of Diseases")
                 {
                     Caption = 'Types Of Diseases';
