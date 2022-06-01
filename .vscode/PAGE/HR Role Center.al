@@ -109,7 +109,7 @@ page 50003 "HR Role Center"
                 }
                 action("Training Catalogue")
                 {
-                    Caption = 'Types Of Diseases';
+                    Caption = 'Training Catalogue';
                     Image = Entries;
                     RunObject = Page "Trainings Catalogue";
                     ApplicationArea = all;
