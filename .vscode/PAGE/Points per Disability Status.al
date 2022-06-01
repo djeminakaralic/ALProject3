@@ -37,12 +37,13 @@ page 50095 "Points per Disability Status"
     }
 
     trigger OnAfterGetRecord()
+    //ED 02 START
     begin
+
         IF Rec.Category = 0 THEN BEGIN
             Rec.FILTERGROUP(2);
             Rec.SETRANGE(Category, 0);
             Rec.FILTERGROUP(0);
-
         END;
         IF Rec.Category = 1 THEN BEGIN
             Rec.FILTERGROUP(2);
@@ -54,6 +55,8 @@ page 50095 "Points per Disability Status"
             Rec.SETRANGE(Category, 2);
             Rec.FILTERGROUP(0);
         end;
+
     end;
+    //ED 02 END
 }
 
