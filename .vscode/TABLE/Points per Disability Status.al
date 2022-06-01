@@ -30,7 +30,7 @@ table 50063 "Points per Disability Status"
     keys
     {
         //key(Key1; "No.")
-        key(Key1; "No.", Category)
+        key(Key1; Category)
         {
         }
     }
