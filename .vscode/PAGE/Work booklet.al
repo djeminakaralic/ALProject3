@@ -244,7 +244,6 @@ page 50163 "Work booklet"
         enable: Boolean;
         R_WorkExperience: Report "Work experience in Company";
         R_BroughtExperience: Report "Update Brought Experience";
-
         ECL: Record "Employee Contract Ledger";
         WB: Record "Work Booklet";
         IMA: Boolean;

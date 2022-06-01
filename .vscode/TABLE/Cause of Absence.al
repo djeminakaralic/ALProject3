@@ -34,10 +34,7 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         {
             Caption = 'Vacation';
         }
-        field(50016; "Bussiness trip"; Boolean)
-        {
-            Caption = 'Business trip';
-        }
+
         field(50008; "Insurance Basis"; Code[2])
         {
             Caption = 'Insurance Basis';
@@ -72,6 +69,47 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         {
             Caption = 'Holiday';
         }// Add changes to table fields here
+        field(50020; "Add Hours"; Boolean)
+        {
+            Caption = 'Add Hours';
+        }
+        field(50023; "Posting Group"; Code[20])
+        {
+            Caption = 'Posting Group';
+        }
+        field(50016; "Bussiness trip"; Boolean)
+        {
+            Caption = 'Business trip';
+        }
+
+        field(50017; "G/L Account No."; Code[10])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(TS_knjizenja.konto WHERE(vrnaloga = FIELD("Posting Group"),
+                                                           D_C = FILTER('D')));
+            Caption = 'G/L Account No.';
+
+
+        }
+        field(50018; "G/L Balance Account No."; Code[10])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(TS_knjizenja.konto WHERE(vrnaloga = FIELD("Posting Group"),
+                                                           D_C = FILTER('C')));
+            Caption = 'G/L Balance Account No.';
+
+        }
+        field(50019; "Meal - Hours"; Boolean)
+        {
+            Caption = 'Meal - Half Day';
+        }
+        field(50021; "Sick Leave RAD -1"; Boolean)
+        {
+            Caption = 'Sick Leave RAD -1';
+        }
+        field(50022; "Unpaid days"; Boolean)
+        {
+        }
     }
 
     var

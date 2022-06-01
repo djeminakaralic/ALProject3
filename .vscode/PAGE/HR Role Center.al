@@ -446,7 +446,7 @@ page 50003 "HR Role Center"
                     ApplicationArea = all;
                     Caption = 'Points per Disability Status';
                     Image = Filed;
-                    RunPageView = WHERE(Category = CONST(0));
+                    RunPageView = WHERE(Category = CONST(0)); //ED
                     RunObject = Page "Points per Disability Status";
                 }
                 //ED 02 START

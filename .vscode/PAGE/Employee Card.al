@@ -3953,6 +3953,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         //SETRANGE("Year Filter",ThisYear);
         "Year Filter" := ThisYear;
 
+        SelectLatestVersion();
 
     end;
 

@@ -7,7 +7,7 @@ page 50016 "Wage Setup"
     //InsertAllowed = false;
     PageType = Card;
     // Permissions = TableData 50016 = rimd;
-    //RefreshOnActivate = true;
+    RefreshOnActivate = true;
     //SaveValues = false;
     SourceTable = "Wage Setup";
     UsageCategory = Administration;

@@ -56,6 +56,10 @@ table 50012 Contribution
             OptionCaption = 'PIO,Health,Unemployment,Chamber,Special,RS';
             OptionMembers = PIO,Health,Unemployment,Chamber,Special,RS;
         }
+        field(13; "Short Code"; Code[10])
+        {
+            Caption = 'Short Code';
+        }
     }
 
     keys
