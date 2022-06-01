@@ -447,8 +447,6 @@ page 50003 "HR Role Center"
                     ApplicationArea = all;
                     Caption = 'Points per Military Service';
                     Image = Employee;
-                    //RunPageLink = "Department Categ.  Description" = FIELD(Description), "Department Type" = CONST(4);
-                    //RunPageLink = ;
                     RunPageView = WHERE(Category = CONST(1));
                     RunObject = Page "Points per Disability Status";
                 }
