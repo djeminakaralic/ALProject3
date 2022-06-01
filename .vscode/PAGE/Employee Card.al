@@ -12,6 +12,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         modify(Payments)
         {
             Visible = false;
+
         }
         modify("Phone No.2")
         {
@@ -125,6 +126,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         {
                             Editable = false;
                             Caption = 'Brought Years Card';
+                            trigger OnValidate()
+                            var
+                                myInt: Integer;
+                            begin
+                                CurrPage.Update();
+
+                            end;
+
 
 
                         }
@@ -843,8 +852,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         WorkBookletPage.SETTABLEVIEW(WorkBooklet);
                         WorkBookletPage.RUN;
                         CurrPage.UPDATE;
+                        SelectLatestVersion();
 
                     end;
+
                 }
                 field("Work Experience Document"; "Work Experience Document")
                 {
@@ -4162,6 +4173,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         /* CareerDevelopment.RESET;
          CareerDevelopment.SETFILTER("Employee No.", "No.");
          IF CareerDevelopment.FINDLAST THEN;*/
+        SelectLatestVersion();
 
     end;
 
@@ -4246,6 +4258,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         ContractType: Text[250];
         MothersMaidenName: Text[100];
         FathersName: Text[100];
+        EmployeeCard: Page "Employee Card";
         MotherName: Text[100];
         ThisMonthLast: Date;
         NextMonthFirst: Date;

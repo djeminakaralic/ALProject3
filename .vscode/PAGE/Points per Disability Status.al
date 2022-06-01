@@ -40,10 +40,7 @@ page 50095 "Points per Disability Status"
     begin
         IF Rec.Category = 0 THEN BEGIN
             /*Rec.FILTERGROUP(2);
-            Rec.SETRANGE("Department Type", 8);
-            Rec.SETRANGE(Code, Rec.Code);
-            Rec.SETRANGE(Description, '%1', Rec.Description);
-
+            Rec.SETRANGE(Category, 0);
             Rec.FILTERGROUP(0);*/
             Message('Disability');
         END;
@@ -65,7 +62,5 @@ page 50095 "Points per Disability Status"
         END;
 
     end;
-
-
 }
 

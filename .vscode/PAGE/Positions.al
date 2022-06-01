@@ -5,6 +5,7 @@ page 50049 Positions
     PageType = List;
     SourceTable = Position;
 
+
     layout
     {
         area(content)
