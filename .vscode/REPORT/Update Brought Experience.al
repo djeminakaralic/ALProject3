@@ -116,7 +116,7 @@ report 50104 "Update Brought Experience"
                 END;
                END;*/
                 IF ((((Status.AsInteger() = 0)) OR (Status.AsInteger() = 1) OR (Status.AsInteger() = 2) OR (Status.AsInteger() = 3) OR (Status.AsInteger() = 8) OR (Status.AsInteger() = 0))) THEN BEGIN
-                    "Brought Years of Experience" := UkupnoGodine + (((UkupniMjeseci + "Brought Months of Experience 2") + ((UkupniDani + "Brought Days of Experience 2") DIV 30)) DIV 12) + "Brought Years of Experience 2";
+                    validate("Brought Years of Experience", UkupnoGodine + (((UkupniMjeseci + "Brought Months of Experience 2") + ((UkupniDani + "Brought Days of Experience 2") DIV 30)) DIV 12) + "Brought Years of Experience 2");
                     "Brought Months of Experience" := ((UkupniMjeseci + "Brought Months of Experience 2") + ((UkupniDani + "Brought Days of Experience 2") DIV 30)) MOD 12;
                     "Brought Days of Experience" := (UkupniDani + "Brought Days of Experience 2") MOD 30;
 
@@ -124,7 +124,7 @@ report 50104 "Update Brought Experience"
                 END
                 ELSE BEGIN
 
-                    "Brought Years of Experience" := "Brought Years of Experience 2";
+                    validate("Brought Years of Experience", "Brought Years of Experience 2");
                     "Brought Months of Experience" := "Brought Months of Experience 2";
                     "Brought Days of Experience" := "Brought Days of Experience 2";
                     MODIFY(true);

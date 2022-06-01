@@ -3,6 +3,7 @@ page 50050 "Update Position"
     Caption = 'Update Position';
     PageType = List;
     SourceTable = "Position Menu";
+    RefreshOnActivate = true;
 
     layout
     {
@@ -119,11 +120,6 @@ page 50050 "Update Position"
                         CurrPage.UPDATE;
 
                     end;
-
-
-
-
-
 
                 }
             }

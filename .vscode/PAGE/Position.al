@@ -2,6 +2,7 @@ page 50227 Position
 {
     PageType = List;
     SourceTable = "Position Menu";
+    RefreshOnActivate = true;
 
     layout
     {

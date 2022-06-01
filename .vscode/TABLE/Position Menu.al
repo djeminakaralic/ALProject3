@@ -4,6 +4,7 @@ table 50132 "Position Menu"
     DrillDownPageID = "Position";
     LookupPageID = "Position";
 
+
     fields
     {
         field(1; "Code"; Code[20])
@@ -541,6 +542,7 @@ table 50132 "Position Menu"
             FieldClass = FlowField;
             CalcFormula = count("Position Minimal Education" where("Position Code" = field(Code), "Position Name" = field(Description), "Org Shema" = field("Org. Structure")));
             Caption = 'School';
+
 
         }
 
