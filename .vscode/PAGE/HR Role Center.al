@@ -430,7 +430,7 @@ page 50003 "HR Role Center"
                     ApplicationArea = all;
                     Caption = 'Points per Disability Status';
                     Image = Filed;
-                    //RunPageLink = Category = CONST(0); 
+                    RunPageView = WHERE(Category = CONST(0));
                     RunObject = Page "Points per Disability Status";
                 }
                 //ED 02 START
@@ -439,7 +439,9 @@ page 50003 "HR Role Center"
                     ApplicationArea = all;
                     Caption = 'Points per Military Service';
                     Image = Employee;
-                    //RunPageLink = Category = CONST(1);
+                    //RunPageLink = "Department Categ.  Description" = FIELD(Description), "Department Type" = CONST(4);
+                    //RunPageLink = ;
+                    RunPageView = WHERE(Category = CONST(1));
                     RunObject = Page "Points per Disability Status";
                 }
                 action("Points per Working Conditions")
@@ -447,7 +449,7 @@ page 50003 "HR Role Center"
                     ApplicationArea = all;
                     Caption = 'Points per Working Conditions';
                     Image = WorkTax;
-                    //RunPageLink = Category = CONST(2);
+                    RunPageView = WHERE(Category = CONST(2));
                     RunObject = Page "Points per Disability Status";
                 }
                 //ED 02 END

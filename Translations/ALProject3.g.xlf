@@ -15128,6 +15128,86 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Title - Field Work Shift Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3275839077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Katalog treninga</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 2371144776 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily rate home</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Daily rate home - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 3232643233 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily rate home SUM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Daily rate home SUM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 966053917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily rate ino</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Daily rate ino - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 2969008740 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Daily rate ino SUM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Daily rate ino SUM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 1333289741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Hours</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Hours - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 1686100717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Kotizacija</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Kotizacija - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 3891454143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Month - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 2073209455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number of days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Number of days - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 2984124824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Travel cost home</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Travel cost home - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 4204601773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Travel cost ino</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Travel cost ino - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interni,Eksterni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1676039888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transport Header</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -25107,6 +25187,11 @@
           <source>Title</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Title - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2202478900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trainings Catalogue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trainings Catalogue - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3028240027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Types Of Activities</source>
