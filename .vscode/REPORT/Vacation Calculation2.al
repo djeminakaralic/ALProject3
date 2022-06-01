@@ -271,7 +271,8 @@ report 50010 "Vacation Calculation2"
                                 EmployeeRelative.Reset();
                                 EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
                                 EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
-                                EmployeeRelative.SetFilter(Age, '<%1', 7);
+                                EmployeeRelative.SetFilter(Age, '<%1', 7); //Da je dijete mlađe od 7 godina
+                                EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
                                 IF EmployeeRelative.FindFirst() then begin
                                     SocialStatus.SETFILTER("No.", '%1', '3');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
