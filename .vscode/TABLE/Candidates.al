@@ -13,7 +13,7 @@ table 50214 Candidates
         field(2; Position; Code[30])
         {
             Caption = 'Position';
-            TableRelation = "Position Menu".Description;
+            TableRelation = "Position Menu".Code;
         }
         field(3; "Serial Number"; Integer)
         {

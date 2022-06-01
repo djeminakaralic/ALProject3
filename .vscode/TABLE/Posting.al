@@ -137,7 +137,7 @@ table 50138 Posting
             Editable = false;
             FieldClass = FlowField;
         }
-        field(16; "Department Code"; Code[1])
+        field(16; "Department Code"; Code[30])
         {
             Caption = 'Department Code';
             TableRelation = "Position Menu"."Department Code" WHERE("Code" = FIELD("Position Code"));

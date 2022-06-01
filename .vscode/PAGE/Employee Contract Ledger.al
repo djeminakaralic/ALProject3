@@ -344,43 +344,46 @@ page 50051 "Employee Contract Ledger"
                 field("Percentage of Fixed Part"; "Percentage of Fixed Part")
                 {
                     Editable = false;
-                    Visible = IsVisible;
+                    
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Fixed Amount Brutto"; "Fixed Amount Brutto")
                 {
                     Editable = false;
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Fixed Amount Netto"; "Fixed Amount Netto")
                 {
                     Editable = false;
-                    Visible = IsVisible;
+                   Visible=false;
                     ApplicationArea = all;
                 }
                 field("Percentage of Variable"; "Percentage of Variable")
                 {
 
                     Editable = false;
-                    Visible = IsVisible;
+                    Visible=false;
                     ApplicationArea = all;
                 }
                 field("Variable Amount Brutto"; "Variable Amount Brutto")
                 {
                     Editable = false;
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Variable Amount Netto"; "Variable Amount Netto")
                 {
                     Editable = false;
-                    Visible = IsVisible;
+                   Visible=false;
                     ApplicationArea = all;
                 }
                 field("BJF/GJF"; "BJF/GJF")
                 {
 
                     Editable = false;
-                    Visible = IsVisible;
+                   Visible=false;
                     ApplicationArea = all;
                 }
                 field("Management Level"; "Management Level")
@@ -399,27 +402,31 @@ page 50051 "Employee Contract Ledger"
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Temporary disposition"; "Temporary disposition")
                 {
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Temporary disposition starting"; "Temporary disposition starting")
                 {
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Temporary disposition ending"; "Temporary disposition ending")
                 {
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("<Minimal Education Levell>"; "Minimal Education Level")
                 {
-                    Visible = false;
+                    
                     ApplicationArea = all;
                 }
                 field(KPI; KPI)
                 {
-                    Visible = IsVisible;
+                    Visible=false;
                     ApplicationArea = all;
                 }
 
