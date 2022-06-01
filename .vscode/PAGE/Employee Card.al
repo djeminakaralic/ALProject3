@@ -3692,6 +3692,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                RunObject = page "Employee Trainings Ledger";
                 RunPageLink = "Employee No." = field("Employee No.");
             }
 

@@ -6888,6 +6888,96 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Surname - Field Old Surname - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 791684153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1371089297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attended</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Attended - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1380164041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Training time entry code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Code2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 529193961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Last Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Employee Last Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Employee Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 647314633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End dateo of certificate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field End date of certificate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 2817493743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grade</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Grade - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 3891454143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1461151337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mandatory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Mandatory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Month - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traning Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1857915420 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start date of certificate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Start date of certificate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>In progress,Finished,In preparation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Status - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interni,Eksterni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 346890487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Engagement type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23723,6 +23813,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Surname - Control Last Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3271127312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Trainings Ledger - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1173212382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee_Qualifications_HR</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34038,6 +34133,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work Permit2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Action 791684153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Employee Training Ledger - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Action 3195146101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Rješenja</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34617,6 +34717,11 @@
           <source>Base Calendar List</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Base Calendar List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 3271127312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Employee Trainings Ledger - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2100255337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Fill The Whole Month</source>
