@@ -11878,11 +11878,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Minimal Education Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2050451830 - Field 4213575185 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  </source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Minimal Education Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 2050451830 - Field 3270966457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. of Working Places</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11927,6 +11922,16 @@
           <source>Role Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Role Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 244841840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field School - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 2753007687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School of Graduation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field School of Graduation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2050451830 - Field 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sector</source>
@@ -12097,6 +12102,36 @@
           <source>Work Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Work Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3658770668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Minimal Education</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Education - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3658770668 - Field 4213575185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimal Education Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Education - Field Minimal Education Level - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3658770668 - Field 4157433164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Org Shema</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Education - Field Org Shema - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3658770668 - Field 3493435768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Education - Field Position Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3658770668 - Field 1953365538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Education - Field Position Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3658770668 - Field 2753007687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School of Graduation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Education - Field School of Graduation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1645599418 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position</source>
@@ -23653,6 +23688,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Payment range - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 608256694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Position</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action PositionMenu - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2066736455 - Action 267083470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Positions</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24523,6 +24563,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Position - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 755028031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Benefits</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Position Benefits - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2584180877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Benefits</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24663,6 +24708,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Positions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 267083470 - Control 3948354109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manager Department Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Positions - Control Manager 1  Department Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 267083470 - Action 3903553483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Job description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24682,6 +24732,16 @@
           <source>Training catalogue  -Position</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Positions - Action Training catalogue  -Position - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 426348693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Positions Minimal Education</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 426348693 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ActionName</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education - Action ActionName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1088320606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting List</source>
@@ -25072,6 +25132,11 @@
           <source>Union Employees</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Union Employees - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1719885940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Position</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Update Position - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2893313959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vacation Ground 2</source>
