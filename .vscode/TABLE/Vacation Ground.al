@@ -401,9 +401,9 @@ table 50015 "Vacation Ground 2"
         //ED 02 END
         field(6; Sector; Text[250])
         {
-            FieldClass = FlowField;
+            /*FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Sector Description" WHERE("Employee No." = FIELD("Employee No."),
-                                                                                 Active = CONST(true)));
+                                                                                 Active = CONST(true)));*/
             Caption = 'Sector';
 
         }
@@ -614,9 +614,9 @@ table 50015 "Vacation Ground 2"
         }
         field(29; "Position Name"; Text[250])
         {
-            FieldClass = FlowField;
+            /*FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."),
-                                                                                 Active = CONST(true)));
+                                                                                 Active = CONST(true)));*/
             Caption = 'Position Name';
         }
         field(30; Duration; Integer)
@@ -629,14 +629,16 @@ table 50015 "Vacation Ground 2"
         }
         field(32; UsedDays; Integer)
         {
-
         }
         field(33; "First Part"; Integer)
         {
-
-
         }
-
+        field(34; "Used days at previous employer"; Integer)
+        {
+        }
+        field(35; "Date of report"; Date)
+        {
+        }
     }
 
     keys

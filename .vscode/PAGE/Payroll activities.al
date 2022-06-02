@@ -101,12 +101,12 @@ page 50092 "Payroll Activities"
         //SETFILTER("Overdue Date Filter",'<%1',WORKDATE);
         // SETFILTER("User ID Filter",USERID);
         // SETRANGE(DateFilter5,CALCDATE('-'+ FORMAT(HRSetup."New employee period"),TODAY),TODAY);
-        ThisMonthFirst := CALCDATE('-TM;', WORKDATE);
-        ThisMonthLast := CALCDATE('TM', ThisMonthFirst);
+        ThisMonthFirst := CALCDATE('-SM;', WORKDATE);
+        ThisMonthLast := CALCDATE('SM', ThisMonthFirst);
         NextMonthFirst := CALCDATE('+1D', ThisMonthLast);
-        NextMonthLast := CALCDATE('TM', NextMonthFirst);
-        DBThisMonthLast := CALCDATE('TM-1D', ThisMonthFirst);
-        DBThisMonthFirst := CALCDATE('-TM-1D;', WORKDATE);
+        NextMonthLast := CALCDATE('SM', NextMonthFirst);
+        DBThisMonthLast := CALCDATE('SM-1D', ThisMonthFirst);
+        DBThisMonthFirst := CALCDATE('-SM-1D;', WORKDATE);
         //SETRANGE(DateFilter6,ThisMonthFirst,ThisMonthLast);
         SETRANGE(DateFilter7, ThisMonthFirst, DBThisMonthLast);
         //SETRANGE(DateFilter8,01011980D,DBThisMonthFirst);

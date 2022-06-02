@@ -45,6 +45,15 @@ page 50094 "Payroll Role Center"
                     RunObject = Page "Wage Setup";
                     ApplicationArea = all;
                 }
+
+                action("Update Position")
+                {
+                    Caption = 'Update Position';
+                    Image = Setup;
+                    RunObject = Page "Update Position";
+                    ApplicationArea = all;
+                }
+
                 action("Chart of Accounts2")
                 {
                     ApplicationArea = all;

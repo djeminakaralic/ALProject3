@@ -545,6 +545,26 @@ table 50132 "Position Menu"
 
 
         }
+        field(500407; "Position Coefficient for Wage"; Decimal)
+        {
+            Caption = 'Position Coefficient for Wage';
+        }
+        field(500408; "Position complexity"; Decimal)
+
+        {
+            Caption = 'Position complexity';
+        }
+
+        field(500409; "Position Responsibility"; Decimal)
+
+        {
+            Caption = 'Position Responsibility';
+        }
+        field(50410; "Workplace conditions"; Decimal)
+        {
+            Caption = 'Workplace conditions';
+        }
+
 
 
 

@@ -11258,6 +11258,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Points - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3545058964 - Field 2448042552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Years</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Years - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1348028838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Points Per Experience Years</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12053,10 +12058,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Org. Structure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Coefficient for Wage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 3801082735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position complexity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position complexity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2050451830 - Field 254371960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Menu Identity</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Menu Identity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 2016667855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Responsibility</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Responsibility - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2050451830 - Field 2339353424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Role code</source>
@@ -12107,6 +12127,11 @@
           <source>Work Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Work Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 443172990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Workplace conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Workplace conditions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4229043595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position</source>
@@ -16208,6 +16233,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Based on Disabled Child - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 2685696285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date of report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Date of report - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 4203097549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Days based on Disability</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16337,6 +16367,11 @@
           <source>Used Days</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Used Days - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 993373283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Used days at previous employer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Used days at previous employer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1953798116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>UsedDays</source>
@@ -24203,11 +24238,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Vacation Usage Plan2 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2066736455 - Action 828474856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vacation Usage Plan</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Vacation Usage Plan3 - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2066736455 - Action 1335119505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Holiday Plan</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -25177,6 +25207,11 @@
           <source>Transport</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Transport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1091715438 - Action 1719885940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Position</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Update Position - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1091715438 - Action 2183420390 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Users</source>

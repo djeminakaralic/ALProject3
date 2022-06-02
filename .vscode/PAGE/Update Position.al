@@ -122,6 +122,22 @@ page 50050 "Update Position"
                     end;
 
                 }
+                field("Position complexity"; "Position complexity")
+                {
+                    ApplicationArea = all;
+                }
+                field("Position Responsibility"; "Position Responsibility")
+                {
+                    ApplicationArea = all;
+                }
+                field("Workplace conditions"; "Workplace conditions")
+                {
+                    ApplicationArea = all;
+                }
+                field("Position Coefficient for Wage"; "Position Coefficient for Wage")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

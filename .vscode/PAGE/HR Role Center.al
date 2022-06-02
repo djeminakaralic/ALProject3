@@ -427,13 +427,13 @@ page 50003 "HR Role Center"
                     Image = Holiday;
                     RunObject = Page "Vacation setup history";
                 }
-                action("Vacation Usage Plan3")
+                /*action("Vacation Usage Plan3")
                 {
                     ApplicationArea = all;
                     Caption = 'Vacation Usage Plan';
                     Image = Holiday;
                     RunObject = Page "Vacation Grounds2";
-                }
+                }*/
                 action("Points per Experience Years")
                 {
                     ApplicationArea = all;
