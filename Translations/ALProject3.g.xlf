@@ -24238,11 +24238,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Vacation Usage Plan2 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2066736455 - Action 828474856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vacation Usage Plan</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Vacation Usage Plan3 - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2066736455 - Action 1335119505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Holiday Plan</source>
           <note from="Developer" annotates="general" priority="2"></note>
