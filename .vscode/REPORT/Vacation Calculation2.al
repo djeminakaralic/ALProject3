@@ -199,9 +199,11 @@ report 50010 "Vacation Calculation2"
 
                             //Za samohrane roditelje/usvojitelje
                             IF ((EmployeeRec."Single parent/adopter" = TRUE)) THEN BEGIN
-                                SocialStatus.SetFilter(Category, '%1', 0);
-                                SocialStatus.SETFILTER("No.", '%1', '2');
-                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                SocialStatus.Reset();
+                                //SocialStatus.SetFilter(Category, '%1', 0);
+                                //SocialStatus.SETFILTER("No.", '%1', '2');
+                                SocialStatus.Get(2, 0);
+                                IF SocialStatus.FindFirst() THEN BEGIN
                                     PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
                                 END;
                                 EmployeeC.RESET;
