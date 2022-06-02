@@ -3631,6 +3631,17 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //PromotedIsBig = false;
 
             }
+            action("Employee Training Ledger")
+            {
+
+                Caption = 'Employee Training Ledger';
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = page "Employee Trainings Ledger";
+                RunPageLink = "Employee No." = field("Employee No.");
+            }
             /*action("Health Check")
             {
                 Caption = 'Health Check';
@@ -3658,17 +3669,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No.");
                 Promoted = true;
             }
-            action("Employee Training Ledger")
-            {
 
-                Caption = 'Employee Training Ledger';
-                Image = Ledger;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = page "Employee Trainings Ledger";
-                RunPageLink = "Employee No." = field("Employee No.");
-            }
             //ED 01 END
 
         }
@@ -3695,6 +3696,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 end;
 
             }
+
 
 
         }
