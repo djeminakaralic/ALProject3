@@ -99,6 +99,7 @@ report 50010 "Vacation Calculation2"
                                     ELSE
                                         Level := 0;
                                     IF Level > 50 THEN BEGIN*/
+                                    SocialStatus.SetFilter(Category, '%1', 0);
                                     SocialStatus.SETFILTER("No.", '%1', '1');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Disability" := SocialStatus.Points;
@@ -198,6 +199,7 @@ report 50010 "Vacation Calculation2"
 
                             //Za samohrane roditelje/usvojitelje
                             IF ((EmployeeRec."Single parent/adopter" = TRUE)) THEN BEGIN
+                                SocialStatus.SetFilter(Category, '%1', 0);
                                 SocialStatus.SETFILTER("No.", '%1', '2');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
