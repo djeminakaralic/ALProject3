@@ -226,7 +226,8 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
-                                    SocialStatus.SETFILTER("No.", '%1', '8');
+                                    SocialStatus.SetFilter(Category, '%1', 2);
+                                    SocialStatus.SETFILTER("No.", '%1', '1');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                     END;
@@ -248,7 +249,8 @@ report 50010 "Vacation Calculation2"
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
                             IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
-                                SocialStatus.SETFILTER("No.", '%1', '9');
+                                SocialStatus.SetFilter(Category, '%1', 2);
+                                SocialStatus.SETFILTER("No.", '%1', '2');
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                 END;
@@ -275,6 +277,7 @@ report 50010 "Vacation Calculation2"
                                 EmployeeRelative.SetFilter(Age, '<%1', 7); //Da je dijete mlađe od 7 godina
                                 EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
                                 IF EmployeeRelative.FindFirst() then begin
+                                    SocialStatus.SetFilter(Category, '%1', 0);
                                     SocialStatus.SETFILTER("No.", '%1', '3');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
@@ -298,8 +301,9 @@ report 50010 "Vacation Calculation2"
 
 
                             //Radnik mlađi od 18 godina
-                            IF ((EmployeeRec.Age < 18)) THEN BEGIN
-                                SocialStatus.SETFILTER("No.", '%1', '4');
+                            SocialStatus.SetFilter(Category, '%1', 0);
+                            SocialStatus.SETFILTER("No.", '%1', '4');
+                            IF ((EmployeeRec.Age < SocialStatus.Years)) THEN BEGIN
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
                                 END;
