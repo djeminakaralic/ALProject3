@@ -12053,10 +12053,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Org. Structure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Coefficient for Wage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 3801082735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position complexity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position complexity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2050451830 - Field 254371960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Menu Identity</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Menu Identity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 2016667855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Responsibility</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Responsibility - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2050451830 - Field 2339353424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Role code</source>
@@ -12107,6 +12122,11 @@
           <source>Work Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Work Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 443172990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Workplace conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Workplace conditions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4229043595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position</source>
@@ -25177,6 +25197,11 @@
           <source>Transport</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Transport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1091715438 - Action 1719885940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Position</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Update Position - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1091715438 - Action 2183420390 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Users</source>
