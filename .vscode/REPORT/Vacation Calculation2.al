@@ -270,33 +270,34 @@ report 50010 "Vacation Calculation2"
                                 PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
 
                             //Majka djeteta mlađeg od 7 godina
-                            IF EmployeeRec.Gender = 1 then begin
-                                EmployeeRelative.Reset();
-                                EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
-                                EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
-                                EmployeeRelative.SetFilter(Age, '<%1', 7); //Da je dijete mlađe od 7 godina
-                                EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
-                                IF EmployeeRelative.FindFirst() then begin
-                                    SocialStatus.SetFilter(Category, '%1', 0);
-                                    SocialStatus.SETFILTER("No.", '%1', '3');
-                                    IF SocialStatus.FINDFIRST THEN BEGIN
+                            IF EmployeeRec.Gender = 1 then begin //Zena
+                                SocialStatus.SetFilter(Category, '%1', 0); //Socijalno-zdravstveni status u sifarniku
+                                SocialStatus.SETFILTER("No.", '%1', '3'); //No 3 u sifarniku 
+
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    EmployeeRelative.Reset();
+                                    EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
+                                    EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
+                                    EmployeeRelative.SetFilter(Age, '<%1', SocialStatus.Years); //Da je dijete mlađe od 7 godina
+                                    EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
+                                    IF EmployeeRelative.FindFirst() then begin
                                         PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
-                                    END;
 
-                                    EmployeeC.RESET;
-                                    EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                    EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                    EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                    EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                    EmployeeC.SETCURRENTKEY("Starting Date");
-                                    EmployeeC.ASCENDING;
-                                    IF EmployeeC.FINDLAST THEN BEGIN
-                                        PlanGO.MODIFY;
-                                    END;
+                                        EmployeeC.RESET;
+                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                        EmployeeC.SETCURRENTKEY("Starting Date");
+                                        EmployeeC.ASCENDING;
+                                        IF EmployeeC.FINDLAST THEN BEGIN
+                                            PlanGO.MODIFY;
+                                        END;
 
-                                end
-                                ELSE
-                                    PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
+                                    end
+                                    ELSE
+                                        PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
+                                END;
                             end;
 
 
