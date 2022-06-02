@@ -638,7 +638,6 @@ table 50015 "Vacation Ground 2"
         }
         field(35; "Date of report"; Date)
         {
-
         }
     }
 

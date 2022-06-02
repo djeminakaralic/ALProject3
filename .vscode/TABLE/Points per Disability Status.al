@@ -24,6 +24,10 @@ table 50063 "Points per Disability Status"
             //OptionCaption = Disability,Military,Conditions;
             OptionMembers = Disability,Military,Conditions;
         }
+        field(7; Years; Integer)
+        {
+            Caption = 'Years';
+        }
         //ED 02 END
     }
 
