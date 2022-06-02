@@ -61,6 +61,10 @@ page 50059 "Vacation Usage Plan"
                 field(Year; Year)
                 {
                 }
+                field("Date of report"; "Date of report")
+                {
+
+                }
                 field("Starting Date of I part"; "Starting Date of I part")
                 {
                 }

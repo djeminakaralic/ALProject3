@@ -16228,6 +16228,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Based on Disabled Child - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 2685696285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date of report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Date of report - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 4203097549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Days based on Disability</source>
           <note from="Developer" annotates="general" priority="2"></note>

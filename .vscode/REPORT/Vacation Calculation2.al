@@ -27,6 +27,7 @@ report 50010 "Vacation Calculation2"
                         PlanGO."Last Name" := EmployeeRec."Last Name";
                         PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
                         PlanGO.Year := DATE2DMY(Datee, 3);
+                        PlanGO."Date of report" := Datee; //ED
                         PlanGO."Employee No." := EmployeeRec."No.";
                         EVALUATE(Order, EmployeeRec."No.");
                         PlanGO.Order := Order;
