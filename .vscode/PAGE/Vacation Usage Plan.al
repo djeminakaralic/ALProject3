@@ -39,6 +39,9 @@ page 50059 "Vacation Usage Plan"
                 field("Days based on Working conditions"; "Days based on Working conditions")
                 {
                 }
+                field("Used Days"; "Used Days")
+                {
+                }
                 //ED 02 END
                 field("Total days"; "Total days")
                 {

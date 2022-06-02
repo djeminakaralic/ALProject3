@@ -636,7 +636,6 @@ table 50015 "Vacation Ground 2"
 
 
         }
-
     }
 
     keys
