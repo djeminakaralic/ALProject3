@@ -331,20 +331,23 @@ report 50010 "Vacation Calculation2"
                             MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
                                 IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then begin
-                                    SocialStatus.SETFILTER("No.", '%1', '5');
+                                    SocialStatus.SetFilter(Category, '%1', 1);
+                                    SocialStatus.SETFILTER("No.", '%1', '1');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Military service" := SocialStatus.Points;
                                     END;
                                 end
                                 ELSE
                                     IF ((MilitaryMonths > 18) AND (MilitaryMonths < 30)) then begin
-                                        SocialStatus.SETFILTER("No.", '%1', '6');
+                                        SocialStatus.SetFilter(Category, '%1', 1);
+                                        SocialStatus.SETFILTER("No.", '%1', '2');
                                         IF SocialStatus.FINDFIRST THEN BEGIN
                                             PlanGO."Days based on Military service" := SocialStatus.Points;
                                         END;
                                     end
                                     ELSE begin
-                                        SocialStatus.SETFILTER("No.", '%1', '7');
+                                        SocialStatus.SetFilter(Category, '%1', 1);
+                                        SocialStatus.SETFILTER("No.", '%1', '3');
                                         IF SocialStatus.FINDFIRST THEN BEGIN
                                             PlanGO."Days based on Military service" := SocialStatus.Points;
                                         END;
