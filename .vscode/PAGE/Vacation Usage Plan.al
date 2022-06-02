@@ -20,6 +20,14 @@ page 50059 "Vacation Usage Plan"
                 field("Last Name"; "Last Name")
                 {
                 }
+                //ED 02 START
+                field("Position Name"; "Position Name")
+                {
+                }
+                field(Sector; Sector)
+                {
+                }
+                //ED 02 END
                 field("Work experience"; "Work experience")
                 {
                 }
