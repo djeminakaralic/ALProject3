@@ -51,7 +51,7 @@ page 50059 "Vacation Usage Plan"
                 {
                     trigger OnValidate()
                     begin
-                        VG."Total days" := VG."Total days" - "Used days at previous employer";
+                        Rec."Total days" := Rec."Total days" - "Used days at previous employer";
                     end;
                 }
                 //ED 02 END
