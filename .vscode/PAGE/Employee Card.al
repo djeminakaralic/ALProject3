@@ -3357,6 +3357,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = field("No.");
                 Promoted = true;
             }
+
             action("Employee Default dimension")
             {
                 Caption = 'Employee Default dimension';
@@ -3367,6 +3368,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Promoted = true;
 
             }
+
 
 
 
@@ -3631,17 +3633,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //PromotedIsBig = false;
 
             }
-            action("Employee Training Ledger")
-            {
 
-                Caption = 'Employee Training Ledger';
-                Image = Ledger;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = page "Employee Trainings Ledger";
-                RunPageLink = "Employee No." = field("Employee No.");
-            }
             /*action("Health Check")
             {
                 Caption = 'Health Check';
@@ -3695,6 +3687,16 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 end;
 
+            }
+            action("Employee Training Ledger")
+            {
+
+                Caption = 'Employee Training Ledger';
+                Image = Ledger;
+                Promoted = true;
+                PromotedIsBig = true;
+                RunObject = page "Employee Trainings Ledger";
+                RunPageLink = "Employee No." = field("Employee No.");
             }
 
 
