@@ -629,11 +629,12 @@ table 50015 "Vacation Ground 2"
         }
         field(32; UsedDays; Integer)
         {
-
         }
         field(33; "First Part"; Integer)
         {
-
+        }
+        field(34; "Used days at previous employer"; Integer)
+        {
 
         }
     }

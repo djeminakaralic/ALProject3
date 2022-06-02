@@ -16358,6 +16358,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Used Days - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 993373283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Used days at previous employer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Used days at previous employer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1953798116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>UsedDays</source>
           <note from="Developer" annotates="general" priority="2"></note>
