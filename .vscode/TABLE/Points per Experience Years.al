@@ -21,10 +21,19 @@ table 50126 "Points per Experience Years"
         field(4; UpperLimit; Integer)
         {
             Caption = 'Upper Limit';
+
+            trigger OnValidate()
+            begin
+                UpperLimit2 := FORMAT(UpperLimit) + 'Y';
+            end;
         }
         field(5; LowerLimit; Integer)
         {
             Caption = 'Lower Limit';
+            trigger OnValidate()
+            begin
+                LowerLimit2 := FORMAT(LowerLimit) + 'Y';
+            end;
         }
         field(6; UpperLimit2; Text[30])
         {
