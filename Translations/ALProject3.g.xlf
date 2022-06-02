@@ -6903,10 +6903,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 791684153 - Field 1380164041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 791684153 - Field 599280669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Training time entry code</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Code2 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Code2Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 791684153 - Field 70782175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Training Catalogue Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Code3Catalogue - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 791684153 - Field 529193961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Last Name</source>
@@ -34098,6 +34103,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Employee Level Of Disability - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2112275570 - Action 791684153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Employee Training Ledger - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Action 1340987011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>ID Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34167,11 +34177,6 @@
           <source>Work Permit</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Work Permit2 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2112275570 - Action 791684153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Employee Training Ledger</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Action Employee Training Ledger - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Action 3195146101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Rješenja</source>
