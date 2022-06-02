@@ -230,8 +230,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
-                                    SocialStatus.SetFilter(Category, '%1', 2);
-                                    SocialStatus.SETFILTER("No.", '%1', '1');
+                                    SocialStatus.Get(1, 2);
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                     END;
@@ -253,8 +252,7 @@ report 50010 "Vacation Calculation2"
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
                             IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
-                                SocialStatus.SetFilter(Category, '%1', 2);
-                                SocialStatus.SETFILTER("No.", '%1', '2');
+                                SocialStatus.Get(2, 2);
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                 END;
@@ -331,20 +329,23 @@ report 50010 "Vacation Calculation2"
                             MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
                                 IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then begin
-                                    SocialStatus.SETFILTER("No.", '%1', '5');
+                                    SocialStatus.SetFilter(Category, '%1', 1);
+                                    SocialStatus.SETFILTER("No.", '%1', '1');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Military service" := SocialStatus.Points;
                                     END;
                                 end
                                 ELSE
                                     IF ((MilitaryMonths > 18) AND (MilitaryMonths < 30)) then begin
-                                        SocialStatus.SETFILTER("No.", '%1', '6');
+                                        SocialStatus.SetFilter(Category, '%1', 1);
+                                        SocialStatus.SETFILTER("No.", '%1', '2');
                                         IF SocialStatus.FINDFIRST THEN BEGIN
                                             PlanGO."Days based on Military service" := SocialStatus.Points;
                                         END;
                                     end
                                     ELSE begin
-                                        SocialStatus.SETFILTER("No.", '%1', '7');
+                                        SocialStatus.SetFilter(Category, '%1', 1);
+                                        SocialStatus.SETFILTER("No.", '%1', '3');
                                         IF SocialStatus.FINDFIRST THEN BEGIN
                                             PlanGO."Days based on Military service" := SocialStatus.Points;
                                         END;
