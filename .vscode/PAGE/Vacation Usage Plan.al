@@ -49,6 +49,10 @@ page 50059 "Vacation Usage Plan"
                 }
                 field("Used days at previous employer"; "Used days at previous employer")
                 {
+                    trigger OnValidate()
+                    begin
+                        VG."Total days" := VG."Total days" - "Used days at previous employer";
+                    end;
                 }
                 //ED 02 END
                 field("Total days"; "Total days")
@@ -189,7 +193,8 @@ page 50059 "Vacation Usage Plan"
         Temp: Boolean;
         Text0002: Label 'Do you want to print Annual Leave Resolution for first part of leave?';
         Text0003: Label 'Do you want to print Annual Leave Resolution for second part of leave?';
-        t_VG: Record "Vacation Grounds2";
+        //t_VG: Record "Vacation Grounds2";
+        VG: Record "Vacation Ground 2";
         Selection: Integer;
         Text0004: Label 'Annual Leave Resolution for I part,Annual Leave Resolution for II part';
         t: Text;
