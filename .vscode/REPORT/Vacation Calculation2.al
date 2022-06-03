@@ -344,10 +344,8 @@ report 50010 "Vacation Calculation2"
                                 IF SocialStatus.FindLast() THEN BEGIN
                                     PlanGO."Days based on Military service" := SocialStatus.Points;
                                 END
-                                ELSE BEGIN
+                                ELSE
                                     PlanGO."Days based on Military service" := 0;
-
-                                END;
 
                                 EmployeeC.RESET;
                                 EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
@@ -361,11 +359,6 @@ report 50010 "Vacation Calculation2"
                                 END;
 
                             END;
-
-
-
-
-
 
 
                             /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
