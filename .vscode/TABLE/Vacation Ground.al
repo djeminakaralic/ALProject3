@@ -34,7 +34,7 @@ table 50015 "Vacation Ground 2"
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
                 EVALUATE(Order, "Employee No.");
 
-                /*EmployeeRec.RESET;
+                EmployeeRec.RESET;
                 EmployeeRec.SETFILTER("No.", '%1', "Employee No.");
                 IF EmployeeRec."Returned to Company" = FALSE THEN BEGIN
                     UsedDaysThisYear := 0;
@@ -336,7 +336,7 @@ table 50015 "Vacation Ground 2"
                         END;
                         Year := Year2;
                     END;
-                END;*/
+                END;
 
 
             end;

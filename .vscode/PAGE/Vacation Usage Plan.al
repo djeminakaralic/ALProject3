@@ -23,9 +23,11 @@ page 50059 "Vacation Usage Plan"
                 //ED 02 START
                 field("Position Name"; "Position Name")
                 {
+                    Editable = false;
                 }
                 field(Sector; Sector)
                 {
+                    Editable = false;
                 }
                 //ED 02 END
                 field("Work experience"; "Work experience")

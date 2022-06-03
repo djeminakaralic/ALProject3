@@ -25,7 +25,7 @@ report 50010 "Vacation Calculation2"
                         //  PlanGO.VALIDATE("Employee No.",EmployeeRec."No.");
                         PlanGO."First Name" := EmployeeRec."First Name";
                         PlanGO."Last Name" := EmployeeRec."Last Name";
-                        PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
+                        //PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
                         PlanGO.Year := DATE2DMY(Datee, 3);
                         PlanGO."Date of report" := Datee; //ED
                         PlanGO."Employee No." := EmployeeRec."No.";
@@ -167,6 +167,8 @@ report 50010 "Vacation Calculation2"
 
                                 AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
                                 Datttt := CALCDATE(AddDayyy, Datee);
+
+                                PlanGO."Work experience" := WBTemp.Years; //ED GODINE
 
                                 PointsperExperienceYears.RESET;
 
