@@ -40,6 +40,7 @@ report 50010 "Vacation Calculation2"
                         EmployeeC.ASCENDING;
                         IF EmployeeC.FINDLAST THEN BEGIN
                             PlanGO."Position Name" := EmployeeC."Position Description";
+                            PlanGO.Sector := EmployeeC.Sector; //ED
                             PlanGO."Insert Date" := Datee;
                             /* R_WorkExperience.SetEmp(EmployeeC."Employee No.",Datee);
                          R_WorkExperience.RUN; */

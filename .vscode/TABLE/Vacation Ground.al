@@ -412,6 +412,7 @@ table 50015 "Vacation Ground 2"
                                                                                  Active = CONST(true)));*/
             //ED 02
 
+
             Caption = 'Sector';
 
         }
