@@ -32,14 +32,14 @@ page 50033 "Points per Experience Years"
                 {
                     ApplicationArea = all;
                 }
-                /*field(UpperLimit2; UpperLimit2)
+                field(UpperLimit2; UpperLimit2)
                 {
                     ApplicationArea = all;
                 }
                 field(LowerLimit2; LowerLimit2)
                 {
                     ApplicationArea = all;
-                }*/
+                }
             }
         }
     }
