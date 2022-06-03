@@ -398,6 +398,13 @@ table 50015 "Vacation Ground 2"
                 //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
+
+        field(34; "Used days at previous employer"; Integer)
+        {
+        }
+        field(35; "Date of report"; Date)
+        {
+        }
         //ED 02 END
         field(6; Sector; Text[250])
         {
@@ -631,12 +638,6 @@ table 50015 "Vacation Ground 2"
         {
         }
         field(33; "First Part"; Integer)
-        {
-        }
-        field(34; "Used days at previous employer"; Integer)
-        {
-        }
-        field(35; "Date of report"; Date)
         {
         }
     }
