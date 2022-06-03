@@ -326,7 +326,10 @@ report 50010 "Vacation Calculation2"
 
 
                             //Po osnovu učešća u oružanim snagama
-                            MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
+                            MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + EmployeeRec."Military Months of Service";
+                            if EmployeeRec."No." = FORMAT(2) then
+                                test := true;
+
                             IF (MilitaryMonths <> 0) THEN BEGIN
 
                                 /*AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
@@ -334,11 +337,10 @@ report 50010 "Vacation Calculation2"
 
                                 PointsperExperienceYears.RESET;*/
 
-
                                 SocialStatus.Reset();
                                 SocialStatus.SetFilter(Category, '%1', 1);
-                                SocialStatus.SetFilter("Lower Limit Months", '<=%1', MilitaryMonths);
-                                SocialStatus.SetFilter("Upper Limit Months", '>=%1', MilitaryMonths);
+                                SocialStatus.SetFilter(SocialStatus."Lower Limit Months", '<=%1', MilitaryMonths);
+                                SocialStatus.SetFilter(SocialStatus."Upper Limit Months", '>=%1', MilitaryMonths);
                                 SocialStatus.SetCurrentKey("Upper Limit Months");
                                 SocialStatus.ASCENDING;
                                 IF SocialStatus.FindLast() THEN BEGIN
@@ -2278,5 +2280,6 @@ R_WorkExperience.RUN;
         Mjesec2: Integer;
         Godina: Integer;
         WBTemp: Record "Work Booklet" temporary;
+        test: Boolean;
 }
 
