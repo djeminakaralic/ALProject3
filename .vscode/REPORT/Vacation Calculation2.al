@@ -227,6 +227,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
+                                    SocialStatus.Reset();
                                     SocialStatus.Get(1, 2);
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Working conditions" := SocialStatus.Points;
@@ -249,6 +250,7 @@ report 50010 "Vacation Calculation2"
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
                             IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
+                                SocialStatus.Reset();
                                 SocialStatus.Get(2, 2);
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Working conditions" := SocialStatus.Points;
