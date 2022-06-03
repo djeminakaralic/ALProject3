@@ -398,7 +398,6 @@ table 50015 "Vacation Ground 2"
                 //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
-
         field(34; "Used days at previous employer"; Integer)
         {
         }
@@ -411,6 +410,8 @@ table 50015 "Vacation Ground 2"
             /*FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Sector Description" WHERE("Employee No." = FIELD("Employee No."),
                                                                                  Active = CONST(true)));*/
+            //ED 02
+
             Caption = 'Sector';
 
         }

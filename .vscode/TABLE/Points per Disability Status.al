@@ -28,6 +28,14 @@ table 50063 "Points per Disability Status"
         {
             Caption = 'Years';
         }
+        field(8; "Lower Limit Months"; Integer)
+        {
+            Caption = 'Lower Limit';
+        }
+        field(9; "Upper Limit Months"; Integer)
+        {
+            Caption = 'Upper Limit';
+        }
         //ED 02 END
     }
 

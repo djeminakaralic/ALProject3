@@ -11253,6 +11253,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3545058964 - Field 1673434303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lower Limit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Lower Limit Months - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3545058964 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11262,6 +11267,11 @@
           <source>Points</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Points - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3545058964 - Field 1893409304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upper Limit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Points per Disability Status - Field Upper Limit Months - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3545058964 - Field 2448042552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Years</source>
