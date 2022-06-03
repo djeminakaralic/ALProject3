@@ -337,8 +337,8 @@ report 50010 "Vacation Calculation2"
 
                                 SocialStatus.Reset();
                                 SocialStatus.SetFilter(Category, '%1', 1);
-                                SocialStatus.SetFilter("Lower Limit Months", '>=%1', MilitaryMonths);
-                                SocialStatus.SetFilter("Upper Limit Months", '<=%1', MilitaryMonths);
+                                SocialStatus.SetFilter("Lower Limit Months", '<=%1', MilitaryMonths);
+                                SocialStatus.SetFilter("Upper Limit Months", '>=%1', MilitaryMonths);
                                 SocialStatus.SetCurrentKey("Upper Limit Months");
                                 SocialStatus.ASCENDING;
                                 IF SocialStatus.FindLast() THEN BEGIN
