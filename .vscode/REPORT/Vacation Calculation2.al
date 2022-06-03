@@ -327,8 +327,6 @@ report 50010 "Vacation Calculation2"
 
                             //Po osnovu učešća u oružanim snagama
                             MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + EmployeeRec."Military Months of Service";
-                            if EmployeeRec."No." = FORMAT(2) then
-                                test := true;
 
                             IF (MilitaryMonths <> 0) THEN BEGIN
 
@@ -360,7 +358,9 @@ report 50010 "Vacation Calculation2"
                                     PlanGO.MODIFY;
                                 END;
 
-                            END;
+                            END
+                            ELSE
+                                PlanGO."Days based on Military service" := 0;
 
 
                             /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
@@ -2280,6 +2280,5 @@ R_WorkExperience.RUN;
         Mjesec2: Integer;
         Godina: Integer;
         WBTemp: Record "Work Booklet" temporary;
-        test: Boolean;
 }
 
