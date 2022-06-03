@@ -91,15 +91,16 @@ report 50010 "Vacation Calculation2"
                             // po stepenu invalidnosti
                             IF ((EmployeeRec."Disabled Person" = TRUE)) THEN BEGIN
 
-                                ELD.RESET;
+                                /*ELD.RESET;
                                 ELD.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                ELD.SETFILTER(Active, '%1', TRUE);
-                                IF ELD.FINDFIRST THEN BEGIN
+                                ELD.SETFILTER(Active, '%1', TRUE);*/
+                                IF (EmployeeRec."Disabled Person" = TRUE) THEN BEGIN
                                     /*IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
                                         Level := LevelValue
                                     ELSE
                                         Level := 0;
                                     IF Level > 50 THEN BEGIN*/
+                                    SocialStatus.Reset();
                                     SocialStatus.SetFilter(Category, '%1', 0);
                                     SocialStatus.SETFILTER("No.", '%1', '1');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
