@@ -327,6 +327,48 @@ report 50010 "Vacation Calculation2"
 
                             //Po osnovu učešća u oružanim snagama
                             MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
+                            IF (MilitaryMonths <> 0) THEN BEGIN
+
+                                /*AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
+                                Datttt := CALCDATE(AddDayyy, Datee);
+
+                                PointsperExperienceYears.RESET;*/
+
+
+                                SocialStatus.Reset();
+                                SocialStatus.SetFilter(Category, '%1', 1);
+                                SocialStatus.SetFilter("Lower Limit Months", '>=%1', MilitaryMonths);
+                                SocialStatus.SetFilter("Upper Limit Months", '<=%1', MilitaryMonths);
+                                SocialStatus.SetCurrentKey("Upper Limit Months");
+                                SocialStatus.ASCENDING;
+                                IF SocialStatus.FindLast() THEN BEGIN
+                                    PlanGO."Days based on Military service" := SocialStatus.Points;
+                                END
+                                ELSE BEGIN
+                                    PlanGO."Days based on Military service" := 0;
+
+                                END;
+
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
+                                    PlanGO.MODIFY;
+                                END;
+
+                            END;
+
+
+
+
+
+
+
+                            /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
                                 IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then begin
                                     SocialStatus.SetFilter(Category, '%1', 1);
@@ -364,7 +406,7 @@ report 50010 "Vacation Calculation2"
                                 END;
                             END
                             ELSE
-                                PlanGO."Days based on Military service" := 0;
+                                PlanGO."Days based on Military service" := 0;*/
 
 
                             //roditelj djece sa posebnim potrebama
@@ -2175,6 +2217,7 @@ R_WorkExperience.RUN;
         StvarniEndDate: Date;
         TrenutniDatumZaposlenja: Date;
         SocialStatus: Record "Points per Disability Status";
+
         SocialStatusEmployee: Record "Candidate Testing";
         PlanPrijelaz: Record "Vacation Ground 2";
         AddDayyy: Text;
