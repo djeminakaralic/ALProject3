@@ -43,7 +43,6 @@ page 50095 "Points per Disability Status"
                 {
                     Visible = VisibleMonths;
                 }
-                //ED 02 END
             }
         }
     }
@@ -53,7 +52,6 @@ page 50095 "Points per Disability Status"
         VisibleMonths: Boolean;
 
     trigger OnAfterGetRecord()
-    //ED 02 START
     begin
 
         IF Rec.Category = 0 THEN BEGIN
