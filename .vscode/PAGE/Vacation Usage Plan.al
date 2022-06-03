@@ -32,22 +32,28 @@ page 50059 "Vacation Usage Plan"
                 //ED 02 END
                 field("Work experience"; "Work experience")
                 {
+                    Editable = false;
                 }
                 field("Legal Grounds"; "Legal Grounds")
                 {
+                    Editable = false;
                 }
                 field("Days based on Work experience"; "Days based on Work experience")
                 {
+                    Editable = false;
                 }
                 field("Days based on Disability"; "Days based on Disability")
                 {
+                    Editable = false;
                 }
                 //ED 02 START
                 field("Days based on Military service"; "Days based on Military service")
                 {
+                    Editable = false;
                 }
                 field("Days based on Working conditions"; "Days based on Working conditions")
                 {
+                    Editable = false;
                 }
                 field("Used days at previous employer"; "Used days at previous employer")
                 {
@@ -64,13 +70,14 @@ page 50059 "Vacation Usage Plan"
                 //ED 02 END
                 field("Total days"; "Total days")
                 {
+                    Editable = false;
                 }
                 field(Year; Year)
                 {
                 }
                 field("Date of report"; "Date of report")
                 {
-
+                    Editable = false;
                 }
                 field("Starting Date of I part"; "Starting Date of I part")
                 {
