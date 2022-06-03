@@ -53,7 +53,12 @@ page 50059 "Vacation Usage Plan"
                 {
                     trigger OnValidate()
                     begin
-                        Rec."Total days" := Rec."Total days" - "Used days at previous employer";
+
+                        Rec."Total days" := Rec."Legal Grounds" + Rec."Days based on Military service" + Rec."Days based on Working conditions" + Rec."Days based on Work experience" + Rec."Days based on Disability" - Rec."Number of days" - Rec."Used days at previous employer";
+                        IF Rec."Total days" > 35
+                        then
+                            Rec."Total days" := 35;
+
                     end;
                 }
                 //ED 02 END
