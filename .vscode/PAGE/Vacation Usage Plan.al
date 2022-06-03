@@ -74,6 +74,7 @@ page 50059 "Vacation Usage Plan"
                 }
                 field(Year; Year)
                 {
+                    Editable = false;
                 }
                 field("Date of report"; "Date of report")
                 {
