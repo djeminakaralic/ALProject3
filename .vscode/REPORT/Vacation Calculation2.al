@@ -277,8 +277,7 @@ report 50010 "Vacation Calculation2"
                                     EmployeeRelative.Reset();
                                     EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
                                     EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
-                                    EmployeeRelative.SetFilter(Age, '%1..%2', 0, SocialStatus.Years); //Da je dijete mlađe od 7 godina
-                                    //EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
+                                    EmployeeRelative.SetFilter(Age, '%1..%2', 0, SocialStatus.Years - 1); //Da su unesene godine i da su te godine manje od granice u šifarniku
                                     IF EmployeeRelative.FindFirst() then begin
                                         PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
 
