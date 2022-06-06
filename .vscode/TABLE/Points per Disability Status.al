@@ -27,6 +27,7 @@ table 50063 "Points per Disability Status"
         field(7; Years; Integer)
         {
             Caption = 'Years';
+            BlankZero = true;
         }
         field(8; "Lower Limit Months"; Integer)
         {
