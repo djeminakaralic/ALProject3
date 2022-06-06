@@ -2,7 +2,7 @@ report 50109 VacationDecision
 {
     Caption = 'Rješenje GO';
     DefaultLayout = RDLC;
-    RDLCLayout = './VacatonDecision.rdlc';
+    RDLCLayout = './VacatonDecision.rdl';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     EnableExternalAssemblies = true;
