@@ -3679,9 +3679,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 trigger OnAction()
                 begin
-                    employee.SetFilter("No.", xRec."No.");
-                    if employee.FindFirst() then begin
-                        VacationDecisionR.SETTABLEVIEW(employee);
+                    Vacation.SetFilter("Employee No.", xRec."No.");
+                    if Vacation.FindFirst() then begin
+                        VacationDecisionR.SETTABLEVIEW(Vacation);
                         VacationDecisionR.RUN;
                     end;
 
@@ -4304,4 +4304,5 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         employee: Record Employee;
         PersonalDocuments: record "Personal Documents";
         VacationDecisionR: Report VacationDecision;
+        Vacation: record "Vacation Ground 2";
 }
