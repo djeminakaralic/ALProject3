@@ -20,34 +20,65 @@ page 50059 "Vacation Usage Plan"
                 field("Last Name"; "Last Name")
                 {
                 }
+                //ED 02 START
+                field("Position Name"; "Position Name")
+                {
+                    Editable = false;
+                }
+                field(Sector; Sector)
+                {
+                    Editable = false;
+                }
+                //ED 02 END
                 field("Work experience"; "Work experience")
                 {
+                    Editable = false;
                 }
                 field("Legal Grounds"; "Legal Grounds")
                 {
+                    Editable = false;
                 }
                 field("Days based on Work experience"; "Days based on Work experience")
                 {
+                    Editable = false;
                 }
                 field("Days based on Disability"; "Days based on Disability")
                 {
+                    Editable = false;
                 }
                 //ED 02 START
                 field("Days based on Military service"; "Days based on Military service")
                 {
+                    Editable = false;
                 }
                 field("Days based on Working conditions"; "Days based on Working conditions")
                 {
+                    Editable = false;
+                }
+                field("Used days at previous employer"; "Used days at previous employer")
+                {
+                    trigger OnValidate()
+                    begin
+
+                        Rec."Total days" := Rec."Legal Grounds" + Rec."Days based on Military service" + Rec."Days based on Working conditions" + Rec."Days based on Work experience" + Rec."Days based on Disability" - Rec."Number of days" - Rec."Used days at previous employer";
+                        IF Rec."Total days" > 35
+                        then
+                            Rec."Total days" := 35;
+
+                    end;
                 }
                 //ED 02 END
                 field("Total days"; "Total days")
                 {
+                    Editable = false;
                 }
-                /*field(Type; Type)
-                {
-                }*/
                 field(Year; Year)
                 {
+                    Editable = false;
+                }
+                field("Date of report"; "Date of report")
+                {
+                    Editable = false;
                 }
                 field("Starting Date of I part"; "Starting Date of I part")
                 {
@@ -181,7 +212,8 @@ page 50059 "Vacation Usage Plan"
         Temp: Boolean;
         Text0002: Label 'Do you want to print Annual Leave Resolution for first part of leave?';
         Text0003: Label 'Do you want to print Annual Leave Resolution for second part of leave?';
-        t_VG: Record "Vacation Grounds2";
+        //t_VG: Record "Vacation Grounds2";
+        VG: Record "Vacation Ground 2";
         Selection: Integer;
         Text0004: Label 'Annual Leave Resolution for I part,Annual Leave Resolution for II part';
         t: Text;

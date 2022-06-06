@@ -13,6 +13,8 @@ page 50070 "Employee Trainings Ledger"
         {
             repeater(Control1)
             {
+                field(Code; Code)
+                { }
                 field("Employee No."; "Employee No.")
                 {
 
@@ -22,11 +24,8 @@ page 50070 "Employee Trainings Ledger"
                 {
 
                 }
-                field(Code; Code)
-                {
 
-                }
-                field(Code2; Code2)
+                field(Code2Entry; Code2Entry)
                 {
 
                 }

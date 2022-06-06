@@ -25,8 +25,9 @@ report 50010 "Vacation Calculation2"
                         //  PlanGO.VALIDATE("Employee No.",EmployeeRec."No.");
                         PlanGO."First Name" := EmployeeRec."First Name";
                         PlanGO."Last Name" := EmployeeRec."Last Name";
-                        PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
+                        //PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
                         PlanGO.Year := DATE2DMY(Datee, 3);
+                        PlanGO."Date of report" := Datee; //ED
                         PlanGO."Employee No." := EmployeeRec."No.";
                         EVALUATE(Order, EmployeeRec."No.");
                         PlanGO.Order := Order;
@@ -39,6 +40,7 @@ report 50010 "Vacation Calculation2"
                         EmployeeC.ASCENDING;
                         IF EmployeeC.FINDLAST THEN BEGIN
                             PlanGO."Position Name" := EmployeeC."Position Description";
+                            PlanGO.Sector := EmployeeC."Sector Description"; //ED
                             PlanGO."Insert Date" := Datee;
                             /* R_WorkExperience.SetEmp(EmployeeC."Employee No.",Datee);
                          R_WorkExperience.RUN; */
@@ -87,48 +89,34 @@ report 50010 "Vacation Calculation2"
 
                         IF PlanGO.FINDFIRST THEN BEGIN
                             // po stepenu invalidnosti
-                            IF ((EmployeeRec."Disabled Person" = TRUE)) THEN BEGIN
 
-                                ELD.RESET;
-                                ELD.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                ELD.SETFILTER(Active, '%1', TRUE);
-                                IF ELD.FINDFIRST THEN BEGIN
-                                    /*IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
-                                        Level := LevelValue
-                                    ELSE
-                                        Level := 0;
-                                    IF Level > 50 THEN BEGIN*/
-                                    SocialStatus.SETFILTER("No.", '%1', '1');
-                                    IF SocialStatus.FINDFIRST THEN BEGIN
-                                        PlanGO."Days based on Disability" := SocialStatus.Points;
-                                        EmployeeC.RESET;
-                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                        EmployeeC.SETCURRENTKEY("Starting Date");
-                                        EmployeeC.ASCENDING;
-                                        IF EmployeeC.FINDLAST THEN BEGIN
+                            /*ELD.RESET;
+                            ELD.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                            ELD.SETFILTER(Active, '%1', TRUE);*/
+                            IF (EmployeeRec."Disabled Person" = TRUE) THEN BEGIN
+                                /*IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
+                                    Level := LevelValue
+                                ELSE
+                                    Level := 0;
+                                IF Level > 50 THEN BEGIN*/
+                                SocialStatus.Reset();
+                                SocialStatus.SetFilter(Category, '%1', 0);
+                                SocialStatus.SETFILTER("No.", '%1', '1');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Disability" := SocialStatus.Points;
+                                    EmployeeC.RESET;
+                                    EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                    EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                    EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                    EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                    EmployeeC.SETCURRENTKEY("Starting Date");
+                                    EmployeeC.ASCENDING;
+                                    IF EmployeeC.FINDLAST THEN BEGIN
 
-                                            PlanGO.MODIFY;
-                                        END;
-                                    END //;
-                                    //END
-                                    ELSE BEGIN
-                                        PlanGO."Days based on Disability" := 0;
-                                        EmployeeC.RESET;
-                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                        EmployeeC.SETCURRENTKEY("Starting Date");
-                                        EmployeeC.ASCENDING;
-                                        IF EmployeeC.FINDLAST THEN BEGIN
-
-                                            PlanGO.MODIFY;
-                                        END;
+                                        PlanGO.MODIFY;
                                     END;
-                                END
+                                END //;
+                                    //END
                                 ELSE BEGIN
                                     PlanGO."Days based on Disability" := 0;
                                     EmployeeC.RESET;
@@ -143,13 +131,22 @@ report 50010 "Vacation Calculation2"
                                         PlanGO.MODIFY;
                                     END;
                                 END;
-
                             END
-                            ELSE
+                            ELSE BEGIN
                                 PlanGO."Days based on Disability" := 0;
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
 
-
-
+                                    PlanGO.MODIFY;
+                                END;
+                                //END;
+                            END;
 
 
 
@@ -164,6 +161,8 @@ report 50010 "Vacation Calculation2"
 
                                 AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
                                 Datttt := CALCDATE(AddDayyy, Datee);
+
+                                PlanGO."Work experience" := WBTemp.Years; //ED GODINE
 
                                 PointsperExperienceYears.RESET;
 
@@ -197,8 +196,11 @@ report 50010 "Vacation Calculation2"
 
                             //Za samohrane roditelje/usvojitelje
                             IF ((EmployeeRec."Single parent/adopter" = TRUE)) THEN BEGIN
-                                SocialStatus.SETFILTER("No.", '%1', '2');
-                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                SocialStatus.Reset();
+                                //SocialStatus.SetFilter(Category, '%1', 0);
+                                //SocialStatus.SETFILTER("No.", '%1', '2');
+                                SocialStatus.Get(2, 0);
+                                IF SocialStatus.FindFirst() THEN BEGIN
                                     PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
                                 END;
                                 EmployeeC.RESET;
@@ -225,7 +227,8 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
-                                    SocialStatus.SETFILTER("No.", '%1', '8');
+                                    SocialStatus.Reset();
+                                    SocialStatus.Get(1, 2);
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                     END;
@@ -247,7 +250,8 @@ report 50010 "Vacation Calculation2"
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
                             IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
-                                SocialStatus.SETFILTER("No.", '%1', '9');
+                                SocialStatus.Reset();
+                                SocialStatus.Get(2, 2);
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Working conditions" := SocialStatus.Points;
                                 END;
@@ -267,38 +271,40 @@ report 50010 "Vacation Calculation2"
                                 PlanGO."Days based on Working conditions" := PlanGO."Days based on Working conditions";
 
                             //Majka djeteta mlađeg od 7 godina
-                            IF EmployeeRec.Gender = 1 then begin
-                                EmployeeRelative.Reset();
-                                EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
-                                EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
-                                EmployeeRelative.SetFilter(Age, '<%1', 7); //Da je dijete mlađe od 7 godina
-                                EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
-                                IF EmployeeRelative.FindFirst() then begin
-                                    SocialStatus.SETFILTER("No.", '%1', '3');
-                                    IF SocialStatus.FINDFIRST THEN BEGIN
+                            IF EmployeeRec.Gender = 1 then begin //Zena
+                                SocialStatus.SetFilter(Category, '%1', 0); //Socijalno-zdravstveni status u sifarniku
+                                SocialStatus.SETFILTER("No.", '%1', '3'); //No 3 u sifarniku 
+
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    EmployeeRelative.Reset();
+                                    EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
+                                    EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
+                                    EmployeeRelative.SetFilter(Age, '%1..%2', 0, SocialStatus.Years - 1); //Da su unesene godine i da su te godine manje od granice u šifarniku
+                                    IF EmployeeRelative.FindFirst() then begin
                                         PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
-                                    END;
 
-                                    EmployeeC.RESET;
-                                    EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                    EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                    EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                    EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                    EmployeeC.SETCURRENTKEY("Starting Date");
-                                    EmployeeC.ASCENDING;
-                                    IF EmployeeC.FINDLAST THEN BEGIN
-                                        PlanGO.MODIFY;
-                                    END;
+                                        EmployeeC.RESET;
+                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                        EmployeeC.SETCURRENTKEY("Starting Date");
+                                        EmployeeC.ASCENDING;
+                                        IF EmployeeC.FINDLAST THEN BEGIN
+                                            PlanGO.MODIFY;
+                                        END;
 
-                                end
-                                ELSE
-                                    PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
+                                    end
+                                    ELSE
+                                        PlanGO."Days based on Disability" := PlanGO."Days based on Disability";
+                                END;
                             end;
 
 
                             //Radnik mlađi od 18 godina
-                            IF ((EmployeeRec.Age < 18)) THEN BEGIN
-                                SocialStatus.SETFILTER("No.", '%1', '4');
+                            SocialStatus.SetFilter(Category, '%1', 0);
+                            SocialStatus.SETFILTER("No.", '%1', '4');
+                            IF ((EmployeeRec.Age < SocialStatus.Years)) THEN BEGIN
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
                                 END;
@@ -318,23 +324,63 @@ report 50010 "Vacation Calculation2"
 
 
                             //Po osnovu učešća u oružanim snagama
-                            MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
+                            MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + EmployeeRec."Military Months of Service";
+
+                            IF (MilitaryMonths <> 0) THEN BEGIN
+
+                                /*AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
+                                Datttt := CALCDATE(AddDayyy, Datee);
+
+                                PointsperExperienceYears.RESET;*/
+
+                                SocialStatus.Reset();
+                                SocialStatus.SetFilter(Category, '%1', 1);
+                                SocialStatus.SetFilter(SocialStatus."Lower Limit Months", '<=%1', MilitaryMonths);
+                                SocialStatus.SetFilter(SocialStatus."Upper Limit Months", '>=%1', MilitaryMonths);
+                                SocialStatus.SetCurrentKey("Upper Limit Months");
+                                SocialStatus.ASCENDING;
+                                IF SocialStatus.FindLast() THEN BEGIN
+                                    PlanGO."Days based on Military service" := SocialStatus.Points;
+                                END
+                                ELSE
+                                    PlanGO."Days based on Military service" := 0;
+
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
+                                    PlanGO.MODIFY;
+                                END;
+
+                            END
+                            ELSE
+                                PlanGO."Days based on Military service" := 0;
+
+
+                            /*MilitaryMonths := EmployeeRec."Military Years of Service" * 12 + "Military Months of Service";
                             IF ((MilitaryMonths <> 0)) THEN BEGIN
                                 IF ((MilitaryMonths > 12) AND (MilitaryMonths < 18)) then begin
-                                    SocialStatus.SETFILTER("No.", '%1', '5');
+                                    SocialStatus.SetFilter(Category, '%1', 1);
+                                    SocialStatus.SETFILTER("No.", '%1', '1');
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Military service" := SocialStatus.Points;
                                     END;
                                 end
                                 ELSE
                                     IF ((MilitaryMonths > 18) AND (MilitaryMonths < 30)) then begin
-                                        SocialStatus.SETFILTER("No.", '%1', '6');
+                                        SocialStatus.SetFilter(Category, '%1', 1);
+                                        SocialStatus.SETFILTER("No.", '%1', '2');
                                         IF SocialStatus.FINDFIRST THEN BEGIN
                                             PlanGO."Days based on Military service" := SocialStatus.Points;
                                         END;
                                     end
                                     ELSE begin
-                                        SocialStatus.SETFILTER("No.", '%1', '7');
+                                        SocialStatus.SetFilter(Category, '%1', 1);
+                                        SocialStatus.SETFILTER("No.", '%1', '3');
                                         IF SocialStatus.FINDFIRST THEN BEGIN
                                             PlanGO."Days based on Military service" := SocialStatus.Points;
                                         END;
@@ -353,7 +399,7 @@ report 50010 "Vacation Calculation2"
                                 END;
                             END
                             ELSE
-                                PlanGO."Days based on Military service" := 0;
+                                PlanGO."Days based on Military service" := 0;*/
 
 
                             //roditelj djece sa posebnim potrebama
@@ -417,7 +463,7 @@ report 50010 "Vacation Calculation2"
 
 
 
-                            PlanGO."Total days" := PlanGO."Legal Grounds" - UsedDaysThisYear + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                            PlanGO."Total days" := PlanGO."Legal Grounds" - UsedDaysThisYear + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                             IF PlanGO."Total days" > 35
                             then
                                 PlanGO."Total days" := 35;
@@ -637,7 +683,7 @@ report 50010 "Vacation Calculation2"
                                                 IF Absence.FINDSET THEN
                                                     UsedDaysThisYear := Absence.COUNT;
                                                 PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                                 IF PlanGO."Total days" > 35
                             then
                                                     PlanGO."Total days" := 35;
@@ -662,7 +708,7 @@ report 50010 "Vacation Calculation2"
                                                 IF Absence.FINDSET THEN
                                                     UsedDaysThisYear := Absence.COUNT;
                                                 PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Days based on Disability" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                                 IF PlanGO."Total days" > 35
                                                                             then
                                                     PlanGO."Total days" := 35;
@@ -804,7 +850,7 @@ report 50010 "Vacation Calculation2"
                                                     IF Absence.FINDSET THEN
                                                         UsedDaysThisYear := Absence.COUNT;
                                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                                     IF PlanGO."Total days" > 35
                                                                                 then
                                                         PlanGO."Total days" := 35;
@@ -830,7 +876,7 @@ report 50010 "Vacation Calculation2"
                                                     IF Absence.FINDSET THEN
                                                         UsedDaysThisYear := Absence.COUNT;
                                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                                     IF PlanGO."Total days" > 35
                                                                                 then
                                                         PlanGO."Total days" := 35;
@@ -1094,7 +1140,7 @@ report 50010 "Vacation Calculation2"
                                                     END;
 
 
-                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                                     IF PlanGO."Total days" > 35
                                                                                 then
                                                         PlanGO."Total days" := 35;
@@ -1305,7 +1351,7 @@ report 50010 "Vacation Calculation2"
                                     IF Absence.FINDSET THEN
                                         UsedDaysThisYear := Absence.COUNT;
                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                     IF PlanGO."Total days" > 35
                                                                 then
                                         PlanGO."Total days" := 35;
@@ -1330,7 +1376,7 @@ report 50010 "Vacation Calculation2"
                                     IF Absence.FINDSET THEN
                                         UsedDaysThisYear := Absence.COUNT;
                                     PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                    PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                     IF PlanGO."Total days" > 35
                                                                 then
                                         PlanGO."Total days" := 35;
@@ -1471,7 +1517,7 @@ report 50010 "Vacation Calculation2"
                                         IF Absence.FINDSET THEN
                                             UsedDaysThisYear := Absence.COUNT;
                                         PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                         IF PlanGO."Total days" > 35
                                                                     then
                                             PlanGO."Total days" := 35;
@@ -1495,7 +1541,7 @@ report 50010 "Vacation Calculation2"
                                         IF Absence.FINDSET THEN
                                             UsedDaysThisYear := Absence.COUNT;
                                         PlanGO."Legal Grounds" := PlanGO."Legal Grounds" - UsedDaysThisYear;
-                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                         IF PlanGO."Total days" > 35
                                                                     then
                                             PlanGO."Total days" := 35;
@@ -1771,7 +1817,7 @@ report 50010 "Vacation Calculation2"
                                         END;
 
 
-                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days";
+                                        PlanGO."Total days" := PlanGO."Legal Grounds" + PlanGO."Days based on Work experience" + PlanGO."Days based on Disability" + PlanGO."Days based on Military service" + PlanGO."Days based on Working conditions" + PlanGO."Based on Disabled Child" - PlanGO."Number of days" - PlanGO."Used days at previous employer";
                                         IF PlanGO."Total days" > 35
                                                                     then
                                             PlanGO."Total days" := 35;
@@ -2164,6 +2210,7 @@ R_WorkExperience.RUN;
         StvarniEndDate: Date;
         TrenutniDatumZaposlenja: Date;
         SocialStatus: Record "Points per Disability Status";
+
         SocialStatusEmployee: Record "Candidate Testing";
         PlanPrijelaz: Record "Vacation Ground 2";
         AddDayyy: Text;

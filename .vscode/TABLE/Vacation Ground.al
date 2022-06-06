@@ -34,7 +34,7 @@ table 50015 "Vacation Ground 2"
                 "Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" - "Number of days";
                 EVALUATE(Order, "Employee No.");
 
-                /*EmployeeRec.RESET;
+                EmployeeRec.RESET;
                 EmployeeRec.SETFILTER("No.", '%1', "Employee No.");
                 IF EmployeeRec."Returned to Company" = FALSE THEN BEGIN
                     UsedDaysThisYear := 0;
@@ -336,7 +336,7 @@ table 50015 "Vacation Ground 2"
                         END;
                         Year := Year2;
                     END;
-                END;*/
+                END;
 
 
             end;
@@ -398,12 +398,21 @@ table 50015 "Vacation Ground 2"
                 //"Total days" := "Legal Grounds" + "Days based on Work experience" + "Based on Disabled Child" + "Days based on Disability" + SpecialCircumstances + MotherWithMoreCH + Millitary + SingleParent;
             end;
         }
+        field(34; "Used days at previous employer"; Integer)
+        {
+        }
+        field(35; "Date of report"; Date)
+        {
+        }
         //ED 02 END
         field(6; Sector; Text[250])
         {
-            FieldClass = FlowField;
+            /*FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Sector Description" WHERE("Employee No." = FIELD("Employee No."),
-                                                                                 Active = CONST(true)));
+                                                                                 Active = CONST(true)));*/
+            //ED 02
+
+
             Caption = 'Sector';
 
         }
@@ -614,9 +623,9 @@ table 50015 "Vacation Ground 2"
         }
         field(29; "Position Name"; Text[250])
         {
-            FieldClass = FlowField;
+            /*FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."),
-                                                                                 Active = CONST(true)));
+                                                                                 Active = CONST(true)));*/
             Caption = 'Position Name';
         }
         field(30; Duration; Integer)
@@ -629,14 +638,10 @@ table 50015 "Vacation Ground 2"
         }
         field(32; UsedDays; Integer)
         {
-
         }
         field(33; "First Part"; Integer)
         {
-
-
         }
-
     }
 
     keys

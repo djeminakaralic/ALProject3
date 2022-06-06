@@ -16,6 +16,8 @@ page 50058 "Trainings Catalogue"
                 {
 
                 }
+                field(Name; Name)
+                { }
                 field(Type; Type)
                 {
 

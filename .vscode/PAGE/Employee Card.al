@@ -3357,6 +3357,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = field("No.");
                 Promoted = true;
             }
+
             action("Employee Default dimension")
             {
                 Caption = 'Employee Default dimension';
@@ -3367,6 +3368,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Promoted = true;
 
             }
+
 
 
 
@@ -3631,6 +3633,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 //PromotedIsBig = false;
 
             }
+
             /*action("Health Check")
             {
                 Caption = 'Health Check';
@@ -3658,6 +3661,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No.");
                 Promoted = true;
             }
+
             //ED 01 END
 
         }
@@ -3675,9 +3679,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 trigger OnAction()
                 begin
-                    employee.SetFilter("No.", xRec."No.");
-                    if employee.FindFirst() then begin
-                        VacationDecisionR.SETTABLEVIEW(employee);
+                    Vacation.SetFilter("Employee No.", xRec."No.");
+                    if Vacation.FindFirst() then begin
+                        VacationDecisionR.SETTABLEVIEW(Vacation);
                         VacationDecisionR.RUN;
                     end;
 
@@ -3690,11 +3694,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Caption = 'Employee Training Ledger';
                 Image = Ledger;
                 Promoted = true;
-                PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = page "Employee Trainings Ledger";
                 RunPageLink = "Employee No." = field("Employee No.");
             }
+
+
 
         }
 
@@ -4299,4 +4304,5 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         employee: Record Employee;
         PersonalDocuments: record "Personal Documents";
         VacationDecisionR: Report VacationDecision;
+        Vacation: record "Vacation Ground 2";
 }

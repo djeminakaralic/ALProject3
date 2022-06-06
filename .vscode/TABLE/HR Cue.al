@@ -107,6 +107,10 @@ table 50085 "HR Cue"
                 //t_Employee.SETRANGE("Probation Period End",TODAY,311299D);
             end;
         }
+        field(50094; DateTraining; Date)
+        {
+            FieldClass = FlowFilter;
+        }
 
         field(50010; "Inactive - Terminated"; Integer)
         {
@@ -322,6 +326,15 @@ table 50085 "HR Cue"
             Caption = 'Education And Development';
             FieldClass = FlowField;
         }
+        field(50093; "Training"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Training Ledger" WHERE(Status = const("In progress")));
+            Caption = 'Trainings';
+
+
+        }
+
         field(50041; "Wage Change"; Integer)
         {
             FieldClass = FlowField;

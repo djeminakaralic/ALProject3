@@ -76,7 +76,7 @@ table 50044 "Training Time Entry"
     }
     keys
     {
-        key(Key1; Code2)
+        key(Key1; Code)
         {
         }
     }

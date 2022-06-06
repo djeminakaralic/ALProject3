@@ -24,6 +24,19 @@ table 50063 "Points per Disability Status"
             //OptionCaption = Disability,Military,Conditions;
             OptionMembers = Disability,Military,Conditions;
         }
+        field(7; Years; Integer)
+        {
+            Caption = 'Years';
+            BlankZero = true;
+        }
+        field(8; "Lower Limit Months"; Integer)
+        {
+            Caption = 'Lower Limit';
+        }
+        field(9; "Upper Limit Months"; Integer)
+        {
+            Caption = 'Upper Limit';
+        }
         //ED 02 END
     }
 
