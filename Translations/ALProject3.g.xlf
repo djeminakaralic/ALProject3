@@ -33973,11 +33973,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control BrojDokumenta - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3979115579 - Control 780753521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Datum rješenja</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report VacationDecision - Control DatumRjesenja - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 3270716795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ukupni obracun staža</source>
           <note from="Developer" annotates="general" priority="2"></note>
