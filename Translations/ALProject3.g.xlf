@@ -27228,6 +27228,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report BaH Fisc-PrintInvoiceDuplic - Control ToDateTime - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3332161583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blagajnički dnevnik</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Blagajnički dnevnik - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 233020371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Department Temp change new</source>
           <note from="Developer" annotates="general" priority="2"></note>
