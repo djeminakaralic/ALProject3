@@ -24,6 +24,14 @@ report 50109 VacationDecision
             {
 
             }
+            column(FirstName; "First Name")
+            {
+
+            }
+            column(LastName; "Last Name")
+            {
+
+            }
 
             column(Year1; Year1)
             {
@@ -44,7 +52,7 @@ report 50109 VacationDecision
             column(Disability; "Days based on Disability")
             {
             }
-            column(Millitary; Millitary)
+            column(Millitary; "Days based on Military service")
             {
 
             }
