@@ -2,8 +2,8 @@ report 50075 "Blagajnički dnevnik"
 {
     //ED 03 START
 
-    //DefaultLayout = RDLC;
-    //RDLCLayout = './Blagajnički dnevnik 2.rdlc';
+    DefaultLayout = RDLC;
+    RDLCLayout = './Blagajnički dnevnik.rdlc';
 
     dataset
     {
