@@ -20,6 +20,10 @@ report 50109 VacationDecision
             {
 
             }
+            column(Employee_No_; "Employee No.")
+            {
+
+            }
 
 
 
