@@ -39,7 +39,7 @@ report 50109 VacationDecision
             column(BrojDokumenta; BrojDokumenta)
             {
             }
-            column(DatumRjesenja; DatumRjesenjaT)
+            column(DatumRjesenjaT; DatumRjesenjaT)
             {
             }
             column(Company_logo; CompanyInformation.Picture)
@@ -139,6 +139,8 @@ report 50109 VacationDecision
 
             trigger OnAfterGetRecord()
             begin
+                CompanyInformation.CalcFields(Picture);
+
 
 
                 DanJavljanjanaposao := "Ending Date of I part";
