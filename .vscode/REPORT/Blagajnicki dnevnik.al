@@ -11,6 +11,7 @@ report 50075 "Blagajnički dnevnik"
         {
             //DataItemTableView = WHERE(Bal. Account No.=FILTER(BKM));
             RequestFilterFields = "Posting Date";
+
             column(PostingDate; GLEntry."Posting Date")
             {
             }

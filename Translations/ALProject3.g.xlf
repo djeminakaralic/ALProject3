@@ -33908,6 +33908,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Update Pos Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 270256427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uplatnica</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Uplatnica - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 5817644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vacation Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
