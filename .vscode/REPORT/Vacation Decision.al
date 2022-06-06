@@ -2,7 +2,7 @@ report 50109 VacationDecision
 {
     Caption = 'Rješenje GO';
     DefaultLayout = RDLC;
-    RDLCLayout = './VacatonDecision.rdlc';
+    RDLCLayout = './VacatonDecision.rdl';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     EnableExternalAssemblies = true;
@@ -157,8 +157,9 @@ report 50109 VacationDecision
                 if EmployeeRec.FindFirst() then begin
 
                     FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
+                    DrugiDioDana := "Total days" - FirstPart;
                 end;
-                DrugiDioDana := "Total days" - FirstPart;
+
 
 
 

@@ -1293,7 +1293,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Filters>
               <Filter>
-                <FilterExpression>=Cstr(Len(Fields!Employee No.Value))</FilterExpression>
+                <FilterExpression>=Cstr(Len(Fields!No.Value))</FilterExpression>
                 <Operator>NotEqual</Operator>
                 <FilterValues>
                   <FilterValue>0</FilterValue>
