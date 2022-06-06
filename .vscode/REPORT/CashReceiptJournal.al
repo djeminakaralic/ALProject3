@@ -28,6 +28,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }*/
 
+        
+
 
         /*addafter(Code)
         {
@@ -163,35 +165,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         // Add changes to page actions here
     }
 
-    var
-        myInt: Integer;
-        VisibleCurrent: Boolean;
-        VisibleCIPS: Boolean;
-        AA: Record "Alternative Address";
-        "Filter": Text[250];
+   
+       
 
     trigger OnOpenPage()
     begin
-        /*Filter := Rec.GETFILTER("Address Type");
-
-        IF (Filter = 'Current') OR (Filter = 'Stvarna') THEN BEGIN
-            VisibleCurrent := TRUE;
-            VisibleCIPS := FALSE;
-        END
-        ELSE
-            IF Filter = 'CIPS' THEN BEGIN
-                VisibleCurrent := FALSE;
-                VisibleCIPS := TRUE;
-            END
-            ELSE BEGIN
-                VisibleCurrent := FALSE;
-                VisibleCIPS := TRUE;
-            END;
-
-
         
-        
-        */
 
     end;
 
