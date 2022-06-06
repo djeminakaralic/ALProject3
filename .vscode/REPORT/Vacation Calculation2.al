@@ -25,7 +25,7 @@ report 50010 "Vacation Calculation2"
                         //  PlanGO.VALIDATE("Employee No.",EmployeeRec."No.");
                         PlanGO."First Name" := EmployeeRec."First Name";
                         PlanGO."Last Name" := EmployeeRec."Last Name";
-                        PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
+                        //PlanGO."Work experience" := EmployeeRec."Years with military"; //ED
                         PlanGO.Year := DATE2DMY(Datee, 3);
                         PlanGO."Date of report" := Datee; //ED
                         PlanGO."Employee No." := EmployeeRec."No.";
@@ -40,6 +40,7 @@ report 50010 "Vacation Calculation2"
                         EmployeeC.ASCENDING;
                         IF EmployeeC.FINDLAST THEN BEGIN
                             PlanGO."Position Name" := EmployeeC."Position Description";
+                            PlanGO.Sector := EmployeeC.Sector; //ED
                             PlanGO."Insert Date" := Datee;
                             /* R_WorkExperience.SetEmp(EmployeeC."Employee No.",Datee);
                          R_WorkExperience.RUN; */
@@ -88,49 +89,34 @@ report 50010 "Vacation Calculation2"
 
                         IF PlanGO.FINDFIRST THEN BEGIN
                             // po stepenu invalidnosti
-                            IF ((EmployeeRec."Disabled Person" = TRUE)) THEN BEGIN
 
-                                ELD.RESET;
-                                ELD.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                ELD.SETFILTER(Active, '%1', TRUE);
-                                IF ELD.FINDFIRST THEN BEGIN
-                                    /*IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
-                                        Level := LevelValue
-                                    ELSE
-                                        Level := 0;
-                                    IF Level > 50 THEN BEGIN*/
-                                    SocialStatus.SetFilter(Category, '%1', 0);
-                                    SocialStatus.SETFILTER("No.", '%1', '1');
-                                    IF SocialStatus.FINDFIRST THEN BEGIN
-                                        PlanGO."Days based on Disability" := SocialStatus.Points;
-                                        EmployeeC.RESET;
-                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                        EmployeeC.SETCURRENTKEY("Starting Date");
-                                        EmployeeC.ASCENDING;
-                                        IF EmployeeC.FINDLAST THEN BEGIN
+                            /*ELD.RESET;
+                            ELD.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                            ELD.SETFILTER(Active, '%1', TRUE);*/
+                            IF (EmployeeRec."Disabled Person" = TRUE) THEN BEGIN
+                                /*IF EVALUATE(LevelValue, ELD."Level of Disability") THEN
+                                    Level := LevelValue
+                                ELSE
+                                    Level := 0;
+                                IF Level > 50 THEN BEGIN*/
+                                SocialStatus.Reset();
+                                SocialStatus.SetFilter(Category, '%1', 0);
+                                SocialStatus.SETFILTER("No.", '%1', '1');
+                                IF SocialStatus.FINDFIRST THEN BEGIN
+                                    PlanGO."Days based on Disability" := SocialStatus.Points;
+                                    EmployeeC.RESET;
+                                    EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                    EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                    EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                    EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                    EmployeeC.SETCURRENTKEY("Starting Date");
+                                    EmployeeC.ASCENDING;
+                                    IF EmployeeC.FINDLAST THEN BEGIN
 
-                                            PlanGO.MODIFY;
-                                        END;
-                                    END //;
-                                    //END
-                                    ELSE BEGIN
-                                        PlanGO."Days based on Disability" := 0;
-                                        EmployeeC.RESET;
-                                        EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
-                                        EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                                        EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
-                                        EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
-                                        EmployeeC.SETCURRENTKEY("Starting Date");
-                                        EmployeeC.ASCENDING;
-                                        IF EmployeeC.FINDLAST THEN BEGIN
-
-                                            PlanGO.MODIFY;
-                                        END;
+                                        PlanGO.MODIFY;
                                     END;
-                                END
+                                END //;
+                                    //END
                                 ELSE BEGIN
                                     PlanGO."Days based on Disability" := 0;
                                     EmployeeC.RESET;
@@ -145,13 +131,22 @@ report 50010 "Vacation Calculation2"
                                         PlanGO.MODIFY;
                                     END;
                                 END;
-
                             END
-                            ELSE
+                            ELSE BEGIN
                                 PlanGO."Days based on Disability" := 0;
+                                EmployeeC.RESET;
+                                EmployeeC.SETFILTER("Employee No.", '%1', EmployeeRec."No.");
+                                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
+                                EmployeeC.SETFILTER("Starting Date", '<=%1', Datee);
+                                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, Datee);
+                                EmployeeC.SETCURRENTKEY("Starting Date");
+                                EmployeeC.ASCENDING;
+                                IF EmployeeC.FINDLAST THEN BEGIN
 
-
-
+                                    PlanGO.MODIFY;
+                                END;
+                                //END;
+                            END;
 
 
 
@@ -166,6 +161,8 @@ report 50010 "Vacation Calculation2"
 
                                 AddDayyy := '<+' + FORMAT(WBTemp.Years) + 'Y+' + FORMAT(WBTemp.Months) + 'M+' + FORMAT(WBTemp.Days) + 'D>';
                                 Datttt := CALCDATE(AddDayyy, Datee);
+
+                                PlanGO."Work experience" := WBTemp.Years; //ED GODINE
 
                                 PointsperExperienceYears.RESET;
 
@@ -230,6 +227,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
                                 IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
+                                    SocialStatus.Reset();
                                     SocialStatus.Get(1, 2);
                                     IF SocialStatus.FINDFIRST THEN BEGIN
                                         PlanGO."Days based on Working conditions" := SocialStatus.Points;
@@ -252,6 +250,7 @@ report 50010 "Vacation Calculation2"
 
                             //Radnici na poslovima sa skraćenim radnim vremenom
                             IF ((EmployeeRec."Hours In Day" < 8)) THEN BEGIN
+                                SocialStatus.Reset();
                                 SocialStatus.Get(2, 2);
                                 IF SocialStatus.FINDFIRST THEN BEGIN
                                     PlanGO."Days based on Working conditions" := SocialStatus.Points;
@@ -280,8 +279,7 @@ report 50010 "Vacation Calculation2"
                                     EmployeeRelative.Reset();
                                     EmployeeRelative.SetFilter("Employee No.", '%1', EmployeeRec."No.");
                                     EmployeeRelative.SetFilter(Relation, '%1', 3); //Child
-                                    EmployeeRelative.SetFilter(Age, '<%1', SocialStatus.Years); //Da je dijete mlađe od 7 godina
-                                    EmployeeRelative.SetFilter(Age, '>%1', 0); //Da su unesene godine djeteta
+                                    EmployeeRelative.SetFilter(Age, '%1..%2', 0, SocialStatus.Years - 1); //Da su unesene godine i da su te godine manje od granice u šifarniku
                                     IF EmployeeRelative.FindFirst() then begin
                                         PlanGO."Days based on Disability" := PlanGO."Days based on Disability" + SocialStatus.Points;
 
