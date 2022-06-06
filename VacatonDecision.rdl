@@ -627,7 +627,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Code.TextOnlyJustify("Prvi dio radnik će koristiti od "+Fields!StartFirstpartT.Value+" godine do "+Fields!EndFirstpartT.Value+" godine ("+FORMAT(Fields!FirstPart.Value)+" radna dana), s tim da se javi na posao "+FORMAT(Fields!DanJavljanjanaposaoT.Value)+" godine, dok će drugi dio ("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za poslove.",new System.Drawing.Font("Arial",12), true,800)</Value>
+                                      <Value>=Code.TextOnlyJustify("Prvi dio radnik će koristiti od "+Fields!StartFirstpartT.Value+" godine do "+Fields!EndFirstpartT.Value+" godine ("+FORMAT(Fields!FirstPart.Value)+" radna dana), s tim da se javi na posao "+Fields!DanJavljanjanaposaoT.Value+" godine, dok će drugi dio ("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za poslove.",new System.Drawing.Font("Arial",12), true,800)</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Normal</FontWeight>
@@ -1391,9 +1391,7 @@
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
-                <TablixMember>
-                  <Group Name="Details" />
-                </TablixMember>
+                <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>

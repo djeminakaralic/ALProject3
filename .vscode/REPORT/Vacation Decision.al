@@ -11,9 +11,11 @@ report 50109 VacationDecision
 
     dataset
     {
+
         dataitem(DataItem5; "Vacation Ground 2")
         {
             RequestFilterFields = "Date of report", "Employee No.";
+
             column(FirstName; "First Name")
             {
 
@@ -154,6 +156,8 @@ report 50109 VacationDecision
                 StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
+
+
                 EmployeeRec.Reset();
                 EmployeeRec.SetFilter("No.", '%1', DataItem5."Employee No.");
                 if EmployeeRec.FindFirst() then begin
@@ -252,6 +256,7 @@ report 50109 VacationDecision
         EndSecondpartT: Text;
         DrugiDioDana: Integer;
         RanijeIskoristeniDani: Integer;
+        EmployeeRec: Record Employee;
 
         CompanyInformation: Record "Company Information";
         VacMgmt: Codeunit "VacationMgmt2";
@@ -262,7 +267,7 @@ report 50109 VacationDecision
         FirstPart: Integer;
         AbsenceFill: Codeunit "Absence Fill";
 
-        EmployeeRec: Record Employee;
+
         Vacation: Record "Vacation Ground 2";
 
 
