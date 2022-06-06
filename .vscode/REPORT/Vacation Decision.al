@@ -2,7 +2,7 @@ report 50109 VacationDecision
 {
     Caption = 'Rješenje GO';
     DefaultLayout = RDLC;
-    RDLCLayout = './VacatonDecision.rdl';
+    RDLCLayout = './VacatonDecision.rdlc';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     EnableExternalAssemblies = true;
@@ -13,7 +13,12 @@ report 50109 VacationDecision
     {
         dataitem(DataItem5; "Vacation Ground 2")
         {
-            RequestFilterFields = "Date of report";
+            RequestFilterFields = "Date of report", "Employee No.";
+            column(FirstName; "First Name")
+            {
+
+            }
+
 
 
             column(WorkEXpDays; "Days based on Work experience")
@@ -24,10 +29,7 @@ report 50109 VacationDecision
             {
 
             }
-            column(FirstName; "First Name")
-            {
 
-            }
             column(LastName; "Last Name")
             {
 
