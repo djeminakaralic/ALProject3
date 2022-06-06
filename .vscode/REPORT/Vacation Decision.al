@@ -52,7 +52,7 @@ report 50109 VacationDecision
             column(Disability; "Days based on Disability")
             {
             }
-            column(Millitary; Millitary)
+            column(Millitary; "Days based on Military service")
             {
 
             }
