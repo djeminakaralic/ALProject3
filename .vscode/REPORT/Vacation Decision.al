@@ -13,7 +13,7 @@ report 50109 VacationDecision
     {
         dataitem(DataItem5; "Vacation Ground 2")
         {
-            RequestFilterFields = "Employee No.";
+            RequestFilterFields = "Date of report";
 
 
             column(WorkEXpDays; "Days based on Work experience")
@@ -152,8 +152,12 @@ report 50109 VacationDecision
                 StartSecondpartT := FORMAT("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
+                EmployeeRec.Reset();
+                EmployeeRec.SetFilter("No.", '%1', DataItem5."Employee No.");
+                if EmployeeRec.FindFirst() then begin
 
-                FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
+                    FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
+                end;
                 DrugiDioDana := "Total days" - FirstPart;
 
 
