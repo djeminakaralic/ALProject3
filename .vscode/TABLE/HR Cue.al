@@ -111,13 +111,6 @@ table 50085 "HR Cue"
         {
             FieldClass = FlowFilter;
         }
-        field(50093; "Training"; Integer)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Count("Employee Training Ledger" WHERE("End date of certificate" = field(DateTraining)));
-            Caption = 'Trainings';
-
-        }
 
         field(50010; "Inactive - Terminated"; Integer)
         {
@@ -333,6 +326,14 @@ table 50085 "HR Cue"
             Caption = 'Education And Development';
             FieldClass = FlowField;
         }
+        field(50093; "Training"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Training Ledger");
+            Caption = 'Trainings';
+
+        }
+
         field(50041; "Wage Change"; Integer)
         {
             FieldClass = FlowField;
