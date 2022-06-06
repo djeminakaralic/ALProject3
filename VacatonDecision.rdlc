@@ -1541,14 +1541,11 @@ End Sub
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
-        <Field Name="No">
-          <DataField>No</DataField>
+        <Field Name="WorkEXpDays">
+          <DataField>WorkEXpDays</DataField>
         </Field>
-        <Field Name="FirstName">
-          <DataField>FirstName</DataField>
-        </Field>
-        <Field Name="LastName">
-          <DataField>LastName</DataField>
+        <Field Name="FirstPart">
+          <DataField>FirstPart</DataField>
         </Field>
         <Field Name="Year1">
           <DataField>Year1</DataField>
@@ -1561,12 +1558,6 @@ End Sub
         </Field>
         <Field Name="Company_logo">
           <DataField>Company_logo</DataField>
-        </Field>
-        <Field Name="WorkEXpDays">
-          <DataField>WorkEXpDays</DataField>
-        </Field>
-        <Field Name="FirstPart">
-          <DataField>FirstPart</DataField>
         </Field>
         <Field Name="YearofVac">
           <DataField>YearofVac</DataField>

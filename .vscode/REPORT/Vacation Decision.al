@@ -132,7 +132,7 @@ report 50109 VacationDecision
             trigger OnAfterGetRecord()
             begin
 
-                CalcFields("Position Name", Sector);
+
                 DanJavljanjanaposao := "Ending Date of I part";
                 DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
                 //Message(FORMAT(DanJavljanjanaposao));
@@ -158,9 +158,9 @@ report 50109 VacationDecision
 
             trigger OnPreDataItem()
             begin
-                DatumRjesenjaT := FORMAT(DatumRjesenja, 0, '<Day,2>.<Month,2>.<Year4>.');
+                DatumRjesenjaT := FORMAT("Date of report", 0, '<Day,2>.<Month,2>.<Year4>.');
 
-                Year1 := FORMAT(DatumRjesenja, 0, '<Year4>.');
+                Year1 := FORMAT("Date of report", 0, '<Year4>.');
 
 
 
@@ -189,12 +189,12 @@ report 50109 VacationDecision
                 {
                     Caption = 'Broj dokumenta';
                 }
-                field(DatumRjesenja; DatumRjesenja)
+                /*field(DatumRjesenja; DatumRjesenja)
                 {
                     Caption = 'Datum rješenja';
                 }
 
-                /*field(BrojDanaPrviDio; BrojDanaPrviDio)
+                field(BrojDanaPrviDio; BrojDanaPrviDio)
                 {
                     Caption = 'Broj dana prvog dijela';
                 }
