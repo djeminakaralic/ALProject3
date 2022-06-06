@@ -61,6 +61,7 @@ page 50050 "Update Position"
                 field(Grade; Grade)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Number of benefits"; "Number of benefits")
                 {

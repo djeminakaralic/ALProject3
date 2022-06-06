@@ -34,6 +34,7 @@ page 50016 "Wage Setup"
                 }
                 field("General Coefficient"; "General Coefficient")
                 {
+                    Visible = false;
                 }
                 field("Type Of Work Percentage Calc."; "Type Of Work Percentage Calc.")
                 {
@@ -49,6 +50,7 @@ page 50016 "Wage Setup"
                 }
                 field("RS Municipality Code"; "RS Municipality Code")
                 {
+                    Visible = false;
                 }
             }
             group("Payment Orders")

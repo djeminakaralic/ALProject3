@@ -4178,6 +4178,12 @@ table 50071 "Employee Contract Ledger"
                             IF PosMenuFind.FINDFIRST THEN BEGIN
                                 "Position Code" := PosMenuFind.Code;
                                 "Management Level" := PosMenuFind."Management Level";
+                                "Position Coefficient for Wage" := PosMenuFind."Position Coefficient for Wage";
+                                "Position Responsibility" := PosMenuFind."Position Responsibility";
+                                "Position complexity" := PosMenuFind."Position complexity";
+                                Wagesetup.Get();
+                                Validate(Brutto, Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage");
+                                "Workplace conditions" := PosMenuFind."Workplace conditions";
                             END;
 
 
@@ -4220,6 +4226,16 @@ table 50071 "Employee Contract Ledger"
                             PositionTempInsert."BJF/GJF" := PositonMenuTemp."BJF/GJF";
                             PositionTempInsert."Department Code" := PositonMenuTemp."Department Code";
                             PositionTempInsert."Official Translation" := PositonMenuTemp."Official Translation";
+
+                            "Position Coefficient for Wage" := PositonMenuTemp."Position Coefficient for Wage";
+                            "Position Responsibility" := PositonMenuTemp."Position Responsibility";
+                            "Position complexity" := PositonMenuTemp."Position complexity";
+                            Wagesetup.Get();
+                            Validate(Brutto, Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage");
+                            "Workplace conditions" := PositonMenuTemp."Workplace conditions";
+
+
+
 
                             PositionTempInsert.Description := PositonMenuTemp.Description;
                             PositonMenuTemp.CALCFIELDS("Number of dimension value");
@@ -5885,6 +5901,35 @@ table 50071 "Employee Contract Ledger"
         {
             Caption = 'Superior 2';
         }
+
+        field(594133; "Position Coefficient for Wage"; Decimal)
+        {
+            Caption = 'Position Coefficient for Wage';
+        }
+        field(594134; "Position complexity"; Decimal)
+
+        {
+            Caption = 'Position complexity';
+        }
+
+        field(594135; "Position Responsibility"; Decimal)
+
+        {
+            Caption = 'Position Responsibility';
+        }
+        field(594136; "Workplace conditions"; Decimal)
+        {
+            Caption = 'Workplace conditions';
+        }
+        field(594137; "School"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Position Minimal Education" where("Position Code" = field("Position Code"), "Position Name" = field("Position Description"), "Org Shema" = field("Org. Structure")));
+            Caption = 'School';
+
+        }
+
+
     }
 
     keys
