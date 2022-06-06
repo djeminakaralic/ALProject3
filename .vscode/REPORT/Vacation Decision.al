@@ -24,6 +24,14 @@ report 50109 VacationDecision
             {
 
             }
+            column(FirstName; "First Name")
+            {
+
+            }
+            column(LastName; "Last Name")
+            {
+
+            }
 
             column(Year1; Year1)
             {
