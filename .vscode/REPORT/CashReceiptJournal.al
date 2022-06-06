@@ -176,7 +176,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 RunObject = Report "Uplatnica";
             } 
 
-                        action("Payroll")
+            action("Payroll")
             {
                 Caption = 'Payroll';
                 Image = Journal;
@@ -184,6 +184,16 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Isplatnica";
+            } 
+
+            action("Cash Diary")
+            {
+                Caption = 'Cash Diary';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Blagajnički dnevnik";
             } 
         }
     }

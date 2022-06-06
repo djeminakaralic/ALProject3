@@ -34063,6 +34063,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BaseChalendarChange - NamedType Text009</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Action 1337495762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Cash Diary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Cash Diary - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4113372704 - Action 2211706696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Payment Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
