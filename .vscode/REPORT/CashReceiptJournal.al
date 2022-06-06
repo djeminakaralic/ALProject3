@@ -162,13 +162,36 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     actions
     {
-        // Add changes to page actions here
+
+         addafter(Card)
+        {
+
+            action("Payment Slip")
+            {
+                Caption = 'Payment Slip';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Uplatnica";
+            } 
+
+                        action("Payroll")
+            {
+                Caption = 'Payroll';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Isplatnica";
+            } 
+        }
     }
 
    
        
 
-    trigger OnOpenPage()
+    /*trigger OnOpenPage()
     begin
         
 
@@ -178,6 +201,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     begin
 
 
-    end;
+    end;*/
 
 }
