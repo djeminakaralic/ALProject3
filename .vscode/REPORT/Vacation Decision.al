@@ -43,7 +43,7 @@ report 50109 VacationDecision
             column(BrojDokumenta; BrojDokumenta)
             {
             }
-            column(DatumRjesenjaT; DatumRjesenjaT)
+            column(DatumRjesenjaT; "Date of report")
             {
             }
             column(Company_logo; CompanyInformation.Picture)
@@ -143,7 +143,7 @@ report 50109 VacationDecision
 
             trigger OnAfterGetRecord()
             begin
-                CompanyInformation.CalcFields(Picture);
+                // CompanyInformation.CalcFields(Picture);
 
 
 
