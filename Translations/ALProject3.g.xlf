@@ -28023,6 +28023,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report GIP-1022 TC - Control Year - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1501059850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Isplatnica</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Isplatnica - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2809061718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lock Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
