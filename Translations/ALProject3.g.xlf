@@ -7923,6 +7923,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field DateFilterTraining - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 470349803 - Field 2610362360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DateTraining</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field DateTraining - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 470349803 - Field 230071459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Economic Profile Last Year</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8147,6 +8152,11 @@
           <source>TodayFilter</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field TodayFilter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470349803 - Field 2116756124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trainings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Training - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 50853252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfers</source>
