@@ -28,6 +28,10 @@ pageextension 50020 MyExtensionComp extends "Company Information"
             {
                 ApplicationArea = all;
             }
+            field("Fax No."; "Fax No.")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter(GLN)
         {
