@@ -10,6 +10,106 @@
       <rd:DataSourceID>fe656078-9e94-46f1-a6fb-06134399be65</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="Amound">
+          <DataField>Amound</DataField>
+        </Field>
+        <Field Name="AmoundFormat">
+          <DataField>AmoundFormat</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Ext">
+          <DataField>Ext</DataField>
+        </Field>
+        <Field Name="Datum">
+          <DataField>Datum</DataField>
+        </Field>
+        <Field Name="Brdokumenta">
+          <DataField>Brdokumenta</DataField>
+        </Field>
+        <Field Name="Kolicina">
+          <DataField>Kolicina</DataField>
+        </Field>
+        <Field Name="KolicinaFormat">
+          <DataField>KolicinaFormat</DataField>
+        </Field>
+        <Field Name="DatumIS">
+          <DataField>DatumIS</DataField>
+        </Field>
+        <Field Name="BrdokumentaIS">
+          <DataField>BrdokumentaIS</DataField>
+        </Field>
+        <Field Name="KolicinaIS">
+          <DataField>KolicinaIS</DataField>
+        </Field>
+        <Field Name="KolicinaISFormat">
+          <DataField>KolicinaISFormat</DataField>
+        </Field>
+        <Field Name="PostingDatefilter">
+          <DataField>PostingDatefilter</DataField>
+        </Field>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Homepage_CompanyInfo">
+          <DataField>Homepage_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="PrethodniSaldo">
+          <DataField>PrethodniSaldo</DataField>
+        </Field>
+        <Field Name="PrethodniSaldoFormat">
+          <DataField>PrethodniSaldoFormat</DataField>
+        </Field>
+        <Field Name="EmmployeeName">
+          <DataField>EmmployeeName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -816,9 +916,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>1.03659in</Top>
-            <Left>5.1113in</Left>
+            <Left>4.51141in</Left>
             <Height>0.22222in</Height>
-            <Width>1.43257in</Width>
+            <Width>2.03246in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -850,9 +950,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.71715in</Top>
-            <Left>5.12658in</Left>
+            <Left>4.51141in</Left>
             <Height>0.25in</Height>
-            <Width>1.41729in</Width>
+            <Width>2.03246in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -882,9 +982,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>1.32826in</Top>
-            <Left>5.54849in</Left>
+            <Left>4.92813in</Left>
             <Height>0.23611in</Height>
-            <Width>0.99538in</Width>
+            <Width>1.61574in</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -914,7 +1014,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>1.32826in</Top>
-            <Left>5.11788in</Left>
+            <Left>4.51141in</Left>
             <Height>0.23611in</Height>
             <Width>0.41672in</Width>
             <ZIndex>9</ZIndex>
@@ -946,9 +1046,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>1.64769in</Top>
-            <Left>5.12658in</Left>
+            <Left>4.51141in</Left>
             <Height>0.25in</Height>
-            <Width>0.4233in</Width>
+            <Width>0.41672in</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -978,9 +1078,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>1.64769in</Top>
-            <Left>5.56377in</Left>
+            <Left>4.92813in</Left>
             <Height>0.23611in</Height>
-            <Width>0.98288in</Width>
+            <Width>1.61852in</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -1580,7 +1680,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>14.74014cm</Top>
-            <Left>5.81119cm</Left>
+            <Left>6.04718cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>30</ZIndex>
@@ -1666,7 +1766,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>13.50983cm</Top>
-            <Left>5.81119cm</Left>
+            <Left>6.04718cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>32</ZIndex>
@@ -1783,9 +1883,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>1.95324in</Top>
-            <Left>5.1113in</Left>
+            <Left>4.51141in</Left>
             <Height>0.25in</Height>
-            <Width>1.41729in</Width>
+            <Width>2.01718in</Width>
             <ZIndex>35</ZIndex>
             <Style>
               <Border>
@@ -1795,6 +1895,107 @@
               <PaddingRight>1pt</PaddingRight>
               <PaddingTop>1pt</PaddingTop>
               <PaddingBottom>1pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>IZV</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>0.55155cm</Top>
+            <Left>13.02151cm</Left>
+            <Height>1.09362cm</Height>
+            <Width>1.07518cm</Width>
+            <ZIndex>36</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>0.55155cm</Top>
+            <Left>14.09316cm</Left>
+            <Height>0.73319cm</Height>
+            <Width>1.66637cm</Width>
+            <ZIndex>37</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox22">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>0.55155cm</Top>
+            <Left>15.79482cm</Left>
+            <Height>0.73319cm</Height>
+            <Width>0.89716cm</Width>
+            <ZIndex>38</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
         </ReportItems>
@@ -1853,104 +2054,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="Amound">
-          <DataField>Amound</DataField>
-        </Field>
-        <Field Name="AmoundFormat">
-          <DataField>AmoundFormat</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="Ext">
-          <DataField>Ext</DataField>
-        </Field>
-        <Field Name="Datum">
-          <DataField>Datum</DataField>
-        </Field>
-        <Field Name="Brdokumenta">
-          <DataField>Brdokumenta</DataField>
-        </Field>
-        <Field Name="Kolicina">
-          <DataField>Kolicina</DataField>
-        </Field>
-        <Field Name="KolicinaFormat">
-          <DataField>KolicinaFormat</DataField>
-        </Field>
-        <Field Name="DatumIS">
-          <DataField>DatumIS</DataField>
-        </Field>
-        <Field Name="BrdokumentaIS">
-          <DataField>BrdokumentaIS</DataField>
-        </Field>
-        <Field Name="KolicinaIS">
-          <DataField>KolicinaIS</DataField>
-        </Field>
-        <Field Name="KolicinaISFormat">
-          <DataField>KolicinaISFormat</DataField>
-        </Field>
-        <Field Name="PostingDatefilter">
-          <DataField>PostingDatefilter</DataField>
-        </Field>
-        <Field Name="Adress_CompanyInfo">
-          <DataField>Adress_CompanyInfo</DataField>
-        </Field>
-        <Field Name="City_CompanyInfo">
-          <DataField>City_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone1_CompanyInfo">
-          <DataField>Phone1_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone2_CompanyInfo">
-          <DataField>Phone2_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Fax_CompanyInfo">
-          <DataField>Fax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Email_CompanyInfo">
-          <DataField>Email_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Homepage_CompanyInfo">
-          <DataField>Homepage_CompanyInfo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInfo">
-          <DataField>RegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Postcode_CompanyInfo">
-          <DataField>Postcode_CompanyInfo</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_CompanyInfo">
-          <DataField>VATRegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="GiroNo_CompanyInfo">
-          <DataField>GiroNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="PrethodniSaldo">
-          <DataField>PrethodniSaldo</DataField>
-        </Field>
-        <Field Name="PrethodniSaldoFormat">
-          <DataField>PrethodniSaldoFormat</DataField>
-        </Field>
-        <Field Name="EmmployeeName">
-          <DataField>EmmployeeName</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
