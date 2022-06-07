@@ -1788,23 +1788,46 @@ table 50071 "Employee Contract Ledger"
                     EmployeeDefaultDimension.VALIDATE("No.", Rec."Employee No.");
                     EmployeeDefaultDimension.VALIDATE("Dimension Code", 'TC');
                     EmployeeDefaultDimension."Amount Distribution Coeff." := 1;
-                    DimensionForPosition.RESET;
-                    DimensionForPosition.SETFILTER("Sector  Description", '%1', "Sector Description");
-                    DimensionForPosition.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                    DimensionForPosition.SETFILTER("Group Description", '%1', "Group Description");
-                    DimensionForPosition.SETFILTER("Team Description", '%1', "Team Description");
-                    DimensionForPosition.SETFILTER("Position Description", '%1', "Position Description");
-                    DimensionForPosition.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                    IF DimensionForPosition.FINDFIRST THEN BEGIN
+                    DimensionValue.Reset();
+                    DimensionValue.SetFilter("Dimension Code", '%1', 'TC');
+                    DimensionValue.SetFilter(Blocked, '%1', false);
+                    DimensionValue.SetFilter(Code, '%1', "Sector Code");
+                    if not DimensionValue.FindFirst() then begin
+                        DimensionValue.Init();
+                        DimensionValue.Code := Rec."Sector Code";
+                        DimensionValue.Name := Rec."Sector Description";
+                        DimensionValue."Dimension Code" := 'TC';
+                        DimensionValue."Global Dimension No." := 1;
+                        DimensionValue.Insert();
 
-                        EmployeeDefaultDimension.RESET;
-                        EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
-                        IF EmployeeDefaultDimension.FINDFIRST THEN
-                            EmployeeDefaultDimension.DELETE;
+                    end
+                    else begin
+                        EmployeeDefaultDimension.Validate("Dimension Value Code", DimensionValue.Code);
 
-                        EmployeeDefaultDimension.VALIDATE("Dimension Value Code", DimensionForPosition."Dimension Value Code");
-                        EmployeeDefaultDimension.INSERT;
-                    END;
+                    end;
+                    EmployeeDefaultDimension.RESET;
+                    EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
+                    IF EmployeeDefaultDimension.FINDFIRST THEN
+                        EmployeeDefaultDimension.DELETE;
+
+                    EmployeeDefaultDimension.Insert();
+                    /* DimensionForPosition.RESET;
+                     DimensionForPosition.SETFILTER("Sector  Description", '%1', "Sector Description");
+                     DimensionForPosition.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
+                     DimensionForPosition.SETFILTER("Group Description", '%1', "Group Description");
+                     DimensionForPosition.SETFILTER("Team Description", '%1', "Team Description");
+                     DimensionForPosition.SETFILTER("Position Description", '%1', "Position Description");
+                     DimensionForPosition.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                     IF DimensionForPosition.FINDFIRST THEN BEGIN
+
+                         EmployeeDefaultDimension.RESET;
+                         EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
+                         IF EmployeeDefaultDimension.FINDFIRST THEN
+                             EmployeeDefaultDimension.DELETE;
+
+                         EmployeeDefaultDimension.VALIDATE("Dimension Value Code", DimensionForPosition."Dimension Value Code");
+                         EmployeeDefaultDimension.INSERT;
+                     END;*/
                 END;
                 IF (xRec."Starting Date" <> Rec."Starting Date") OR (xRec."Ending Date" <> Rec."Ending Date") THEN BEGIN
 
@@ -3352,18 +3375,19 @@ table 50071 "Employee Contract Ledger"
                         EDF.VALIDATE("No.", "Employee No.");
                         EDF."Dimension Code" := 'TC';
                         CALCFIELDS("Phisical Org Dio");
-                        DV.SETFILTER(Code, '%1', "Phisical Org Dio" + '-' + "Department Code");
+                        DV.Reset();
+                        DV.SETFILTER(Code, '%1', Rec."Sector Code");
                         IF NOT DV.FIND('-') THEN BEGIN
                             DV.INIT;
                             DV."Dimension Code" := 'TC';
-                            DV.Code := "Phisical Org Dio" + '-' + "Department Code";
+                            DV.Code := Rec."Sector Code";
                             DV."Global Dimension No." := 1;
+                            DV.Blocked := false;
+                            DV.Name := Rec."Sector Description";
                             DV.INSERT;
                         END;
-                        IF (("Department Code" <> '') AND ("Phisical Org Dio" <> '')) THEN
-                            EDF."Dimension Value Code" := "Phisical Org Dio" + '-' + "Department Code"
-                        ELSE
-                            EDF."Dimension Value Code" := '';
+
+                        EDF."Dimension Value Code" := Rec."Sector Code";
                         EDF."Amount Distribution Coeff." := 1;
                         EDF.MODIFY;
                     END
@@ -3373,18 +3397,19 @@ table 50071 "Employee Contract Ledger"
                         EDF.VALIDATE("No.", "Employee No.");
                         EDF."Dimension Code" := 'TC';
                         CALCFIELDS("Phisical Org Dio");
-                        DV.SETFILTER(Code, '%1', "Phisical Org Dio" + '-' + "Department Code");
+                        DV.Reset();
+                        DV.SETFILTER(Code, '%1', Rec."Sector Code");
                         IF NOT DV.FIND('-') THEN BEGIN
                             DV.INIT;
                             DV."Dimension Code" := 'TC';
-                            DV.Code := "Phisical Org Dio" + '-' + "Department Code";
+                            DV.Code := Rec."Sector Code";
+                            DV.Name := Rec."Sector Description";
                             DV."Global Dimension No." := 1;
                             DV.INSERT;
                         END;
-                        IF (("Department Code" <> '') AND ("Phisical Org Dio" <> '')) THEN
-                            EDF."Dimension Value Code" := "Phisical Org Dio" + '-' + "Department Code"
-                        ELSE
-                            EDF."Dimension Value Code" := '';
+
+                        EDF."Dimension Value Code" := Rec."Sector Code";
+
                         EDF."Amount Distribution Coeff." := 1;
                         EDF.INSERT;
                     END;
@@ -4570,17 +4595,19 @@ table 50071 "Employee Contract Ledger"
                         EmployeeDefaultDimension.VALIDATE("No.", Rec."Employee No.");
                         EmployeeDefaultDimension.VALIDATE("Dimension Code", 'TC');
                         EmployeeDefaultDimension."Amount Distribution Coeff." := 1;
-                        DimensionForPosition.RESET;
-                        DimensionForPosition.SETFILTER("Sector  Description", '%1', "Sector Description");
-                        DimensionForPosition.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                        DimensionForPosition.SETFILTER("Group Description", '%1', "Group Description");
-                        DimensionForPosition.SETFILTER("Team Description", '%1', "Team Description");
-                        DimensionForPosition.SETFILTER("Position Description", '%1', "Position Description");
-                        DimensionForPosition.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                        IF DimensionForPosition.FINDFIRST THEN BEGIN
-                            EmployeeDefaultDimension.VALIDATE("Dimension Value Code", DimensionForPosition."Dimension Value Code");
-                            EmployeeDefaultDimension.INSERT;
-                        END;
+
+                        EmployeeDefaultDimension.Validate("Dimension Value Code", Rec."Sector Code");
+                        /* DimensionForPosition.RESET;
+                         DimensionForPosition.SETFILTER("Sector  Description", '%1', "Sector Description");
+                         DimensionForPosition.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
+                         DimensionForPosition.SETFILTER("Group Description", '%1', "Group Description");
+                         DimensionForPosition.SETFILTER("Team Description", '%1', "Team Description");
+                         DimensionForPosition.SETFILTER("Position Description", '%1', "Position Description");
+                         DimensionForPosition.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                         IF DimensionForPosition.FINDFIRST THEN BEGIN
+                             EmployeeDefaultDimension.VALIDATE("Dimension Value Code", DimensionForPosition."Dimension Value Code");
+                             EmployeeDefaultDimension.INSERT;
+                         END;*/
                     END;
                 END;
 
@@ -6341,6 +6368,7 @@ table 50071 "Employee Contract Ledger"
         ORGShema: Record "ORG Shema";
         parent2: Code[30];
         parent3: Code[30];
+        DimensionValue: Record "Dimension Value";
         WPConnSetup: Record "Web portal connection setup";
 
         lvarActiveConnection: Variant;

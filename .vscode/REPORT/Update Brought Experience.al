@@ -214,6 +214,7 @@ report 50104 "Update Brought Experience"
                 "Military Months of Service" := ((VojniMjeseci) + ((VojniDani) DIV 30)) MOD 12;
                 "Military Days of Service" := (VojniDani) MOD 30;
                 MODIFY(true);
+
             end;
             //BH 01 end
 
@@ -246,6 +247,8 @@ report 50104 "Update Brought Experience"
     trigger OnPostReport()
     begin
         MESSAGE(Text0001);
+        EmployeeCardPage.Update(true);
+
 
     end;
 
@@ -278,6 +281,7 @@ report 50104 "Update Brought Experience"
     var
         Text0001: Label 'Brought Work experience is updated.';
         CompInfo: Record "Company Information";
+        EmployeeCardPage: page "Employee Card";
         zadnji: Text[100];
         Str: Text[100];
         position: Integer;

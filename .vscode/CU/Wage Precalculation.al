@@ -277,9 +277,9 @@ codeunit 50001 "Wage Precalculation"
                     AddError(Employee.FIELDCAPTION("Wage Type"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
                 IF Employee."Contribution Category Code" = '' THEN
                     AddError(Employee.FIELDCAPTION("Contribution Category Code"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
-                IF Employee."Emplymt. Contract Code" = '' THEN
+                /*ĐK IF Employee."Emplymt. Contract Code" = '' THEN
                     AddError(Employee.FIELDCAPTION("Emplymt. Contract Code"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
-
+*/
                 //IF Employee."Tax Deduction" = 0 THEN
                 //  AddError(Employee.FIELDCAPTION("Tax Deduction"),Employee.TABLECAPTION, Employee."No.",1,ErrCount);
                 //IF Employee."Bank Account No." = '' THEN

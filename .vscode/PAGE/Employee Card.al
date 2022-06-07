@@ -7,6 +7,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
     {
 
 
+        modify("Emplymt. Contract Code")
+        {
+
+            ApplicationArea = all;
+        }
+
 
 
         modify(Payments)
@@ -131,6 +137,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                 myInt: Integer;
                             begin
                                 CurrPage.Update();
+                                CurrPage.SaveRecord();
+
 
                             end;
 
@@ -2884,10 +2892,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                         end;
                     }
-                    /*field("Employment Date2"; "Employment Date")
+                    field("Employment Date2"; "Employment Date")
                     {
                         ApplicationArea = all;
-                    }*/
+                    }
+
 
                     field(EmployeeContractLedgerBrutto; EmployeeContractLedger.Brutto)
                     {
@@ -3181,6 +3190,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         movebefore(Age; "Birth Date")
         //movebefore("Number of Children"; "Marital status")
         movebefore("Operator No."; "Last Date Modified")
+
+        movebefore("Wage Type"; "Emplymt. Contract Code")
+
 
         addafter("Country/Region Code")
         {
@@ -4208,6 +4220,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
         end;
     end;
+
+
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     var
