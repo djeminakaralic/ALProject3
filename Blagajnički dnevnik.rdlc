@@ -1484,7 +1484,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>1.64769in</Top>
+            <Top>1.0227in</Top>
             <Left>0.12639in</Left>
             <Height>0.23611in</Height>
             <Width>4.19116in</Width>
@@ -1596,7 +1596,7 @@
             <Top>14.74014cm</Top>
             <Left>0.32103cm</Left>
             <Height>0.89104cm</Height>
-            <Width>5.16244cm</Width>
+            <Width>4.84367cm</Width>
             <ZIndex>28</ZIndex>
             <Style>
               <Border>
@@ -1680,7 +1680,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>14.74014cm</Top>
-            <Left>6.04718cm</Left>
+            <Left>5.81119cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>30</ZIndex>
@@ -1725,7 +1725,7 @@
             <Top>13.50983cm</Top>
             <Left>0.32103cm</Left>
             <Height>0.89104cm</Height>
-            <Width>5.16244cm</Width>
+            <Width>4.84367cm</Width>
             <ZIndex>31</ZIndex>
             <Style>
               <Border>
@@ -1766,7 +1766,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>13.50983cm</Top>
-            <Left>6.04718cm</Left>
+            <Left>5.81119cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>32</ZIndex>
@@ -1835,7 +1835,9 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
               <Paragraph>
                 <TextRuns>
@@ -1844,12 +1846,14 @@
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>2.2987cm</Top>
-            <Left>7.28886cm</Left>
+            <Top>3.37378cm</Top>
+            <Left>1.47317cm</Left>
             <Height>1.60424cm</Height>
             <Width>3.67771cm</Width>
             <ZIndex>34</ZIndex>
@@ -1924,14 +1928,17 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>0.55155cm</Top>
-            <Left>13.02151cm</Left>
+            <Left>12.34767cm</Left>
             <Height>1.09362cm</Height>
-            <Width>1.07518cm</Width>
+            <Width>1.11046cm</Width>
             <ZIndex>36</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
+                <Style>Solid</Style>
               </Border>
+              <RightBorder>
+                <Style>None</Style>
+              </RightBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -1951,16 +1958,27 @@
                 </TextRuns>
                 <Style />
               </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>IZV</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>0.55155cm</Top>
-            <Left>14.09316cm</Left>
-            <Height>0.73319cm</Height>
-            <Width>1.66637cm</Width>
+            <Left>13.45813cm</Left>
+            <Height>1.09362cm</Height>
+            <Width>1.07518cm</Width>
             <ZIndex>37</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
+                <Style>Solid</Style>
               </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -1981,17 +1999,43 @@
                 </TextRuns>
                 <Style />
               </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>IZV</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>0.55155cm</Top>
-            <Left>15.79482cm</Left>
-            <Height>0.73319cm</Height>
-            <Width>0.89716cm</Width>
+            <Left>14.53331cm</Left>
+            <Height>1.09362cm</Height>
+            <Width>1.11046cm</Width>
             <ZIndex>38</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <TopBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <RightBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </RightBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
