@@ -215,6 +215,28 @@ page 50051 "Employee Contract Ledger"
 
 
                 }
+                field("Position complexity"; "Position complexity")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Position Responsibility"; "Position Responsibility")
+                {
+                    ApplicationArea = all;
+                }
+                field("Workplace conditions"; "Workplace conditions")
+                {
+                    ApplicationArea = all;
+                }
+                field("Position Coefficient for Wage"; "Position Coefficient for Wage")
+                {
+                    ApplicationArea = all;
+                }
+                field(School; School)
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Engagement Type"; "Engagement Type")
                 {
                     ApplicationArea = all;
@@ -344,46 +366,46 @@ page 50051 "Employee Contract Ledger"
                 field("Percentage of Fixed Part"; "Percentage of Fixed Part")
                 {
                     Editable = false;
-                    
+
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Fixed Amount Brutto"; "Fixed Amount Brutto")
                 {
                     Editable = false;
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Fixed Amount Netto"; "Fixed Amount Netto")
                 {
                     Editable = false;
-                   Visible=false;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Percentage of Variable"; "Percentage of Variable")
                 {
 
                     Editable = false;
-                    Visible=false;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Variable Amount Brutto"; "Variable Amount Brutto")
                 {
                     Editable = false;
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Variable Amount Netto"; "Variable Amount Netto")
                 {
                     Editable = false;
-                   Visible=false;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("BJF/GJF"; "BJF/GJF")
                 {
 
                     Editable = false;
-                   Visible=false;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Management Level"; "Management Level")
@@ -402,31 +424,31 @@ page 50051 "Employee Contract Ledger"
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Temporary disposition"; "Temporary disposition")
                 {
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Temporary disposition starting"; "Temporary disposition starting")
                 {
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Temporary disposition ending"; "Temporary disposition ending")
                 {
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("<Minimal Education Levell>"; "Minimal Education Level")
                 {
-                    
+
                     ApplicationArea = all;
                 }
                 field(KPI; KPI)
                 {
-                    Visible=false;
+                    Visible = false;
                     ApplicationArea = all;
                 }
 

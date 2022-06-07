@@ -27228,6 +27228,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report BaH Fisc-PrintInvoiceDuplic - Control ToDateTime - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3332161583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blagajnički dnevnik</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Blagajnički dnevnik - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 233020371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Department Temp change new</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -28017,6 +28022,11 @@
           <source>Year</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report GIP-1022 TC - Control Year - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1501059850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Isplatnica</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Isplatnica - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2809061718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lock Calculation</source>
@@ -33903,6 +33913,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Update Pos Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 270256427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uplatnica</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Uplatnica - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 5817644 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vacation Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34047,6 +34062,21 @@
           <source>Registration of absences is completed.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BaseChalendarChange - NamedType Text009</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Action 1337495762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Cash Diary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Cash Diary - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Action 2211706696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Payment Slip</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payment Slip - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Action 3324647799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Payroll</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payroll - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>

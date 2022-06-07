@@ -553,16 +553,37 @@ table 50132 "Position Menu"
 
         {
             Caption = 'Position complexity';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
+
+            end;
         }
 
         field(500409; "Position Responsibility"; Decimal)
 
         {
             Caption = 'Position Responsibility';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
+
+            end;
         }
         field(50410; "Workplace conditions"; Decimal)
         {
             Caption = 'Workplace conditions';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
+
+            end;
         }
 
 
@@ -591,5 +612,12 @@ table 50132 "Position Menu"
         Position: Record "Position";
         RoleT: Record "Role";
         Roles: Record "Role";
+
+    procedure UpdateCoeff(var Comp: Decimal; var Resp: decimal; var Conditi: Decimal): Decimal
+    begin
+
+        exit(Comp + Comp * ((Resp + Conditi) / 100));
+
+    end;
 }
 

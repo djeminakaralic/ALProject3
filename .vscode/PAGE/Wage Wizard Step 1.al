@@ -491,8 +491,8 @@ page 50020 "Wage Wizard Step 1"
 
             RecWageHeader."Month of Calculation" := DATE2DMY(WORKDATE, 2);
             RecWageHeader."Year of Calculation" := DATE2DMY(WORKDATE, 3);
-            RecWageHeader."Date Of Calculation" := CALCDATE('TM', CALCDATE('-TM-1D', WORKDATE));
-            RecWageHeader."Closing Date" := CALCDATE('TM', CALCDATE('-TM-1D', WORKDATE));
+            RecWageHeader."Date Of Calculation" := CALCDATE('SM', CALCDATE('-SM-1D', WORKDATE));
+            RecWageHeader."Closing Date" := CALCDATE('SM', CALCDATE('-SM-1D', WORKDATE));
             RecWageHeader."Wage Calculation Type" := 0;
 
             IF RecWageHeader."Wage Calculation Type" = RecWageHeader."Wage Calculation Type"::Normal THEN BEGIN
