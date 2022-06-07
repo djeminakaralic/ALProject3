@@ -1791,10 +1791,10 @@ table 50071 "Employee Contract Ledger"
                     DimensionValue.Reset();
                     DimensionValue.SetFilter("Dimension Code", '%1', 'TC');
                     DimensionValue.SetFilter(Blocked, '%1', false);
-                    DimensionValue.SetFilter(Code, '%1', "Sector Code");
+                    DimensionValue.SetFilter(Code, '%1', Rec.Sector);
                     if not DimensionValue.FindFirst() then begin
                         DimensionValue.Init();
-                        DimensionValue.Code := Rec."Sector Code";
+                        DimensionValue.Code := Rec.Sector;
                         DimensionValue.Name := Rec."Sector Description";
                         DimensionValue."Dimension Code" := 'TC';
                         DimensionValue."Global Dimension No." := 1;
@@ -3370,17 +3370,25 @@ table 50071 "Employee Contract Ledger"
 
 
                 IF (("Starting Date" >= 20170901D)) THEN BEGIN
+
+                    EmployeeDefaultDimension.RESET;
+                    EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
+                    IF EmployeeDefaultDimension.FINDFIRST THEN
+                        EmployeeDefaultDimension.DELETE;
+
+                    EDF.Reset();
                     EDF.SETFILTER("No.", '%1', "Employee No.");
-                    IF EDF.FIND('-') THEN BEGIN
+
+                    IF EDF.FindFirst() THEN BEGIN
                         EDF.VALIDATE("No.", "Employee No.");
                         EDF."Dimension Code" := 'TC';
                         CALCFIELDS("Phisical Org Dio");
                         DV.Reset();
-                        DV.SETFILTER(Code, '%1', Rec."Sector Code");
+                        DV.SETFILTER(Code, '%1', Sector);
                         IF NOT DV.FIND('-') THEN BEGIN
                             DV.INIT;
                             DV."Dimension Code" := 'TC';
-                            DV.Code := Rec."Sector Code";
+                            DV.Code := Rec.Sector;
                             DV."Global Dimension No." := 1;
                             DV.Blocked := false;
                             DV.Name := Rec."Sector Description";
