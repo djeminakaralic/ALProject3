@@ -98,6 +98,9 @@
         <Field Name="User">
           <DataField>User</DataField>
         </Field>
+        <Field Name="IndustrialClassification">
+          <DataField>IndustrialClassification</DataField>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -926,7 +929,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result")+", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " +  First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") +  ", Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Šifra djelatnosti: "</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result")+", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " +  First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") +  ", Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Šifra djelatnosti: " + First(Fields!IndustrialClassification.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
