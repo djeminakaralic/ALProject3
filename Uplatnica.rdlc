@@ -1264,7 +1264,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result")+"Test"</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result")+", " + "Test"</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
