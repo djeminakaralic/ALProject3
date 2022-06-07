@@ -69,8 +69,53 @@ table 50044 "Training Time Entry"
         }
         field(11; "Number of people"; Integer)
         {
-            Caption = 'Number of people';
+            Caption = 'Number of planed people';
 
+        }
+
+        field(12; "Travel cost ino"; Decimal)
+        {
+
+        }
+        field(13; "Travel cost home"; Decimal)
+        {
+
+        }
+        field(14; "Daily rate home"; Decimal)
+        {
+
+        }
+        field(15; "Daily rate ino"; Decimal)
+        {
+
+        }
+        field(16; "Number of days"; Integer)
+        {
+
+        }
+        field(17; "Daily rate home SUM"; Decimal)
+        {
+
+
+        }
+        field(18; "Daily rate ino SUM"; Decimal)
+        {
+
+
+        }
+        field(19; "Kotizacija"; Decimal)
+        {
+
+        }
+        field(20; "Hours"; Integer)
+        {
+
+        }
+        field(21; "Number of people attended"; Integer)
+        {
+            Caption = 'Number of people that attended';
+            FieldClass = FlowField;
+            CalcFormula = count("Employee Training Ledger" where(Code2Entry = field(Code)));
         }
 
     }
