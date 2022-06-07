@@ -47,8 +47,12 @@ report 50109 VacationDecision
             column(BrojDokumenta; BrojDokumenta)
             {
             }
-            column(DatumRjesenjaT; "Date of report")
+            column(DatumRjesenjaT; DatumRjesenjaT)
             {
+            }
+            column(Date_of_report; "Date of report")
+            {
+
             }
             column(Company_logo; CompanyInformation.Picture)
             {
