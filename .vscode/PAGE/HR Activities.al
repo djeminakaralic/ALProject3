@@ -379,65 +379,65 @@ page 50066 "HR activities"
                     ApplicationArea = all;
                 }
             }
-            cuegroup(Candidates)
-            {
-                Caption = 'Candidates';
+            /*   cuegroup(Candidates)
+               {
+                   Caption = 'Candidates';
 
-                field(CandidatesGFSarajevo; CandidatesGFSarajevo)
-                {
-                    ApplicationArea = all;
-                }
-                field(CandidatesGFZenica; CandidatesGFZenica)
-                {
-                    ApplicationArea = all;
-                }
-                field(CandidatesGFBanjaLuka; CandidatesGFBanjaLuka)
-                {
-                    ApplicationArea = all;
-                }
-                field(CandidatesGFMostar; CandidatesGFMostar)
-                {
-                    ApplicationArea = all;
-                }
-                field(CandidatesGFTuzla; CandidatesGFTuzla)
-                {
-                    ApplicationArea = all;
-                }
-                field(CandidatesGFBihac; CandidatesGFBihac)
-                {
-                    ApplicationArea = all;
-                }
-            }
-            cuegroup("L")
-            {
-                Caption = '';
+                   field(CandidatesGFSarajevo; CandidatesGFSarajevo)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(CandidatesGFZenica; CandidatesGFZenica)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(CandidatesGFBanjaLuka; CandidatesGFBanjaLuka)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(CandidatesGFMostar; CandidatesGFMostar)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(CandidatesGFTuzla; CandidatesGFTuzla)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(CandidatesGFBihac; CandidatesGFBihac)
+                   {
+                       ApplicationArea = all;
+                   }
+               }
+               cuegroup("L")
+               {
+                   Caption = '';
 
 
-                field(EconomicProfileLastYear; EconomicProfileLastYear)
-                {
-                    ApplicationArea = all;
-                }
-                field(EconomicProfileThisYear; EconomicProfileThisYear)
-                {
-                    ApplicationArea = all;
-                }
-                field(LawFacultyLastYear; LawFacultyLastYear)
-                {
-                    ApplicationArea = all;
-                }
-                field(LawFacultyThisYear; LawFacultyThisYear)
-                {
-                    ApplicationArea = all;
-                }
-                field(ElectricalLastYear; ElectricalLastYear)
-                {
-                    ApplicationArea = all;
-                }
-                field(ElectricalThisYear; ElectricalThisYear)
-                {
-                    ApplicationArea = all;
-                }
-            }
+                   field(EconomicProfileLastYear; EconomicProfileLastYear)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(EconomicProfileThisYear; EconomicProfileThisYear)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(LawFacultyLastYear; LawFacultyLastYear)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(LawFacultyThisYear; LawFacultyThisYear)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(ElectricalLastYear; ElectricalLastYear)
+                   {
+                       ApplicationArea = all;
+                   }
+                   field(ElectricalThisYear; ElectricalThisYear)
+                   {
+                       ApplicationArea = all;
+                   }
+               */
             cuegroup("Disciplinary Measures")
             {
                 Caption = 'Disciplinary Measures';
