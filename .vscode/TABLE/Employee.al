@@ -1184,6 +1184,21 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Brought Years of Experience';
 
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                WshShell: DotNet SendKeys;
+            begin
+
+
+
+                WshShell.Send('{Fn+F5}');
+
+
+            end;
+
+
+
 
         }
         field(50109; "Brought Months of Experience"; Integer)
