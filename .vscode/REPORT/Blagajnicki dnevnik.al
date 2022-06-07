@@ -90,6 +90,10 @@ report 50075 "Blagajnički dnevnik"
             column(EmmployeeName; EmmployeeName)
             {
             }
+            column(User_ID; "User ID")
+            {
+            }
+
 
             trigger OnAfterGetRecord()
             begin
