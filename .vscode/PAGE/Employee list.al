@@ -65,7 +65,26 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
             //BH 01 start
-            field("Brought Years of Experience"; "Brought Years of Experience") { }
+            field("Brought Years of Experience"; "Brought Years of Experience")
+            {
+                ApplicationArea = all;
+                trigger OnValidate()
+                var
+                    myInt: Integer;
+                begin
+                    CurrPage.update();
+                end;
+
+
+
+                trigger OnDrillDown()
+                var
+                    myInt: Integer;
+                begin
+                    CurrPage.update();
+                end;
+
+            }
             field("Brought Months of Experience"; "Brought Months of Experience") { }
             field("Brought Days of Experience"; "Brought Days of Experience") { }
             field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.") { }

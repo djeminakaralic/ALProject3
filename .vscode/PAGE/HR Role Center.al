@@ -54,6 +54,7 @@ page 50003 "HR Role Center"
                     ToolTip = 'Set up your number series for creating new employee cards and define if employment time is measured by days or hours.';
                 }
 
+
                 action("Company Information")
                 {
                     Caption = 'Company Information';

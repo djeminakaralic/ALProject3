@@ -28,7 +28,27 @@ table 50151 Sector
 
                     "Department Type" := "Department Type"::Sector;
 
+                    //Dep
+                    Dep.Reset();
+                    Dep.SetFilter(Code, '%1', Rec.Code);
+                    Dep.setfilter("ORG Shema", '%1', Rec."Org Shema");
+                    if not Dep.FindFirst() then begin
+                        Dep.Init();
+                        Dep.Validate("ORG Shema", Rec."Org Shema");
+                        Dep.validate(Code, Rec.Code);
+                        Dep.validate(Description, Rec.Description);
+                        dep.Validate("Sector Code", Rec.Code);
+                        Dep.Validate(Sector, Rec.Code);
+                        Dep.Validate("Sector  Description", Rec.Description);
+                        Dep."Department Type" := Rec."Department Type";
+                        Dep.Insert();
+
+                    end
+
+
                 end;
+
+
             end;
         }
         field(2; Description; Text[250])
@@ -52,6 +72,23 @@ table 50151 Sector
 
 
                 end;
+
+                //Dep
+                Dep.Reset();
+                Dep.SetFilter(Description, '%1', Rec.Description);
+                Dep.setfilter("ORG Shema", '%1', Rec."Org Shema");
+                if not Dep.FindFirst() then begin
+                    Dep.Init();
+                    Dep.Validate("ORG Shema", Rec."Org Shema");
+                    Dep.validate(Code, Rec.Code);
+                    Dep.validate(Description, Rec.Description);
+                    dep.Validate("Sector Code", Rec.Code);
+                    Dep.Validate(Sector, Rec.Code);
+                    Dep.Validate("Sector  Description", Rec.Description);
+                    Dep."Department Type" := Rec."Department Type";
+                    Dep.Insert();
+
+                end
 
 
             end;

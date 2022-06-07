@@ -295,7 +295,8 @@ table 50208 "Work Booklet"
                 END;
                 //BH 01 update end
 
-
+                EmployeeCardPage.Update();
+                EmployeeListPage.Update();
             end;
         }
         //BH 01 start
@@ -1154,6 +1155,8 @@ table 50208 "Work Booklet"
 
     var
         EmpContrLedg: Record "Work Booklet";
+        EmployeeCardPage: page "Employee Card";
+        EmployeeListPage: Page "Employee List";
         T_Employee: Record "Employee";
         R_BroughtExperience: Report "Update Brought Experience";
         T_Department: Record "Department";

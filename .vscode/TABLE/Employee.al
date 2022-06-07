@@ -1187,12 +1187,13 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             var
                 myInt: Integer;
-                WshShell: DotNet SendKeys;
+
             begin
 
 
 
-                WshShell.Send('{Fn+F5}');
+                //ĐK   reee.SendWait('{F5}');
+
 
 
             end;
@@ -2874,6 +2875,9 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
+        WshShell: DotNet SendKeys;
+
+        reee: DotNet SendKeys;
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
         Municipality: Record Municipality;

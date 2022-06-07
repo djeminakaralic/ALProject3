@@ -501,13 +501,41 @@ page 50066 "HR activities"
         DateTraining := CALCDATE(HRsetup."Legal Training Expire Days", TODAY);
         SETRANGE(DateFilterTraining, TODAY, DateTraining);
 
+        if GlobalLanguage = 1033 then
+            ThisMonthFirst := CALCDATE('-CM', WORKDATE)
+        else
+            ThisMonthFirst := CALCDATE('-SM', WORKDATE);
 
-        ThisMonthFirst := CALCDATE('-SM;', WORKDATE);
-        ThisMonthLast := CALCDATE('SM', ThisMonthFirst);
+
+        if GlobalLanguage = 1033 then
+            ThisMonthLast := CALCDATE('CM', WORKDATE)
+        else
+            ThisMonthLast := CALCDATE('SM', ThisMonthFirst);
         NextMonthFirst := CALCDATE('+1D', ThisMonthLast);
-        NextMonthLast := CALCDATE('SM', NextMonthFirst);
-        DBThisMonthLast := CALCDATE('SM-1D', ThisMonthFirst);
-        DBThisMonthFirst := CALCDATE('-SM-1D;', WORKDATE);
+
+
+        if GlobalLanguage = 1033 then
+            NextMonthLast := CALCDATE('CM', NextMonthFirst)
+        else
+            NextMonthLast := CALCDATE('SM', NextMonthFirst);
+
+
+
+        if GlobalLanguage = 1033 then
+            DBThisMonthLast := CALCDATE('CM-1D', NextMonthFirst)
+        else
+            DBThisMonthLast := CALCDATE('SM-1D', ThisMonthFirst);
+
+
+        if GlobalLanguage = 1033 then
+            DBThisMonthFirst := CALCDATE('-CM-1D', WORKDATE)
+        else
+            DBThisMonthFirst := CALCDATE('-SM-1D', WORKDATE);
+
+
+
+
+        //  DBThisMonthFirst := CALCDATE('-SM-1D;', WORKDATE);
         SETRANGE(DateFilter6, ThisMonthFirst, ThisMonthLast);
         SETRANGE(DateFilter7, ThisMonthFirst, DBThisMonthLast);
         SETRANGE(DateFilter8, 19800101D, DBThisMonthFirst);
