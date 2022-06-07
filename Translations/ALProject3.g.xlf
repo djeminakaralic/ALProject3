@@ -6148,6 +6148,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Position Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Position Coefficient for Wage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 3801082735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position complexity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Position complexity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4256639551 - Field 2478708305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6157,6 +6167,11 @@
           <source>Position ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Position ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 2016667855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Responsibility</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Position Responsibility - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - Field 165260790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prentice</source>
@@ -6242,6 +6257,11 @@
           <source> ,Residence,Network</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Residence/Network - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 244841840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field School - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - Field 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sector</source>
@@ -6462,6 +6482,11 @@
           <source>Work Years on definitely</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Work Years - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 443172990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Workplace conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Workplace conditions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1828631435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Default Dimension</source>

@@ -49,7 +49,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Broj</Value>
+                                  <Value>Broj</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -96,7 +96,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Datum</Value>
+                                  <Value>Datum</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -137,7 +137,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Dokument</Value>
+                                  <Value>Dokument</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -184,7 +184,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -231,7 +231,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Primici</Value>
+                                  <Value>Primici</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -278,7 +278,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Izdaci</Value>
+                                  <Value>Izdaci</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -330,7 +330,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!DocumentNo.Value</Value>
+                                  <Value>=Fields!DocumentNo.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -373,7 +373,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=IIF(Fields!DatumIS.Value is nothing, nothing, FormatDateTime(Fields!DatumIS.Value, 2))</Value>
+                                  <Value>=IIF(Fields!DatumIS.Value is nothing, nothing, FormatDateTime(Fields!DatumIS.Value, 2))</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -416,7 +416,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Ext.Value</Value>
+                                  <Value>=Fields!Ext.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -459,7 +459,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=(Fields!EmmployeeName.Value)</Value>
+                                  <Value>=(Fields!EmmployeeName.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -504,7 +504,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=abs(Fields!Kolicina.Value)</Value>
+                                  <Value>=abs(Fields!Kolicina.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>n2</Format>
@@ -550,7 +550,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=abs(Fields!KolicinaIS.Value)</Value>
+                                  <Value>=abs(Fields!KolicinaIS.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>n2</Format>
@@ -629,7 +629,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">UKUPNO:</Value>
+                    <Value>UKUPNO:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -664,7 +664,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Ukupno primici:</Value>
+                    <Value>Ukupno primici:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -698,7 +698,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Ukupno izdaci:</Value>
+                    <Value>Ukupno izdaci:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -732,7 +732,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=IIF(Sum(Fields!KolicinaIS.Value)&gt;abs(Sum(Fields!Kolicina.Value)),Sum(Fields!KolicinaIS.Value)-abs(Sum(Fields!Kolicina.Value)),0)</Value>
+                    <Value>=IIF(Sum(Fields!KolicinaIS.Value)&gt;abs(Sum(Fields!Kolicina.Value)),Sum(Fields!KolicinaIS.Value)-abs(Sum(Fields!Kolicina.Value)),0)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -768,7 +768,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=abs(Sum(Fields!KolicinaIS.Value))</Value>
+                    <Value>=abs(Sum(Fields!KolicinaIS.Value))</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <Format>n2</Format>
@@ -803,7 +803,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Postcode_CompanyInfo.Value, "DataSet_Result") + " " + First(Fields!City_CompanyInfo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Postcode_CompanyInfo.Value, "DataSet_Result") + " " + First(Fields!City_CompanyInfo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -837,7 +837,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Adress_CompanyInfo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Adress_CompanyInfo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -871,7 +871,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -903,7 +903,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">PDV</Value>
+                    <Value>PDV</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -935,7 +935,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">JIB</Value>
+                    <Value>JIB</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -967,7 +967,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -1039,7 +1039,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=IIF(abs(Sum(Fields!Kolicina.Value))&gt;Sum(Fields!KolicinaIS.Value),abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value),0)</Value>
+                    <Value>=IIF(abs(Sum(Fields!Kolicina.Value))&gt;Sum(Fields!KolicinaIS.Value),abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value),0)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1075,7 +1075,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=abs(Sum(Fields!Kolicina.Value))</Value>
+                    <Value>=abs(Sum(Fields!Kolicina.Value))</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <Format>n2</Format>
@@ -1110,7 +1110,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">PRETHODNI SALDO:</Value>
+                    <Value>PRETHODNI SALDO:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1157,7 +1157,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=IIF((Fields!PrethodniSaldo.Value)&gt;0 , Fields!PrethodniSaldo.Value , 0)</Value>
+                    <Value>=IIF((Fields!PrethodniSaldo.Value)&gt;0 , Fields!PrethodniSaldo.Value , 0)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1193,7 +1193,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=IIF((Fields!PrethodniSaldo.Value)&lt;0 , Fields!PrethodniSaldo.Value, 0)</Value>
+                    <Value>=IIF((Fields!PrethodniSaldo.Value)&lt;0 , Fields!PrethodniSaldo.Value, 0)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1229,7 +1229,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=0</Value>
+                    <Value>=0</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <Format>n2</Format>
@@ -1264,7 +1264,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=0</Value>
+                    <Value>=0</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <Format>n2</Format>
@@ -1299,7 +1299,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">STANJE BLAGAJNE:</Value>
+                    <Value>STANJE BLAGAJNE:</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1334,7 +1334,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=IIF((Fields!PrethodniSaldo.Value+abs(Sum(Fields!Kolicina.Value)+Sum(Fields!KolicinaIS.Value)))&gt;0, (Fields!PrethodniSaldo.Value+(abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value))), 0)</Value>
+                    <Value>=IIF((Fields!PrethodniSaldo.Value+abs(Sum(Fields!Kolicina.Value)+Sum(Fields!KolicinaIS.Value)))&gt;0, (Fields!PrethodniSaldo.Value+(abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value))), 0)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1383,7 +1383,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">="Blagajnički dnevnik: " + Fields!Datum.Value</Value>
+                    <Value>="Blagajnički dnevnik: " + Fields!Datum.Value</Value>
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -1431,7 +1431,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=IIF((Fields!PrethodniSaldo.Value+abs(Sum(Fields!Kolicina.Value)+Sum(Fields!KolicinaIS.Value)))&lt;0, (Fields!PrethodniSaldo.Value+(abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value))), 0)</Value>
+                    <Value>=IIF((Fields!PrethodniSaldo.Value+abs(Sum(Fields!Kolicina.Value)+Sum(Fields!KolicinaIS.Value)))&lt;0, (Fields!PrethodniSaldo.Value+(abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value))), 0)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1450,6 +1450,66 @@
             <Height>0.59294cm</Height>
             <Width>2.23302cm</Width>
             <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Brdokumenta.Value, "DataSet_Result")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.37808cm</Top>
+            <Left>7.93433cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TEST TEXT BOX</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>8.51641cm</Top>
+            <Left>1.18745cm</Left>
+            <Height>1.67171cm</Height>
+            <Width>3.84976cm</Width>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
