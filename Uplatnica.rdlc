@@ -336,7 +336,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Blagajnički primitak: " + Fields!DocumentNo.Value</Value>
+                    <Value>="UPLATA PO RAČUNU ZA UTROŠENI PRIRODNI GAS:"</Value>
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
