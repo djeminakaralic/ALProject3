@@ -24138,11 +24138,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control   - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 66106115 - Control 4259385890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Candidates</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Candidates - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 66106115 - Control 1746888506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Disciplinary Measures</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24182,11 +24177,6 @@
           <source>Information</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Information - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 66106115 - Control 2833377072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control L - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 66106115 - Control 3230441927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Objectives</source>
