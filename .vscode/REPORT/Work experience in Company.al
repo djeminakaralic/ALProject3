@@ -335,11 +335,14 @@ report 50116 "Work experience in Company"
             UNTIL WorkBooklet.NEXT = 0;
         //MESSAGE(Text0001);
         MESSAGE('Završeno');
+        EmployeeCardPage.Update(true);
     end;
 
 
     var
         zadnji: Text[100];
+        EmployeeCardPage: Page "Employee Card";
+
         Str: Text[100];
         position: Integer;
         lenght: Integer;

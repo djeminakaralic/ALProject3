@@ -28,6 +28,11 @@ page 50016 "Wage Setup"
                 }
                 field("Work Experience Basis"; "Work Experience Basis")
                 {
+                    Visible = false;
+                }
+                field("Base Tax Deduction"; "Base Tax Deduction")
+                {
+
                 }
                 field("Base Personal Deduction"; "Base Personal Deduction")
                 {
