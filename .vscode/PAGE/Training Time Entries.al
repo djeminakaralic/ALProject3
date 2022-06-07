@@ -59,6 +59,7 @@ page 50067 "Training Time Entries"
                 field("Daily rate ino SUM"; "Daily rate ino SUM") { }
                 field(Kotizacija; Kotizacija) { }
                 field(Hours; Hours) { }
+                field("Number of people attended"; "Number of people attended") { }
 
 
             }
