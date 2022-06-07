@@ -64,6 +64,7 @@ pageextension 50020 MyExtensionComp extends "Company Information"
                 ApplicationArea = all;
             }
         }
+        moveafter("Phone No."; "Fax No.")
         modify("Use GLN in Electronic Document")
         {
             Visible = false;
