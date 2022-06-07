@@ -1463,19 +1463,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="Line1">
-            <Top>4.97008cm</Top>
-            <Left>0.32103cm</Left>
-            <Height>0cm</Height>
-            <Width>8.35624cm</Width>
-            <ZIndex>25</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-                <Width>2pt</Width>
-              </Border>
-            </Style>
-          </Line>
           <Textbox Name="Textbox18">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1501,7 +1488,7 @@
             <Left>0.12639in</Left>
             <Height>0.23611in</Height>
             <Width>5.18559in</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1512,18 +1499,6 @@
               <PaddingBottom>1pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="Line6">
-            <Top>4.92599cm</Top>
-            <Left>0.32103cm</Left>
-            <Height>0cm</Height>
-            <Width>13.28768cm</Width>
-            <ZIndex>27</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Textbox Name="Textbox935">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1549,7 +1524,7 @@
             <Left>14.43074cm</Left>
             <Height>0.59294cm</Height>
             <Width>2.19068cm</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1579,7 +1554,7 @@
             <Left>1.47317cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1622,7 +1597,7 @@
             <Left>0.32103cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1665,7 +1640,7 @@
             <Left>11.45898cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1708,7 +1683,7 @@
             <Left>5.81119cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1751,7 +1726,7 @@
             <Left>0.32103cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
-            <ZIndex>33</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1794,7 +1769,7 @@
             <Left>5.81119cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
-            <ZIndex>34</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1826,7 +1801,7 @@
             <Left>1.47317cm</Left>
             <Height>0.6cm</Height>
             <Width>2.10953cm</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1856,7 +1831,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=="Blagajnički dnevnik: " + Fields!Datum.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1864,11 +1839,50 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.06599cm</Top>
-            <Left>2.77495cm</Left>
+            <Top>2.2987cm</Top>
+            <Left>2.98347cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>36</ZIndex>
+            <ZIndex>34</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox20">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>KM BLAGAJNA </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(Blagajnički izvještaj)</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox20</rd:DefaultName>
+            <Top>2.2987cm</Top>
+            <Left>7.28886cm</Left>
+            <Height>1.60424cm</Height>
+            <Width>3.67771cm</Width>
+            <ZIndex>35</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
