@@ -28,7 +28,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }*/
 
-        
+
 
 
         /*addafter(Code)
@@ -163,7 +163,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     actions
     {
 
-         addafter(Card)
+        addafter(Card)
         {
 
             action("Payment Slip")
@@ -174,7 +174,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Uplatnica";
-            } 
+            }
 
             action("Payroll")
             {
@@ -184,7 +184,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Isplatnica";
-            } 
+            }
 
             action("Cash Diary")
             {
@@ -194,12 +194,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Blagajnički dnevnik";
-            } 
+            }
         }
     }
 
-   
-       
+
 
     /*trigger OnOpenPage()
     begin

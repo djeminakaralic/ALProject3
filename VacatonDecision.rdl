@@ -1626,6 +1626,9 @@ End Sub
         <Field Name="DatumRjesenjaT">
           <DataField>DatumRjesenjaT</DataField>
         </Field>
+        <Field Name="Date_of_report">
+          <DataField>Date_of_report</DataField>
+        </Field>
         <Field Name="Company_logo">
           <DataField>Company_logo</DataField>
         </Field>
