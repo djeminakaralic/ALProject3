@@ -1,6 +1,8 @@
 table 50033 "Training Catalogue"
 {
     Caption = 'Katalog treninga';
+    LookupPageId = "Trainings Catalogue";
+    DrillDownPageId = "Trainings Catalogue";
 
     fields
     {
