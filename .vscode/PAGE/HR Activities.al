@@ -327,6 +327,7 @@ page 50066 "HR activities"
 
 
 
+
                 field("Education And Development"; "Education And Development")
                 {
                     Image = Receipt;
