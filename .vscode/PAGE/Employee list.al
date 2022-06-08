@@ -149,6 +149,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify(Contact)
+        {
+            Visible = false;
+        }
 
 
         addafter("Co&mments")
@@ -186,7 +190,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             action("Update Work Experience")
             {
-                Caption = 'Update Work Experience';
+                Caption = 'Ažuriraj staž';
                 Image = Calculate;
                 Promoted = true;
                 PromotedCategory = Process;
