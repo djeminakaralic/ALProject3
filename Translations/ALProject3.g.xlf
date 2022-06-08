@@ -15398,6 +15398,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vrsta Treninga</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field TypeOF - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2852338211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Evidencija održavanja obuka/edukacija</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34828,16 +34833,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Employee Trainings Ledger - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Action 2100255337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Fill The Whole Month</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Fill The Whole Month - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Action 2229753117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Import Worksheete</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Import Worksheet - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 3074316842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Update Work Experience</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38952,6 +38947,26 @@
           <source>Settlement</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Type Detailed VAT Entry - EnumValue Settlement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4197318798 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type of Trainings - EnumValue Empty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4197318798 - EnumValue 3082089572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Seminari savjetovanja simpoziji i konferencije</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type of Trainings - EnumValue Seminari savjetovanja simpoziji i konferencije - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4197318798 - EnumValue 1991930296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stručno osposobljavanje i usavršavanje (doobuke stručni ispiti kursevi dokvalifikacije i slično)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type of Trainings - EnumValue Stručno osposobljavanje i usavršavanje (doobuke stručni ispiti kursevi dokvalifikacije i slično) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4197318798 - EnumValue 1343673374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Školovanje srednje više visoko postdiplomsko</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type of Trainings - EnumValue Školovanje: srednje više visoko postdiplomsko - Property Caption</note>
         </trans-unit>
       </group>
     </body>

@@ -37,6 +37,7 @@ table 50057 "Employee Training Ledger"
                         Code3Catalogue := TrainingCatalogue.Code;
                         Name := TrainingCatalogue.Name;
                         Type := TrainingCatalogue.Type;
+                        TypeOF := TrainingCatalogue.TypeOF;
 
                         Location := TrainingCatalogue.Location;
                         Month := TrainingCatalogue.Month;
@@ -130,6 +131,11 @@ table 50057 "Employee Training Ledger"
 
 
         }
+        field(22; TypeOF; enum "Type of Trainings")
+        {
+            Caption = 'Location';
+        }
+
 
     }
     keys
