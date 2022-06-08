@@ -33,8 +33,8 @@ table 50082 Group
                     Dep.Validate("ORG Shema", Rec."Org Shema");
                     Dep.validate(Code, Rec.Code);
                     Dep.validate(Description, Rec.Description);
-                    Dep.Validate("Group Description", Rec.Description);
-                    Dep.Validate("Group Code", rec.Code);
+                    Dep."Group Description" := Rec.Description;
+                    Dep."Group Code" := rec.Code;
 
                     DepartmentCatF.Reset();
                     DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
@@ -171,8 +171,8 @@ table 50082 Group
                     Dep.Validate("ORG Shema", Rec."Org Shema");
                     Dep.validate(Code, Rec.Code);
                     Dep.validate(Description, Rec.Description);
-                    Dep.Validate("Group Description", Rec.Description);
-                    Dep.Validate("Group Code", rec.Code);
+                    Dep."Group Description" := Rec.Description;
+                    Dep."Group Code" := rec.Code;
 
                     DepartmentCatF.Reset();
                     DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
@@ -305,8 +305,8 @@ table 50082 Group
                     Dep.Validate("ORG Shema", Rec."Org Shema");
                     Dep.validate(Code, Rec.Code);
                     Dep.validate(Description, Rec.Description);
-                    Dep.Validate("Group Description", Rec.Description);
-                    Dep.Validate("Group Code", rec.Code);
+                    Dep."Group Description" := Rec.Description;
+                    Dep."Group Code" := rec.Code;
 
                     DepartmentCatF.Reset();
                     DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
@@ -404,6 +404,16 @@ table 50082 Group
     begin
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15);
+    end;
+
+    trigger OnDelete()
+    begin
+        Dep.Reset();
+        Dep.SetFilter(Code, '%1', Rec.Code);
+        Dep.SetFilter(Description, '%1', rec.Description);
+        Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+        if Dep.FindFirst() then
+            Dep.Delete();
     end;
 
     var

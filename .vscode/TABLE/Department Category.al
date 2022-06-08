@@ -22,9 +22,9 @@ table 50040 "Department Category"
                 Dep.SETFILTER("ORG Shema", '%1', "Org Shema");
                 IF Dep.FINDSET THEN
                     REPEAT
-                        IF Dep.GET(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description")
+                        IF Dep.GET(xRec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description)
                           THEN
-                            Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description")
+                            Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description)
                  UNTIL Dep.NEXT = 0;
 
 
@@ -41,8 +41,8 @@ table 50040 "Department Category"
                     Dep.Validate("ORG Shema", Rec."Org Shema");
                     Dep.validate(Code, Rec.Code);
                     Dep.validate(Description, Rec.Description);
-                    Dep.Validate("Department Categ.  Description", Rec.Description);
-                    Dep.Validate("Department Category", rec.Code);
+                    Dep."Department Categ.  Description" := Rec.Description;
+                    Dep."Department Category" := rec.Code;
 
                     SectorF.Reset();
                     SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
@@ -135,9 +135,9 @@ table 50040 "Department Category"
 
                 IF Dep.FINDSET THEN
                     REPEAT
-                        IF Dep.GET(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", xRec.Description)
+                        IF Dep.GET(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", xRec.Description)
                           THEN BEGIN
-                            Dep.RENAME(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description);
+                            Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description);
 
                         END;
                     UNTIL Dep.NEXT = 0;
@@ -153,8 +153,8 @@ table 50040 "Department Category"
                     Dep.Validate("ORG Shema", Rec."Org Shema");
                     Dep.validate(Code, Rec.Code);
                     Dep.validate(Description, Rec.Description);
-                    Dep.Validate("Department Categ.  Description", Rec.Description);
-                    Dep.Validate("Department Category", rec.Code);
+                    Dep."Department Categ.  Description" := Rec.Description;
+                    Dep."Department Category" := rec.Code;
 
                     SectorF.Reset();
                     SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
@@ -172,6 +172,8 @@ table 50040 "Department Category"
                         Dep.Validate(Sector, '');
                         Dep.Validate("Sector  Description", '');
                     end;
+
+                    //dodati promjenu
 
 
                 end;
@@ -288,10 +290,11 @@ table 50040 "Department Category"
             begin
 
                 Dep.Reset();
-                Dep.SetFilter(Code, '%1', xRec.Code);
+                Dep.SetFilter(Code, '%1', Rec.Code);
                 Dep.SetFilter(Description, '%1', rec.Description);
                 Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
-                Dep.Delete();
+                if Dep.FindFirst() then
+                    Dep.Delete();
 
                 Dep.Reset();
                 Dep.SetFilter(Code, '%1', Rec.Code);
@@ -304,8 +307,8 @@ table 50040 "Department Category"
                     Dep.Validate("ORG Shema", Rec."Org Shema");
                     Dep.validate(Code, Rec.Code);
                     Dep.validate(Description, Rec.Description);
-                    Dep.Validate("Department Categ.  Description", Rec.Description);
-                    Dep.Validate("Department Category", rec.Code);
+                    Dep."Department Categ.  Description" := Rec.Description;
+                    Dep."Department Category" := rec.Code;
 
                     SectorF.Reset();
                     SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
@@ -388,6 +391,17 @@ table 50040 "Department Category"
     trigger OnRename()
     begin
         //CheckRedundancy;
+    end;
+
+    trigger OnDelete()
+    begin
+        Dep.Reset();
+        Dep.SetFilter(Code, '%1', Rec.Code);
+        Dep.SetFilter(Description, '%1', rec.Description);
+        Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+        if Dep.FindFirst() then
+            Dep.Delete();
+
     end;
 
     var
