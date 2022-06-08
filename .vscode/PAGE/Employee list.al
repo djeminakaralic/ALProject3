@@ -145,6 +145,11 @@ pageextension 50149 EmployeeList extends "Employee List"
     {
         // Add changes to page actions here
 
+        modify(PayEmployee)
+        {
+            Visible = false;
+        }
+
 
         addafter("Co&mments")
         {
@@ -165,7 +170,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             }
             //ED 01 END
 
-            action("Fill The Whole Month")
+            /*action("Fill The Whole Month")
             {
                 Caption = 'Fill The Whole Month';
                 Image = CalendarMachine;
@@ -177,7 +182,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                 begin
                     FillTheWholeMonth.Run();
                 end;
-            }
+            }*/
 
             action("Update Work Experience")
             {
@@ -194,7 +199,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                 end;
             }
 
-            action("Import Worksheet")
+            /*action("Import Worksheet")
             {
                 Caption = 'Import Worksheete';
                 Image = ImportExcel;
@@ -206,10 +211,11 @@ pageextension 50149 EmployeeList extends "Employee List"
                 begin
                     XMLPortExample.Run;
                 end;
-            }
+            }*/
             action("Employee Trainings Ledger")
             {
                 Caption = 'Employee Training Ledger';
+
                 Image = Ledger;
                 Promoted = true;
                 PromotedCategory = Process;
