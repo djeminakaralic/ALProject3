@@ -656,7 +656,7 @@ table 50085 "HR Cue"
         field(50089; "Training"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Employee Training Ledger" WHERE(Status = const("In progress")));
+            CalcFormula = Count("Employee Training Ledger" WHERE("End date of certificate" = field(DateTraining)));
             Caption = 'Trainings';
 
 
