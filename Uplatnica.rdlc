@@ -766,7 +766,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj" + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + ", Šifra djelatnosti: "  + ", MBS: "</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + System.Environment.NewLine + ", Šifra djelatnosti: " + "Registracija: " + ", MBS: "</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
