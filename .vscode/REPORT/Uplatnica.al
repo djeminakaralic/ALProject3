@@ -85,6 +85,9 @@ report 50077 Uplatnica
             column(User; USERID)
             {
             }
+            column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
+            {
+            }
 
 
             trigger OnAfterGetRecord()
