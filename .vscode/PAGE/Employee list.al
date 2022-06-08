@@ -149,6 +149,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify(Contact)
+        {
+            Visible = false;
+        }
 
 
         addafter("Co&mments")
