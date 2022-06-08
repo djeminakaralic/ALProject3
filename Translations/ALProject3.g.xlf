@@ -35468,6 +35468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInfExt - Field Prefix for JS - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 101337769 - Field 2868742816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Registration Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInfExt - Field Registration Text - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 101337769 - Field 780397200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Sender</source>
           <note from="Developer" annotates="general" priority="2"></note>

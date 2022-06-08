@@ -36,6 +36,10 @@ pageextension 50020 MyExtensionComp extends "Company Information"
         }
         addafter(GLN)
         {
+            field("Registration Text"; "Registration Text")
+            {
+                ApplicationArea = all;
+            }
 
             field(MBS; MBS)
             {
