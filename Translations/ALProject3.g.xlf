@@ -7008,6 +7008,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 791684153 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field TypeOF - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 346890487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Engagement type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15517,6 +15522,11 @@
           <source>Interni,Eksterni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 2852338211 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field TypeOF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1676039888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transport Header</source>
