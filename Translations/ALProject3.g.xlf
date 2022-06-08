@@ -35473,6 +35473,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInfExt - Field Sender Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 101337769 - Field 1052507694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
+          <source>Tax No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CompanyInfExt - Field Tax No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 101337769 - Field 44401965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>Timezone</source>
           <note from="Developer" annotates="general" priority="2"></note>

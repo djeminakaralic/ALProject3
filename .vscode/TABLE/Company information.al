@@ -181,6 +181,11 @@ tableextension 51190 CompanyInfExt extends "Company Information"
             CalcFormula = count("KIF/KUF Log");
 
         }
+        field(520157274; "Tax No."; Text[20])
+        {
+            Caption = 'Tax No.';
+        }
+
     }
 
     var
