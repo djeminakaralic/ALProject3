@@ -503,6 +503,7 @@ page 50066 "HR activities"
         SETRANGE("Expirings Measures Filter", CALCDATE('<-3D>', TODAY), TODAY);
         SETRANGE(LastYearFilter, DMY2DATE(1, 1, DATE2DMY(TODAY, 3) - 1), DMY2DATE(31, 12, DATE2DMY(TODAY, 3) - 1));
         SETRANGE(ThisYearFilter, DMY2DATE(1, 1, DATE2DMY(TODAY, 3)), DMY2DATE(31, 12, DATE2DMY(TODAY, 3)));
+        SetRange(DateTraining, CalcDate('<-30D>', Today), Today);
 
 
         UP.SETFILTER("User ID", '%1', USERID);
