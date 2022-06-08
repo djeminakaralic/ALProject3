@@ -88,7 +88,6 @@ report 50077 Uplatnica
             column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
             {
             }
-
             column(MBS; CompanyInformation.MBS)
             {
             }
