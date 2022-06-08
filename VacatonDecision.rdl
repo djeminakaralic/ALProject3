@@ -11,6 +11,118 @@
       <rd:DataSourceID>2ca40a08-007c-45d7-9ec3-b22ee025b2ff</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
+        </Field>
+        <Field Name="Employee_No_">
+          <DataField>Employee_No_</DataField>
+        </Field>
+        <Field Name="WorkEXpDays">
+          <DataField>WorkEXpDays</DataField>
+        </Field>
+        <Field Name="FirstPart">
+          <DataField>FirstPart</DataField>
+        </Field>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
+        </Field>
+        <Field Name="Year1">
+          <DataField>Year1</DataField>
+        </Field>
+        <Field Name="BrojDokumenta">
+          <DataField>BrojDokumenta</DataField>
+        </Field>
+        <Field Name="DatumRjesenjaT">
+          <DataField>DatumRjesenjaT</DataField>
+        </Field>
+        <Field Name="Date_of_report">
+          <DataField>Date_of_report</DataField>
+        </Field>
+        <Field Name="Company_logo">
+          <DataField>Company_logo</DataField>
+        </Field>
+        <Field Name="YearofVac">
+          <DataField>YearofVac</DataField>
+        </Field>
+        <Field Name="Disability">
+          <DataField>Disability</DataField>
+        </Field>
+        <Field Name="Millitary">
+          <DataField>Millitary</DataField>
+        </Field>
+        <Field Name="MotherWithMoreCH">
+          <DataField>MotherWithMoreCH</DataField>
+        </Field>
+        <Field Name="SingleParent">
+          <DataField>SingleParent</DataField>
+        </Field>
+        <Field Name="SpecialCircumstances">
+          <DataField>SpecialCircumstances</DataField>
+        </Field>
+        <Field Name="Total_days">
+          <DataField>Total_days</DataField>
+        </Field>
+        <Field Name="Legal_Grounds">
+          <DataField>Legal_Grounds</DataField>
+        </Field>
+        <Field Name="StartFirstpart">
+          <DataField>StartFirstpart</DataField>
+        </Field>
+        <Field Name="EndFirstpart">
+          <DataField>EndFirstpart</DataField>
+        </Field>
+        <Field Name="Start2part">
+          <DataField>Start2part</DataField>
+        </Field>
+        <Field Name="End2part">
+          <DataField>End2part</DataField>
+        </Field>
+        <Field Name="Position">
+          <DataField>Position</DataField>
+        </Field>
+        <Field Name="Sector">
+          <DataField>Sector</DataField>
+        </Field>
+        <Field Name="BrojDanaPrviDio">
+          <DataField>BrojDanaPrviDio</DataField>
+        </Field>
+        <Field Name="DanJavljanjanaposao">
+          <DataField>DanJavljanjanaposao</DataField>
+        </Field>
+        <Field Name="DrugiDioDana">
+          <DataField>DrugiDioDana</DataField>
+        </Field>
+        <Field Name="RanijeIskoristeniDani">
+          <DataField>RanijeIskoristeniDani</DataField>
+        </Field>
+        <Field Name="StartFirstpartT">
+          <DataField>StartFirstpartT</DataField>
+        </Field>
+        <Field Name="EndFirstpartT">
+          <DataField>EndFirstpartT</DataField>
+        </Field>
+        <Field Name="StartSecondpartT">
+          <DataField>StartSecondpartT</DataField>
+        </Field>
+        <Field Name="EndSecondpartT">
+          <DataField>EndSecondpartT</DataField>
+        </Field>
+        <Field Name="DanJavljanjanaposaoT">
+          <DataField>DanJavljanjanaposaoT</DataField>
+        </Field>
+        <Field Name="Used_Days">
+          <DataField>Used_Days</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1106,7 +1218,7 @@
                                     <Paragraph>
                                       <TextRuns>
                                         <TextRun>
-                                          <Value>=Code.TextOnlyJustify("Osim jednog dana iz stava 1. ovog člana, radnik ima pravo na korištenje ukupno /2/+" "+"dana godišnjeg odmora u kalendarskoj godini tokom vjerskog praznika Bajrama ili Božića, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",12), true,795)</Value>
+                                          <Value>=Code.TextOnlyJustify("Osim jednog dana iz stava 1. ovog člana, radnik ima pravo na korištenje ukupno /2/"+" "+"dana godišnjeg odmora u kalendarskoj godini tokom vjerskog praznika Bajrama ili Božića, s tim da o tome pismeno obavijesti neposrednog rukovodioca najmanje tri dana prije njegovog korištenja.", new System.Drawing.Font("Arial",12), true,795)</Value>
                                           <Style>
                                             <FontStyle>Normal</FontStyle>
                                             <FontWeight>Normal</FontWeight>
@@ -1256,6 +1368,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function TextOnlyJustify(text As String, font As System.Drawing.Font, bIndent As Boolean, width As Single) As String
     Dim bmp As New System.Drawing.Bitmap(1024, 1024)
     Dim gr = System.Drawing.Graphics.FromImage(bmp)
@@ -1581,116 +1699,4 @@ End Sub
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="FirstName">
-          <DataField>FirstName</DataField>
-        </Field>
-        <Field Name="Employee_No_">
-          <DataField>Employee_No_</DataField>
-        </Field>
-        <Field Name="WorkEXpDays">
-          <DataField>WorkEXpDays</DataField>
-        </Field>
-        <Field Name="FirstPart">
-          <DataField>FirstPart</DataField>
-        </Field>
-        <Field Name="LastName">
-          <DataField>LastName</DataField>
-        </Field>
-        <Field Name="Year1">
-          <DataField>Year1</DataField>
-        </Field>
-        <Field Name="BrojDokumenta">
-          <DataField>BrojDokumenta</DataField>
-        </Field>
-        <Field Name="DatumRjesenjaT">
-          <DataField>DatumRjesenjaT</DataField>
-        </Field>
-        <Field Name="Date_of_report">
-          <DataField>Date_of_report</DataField>
-        </Field>
-        <Field Name="Company_logo">
-          <DataField>Company_logo</DataField>
-        </Field>
-        <Field Name="YearofVac">
-          <DataField>YearofVac</DataField>
-        </Field>
-        <Field Name="Disability">
-          <DataField>Disability</DataField>
-        </Field>
-        <Field Name="Millitary">
-          <DataField>Millitary</DataField>
-        </Field>
-        <Field Name="MotherWithMoreCH">
-          <DataField>MotherWithMoreCH</DataField>
-        </Field>
-        <Field Name="SingleParent">
-          <DataField>SingleParent</DataField>
-        </Field>
-        <Field Name="SpecialCircumstances">
-          <DataField>SpecialCircumstances</DataField>
-        </Field>
-        <Field Name="Total_days">
-          <DataField>Total_days</DataField>
-        </Field>
-        <Field Name="Legal_Grounds">
-          <DataField>Legal_Grounds</DataField>
-        </Field>
-        <Field Name="StartFirstpart">
-          <DataField>StartFirstpart</DataField>
-        </Field>
-        <Field Name="EndFirstpart">
-          <DataField>EndFirstpart</DataField>
-        </Field>
-        <Field Name="Start2part">
-          <DataField>Start2part</DataField>
-        </Field>
-        <Field Name="End2part">
-          <DataField>End2part</DataField>
-        </Field>
-        <Field Name="Position">
-          <DataField>Position</DataField>
-        </Field>
-        <Field Name="Sector">
-          <DataField>Sector</DataField>
-        </Field>
-        <Field Name="BrojDanaPrviDio">
-          <DataField>BrojDanaPrviDio</DataField>
-        </Field>
-        <Field Name="DanJavljanjanaposao">
-          <DataField>DanJavljanjanaposao</DataField>
-        </Field>
-        <Field Name="DrugiDioDana">
-          <DataField>DrugiDioDana</DataField>
-        </Field>
-        <Field Name="RanijeIskoristeniDani">
-          <DataField>RanijeIskoristeniDani</DataField>
-        </Field>
-        <Field Name="StartFirstpartT">
-          <DataField>StartFirstpartT</DataField>
-        </Field>
-        <Field Name="EndFirstpartT">
-          <DataField>EndFirstpartT</DataField>
-        </Field>
-        <Field Name="StartSecondpartT">
-          <DataField>StartSecondpartT</DataField>
-        </Field>
-        <Field Name="EndSecondpartT">
-          <DataField>EndSecondpartT</DataField>
-        </Field>
-        <Field Name="DanJavljanjanaposaoT">
-          <DataField>DanJavljanjanaposaoT</DataField>
-        </Field>
-        <Field Name="Used_Days">
-          <DataField>Used_Days</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
