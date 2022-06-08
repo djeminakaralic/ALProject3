@@ -1,6 +1,8 @@
 table 50044 "Training Time Entry"
 {
     Caption = 'Evidencija održavanja obuka/edukacija';
+    LookupPageId = "Training Time Entries";
+    DrillDownPageId = "Training Time Entries";
 
     fields
     {

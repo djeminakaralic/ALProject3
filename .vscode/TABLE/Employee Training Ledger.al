@@ -1,6 +1,8 @@
 table 50057 "Employee Training Ledger"
 {
     Caption = 'Employee Training Ledger';
+    LookupPageId = "Employee Trainings Ledger";
+    DrillDownPageId = "Employee Trainings Ledger";
 
 
     fields
