@@ -10,12 +10,106 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="BatchName">
+          <DataField>BatchName</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="Amound">
+          <DataField>Amound</DataField>
+        </Field>
+        <Field Name="AmoundFormat">
+          <DataField>AmoundFormat</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="PM">
+          <DataField>PM</DataField>
+        </Field>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Homepage_CompanyInfo">
+          <DataField>Homepage_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Country">
+          <DataField>Country</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="CName">
+          <DataField>CName</DataField>
+        </Field>
+        <Field Name="CAddress">
+          <DataField>CAddress</DataField>
+        </Field>
+        <Field Name="CCity">
+          <DataField>CCity</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="IndustrialClassification_CompanyInfo">
+          <DataField>IndustrialClassification_CompanyInfo</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
         <ReportItems>
           <Line Name="Line1">
-            <Top>5.06801cm</Top>
+            <Top>5.20912cm</Top>
             <Left>1.39912cm</Left>
             <Height>0cm</Height>
             <Width>13.28077cm</Width>
@@ -53,6 +147,7 @@
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -62,8 +157,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>3.3257in</Top>
-            <Left>0.52757in</Left>
+            <Top>3.9507in</Top>
+            <Left>0.53905in</Left>
             <Height>0.23611in</Height>
             <Width>5.20085in</Width>
             <ZIndex>2</ZIndex>
@@ -97,10 +192,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.64862in</Top>
-            <Left>2.89744in</Left>
+            <Top>3.67292in</Top>
+            <Left>5.2808in</Left>
             <Height>0.23611in</Height>
-            <Width>1.15345in</Width>
+            <Width>0.49868in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -132,10 +227,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.64862in</Top>
-            <Left>4.05089in</Left>
+            <Top>3.38126in</Top>
+            <Left>5.2808in</Left>
             <Height>0.23611in</Height>
-            <Width>1.67753in</Width>
+            <Width>0.33378in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -747,7 +842,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>9.55795cm</Top>
+            <Top>11.22482cm</Top>
             <Left>1.29858cm</Left>
             <Height>1.8cm</Height>
             <Width>13.25161cm</Width>
@@ -758,76 +853,6 @@
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox20">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="Odgovorna osoba: "</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.9264in</Top>
-            <Left>2.89744in</Left>
-            <Height>0.23611in</Height>
-            <Width>1.13819in</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>1pt</PaddingLeft>
-              <PaddingRight>1pt</PaddingRight>
-              <PaddingTop>1pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox26">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!User.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <Format>d</Format>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.9264in</Top>
-            <Left>4.06237in</Left>
-            <Height>0.23611in</Height>
-            <Width>1.67753in</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>1pt</PaddingLeft>
-              <PaddingRight>1pt</PaddingRight>
-              <PaddingTop>1pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="CompanyInfo">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -835,7 +860,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result")+", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " +  First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") +  ", Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Šifra djelatnosti: " + First(Fields!IndustrialClassification.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Šifra djelatnosti: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result") + ", MBS: "</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -846,9 +871,9 @@
             </Paragraphs>
             <Top>3.35703cm</Top>
             <Left>1.39912cm</Left>
-            <Height>1.37584cm</Height>
-            <Width>13.18023cm</Width>
-            <ZIndex>9</ZIndex>
+            <Height>1.50813cm</Height>
+            <Width>13.14759cm</Width>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -878,7 +903,7 @@
             <Left>1.26682cm</Left>
             <Height>0.6cm</Height>
             <Width>13.31253cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -910,7 +935,7 @@
             <Left>10.28912cm</Left>
             <Height>0.6cm</Height>
             <Width>4.29023cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -929,18 +954,20 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Kupac:</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>5.52662cm</Top>
-            <Left>1.47849cm</Left>
+            <Top>5.68537cm</Top>
+            <Left>1.39912cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.30729cm</Width>
-            <ZIndex>12</ZIndex>
+            <Width>3.63645cm</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -959,18 +986,20 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Adresa:</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>6.30301cm</Top>
-            <Left>1.47849cm</Left>
-            <Height>0.6cm</Height>
-            <Width>3.30729cm</Width>
-            <ZIndex>13</ZIndex>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>7.56391cm</Top>
+            <Left>1.39912cm</Left>
+            <Height>0.58351cm</Height>
+            <Width>3.60652cm</Width>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -989,18 +1018,20 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Identifikacioni broj:</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>7.07939cm</Top>
-            <Left>1.4785cm</Left>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>8.55256cm</Top>
+            <Left>1.34003cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.30729cm</Width>
-            <ZIndex>14</ZIndex>
+            <Width>3.69554cm</Width>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1019,18 +1050,50 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Identifikacioni PDV:</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>9.32894cm</Top>
+            <Left>1.36919cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.63645cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
                     <Style />
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>7.84728cm</Top>
-            <Left>1.47849cm</Left>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>5.68537cm</Top>
+            <Left>5.31495cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.30729cm</Width>
-            <ZIndex>15</ZIndex>
+            <Width>6.73524cm</Width>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1045,13 +1108,8 @@
         <Height>19.89667cm</Height>
         <Style>
           <Border>
-            <Style>None</Style>
-          </Border>
-          <TopBorder>
-            <Color>Black</Color>
             <Style>Solid</Style>
-            <Width>0.5pt</Width>
-          </TopBorder>
+          </Border>
         </Style>
       </Body>
       <Width>15.39875cm</Width>
