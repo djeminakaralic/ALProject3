@@ -89,6 +89,10 @@ report 50077 Uplatnica
             {
             }
 
+            column(MBS; CompanyInformation.MBS)
+            {
+            }
+
 
             trigger OnAfterGetRecord()
             begin
