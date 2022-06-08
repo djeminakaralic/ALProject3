@@ -28,6 +28,7 @@ pageextension 50020 MyExtensionComp extends "Company Information"
             {
                 ApplicationArea = all;
             }
+
             field("Tax No."; "Tax No.")
             {
                 ApplicationArea = all;
