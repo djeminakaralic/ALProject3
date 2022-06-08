@@ -91,6 +91,10 @@ report 50077 Uplatnica
             column(MBS; CompanyInformation.MBS)
             {
             }
+            column(MunicipalityName; CompanyInformation."Municipality Name")
+            {
+            }
+
 
 
             trigger OnAfterGetRecord()
