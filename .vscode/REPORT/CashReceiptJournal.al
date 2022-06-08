@@ -174,6 +174,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+
+
                 RunObject = Report "Uplatnica";
             }
 

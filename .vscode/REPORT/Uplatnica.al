@@ -3,6 +3,7 @@ report 50077 Uplatnica
     DefaultLayout = RDLC;
     RDLCLayout = './Uplatnica.rdlc';
 
+
     dataset
     {
         dataitem(DataItem21; "Gen. Journal Line")
