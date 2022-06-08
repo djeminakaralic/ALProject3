@@ -6,7 +6,7 @@ table 50270 "Vacation By Position"
 
     fields
     {
-        field(1; "Position Code"; Code[10])
+        field(1; "Position Code"; Code[20])
         {
             Caption = 'Position Code';
             TableRelation = Position.Code;
