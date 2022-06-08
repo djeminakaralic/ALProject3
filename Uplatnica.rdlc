@@ -1265,6 +1265,9 @@ End Function
         <Field Name="User">
           <DataField>User</DataField>
         </Field>
+        <Field Name="IndustrialClassification">
+          <DataField>IndustrialClassification</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
