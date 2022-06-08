@@ -78,82 +78,12 @@
               <PaddingBottom>1pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox19">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="Datum: "</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>3.67292in</Top>
-            <Left>5.2808in</Left>
-            <Height>0.23611in</Height>
-            <Width>0.49868in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>1pt</PaddingLeft>
-              <PaddingRight>1pt</PaddingRight>
-              <PaddingTop>1pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox25">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!PostingDate.Value</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <Format>d</Format>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>3.38126in</Top>
-            <Left>5.2808in</Left>
-            <Height>0.23611in</Height>
-            <Width>0.33378in</Width>
-            <ZIndex>4</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>1pt</PaddingLeft>
-              <PaddingRight>1pt</PaddingRight>
-              <PaddingTop>1pt</PaddingTop>
-              <PaddingBottom>1pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Line Name="Line7">
             <Top>5.44097in</Top>
             <Left>4.06615in</Left>
             <Height>0in</Height>
             <Width>1.69279in</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -752,7 +682,7 @@
             <Left>1.29858cm</Left>
             <Height>1.8cm</Height>
             <Width>13.25161cm</Width>
-            <ZIndex>6</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -766,20 +696,22 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + System.Environment.NewLine + ", Šifra djelatnosti: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result") + "Registracija: " + ", MBS: "</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + ", " + System.Environment.NewLine + "Šifra djelatnosti: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result") + ", Registracija: " + ", MBS: " + First(Fields!MBS.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <Top>3.35703cm</Top>
             <Left>1.26682cm</Left>
             <Height>1.05834cm</Height>
             <Width>13.31253cm</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -809,7 +741,7 @@
             <Left>1.26682cm</Left>
             <Height>0.6cm</Height>
             <Width>13.31253cm</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -841,7 +773,7 @@
             <Left>10.28912cm</Left>
             <Height>0.6cm</Height>
             <Width>4.29023cm</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -869,11 +801,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>5.68537cm</Top>
-            <Left>1.39912cm</Left>
+            <Top>5.34141cm</Top>
+            <Left>1.36919cm</Left>
             <Height>0.6cm</Height>
             <Width>3.63645cm</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -901,11 +833,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>7.56391cm</Top>
-            <Left>1.39912cm</Left>
+            <Top>7.16704cm</Top>
+            <Left>1.42828cm</Left>
             <Height>0.58351cm</Height>
-            <Width>3.60652cm</Width>
-            <ZIndex>11</ZIndex>
+            <Width>3.57736cm</Width>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -933,11 +865,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>8.55256cm</Top>
-            <Left>1.34003cm</Left>
+            <Top>7.92693cm</Top>
+            <Left>1.42828cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.69554cm</Width>
-            <ZIndex>12</ZIndex>
+            <Width>3.57736cm</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -965,11 +897,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>9.32894cm</Top>
-            <Left>1.36919cm</Left>
+            <Top>8.70332cm</Top>
+            <Left>1.42828cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.63645cm</Width>
-            <ZIndex>13</ZIndex>
+            <Width>3.57736cm</Width>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -995,9 +927,69 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>5.68537cm</Top>
+            <Top>5.34141cm</Top>
             <Left>5.31495cm</Left>
             <Height>0.6cm</Height>
+            <Width>6.73524cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>6.32037cm</Top>
+            <Left>5.31495cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6.73524cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>7.16704cm</Top>
+            <Left>5.31495cm</Left>
+            <Height>0.58351cm</Height>
             <Width>6.73524cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
@@ -1156,6 +1148,9 @@ End Function
         </Field>
         <Field Name="IndustrialClassification_CompanyInfo">
           <DataField>IndustrialClassification_CompanyInfo</DataField>
+        </Field>
+        <Field Name="MBS">
+          <DataField>MBS</DataField>
         </Field>
       </Fields>
       <Query>

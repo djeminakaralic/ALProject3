@@ -41,8 +41,8 @@ table 50082 Group
                     DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
                     if DepartmentCatF.FindFirst() then begin
 
-                        Dep.Validate("Department Categ.  Description", Rec.Description);
-                        Dep.Validate("Department Category", rec.Code);
+                        Dep.Validate("Department Categ.  Description", DepartmentCatF.Description);
+                        Dep.Validate("Department Category", DepartmentCatF.Code);
                         SectorF.Reset();
                         SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
                         SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
@@ -179,8 +179,8 @@ table 50082 Group
                     DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
                     if DepartmentCatF.FindFirst() then begin
 
-                        Dep.Validate("Department Categ.  Description", Rec.Description);
-                        Dep.Validate("Department Category", rec.Code);
+                        Dep.Validate("Department Categ.  Description", DepartmentCatF.Description);
+                        Dep.Validate("Department Category", DepartmentCatF.Code);
                         SectorF.Reset();
                         SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
                         SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
@@ -313,8 +313,8 @@ table 50082 Group
                     DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
                     if DepartmentCatF.FindFirst() then begin
 
-                        Dep.Validate("Department Categ.  Description", Rec.Description);
-                        Dep.Validate("Department Category", rec.Code);
+                        Dep.Validate("Department Categ.  Description", DepartmentCatF.Description);
+                        Dep.Validate("Department Category", DepartmentCatF.Code);
                         SectorF.Reset();
                         SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
                         SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
