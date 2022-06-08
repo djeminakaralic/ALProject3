@@ -336,6 +336,14 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
+                field(Training; Training)
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
 
 
             }
@@ -464,6 +472,7 @@ page 50066 "HR activities"
 
                 }
             }
+
         }
     }
 
