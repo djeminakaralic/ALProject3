@@ -33,6 +33,7 @@ page 50070 "Employee Trainings Ledger"
                 {
 
                 }
+                field(TypeOF; TypeOF) { }
                 field(Location; Location) { }
                 field(Month; Month) { }
                 field(Attended; Attended) { }

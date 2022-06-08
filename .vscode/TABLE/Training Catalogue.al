@@ -32,6 +32,10 @@ table 50033 "Training Catalogue"
         {
             Caption = 'Month';
         }
+        field(6; TypeOF; enum "Type of Trainings")
+        {
+            Caption = 'Vrsta Treninga';
+        }
 
     }
     keys
