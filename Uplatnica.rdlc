@@ -15,8 +15,8 @@
       <Body>
         <ReportItems>
           <Line Name="Line1">
-            <Top>5.20912cm</Top>
-            <Left>1.26682cm</Left>
+            <Top>4.70641cm</Top>
+            <Left>1.34003cm</Left>
             <Height>0cm</Height>
             <Width>13.28337cm</Width>
             <Style>
@@ -766,7 +766,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + System.Environment.NewLine + ", Šifra djelatnosti: " + "Registracija: " + ", MBS: "</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + System.Environment.NewLine + ", Šifra djelatnosti: " + "Registracija: " + ", MBS: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -777,7 +777,7 @@
             </Paragraphs>
             <Top>3.35703cm</Top>
             <Left>1.26682cm</Left>
-            <Height>1.50813cm</Height>
+            <Height>1.05834cm</Height>
             <Width>13.31253cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
