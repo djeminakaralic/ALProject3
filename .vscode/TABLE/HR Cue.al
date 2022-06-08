@@ -326,14 +326,7 @@ table 50085 "HR Cue"
             Caption = 'Education And Development';
             FieldClass = FlowField;
         }
-        field(50093; "Training"; Integer)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Count("Employee Training Ledger" WHERE(Status = const("In progress")));
-            Caption = 'Trainings';
 
-
-        }
 
         field(50041; "Wage Change"; Integer)
         {
@@ -659,6 +652,14 @@ table 50085 "HR Cue"
         field(50088; TodayFilter; Date)
         {
             FieldClass = FlowFilter;
+        }
+        field(50089; "Training"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Training Ledger" WHERE(Status = const("In progress")));
+            Caption = 'Trainings';
+
+
         }
     }
 
