@@ -16,9 +16,9 @@
         <ReportItems>
           <Line Name="Line1">
             <Top>5.20912cm</Top>
-            <Left>1.39912cm</Left>
+            <Left>1.26682cm</Left>
             <Height>0cm</Height>
-            <Width>13.28077cm</Width>
+            <Width>13.28337cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -32,9 +32,9 @@
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>1.10419cm</Top>
-            <Left>1.34003cm</Left>
+            <Left>1.29858cm</Left>
             <Height>1.905cm</Height>
-            <Width>10.71016cm</Width>
+            <Width>10.75161cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -63,8 +63,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>3.9507in</Top>
-            <Left>0.53905in</Left>
+            <Top>4.05487in</Top>
+            <Left>0.49875in</Left>
             <Height>0.23611in</Height>
             <Width>5.20085in</Width>
             <ZIndex>2</ZIndex>
@@ -766,7 +766,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + System.Environment.NewLine + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Šifra djelatnosti: "  + ", MBS: "</Value>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj" + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + ", Šifra djelatnosti: "  + ", MBS: "</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -776,9 +776,9 @@
               </Paragraph>
             </Paragraphs>
             <Top>3.35703cm</Top>
-            <Left>1.39912cm</Left>
+            <Left>1.26682cm</Left>
             <Height>1.50813cm</Height>
-            <Width>13.14759cm</Width>
+            <Width>13.31253cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
