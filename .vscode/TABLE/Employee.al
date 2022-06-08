@@ -1184,6 +1184,22 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Brought Years of Experience';
 
+            trigger OnValidate()
+            var
+                myInt: Integer;
+
+            begin
+
+
+
+                //ĐK   reee.SendWait('{F5}');
+
+
+
+            end;
+
+
+
 
         }
         field(50109; "Brought Months of Experience"; Integer)
@@ -2859,6 +2875,9 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
+        WshShell: DotNet SendKeys;
+
+        reee: DotNet SendKeys;
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
         Municipality: Record Municipality;

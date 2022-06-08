@@ -11,24 +11,63 @@ table 50040 "Department Category"
             Caption = 'Code';
             NotBlank = false;
 
+
             trigger OnValidate()
             begin
-                //EVALUATE(Order,Code);
-                /*Dep.SETFILTER(Code,'%1',xRec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description")
-                    THEN
-                    Dep.RENAME(Rec.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description")
-                      UNTIL Dep.NEXT=0;
-                      */
-                "Department Type" := "Department Type"::"Department Category";
-                Dep.RESET;
-                Dep.SETFILTER(Code, '%1', COPYSTR(Code, 1, 4));
-                IF Dep.FINDFIRST THEN BEGIN
-                    "Identity Sector" := Dep."Sector Identity";
-                END;
 
+
+                //EVALUATE(Order,Code);
+                Dep.Reset();
+                Dep.SETFILTER(Code, '%1', xRec.Code);
+                Dep.SETFILTER("ORG Shema", '%1', "Org Shema");
+                IF Dep.FINDSET THEN
+                    REPEAT
+                        IF Dep.GET(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description")
+                          THEN
+                            Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description")
+                 UNTIL Dep.NEXT = 0;
+
+
+
+                "Department Type" := "Department Type"::"Department Category";
+
+                Dep.Reset();
+                Dep.SetFilter(Code, '%1', Rec.Code);
+                Dep.SetFilter(Description, '%1', rec.Description);
+                Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if not Dep.FindFirst() then begin
+
+                    Dep.Init();
+                    Dep.Validate("ORG Shema", Rec."Org Shema");
+                    Dep.validate(Code, Rec.Code);
+                    Dep.validate(Description, Rec.Description);
+                    Dep.Validate("Department Categ.  Description", Rec.Description);
+                    Dep.Validate("Department Category", rec.Code);
+
+                    SectorF.Reset();
+                    SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                    SectorF.SetFilter(Description, Rec."Sector Belongs");
+                    if SectorF.FindFirst() then begin
+                        dep.Validate("Sector Code", SectorF.Code);
+                        Dep.Validate(Sector, SectorF.Code);
+                        Dep.Validate("Sector  Description", SectorF.Description);
+                    end
+
+
+                    else begin
+
+                        dep.Validate("Sector Code", '');
+                        Dep.Validate(Sector, '');
+                        Dep.Validate("Sector  Description", '');
+                    end;
+
+
+
+                    Dep."Department Type" := Rec."Department Type";
+                    Dep.Insert();
+
+
+                end
             end;
         }
         field(2; Day; Option)
@@ -90,18 +129,52 @@ table 50040 "Department Category"
 
             trigger OnValidate()
             begin
-                /*Dep.SETFILTER(Code,'%1',Rec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",xRec.Description)
-                    THEN BEGIN
-                    Dep.RENAME(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",Rec.Description) ;
-                     // Dep.Description:=Rec.Description;
-                     // Dep.MODIFY;
-                      END;
-                      UNTIL Dep.NEXT=0;*/
+                Dep.Reset();
+                Dep.SETFILTER(Code, '%1', Rec.Code);
+                Dep.SETFILTER("ORG Shema", '%1', "Org Shema");
 
+                IF Dep.FINDSET THEN
+                    REPEAT
+                        IF Dep.GET(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", xRec.Description)
+                          THEN BEGIN
+                            Dep.RENAME(Dep.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description);
+
+                        END;
+                    UNTIL Dep.NEXT = 0;
+
+
+                Dep.Reset();
+                Dep.SetFilter(Code, '%1', Rec.Code);
+                Dep.SetFilter(Description, '%1', rec.Description);
+                Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if not Dep.FindFirst() then begin
+
+                    Dep.Init();
+                    Dep.Validate("ORG Shema", Rec."Org Shema");
+                    Dep.validate(Code, Rec.Code);
+                    Dep.validate(Description, Rec.Description);
+                    Dep.Validate("Department Categ.  Description", Rec.Description);
+                    Dep.Validate("Department Category", rec.Code);
+
+                    SectorF.Reset();
+                    SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                    SectorF.SetFilter(Description, Rec."Sector Belongs");
+                    if SectorF.FindFirst() then begin
+                        dep.Validate("Sector Code", SectorF.Code);
+                        Dep.Validate(Sector, SectorF.Code);
+                        Dep.Validate("Sector  Description", SectorF.Description);
+                    end
+
+
+                    else begin
+
+                        dep.Validate("Sector Code", '');
+                        Dep.Validate(Sector, '');
+                        Dep.Validate("Sector  Description", '');
+                    end;
+
+
+                end;
             end;
         }
         field(50001; "Org Shema"; Code[10])
@@ -209,6 +282,55 @@ table 50040 "Department Category"
         field(50018; "Sector Belongs"; Text[250])
         {
             TableRelation = Sector.Description;
+            trigger Onvalidate()
+            var
+                myInt: Integer;
+            begin
+
+                Dep.Reset();
+                Dep.SetFilter(Code, '%1', xRec.Code);
+                Dep.SetFilter(Description, '%1', rec.Description);
+                Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                Dep.Delete();
+
+                Dep.Reset();
+                Dep.SetFilter(Code, '%1', Rec.Code);
+                Dep.SetFilter(Description, '%1', rec.Description);
+                Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+
+                if not Dep.FindFirst() then begin
+
+                    Dep.Init();
+                    Dep.Validate("ORG Shema", Rec."Org Shema");
+                    Dep.validate(Code, Rec.Code);
+                    Dep.validate(Description, Rec.Description);
+                    Dep.Validate("Department Categ.  Description", Rec.Description);
+                    Dep.Validate("Department Category", rec.Code);
+
+                    SectorF.Reset();
+                    SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                    SectorF.SetFilter(Description, Rec."Sector Belongs");
+                    if SectorF.FindFirst() then begin
+                        dep.Validate("Sector Code", SectorF.Code);
+                        Dep.Validate(Sector, SectorF.Code);
+                        Dep.Validate("Sector  Description", SectorF.Description);
+                    end
+
+
+                    else begin
+
+                        dep.Validate("Sector Code", '');
+                        Dep.Validate(Sector, '');
+                        Dep.Validate("Sector  Description", '');
+                    end;
+
+
+
+                    Dep."Department Type" := Rec."Department Type";
+                    Dep.Insert();
+
+                end;
+            end;
 
         }
         field(500402; "Official Translate of DepCat"; Text[250])
@@ -270,6 +392,7 @@ table 50040 "Department Category"
 
     var
         Text000: Label '%1 must be higher than %2.';
+        SectorF: Record Sector;
         Text001: Label 'There is redundancy in the Shop Calendar. Actual work shift %1 from : %2 to %3. Conflicting work shift %4 from : %5 to %6.';
         ShopCalendar: Record "Department Category";
         HumanResSetup: Record "Human Resources Setup";

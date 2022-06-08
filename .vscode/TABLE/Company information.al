@@ -5,9 +5,6 @@ tableextension 51190 CompanyInfExt extends "Company Information"
         // Add changes to table fields here
 
 
-
-
-
         field(50000; "Bank No. 1"; Code[10])
         {
             Caption = 'Bank No. 1';

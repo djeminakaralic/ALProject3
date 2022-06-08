@@ -140,7 +140,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                 CurrPage.SaveRecord();
 
 
+
                             end;
+
 
 
 
@@ -3971,12 +3973,38 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             EmploymentDate := 0D;
         END;
 
-        ThisMonthFirst := CALCDATE('-SM;', WORKDATE);
-        ThisMonthLast := CALCDATE('SM', ThisMonthFirst);
-        NextMonthFirst := CALCDATE('+SD', ThisMonthLast);
-        NextMonthLast := CALCDATE('SM', NextMonthFirst);
-        ThisYearFirst := CALCDATE('-SG;', WORKDATE);
-        ThisYearLast := CALCDATE('SG;', WORKDATE);
+
+        if GlobalLanguage = 1033 then
+            ThisMonthFirst := CALCDATE('-CM', WORKDATE)
+        else
+            ThisMonthFirst := CALCDATE('-SM;', WORKDATE);
+
+        if GlobalLanguage = 1033 then
+            ThisMonthLast := CALCDATE('CM', WORKDATE)
+        else
+            ThisMonthLast := CALCDATE('SM', ThisMonthFirst);
+
+
+        if GlobalLanguage = 1033 then
+            NextMonthFirst := CALCDATE('CM', ThisMonthLast)
+        else
+            NextMonthFirst := CALCDATE('+SD', ThisMonthLast);
+
+
+        if GlobalLanguage = 1033 then
+            NextMonthLast := CALCDATE('CM', NextMonthFirst)
+        else
+            NextMonthLast := CALCDATE('SM', NextMonthFirst);
+
+        if GlobalLanguage = 1033 then
+            ThisYearFirst := CALCDATE('-CY', WORKDATE)
+        else
+            ThisYearFirst := CALCDATE('-SG;', WORKDATE);
+
+        if GlobalLanguage = 1033 then
+            ThisYearLast := CALCDATE('CY', WORKDATE)
+        else
+            ThisYearLast := CALCDATE('SG;', WORKDATE);
         SETRANGE("Date Filter 2", ThisMonthFirst, ThisMonthLast);
         SETRANGE("Date Filter 3", ThisYearFirst, ThisYearLast);
         //SETRANGE("Year Filter",ThisYear);
