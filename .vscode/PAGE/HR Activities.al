@@ -356,97 +356,97 @@ page 50066 "HR activities"
 
 
             }
-            cuegroup(Postings)
-            {
-                Caption = 'Postings';
+            /* cuegroup(Postings)
+             {
+                 Caption = 'Postings';
 
-                field(OpenPostingAll; OpenPostingAll)
+                 field(OpenPostingAll; OpenPostingAll)
+                 {
+                     ApplicationArea = all;
+                 }
+                 field(OpenPostingInternal; OpenPostingInternal)
+                 {
+                 }
+                 field(OpenPostingExternal; OpenPostingExternal)
+                 {
+                     ApplicationArea = all;
+                 }
+                 field(OpenPostingBase; OpenPostingBase)
+                 {
+                     ApplicationArea = all;
+                 }
+                 field(ClosedPostingCompleted; ClosedPostingCompleted)
+                 {
+                     ApplicationArea = all;
+                 }
+                 field(ClosedPostingNoChoice; ClosedPostingNoChoice)
+                 {
+                     ApplicationArea = all;
+                 }
+                 field(ClosedPosting; ClosedPosting)
+                 {
+                     ApplicationArea = all;
+                 }
+             }
+               cuegroup(Candidates)
                 {
-                    ApplicationArea = all;
-                }
-                field(OpenPostingInternal; OpenPostingInternal)
-                {
-                }
-                field(OpenPostingExternal; OpenPostingExternal)
-                {
-                    ApplicationArea = all;
-                }
-                field(OpenPostingBase; OpenPostingBase)
-                {
-                    ApplicationArea = all;
-                }
-                field(ClosedPostingCompleted; ClosedPostingCompleted)
-                {
-                    ApplicationArea = all;
-                }
-                field(ClosedPostingNoChoice; ClosedPostingNoChoice)
-                {
-                    ApplicationArea = all;
-                }
-                field(ClosedPosting; ClosedPosting)
-                {
-                    ApplicationArea = all;
-                }
-            }
-            /*   cuegroup(Candidates)
-               {
-                   Caption = 'Candidates';
+                    Caption = 'Candidates';
 
-                   field(CandidatesGFSarajevo; CandidatesGFSarajevo)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(CandidatesGFZenica; CandidatesGFZenica)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(CandidatesGFBanjaLuka; CandidatesGFBanjaLuka)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(CandidatesGFMostar; CandidatesGFMostar)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(CandidatesGFTuzla; CandidatesGFTuzla)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(CandidatesGFBihac; CandidatesGFBihac)
-                   {
-                       ApplicationArea = all;
-                   }
-               }
-               cuegroup("L")
-               {
-                   Caption = '';
+                    field(CandidatesGFSarajevo; CandidatesGFSarajevo)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(CandidatesGFZenica; CandidatesGFZenica)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(CandidatesGFBanjaLuka; CandidatesGFBanjaLuka)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(CandidatesGFMostar; CandidatesGFMostar)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(CandidatesGFTuzla; CandidatesGFTuzla)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(CandidatesGFBihac; CandidatesGFBihac)
+                    {
+                        ApplicationArea = all;
+                    }
+                }
+                cuegroup("L")
+                {
+                    Caption = '';
 
 
-                   field(EconomicProfileLastYear; EconomicProfileLastYear)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(EconomicProfileThisYear; EconomicProfileThisYear)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(LawFacultyLastYear; LawFacultyLastYear)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(LawFacultyThisYear; LawFacultyThisYear)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(ElectricalLastYear; ElectricalLastYear)
-                   {
-                       ApplicationArea = all;
-                   }
-                   field(ElectricalThisYear; ElectricalThisYear)
-                   {
-                       ApplicationArea = all;
-                   }
-               */
+                    field(EconomicProfileLastYear; EconomicProfileLastYear)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(EconomicProfileThisYear; EconomicProfileThisYear)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(LawFacultyLastYear; LawFacultyLastYear)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(LawFacultyThisYear; LawFacultyThisYear)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(ElectricalLastYear; ElectricalLastYear)
+                    {
+                        ApplicationArea = all;
+                    }
+                    field(ElectricalThisYear; ElectricalThisYear)
+                    {
+                        ApplicationArea = all;
+                    }
+                */
             cuegroup("Disciplinary Measures")
             {
                 Caption = 'Disciplinary Measures';

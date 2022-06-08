@@ -144,8 +144,13 @@ pageextension 50149 EmployeeList extends "Employee List"
     actions
     {
         // Add changes to page actions here
+        Modify("Contact")
+        {
 
+            Visible = false;
 
+        }
+        
         addafter("Co&mments")
         {
 
@@ -164,6 +169,8 @@ pageextension 50149 EmployeeList extends "Employee List"
                 end;
             }
             //ED 01 END
+
+
 
             action("Fill The Whole Month")
             {
@@ -194,19 +201,19 @@ pageextension 50149 EmployeeList extends "Employee List"
                 end;
             }
 
-            action("Import Worksheet")
-            {
-                Caption = 'Import Worksheete';
-                Image = ImportExcel;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+            /*  action("Import Worksheet")
+              {
+                  Caption = 'Import Worksheete';
+                  Image = ImportExcel;
+                  Promoted = true;
+                  PromotedCategory = Process;
+                  PromotedIsBig = true;
 
-                trigger OnAction()
-                begin
-                    XMLPortExample.Run;
-                end;
-            }
+                  trigger OnAction()
+                  begin
+                      XMLPortExample.Run;
+                  end;
+              }*/
             action("Employee Trainings Ledger")
             {
                 Caption = 'Employee Training Ledger';
