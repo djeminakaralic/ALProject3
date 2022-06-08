@@ -94,6 +94,12 @@ report 50077 Uplatnica
             column(MunicipalityName; CompanyInformation."Municipality Name")
             {
             }
+            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
+            {
+            }
+            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
+            {
+            }
 
 
 
