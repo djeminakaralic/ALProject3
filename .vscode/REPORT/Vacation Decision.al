@@ -151,6 +151,7 @@ report 50109 VacationDecision
 
             trigger OnAfterGetRecord()
             begin
+                CompanyInformation.get;
                 CompanyInformation.CalcFields(Picture);
                 DatumRjesenjaT := FORMAT("Date of report", 0, '<Day,2>.<Month,2>.<Year4>.');
                 Year1 := FORMAT("Date of report", 0, '<Year4>.');
