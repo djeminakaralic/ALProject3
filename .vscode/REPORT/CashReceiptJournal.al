@@ -176,8 +176,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedIsBig = true;
                 trigger OnAction()
                 begin
-                    Report.RunModal(50077, False, False);
-                    //false - request, false - printer
+                    Report.RunModal(50077, true, false);
+                    //true - request, false - printer
                 end;
 
                 //RunObject = Report "Uplatnica";
