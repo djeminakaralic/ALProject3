@@ -35,16 +35,47 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Position ID"; "Position ID") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
-            field(Superior1; Superior1) { }
-            field(Superior1Name; Superior1Name) { }
-            field("Superior1 Last Name"; "Superior1 Last Name") { }
-
-            field(Superior2; Superior2)
+            field(Management1; EmployeeContractLedger."Manager 1 First Name")
             {
+                Caption = 'Superior 1';
+                Editable = false;
+                Importance = Promoted;
+                ApplicationArea = all;
 
+                trigger OnDrillDown()
+                begin
+
+                    EmployeeContractLedger.RESET;
+                    EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                    EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                    EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                    EmployeeContractLedgerPage.RUN;
+                    CurrPage.UPDATE;
+                end;
             }
-            field(Superior2Name; Superior2Name) { }
-            field("Superior2 Last Name"; "Superior2 Last Name") { }
+
+            field(Manager2; EmployeeContractLedger."Manager 2 First Name")
+            {
+                Caption = 'Superior 2';
+                Editable = false;
+                Importance = Promoted;
+                ApplicationArea = all;
+
+
+                trigger OnDrillDown()
+                begin
+
+                    EmployeeContractLedger.RESET;
+                    EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                    EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                    EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                    EmployeeContractLedgerPage.RUN;
+                    CurrPage.UPDATE;
+                end;
+            }
+
+
+
             field("Engagement Type"; "Engagement Type") { }
             field(Brutto; Brutto) { }
             field(Netto; Netto)
@@ -404,4 +435,6 @@ pageextension 50149 EmployeeList extends "Employee List"
         TimeSheetCreate: Report TimeSheet2;
 
         myInt: Integer;
+        EmployeeContractLedger: Record "Employee Contract Ledger";
+        EmployeeContractLedgerPage: page "Employee Contract Ledger";
 }

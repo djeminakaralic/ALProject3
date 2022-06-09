@@ -4,7 +4,6 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
-
     layout
     {
 
@@ -2451,7 +2450,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(Superio; EmployeeContractLedger."Manager 1 First Name")
+                field(Management1; EmployeeContractLedger."Manager 1 First Name")
                 {
                     Caption = 'Superior 1';
                     Editable = false;
@@ -2470,7 +2469,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     end;
                 }
 
-                field(Superior2; EmployeeContractLedger."Manager 2 First Name")
+                field(Manager2; EmployeeContractLedger."Manager 2 First Name")
                 {
                     Caption = 'Superior 2';
                     Editable = false;
