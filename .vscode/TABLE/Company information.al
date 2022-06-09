@@ -190,6 +190,7 @@ tableextension 51190 CompanyInfExt extends "Company Information"
             Caption = 'Registration Text';
         }
 
+
     }
 
     var
