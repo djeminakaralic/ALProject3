@@ -283,6 +283,21 @@ table 50040 "Department Category"
         {
             Caption = 'Department Type';
 
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                Dep.Reset();
+                Dep.SETFILTER(Code, '%1', Rec.Code);
+                Dep.SETFILTER("ORG Shema", '%1', "Org Shema");
+                Dep.SetFilter(Description, '%1', Rec.Description);
+                IF Dep.FindFirst() then begin
+                    Dep."Department Type" := Rec."Department Type";
+                    Dep.Modify();
+                end;
+
+            end;
+
         }
         field(50018; "Sector Belongs"; Text[250])
         {

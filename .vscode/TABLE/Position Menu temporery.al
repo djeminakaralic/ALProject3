@@ -67,11 +67,10 @@ table 50131 "Position Menu temporary"
             BlankZero = true;
             NotBlank = false;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
 
             trigger OnValidate()
             begin

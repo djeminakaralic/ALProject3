@@ -25,7 +25,7 @@ table 50132 "Position Menu"
                 Position.Description:=Description;
                 Position."Org. Structure":="Org. Structure";
                 Position.INSERT;*/
-                if (Rec."Management Level" <> 0) and (Rec."Management Level" <> 7) then begin
+                if (Rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6) then begin
                     HeadOfOrg.Reset();
                     HeadOfOrg.SetFilter("Position Code", '%1', xRec.Code);
                     HeadOfOrg.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
@@ -77,11 +77,10 @@ table 50132 "Position Menu"
             BlankZero = true;
             NotBlank = false;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
 
             trigger OnValidate()
             begin

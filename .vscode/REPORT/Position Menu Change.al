@@ -140,7 +140,7 @@ report 50064 "Position Menu Change"
                     IF DimensionForPosReportHead.FINDSET THEN
                         REPEAT
                             IF DimensionForPosReportHead.COUNT = 1 THEN BEGIN
-                                IF (ManagmentLevel <> 7) AND (ManagmentLevel <> 0) THEN BEGIN
+                                IF (ManagmentLevel.AsInteger() <> 6) AND (ManagmentLevel.AsInteger() <> 0) THEN BEGIN
                                     Head.RESET;
                                     Head.SETFILTER("Sector  Description", '%1', DimensionForPosReportHead."Sector  Description");
                                     Head.SETFILTER("Department Categ.  Description", '%1', DimensionForPosReportHead."Department Categ.  Description");
@@ -398,7 +398,7 @@ report 50064 "Position Menu Change"
         Roles: Text;
         BJF_GJF: Option " ",BJF,GJF;
         CentralaInsert: Option ,Centrala,"Mreža";
-        ManagmentLevel: Option " ",B,B1,B2,B3,B4,CEO,E,"Exe";
+        ManagmentLevel: enum "Management Level";
         "Key": Boolean;
         Control: Boolean;
         GradeNew: Integer;
@@ -407,7 +407,7 @@ report 50064 "Position Menu Change"
         OldBJFReport: Option;
         OldControlReport: Boolean;
         OldKeyReport: Boolean;
-        OldMLReport: Option;
+        OldMLReport: Enum "Management Level";
         OldCentralaReport: Option;
         DimensionForPosReport: Record "Dimension Pos for report";
         DepTemporary: Record "Dimension temporary";
@@ -444,7 +444,7 @@ report 50064 "Position Menu Change"
         BrojTroskovnihCentara: Integer;
         DepartmentTemporery: Record "Department temporary";
 
-    procedure SetParam(OldCodeSent: Code[30]; OldDescriptionSent: Text[250]; OldGrade: Integer; OldRoles: Text; OldBJF: Option; OldControl: Boolean; OldKey: Boolean; OldManagmentLevel: Option; RealorgShema: Code[10]; OldDepartmentCode: Code[50]; OldTranslation: Text[250])
+    procedure SetParam(OldCodeSent: Code[30]; OldDescriptionSent: Text[250]; OldGrade: Integer; OldRoles: Text; OldBJF: Option; OldControl: Boolean; OldKey: Boolean; OldManagmentLevel: Enum "Management Level"; RealorgShema: Code[10]; OldDepartmentCode: Code[50]; OldTranslation: Text[250])
     begin
         OldCode := OldCodeSent;
         OldDescription := OldDescriptionSent;

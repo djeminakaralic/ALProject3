@@ -694,10 +694,10 @@ table 50135 Position
 
             trigger OnValidate()
             begin
-                IF "Management Level" = 8 //EXE ODGOVARA CEO
+                IF "Management Level".AsInteger() = 2 //EXE ODGOVARA CEO
                   THEN BEGIN
                     HeadOf.RESET;
-                    HeadOf.SETFILTER("Management Level", '%1', 6); //PRONA?I CEO (6)
+                    HeadOf.SETFILTER("Management Level", '%1', 1); //PRONA?I CEO (6)
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                     IF HeadOf.FINDFIRST THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
@@ -724,7 +724,7 @@ table 50135 Position
 
 
 
-                IF "Management Level" = 6 //UPRAVAA NIKOM
+                IF "Management Level".AsInteger() = 1 //UPRAVAA NIKOM
                 THEN BEGIN
                     "Manager 1 Code" := '';
                     "Manager 2 Code" := '';
@@ -738,8 +738,8 @@ table 50135 Position
 
 
 
-                IF "Management Level" = 2 THEN BEGIN //B1 ODGOVARA IZVRSNOM DIREKTORU TE ORGANIZACIJE
-                                                     //
+                IF "Management Level".AsInteger() = 3 THEN BEGIN //B1 ODGOVARA IZVRSNOM DIREKTORU TE ORGANIZACIJE
+                                                                 //
 
                     FOR i := 1 TO STRLEN("Department Code") DO BEGIN
                         String := "Department Code";
@@ -788,7 +788,7 @@ table 50135 Position
                     END;
                     IF "Manager 1 Code" = '' THEN BEGIN
                         HeadOf.RESET;
-                        HeadOf.SETFILTER("Management Level", '%1', 6); //DRUGI NADRE?ENI
+                        HeadOf.SETFILTER("Management Level", '%1', 1); //DRUGI NADRE?ENI
                         HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                         IF HeadOf.FINDFIRST THEN BEGIN
                             HeadOf.CALCFIELDS("Employee No.");
@@ -805,7 +805,7 @@ table 50135 Position
                         END;
                     END;
                     HeadOf.RESET;
-                    HeadOf.SETFILTER("Management Level", '%1', 6); //DRUGI NADRE?ENI
+                    HeadOf.SETFILTER("Management Level", '%1', 1); //DRUGI NADRE?ENI
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                     IF HeadOf.FINDFIRST THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
@@ -840,14 +840,14 @@ table 50135 Position
 
                 //AKO JE B2 MO?E I?I LEVELIMA IZNAD UKOLIKO NEMA
 
-                IF ("Management Level" = 3) THEN BEGIN  //EXE ODGOVARA CEO
+                IF ("Management Level".AsInteger() = 4) THEN BEGIN  //EXE ODGOVARA CEO
 
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', '');
                     HeadOf.SETFILTER("Department Category", '%1', '');
                     HeadOf.SETFILTER(Sector, '%1', Sector);
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                    HeadOf.SETFILTER("Management Level", '%1', 2);
+                    HeadOf.SETFILTER("Management Level", '%1', 3);
                     IF HeadOf.FIND('-') THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
                         "Manager 1 Code" := HeadOf."Employee No.";
@@ -946,14 +946,14 @@ table 50135 Position
 
 
                 //AKO JE B3 MO?E BITI LEVELIMA IZNAD
-                IF ("Management Level" = 4) THEN BEGIN  //
+                IF ("Management Level".AsInteger() = 5) THEN BEGIN  //
 
                     HeadOf.RESET;
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', '');
                     HeadOf.SETFILTER("Department Category", '%1', "Department Category");
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                    HeadOf.SETFILTER("Management Level", '%1', 3);
+                    HeadOf.SETFILTER("Management Level", '%1', 4);
                     IF HeadOf.FIND('-') THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
                         "Manager 1 Code" := HeadOf."Employee No.";
@@ -1043,7 +1043,7 @@ table 50135 Position
 
 
                 //AKO JE B4 MO?E BITI LEVELIMA IZNAD
-                IF ("Management Level" = 5) THEN BEGIN  //
+                IF ("Management Level".AsInteger() = 7) THEN BEGIN  //
                     HeadOf.RESET;
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', "Group Code");
@@ -1124,7 +1124,7 @@ table 50135 Position
 
 
 
-                IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN  //
+                IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN  //
                     HeadOf.RESET;
                     HeadOf.SETFILTER("Team Code", '%1', "Team Code");
                     HeadOf.SETFILTER("Group Code", '%1', "Group Code");
@@ -1612,11 +1612,10 @@ table 50135 Position
                     ERROR(DimMgt.GetDimErr);
             end;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
 
             trigger OnValidate()
             begin
@@ -1631,7 +1630,7 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN
                             VALIDATE("Disc. Department Code", "Team Code");
                             VALIDATE("Disc. Department Name", "Team Description");
                         END
@@ -1657,7 +1656,7 @@ table 50135 Position
 
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN
                             VALIDATE("Disc. Department Code", "Group Code");
                             VALIDATE("Disc. Department Name", "Group Description");
                         END
@@ -1679,7 +1678,7 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN
                             VALIDATE("Disc. Department Code", "Department Category");
                             VALIDATE("Disc. Department Code", "Department Code");
                         END
@@ -1841,7 +1840,7 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 7) OR ("Management Level" = 0) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 6) OR ("Management Level".AsInteger() = 0) THEN BEGIN
                             VALIDATE("Disc. Department Code", Sector);
                             VALIDATE("Disc. Department Code", "Department Code");
                         END;
@@ -1935,11 +1934,11 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" <> 0) AND ("Management Level" <> 7) THEN
+                        IF ("Management Level".AsInteger() <> 0) AND ("Management Level".AsInteger() <> 6) THEN
                             VALIDATE("Disc. Department Code", Sector)
                         ELSE
                             VALIDATE("Disc. Department Code", "Department Category");
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN
                             VALIDATE("Disc. Department Name", "Department Categ.  Description");
                     END;
                 END;
@@ -2033,11 +2032,11 @@ table 50135 Position
 
                     END
                     ELSE BEGIN
-                        IF ("Management Level" <> 0) AND ("Management Level" <> 7) THEN
+                        IF ("Management Level".AsInteger() <> 0) AND ("Management Level".AsInteger() <> 6) THEN
                             VALIDATE("Disc. Department Code", "Department Category")
                         ELSE
                             VALIDATE("Disc. Department Code", "Group Code");
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN
                             VALIDATE("Disc. Department Name", "Group Description");
                     END;
                 END;
@@ -2137,11 +2136,11 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" <> 0) AND ("Management Level" <> 7) THEN
+                        IF ("Management Level".AsInteger() <> 0) AND ("Management Level".AsInteger() <> 6) THEN
                             VALIDATE("Disc. Department Code", "Group Code")
                         ELSE
                             VALIDATE("Disc. Department Code", "Team Code");
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN
                             VALIDATE("Disc. Department Name", "Team Description");
                     END;
                 END;

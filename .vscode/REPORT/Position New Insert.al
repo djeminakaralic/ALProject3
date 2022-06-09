@@ -80,7 +80,7 @@ report 50065 "Position New Insert"
                     ForReport.RESET;
                     IF ForReport.FINDSET THEN
                         REPEAT
-                            IF (ManagmentLevel <> 7) AND (ManagmentLevel <> 0) THEN BEGIN
+                            IF (ManagmentLevel.AsInteger() <> 6) AND (ManagmentLevel.AsInteger() <> 0) THEN BEGIN
                                 DepartmentTempNew.RESET;
                                 DepartmentTempNew.SETFILTER(Description, '%1', ForReport."Org Belongs");
                                 IF DepartmentTempNew.FINDFIRST THEN BEGIN
@@ -346,7 +346,7 @@ report 50065 "Position New Insert"
         "Key": Boolean;
         Control: Boolean;
         GradeNew: Integer;
-        ManagmentLevel: Option " ",B,B1,B2,B3,B4,CEO,E,"Exe";
+        ManagmentLevel: enum "Management Level";
         PositionMenuTemp: Record "Position Menu temporary";
         DimensionTable: Record "Dimension Value";
         GradesChange1: Record "Grade";

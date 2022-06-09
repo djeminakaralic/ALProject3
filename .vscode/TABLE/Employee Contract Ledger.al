@@ -4371,8 +4371,8 @@ table 50071 "Employee Contract Ledger"
 
 
                             PositionTempInsert."Org. Structure" := "Org. Structure";
-                            IF (PositionTempInsert."Management Level" <> 7) AND (PositionTempInsert."Management Level" <> 0) THEN BEGIN
-                                IF "Management Level" = 5 THEN BEGIN
+                            IF (PositionTempInsert."Management Level".AsInteger() <> 6) AND (PositionTempInsert."Management Level".AsInteger() <> 0) THEN BEGIN
+                                IF "Management Level".AsInteger() = 5 THEN BEGIN
                                     DepartmentCode.RESET;
                                     IF Team <> '' THEN BEGIN
                                         DepartmentCode.SETFILTER(Code, '%1', Group);
@@ -4407,7 +4407,7 @@ table 50071 "Employee Contract Ledger"
                                 END;
 
 
-                                IF "Management Level" = 4 THEN BEGIN
+                                IF "Management Level".AsInteger() = 5 THEN BEGIN
                                     DepartmentCode.RESET;
                                     DepartmentCode.SETFILTER(Code, '%1', "Department Category");
                                     DepartmentCode.SETFILTER("ORG Shema", '%1', "Org. Structure");
@@ -4423,7 +4423,7 @@ table 50071 "Employee Contract Ledger"
                                     END;
                                 END;
 
-                                IF "Management Level" = 3 THEN BEGIN
+                                IF "Management Level".AsInteger() = 4 THEN BEGIN
                                     //IF (Rec."Department Cat. Description"<>'') AND (Rec."Group Description"='')THEN BEGIN
                                     DepartmentCode.RESET;
                                     DepartmentCode.SETFILTER(Code, '%1', Sector);
@@ -4439,7 +4439,7 @@ table 50071 "Employee Contract Ledger"
                                         PositionTempInsert."Disc. Department Name" := '';
                                     END;
                                 END;
-                                IF "Management Level" = "Management Level"::B1 THEN BEGIN
+                                IF "Management Level".AsInteger() = 3 THEN BEGIN
                                     Uprava := COPYSTR(Rec.Sector, 1, 2);
                                     SectorT.RESET;
                                     SectorT.SETFILTER(Code, '%1', Uprava);
@@ -4515,7 +4515,7 @@ table 50071 "Employee Contract Ledger"
                                         PositionTempInsert."Disc. Department Name" := '';
                                     END;
                                 END;
-                                IF ("Management Level" = 7) OR ("Management Level" = 0) THEN BEGIN
+                                IF ("Management Level".AsInteger() = 6) OR ("Management Level".AsInteger() = 0) THEN BEGIN
                                     IF (Rec."Sector Description" <> '') AND ("Department Cat. Description" = '') THEN
                                         PositionTempInsert.VALIDATE("Disc. Department Code", Rec.Sector);
                                 END;
@@ -4579,7 +4579,7 @@ table 50071 "Employee Contract Ledger"
                 IF "Position Description" = '' THEN BEGIN
                     "Position ID" := '';
                     "Position Code" := '';
-                    "Management Level" := "Management Level"::" ";
+                    "Management Level" := "Management Level"::Empty;
                     "Key Function" := FALSE;
                     "Control Function" := FALSE;
                     "BJF/GJF" := "BJF/GJF"::" ";
@@ -4963,11 +4963,10 @@ table 50071 "Employee Contract Ledger"
 
             end;
         }
-        field(50361; "Management Level"; Option)
+        field(50361; "Management Level"; Enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
         }
         field(50362; "Agremeent Code"; Code[10])
         {
