@@ -404,7 +404,7 @@ pageextension 50149 EmployeeList extends "Employee List"
     begin
         SetCurrentKey(Order);
         Ascending;
-        EmployeeContractLedger.CalcFields("Manager 1 First Name", "Manager 2 First Name");
+
 
     end;
 
@@ -412,6 +412,7 @@ pageextension 50149 EmployeeList extends "Employee List"
     var
         myInt: Integer;
     begin
+        EmployeeContractLedger.CalcFields("Manager 1 First Name", "Manager 2 First Name");
         SetCurrentKey(Order);
         Ascending;
 
