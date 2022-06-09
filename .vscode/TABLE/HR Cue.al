@@ -661,6 +661,14 @@ table 50085 "HR Cue"
 
 
         }
+        /*field(50090; "Training Catalogue"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Training Catalogue" WHERE("End date of certificate" = field(DateTraining)));
+            Caption = 'Trainings';
+
+
+        }*/
     }
 
     keys
