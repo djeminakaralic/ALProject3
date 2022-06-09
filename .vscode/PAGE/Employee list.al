@@ -36,10 +36,15 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
             field(Superior1; Superior1) { }
+            field(Superior1Name; Superior1Name) { }
+            field("Superior1 Last Name"; "Superior1 Last Name") { }
+
             field(Superior2; Superior2)
             {
 
             }
+            field(Superior2Name; Superior2Name) { }
+            field("Superior2 Last Name"; "Superior2 Last Name") { }
             field("Engagement Type"; "Engagement Type") { }
             field(Brutto; Brutto) { }
             field(Netto; Netto)

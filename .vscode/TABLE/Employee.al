@@ -2888,12 +2888,12 @@ tableextension 50071 EmployeeExtension extends Employee
         field(503687; "Superior1"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = lookup("Employee Contract Ledger".Superior1 where("Employee No." = FIELD("No."), Active = const(true)));
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 1" where("Employee No." = FIELD("No."), Active = const(true)));
         }
-        field(503688; "Superior2"; Text[250])
+        field(503688; "Superior1Name"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = lookup("Employee Contract Ledger".Superior2 where("Employee No." = FIELD("No."), Active = const(true)));
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 1 First Name" where("Employee No." = FIELD("No."), Active = const(true)));
         }
         field(503689; Brutto; Decimal)
         {
@@ -2949,6 +2949,26 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             FieldClass = FlowField;
             CalcFormula = lookup("Additional Education"."Vocation Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503709; "Superior1 Last Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 1 Last Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503710; "Superior2"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 2" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503712; "Superior2Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 2 First Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503713; "Superior2 Last Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 1 Last Name" where("Employee No." = FIELD("No."), Active = const(true)));
         }
 
 
