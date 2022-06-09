@@ -8,9 +8,11 @@ report 50077 Uplatnica
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
+            DataItemTableView = WHERE("Account Type" = FILTER('Customer'));
             //DataItemTableView = WHERE("Contribution Category Code" = FILTER('AUTH.CONT'));
            /*DataItemTableView = WHERE(Status = CONST(Active),
                                           "Potential Employee" = CONST(false));*/
+            
 
                                         
 
