@@ -132,16 +132,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         {
                             Editable = false;
                             Caption = 'Brought Years Card';
-                            trigger OnValidate()
-                            var
-                                myInt: Integer;
-                            begin
-                                CurrPage.Update();
-                                CurrPage.SaveRecord();
 
-
-
-                            end;
 
 
 

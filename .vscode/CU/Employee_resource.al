@@ -3082,7 +3082,7 @@ UNTIL Bom.NEXT = 0;
 
             END;
 
-            PersonalTrack.INSERT;
+            //ĐK JOŠ NE     PersonalTrack.INSERT;
 
         END;
 

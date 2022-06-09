@@ -2,6 +2,7 @@ page 50216 "Engagement Type"
 {
     PageType = List;
     SourceTable = "Engagement Type";
+    Caption = 'Engagement Type';
 
     layout
     {
@@ -21,26 +22,32 @@ page 50216 "Engagement Type"
                 field("No. of Contracts"; "No. of Contracts")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Hours in Day"; "Hours in Day")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Calculation Type"; "Calculation Type")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Termination Date Mandatory"; "Termination Date Mandatory")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Operator No."; "Operator No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Last Date Modified"; "Last Date Modified")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }

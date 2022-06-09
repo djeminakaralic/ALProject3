@@ -11,6 +11,8 @@ report 50041 "Update Data"
             begin
 
                 SifraPO := DataItemName.Code;
+                if StrPos(SifraPO, 'RM') <> 0 then
+                    exit;
                 if PosM.Get(DataItemName.Code, DataItemName.Description, DataItemName."Department Code", DataItemName."Org. Structure")
                 then
                     PosM.Rename('RM' + DataItemName.Code, DataItemName.Description, DataItemName."Department Code", DataItemName."Org. Structure");

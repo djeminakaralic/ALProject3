@@ -60,6 +60,11 @@ page 50065 "Head Of's"
                 {
                     ApplicationArea = all;
                 }
+
+                field("Management Level"; "Management Level")
+                {
+                    ApplicationArea = all;
+                }
                 field("Department Code"; "Department Code")
                 {
                     ApplicationArea = all;
@@ -85,13 +90,10 @@ page 50065 "Head Of's"
                     Style = Unfavorable;
                     StyleExpr = TRUE;
                 }
-                field("Management Level"; "Management Level")
-                {
-                    ApplicationArea = all;
-                }
                 field("Head's number of employee"; "Head's number of employee")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
@@ -115,6 +117,7 @@ page 50065 "Head Of's"
                 Promoted = true;
                 PromotedIsBig = true;
                 RunObject = Report "Update Head Of orginal";
+                Visible = false;
             }
         }
     }

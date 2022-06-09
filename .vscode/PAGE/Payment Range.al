@@ -23,6 +23,7 @@ page 50091 "Payment range"
                 field(Region; Region)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Min Region"; "Min Region")
                 {

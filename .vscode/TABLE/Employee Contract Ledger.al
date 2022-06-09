@@ -1782,6 +1782,10 @@ table 50071 "Employee Contract Ledger"
                 END;
 
                 IF Rec.Active = TRUE THEN BEGIN
+                    EmployeeDefaultDimension.RESET;
+                    EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
+                    IF EmployeeDefaultDimension.FINDFIRST THEN
+                        EmployeeDefaultDimension.DELETE;
 
                     EmployeeDefaultDimension.INIT;
                     EmployeeDefaultDimension."No." := Rec."Employee No.";
@@ -1805,10 +1809,7 @@ table 50071 "Employee Contract Ledger"
                         EmployeeDefaultDimension.Validate("Dimension Value Code", DimensionValue.Code);
 
                     end;
-                    EmployeeDefaultDimension.RESET;
-                    EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
-                    IF EmployeeDefaultDimension.FINDFIRST THEN
-                        EmployeeDefaultDimension.DELETE;
+
 
                     EmployeeDefaultDimension.Insert();
                     /* DimensionForPosition.RESET;
@@ -3621,10 +3622,11 @@ table 50071 "Employee Contract Ledger"
         }
         field(50289; "Minimal Education Level"; Option)
         {
-            CalcFormula = Lookup(Position."Minimal Education Level" WHERE(Code = FIELD("Position Code")));
+            FieldClass = FlowField;
+            CalcFormula = lookup(Position."Minimal Education Level" WHERE(Code = FIELD("Position Code")));
             Caption = 'Education level';
             Editable = false;
-            FieldClass = FlowField;
+
             OptionCaption = ' ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  ';
             OptionMembers = " ","I Stepen četri razreda osnovne","II Stepen - osnovna škola","III Stepen - SSS srednja škola","IV Stepen - SSS srednja škola","V Stepen - VKV - SSS srednja škola","VI Stepen - VS viša škola","VII Stepen - VSS visoka stručna sprema","VII-1 Stepen - Specijalista","VII-2 Stepen - Magistratura","VIII Stepen - Doktorat  ";
         }
@@ -3798,23 +3800,23 @@ table 50071 "Employee Contract Ledger"
                 END;
 
                 IF "Department Cat. Description" = '' THEN BEGIN
-                    "Sector Code" := '';
-                    Sector := '';
+                    /* "Sector Code" := '';
+                               Sector := '';*/
                     "Department Cat. Description" := '';
                     "Department Category" := '';
-                    Group := '';
-                    "Group Description" := '';
-                    Team := '';
-                    "Team Description" := '';
-                    "Department Code" := '';
-                    "Department Name" := '';
-                    "Position Description" := '';
-                    "Position Code" := '';
-                    "Org Belongs" := '';
-                    "Management Level" := 0;
-                    "Key Function" := FALSE;
-                    "Control Function" := FALSE;
-                    "Sector Description" := '';
+                    /*    Group := '';
+                        "Group Description" := '';
+                        Team := '';
+                        "Team Description" := '';
+                        "Department Code" := '';
+                        "Department Name" := '';
+                        "Position Description" := '';
+                        "Position Code" := '';
+                        "Org Belongs" := '';
+                        "Management Level" := 0;
+                        "Key Function" := FALSE;
+                        "Control Function" := FALSE;
+                        "Sector Description" := '';*/
 
                 END;
             end;
@@ -4345,6 +4347,7 @@ table 50071 "Employee Contract Ledger"
                             Employee.SETFILTER("No.", "Employee No.");
                             IF Employee.FINDFIRST THEN
                                 PositionTempInsert."Employee Full Name" := Employee."Last Name" + ' ' + Employee."First Name";
+                            Rec."Employee Education Level" := Employee."Education Level";
                             PositionTempInsert."Employee No." := "Employee No.";
                             ForSis.RESET;
                             ForSis.SETFILTER(Code, '%1', Sector);
@@ -5961,6 +5964,13 @@ table 50071 "Employee Contract Ledger"
             FieldClass = FlowField;
             CalcFormula = count("Position Minimal Education" where("Position Code" = field("Position Code"), "Position Name" = field("Position Description"), "Org Shema" = field("Org. Structure")));
             Caption = 'School';
+            Editable = false;
+
+        }
+        field(5941378; "Employee Education Level"; enum School)
+        {
+            Caption = 'Employee Education Level';
+
 
         }
 
@@ -6001,7 +6011,7 @@ table 50071 "Employee Contract Ledger"
                 Emp.MODIFY;
             END;
         END;
-
+        WbDel.Reset();
         WbDel.SETFILTER("Employee No.", '%1', Rec."Employee No.");
         WbDel.SETFILTER("Contract Ledger Entry No.", '%1', Rec."No.");
 
@@ -6062,6 +6072,7 @@ table 50071 "Employee Contract Ledger"
             Employee.SETFILTER("No.", "Employee No.");
             IF Employee.FINDFIRST THEN
                 "Employee Name" := Employee."First Name" + ' ' + Employee."Last Name";
+            "Minimal Education Level" := Employee."Education Level";
             "Operator No." := Employee."New Number";
             "Internal ID" := Employee."Internal ID";
         END;

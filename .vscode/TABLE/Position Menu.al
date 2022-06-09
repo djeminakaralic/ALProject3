@@ -14,14 +14,44 @@ table 50132 "Position Menu"
             NotBlank = true;
 
             trigger OnValidate()
+            var
+                HeadOfOrg: Record "Head Of's";
+                HeadOf: Record "Head Of's";
+
             begin
+
                 /*Position.INIT;
                 Position.Code:=Code;
                 Position.Description:=Description;
                 Position."Org. Structure":="Org. Structure";
                 Position.INSERT;*/
+                if (Rec."Management Level" <> 0) and (Rec."Management Level" <> 7) then begin
+                    HeadOfOrg.Reset();
+                    HeadOfOrg.SetFilter("Position Code", '%1', xRec.Code);
+                    HeadOfOrg.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                    HeadOfOrg.SetFilter("Department Code", Rec."Department Code");
+                    if HeadOfOrg.FindFirst then begin
+                        if HeadOf.Get(HeadOfOrg."Department Code", HeadOfOrg."ORG Shema",
+                         HeadOfOrg."Department Categ.  Description", HeadOfOrg."Group Description", HeadOfOrg."Team Description", HeadOfOrg."Management Level", HeadOfOrg."Position Code")
+                           then
+                            HeadOf.Rename(HeadOfOrg."Department Code", HeadOfOrg."ORG Shema",
+                            HeadOfOrg."Department Categ.  Description", HeadOfOrg."Group Description", HeadOfOrg."Team Description", HeadOfOrg."Management Level", Rec.Code)
 
+                        /*   ECLC.Reset();
+                            ECLC.SetFilter("Position Code", '%1', xRec.Code);
+                            ECLC.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                            ECLC.SetFilter("Department Code", Rec."Department Code");
+                            if ECLC.FindSet() then
+                                repeat
+                                    ECLC."Position Code" := Rec.Code;
+                                    ECLC.Modify();
+                                until ECLC.Next() = 0;
+
+*/
+                    end;
+                end;
             end;
+
         }
         field(2; Description; Text[250])
         {
@@ -612,6 +642,7 @@ table 50132 "Position Menu"
         Position: Record "Position";
         RoleT: Record "Role";
         Roles: Record "Role";
+        ECLC: Record "Employee Contract Ledger";
 
     procedure UpdateCoeff(var Comp: Decimal; var Resp: decimal; var Conditi: Decimal): Decimal
     begin

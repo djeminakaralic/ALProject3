@@ -139,6 +139,7 @@ pageextension 50149 EmployeeList extends "Employee List"
         }
 
 
+
     }
 
     actions
@@ -247,11 +248,32 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
 
+
         }
 
 
 
+
     }
+
+
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+    begin
+        SetCurrentKey(Order);
+        Ascending;
+
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+        myInt: Integer;
+    begin
+        SetCurrentKey(Order);
+        Ascending;
+
+    end;
 
     var
 
