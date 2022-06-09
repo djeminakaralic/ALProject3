@@ -34623,15 +34623,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Smjena - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2112275570 - Control 4017825829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+        <trans-unit id="PageExtension 2112275570 - Control 2781465625 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Superior 1</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Superior1Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Superio - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2112275570 - Control 1330063468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
+        <trans-unit id="PageExtension 2112275570 - Control 963737897 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Superior 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Superior2Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Superior2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 884944448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Administration of Employment</source>

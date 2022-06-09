@@ -2451,7 +2451,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(Superior1Name; Superior1Name)
+                field(Superio; EmployeeContractLedger."Manager 1 First Name")
                 {
                     Caption = 'Superior 1';
                     Editable = false;
@@ -2470,7 +2470,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     end;
                 }
 
-                field(Superior2Name; Superior2Name)
+                field(Superior2; EmployeeContractLedger."Manager 2 First Name")
                 {
                     Caption = 'Superior 2';
                     Editable = false;
