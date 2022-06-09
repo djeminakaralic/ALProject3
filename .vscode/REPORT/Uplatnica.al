@@ -10,7 +10,7 @@ report 50077 Uplatnica
         {
             //DataItemLink = "Line No." = field(LineNo);
             //line = FIELD("No.");              
-            DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
+            //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
                             
              
 
