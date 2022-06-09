@@ -24,8 +24,7 @@ report 50077 Uplatnica
             }
             column(DocumentNo; GJLine."Document No.")
             {
-            }
-            
+            }            
             column(Amound; GJLine.Amount)
             {
             }
