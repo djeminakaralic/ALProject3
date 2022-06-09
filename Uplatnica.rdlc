@@ -842,7 +842,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=abs(Sum(Fields!Amound.Value))</Value>
+                                  <Value>="Gotovina/kartično = " + Sum(Fields!Amound.Value)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1451,7 +1451,7 @@
             <Top>16.85078cm</Top>
             <Left>1.29328cm</Left>
             <Height>1.23031cm</Height>
-            <Width>13.33012cm</Width>
+            <Width>13.33011cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>

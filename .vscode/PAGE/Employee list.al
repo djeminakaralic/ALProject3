@@ -39,8 +39,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
                 Caption = 'Superior 1';
                 Editable = false;
-                Importance = Promoted;
-                ApplicationArea = all;
+
 
                 trigger OnDrillDown()
                 begin
@@ -58,8 +57,10 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
                 Caption = 'Superior 2';
                 Editable = false;
+
                 Importance = Promoted;
                 ApplicationArea = all;
+
 
 
                 trigger OnDrillDown()
@@ -403,6 +404,7 @@ pageextension 50149 EmployeeList extends "Employee List"
     begin
         SetCurrentKey(Order);
         Ascending;
+        EmployeeContractLedger.CalcFields("Manager 1 First Name", "Manager 2 First Name");
 
     end;
 
