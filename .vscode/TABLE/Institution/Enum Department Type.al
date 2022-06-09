@@ -26,6 +26,10 @@ enum 50213 "Department Type"
     {
         Caption = 'Group';
     }
+    value(5; "Main office")
+    {
+        Caption = 'Main office';
+    }
 
 
 }
