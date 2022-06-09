@@ -159,7 +159,7 @@ pageextension 50149 EmployeeList extends "Employee List"
         addafter("Co&mments")
         {
 
-            //ED 01 START
+            /*//ED 01 START
             action("Base Calendar List")
             {
                 Caption = 'Base Calendar List';
