@@ -2895,6 +2895,63 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = lookup("Employee Contract Ledger".Superior2 where("Employee No." = FIELD("No."), Active = const(true)));
         }
+        field(503689; Brutto; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Brutto where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503690; Netto; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Netto where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503700; "Netto Total"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Total Netto" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503701; "Position Coefficient for Wage"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Coefficient for Wage" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503702; "Starting Date"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Starting Date" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503703; "Ending Date"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Ending Date" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503704; "Contract type"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Contract Type" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503705; "Defaultdimension"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Default Dimension" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503706; "Contract Termination Date"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Contract Termination Date" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503707; Voocation; code[20])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Additional Education".Vocation where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503708; "Vocation Description"; text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Additional Education"."Vocation Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+
+
 
 
 
@@ -2929,6 +2986,7 @@ tableextension 50071 EmployeeExtension extends Employee
         RoleCode: Code[30];
         RoleName: Text[250];
         WshShell: DotNet SendKeys;
+        Education: Record "Additional Education";
 
         reee: DotNet SendKeys;
         positionMenuOrginal: Record "Position Menu";

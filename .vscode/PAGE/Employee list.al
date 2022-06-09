@@ -14,6 +14,14 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
                 Caption = 'Employee Full Name';
             }
+
+
+
+
+
+        }
+        addafter("Last Name")
+        {
             field("Employee ID"; "Employee ID") { }
             field("Birth Date"; "Birth Date") { }
             field(Age; Age) { }
@@ -24,7 +32,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Department Name"; "Department Name") { }
             field(Sector; Sector) { }
             field("Sector Description"; "Sector Description") { }
-            field("Position Code"; "Position Code") { }
+            field("Position ID"; "Position ID") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
             field(Superior1; Superior1) { }
@@ -33,19 +41,35 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
             field("Engagement Type"; "Engagement Type") { }
+            field(Brutto; Brutto) { }
+            field(Netto; Netto)
+            {
 
+            }
+            field("Netto Total"; "Netto Total")
+            {
 
-
+            }
+            field("Position Coefficient for Wage"; "Position Coefficient for Wage") { }
+            field("Starting Date"; "Starting Date") { }
+            field("Ending Date"; "Ending Date") { }
+            field("Contract type"; "Contract type") { }
+            field("Contract Termination Date"; "Contract Termination Date") { }
+            field("Education Level"; "Education Level") { }
+            field(Voocation; Voocation) { }
+            field("Vocation Description"; "Vocation Description") { }
+            field("Default Dimension"; "Default Dimension") { }
+            field("Default Dimension Name"; "Default Dimension Name") { }
 
         }
-        addafter("Job Title")
+        /*addafter("Job Title")
         {
 
             field("Job Position"; "Job Position")
             {
 
             }
-        }
+        }*/
         addafter("Country/Region Code")
         {
             field("Municipality Code"; "Municipality Code")
