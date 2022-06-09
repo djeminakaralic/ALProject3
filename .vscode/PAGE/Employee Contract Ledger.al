@@ -607,7 +607,7 @@ page 50051 "Employee Contract Ledger"
                     ApplicationArea = all;
                 }
 
-                field(Superior1; Superior1)
+                /*field(Superior1; Superior1)
                 {
                     ApplicationArea = all;
                     Visible = false;
@@ -616,7 +616,7 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                     Visible = false;
-                }
+                }*/
             }
         }
     }
