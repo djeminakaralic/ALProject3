@@ -5939,7 +5939,6 @@ table 50071 "Employee Contract Ledger"
         {
             Caption = 'Superior 2';
         }
-
         field(594133; "Position Coefficient for Wage"; Decimal)
         {
             Caption = 'Position Coefficient for Wage';

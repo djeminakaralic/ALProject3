@@ -8,6 +8,12 @@ report 50077 Uplatnica
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
+            //DataItemLink = "Line No." = field(LineNo);
+            //line = FIELD("No.");              
+            DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
+                            
+             
+
             column(BatchName; GJLine."Journal Batch Name")
             {
             }
@@ -16,7 +22,7 @@ report 50077 Uplatnica
             }
             column(DocumentNo; GJLine."Document No.")
             {
-            }
+            }            
             column(Amound; GJLine.Amount)
             {
             }
@@ -128,6 +134,7 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
+                                
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
@@ -138,6 +145,7 @@ report 50077 Uplatnica
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
+                    
             end;
         }
     }
@@ -160,7 +168,7 @@ report 50077 Uplatnica
 
     var
         CompanyInformation: Record "Company Information";
-        GJLine: Record "Gen. Journal Line";
+        GJLine: Record "Gen. Journal Line";      
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";

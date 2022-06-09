@@ -3,8 +3,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
 
 
+
     layout
     {
+
 
 
         modify("Emplymt. Contract Code")
@@ -2448,7 +2450,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(Superior1; EmployeeContractLedger.Superior1)
+                field(Management1; EmployeeContractLedger."Manager 1 First Name")
                 {
                     Caption = 'Superior 1';
                     Editable = false;
@@ -2467,7 +2469,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     end;
                 }
 
-                field(Superior2; EmployeeContractLedger.Superior2)
+                field(Manager2; EmployeeContractLedger."Manager 2 First Name")
                 {
                     Caption = 'Superior 2';
                     Editable = false;
