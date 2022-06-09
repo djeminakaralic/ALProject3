@@ -181,6 +181,48 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
+            field("Disabled Person"; "Disabled Person") { }
+            field("Disability Level"; "Disability Level") { }
+
+            field("Disabled Child"; "Disabled Child") { }
+            field("Tax Deduction"; "Tax Deduction") { }
+            field("Tax Deduction Amount"; "Tax Deduction Amount") { }
+            field("Additional Tax"; "Additional Tax") { }
+            field("Wage Posting Group"; "Wage Posting Group") { }
+            field("Employee Posting Group"; "Employee Posting Group") { }
+            field("Chronic Disease"; "Chronic Disease") { }
+            field(Nationallity; Nationallity) { }
+            field("Passport No."; "Passport No.") { }
+            field("Country/Region Code CIPS"; "Country/Region Code CIPS") { }
+            field("Citizenship 1"; "Citizenship 1") { }
+            field("City of Birth"; "City of Birth") { }
+            field("City CIPS"; "City CIPS") { }
+            field("Municipality Code CIPS"; "Municipality Code CIPS") { }
+            field("Municipality Name CIPS"; "Municipality Name CIPS") { }
+            field("Municipality Code of Birth"; "Municipality Code of Birth") { }
+            field("Municipality Name of Birth"; "Municipality Name of Birth") { }
+            field("Municipality Code for salary"; "Municipality Code for salary") { }
+            field("Address CIPS"; "Address CIPS") { }
+            field("Entity Code CIPS"; "Entity Code CIPS") { }
+            field(Canton; Canton) { }
+            field("Phone No."; "Phone No.") { }
+            field("Phone No. for Company"; "Phone No. for Company") { }
+            field("Mother Maiden Name"; "Mother Maiden Name") { }
+            field("Mother Name"; "Mother Name") { }
+            field("Marital status"; "Marital status") { }
+            field("Spouse Name"; "Spouse Name") { }
+            field("Number of Children"; "Number of Children") { }
+            field("Phone No. Emergency"; "Phone No. Emergency") { }
+            field("Employee Computer Knowledge"; "Employee Computer Knowledge") { }
+            field("Employee Qualifications"; "Employee Qualifications") { }
+            field("Employee Languages"; "Employee Languages") { }
+            field("Driving Licence"; "Driving Licence") { }
+            field("Driving Llicence Category"; "Driving Llicence Category") { }
+
+
+
+
+
 
             //BH 01 end
 

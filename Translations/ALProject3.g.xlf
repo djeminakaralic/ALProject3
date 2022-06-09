@@ -35908,6 +35908,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Brought Years Total - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 1266933926 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Brutto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Brutto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 3989713272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Calculate Wage Addition</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35972,6 +35977,16 @@
           <source>Contact Center</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Contact Center - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 2056361318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Contract Termination Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Contract Termination Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 2992000614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Contract type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Contract type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 1555132934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Contracted Work</source>
@@ -36102,6 +36117,11 @@
           <source>Default Dimension</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Default Dimension Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 130186637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Defaultdimension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Defaultdimension - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 3557446470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Department Cat. Description</source>
@@ -36292,6 +36312,11 @@
           <source>Employment Abroad Remark</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Employment Abroad Remark - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 458406397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Ending Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 346890487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Engagement Type</source>
@@ -36673,6 +36698,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Nationallity - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 3945451840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Netto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Netto - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 3487041394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Netto Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Netto Total - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 3351700281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>New Number</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36767,6 +36802,11 @@
           <source>Position Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Position Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Position Coefficient for Wage - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 2478708305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Position Description</source>
@@ -36998,6 +37038,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Spouse Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Starting Date - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 242488271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37117,6 +37162,16 @@
           <source>Vocation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Vocation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 1623821627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Vocation Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Vocation Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 2772012540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Voocation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Voocation - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 1403066845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Wage Posting Group</source>
