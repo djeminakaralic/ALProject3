@@ -14,9 +14,18 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
                 Caption = 'Employee Full Name';
             }
+            field("Employee ID"; "Employee ID") { }
+            field("Birth Date"; "Birth Date") { }
+            field(Age; Age) { }
+            field(Gender; Gender) { }
+            field("Org Jed"; "Org Jed") { }
+            field("Department Code"; "Department Code") { }
+
+
         }
         addafter("Job Title")
         {
+
             field("Job Position"; "Job Position")
             {
 
