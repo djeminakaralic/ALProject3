@@ -178,5 +178,6 @@ report 50077 Uplatnica
         ContAddress: Text[100];
         ContCity: Text[100];
         emp: Record Employee;
+        Cust: Record Customer;
 }
 
