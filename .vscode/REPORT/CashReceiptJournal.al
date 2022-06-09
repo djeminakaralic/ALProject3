@@ -174,9 +174,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+
                 trigger OnAction()
                 begin
-                    Report.RunModal(50077, true, false);
+                    Report.RunModal(50077, true, false, GJline);
                     //true - request, false - printer
                 end;
 
@@ -205,6 +206,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
     }
 
+    var
+        GJline: Record "Gen. Journal Line";
 
 
     /*trigger OnOpenPage()
