@@ -20,6 +20,21 @@ pageextension 50149 EmployeeList extends "Employee List"
             field(Gender; Gender) { }
             field("Org Jed"; "Org Jed") { }
             field("Department Code"; "Department Code") { }
+            field("Department Category"; "Department Category") { }
+            field("Department Name"; "Department Name") { }
+            field(Sector; Sector) { }
+            field("Sector Description"; "Sector Description") { }
+            field("Position Code"; "Position Code") { }
+            field("Position Description"; "Position Description") { }
+            field("Rad u smjenama"; "Rad u smjenama") { }
+            field(Superior1; Superior1) { }
+            field(Superior2; Superior2)
+            {
+
+            }
+            field("Engagement Type"; "Engagement Type") { }
+
+
 
 
         }

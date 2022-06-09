@@ -406,12 +406,7 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = Count("Work Duties Violation" WHERE("Employee No." = FIELD("No."), "Page Type" = FILTER('Clauses')));
         }
-        field(503576; "Lawsuits/Labor Disputes"; Integer)
-        {
-            Caption = 'Lawsuits/Labor Disputes';
-            FieldClass = FlowField;
-            CalcFormula = Count("Work Duties Violation" WHERE("Employee No." = FIELD("No."), "Page Type" = FILTER('Lawsuits')));
-        }
+
         field(50350; "Role Code"; Code[20])
         {
             Caption = 'Role Code';
@@ -2845,6 +2840,64 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Vojni staž se obračunava u ukupni staž';
         }
+        field(503678; "Department Category"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Department Category" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503679; "Department Cat. Description"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Department Cat. Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503680; Sector; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Sector where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503681; "Sector Description"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Sector Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503682; "Department Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Department Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503683; "Org Unit Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Org Unit Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503684; "Position Description"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503685; "Engagement Type"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Engagement Type" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503686; "Rad u smjenama"; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Rad u smjenama" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503687; "Superior1"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Superior1 where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503688; "Superior2"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Superior2 where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+
+
+
 
 
 
