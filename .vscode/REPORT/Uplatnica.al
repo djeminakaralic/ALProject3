@@ -14,7 +14,7 @@ report 50077 Uplatnica
                                           "Potential Employee" = CONST(false));*/
             
 
-                                        
+                                
 
             column(BatchName; GJLine."Journal Batch Name")
             {
@@ -25,6 +25,7 @@ report 50077 Uplatnica
             column(DocumentNo; GJLine."Document No.")
             {
             }
+            
             column(Amound; GJLine.Amount)
             {
             }
