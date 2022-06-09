@@ -42,7 +42,7 @@ page 50130 "Department Category"
                 field("Department Type"; "Department Type")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+
                 }
                 field("Identity Sector"; "Identity Sector")
                 {

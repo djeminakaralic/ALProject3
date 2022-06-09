@@ -10,29 +10,29 @@ report 50077 Uplatnica
         {
             //DataItemLink = "Line No." = field(LineNo);
             //line = FIELD("No.");              
-            DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
+            //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
                             
              
 
-            column(BatchName; GJLine."Journal Batch Name")
+            column(BatchName; DataItem21."Journal Batch Name")
             {
             }
-            column(PostingDate; GJLine."Posting Date")
+            column(PostingDate; DataItem21."Posting Date")
             {
             }
-            column(DocumentNo; GJLine."Document No.")
+            column(DocumentNo; DataItem21."Document No.")
             {
             }            
-            column(Amound; GJLine.Amount)
+            column(Amound; DataItem21.Amount)
             {
             }
-            column(Description; GJLine.Description)
+            column(Description; DataItem21.Description)
             {
             }
-            column(LineNo; GJLine."Line No.")
+            column(LineNo; DataItem21."Line No.")
             {
             }
-            column(PM; GJLine."Payment Method Code")
+            column(PM; DataItem21."Payment Method Code")
             {
             }
             column(Adress_CompanyInfo; CompanyInformation.Address)
