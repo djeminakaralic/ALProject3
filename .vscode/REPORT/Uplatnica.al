@@ -11,8 +11,8 @@ report 50077 Uplatnica
             //DataItemLink = "Line No." = field(LineNo);
             //line = FIELD("No.");              
             //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
-                            
-             
+
+
 
             column(BatchName; DataItem21."Journal Batch Name")
             {
@@ -22,7 +22,7 @@ report 50077 Uplatnica
             }
             column(DocumentNo; DataItem21."Document No.")
             {
-            }            
+            }
             column(Amound; DataItem21.Amount)
             {
             }
@@ -134,7 +134,7 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
-                                
+
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
@@ -145,6 +145,8 @@ report 50077 Uplatnica
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
+
+               
                     
             end;
         }
@@ -178,5 +180,6 @@ report 50077 Uplatnica
         ContAddress: Text[100];
         ContCity: Text[100];
         emp: Record Employee;
+        Cust: Record Customer;
 }
 
