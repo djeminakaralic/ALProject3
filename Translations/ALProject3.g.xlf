@@ -38813,6 +38813,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Department Type - EnumValue Group - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 903826216 - EnumValue 1175715189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Main office</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Department Type - EnumValue Main office - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 903826216 - EnumValue 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sector</source>
           <note from="Developer" annotates="general" priority="2"></note>
