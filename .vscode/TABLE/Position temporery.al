@@ -952,11 +952,10 @@ table 50134 "Position temporery"
                     ERROR(DimMgt.GetDimErr);
             end;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
 
             trigger OnValidate()
             begin
@@ -1468,7 +1467,7 @@ table 50134 "Position temporery"
                 "Disc. Department Code":='';
                 END;
                 */
-                IF (Rec."Management Level" <> 7) OR ("Management Level" <> 0) THEN BEGIN
+                IF (Rec."Management Level".AsInteger() <> 6) OR ("Management Level".AsInteger() <> 0) THEN BEGIN
                     DepartmentNew.RESET;
                     DepartmentNew.SETFILTER(Description, '%1', "Disc. Department Name");
                     DepartmentNew.SETFILTER(Description, '%1', "Disc. Department Name");

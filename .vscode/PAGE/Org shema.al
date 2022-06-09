@@ -455,18 +455,17 @@ page 50087 "ORG Shema"
                                                 ECLCopy."Order By Managment" := 1;
                                             IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Exe THEN
                                                 ECLCopy."Order By Managment" := 2;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B1 THEN
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Sector THEN
                                                 ECLCopy."Order By Managment" := 3;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B2 THEN
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::"Department Category" THEN
                                                 ECLCopy."Order By Managment" := 4;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B3 THEN
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Group THEN
                                                 ECLCopy."Order By Managment" := 5;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B4 THEN
-                                                ECLCopy."Order By Managment" := 6;
                                             IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::E THEN
+                                                ECLCopy."Order By Managment" := 6;
+
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Empty THEN
                                                 ECLCopy."Order By Managment" := 7;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::" " THEN
-                                                ECLCopy."Order By Managment" := 8;
                                             EmployeeDefaultDimension.RESET;
                                             EmployeeDefaultDimension.SETFILTER("No.", '%1', ECLOrginal."Employee No.");
                                             IF EmployeeDefaultDimension.FINDFIRST THEN BEGIN

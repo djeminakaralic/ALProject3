@@ -85,7 +85,7 @@ report 50019 "Department Temporary change"
                     ForReport.RESET;
                     IF ForReport.FINDSET THEN
                         REPEAT
-                            IF (ManagmentLevel <> 7) AND (ManagmentLevel <> 0) THEN BEGIN
+                            IF (ManagmentLevel.AsInteger() <> 7) AND (ManagmentLevel.AsInteger() <> 0) THEN BEGIN
                                 DepartmentTempNew.RESET;
                                 DepartmentTempNew.SETFILTER(Description, '%1', ForReport."Org Belongs");
                                 IF DepartmentTempNew.FINDFIRST THEN BEGIN
@@ -324,7 +324,7 @@ report 50019 "Department Temporary change"
         Roles: Text;
         BJF_GJF: Option " ",BJF,GJF;
         CentralaInsert: Option ,Centrala,"Mreža";
-        ManagmentLevel: Option " ",B,B1,B2,B3,B4,CEO,E,"Exe";
+        ManagmentLevel: enum "Management Level";
         "Key": Boolean;
         Control: Boolean;
         GradeNew: Integer;
@@ -333,7 +333,7 @@ report 50019 "Department Temporary change"
         OldBJFReport: Option;
         OldControlReport: Boolean;
         OldKeyReport: Boolean;
-        OldMLReport: Option;
+        OldMLReport: enum "Management Level";
         OldCentralaReport: Option;
         RealOrg: Code[30];
         OldDepChange: Code[30];
@@ -357,7 +357,7 @@ report 50019 "Department Temporary change"
         NewOfficialTranslateSent: Text[250];
         RoleTabela: Record "Role";
 
-    procedure SetParam(OldCodeSent: Code[30]; OldDescriptionSent: Text[250]; OldGrade: Integer; OldRoles: Text; OldBJF: Option; OldControl: Boolean; OldKey: Boolean; OldManagmentLevel: Option; RealorgShema: Code[10]; OldDepartmentCode: Code[50]; NewTranslate: Text[250])
+    procedure SetParam(OldCodeSent: Code[30]; OldDescriptionSent: Text[250]; OldGrade: Integer; OldRoles: Text; OldBJF: Option; OldControl: Boolean; OldKey: Boolean; OldManagmentLevel: enum "Management Level"; RealorgShema: Code[10]; OldDepartmentCode: Code[50]; NewTranslate: Text[250])
     begin
         OldCode := OldCodeSent;
         OldDescription := OldDescriptionSent;

@@ -15,7 +15,7 @@ table 50138 Posting
         field(2; "Hiring Manager"; Text[150])
         {
             Caption = 'Hiring Manager';
-            TableRelation = "Employee Contract Ledger"."Employee Name" WHERE("Management Level" = FILTER(B1 | B2 | B3 | B4),
+            TableRelation = "Employee Contract Ledger"."Employee Name" WHERE("Management Level" = FILTER(3 | 4 | 5),
                                                                               "Org. Structure" = FIELD("Org Sheme"),
                                                                               Active = FILTER(true));
             ValidateTableRelation = false;
@@ -85,7 +85,7 @@ table 50138 Posting
                     "Position Code" := '';
                     Grade := 0;
                     "Roll Code" := '';
-                    "Management Level" := PositionMenu."Management Level"::" ";
+                    "Management Level" := PositionMenu."Management Level"::Empty;
                     "Department Name" := '';
                 END;
             end;
@@ -116,12 +116,11 @@ table 50138 Posting
             Editable = false;
             TableRelation = Department.Description WHERE("ORG Shema" = FIELD("Org Sheme"));
         }
-        field(13; "Management Level"; Option)
+        field(13; "Management Level"; Enum "Management Level")
         {
             Caption = 'Management Level';
             Editable = false;
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
         }
         field(14; "Name of the Company"; Text[30])
         {

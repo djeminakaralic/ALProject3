@@ -136,7 +136,7 @@ report 50016 "Department T change sector"
 
 
                                                     //Rukovodioci Department Code,ORG Shema,Department Categ.  Description,Group Description,Team Description
-                                                    IF PositionMenu."Management Level" <> 7 THEN BEGIN
+                                                    IF PositionMenu."Management Level".AsInteger() <> 6 THEN BEGIN
                                                         //izmjena šifre pozicije
 
                                                         //pošto si na odjelu treba da izmijeniš svima šifru sektora a nivoe ispod gledaš preko opisa
@@ -160,7 +160,7 @@ report 50016 "Department T change sector"
                                                                         Head1."Sector  Description" := NewDescription;
                                                                         Head1."Position Code" := NewPositionCode;
                                                                         PositionMenFind.RESET;
-                                                                        PositionMenFind.SETFILTER("Management Level", '<>%1|<>%2', PositionMenu."Management Level"::E, PositionMenu."Management Level"::" ");
+                                                                        PositionMenFind.SETFILTER("Management Level", '<>%1|<>%2', PositionMenu."Management Level"::E, PositionMenu."Management Level"::Empty);
                                                                         PositionMenFind.SETFILTER(Code, '%1', PositionMenu.Code);
 
                                                                         IF PositionMenFind.FINDFIRST THEN BEGIN
@@ -358,7 +358,7 @@ report 50016 "Department T change sector"
 
                            UNTIL PositionBenefits.NEXT = 0;
                                                         //AKO JE GRUŠA
-                                                        IF PositionMenu."Management Level" <> 7 THEN BEGIN
+                                                        IF PositionMenu."Management Level".AsInteger() <> 6 THEN BEGIN
                                                             Head.RESET;
                                                             Head1.RESET;
                                                             Head.SETFILTER("Sector  Description", '%1', DimensionForPos."Sector  Description");
@@ -376,7 +376,7 @@ report 50016 "Department T change sector"
                                                                             Head1."Sector  Description" := NewDescription;
                                                                             Head1."Position Code" := NewPositionCode;
                                                                             PositionMenFind.RESET;
-                                                                            PositionMenFind.SETFILTER("Management Level", '<>%1|<>%2', PositionMenu."Management Level"::E, PositionMenu."Management Level"::" ");
+                                                                            PositionMenFind.SETFILTER("Management Level", '<>%1|<>%2', PositionMenu."Management Level"::E, PositionMenu."Management Level"::Empty);
                                                                             PositionMenFind.SETFILTER(Code, '%1', PositionMenu.Code);
 
                                                                             IF PositionMenFind.FINDFIRST THEN BEGIN
@@ -574,7 +574,7 @@ report 50016 "Department T change sector"
                            //Position Code,Code,Description,Position Name
 
                            UNTIL PositionBenefits.NEXT = 0;
-                                                        IF PositionMenu."Management Level" <> 7 THEN BEGIN
+                                                        IF PositionMenu."Management Level".AsInteger() <> 6 THEN BEGIN
                                                             Head.RESET;
                                                             Head1.RESET;
                                                             Head.SETFILTER("Sector  Description", '%1', DimensionForPos."Sector  Description");
@@ -593,7 +593,7 @@ report 50016 "Department T change sector"
                                                                             Head1."Sector  Description" := NewDescription;
                                                                             Head1."Position Code" := NewPositionCode;
                                                                             PositionMenFind.RESET;
-                                                                            PositionMenFind.SETFILTER("Management Level", '<>%1|<>%2', PositionMenu."Management Level"::E, PositionMenu."Management Level"::" ");
+                                                                            PositionMenFind.SETFILTER("Management Level", '<>%1|<>%2', PositionMenu."Management Level"::E, PositionMenu."Management Level"::Empty);
                                                                             PositionMenFind.SETFILTER(Code, '%1', PositionMenu.Code);
 
                                                                             IF PositionMenFind.FINDFIRST THEN BEGIN
@@ -869,7 +869,7 @@ report 50016 "Department T change sector"
                //Position Code,Code,Description,Position Name
 
                UNTIL PositionBenefits.NEXT = 0;
-                                            IF PositionMenu."Management Level" <> 7 THEN BEGIN
+                                            IF PositionMenu."Management Level".AsInteger() <> 6 THEN BEGIN
                                                 //izmjena šifre pozicije
                                                 Head.RESET;
                                                 Head.INIT;
@@ -1178,7 +1178,7 @@ report 50016 "Department T change sector"
                //Position Code,Code,Description,Position Name
 
                UNTIL PositionBenefits.NEXT = 0;
-                                            IF PositionMenu."Management Level" <> 7 THEN BEGIN
+                                            IF PositionMenu."Management Level".AsInteger() <> 6 THEN BEGIN
                                                 //izmjena šifre pozicije
 
                                                 Head.RESET;

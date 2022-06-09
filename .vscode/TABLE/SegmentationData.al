@@ -101,11 +101,10 @@ table 50152 "Segmentation Data"
 
             end;
         }
-        field(50006; "Management Level"; Option)
+        field(50006; "Management Level"; Enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = '0,B,B1,B2,B3';
-            OptionMembers = "0",B,B1,B2,B3;
+
         }
     }
 

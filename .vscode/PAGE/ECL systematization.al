@@ -1745,11 +1745,10 @@ table 50055 "ECL systematization"
 
             end;
         }
-        field(50361; "Management Level"; Option)
+        field(50361; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
         }
         field(50362; "Agremeent Code"; Code[10])
         {
@@ -2255,7 +2254,7 @@ table 50055 "ECL systematization"
                                         SectorParent22.RESET;
                                         SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
                                         SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
-                                        SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::B1);
+                                        SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
                                         SectorParent22.SETCURRENTKEY("ORG Shema");
                                         SectorParent22.ASCENDING(FALSE);
                                         IF SectorParent22.FINDFIRST THEN BEGIN
@@ -6619,7 +6618,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         SectorParent22.RESET;
                                         SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
                                         SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
-                                        SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::B1);
+                                        SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
                                         SectorParent22.SETCURRENTKEY("ORG Shema");
                                         SectorParent22.ASCENDING(FALSE);
                                         IF SectorParent22.FINDFIRST THEN BEGIN
@@ -11100,29 +11099,26 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                             "Order By Managment" := 2;
                             "Management Level" := "Management Level"::Exe;
                         END;
-                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::B1 THEN BEGIN
+                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::Sector THEN BEGIN
                             "Order By Managment" := 3;
-                            "Management Level" := "Management Level"::B1;
+                            "Management Level" := "Management Level"::Sector;
                         END;
-                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::B2 THEN BEGIN
+                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::"Department Category" THEN BEGIN
                             "Order By Managment" := 4;
-                            "Management Level" := "Management Level"::B2;
+                            "Management Level" := "Management Level"::"Department Category";
                         END;
-                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::B3 THEN BEGIN
+                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::Group THEN BEGIN
                             "Order By Managment" := 5;
-                            "Management Level" := "Management Level"::B3;
-                        END;
-                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::B4 THEN BEGIN
-                            "Order By Managment" := 6;
-                            "Management Level" := "Management Level"::B4;
+                            "Management Level" := "Management Level"::Group;
                         END;
                         IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::E THEN BEGIN
-                            "Order By Managment" := 7;
+                            "Order By Managment" := 6;
                             "Management Level" := "Management Level"::E;
                         END;
-                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::" " THEN BEGIN
-                            "Order By Managment" := 8;
-                            "Management Level" := "Management Level"::" ";
+
+                        IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::Empty THEN BEGIN
+                            "Order By Managment" := 7;
+                            "Management Level" := "Management Level"::Empty;
                         END;
                     END;
                 END

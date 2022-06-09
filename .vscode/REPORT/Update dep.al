@@ -124,7 +124,7 @@ report 50105 "Update dep"
                             SectorParent22.RESET;
                             SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
                             SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
-                            SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::B1);
+                            SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
                             SectorParent22.SETCURRENTKEY("ORG Shema");
                             SectorParent22.ASCENDING(FALSE);
                             IF SectorParent22.FINDFIRST THEN BEGIN

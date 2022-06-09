@@ -3501,10 +3501,26 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Caption = 'Work Booklet';
                 Image = Workdays;
                 ApplicationArea = all;
-                RunObject = Page "Work booklet";
-                RunPageLink = "Employee No." = FIELD("No.");
+                /*RunObject = Page "Work booklet";
+                RunPageLink = "Employee No." = FIELD("No.");*/
                 RunPageMode = View;
                 Promoted = true;
+
+
+                trigger OnAction()
+                begin
+                    CurrPage.UPDATE(TRUE);
+                    SELECTLATESTVERSION;
+                    CLEAR(WorkBookletPage);
+                    WorkBooklet.RESET;
+                    WorkBooklet.SETFILTER("Employee No.", '%1', "No.");
+                    WorkBookletPage.SetTableView(WorkBooklet);
+
+                    WorkBookletPage.Run();
+                    ;
+                    CurrPage.UPDATE(TRUE);
+                    //MESSAGE(FORMAT("Years of Experience in Company"));
+                end;
 
             }
             action("Alternative Addresses (Current)")
