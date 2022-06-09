@@ -185,6 +185,10 @@ tableextension 51190 CompanyInfExt extends "Company Information"
         {
             Caption = 'Tax No.';
         }
+        field(520157275; "Registration Text"; Text[100])
+        {
+            Caption = 'Registration Text';
+        }
 
     }
 

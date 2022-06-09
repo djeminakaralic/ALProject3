@@ -3,6 +3,7 @@ report 50077 Uplatnica
     DefaultLayout = RDLC;
     RDLCLayout = './Uplatnica.rdlc';
 
+
     dataset
     {
         dataitem(DataItem21; "Gen. Journal Line")
@@ -92,6 +93,12 @@ report 50077 Uplatnica
             {
             }
             column(MunicipalityName; CompanyInformation."Municipality Name")
+            {
+            }
+            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
+            {
+            }
+            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
 
