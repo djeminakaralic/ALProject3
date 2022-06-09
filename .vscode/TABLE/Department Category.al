@@ -28,8 +28,11 @@ table 50040 "Department Category"
                  UNTIL Dep.NEXT = 0;
 
 
+                /*  if xRec."Department Type"=xRec."Department Type"::"Main office" then
+                  "Department Type":="Department Type"::"Main office"
+                  else
 
-                "Department Type" := "Department Type"::"Department Category";
+                  "Department Type" := "Department Type"::"Department Category";*/
 
                 Dep.Reset();
                 Dep.SetFilter(Code, '%1', Rec.Code);
