@@ -5683,6 +5683,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Employee Benefits - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 3704219634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Education Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Employee Education Level - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4256639551 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23728,130 +23733,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - NamedType Text000</note>
         </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 1023448102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certifications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Certifications1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 3405325547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certifications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Certifications2 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 634105036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certificate for maternity leav</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Certificate for maternity leave - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 1710029896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Custom report layouts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Custom report layouts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 2383206328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Forms</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Forms1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 3698579837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>JS3100</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action JS3100 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 20144922 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PD3100</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action PD3100 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Process</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Process - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 355065456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Auto Import</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action &lt;Action80&gt; - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 4256639551 - Action 4254856415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Copy - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 279946319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy</source>
+        <trans-unit id="Page 4256639551 - Action 3698579837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>JS3100</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Copy Orginal - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 98005608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy_from</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Copy_from - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 109827607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Copy_from1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Copy_from1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 710972128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Create - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 1832081231 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Create1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 36190024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Export - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 1218459566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>E_xport1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action E_xport1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 3201496503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Import - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 245104432 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Import1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 1966483759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Open1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 3879573610 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Open</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Open2 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 3238504282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Remove - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 3703582329 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Remove1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 2746247081 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RunReport</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action RunReport - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 4256639551 - Action 2200006859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show/Hide record</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action Show/Hide record - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Action JS3100 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1828631435 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Default Dimension</source>
@@ -24552,6 +24442,11 @@
           <source>Vocation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Vocation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 1591033283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>XML</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action XML - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2066736455 - Action 3950507099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Timesheets</source>
@@ -25727,11 +25622,6 @@
           <source>Position Minimal Education</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 426348693 - Action 1692444235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ActionName</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education - Action ActionName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1088320606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting List</source>
@@ -34067,6 +33957,16 @@
           <source>MIP</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort MIP 1023 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 98827016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Position Import - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 98827016 - NamedType 1821279055" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It's done</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Position Import - NamedType Text</note>
         </trans-unit>
         <trans-unit id="XmlPort 3577743290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Tax Deduction Amount</source>
