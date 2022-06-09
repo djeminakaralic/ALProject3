@@ -133,20 +133,34 @@ pageextension 50149 EmployeeList extends "Employee List"
                 end;
 
             }
-            field("Brought Months of Experience"; "Brought Months of Experience") { }
-            field("Brought Days of Experience"; "Brought Days of Experience") { }
-            field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.") { }
-            field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.") { }
-            field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.") { }
-            field("Brought Years Total"; "Brought Years Total") { }
-            field("Brought Months Total"; "Brought Months Total") { }
-            field("Brought Days Total"; "Brought Days Total") { }
-            field("Years of Experience in Company"; "Years of Experience in Company") { }
-            field("Months of Exp. in Company"; "Months of Exp. in Company") { }
-            field("Days of Experience in Company"; "Days of Experience in Company") { }
-            field("Current Years Total"; "Current Years Total") { }
-            field("Current Months Total"; "Current Months Total") { }
-            field("Current Days Total"; "Current Days Total") { }
+            field("Brought Months of Experience"; "Brought Months of Experience")
+            { }
+            field("Brought Days of Experience"; "Brought Days of Experience")
+            { }
+            field("Brought Years of Exp. in Curr."; "Brought Years of Exp. in Curr.")
+            { }
+            field("Brought Months of Exp. in Curr."; "Brought Months of Exp.in Curr.")
+            { }
+            field("Brought Days of Exp. in Curr."; "Brought Days of Exp.in Curr.")
+            { }
+            field("Brought Years Total"; "Brought Years Total")
+            { }
+            field("Brought Months Total"; "Brought Months Total")
+            { }
+            field("Brought Days Total"; "Brought Days Total")
+            { }
+            field("Years of Experience in Company"; "Years of Experience in Company")
+            { }
+            field("Months of Exp. in Company"; "Months of Exp. in Company")
+            { }
+            field("Days of Experience in Company"; "Days of Experience in Company")
+            { }
+            field("Current Years Total"; "Current Years Total")
+            { }
+            field("Current Months Total"; "Current Months Total")
+            { }
+            field("Current Days Total"; "Current Days Total")
+            { }
             field("Military Years of Service"; "Military Years of Service")
             {
 
@@ -205,7 +219,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Address CIPS"; "Address CIPS") { }
             field("Entity Code CIPS"; "Entity Code CIPS") { }
             field(Canton; Canton) { }
-            field("Phone No."; "Phone No.") { }
+            //field("Phone No."; "Phone No.") { }
             field("Phone No. for Company"; "Phone No. for Company") { }
             field("Mother Maiden Name"; "Mother Maiden Name") { }
             field("Mother Name"; "Mother Name") { }
