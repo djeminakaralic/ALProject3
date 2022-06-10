@@ -259,6 +259,15 @@ page 50003 "HR Role Center"
                     Image = Dimensions;
                     RunObject = Page "ORG Dijelovi";
                 }
+                //Employees Import
+                action("Employees Import")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employees Import';
+                    Image = Dimensions;
+                    RunObject = xmlport "Employees Import";
+                }
+
                 action("ORG Shema")
                 {
                     ApplicationArea = all;
