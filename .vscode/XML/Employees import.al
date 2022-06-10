@@ -50,7 +50,7 @@ xmlport 50004 "Employees Import"
                     Employee.Init;
 
                     Code2 := '';
-                    Code3 := 'EMP';
+                    Code3 := '';
 
                     HumanResSetup.GET;
                     HumanResSetup.TESTFIELD("Employee Nos.");
