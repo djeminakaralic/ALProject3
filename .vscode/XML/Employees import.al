@@ -77,6 +77,7 @@ xmlport 50004 "Employees Import"
                     EmployeeContract.Validate("Employee No.", Employee."No.");
                     EmployeeContract.Validate("Org. Structure", 'SIST 1');
                     EmployeeContract.Validate("Reason for Change", EmployeeContract."Reason for Change"::Migration);
+                    EmployeeContract."Show Record" := true;
 
                     Department.Reset();
                     Department.SetFilter(Description, '%1', Org);
@@ -152,6 +153,7 @@ xmlport 50004 "Employees Import"
                 if EmployeeContract.FindSet() then
                     repeat
                         EmployeeContract."Employee Name" := EmployeeU."First Name" + ' ' + EmployeeU."Last Name";
+                        EmployeeContract."Show Record" := true;
                         EmployeeContract.Modify();
                     until EmployeeContract.Next() = 0;
 
