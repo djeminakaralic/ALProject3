@@ -110,7 +110,12 @@ report 50077 Uplatnica
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
-
+            column(BankName; BankAccount.Name)
+            {
+            }
+            column(BankAccNo; BankAccount."Bank Account No.")
+            {
+            }
 
 
 
@@ -177,6 +182,7 @@ report 50077 Uplatnica
     var
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
+        BankAccount: Record "Bank Account";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
