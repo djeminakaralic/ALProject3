@@ -122,10 +122,20 @@ xmlport 50004 "Employees Import"
         //ĐKEmployeeU.SetFilter(Order, '<=%1', 15);
         if EmployeeU.FindSet() then
             repeat
+
+                if EmployeeU."First Name" = 'Vildana' then begin
+                    if EG.Get(Employee."No.") then
+                        EG.Rename('16');
+
+                end;
                 EmployeeU."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
                 EmployeeU."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
 
+
                 Evaluate(Redoslijed, EmployeeU."No.");
+
+
+
                 EmployeeU.Order := Redoslijed;
                 EmployeeU.Modify();
                 EmployeeContract.Reset();
@@ -150,6 +160,8 @@ xmlport 50004 "Employees Import"
         ol: Decimal;
         prevoz: Decimal;
         empno: Integer;
+        EG: Record Employee;
+        ER: Record Employee;
         Redoslijed: Integer;
         NoSeriesMgt: Codeunit NoSeriesExtented;
         EmployeeContract: Record "Employee Contract Ledger";
