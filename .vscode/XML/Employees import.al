@@ -48,6 +48,14 @@ xmlport 50004 "Employees Import"
                 trigger OnAfterInsertRecord()
                 begin
                     Employee.Init;
+
+                    Code2 := '';
+                    Code3 := 'EMP';
+
+                    HumanResSetup.GET;
+                    HumanResSetup.TESTFIELD("Employee Nos.");
+                    NoSeriesMgt.InitSeries(HumanResSetup."Employee Nos.", '', 0D, Code2, Code3);
+
                     Employee."First Name" := Ime;
                     Employee."Last Name" := Prezime;
                     if Spol = 'F' then
@@ -139,6 +147,7 @@ xmlport 50004 "Employees Import"
         ol: Decimal;
         prevoz: Decimal;
         empno: Integer;
+        NoSeriesMgt: Codeunit NoSeriesExtented;
         EmployeeContract: Record "Employee Contract Ledger";
         EmployeeContract2: Record "Employee Contract Ledger";
         Text: Label 'It''s done';
@@ -147,6 +156,9 @@ xmlport 50004 "Employees Import"
         Department: Record Department;
         Slozen: Decimal;
         EmployeeU: Record Employee;
+        Code2: Code[20];
+        Code3: Code[20];
+        HumanResSetup: Record "Human Resources Setup";
         Uslov: Decimal;
 
         Odgovor: Decimal;
