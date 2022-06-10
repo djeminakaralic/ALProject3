@@ -48,6 +48,14 @@ xmlport 50004 "Employees Import"
                 trigger OnAfterInsertRecord()
                 begin
                     Employee.Init;
+
+                    Code2 := '';
+                    Code3 := '';
+
+                    HumanResSetup.GET;
+                    HumanResSetup.TESTFIELD("Employee Nos.");
+                    NoSeriesMgt.InitSeries(HumanResSetup."Employee Nos.", '', 0D, Code2, Code3);
+
                     Employee."First Name" := Ime;
                     Employee."Last Name" := Prezime;
                     if Spol = 'F' then
@@ -111,11 +119,14 @@ xmlport 50004 "Employees Import"
     begin
         MESSAGE('Završeno, sada ažuriranje velikih i malih slova');
         EmployeeU.Reset();
-        EmployeeU.SetFilter(Order, '<=%1', 15);
+        //ĐKEmployeeU.SetFilter(Order, '<=%1', 15);
         if EmployeeU.FindSet() then
             repeat
                 EmployeeU."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
                 EmployeeU."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
+
+                Evaluate(Redoslijed, EmployeeU."No.");
+                EmployeeU.Order := Redoslijed;
                 EmployeeU.Modify();
                 EmployeeContract.Reset();
                 EmployeeContract.SetFilter("Employee No.", '%1', EmployeeU."No.");
@@ -139,6 +150,8 @@ xmlport 50004 "Employees Import"
         ol: Decimal;
         prevoz: Decimal;
         empno: Integer;
+        Redoslijed: Integer;
+        NoSeriesMgt: Codeunit NoSeriesExtented;
         EmployeeContract: Record "Employee Contract Ledger";
         EmployeeContract2: Record "Employee Contract Ledger";
         Text: Label 'It''s done';
@@ -147,6 +160,9 @@ xmlport 50004 "Employees Import"
         Department: Record Department;
         Slozen: Decimal;
         EmployeeU: Record Employee;
+        Code2: Code[20];
+        Code3: Code[20];
+        HumanResSetup: Record "Human Resources Setup";
         Uslov: Decimal;
 
         Odgovor: Decimal;
