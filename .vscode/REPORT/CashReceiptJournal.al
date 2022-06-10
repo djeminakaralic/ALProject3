@@ -28,6 +28,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }*/
 
+        addafter("Posting Date")
+        {
+            field("Payment Date And Time"; "Payment Date And Time")
+            {
+                ApplicationArea = all;
+            }
+        }
+
 
 
 

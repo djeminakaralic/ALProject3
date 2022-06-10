@@ -35,6 +35,9 @@ report 50077 Uplatnica
             column(PM; DataItem21."Payment Method Code")
             {
             }
+            column(PaymentDT; DataItem21."Payment Date And Time")
+            {
+            }
             column(Adress_CompanyInfo; CompanyInformation.Address)
             {
             }
@@ -107,6 +110,12 @@ report 50077 Uplatnica
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
+            column(BankName; BankAccount.Name)
+            {
+            }
+            column(BankAccNo; BankAccount."Bank Account No.")
+            {
+            }
 
 
 
@@ -134,6 +143,7 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
+                BankAccount.get();
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
@@ -146,8 +156,10 @@ report 50077 Uplatnica
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
 
-               
-                    
+                //za tabelu customer je key No.
+
+
+
             end;
         }
     }
@@ -170,7 +182,8 @@ report 50077 Uplatnica
 
     var
         CompanyInformation: Record "Company Information";
-        GJLine: Record "Gen. Journal Line";      
+        GJLine: Record "Gen. Journal Line";
+        BankAccount: Record "Bank Account";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
