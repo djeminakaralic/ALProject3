@@ -3505,6 +3505,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 RunPageLink = "Employee No." = FIELD("No.");*/
                 RunPageMode = View;
                 Promoted = true;
+                //ĐK
 
 
                 trigger OnAction()
