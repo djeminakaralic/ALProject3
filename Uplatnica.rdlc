@@ -1073,10 +1073,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.03994cm</Width>
+                  <Width>3.60469cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.13846cm</Width>
+                  <Width>2.88408cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.5cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1143,12 +1149,74 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="BankAccNo1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BankAccNo.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>BankAccNo1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="BankName1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BankName.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>BankName1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
               </TablixMembers>
@@ -1167,7 +1235,7 @@
             <Top>16.62176cm</Top>
             <Left>1.29858cm</Left>
             <Height>0.56885cm</Height>
-            <Width>13.1784cm</Width>
+            <Width>11.48878cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
