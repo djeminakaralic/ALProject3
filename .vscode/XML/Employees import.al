@@ -54,7 +54,7 @@ xmlport 50004 "Employees Import"
 
                     HumanResSetup.GET;
                     HumanResSetup.TESTFIELD("Employee Nos.");
-                    NoSeriesMgt.InitSeries(HumanResSetup."Employee Nos.", '', 0D, Code2, Code3);
+                    NoSeriesMgt.InitSeries(HumanResSetup."Employee Nos.", '', 0D, Employee."No.", Code3);
 
                     Employee."First Name" := Ime;
                     Employee."Last Name" := Prezime;
@@ -122,10 +122,20 @@ xmlport 50004 "Employees Import"
         //ĐKEmployeeU.SetFilter(Order, '<=%1', 15);
         if EmployeeU.FindSet() then
             repeat
+
+                if EmployeeU."First Name" = 'Vildana' then begin
+                    if EG.Get(Employee."No.") then
+                        EG.Rename('16');
+
+                end;
                 EmployeeU."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
                 EmployeeU."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
 
+
                 Evaluate(Redoslijed, EmployeeU."No.");
+
+
+
                 EmployeeU.Order := Redoslijed;
                 EmployeeU.Modify();
                 EmployeeContract.Reset();
@@ -150,6 +160,8 @@ xmlport 50004 "Employees Import"
         ol: Decimal;
         prevoz: Decimal;
         empno: Integer;
+        EG: Record Employee;
+        ER: Record Employee;
         Redoslijed: Integer;
         NoSeriesMgt: Codeunit NoSeriesExtented;
         EmployeeContract: Record "Employee Contract Ledger";
