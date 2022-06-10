@@ -4528,11 +4528,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Management Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3387969064 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Management Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 3387969064 - Field 1994996531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manager Addition Total Netto</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5862,11 +5857,6 @@
           <source>Management Level</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Management Level - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4256639551 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Management Level - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - Field 367124614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manager 1</source>
@@ -7623,11 +7613,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Head Of's - Field Management Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 279971287 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Head Of's - Field Management Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 279971287 - Field 1049171285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>NonActive</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7732,11 +7717,6 @@
           <source>Management Level</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Head Of's temporary - Field Management Level - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 260730434 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Head Of's temporary - Field Management Level - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 260730434 - Field 3040225570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>n</source>
@@ -11608,11 +11588,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position - Field Management Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 56735747 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Position - Field Management Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 56735747 - Field 367124614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manager 1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12078,11 +12053,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Management Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2050451830 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Management Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 2050451830 - Field 4213575185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Education level</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12262,11 +12232,6 @@
           <source>Management Level</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Management Level - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 4229043595 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Management Level - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 4229043595 - Field 4213575185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Education level</source>
@@ -12583,11 +12548,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position temporery - Field Management Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1645599418 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Position temporery - Field Management Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 1645599418 - Field 367124614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manager 1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12892,11 +12852,6 @@
           <source>Management Level</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posting - Field Management Level - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2808404044 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,B,B1,B2,B3,B4,CEO,E,Exe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Posting - Field Management Level - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2808404044 - Field 2976383884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name of the Company</source>
@@ -14118,11 +14073,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Segmentation Data - Field Management Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1241514978 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>0,B,B1,B2,B3</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Segmentation Data - Field Management Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 1241514978 - Field 2758426634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14177,11 +14127,6 @@
           <source>Management Level</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Segmentation Data 2 - Field Management Level - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 334845040 - Field 2842142719 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>0,B,B1,B2,B3</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Segmentation Data 2 - Field Management Level - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 334845040 - Field 2758426634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position No.</source>
@@ -37593,6 +37538,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Note 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 489143484 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Payment Date And Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Date And Time - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 1132033293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Postponed VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38902,6 +38852,41 @@
           <source>Volonteer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Employee Status Ext - EnumValue Volonteer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 1611336899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue CEO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 3544716464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Head of Service</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue Department Category - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 1389074815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue E - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue Empty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 3391905188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EXE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue EXE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 739346273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Head of Department</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2842142719 - EnumValue 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Head of Sector</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue Sector - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 244841840 - EnumValue 2131230175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BCS (prvi ciklus visokog obrazovanja (180ECTS))</source>

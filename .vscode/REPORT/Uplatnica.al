@@ -146,8 +146,10 @@ report 50077 Uplatnica
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
 
-               
-                    
+                //za tabelu customer je key No.
+
+
+
             end;
         }
     }
@@ -170,7 +172,7 @@ report 50077 Uplatnica
 
     var
         CompanyInformation: Record "Company Information";
-        GJLine: Record "Gen. Journal Line";      
+        GJLine: Record "Gen. Journal Line";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
