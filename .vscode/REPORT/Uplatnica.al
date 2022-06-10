@@ -159,6 +159,7 @@ report 50077 Uplatnica
             end;
         }
 
+
         dataitem(DataItem22; "Bank Account")
         {
             column(BankName; DataItem22.Name)
