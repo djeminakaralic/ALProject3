@@ -3520,6 +3520,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     WorkBookletPage.Run();
                     ;
                     CurrPage.UPDATE(TRUE);
+                    SELECTLATESTVERSION;
                     //MESSAGE(FORMAT("Years of Experience in Company"));
                 end;
 
