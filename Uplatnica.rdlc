@@ -94,16 +94,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.25646cm</Width>
+                  <Width>0.85681cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.29917cm</Width>
+                  <Width>6.18048cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.59563cm</Width>
+                  <Width>4.40501cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.02715cm</Width>
+                  <Width>1.73611cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -338,7 +338,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentDT.Value + Fields!DocumentNo.Value</Value>
+                                  <Value>=Fields!PaymentDT.Value + " " + Fields!DocumentNo.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -529,7 +529,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>UKUPNO KM:</Value>
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -576,7 +576,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Gotovina/kartično = "</Value>
+                                  <Value>="UKUPNO KM: "</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -622,7 +622,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amound.Value</Value>
+                                  <Value>="Gotovina/kartično = " + Fields!Amound.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -688,7 +688,7 @@
             <Top>11.22482cm</Top>
             <Left>1.29858cm</Left>
             <Height>1.8cm</Height>
-            <Width>13.17841cm</Width>
+            <Width>13.1784cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
