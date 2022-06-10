@@ -1322,6 +1322,9 @@ End Function
         <Field Name="PM">
           <DataField>PM</DataField>
         </Field>
+        <Field Name="PaymentDT">
+          <DataField>PaymentDT</DataField>
+        </Field>
         <Field Name="Adress_CompanyInfo">
           <DataField>Adress_CompanyInfo</DataField>
         </Field>
