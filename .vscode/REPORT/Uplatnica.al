@@ -143,6 +143,7 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
+                BankAccount.get();
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
