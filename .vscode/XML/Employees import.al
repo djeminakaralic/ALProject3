@@ -54,7 +54,7 @@ xmlport 50004 "Employees Import"
 
                     HumanResSetup.GET;
                     HumanResSetup.TESTFIELD("Employee Nos.");
-                    NoSeriesMgt.InitSeries(HumanResSetup."Employee Nos.", '', 0D, Code2, Code3);
+                    NoSeriesMgt.InitSeries(HumanResSetup."Employee Nos.", '', 0D, Employee."No.", Code3);
 
                     Employee."First Name" := Ime;
                     Employee."Last Name" := Prezime;
