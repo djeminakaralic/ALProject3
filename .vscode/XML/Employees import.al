@@ -126,20 +126,27 @@ xmlport 50004 "Employees Import"
                 if EmployeeU."First Name" = 'Vildana' then begin
                     if EG.Get(Employee."No.") then
                         EG.Rename('16');
+                    EG."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
+                    EG."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
+                    Evaluate(Redoslijed, '16');
+                    EG.Order := Redoslijed;
+                    EG.Modify();
 
+                end
+                else begin
+                    EmployeeU."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
+                    EmployeeU."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
+
+                    if EmployeeU."First Name" = 'Vildana' then
+                        Evaluate(Redoslijed, '16')
+                    else
+                        Evaluate(Redoslijed, EmployeeU."No.");
+
+
+
+                    EmployeeU.Order := Redoslijed;
+                    EmployeeU.Modify();
                 end;
-                EmployeeU."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
-                EmployeeU."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
-
-                if EmployeeU."First Name" = 'Vildana' then
-                    Evaluate(Redoslijed, '16')
-                else
-                    Evaluate(Redoslijed, EmployeeU."No.");
-
-
-
-                EmployeeU.Order := Redoslijed;
-                EmployeeU.Modify();
                 EmployeeContract.Reset();
                 EmployeeContract.SetFilter("Employee No.", '%1', EmployeeU."No.");
                 if EmployeeContract.FindSet() then
