@@ -131,8 +131,10 @@ xmlport 50004 "Employees Import"
                 EmployeeU."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
                 EmployeeU."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
 
-
-                Evaluate(Redoslijed, EmployeeU."No.");
+                if EmployeeU."First Name" = 'Vildana' then
+                    Evaluate(Redoslijed, '16')
+                else
+                    Evaluate(Redoslijed, EmployeeU."No.");
 
 
 
