@@ -110,12 +110,8 @@ report 50077 Uplatnica
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
-            column(BankName; BankAccount.Name)
-            {
-            }
-            column(BankAccNo; BankAccount."Bank Account No.")
-            {
-            }
+
+
 
 
 
@@ -143,7 +139,7 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
-                BankAccount.get();
+
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
@@ -162,6 +158,18 @@ report 50077 Uplatnica
 
             end;
         }
+
+
+        dataitem(DataItem22; "Bank Account")
+        {
+            column(BankName; DataItem22.Name)
+            {
+            }
+            column(BankAccNo; DataItem22."Bank Account No.")
+            {
+            }
+        }
+
     }
 
     requestpage

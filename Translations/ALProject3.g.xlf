@@ -24188,6 +24188,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Employee Default Dimension - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 2061216592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employees Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Employees Import - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2066736455 - Action 739346273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -33882,6 +33887,16 @@
           <source>Employee Card is updated.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Work experience in Company - NamedType Text0001</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 2061216592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employees Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Employees Import - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 2061216592 - NamedType 1821279055" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It's done</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Employees Import - NamedType Text</note>
         </trans-unit>
         <trans-unit id="XmlPort 3303594017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>MIP</source>
