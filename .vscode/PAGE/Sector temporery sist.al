@@ -16,45 +16,71 @@ page 50114 "Sector temporary sist"
                 field(Code; Code)
                 {
                     ApplicationArea = all;
-                    Editable = false;
+
                 }
                 field(Description; Description)
                 {
                     ApplicationArea = all;
+
+                }
+                field("Org Shema"; "Org Shema")
+                {
+                    ApplicationArea = all;
                     Editable = false;
+                }
+
+                field(CEO; CEO)
+                {
+                    ApplicationArea = all;
+
+                }
+                field(Parent; Parent)
+                {
+                    ApplicationArea = all;
                 }
                 field("Official Translate of Sector"; "Official Translate of Sector")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
+
                 }
+
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
+
                 }
                 field("Number Of Dep Cat levels below"; "Number Of Dep Cat levels below")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
+
                 }
                 field("Number Of Group levels below"; "Number Of Group levels below")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Number Of Team  levels below"; "Number Of Team  levels below")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Number of dimension value"; "Number of dimension value")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Editable = false;
                 }
                 field("Name of TC"; "Name of TC")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
                 }
                 field("Fields for change"; "Fields for change")
                 {
@@ -62,11 +88,9 @@ page 50114 "Sector temporary sist"
                     Editable = false;
                     Style = Unfavorable;
                     StyleExpr = IsTrue;
+                    Visible = false;
                 }
-                field("Org Shema"; "Org Shema")
-                {
-                    ApplicationArea = all;
-                }
+
             }
         }
     }
@@ -89,7 +113,7 @@ page 50114 "Sector temporary sist"
                 begin
 
 
-                    Response := CONFIRM(Txt003);
+                    /*Response := CONFIRM(Txt003);
                     IF Response THEN BEGIN
                         // StepNext.SETRECORD(Rec);
                         InsertSector.RESET;
@@ -254,12 +278,12 @@ page 50114 "Sector temporary sist"
                                         END;
                                           END;
                                   UNTIL DimensiontempfoRposition.NEXT=0;*/
+                    StepNext.RUN;
+                    CurrPage.CLOSE();
 
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
-                    END;
+                END;
 
-                end;
+
             }
             action("Change Code/Description for levels below")
             {
@@ -268,6 +292,7 @@ page 50114 "Sector temporary sist"
                 Promoted = true;
                 PromotedIsBig = true;
                 ApplicationArea = all;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -372,6 +397,7 @@ page 50114 "Sector temporary sist"
                 Promoted = true;
                 PromotedIsBig = true;
                 ApplicationArea = all;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -398,6 +424,7 @@ page 50114 "Sector temporary sist"
                 Promoted = true;
                 PromotedIsBig = true;
                 ApplicationArea = all;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -426,12 +453,14 @@ page 50114 "Sector temporary sist"
             {
                 RunObject = Page "Dimensions temporary";
                 ApplicationArea = all;
+                Visible = false;
             }
             group("Dimension temporary")
             {
                 Caption = 'Dimension temporary';
                 Image = Administration;
-                Visible = true;
+                Visible = false;
+
                 action("Dimensions temporary")
                 {
                     Caption = 'Dimensions temporary';
@@ -450,13 +479,14 @@ page 50114 "Sector temporary sist"
     trigger OnDeleteRecord(): Boolean
     begin
 
+
         IF Potvrda <> CONFIRM(Text007, TRUE) THEN BEGIN
             DepartmentTempDelete.SETFILTER(Sector, '%1', Rec.Code);
             DepartmentTempDelete.SETFILTER("Sector  Description", '%1', Rec.Description);
             DepartmentTempDelete.SETFILTER(Code, '<>%1', Rec.Code);
             IF DepartmentTempDelete.FINDSET THEN
                 REPEAT
-                    IF DepartmentTempDelete."Department Type" = 4 THEN BEGIN
+                    IF DepartmentTempDelete."Department Type".AsInteger() = 5 THEN BEGIN
                         DepCatDelete.SETFILTER(Description, '%1', DepartmentTempDelete."Department Categ.  Description");
                         IF DepCatDelete.FINDFIRST THEN BEGIN
                             DepartmentTempDeletefOR.RESET;
@@ -475,7 +505,7 @@ page 50114 "Sector temporary sist"
                             DepCatDelete.DELETE;
                         END;
                     END;
-                    IF DepartmentTempDelete."Department Type" = 2 THEN BEGIN
+                    IF DepartmentTempDelete."Department Type".AsInteger() = 3 THEN BEGIN
                         DepCatDelete1.SETFILTER(Description, '%1', DepartmentTempDelete."Group Description");
                         IF DepCatDelete1.FINDFIRST THEN BEGIN
                             DepartmentTempDeletefOR.RESET;
@@ -494,25 +524,8 @@ page 50114 "Sector temporary sist"
                             DepCatDelete1.DELETE;
                         END;
                     END;
-                    IF DepartmentTempDelete."Department Type" = 9 THEN BEGIN
-                        DepCatDelete2.SETFILTER(Name, '%1', DepartmentTempDelete."Team Description");
-                        IF DepCatDelete2.FINDFIRST THEN BEGIN
-                            DepartmentTempDeletefOR.RESET;
-                            DepartmentTempDeletefOR.SETFILTER("Team Description", '%1', DepartmentTempDelete."Team Description");
-                            DepartmentTempDeletefOR.SETFILTER("Department Type", '%1', 9);
-                            IF DepartmentTempDeletefOR.FINDFIRST THEN BEGIN
-                                DepartmentTempDeletefOR.DELETE;
-                            END;
-                            DimensionsTempFor.RESET;
-                            DimensionsTempFor.SETFILTER("Team Description", '%1', DepartmentTempDelete."Team Description");
-                            DimensionsTempFor.SETFILTER("Department Type", '%1', 9);
-                            DimensionsTempFor.SETFILTER("ORG Shema", '%1', Rec."Org Shema");
-                            IF DimensionsTempFor.FINDFIRST THEN BEGIN
-                                DimensionsTempFor.DELETE;
-                            END;
-                            DepCatDelete2.DELETE;
-                        END;
-                    END;
+
+
 
                 UNTIL DepartmentTempDelete.NEXT = 0;
             DimensionsForPos.SETFILTER(Sector, '%1', Rec.Code);

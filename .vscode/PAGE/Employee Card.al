@@ -3512,15 +3512,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 begin
                     CurrPage.UPDATE(TRUE);
                     SELECTLATESTVERSION;
-                    CLEAR(WorkBookletPage);
+                    CLEAR(WOrkB);
                     WorkBooklet.RESET;
                     WorkBooklet.SETFILTER("Employee No.", '%1', "No.");
-                    WorkBookletPage.SetTableView(WorkBooklet);
-
-                    WorkBookletPage.Run();
-                    ;
+                    WOrkB.SETTABLEVIEW(WorkBooklet);
+                    WOrkB.RUNMODAL;
                     CurrPage.UPDATE(TRUE);
-                    SELECTLATESTVERSION;
                     //MESSAGE(FORMAT("Years of Experience in Company"));
                 end;
 
@@ -4280,6 +4277,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
     var
         myInt: Integer;
+
+        WOrkB: Page "Work booklet";
         StartDate: Date;
         WA: Record "Wage Addition";
         UnionEmployees: record "Union Employees";

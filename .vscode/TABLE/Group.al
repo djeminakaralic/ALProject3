@@ -23,6 +23,35 @@ table 50082 Group
                             Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description")
       UNTIL Dep.NEXT = 0;
 
+
+
+                //promjena šifre odjela
+
+                if (xRec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Group Code", '%1', xRec.Code);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+                            HeadOrg."Group Code" := Rec.Code;
+
+                            HeadOrg.Modify();
+
+
+                            if (HeadOrg."Group Description" <> '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(Rec.Code, HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
+
                 Dep.Reset();
                 Dep.SetFilter(Code, '%1', Rec.Code);
                 Dep.SetFilter(Description, '%1', rec.Description);
@@ -76,7 +105,16 @@ table 50082 Group
                     Dep.Insert();
 
                 end;
+
+                Dep.Reset();
+                Dep.SetFilter(Code, '%1', xRec.Code);
+                Dep.SetFilter(Description, '%1', rec.Description);
+                Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if Dep.FindFirst() then
+                    Dep.Delete();
+
             end;
+
 
 
         }
@@ -161,6 +199,31 @@ table 50082 Group
                         END;
                     UNTIL Dep.NEXT = 0;
 
+                //promjena šifre odjela
+
+                if (Rec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+                    HeadOrg.Reset();
+                    HeadOrg.SetFilter("Group Code", '%1', rec.Code);
+                    HeadOrg.SETFILTER("Group Description", '%1', xRec.Description);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+
+
+
+                            if (HeadOrg."Group Description" <> '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", Rec.Description,
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
+
                 Dep.Reset();
                 Dep.SetFilter(Code, '%1', Rec.Code);
                 Dep.SetFilter(Description, '%1', rec.Description);
@@ -214,6 +277,13 @@ table 50082 Group
                     Dep.Insert();
 
                 end;
+
+                Dep.Reset();
+                Dep.SetFilter(Code, '%1', Rec.Code);
+                Dep.SetFilter(Description, '%1', xRec.Description);
+                Dep.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if Dep.FindFirst() then
+                    Dep.Delete();
 
 
             end;
@@ -348,6 +418,57 @@ table 50082 Group
                     Dep.Insert();
 
                 end;
+
+                if (Rec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Department Code", '%1', Rec.Code);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+
+                            DepartmentCatF.Reset();
+                            DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
+                            DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
+                            if DepartmentCatF.FindFirst() then begin
+                                HeadOrg.Validate("Department Category", DepartmentCatF.Code);
+                                SectorF.Reset();
+                                SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                                SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
+                                if SectorF.FindFirst() then begin
+                                    HeadOrg.Validate("Sector", SectorF.Code);
+                                    HeadOrg.Validate("Sector  Description", SectorF.Description);
+                                end
+
+
+                                else begin
+
+                                    HeadOrg.Validate("Sector", '');
+                                    HeadOrg.Validate("Sector  Description", '');
+                                end;
+                            end
+                            else begin
+                                HeadOrg.Validate("Sector", '');
+                                HeadOrg.Validate("Sector  Description", '');
+                                HeadOrg.Validate("Department Category", '');
+
+                            end;
+                            HeadOrg.Modify();
+
+
+
+                            if (HeadOrg."Group Description" <> '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(HeadOrg."Department Code", HeadOrg."ORG Shema", Rec."Belongs to Department Category", Rec.Description,
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
             end;
 
 
@@ -424,6 +545,8 @@ table 50082 Group
         NoSeriesMgt: Codeunit NoSeriesExtented;
         Dep: Record "Department";
         DepartmentTemp: Record "Department";
+        HeadOrg: Record "Head Of's";
+        HeadU: Record "Head Of's";
 
     local procedure UpdateDatetime()
     begin
