@@ -40,7 +40,7 @@ table 50033 "Training Catalogue"
         }
         field(7; Year; Integer)
         {
-            Caption = 'Year';
+            Caption = 'Godina';
         }
 
     }

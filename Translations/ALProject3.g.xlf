@@ -34733,6 +34733,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Employee Full Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 946267734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Ime i prezime prvog nadređenog</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Manager1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 3328145179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Ime i prezime drugog nadređenog</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Manager2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 4200688530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Nacionalnost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Nationallity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2212959633 - Action 3057006853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import/Export Bank Statement</source>
           <note from="Developer" annotates="general" priority="2"></note>

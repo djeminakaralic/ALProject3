@@ -35,21 +35,24 @@ pageextension 50149 EmployeeList extends "Employee List"
             field(Sector; Sector) { }
             field("Sector Description"; "Sector Description") { }
             field("Department Name"; "Department Name") { }
-            field("Position ID"; "Position ID") { }
+            //field("Position Code"; "Position Code") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
             field(Manager1; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
             {
+                Caption = 'Ime i prezime prvog nadređenog';
 
 
 
             }
             field(Manager2; EmployeeContractLedger."Manager 2 Last Name" + ' ' + EmployeeContractLedger."Manager 2 First Name")
             {
+                Caption = 'Ime i prezime drugog nadređenog';
 
 
 
             }
+
 
 
 
@@ -66,8 +69,8 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Position Coefficient for Wage"; "Position Coefficient for Wage") { }
             field("Starting Date"; "Starting Date") { }
             field("Ending Date"; "Ending Date") { }
-            field("Contract type"; "Contract type") { }
-            field("Contract Termination Date"; "Contract Termination Date") { }
+            //field("Contract type"; "Contract type") { }
+            // field("Contract Termination Date"; "Contract Termination Date") { }
             field("Education Level"; "Education Level") { }
             field(Voocation; Voocation) { }
             field("Vocation Description"; "Vocation Description") { }
@@ -75,6 +78,11 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Default Dimension Name"; "Default Dimension Name") { }
 
         }
+        modify("Job Title")
+        {
+            Visible = false;
+        }
+
         /*addafter("Job Title")
         {
 
@@ -216,9 +224,12 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Tax Deduction Amount"; "Tax Deduction Amount") { }
             field("Additional Tax"; "Additional Tax") { }
             field("Wage Posting Group"; "Wage Posting Group") { }
-            field("Employee Posting Group"; "Employee Posting Group") { }
+            // field("Employee Posting Group"; "Employee Posting Group") { }
             field("Chronic Disease"; "Chronic Disease") { }
-            field(Nationallity; Nationallity) { }
+            field(Nationallity; Nationallity)
+            {
+                Caption = 'Nacionalnost';
+            }
             field("Passport No."; "Passport No.") { }
             field("Country/Region Code CIPS"; "Country/Region Code CIPS") { }
             field("Citizenship 1"; "Citizenship 1") { }
