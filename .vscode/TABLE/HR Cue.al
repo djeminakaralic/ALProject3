@@ -661,14 +661,26 @@ table 50085 "HR Cue"
 
 
         }
-        /*field(50090; "Training Catalogue"; Integer)
+        field(50090; DateCatalogue; Date)
+        {
+            FieldClass = FlowFilter;
+        }
+        field(50091; "Training Catalogue"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Training Catalogue" WHERE("End date of certificate" = field(DateTraining)));
+            CalcFormula = Count("Training Catalogue");
             Caption = 'Trainings';
 
 
-        }*/
+        }
+        field(50092; "Training Entry"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Training Time Entry" where("Start date" = field(DateCatalogue)));
+            Caption = 'Trainings';
+
+
+        }
     }
 
     keys

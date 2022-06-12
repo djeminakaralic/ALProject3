@@ -7873,6 +7873,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Contract in conflict - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 470349803 - Field 1684254817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DateCatalogue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field DateCatalogue - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 470349803 - Field 2375703016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DateFIlter</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8172,6 +8177,16 @@
           <source>Trainings</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Training - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470349803 - Field 3275839077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trainings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Training Catalogue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470349803 - Field 1513740504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trainings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Training Entry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 50853252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfers</source>
@@ -15357,6 +15372,11 @@
           <source>Vrsta Treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field TypeOF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3275839077 - Field 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2852338211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Evidencija održavanja obuka/edukacija</source>
@@ -34713,16 +34733,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Employee Full Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Control 2761249854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Superior 1</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Management1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Control 3328145179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Superior 2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Manager2 - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2212959633 - Action 3057006853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import/Export Bank Statement</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37019,12 +37029,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field StatusExt - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 326041280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
-          <source>Superior1</source>
+          <source>Superior 1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Superior1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 4017825829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
-          <source>Superior1Name</source>
+          <source>Superior 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Superior1Name - Property Caption</note>
         </trans-unit>
