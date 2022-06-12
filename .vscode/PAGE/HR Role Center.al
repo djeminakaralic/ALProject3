@@ -266,6 +266,7 @@ page 50003 "HR Role Center"
                     Caption = 'Employees Import';
                     Image = Dimensions;
                     RunObject = xmlport "Employees Import";
+                    Visible = false;
                 }
 
                 action("ORG Shema")

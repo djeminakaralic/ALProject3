@@ -11,6 +11,38 @@ table 50055 "ECL systematization"
             AutoIncrement = false;
             Caption = 'Entry  No.';
         }
+        field(594134; "Position complexity"; Decimal)
+
+        {
+            Caption = 'Position complexity';
+        }
+        field(594135; "Position Responsibility"; Decimal)
+
+        {
+            Caption = 'Position Responsibility';
+        }
+        field(594136; "Workplace conditions"; Decimal)
+        {
+            Caption = 'Workplace conditions';
+        }
+        field(594137; "School"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Position Minimal Education" where("Position Code" = field("Position Code"), "Position Name" = field("Position Description"), "Org Shema" = field("Org. Structure")));
+            Caption = 'School';
+            Editable = false;
+
+        }
+        field(5941378; "Employee Education Level"; enum School)
+        {
+            Caption = 'Employee Education Level';
+
+
+        }
+        field(594133; "Position Coefficient for Wage"; Decimal)
+        {
+            Caption = 'Position Coefficient for Wage';
+        }
         field(2; Description; Text[250])
         {
             Caption = 'Description';

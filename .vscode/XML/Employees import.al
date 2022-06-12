@@ -129,9 +129,9 @@ xmlport 50004 "Employees Import"
                         EG.Rename('16');
                     EG."First Name" := CopyStr(EmployeeU."First Name", 1, 1) + LowerCase(copystr(EmployeeU."First Name", 2, StrLen(EmployeeU."First Name")));
                     EG."Last Name" := CopyStr(EmployeeU."Last Name", 1, 1) + LowerCase(copystr(EmployeeU."Last Name", 2, StrLen(EmployeeU."Last Name")));
-                    Evaluate(Redoslijed, '16');
-                    EG.Order := Redoslijed;
-                    EG.Modify();
+                    /*  Evaluate(Redoslijed, '16');
+                      EG.Order := Redoslijed;
+                      EG.Modify();*/
 
                 end
                 else begin

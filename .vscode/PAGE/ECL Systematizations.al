@@ -16,6 +16,7 @@ page 50144 "ECL Systematizations"
                 field("Internal ID"; "Internal ID")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Employee No."; "Employee No.")
                 {
@@ -51,10 +52,37 @@ page 50144 "ECL Systematizations"
                         CurrPage.UPDATE;
                     end;
                 }
+
                 field("Position Code"; "Position Code")
                 {
                     Applicationarea = all;
                 }
+                field("Position complexity"; "Position complexity")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Position Responsibility"; "Position Responsibility")
+                {
+                    ApplicationArea = all;
+                }
+                field("Workplace conditions"; "Workplace conditions")
+                {
+                    ApplicationArea = all;
+                }
+                field("Position Coefficient for Wage"; "Position Coefficient for Wage")
+                {
+                    ApplicationArea = all;
+                }
+                field(School; School)
+                {
+                    ApplicationArea = all;
+                }
+                field("Employee Education Level"; "Employee Education Level")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Will Be Changed Later"; "Will Be Changed Later")
                 {
                     Applicationarea = all;
@@ -67,18 +95,22 @@ page 50144 "ECL Systematizations"
                 field("Branch Agency"; "Branch Agency")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field(IS; IS)
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("IS Date From"; "IS Date From")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("IS Date To"; "IS Date To")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Org Unit Name"; "Org Unit Name")
                 {
@@ -87,6 +119,7 @@ page 50144 "ECL Systematizations"
                 field("GF of work Description"; "GF of work Description")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Phisical Department Desc"; "Phisical Department Desc")
                 {
@@ -95,22 +128,27 @@ page 50144 "ECL Systematizations"
                 field("Regionalni Head Office"; "Regionalni Head Office")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Residence/Network"; "Residence/Network")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field(Region; Region)
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Team Description"; "Team Description")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field(Team; Team)
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Group Description"; "Group Description")
                 {
@@ -156,6 +194,7 @@ page 50144 "ECL Systematizations"
                 field("Order By Managment"; "Order By Managment")
                 {
                     Applicationarea = all;
+                    Visible = false;
 
                 }
                 field(Brutto; Brutto)
@@ -180,14 +219,12 @@ page 50144 "ECL Systematizations"
                 trigger OnAction()
                 begin
 
-                    Response := CONFIRM(Txt003);
-                    IF Response THEN BEGIN
-                        CurrPage.SAVERECORD;
 
-                        StepNext.RUN;
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
-                    END;
+                    CurrPage.SAVERECORD;
+
+                    StepNext.RUN;
+                    CurrPage.CLOSE();
+
                 end;
             }
             action(Previous)
@@ -200,12 +237,10 @@ page 50144 "ECL Systematizations"
                 trigger OnAction()
                 begin
 
-                    Response := CONFIRM(Txt006);
-                    IF Response THEN BEGIN
-                        PreviousStep.RUN;
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
-                    END;
+
+                    PreviousStep.RUN;
+                    CurrPage.CLOSE();
+
                 end;
             }
             action(ShowRecord)
@@ -216,6 +251,7 @@ page 50144 "ECL Systematizations"
                 PromotedIsBig = true;
                 Applicationarea = all;
                 RunObject = Report "Show record";
+                Visible = false;
             }
             action(UpdateDep)
             {
@@ -224,6 +260,7 @@ page 50144 "ECL Systematizations"
                 PromotedIsBig = true;
                 RunObject = Report "Update dep";
                 Applicationarea = all;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -237,6 +274,7 @@ page 50144 "ECL Systematizations"
                 Promoted = true;
                 PromotedIsBig = true;
                 Applicationarea = all;
+                Visible = false;
                 RunObject = Report "Update Head Of table";
             }
         }

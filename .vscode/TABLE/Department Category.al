@@ -27,6 +27,31 @@ table 50040 "Department Category"
                             Dep.RENAME(Rec.Code, Dep."ORG Shema", Dep."Team Description", Dep."Department Categ.  Description", Dep."Group Description", Rec.Description)
                  UNTIL Dep.NEXT = 0;
 
+                //promjena šifre odjela
+                if (xRec.Code <> '') and (Rec."Sector Belongs" <> '') then begin
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Department Category", '%1', xRec.Code);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+                            HeadOrg."Department Category" := Rec.Code;
+
+                            HeadOrg.Modify();
+
+
+                            if (HeadOrg."Department Categ.  Description" <> '') and (HeadOrg."Group Description" = '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(Rec.Code, HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+
+                end;
 
                 /*  if xRec."Department Type"=xRec."Department Type"::"Main office" then
                   "Department Type":="Department Type"::"Main office"
@@ -145,6 +170,32 @@ table 50040 "Department Category"
                         END;
                     UNTIL Dep.NEXT = 0;
 
+
+
+                //promjena naziva odjela
+
+                if (Rec.Code <> '') and (Rec."Sector Belongs" <> '') then begin
+
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Department Categ.  Description", '%1', xRec.Description);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+
+
+
+                            if (HeadOrg."Department Categ.  Description" <> '') and (HeadOrg."Group Description" = '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(HeadOrg."Department Code", HeadOrg."ORG Shema", Rec.Description, HeadOrg."Group Description",
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
 
                 Dep.Reset();
                 Dep.SetFilter(Code, '%1', Rec.Code);
@@ -351,6 +402,29 @@ table 50040 "Department Category"
                     Dep.Insert();
 
                 end;
+                //sada
+
+                if (xRec.Code <> '') and (Rec."Sector Belongs" <> '') then begin
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Department Code", '%1', Rec.Code);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FindFirst() then begin
+                        SectorF.Reset();
+                        SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                        SectorF.SetFilter(Description, Rec."Sector Belongs");
+                        if SectorF.FindFirst() then begin
+
+                            HeadOrg.Validate("Sector  Description", SectorF.Description);
+                            HeadOrg.Modify();
+                        end;
+                    end;
+
+
+
+
+                end;
+
+
             end;
 
         }
@@ -424,6 +498,8 @@ table 50040 "Department Category"
 
     var
         Text000: Label '%1 must be higher than %2.';
+        HeadOrg: Record "Head Of's";
+        HeadU: Record "Head Of's";
         SectorF: Record Sector;
         Text001: Label 'There is redundancy in the Shop Calendar. Actual work shift %1 from : %2 to %3. Conflicting work shift %4 from : %5 to %6.';
         ShopCalendar: Record "Department Category";

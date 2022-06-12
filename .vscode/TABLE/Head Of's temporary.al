@@ -305,7 +305,7 @@ table 50083 "Head Of's temporary"
 
     keys
     {
-        key(Key1; "Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description")
+        key(Key1; "Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code")
         {
         }
     }

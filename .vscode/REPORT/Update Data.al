@@ -5,12 +5,49 @@ report 50041 "Update Data"
 
     dataset
     {
-        dataitem(DataItemName; "Position Menu")
+        dataitem(DataItemName; "Employee Contract Ledger")
         {
             trigger OnAfterGetRecord()
             begin
 
-                SifraPO := DataItemName.Code;
+                /*   DataItemName.Active := true;
+                   DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
+                   DataItemName.Address := '';
+                   DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
+                   DataItemName.Modify();*/
+
+                /*   PosM.Reset();
+                   PosM.SetFilter(Description, '%1', DataItemName.Description);
+                   PosM.SetFilter("Department Code", '%1', DataItemName."Department Code");
+                   if PosM.FindFirst() then begin
+                       DataItemName."Management Level" := PosM."Management Level";
+                       DataItemName.Modify();
+                       HeadOf.Reset();
+                       HeadOf.SetFilter("Position Code", '%1', PosM.Code);
+                       HeadOf.SetFilter("Department Code", '%1', PosM."Department Code");
+                       if HeadOf.FindFirst() then begin
+                           if HeadOfOrg.Get(HeadOf."Department Code", HeadOf."ORG Shema", HeadOf."Department Categ.  Description",
+                           HeadOf."Group Description", HeadOf."Team Description", HeadOf."Management Level", HeadOf."Position Code")
+                       then
+                               HeadOfOrg.Rename(HeadOf."Department Code", HeadOf."ORG Shema", HeadOf."Department Categ.  Description",
+                                   HeadOf."Group Description", HeadOf."Team Description", PosM."Management Level", HeadOf."Position Code")
+                       end;
+
+                   end;
+   */
+                DataItemName.Validate("Position Description", DataItemName."Position Description");
+                DataItemName.Modify();
+
+
+                /*Emp.Reset();
+                Emp.SetFilter("No.", '%1', DataItemName."Employee No.");
+                if Emp.FindFirst() then
+                    Emp."Hours In Day" := 8;
+                Emp.Modify();*/
+            end;
+
+
+            /*    SifraPO := DataItemName.Code;
                 if StrPos(SifraPO, 'RM') <> 0 then
                     exit;
                 if PosM.Get(DataItemName.Code, DataItemName.Description, DataItemName."Department Code", DataItemName."Org. Structure")
@@ -46,11 +83,11 @@ report 50041 "Update Data"
                             PosR.Rename(PosM.Code, Pos."Position ID", pos."Org. Structure", Pos.Description);
                     until Pos.Next() = 0;
             end;
+        }*/
+
         }
 
     }
-
-
 
 
     var
@@ -61,6 +98,8 @@ report 50041 "Update Data"
         HeadOf: Record "Head Of's";
         HeadOfOrg: Record "Head Of's";
         Pos: Record Position;
+        Emp: Record Employee;
         PosR: Record Position;
+        alt: Record "Alternative Address";
 
 }

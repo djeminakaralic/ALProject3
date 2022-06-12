@@ -33,6 +33,7 @@ page 50131 "Department temporary sist"
                 field("Residence/Network"; "Residence/Network")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(City; City)
                 {
@@ -79,93 +80,115 @@ page 50131 "Department temporary sist"
                 field("Team Code"; "Team Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Team Description"; "Team Description")
                 {
                     Editable = true;
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Timesheets administrator"; "Timesheets administrator")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Timesheets administrator 2"; "Timesheets administrator 2")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Timesheets Manager"; "Timesheets Manager")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Cnfidential Clerk 1"; "Cnfidential Clerk 1")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Confidential Clerk 1 Full Name"; "Confidential Clerk 1 Full Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Confidential Clerk 1 Position"; "Confidential Clerk 1 Position")
                 {
                     Editable = false;
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Cnfidential Clerk 2"; "Cnfidential Clerk 2")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Confidential Clerk 2 Full Name"; "Confidential Clerk 2 Full Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Confidential Clerk 2 Position"; "Confidential Clerk 2 Position")
                 {
                     Editable = false;
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Start Date"; "Start Date")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1"; "Signatory 1")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 Full Name"; "Signatory 1 Full Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 Position"; "Signatory 1 Position")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2"; "Signatory 2")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2 Full Name"; "Signatory 2 Full Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2 Position"; "Signatory 2 Position")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 Contr With Benef"; "Signatory 1 Contr With Benef")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 1 With Benef Name"; "Signatory 1 With Benef Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2 Contr With Benef"; "Signatory 2 Contr With Benef")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Signatory 2 With Benef Name"; "Signatory 2 With Benef Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
@@ -211,7 +234,7 @@ page 50131 "Department temporary sist"
                         CurrPage.SAVERECORD;
                         PreviousStep.RUN;
                         CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
+                        // CurrPage.EDITABLE(FALSE);
                     END;
                 end;
             }
@@ -230,7 +253,7 @@ page 50131 "Department temporary sist"
         SETFILTER(Status,'%1',Status::Active);
         SETRANGE("Employment Date", CALCDATE('-'+ FORMAT(HRsetup."New employee period"),TODAY),TODAY);
         SETFILTER(Testing,'%1',TRUE);*/
-        CurrPage.EDITABLE(FALSE);
+        //   CurrPage.EDITABLE(FALSE);
 
     end;
 

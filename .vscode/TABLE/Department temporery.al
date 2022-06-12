@@ -262,8 +262,8 @@ table 50242 "Department temporary"
         {
             Caption = 'Department';
             Editable = true;
-            TableRelation = "Department Category temporary".Code WHERE("Org Shema" = FIELD("ORG Shema"),
-                                                                        Description = FIELD("Department Categ.  Description"));
+            TableRelation = "Department Category temporary".Code WHERE("Org Shema" = FIELD("ORG Shema")
+                                                                        );
 
             trigger OnValidate()
             begin
@@ -391,7 +391,7 @@ table 50242 "Department temporary"
         field(11; "Sector  Description"; Text[130])
         {
             Caption = 'Sector Description';
-            Editable = false;
+            Editable = true;
             TableRelation = "Sector temporary".Description WHERE("Org Shema" = FIELD("ORG Shema"),
                                                                   "Code" = FIELD(Sector));
         }
@@ -528,11 +528,10 @@ table 50242 "Department temporary"
             Caption = 'ORG Part';
             TableRelation = "ORG Dijelovi";
         }
-        field(21; "Department Type"; Option)
+        field(21; "Department Type"; Enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(22; Amount; Decimal)
         {

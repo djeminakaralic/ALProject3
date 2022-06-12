@@ -13,95 +13,124 @@ table 50181 "Group temporary"
 
             trigger OnValidate()
             begin
-                /*Dep.SETFILTER(Code,'%1',xRec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description")
-                    THEN
-                    Dep.RENAME(Rec.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description")
-                      UNTIL Dep.NEXT=0;*/
-                /* OsPreparation.RESET;
-            OsPreparation.SETFILTER(Status,'%1',2);
-            IF OsPreparation.FINDLAST THEN BEGIN
-            "Org Shema":=OsPreparation.Code;
-            END
-            ELSE BEGIN
-            "Org Shema":='';
-            END;
-            "Department Type":=2;
-            SectorCheckLength.RESET;
-            IF SectorCheckLength.FINDSET THEN REPEAT
-            IF STRLEN(Rec.Code)<STRLEN(SectorCheckLength.Code) THEN ERROR(Text002);
-            UNTIL SectorCheckLength.NEXT=0;
-                   IF Code<>'' THEN BEGIN
-                   IF Description='' THEN BEGIN
-                  DepartmentTemp.INIT;
-                  DepartmentTemp.VALIDATE(Code,Code);
-                  String:=Rec.Code;
-                  //IF String[STRLEN(Rec.Code)]='.' THEN
-                  DepartmentTemp.Code:=Rec.Code;
-                  DepartmentTemp."Group Code":=Rec.Code;
-                  DepartmentTemp."Department Type":=2;
-                  DepartmentTemp.INSERT;
-                  END
-                  ELSE BEGIN
-                  DepartmentTemp.SETFILTER("Group Code",'%1',xRec.Code);
-                  DepartmentTemp.SETFILTER("Group Description",'%1',Description);
-                  DepartmentTemp.SETFILTER("Department Type",'%1',2);
-                  IF DepartmentTemp.FINDFIRST THEN BEGIN
-                  IF DepartmentTemp1.GET(DepartmentTemp.Code,DepartmentTemp."ORG Shema",DepartmentTemp."Team Description",DepartmentTemp."Department Categ.  Description",DepartmentTemp."Group Description",DepartmentTemp.Description) THEN BEGIN
-                 // IF String[STRLEN(Rec.Code)]='.' THEN BEGIN
-                  DepartmentTemp1.RENAME(Rec.Code,"Org Shema",DepartmentTemp."Team Description",Rec."Belongs to Department Category",Rec.Description,Rec.Description);
-                  END;
-                 { ELSE BEGIN
-                  String:=FORMAT(Rec.Code);
-                     LengthString:=STRLEN(String);
-                     Brojac:=0;
-                     FOR I:=1 TO LengthString DO BEGIN
-                     IF String[I]='.'THEN BEGIN
-                        Brojac:=Brojac+1;
-                        IF Brojac=3 THEN
-                        CodeDifferent:=I;
-                           END;
-                            END;
-                  DepartmentTemp1.RENAME(COPYSTR(Rec.Code,1,CodeDifferent),"Org Shema",DepartmentTemp."Team Description",Rec."Belongs to Department Category",Rec.Description,'Glavna filijala');
-                         END;}
-                  SectorFind.RESET;
-                   String:=FORMAT(Rec.Code);
-                     LengthString:=STRLEN(String);
-                     Brojac:=0;
-                     FOR I:=1 TO LengthString DO BEGIN
-                     IF String[I]='.'THEN BEGIN
-                        Brojac:=Brojac+1;
 
-                                            IF Brojac=2 THEN
-                                              SectorFind1:=I;
-
-                                     END;
-                                                 END;
-                                                 SectorFind.SETFILTER(Code,'%1',COPYSTR(Rec.Code,1,SectorFind1));
-                                                 IF SectorFind.FINDFIRST THEN BEGIN
-
-                  DepartmentTemp1.Sector:=SectorFind.Code;
-                  DepartmentTemp1."Sector  Description":=SectorFind.Description;
-                  DepartmentTemp1."Sector Identity":=SectorFind.Identity;
-                  DepartmentTemp1."Department Idenity":=Rec.Identity;
-                  FindDep.RESET;
-                  FindDep.SETFILTER(Description,'%1',Rec."Belongs to Department Category");
-                  IF FindDep.FINDFIRST THEN BEGIN
-                  DepartmentTemp1."Department Category":=FindDep.Code;
-                  "Dep Cat Identity":=FindDep.Identity;
-                  END;
-                  END;
-
-                  DepartmentTemp1.MODIFY;
-                  END;
+                OsPreparation.RESET;
+                OsPreparation.SETFILTER(Status, '%1', 2);
+                IF OsPreparation.FINDLAST THEN BEGIN
+                    "Org Shema" := OsPreparation.Code;
+                END
+                ELSE BEGIN
+                    "Org Shema" := '';
                 END;
-            END;
-             //END;
-             */
+
+                if (xRec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+                    DepT.Reset();
+                    DepT.SETFILTER(Code, '%1', xRec.Code);
+                    DepT.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF DepT.FINDSET THEN
+                        REPEAT
+                            IF DepT.GET(DepT.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description")
+                              THEN
+                                DepT.RENAME(Rec.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description");
+                            Dept."Department Type" := DepT."Department Type"::Group;
+                            DepT.Modify();
+
+                        UNTIL DepT.NEXT = 0;
+                end;
+
+
+                //promjena šifre odjela
+
+                if (xRec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Group Code", '%1', xRec.Code);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+                            HeadOrg."Group Code" := Rec.Code;
+
+                            HeadOrg.Modify();
+
+
+                            if (HeadOrg."Group Description" <> '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(Rec.Code, HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
+
+                DepT.Reset();
+                DepT.SetFilter(Code, '%1', Rec.Code);
+                DepT.SetFilter(Description, '%1', rec.Description);
+                DepT.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if not DepT.FindFirst() then begin
+
+                    DepT.Init();
+                    DepT.Validate("ORG Shema", Rec."Org Shema");
+                    DepT.validate(Code, Rec.Code);
+                    DepT.validate(Description, Rec.Description);
+                    DepT."Group Description" := Rec.Description;
+                    DepT."Group Code" := rec.Code;
+
+                    DepartmentCatF.Reset();
+                    DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
+                    DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
+                    if DepartmentCatF.FindFirst() then begin
+
+                        DepT.Validate("Department Categ.  Description", DepartmentCatF.Description);
+                        DepT.Validate("Department Category", DepartmentCatF.Code);
+                        SectorF.Reset();
+                        SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                        SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
+                        if SectorF.FindFirst() then begin
+                            DepT.Validate("Sector Code", SectorF.Code);
+                            DepT.Validate(Sector, SectorF.Code);
+                            DepT.Validate("Sector  Description", SectorF.Description);
+                        end
+
+
+                        else begin
+
+                            DepT.Validate("Sector Code", '');
+                            DepT.Validate(Sector, '');
+                            DepT.Validate("Sector  Description", '');
+                        end;
+
+
+                    end
+                    else begin
+                        DepT.Validate("Department Categ.  Description", '');
+                        DepT.Validate("Department Category", '');
+                        DepT.Validate("Sector Code", '');
+                        DepT.Validate(Sector, '');
+                        DepT.Validate("Sector  Description", '');
+
+                    end;
+
+
+                    DepT."Department Type" := Rec."Department Type";
+                    Dept."Department Type" := DepT."Department Type"::Group;
+
+                    DepT.Insert();
+
+                end;
+
+                DepT.Reset();
+                DepT.SetFilter(Code, '%1', xRec.Code);
+                DepT.SetFilter(Description, '%1', rec.Description);
+                DepT.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if DepT.FindFirst() then
+                    DepT.Delete();
 
             end;
+
         }
         field(2; Date; Date)
         {
@@ -171,137 +200,114 @@ table 50181 "Group temporary"
 
             trigger OnValidate()
             begin
-                /*Dep.SETFILTER(Code,'%1',Rec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",xRec.Description)
-                    THEN BEGIN
-                    Dep.RENAME(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",Rec.Description) ;
-                      //Dep.Description:=Rec.Description;
-                     // Dep.MODIFY;
-                      END;
-                      UNTIL Dep.NEXT=0;*/
-                /*OsPreparation.RESET;
-               OsPreparation.SETFILTER(Status,'%1',2);
-               IF OsPreparation.FINDLAST THEN BEGIN
-               "Org Shema":=OsPreparation.Code;
-               END
-               ELSE BEGIN
-               "Org Shema":='';
-               END;
-               "Department Type":=2;
-                      IF Rec.Description<>'' THEN BEGIN
-                                 IF Rec.Code<>'' THEN BEGIN
-                     DepartmentTemp.SETFILTER("Group Code",'%1',Rec.Code);
-                     DepartmentTemp.SETFILTER("Department Type",'%1',2);
+                DepT.Reset();
+                DepT.SETFILTER(Code, '%1', Rec.Code);
+                DepT.SETFILTER("ORG Shema", '%1', "Org Shema");
+                IF DepT.FINDSET THEN
+                    REPEAT
+                        IF DepT.GET(DepT.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description", xRec.Description)
+                          THEN BEGIN
+                            DepT.RENAME(DepT.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description", Rec.Description);
+                            //DepT.Description:=Rec.Description;
+                            // DepT.MODIFY;
+                            Dept."Department Type" := DepT."Department Type"::Group;
+                            DepT.Modify();
+                        END;
+                    UNTIL DepT.NEXT = 0;
+
+                //promjena šifre odjela
+
+                if (Rec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+                    HeadOrg.Reset();
+                    HeadOrg.SetFilter("Group Code", '%1', rec.Code);
+                    HeadOrg.SETFILTER("Group Description", '%1', xRec.Description);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
 
 
-                          IF DepartmentTemp.FIND('-') THEN BEGIN
-                          {IF STRPOS(Description,'Filijala')<>0 THEN BEGIN
-                     NewDescription:='Filijala';
-                     END
-                     ELSE BEGIN }
-                     NewDescription:=Description;
-                    // END;
-                     String:=FORMAT(Rec.Code);
-                        LengthString:=STRLEN(String);
-                        Brojac:=0;
-                     TheLastCharacter:=STRLEN(Rec.Code);
-                     CheckPoint:=Rec.Code;
-                 // IF CheckPoint[TheLastCharacter]<>'.' THEN BEGIN
-                  Brojac:=0;
-                        FOR I:=1 TO STRLEN(Rec.Code) DO BEGIN
-                        IF String[I]='.'THEN BEGIN
-                           Brojac:=Brojac+1;
-                                    IF Brojac=2 THEN BEGIN
-                                                 SectorFind1:=I;
-                                                 END;
-                                      END;
-                                        END;
+
+                            if (HeadOrg."Group Description" <> '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", Rec.Description,
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
+
+                DepT.Reset();
+                DepT.SetFilter(Code, '%1', Rec.Code);
+                DepT.SetFilter(Description, '%1', rec.Description);
+                DepT.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if not DepT.FindFirst() then begin
+
+                    DepT.Init();
+                    DepT.Validate("ORG Shema", Rec."Org Shema");
+                    DepT.validate(Code, Rec.Code);
+                    DepT.validate(Description, Rec.Description);
+                    DepT."Group Description" := Rec.Description;
+                    DepT."Group Code" := rec.Code;
+
+                    DepartmentCatF.Reset();
+                    DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
+                    DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
+                    if DepartmentCatF.FindFirst() then begin
+
+                        DepT.Validate("Department Categ.  Description", DepartmentCatF.Description);
+                        DepT.Validate("Department Category", DepartmentCatF.Code);
+                        SectorF.Reset();
+                        SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                        SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
+                        if SectorF.FindFirst() then begin
+                            DepT.Validate("Sector Code", SectorF.Code);
+                            DepT.Validate(Sector, SectorF.Code);
+                            DepT.Validate("Sector  Description", SectorF.Description);
+                        end
 
 
-                     IF DepartmentTemp1.GET(DepartmentTemp.Code,DepartmentTemp."ORG Shema",'','',DepartmentTemp."Group Description",DepartmentTemp.Description) THEN
-                     DepartmentTemp1.RENAME(Rec.Code,"Org Shema",'',Rec."Belongs to Department Category",Rec.Description,NewDescription);
+                        else begin
 
-                     {
-                     ELSE BEGIN
-                     IF DepartmentTemp1.GET(DepartmentTemp.Code,DepartmentTemp."ORG Shema",'','',DepartmentTemp."Group Description",DepartmentTemp.Description) THEN
-                     DepartmentTemp1.RENAME(Code,"Org Shema",'',Rec."Belongs to Department Category",Description,NewDescription);
-                     END;}
-                    SectorFind.RESET;
-                      String:=FORMAT(Rec.Code);
-                        LengthString:=STRLEN(String);
-                        Brojac:=0;
-                        FOR I:=1 TO LengthString DO BEGIN
-                        IF String[I]='.'THEN BEGIN
-                           Brojac:=Brojac+1;
+                            DepT.Validate("Sector Code", '');
+                            DepT.Validate(Sector, '');
+                            DepT.Validate("Sector  Description", '');
+                        end;
 
-                                               IF Brojac=2 THEN BEGIN
-                                                 SectorFind1:=I;
-                                                 END;
-                                        END;
-                                                    END;
-                                                    SectorFind.SETFILTER(Code,'%1',COPYSTR(Rec.Code,1,SectorFind1));
-                                                    IF SectorFind.FINDFIRST THEN BEGIN
 
-                     DepartmentTemp1.Sector:=SectorFind.Code;
-                     DepartmentTemp1."Sector  Description":=SectorFind.Description;
-                     DepartmentTemp1."Sector Identity":=SectorFind.Identity;
-                       "Dep Cat Identity":=FindDep.Identity;
-                     FindDep.RESET;
-                     FindDep.SETFILTER(Description,'%1',"Belongs to Department Category");
-                     IF FindDep.FINDFIRST THEN BEGIN
-                     DepartmentTemp1."Department Category":=FindDep.Code;
-                     DepartmentTemp1."Department Idenity":=FindDep.Identity;
-                       "Dep Cat Identity":=FindDep.Identity;
-                     END;
-                      END;
+                    end
+                    else begin
+                        DepT.Validate("Department Categ.  Description", '');
+                        DepT.Validate("Department Category", '');
+                        DepT.Validate("Sector Code", '');
+                        DepT.Validate(Sector, '');
+                        DepT.Validate("Sector  Description", '');
 
-                     DepartmentTemp1.MODIFY;
+                    end;
 
-                               END
-                     ELSE BEGIN
-                     DepartmentTemp1.INIT;
-                     {IF STRPOS(Description,'Filijala')=0 THEN BEGIN
-                     DepartmentTemp1.Description:='Filijala';
-                     END
-                     ELSE BEGIN
-                     DepartmentTemp1.Description:=Description;
-                     END;}
-                      DepartmentTemp1.Description:=Rec.Description;
-                      SectorFind.RESET;
-                      String:=FORMAT(Rec.Code);
-                        LengthString:=STRLEN(String);
-                        Brojac:=0;
-                        FOR I:=1 TO LengthString DO BEGIN
-                        IF String[I]='.'THEN BEGIN
-                           Brojac:=Brojac+1;
 
-                                               IF Brojac=2 THEN BEGIN
-                                                 SectorFind1:=I;
-                                                 END;
-                                        END;
-                                                    END;
-                                                    SectorFind.SETFILTER(Code,'%1',COPYSTR(Rec.Code,1,SectorFind1));
-                                                    IF SectorFind.FINDFIRST THEN BEGIN
-                    DepartmentTemp1.Sector:=SectorFind.Code;
-                     DepartmentTemp1."Sector  Description":=SectorFind.Description;
-                     DepartmentTemp1."Sector Identity":=SectorFind.Identity;
-                     FindDep.RESET;
-                     FindDep.SETFILTER(Description,'%1',"Belongs to Department Category");
-                     IF FindDep.FINDFIRST THEN BEGIN
-                     DepartmentTemp1."Department Category":=FindDep.Code;
-                     DepartmentTemp1."Department Idenity":=FindDep.Identity;
-                       "Dep Cat Identity":=FindDep.Identity;
-                     END;
-                      END;
-                     DepartmentTemp1.INSERT;
-                     END;
-                  END;
-               END;
-                */
+                    DepT."Department Type" := Rec."Department Type";
+                    Dept."Department Type" := DepT."Department Type"::Group;
+
+                    DepT.Insert();
+
+                end;
+
+                DepT.Reset();
+                DepT.SetFilter(Code, '%1', Rec.Code);
+                DepT.SetFilter(Description, '%1', xRec.Description);
+                DepT.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if DepT.FindFirst() then
+                    DepT.Delete();
+
 
             end;
+
+
+
         }
         field(50000; "Org Shema"; Code[10])
         {
@@ -321,15 +327,15 @@ table 50181 "Group temporary"
             trigger OnValidate()
             begin
                 /*IF Rec."Changing Department" THEN BEGIN
-                  Dep.SETFILTER("ORG Shema",'%1',Rec."ORG Shema");
-                  Dep.SETFILTER(Code,'%1',Rec.Code);
-                  Dep.SETFILTER("Changing Department",'%1',FALSE);
-                  IF Dep.FINDSET THEN REPEAT
-                    Dep."Changing Department":=TRUE;
-                   Dep.MODIFY(TRUE);
+                  DepT.SETFILTER("ORG Shema",'%1',Rec."ORG Shema");
+                  DepT.SETFILTER(Code,'%1',Rec.Code);
+                  DepT.SETFILTER("Changing Department",'%1',FALSE);
+                  IF DepT.FINDSET THEN REPEAT
+                    DepT."Changing Department":=TRUE;
+                   DepT.MODIFY(TRUE);
                 
-                     Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description");
-                    UNTIL Dep.NEXT=0;
+                     DepT.GET(DepT.Code,DepT."ORG Shema",DepT."Team Description",DepT."Department Categ.  Description",DepT."Group Description");
+                    UNTIL DepT.NEXT=0;
                     END;*/
 
             end;
@@ -398,7 +404,7 @@ table 50181 "Group temporary"
 
             FieldClass = FlowField;
             CalcFormula = Count("Department temporary" WHERE("Group Code" = FIELD("Code"),
-                                                              "Department Type" = FILTER("Team"),
+                                                              "Department Type" = FILTER(Sector),
                                                               "Group Description" = FIELD(Description)));
             Caption = 'Number Of Team  levels below';
 
@@ -433,11 +439,10 @@ table 50181 "Group temporary"
 
             end;
         }
-        field(50017; "Department Type"; Option)
+        field(50017; "Department Type"; enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(50018; "Belongs to Department Category"; Text[250])
         {
@@ -446,31 +451,126 @@ table 50181 "Group temporary"
 
             trigger OnValidate()
             begin
-                /*IF "Belongs to Department Category"<>'' THEN BEGIN
-                  DepartmentRename.RESET;
-                  DepartmentRename.SETFILTER("Department Type",'%1',2);
-                  DepartmentRename.SETFILTER("Group Code",'%1',Rec.Code);
-                  DepartmentRename.SETFILTER("Group Description",'%1',Rec.Description);
-                  IF DepartmentRename.FINDFIRST THEN BEGIN
-                
-                  IF DepartmentRename1.GET(DepartmentRename.Code,DepartmentRename."ORG Shema",'','',DepartmentRename."Group Description",DepartmentRename.Description)
-                    THEN
-                    DepartmentRename1.RENAME(DepartmentRename.Code,DepartmentRename."ORG Shema",'',"Belongs to Department Category",DepartmentRename."Group Description",DepartmentRename.Description) ;
-                  FindCodeForDep.RESET;
-                  FindCodeForDep.SETFILTER(Description,'%1',"Belongs to Department Category");
-                  IF FindCodeForDep.FINDFIRST THEN BEGIN
-                  DepartmentRename1."Department Category":=FindCodeForDep.Code;
-                    DepartmentRename1."Department Idenity":=FindCodeForDep.Identity;
-                    Rec."Dep Cat Identity":=FindCodeForDep.Identity;
-                  END
-                  ELSE BEGIN
-                  DepartmentRename1."Department Category":='';
-                  END;
-                    DepartmentRename1.MODIFY;
-                    END;
-                      END;*/
 
+
+                DepT.Reset();
+                DepT.SetFilter(Code, '%1', Rec.Code);
+                DepT.SetFilter(Description, '%1', rec.Description);
+                DepT.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if DepT.FindFirst() then
+                    DepT.Delete();
+
+
+                DepT.Reset();
+                DepT.SetFilter(Code, '%1', Rec.Code);
+                DepT.SetFilter(Description, '%1', rec.Description);
+                DepT.SetFilter("ORG Shema", '%1', rec."Org Shema");
+                if not DepT.FindFirst() then begin
+
+                    DepT.Init();
+                    DepT.Validate("ORG Shema", Rec."Org Shema");
+                    DepT.validate(Code, Rec.Code);
+                    DepT.validate(Description, Rec.Description);
+                    DepT."Group Description" := Rec.Description;
+                    DepT."Group Code" := rec.Code;
+
+                    DepartmentCatF.Reset();
+                    DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
+                    DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
+                    if DepartmentCatF.FindFirst() then begin
+                        DepT."Department Category" := DepartmentCatF.Code;
+
+                        DepT.Validate("Department Categ.  Description", DepartmentCatF.Description);
+                        DepT.Validate("Department Category", DepartmentCatF.Code);
+                        SectorF.Reset();
+                        SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                        SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
+                        if SectorF.FindFirst() then begin
+                            DepT.Validate("Sector Code", SectorF.Code);
+                            DepT.Validate(Sector, SectorF.Code);
+                            DepT.Validate("Sector  Description", SectorF.Description);
+                        end
+
+
+                        else begin
+
+                            DepT.Validate("Sector Code", '');
+                            DepT.Validate(Sector, '');
+                            DepT.Validate("Sector  Description", '');
+                        end;
+
+
+                    end
+                    else begin
+                        DepT.Validate("Department Categ.  Description", '');
+                        DepT.Validate("Department Category", '');
+                        DepT.Validate("Sector Code", '');
+                        DepT.Validate(Sector, '');
+                        DepT.Validate("Sector  Description", '');
+
+                    end;
+
+
+                    DepT."Department Type" := Rec."Department Type";
+                    Dept."Department Type" := DepT."Department Type"::Group;
+
+                    DepT.Insert();
+
+                end;
+
+                if (Rec.Code <> '') and (Rec."Belongs to Department Category" <> '') then begin
+
+                    HeadOrg.Reset();
+                    HeadOrg.SETFILTER("Department Code", '%1', Rec.Code);
+                    HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF HeadOrg.FINDSET THEN
+                        REPEAT
+                            //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+
+                            DepartmentCatF.Reset();
+                            DepartmentCatF.SetFilter("Org Shema", '%1', Rec."Org Shema");
+                            DepartmentCatF.SetFilter(Description, '%1', "Belongs to Department Category");
+                            if DepartmentCatF.FindFirst() then begin
+                                HeadOrg.Validate("Department Category", DepartmentCatF.Code);
+                                SectorF.Reset();
+                                SectorF.SetFilter("Org Shema", '%1', rec."Org Shema");
+                                SectorF.SetFilter(Description, DepartmentCatF."Sector Belongs");
+                                if SectorF.FindFirst() then begin
+                                    HeadOrg.Validate("Sector", SectorF.Code);
+                                    HeadOrg.Validate("Sector  Description", SectorF.Description);
+                                end
+
+
+                                else begin
+
+                                    HeadOrg.Validate("Sector", '');
+                                    HeadOrg.Validate("Sector  Description", '');
+                                end;
+                            end
+                            else begin
+                                HeadOrg.Validate("Sector", '');
+                                HeadOrg.Validate("Sector  Description", '');
+                                HeadOrg.Validate("Department Category", '');
+
+                            end;
+                            HeadOrg.Modify();
+
+
+
+                            if (HeadOrg."Group Description" <> '') then begin
+
+                                IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                 HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                        THEN
+                                    HeadU.RENAME(HeadOrg."Department Code", HeadOrg."ORG Shema", Rec."Belongs to Department Category", Rec.Description,
+                              HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                            end;
+                        until HeadOrg.Next() = 0;
+                end;
             end;
+
+
         }
         field(50019; LastModified; Text[250])
         {
@@ -529,6 +629,16 @@ table 50181 "Group temporary"
         END;
         "Last Date Modified" := TODAY;
         "Operator No." := COPYSTR(USERID, 1, 15);
+        OsPreparation.RESET;
+        OsPreparation.SETFILTER(Status, '%1', 2);
+        IF OsPreparation.FINDLAST THEN BEGIN
+            "Org Shema" := OsPreparation.Code;
+        END
+        ELSE BEGIN
+            "Org Shema" := '';
+        END;
+        "Department Type" := "Department Type"::Group;
+
     end;
 
     trigger OnModify()
@@ -539,11 +649,16 @@ table 50181 "Group temporary"
 
     var
         Text000: Label '%1 must be higher than %2.';
+        DepartmentCatF: Record "Department Category temporary";
+        DepT: Record "Department temporary";
+        HeadOrg: Record "Head Of's temporary";
+        HeadU: Record "Head Of's temporary";
         HumanResSetup: Record "Human Resources Setup";
         NoSeriesMgt: Codeunit NoSeriesExtented;
         Dep: Record "Department";
         DimensionNew: Record "Dimension temporary";
         DepartmentTemp: Record "Department temporary";
+        SectorF: Record "Sector temporary";
         OsPreparation: Record "ORG Shema";
         SectorFind: Record "Sector temporary";
         DepartmentTemp1: Record "Department temporary";

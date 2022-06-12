@@ -5,6 +5,7 @@ page 50222 "Position menu temp"
     SourceTable = "Position Menu temporary";
     UsageCategory = Lists;
     ApplicationArea = all;
+    RefreshOnActivate = true;
 
     layout
     {
@@ -15,7 +16,7 @@ page 50222 "Position menu temp"
                 field(Code; Code)
                 {
                     ApplicationArea = all;
-                    Editable = false;
+
 
                     trigger OnValidate()
                     begin
@@ -46,46 +47,57 @@ page 50222 "Position menu temp"
                 field(Description; Description)
                 {
                     ApplicationArea = all;
-                    Editable = false;
+
                 }
+
                 field("Official Translation"; "Official Translation")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Role Name"; "Role Name")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
                 }
                 field(Role; Role)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("BJF/GJF"; "BJF/GJF")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
                 }
+
+
                 field("Management Level"; "Management Level")
                 {
                     ApplicationArea = all;
-                    Editable = false;
+
                 }
                 field("Key Function"; "Key Function")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
                 }
                 field("Control Function"; "Control Function")
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
                 }
                 field(Grade; Grade)
                 {
                     ApplicationArea = all;
                     Editable = false;
+                    Visible = false;
                 }
+
                 field("Number of benefits"; "Number of benefits")
                 {
                     ApplicationArea = all;
@@ -93,14 +105,56 @@ page 50222 "Position menu temp"
                 field("Number of dimension value"; "Number of dimension value")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Department Code"; "Department Code")
                 {
                     ApplicationArea = all;
-                    Editable = false;
-                    Style = Unfavorable;
-                    StyleExpr = IsTrue;
                 }
+                field("Department Name"; "Department Name")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field("Org. Structure"; "Org. Structure")
+                {
+                    ApplicationArea = all;
+                }
+                field(School; School)
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    begin
+                        UpdatePostTable.RESET;
+                        UpdatePostTable.SETFILTER("Position Code", Rec.Code);
+                        UpdatePostTable.SETFILTER("Position Name", Description);
+                        UpdatePostTable.SETFILTER("Org Shema", rec."Org. Structure");
+                        UpdatePositionPage.SETTABLEVIEW(UpdatePostTable);
+                        UpdatePositionPage.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+
+                }
+                field("Position complexity"; "Position complexity")
+                {
+                    ApplicationArea = all;
+                }
+                field("Position Responsibility"; "Position Responsibility")
+                {
+                    ApplicationArea = all;
+                }
+                field("Workplace conditions"; "Workplace conditions")
+                {
+                    ApplicationArea = all;
+                }
+                field("Position Coefficient for Wage"; "Position Coefficient for Wage")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Fields for change"; "Fields for change")
                 {
                     ApplicationArea = all;
@@ -109,6 +163,8 @@ page 50222 "Position menu temp"
                     ShowCaption = false;
                     Style = Unfavorable;
                     StyleExpr = TRUE;
+                    Visible = false;
+
                 }
             }
         }
@@ -124,9 +180,25 @@ page 50222 "Position menu temp"
                 RunObject = Page "Position Benefits temp";
                 RunPageLink = "Position Code" = FIELD(Code),
                               "Position Name" = FIELD(Description);
+
                 RunPageOnRec = false;
                 Visible = false;
             }
+            action("Exe Manager List")
+            {
+                Caption = 'Exe Manager List';
+                Image = ListPage;
+                Promoted = true;
+                PromotedIsBig = true;
+                RunObject = page "Exe Manager List temporery";
+                RunPageLink = "ORG Shema" = field("Org. Structure");
+                //RunPageLink = "ORG Shema" = field("ORG Shema");
+
+
+            }
+
+
+
             action("Position TC")
             {
                 Caption = 'Dimensions temporary';
@@ -145,154 +217,153 @@ page 50222 "Position menu temp"
                 trigger OnAction()
                 begin
 
-                    Response := CONFIRM(Txt003);
-                    IF Response THEN BEGIN
-                        //CurrPage.SAVERECORD;
 
-                        /*
-                          PositionMenuFind.RESET;
-                          PositionMenuFind.SETFILTER("Management Level",'<>%1',PositionMenuFind."Management Level"::E);
-                          IF PositionMenuFind.FINDSET THEN REPEAT
-                          DimensionCopy.RESET;
-                          DimensionCopy.SETFILTER("Position Code",'%1',PositionMenuFind.Code);
-                          DimensionCopy.SETFILTER("Position Description",'%1',PositionMenuFind.Description);
-                          IF DimensionCopy.FINDSET THEN REPEAT
-                          IF PositionMenuFind."Management Level"<>0 THEN BEGIN
-                            HeadCheck."Department Code":='';
-                            HeadCheck.Sector:='';
-                            HeadCheck."Sector  Description":='';
-                            HeadCheck."Department Category":='';
-                            HeadCheck."Department Categ.  Description":='';
-                            HeadCheck."Group Code":='';
-                            HeadCheck."Group Description":='';
-                            HeadCheck."Team Code":='';
-                            HeadCheck."Team Description":='';
-                          HeadCheck.RESET;
-                          HeadCheck.SETFILTER("Sector  Description",'%1',DimensionCopy."Sector  Description");
-                          HeadCheck.SETFILTER("Department Categ.  Description",'%1',DimensionCopy."Department Categ.  Description");
-                          HeadCheck.SETFILTER("Department Category",'%1',DimensionCopy."Department Category");
-                          HeadCheck.SETFILTER("Group Description",'%1',DimensionCopy."Group Description");
-                          HeadCheck.SETFILTER("Team Description",'%1',DimensionCopy."Team Description");
-                          HeadCheck.SETFILTER("ORG Shema",'%1',DimensionCopy."ORG Shema");
-                        // HeadCheck.SETFILTER("Management Level",'%1',PositionMenuFind."Management Level");
-                        // HeadCheck.SETFILTER("Position Code",'%1',PositionMenuFind.Code);
-                          IF NOT HeadCheck.FIND('-') THEN BEGIN
+                    //CurrPage.SAVERECORD;
 
-                        //IF (PositionMenuFind."Management Level"<> PositionMenuFind."Management Level"::B4 ) AND ( DimensionCopy."Team Description"<>'') THEN BEGIN
-                        IF (PositionMenuFind."Management Level"<> PositionMenuFind."Management Level"::B4)  THEN BEGIN
-                          IF  DimensionCopy."Team Description"='' THEN BEGIN
-                          HeadOfDelete.INIT;
-                          HeadOfDelete.Sector:=DimensionCopy.Sector;
-                          HeadOfDelete."Sector  Description":=DimensionCopy."Sector  Description";
-                          HeadOfDelete."Department Category":=DimensionCopy."Department Category";
-                          HeadOfDelete."Department Categ.  Description":=DimensionCopy."Department Categ.  Description";
-                          HeadOfDelete."Group Code":=DimensionCopy."Group Code";
-                          HeadOfDelete."Group Description":=DimensionCopy."Group Description";
-                          HeadOfDelete."Team Code":=DimensionCopy."Team Code";
-                          HeadOfDelete."Team Description":=DimensionCopy."Team Description";
-                          IF HeadOfDelete."Team Description"<>'' THEN
-                            HeadOfDelete."Department Code":=DimensionCopy."Team Code";
-                          IF (HeadOfDelete."Group Description"<>'') AND (HeadOfDelete."Team Description"='') THEN
-                            HeadOfDelete."Department Code":=DimensionCopy."Group Code";
-                            IF (HeadOfDelete."Department Categ.  Description"<>'') AND (HeadOfDelete."Group Description"='') THEN
-                            HeadOfDelete."Department Code":=DimensionCopy."Department Category";
-                              IF (HeadOfDelete."Department Categ.  Description"='') AND (HeadOfDelete."Sector  Description"<>'') THEN
-                            HeadOfDelete."Department Code":=DimensionCopy.Sector;
-                          HeadOfDelete."Position Code":=PositionMenuFind.Code;
-                          HeadOfDelete."ORG Shema":=DimensionCopy."ORG Shema";
-                          HeadOfDelete."Management Level":=PositionMenuFind."Management Level";
-                          HeadOfDelete.INSERT;
+                    /*
+                      PositionMenuFind.RESET;
+                      PositionMenuFind.SETFILTER("Management Level",'<>%1',PositionMenuFind."Management Level"::E);
+                      IF PositionMenuFind.FINDSET THEN REPEAT
+                      DimensionCopy.RESET;
+                      DimensionCopy.SETFILTER("Position Code",'%1',PositionMenuFind.Code);
+                      DimensionCopy.SETFILTER("Position Description",'%1',PositionMenuFind.Description);
+                      IF DimensionCopy.FINDSET THEN REPEAT
+                      IF PositionMenuFind."Management Level"<>0 THEN BEGIN
+                        HeadCheck."Department Code":='';
+                        HeadCheck.Sector:='';
+                        HeadCheck."Sector  Description":='';
+                        HeadCheck."Department Category":='';
+                        HeadCheck."Department Categ.  Description":='';
+                        HeadCheck."Group Code":='';
+                        HeadCheck."Group Description":='';
+                        HeadCheck."Team Code":='';
+                        HeadCheck."Team Description":='';
+                      HeadCheck.RESET;
+                      HeadCheck.SETFILTER("Sector  Description",'%1',DimensionCopy."Sector  Description");
+                      HeadCheck.SETFILTER("Department Categ.  Description",'%1',DimensionCopy."Department Categ.  Description");
+                      HeadCheck.SETFILTER("Department Category",'%1',DimensionCopy."Department Category");
+                      HeadCheck.SETFILTER("Group Description",'%1',DimensionCopy."Group Description");
+                      HeadCheck.SETFILTER("Team Description",'%1',DimensionCopy."Team Description");
+                      HeadCheck.SETFILTER("ORG Shema",'%1',DimensionCopy."ORG Shema");
+                    // HeadCheck.SETFILTER("Management Level",'%1',PositionMenuFind."Management Level");
+                    // HeadCheck.SETFILTER("Position Code",'%1',PositionMenuFind.Code);
+                      IF NOT HeadCheck.FIND('-') THEN BEGIN
+
+                    //IF (PositionMenuFind."Management Level"<> PositionMenuFind."Management Level"::B4 ) AND ( DimensionCopy."Team Description"<>'') THEN BEGIN
+                    IF (PositionMenuFind."Management Level"<> PositionMenuFind."Management Level"::B4)  THEN BEGIN
+                      IF  DimensionCopy."Team Description"='' THEN BEGIN
+                      HeadOfDelete.INIT;
+                      HeadOfDelete.Sector:=DimensionCopy.Sector;
+                      HeadOfDelete."Sector  Description":=DimensionCopy."Sector  Description";
+                      HeadOfDelete."Department Category":=DimensionCopy."Department Category";
+                      HeadOfDelete."Department Categ.  Description":=DimensionCopy."Department Categ.  Description";
+                      HeadOfDelete."Group Code":=DimensionCopy."Group Code";
+                      HeadOfDelete."Group Description":=DimensionCopy."Group Description";
+                      HeadOfDelete."Team Code":=DimensionCopy."Team Code";
+                      HeadOfDelete."Team Description":=DimensionCopy."Team Description";
+                      IF HeadOfDelete."Team Description"<>'' THEN
+                        HeadOfDelete."Department Code":=DimensionCopy."Team Code";
+                      IF (HeadOfDelete."Group Description"<>'') AND (HeadOfDelete."Team Description"='') THEN
+                        HeadOfDelete."Department Code":=DimensionCopy."Group Code";
+                        IF (HeadOfDelete."Department Categ.  Description"<>'') AND (HeadOfDelete."Group Description"='') THEN
+                        HeadOfDelete."Department Code":=DimensionCopy."Department Category";
+                          IF (HeadOfDelete."Department Categ.  Description"='') AND (HeadOfDelete."Sector  Description"<>'') THEN
+                        HeadOfDelete."Department Code":=DimensionCopy.Sector;
+                      HeadOfDelete."Position Code":=PositionMenuFind.Code;
+                      HeadOfDelete."ORG Shema":=DimensionCopy."ORG Shema";
+                      HeadOfDelete."Management Level":=PositionMenuFind."Management Level";
+                      HeadOfDelete.INSERT;
+                       END;
+                       END;
+                      END
+                      ELSE BEGIN
+                      IF HeadCheck."Position Code"<>DimensionCopy."Position Code" THEN BEGIN
+                      HeadCheck."Position Code":=DimensionCopy."Position Code";
+                      IF HeadCheck."Team Description"<>'' THEN BEGIN
+                        IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
+                          HeadCheck.RENAME(HeadCheck."Team Code",HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
+                        END;
+                        IF (HeadCheck."Team Description"='') AND (HeadCheck."Group Description"<>'')THEN BEGIN
+                        IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
+                          HeadCheck.RENAME(HeadCheck."Group Code",HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
+                        END;
+                            IF (HeadCheck."Group Description"='') AND (HeadCheck."Department Categ.  Description"<>'')THEN BEGIN
+                        IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
+                          HeadCheck.RENAME(HeadCheck."Department Category",HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
+                        END;
+                            IF (HeadCheck."Department Categ.  Description"='') AND (HeadCheck.Sector<>'')THEN BEGIN
+                        IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
+                          HeadCheck.RENAME(HeadCheck.Sector,HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
+                        END;
+                          //Department Code,ORG Shema,Department Categ.  Description,Group Description,Team Description
+
+                      HeadCheck.MODIFY;
+                        END;
+                         END;
                            END;
-                           END;
-                          END
-                          ELSE BEGIN
-                          IF HeadCheck."Position Code"<>DimensionCopy."Position Code" THEN BEGIN
-                          HeadCheck."Position Code":=DimensionCopy."Position Code";
-                          IF HeadCheck."Team Description"<>'' THEN BEGIN
-                            IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
-                              HeadCheck.RENAME(HeadCheck."Team Code",HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
-                            END;
-                            IF (HeadCheck."Team Description"='') AND (HeadCheck."Group Description"<>'')THEN BEGIN
-                            IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
-                              HeadCheck.RENAME(HeadCheck."Group Code",HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
-                            END;
-                                IF (HeadCheck."Group Description"='') AND (HeadCheck."Department Categ.  Description"<>'')THEN BEGIN
-                            IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
-                              HeadCheck.RENAME(HeadCheck."Department Category",HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
-                            END;
-                                IF (HeadCheck."Department Categ.  Description"='') AND (HeadCheck.Sector<>'')THEN BEGIN
-                            IF HeadCheck."Department Code"<>HeadCheck."Team Code" THEN
-                              HeadCheck.RENAME(HeadCheck.Sector,HeadCheck."ORG Shema",HeadCheck."Department Categ.  Description",HeadCheck."Group Description",HeadCheck."Team Description");
-                            END;
-                              //Department Code,ORG Shema,Department Categ.  Description,Group Description,Team Description
-
-                          HeadCheck.MODIFY;
-                            END;
-                             END;
-                               END;
-                                UNTIL DimensionCopy.NEXT=0;
-                             UNTIL PositionMenuFind.NEXT=0;*/
-                        HeadCheck.DELETEALL;
-                        COMMIT;
-                        Report958.RUN;
-                        COMMIT;
-                        Eclsystematization.RESET;
-                        IF Eclsystematization.FINDSET THEN
-                            REPEAT
-                                IF Eclsystematization."Position Description" <> '' THEN BEGIN
-                                    TroskovniCentri.RESET;
-                                    TroskovniCentri.SETFILTER("Position Description", '%1', Eclsystematization."Position Description");
-                                    TroskovniCentri.SETFILTER("Org Belongs", '%1', Eclsystematization."Org Belongs");
-                                    IF TroskovniCentri.FINDFIRST THEN BEGIN
-                                        PositionMenuCorrect.RESET;
-                                        PositionMenuCorrect.SETFILTER(Description, '%1', Eclsystematization."Position Description");
-                                        PositionMenuCorrect.SETFILTER(Code, '%1', TroskovniCentri."Position Code");
-                                        IF PositionMenuCorrect.FINDFIRST THEN BEGIN
-                                            Eclsystematization."Position Code" := PositionMenuCorrect.Code;
-                                            Eclsystematization.MODIFY;
-                                        END;
+                            UNTIL DimensionCopy.NEXT=0;
+                         UNTIL PositionMenuFind.NEXT=0;*/
+                    /*  HeadCheck.DELETEALL;
+                      COMMIT;
+                      //ĐK Report958.RUN;
+                      COMMIT;*/
+                    Eclsystematization.RESET;
+                    IF Eclsystematization.FINDSET THEN
+                        REPEAT
+                            IF Eclsystematization."Position Description" <> '' THEN BEGIN
+                                TroskovniCentri.RESET;
+                                TroskovniCentri.SETFILTER("Position Description", '%1', Eclsystematization."Position Description");
+                                TroskovniCentri.SETFILTER("Org Belongs", '%1', Eclsystematization."Org Belongs");
+                                IF TroskovniCentri.FINDFIRST THEN BEGIN
+                                    PositionMenuCorrect.RESET;
+                                    PositionMenuCorrect.SETFILTER(Description, '%1', Eclsystematization."Position Description");
+                                    PositionMenuCorrect.SETFILTER(Code, '%1', TroskovniCentri."Position Code");
+                                    IF PositionMenuCorrect.FINDFIRST THEN BEGIN
+                                        Eclsystematization."Position Code" := PositionMenuCorrect.Code;
+                                        Eclsystematization.MODIFY;
                                     END;
                                 END;
-                            UNTIL Eclsystematization.NEXT = 0;
-                        /*  Eclsystematization.RESET;
-                  IF Eclsystematization.FINDSET THEN REPEAT
-                    IF Eclsystematization."Sector Description"='' THEN BEGIN
-                    //  Eclsystematization."Changing Position":=TRUE;
-                      Eclsystematization.MODIFY;
-                       END;
-                    UNTIL  Eclsystematization.NEXT=0;*/
-                        OrgDiff.RESET;
+                            END;
+                        UNTIL Eclsystematization.NEXT = 0;
+                    /*  Eclsystematization.RESET;
+              IF Eclsystematization.FINDSET THEN REPEAT
+                IF Eclsystematization."Sector Description"='' THEN BEGIN
+                //  Eclsystematization."Changing Position":=TRUE;
+                  Eclsystematization.MODIFY;
+                   END;
+                UNTIL  Eclsystematization.NEXT=0;*/
+                    OrgDiff.RESET;
 
 
-                        OrgDiff.RESET;
-                        OrgDiff.SETFILTER("Org Belongs", '<>%1', '');
-                        OrgDiff.SETFILTER("Position Description", '<>%1', '');
-                        IF OrgDiff.FINDSET THEN
-                            REPEAT
-                                DimensionTempForPosDiff.RESET;
-                                DimensionTempForPosDiff.SETFILTER("Org Belongs", '%1', OrgDiff."Org Belongs");
-                                DimensionTempForPosDiff.SETFILTER("Position Description", '%1', OrgDiff."Position Description");
-                                DimensionTempForPosDiff.SETFILTER("Position Code", '%1', OrgDiff."Position Code");
-                                IF DimensionTempForPosDiff.FINDFIRST THEN
-                                    OrgDiff."Difference Org/Position" := FALSE
-                                ELSE
-                                    OrgDiff."Difference Org/Position" := TRUE;
+                    OrgDiff.RESET;
+                    OrgDiff.SETFILTER("Org Belongs", '<>%1', '');
+                    OrgDiff.SETFILTER("Position Description", '<>%1', '');
+                    IF OrgDiff.FINDSET THEN
+                        REPEAT
+                            DimensionTempForPosDiff.RESET;
+                            DimensionTempForPosDiff.SETFILTER("Org Belongs", '%1', OrgDiff."Org Belongs");
+                            DimensionTempForPosDiff.SETFILTER("Position Description", '%1', OrgDiff."Position Description");
+                            DimensionTempForPosDiff.SETFILTER("Position Code", '%1', OrgDiff."Position Code");
+                            IF DimensionTempForPosDiff.FINDFIRST THEN
+                                OrgDiff."Difference Org/Position" := FALSE
+                            ELSE
+                                OrgDiff."Difference Org/Position" := TRUE;
 
-                                OrgDiff.MODIFY;
-                            UNTIL OrgDiff.NEXT = 0;
+                            OrgDiff.MODIFY;
+                        UNTIL OrgDiff.NEXT = 0;
 
-                        HeadCheck.RESET;
-                        IF HeadCheck.FINDSET THEN
-                            REPEAT
-                                IF HeadCheck."ORG Shema" = '' THEN
-                                    HeadCheck.DELETE;
-                            UNTIL HeadCheck.NEXT = 0;
-                        StepNext.RUN;
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
-                    END;
+                    HeadCheck.RESET;
+                    IF HeadCheck.FINDSET THEN
+                        REPEAT
+                            IF HeadCheck."ORG Shema" = '' THEN
+                                HeadCheck.DELETE;
+                        UNTIL HeadCheck.NEXT = 0;
+                    StepNext.RUN;
+                    CurrPage.CLOSE();
 
-                end;
+                END;
+
+
             }
             action(Previous)
             {
@@ -303,25 +374,24 @@ page 50222 "Position menu temp"
                 trigger OnAction()
                 begin
 
-                    Response := CONFIRM(Txt006);
-                    IF Response THEN BEGIN
-                        IF Rec."Sector Identity" = 0 THEN BEGIN
-                            ValueSector1 := Rec.GETFILTER("Sector Identity");
-                            IF EVALUATE(ValueSector, ValueSector1) THEN
-                                PrevoiusTabela.SETFILTER("Identity Sector", '%1', ValueSector);
-                        END
-                        ELSE BEGIN
-                            PrevoiusTabela.SETFILTER("Identity Sector", '%1', Rec."Sector Identity");
-                        END;
-                        /*PrevoiusTabela.SETFILTER(Identity,'%1',"Group Identity");
-                          PreviousStep.SETTABLEVIEW(PrevoiusTabela);*/
-                        PreviousStep.SETTABLEVIEW(PrevoiusTabela);
-                        PreviousStep.RUN;
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
-                    END;
 
-                end;
+                    IF Rec."Sector Identity" = 0 THEN BEGIN
+                        ValueSector1 := Rec.GETFILTER("Sector Identity");
+                        IF EVALUATE(ValueSector, ValueSector1) THEN
+                            PrevoiusTabela.SETFILTER("Identity Sector", '%1', ValueSector);
+                    END
+                    ELSE BEGIN
+                        PrevoiusTabela.SETFILTER("Identity Sector", '%1', Rec."Sector Identity");
+                    END;
+                    /*PrevoiusTabela.SETFILTER(Identity,'%1',"Group Identity");
+                      PreviousStep.SETTABLEVIEW(PrevoiusTabela);*/
+                    //  PreviousStep.SETTABLEVIEW(PrevoiusTabela);
+                    PreviousStep.RUN;
+                    CurrPage.CLOSE();
+
+                END;
+
+
             }
             action("Change Code for levels below")
             {
@@ -329,6 +399,7 @@ page 50222 "Position menu temp"
                 Image = Change;
                 Promoted = true;
                 PromotedIsBig = true;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -375,6 +446,7 @@ page 50222 "Position menu temp"
                 Image = Change;
                 Promoted = true;
                 PromotedIsBig = true;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -404,6 +476,7 @@ page 50222 "Position menu temp"
                 Image = Copy;
                 Promoted = true;
                 PromotedIsBig = true;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -448,7 +521,7 @@ page 50222 "Position menu temp"
             {
                 Caption = 'Dimension temporary';
                 Image = Administration;
-                Visible = true;
+                Visible = false;
                 action("Position temporery dimension")
                 {
                     Caption = 'Position temporery dimension';
@@ -509,17 +582,18 @@ page 50222 "Position menu temp"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        IsEditable := TRUE;
+
     end;
 
     trigger OnOpenPage()
     begin
-        IsEditable := FALSE;
         PositionMenuFind.RESET;
     end;
 
     var
         Response: Boolean;
+        UpdatePostTable: Record "Position Minimal Educ Temp";
+        UpdatePositionPage: page "Positions Minimal Education t";
         Txt003: Label 'Do you want to go in next step';
         Txt006: Label 'Do you want to back in previous step';
         PreviousStep: Page "Team temporary sist";
