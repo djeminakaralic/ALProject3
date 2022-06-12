@@ -29,50 +29,26 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Org Jed"; "Org Jed") { }
             field("Department Code"; "Department Code") { }
             field("Department Category"; "Department Category") { }
-            field("Department Name"; "Department Name") { }
+            field("Department Cat. Description"; "Department Cat. Description") { }
+
+
             field(Sector; Sector) { }
             field("Sector Description"; "Sector Description") { }
+            field("Department Name"; "Department Name") { }
             field("Position ID"; "Position ID") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
-            field(Management1; EmployeeContractLedger."Manager 1 First Name")
+            field(Manager1; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
             {
-                Caption = 'Superior 1';
-                Editable = false;
 
 
-                trigger OnDrillDown()
-                begin
 
-                    EmployeeContractLedger.RESET;
-                    EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                    EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                    EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                    EmployeeContractLedgerPage.RUN;
-                    CurrPage.UPDATE;
-                end;
             }
-
-            field(Manager2; EmployeeContractLedger."Manager 2 First Name")
+            field(Manager2; EmployeeContractLedger."Manager 2 Last Name" + ' ' + EmployeeContractLedger."Manager 2 First Name")
             {
-                Caption = 'Superior 2';
-                Editable = false;
-
-                Importance = Promoted;
-                ApplicationArea = all;
 
 
 
-                trigger OnDrillDown()
-                begin
-
-                    EmployeeContractLedger.RESET;
-                    EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                    EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                    EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
-                    EmployeeContractLedgerPage.RUN;
-                    CurrPage.UPDATE;
-                end;
             }
 
 
@@ -404,6 +380,12 @@ pageextension 50149 EmployeeList extends "Employee List"
     begin
         SetCurrentKey(Order);
         Ascending;
+        //EmployeeContractLedger.CalcFields("Manager 1 First Name", "Manager 2 First Name");
+        SetCurrentKey(Order);
+
+
+
+
 
 
     end;
@@ -412,9 +394,24 @@ pageextension 50149 EmployeeList extends "Employee List"
     var
         myInt: Integer;
     begin
-        EmployeeContractLedger.CalcFields("Manager 1 First Name", "Manager 2 First Name");
-        SetCurrentKey(Order);
+
         Ascending;
+        EmployeeContractLedger.RESET;
+        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+        IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+            EmployeeContractLedger.CALCFIELDS("Manager Department Code", "Manager 1 Position Code", "Manager Position ID", "Manager 1 First Name", "Manager 1 Last Name", "Manager 2 First Name", "Manager 1 Last Name");
+
+        end
+        ELSE BEGIN
+            EmployeeContractLedger.RESET;
+
+            EmployeeContractLedger."Manager 1 First Name" := '';
+            EmployeeContractLedger."Manager 2 First Name" := '';
+
+        END;
+
+
 
     end;
 

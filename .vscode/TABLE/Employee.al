@@ -2887,13 +2887,11 @@ tableextension 50071 EmployeeExtension extends Employee
         }
         field(503687; "Superior1"; Text[250])
         {
-            FieldClass = FlowField;
-            CalcFormula = lookup("Employee Contract Ledger"."Manager 1" where("Employee No." = FIELD("No."), Active = const(true)));
+            Caption = 'Superior 1';
         }
         field(503688; "Superior1Name"; Text[250])
         {
-            FieldClass = FlowField;
-            CalcFormula = lookup("Employee Contract Ledger"."Manager 1 First Name" where("Employee No." = FIELD("No."), Active = const(true)));
+            Caption = 'Superior 2';
         }
         field(503689; Brutto; Decimal)
         {

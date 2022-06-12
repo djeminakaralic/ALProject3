@@ -25,6 +25,10 @@ page 50058 "Trainings Catalogue"
                 }
                 field(Location; Location) { }
                 field(Month; Month) { }
+                field(Year; Year)
+                {
+
+                }
 
 
 
