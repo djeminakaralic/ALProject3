@@ -84,6 +84,10 @@ page 50213 Employee_Qualifications_HR
                 {
                     ApplicationArea = all;
                 }
+                field("Evidence of certification"; "Evidence of certification")
+                {
+                    ApplicationArea = all;
+                }
                 field(Comment; Comment)
                 {
                     ApplicationArea = all;
@@ -100,7 +104,7 @@ page 50213 Employee_Qualifications_HR
                 {
                     ApplicationArea = all;
                 }
-                field("Team Description"; "Team Description")
+                field(Position; Position)
                 {
                     ApplicationArea = all;
                 }
