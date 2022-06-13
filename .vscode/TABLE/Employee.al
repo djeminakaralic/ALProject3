@@ -3052,10 +3052,8 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
-        WshShell: DotNet SendKeys;
         Education: Record "Additional Education";
 
-        reee: DotNet SendKeys;
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
         Municipality: Record Municipality;
