@@ -18,10 +18,14 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
             trigger OnAfterValidate()
             begin
                 //HR01 start
-                Relative.SETFILTER("Code", '%1', "Relative Code");
+                Relative.SETFILTER("Code", '%1|%2|%3', 'OTAC', 'SIN', 'SUPRUG');
                 IF Relative.FIND('-') THEN BEGIN
-                    Relation := Relative.Relation;
-                    Sex := Relative.Sex;
+                    //Relation := Relative.Relation;
+                    Sex := 1;
+
+                end else begin
+                    Sex := 2;
+
                 END;
 
                 //HR01 end
