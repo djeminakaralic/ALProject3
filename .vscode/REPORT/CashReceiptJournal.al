@@ -40,6 +40,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
 
             }
+            field("Customer Id"; "Customer Id")
+            {
+
+            }
 
             field("Social status"; "Social status")
             {
@@ -53,6 +57,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
             }
             field("To return"; "To return")
+            {
+
+            }
+            field("Payment Type"; "Payment Type")
             {
 
             }
