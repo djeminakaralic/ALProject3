@@ -3054,10 +3054,15 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
+<<<<<<< HEAD
+        Education: Record "Additional Education";
+
+=======
 
         Education: Record "Additional Education";
 
 
+>>>>>>> 37e1cb9b4de984db5bd69e187cace2d79b50d3ca
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
         Municipality: Record Municipality;
