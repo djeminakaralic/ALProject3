@@ -1156,7 +1156,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50262; "Blood Donor"; Boolean)
         {
             Caption = 'Blood Donor';
-            Editable = false;
+            //Editable = false;
         }
         field(50156; "Days of Experience in Company"; Integer)
         {
