@@ -29,7 +29,7 @@ table 50055 "ECL systematization"
         field(594137; "School"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = count("Position Minimal Education" where("Position Code" = field("Position Code"), "Position Name" = field("Position Description"), "Org Shema" = field("Org. Structure")));
+            CalcFormula = count("Position Minimal Educ Temp" where("Position Code" = field("Position Code"), "Position Name" = field("Position Description"), "Org Shema" = field("Org. Structure")));
             Caption = 'School';
             Editable = false;
 
@@ -772,7 +772,7 @@ table 50055 "ECL systematization"
 
                 Department.RESET;
                 Department.SETFILTER("Sector  Description", '%1', "Sector Description");
-                Department.SETFILTER("Department Type", '%1', 8);
+                Department.SETFILTER("Department Type", '%1|%2', 2, 1);
                 IF Department.FINDFIRST THEN BEGIN
                     Team := Department."Team Code";
                     Sector := Department.Sector;
@@ -862,7 +862,7 @@ table 50055 "ECL systematization"
 
                 Department.RESET;
                 Department.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                Department.SETFILTER("Department Type", '%1', 4);
+                Department.SETFILTER("Department Type", '%1|%2', 3, 5);
                 IF Department.FINDFIRST THEN BEGIN
                     Team := Department."Team Code";
                     Sector := Department.Sector;
@@ -977,7 +977,7 @@ table 50055 "ECL systematization"
 
                 Department.RESET;
                 Department.SETFILTER("Group Description", '%1', "Group Description");
-                Department.SETFILTER("Department Type", '%1', 2);
+                Department.SETFILTER("Department Type", '%1', 4);
                 IF Department.FINDFIRST THEN BEGIN
                     Team := Department."Team Code";
                     Sector := Department.Sector;
@@ -1307,32 +1307,28 @@ table 50055 "ECL systematization"
             Caption = 'Position Description';
             Editable = true;
             TableRelation = "Position Menu temporary".Description WHERE("Org. Structure" = FIELD("Org. Structure"),
-                                                                         "Sector Identity" = FIELD("Sector Identity"));
+            "Department Code" = field("Department Code")
+                                                                    );
 
             trigger OnValidate()
+            var
+                PosMe: Record "Position Menu temporary";
             begin
-                DimensionTemp.RESET;
-                DimensionTemp.SETFILTER(Sector, '%1', Sector);
-                DimensionTemp.SETFILTER("Department Category", '%1', "Department Category");
-                DimensionTemp.SETFILTER("Group Code", '%1', Group);
-                DimensionTemp.SETFILTER("Team Code", '%1', Team);
-                DimensionTemp.SETFILTER("Sector  Description", '%1', "Sector Description");
-                DimensionTemp.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                DimensionTemp.SETFILTER("Group Description", '%1', "Group Description");
-                DimensionTemp.SETFILTER("Team Description", '%1', "Team Description");
-                DimensionTemp.SETFILTER("Position Description", '%1', "Position Description");
-                IF DimensionTemp.FINDFIRST THEN BEGIN
-                    "Position Code" := DimensionTemp."Position Code";
-                    VALIDATE("Org Belongs", DimensionTemp."Org Belongs");
-                    SectorTemp.RESET;
-                    SectorTemp.SETFILTER(Description, '%1', Rec."Sector Description");
-                    IF SectorTemp.FINDFIRST THEN
-                        "Sector Identity" := SectorTemp.Identity;
-                END
-                ELSE BEGIN
+                PosMe.Reset();
+                PosMe.SetFilter(Description, '%1', Rec."Position Description");
+                PosMe.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                PosMe.SetFilter("Department Code", '%1', Rec."Department Code");
+                if PosMe.FindFirst() then begin
+                    "Position Code" := PosMe.Code;
+                    Rec."Position Coefficient for Wage" := PosMe."Position Coefficient for Wage";
+                    Rec."Position complexity" := PosMe."Position complexity";
+                    Rec."Position Responsibility" := PosMe."Position complexity";
+                    Rec."Workplace conditions" := PosMe."Workplace conditions"
+                end
+                else begin
                     "Position Code" := '';
-                    "Position Description" := '';
-                END;
+                end;
+
 
                 IF "Position Description" <> '' THEN BEGIN
                     ECLTC.RESET;
@@ -2642,7 +2638,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -2654,7 +2650,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -2666,7 +2662,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -2840,7 +2836,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -2849,10 +2845,12 @@ table 50055 "ECL systematization"
                                                 ECLORG1nEW.VALIDATE("Group Description", '');
                                         END;
 
+                                        //ĐK
+
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -2864,7 +2862,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3026,7 +3024,7 @@ table 50055 "ECL systematization"
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
 
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3037,7 +3035,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3047,7 +3045,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3192,7 +3190,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3203,7 +3201,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3215,7 +3213,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3367,7 +3365,7 @@ table 50055 "ECL systematization"
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
 
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3378,7 +3376,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3389,7 +3387,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3542,7 +3540,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3554,7 +3552,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3566,7 +3564,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3734,7 +3732,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3744,7 +3742,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3755,7 +3753,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3909,7 +3907,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3919,7 +3917,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -3929,7 +3927,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4079,7 +4077,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4089,7 +4087,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4099,7 +4097,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4247,7 +4245,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4259,7 +4257,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4273,7 +4271,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4443,7 +4441,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4453,7 +4451,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4463,7 +4461,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4614,7 +4612,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4625,7 +4623,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4635,7 +4633,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4785,7 +4783,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4796,7 +4794,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4806,7 +4804,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4956,7 +4954,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4967,7 +4965,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -4977,7 +4975,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5127,7 +5125,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5138,7 +5136,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5148,7 +5146,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5309,7 +5307,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5319,7 +5317,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5329,7 +5327,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5476,7 +5474,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5487,7 +5485,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5497,7 +5495,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5645,7 +5643,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5656,7 +5654,7 @@ table 50055 "ECL systematization"
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5666,7 +5664,7 @@ table 50055 "ECL systematization"
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -5816,7 +5814,7 @@ table 50055 "ECL systematization"
                                             END;
                                             IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                                 DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -5827,7 +5825,7 @@ table 50055 "ECL systematization"
 
                                             IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                                 DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -5837,7 +5835,7 @@ table 50055 "ECL systematization"
                                             END;
                                             IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                                 DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -5988,7 +5986,7 @@ table 50055 "ECL systematization"
                                             END;
                                             IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                                 DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -5999,7 +5997,7 @@ table 50055 "ECL systematization"
 
                                             IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                                 DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -6009,7 +6007,7 @@ table 50055 "ECL systematization"
                                             END;
                                             IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                                 DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -6164,7 +6162,7 @@ table 50055 "ECL systematization"
                                             END;
                                             IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                                 DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -6175,7 +6173,7 @@ table 50055 "ECL systematization"
 
                                             IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                                 DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -6185,7 +6183,7 @@ table 50055 "ECL systematization"
                                             END;
                                             IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                                 DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -6347,7 +6345,7 @@ table 50055 "ECL systematization"
 
                                 IF (Rec."Group Description" <> '') AND (Rec."Team Description" = '') THEN BEGIN
                                     DepartmentOrginal.RESET;
-                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                     DepartmentOrginal.SETFILTER("Group Description", '%1', Rec."Group Description");
                                     DepartmentOrginal.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
                                     IF DepartmentOrginal.FINDFIRST THEN
@@ -6357,7 +6355,7 @@ table 50055 "ECL systematization"
                                 END;
                                 IF (Rec."Department Cat. Description" <> '') AND (Rec."Group Description" = '') THEN BEGIN
                                     DepartmentOrginal.RESET;
-                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                    DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                     DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', Rec."Department Cat. Description");
                                     DepartmentOrginal.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
                                     IF DepartmentOrginal.FINDFIRST THEN
@@ -6367,7 +6365,7 @@ table 50055 "ECL systematization"
                                 END;
                                 IF (Rec."Sector Description" <> '') AND (Rec."Department Cat. Description" = '') THEN BEGIN
                                     DepartmentOrginal.RESET;
-                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                    DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                     DepartmentOrginal.SETFILTER("Sector  Description", '%1', Rec."Sector Description");
                                     DepartmentOrginal.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
                                     IF DepartmentOrginal.FINDFIRST THEN
@@ -6987,7 +6985,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -6999,7 +6997,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7011,7 +7009,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7185,7 +7183,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7197,7 +7195,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7209,7 +7207,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7371,7 +7369,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
 
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7382,7 +7380,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7392,7 +7390,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7537,7 +7535,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7548,7 +7546,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7560,7 +7558,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7712,7 +7710,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
 
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7723,7 +7721,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7734,7 +7732,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7887,7 +7885,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7899,7 +7897,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -7911,7 +7909,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8079,7 +8077,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8089,7 +8087,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8100,7 +8098,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8254,7 +8252,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8264,7 +8262,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8274,7 +8272,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8424,7 +8422,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8434,7 +8432,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8444,7 +8442,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8593,7 +8591,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8605,7 +8603,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8619,7 +8617,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8789,7 +8787,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8799,7 +8797,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8809,7 +8807,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8960,7 +8958,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8971,7 +8969,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -8981,7 +8979,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9131,7 +9129,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9142,7 +9140,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9152,7 +9150,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9302,7 +9300,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9313,7 +9311,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9323,7 +9321,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9473,7 +9471,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9484,7 +9482,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9494,7 +9492,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9655,7 +9653,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9665,7 +9663,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9675,7 +9673,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9822,7 +9820,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9833,7 +9831,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9843,7 +9841,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -9991,7 +9989,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                             DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -10002,7 +10000,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                             DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -10012,7 +10010,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                         END;
                                         IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
-                                            DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                            DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                             DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                             DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                             IF DepartmentOrginal.FINDFIRST THEN
@@ -10162,7 +10160,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                             END;
                                             IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                                 DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10173,7 +10171,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                             IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                                 DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10183,7 +10181,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                             END;
                                             IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                                 DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10334,7 +10332,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                             END;
                                             IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                                 DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10345,7 +10343,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                             IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                                 DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10355,7 +10353,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                             END;
                                             IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                                 DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10510,7 +10508,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                             END;
                                             IF (ECLSYST2."Group Description" <> '') AND (ECLSYST2."Team Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                                 DepartmentOrginal.SETFILTER("Group Description", '%1', ECLSYST2."Group Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10521,7 +10519,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                             IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                                 DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', ECLSYST2."Department Cat. Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10531,7 +10529,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                             END;
                                             IF (ECLSYST2."Sector Description" <> '') AND (ECLSYST2."Department Cat. Description" = '') THEN BEGIN
                                                 DepartmentOrginal.RESET;
-                                                DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                                DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                                 DepartmentOrginal.SETFILTER("Sector  Description", '%1', ECLSYST2."Sector Description");
                                                 DepartmentOrginal.SETFILTER("ORG Shema", '%1', ECLSYST2."Org. Structure");
                                                 IF DepartmentOrginal.FINDFIRST THEN
@@ -10690,7 +10688,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                 IF (Rec."Group Description" <> '') AND (Rec."Team Description" = '') THEN BEGIN
                                     DepartmentOrginal.RESET;
-                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 2);
+                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
                                     DepartmentOrginal.SETFILTER("Group Description", '%1', Rec."Group Description");
                                     DepartmentOrginal.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
                                     IF DepartmentOrginal.FINDFIRST THEN
@@ -10700,7 +10698,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                 END;
                                 IF (Rec."Department Cat. Description" <> '') AND (Rec."Group Description" = '') THEN BEGIN
                                     DepartmentOrginal.RESET;
-                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 4);
+                                    DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 3, 5);
                                     DepartmentOrginal.SETFILTER("Department Categ.  Description", '%1', Rec."Department Cat. Description");
                                     DepartmentOrginal.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
                                     IF DepartmentOrginal.FINDFIRST THEN
@@ -10710,7 +10708,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                 END;
                                 IF (Rec."Sector Description" <> '') AND (Rec."Department Cat. Description" = '') THEN BEGIN
                                     DepartmentOrginal.RESET;
-                                    DepartmentOrginal.SETFILTER("Department Type", '%1', 8);
+                                    DepartmentOrginal.SETFILTER("Department Type", '%1|%2', 2, 1);
                                     DepartmentOrginal.SETFILTER("Sector  Description", '%1', Rec."Sector Description");
                                     DepartmentOrginal.SETFILTER("ORG Shema", '%1', Rec."Org. Structure");
                                     IF DepartmentOrginal.FINDFIRST THEN

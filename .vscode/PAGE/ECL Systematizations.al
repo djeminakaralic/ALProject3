@@ -32,6 +32,7 @@ page 50144 "ECL Systematizations"
                 field("Difference Org/Position"; "Difference Org/Position")
                 {
                     Applicationarea = all;
+                    visible = false;
                 }
                 field("Org Belongs"; "Org Belongs")
                 {

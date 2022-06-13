@@ -4773,6 +4773,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Reason for Change - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 1145711811 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Migration,New Contract,Position Change,Workplace Change,Disciplinary Measures,Contract Renewal,Organizational Changes 1,Organizational Changes 2,Organizational Changes 3,Organizational Changes 4,Workplace And Wage Change,Position Location And Wage Change,Wage Change,Workplace Description Change,Workplace Description And Wage Change,Organisational Structure Changes,Systematization Change,Change engagement type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Reason for Change - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 3387969064 - Field 2241665020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Region</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5538,11 +5543,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Brutto After Contributtion - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4256639551 - Field 1276457363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Canton</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Canton - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 4256639551 - Field 4066382035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certifications and Solutions</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6232,6 +6232,11 @@
           <source>Reason for Change</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Reason for Change - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 1145711811 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Migration,New Contract,Position Change,Workplace Change,Disciplinary Measures,Contract Renewal,Organizational Changes 1,Organizational Changes 2,Organizational Changes 3,Organizational Changes 4,Workplace And Wage Change,Position Location And Wage Change,Wage Change,Workplace Description Change,Workplace Description And Wage Change,Organisational Structure Changes,Systematization Change,Change engagement type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Reason for Change - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - Field 2241665020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Region</source>
@@ -9273,11 +9278,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ORG Dijelovi - Field Branch Agency - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3155725168 - Field 1276457363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>For Calculation</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ORG Dijelovi - Field Canton - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3155725168 - Field 3703761530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Change</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10082,21 +10082,6 @@
           <source>Region</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment range - Field Region - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transaction Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 907492870 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Field Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 907492870 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2127312042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Finance Cue</source>
@@ -25023,11 +25008,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment range - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 4164150675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transaction Types</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Types - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 792771594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activities</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35743,16 +35723,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustomerExtends - Field Responsible Person Infodom - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 898694907 - Field 1246268097 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Social status category</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustomerExtends - Field Social status category - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 898694907 - Field 1246268097 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>,S</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CustomerExtends - Field Social status category - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2556904214 - Field 1587433127 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 235946633">
           <source>Prepayment</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37798,30 +37768,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Date And Time - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Social status category</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Type - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 1132033293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Postponed VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Postponed VAT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 3025315131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Redni broj uplate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Redni broj - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 1318000657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Social status category</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Social status - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 1318000657 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>,S</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Social status - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 2304779931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>To return</source>
@@ -39168,36 +39118,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue Sector - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 1145711811 - EnumValue 2997449368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract Renewal</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue Contract Renewal - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1145711811 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Empty</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue Empty - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1145711811 - EnumValue 2747135888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Migration</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue Migration - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1145711811 - EnumValue 32587538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New Contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue New Contract - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1145711811 - EnumValue 2655011822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Relocation</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue Relocation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1145711811 - EnumValue 495056346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Systematization</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue Systematization - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Enum 244841840 - EnumValue 2131230175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>BCS (prvi ciklus visokog obrazovanja (180ECTS))</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39262,16 +39182,6 @@
           <source>VII/1 stepen MR(magistar)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII/1 stepen MR(magistar) - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 2263797059 - EnumValue 2001046965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Regular work</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Shift Work - EnumValue Regular work - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 2263797059 - EnumValue 3671550847 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Work in shifts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Shift Work - EnumValue Work in shifts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3960065713 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Empty</source>
