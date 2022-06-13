@@ -278,6 +278,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify("Ledger E&ntries")
+        {
+            Visible = false;
+        }
         modify(Contact)
         {
             Visible = false;
