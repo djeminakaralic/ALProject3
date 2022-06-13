@@ -226,7 +226,7 @@ report 50010 "Vacation Calculation2"
                             EmployeeC.SETCURRENTKEY("Starting Date");
                             EmployeeC.ASCENDING;
                             If EmployeeC.FINDLAST THEN begin
-                                IF ((EmployeeC."Rad u smjenama" = TRUE)) THEN BEGIN
+                                IF ((EmployeeC."Rad u smjenama" = EmployeeC."Rad u smjenama"::"Work in shifts")) THEN BEGIN
                                     SocialStatus.Reset();
                                     SocialStatus.Get(1, 2);
                                     IF SocialStatus.FINDFIRST THEN BEGIN

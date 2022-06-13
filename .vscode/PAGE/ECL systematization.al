@@ -4,6 +4,7 @@ table 50055 "ECL systematization"
     DrillDownPageID = "ECL Systematizations";
     LookupPageID = "ECL Systematizations";
 
+
     fields
     {
         field(1; "No."; Integer)
@@ -649,11 +650,9 @@ table 50055 "ECL systematization"
             Caption = 'Probation Months';
             Editable = false;
         }
-        field(50286; "Reason for Change"; Option)
+        field(50286; "Reason for Change"; enum "Reason for Change")
         {
             Caption = 'Reason for Change';
-            OptionCaption = ' ,Migration,New Contract,Position Change,Workplace Change,Disciplinary Measures,Contract Renewal,Organizational Changes 1,Organizational Changes 2,Organizational Changes 3,Organizational Changes 4,Workplace And Wage Change,Position Location And Wage Change,Wage Change,Workplace Description Change,Workplace Description And Wage Change,Organisational Structure Changes,Systematization Change,Change engagement type';
-            OptionMembers = " ",Migration,"New Contract","Position Change","Workplace Change","Disciplinary Measures","Contract Renewal","Organizational Changes 1","Organizational Changes 2","Organizational Changes 3","Organizational Changes 4","Workplace And Wage Change","Position Location And Wage Change","Wage Change","Workplace Description Change","Workplace Description And Wage Change","Organisational Structure Changes","Systematization Change","Change engagement type";
 
             trigger OnValidate()
             begin
@@ -2255,320 +2254,327 @@ table 50055 "ECL systematization"
             Caption = 'Changing Position';
 
             trigger OnValidate()
+            var
+                UpdateDep: Report "Update dep";
             begin
 
                 ORGShema.RESET;
                 ORGShema.SETFILTER(Status, '%1', ORGShema.Status::Preparation);
                 IF ORGShema.FINDLAST THEN BEGIN
                     IF ("Changing Position" = TRUE) AND (ORGShema."Change Org" = FALSE) THEN BEGIN
-                        ORGShema.RESET;
-                        ORGShema.SETFILTER(Status, '%1', ORGShema.Status::Preparation);
-                        IF ORGShema.FINDLAST THEN BEGIN
-                            SectorOrginal.RESET;
-                            SectorOrginal.SETFILTER("Org Shema", '%1', ORGShema.Code);
-                            IF NOT SectorOrginal.FINDFIRST THEN BEGIN
-                                IF SectorTemp.FINDSET THEN
-                                    REPEAT
-                                        SectorOrginal.INIT;
-                                        SectorOrginal.TRANSFERFIELDS(SectorTemp);
-                                        OrgSNew.RESET;
-                                        OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
-                                        IF OrgSNew.FINDFIRST THEN BEGIN
-                                            SectorOrginal."Last Date Modified" := OrgSNew."Date From";
-                                            SectorOrginal."Operator No." := OrgSNew."Operator No.";
-                                        END;
+                        /* ORGShema.RESET;
+                         ORGShema.SETFILTER(Status, '%1', ORGShema.Status::Preparation);
+                         IF ORGShema.FINDLAST THEN BEGIN
+                             SectorOrginal.RESET;
+                             SectorOrginal.SETFILTER("Org Shema", '%1', ORGShema.Code);
+                             IF NOT SectorOrginal.FINDFIRST THEN BEGIN
+                                 IF SectorTemp.FINDSET THEN
+                                     REPEAT
+                                         SectorOrginal.INIT;
+                                         SectorOrginal.TRANSFERFIELDS(SectorTemp);
+                                         OrgSNew.RESET;
+                                         OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
+                                         IF OrgSNew.FINDFIRST THEN BEGIN
+                                             SectorOrginal."Last Date Modified" := OrgSNew."Date From";
+                                             SectorOrginal."Operator No." := OrgSNew."Operator No.";
+                                         END;
 
-                                        //ovdje da pronađem id za gps ako postoji
-
-
-
-
-                                        SectorParent22.RESET;
-                                        SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
-                                        SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
-                                        SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
-                                        SectorParent22.SETCURRENTKEY("ORG Shema");
-                                        SectorParent22.ASCENDING(FALSE);
-                                        IF SectorParent22.FINDFIRST THEN BEGIN
-                                            SectorOrginal.Parent := SectorParent22."Sector  Description";
-                                        END
-                                        ELSE BEGIN
-                                            SectorOrginal.Parent := '';
-                                        END;
-
-                                        SectorParent2.RESET;
-                                        SectorParent2.SETFILTER("Org Shema", '<>%1', SectorTemp."Org Shema");
-                                        SectorParent2.SETFILTER(Code, '%1', SectorOrginal.Code);
-                                        SectorParent2.SETFILTER(Description, '%1', SectorOrginal.Description);
-                                        SectorParent2.SETFILTER(Parent, '%1', SectorOrginal.Parent);
-                                        IF SectorParent2.FINDFIRST THEN BEGIN
-                                            SectorOrginal."ID for GPS" := SectorParent2."ID for GPS";
-                                            SectorOrginal.Ispis := FALSE;
-                                        END
-                                        ELSE BEGIN
-                                            SectorOrginal."ID for GPS" := 0;
-                                            SectorOrginal.Ispis := FALSE;
-                                        END;
-
-                                        //ID za gps završava
-
-                                        SectorOrginal1.SETFILTER(Code, '%1', SectorOrginal.Code);
-                                        SectorOrginal1.SETFILTER(Description, '%1', SectorOrginal.Description);
-                                        SectorOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
-                                        IF NOT SectorOrginal1.FINDFIRST THEN
-                                            SectorOrginal.INSERT;
-                                    UNTIL SectorTemp.NEXT = 0;
-                            END;
-
-
-                            IF DepCatTemp.FINDSET THEN
-                                REPEAT
-
-                                    DepCatOrginal.INIT;
-                                    DepCatOrginal.TRANSFERFIELDS(DepCatTemp);
-                                    OrgSNew.RESET;
-                                    OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
-                                    IF OrgSNew.FINDFIRST THEN BEGIN
-                                        DepCatOrginal."Last Date Modified" := OrgSNew."Date From";
-                                        DepCatOrginal."Operator No." := OrgSNew."Operator No.";
-                                    END;
-
-
-                                    //ovdje da pronađem id za gps ako postoji
-                                    SectorParent2.RESET;
-                                    SectorParent2.SETFILTER(Code, '%1', COPYSTR(DepCatOrginal.Code, 1, 4));
-                                    SectorParent2.SETFILTER("Org Shema", '%1', DepCatOrginal."Org Shema");
-                                    SectorParent2.SETCURRENTKEY("Org Shema");
-                                    SectorParent2.ASCENDING(FALSE);
-                                    IF SectorParent2.FINDFIRST THEN BEGIN
-
-                                        DepCatOrginal.Parent := SectorParent2.Description;
-
-                                    END
-                                    ELSE BEGIN
-                                        DepCatOrginal.Parent := '';
-                                    END;
-
-                                    DepCat22.RESET;
-                                    DepCat22.SETFILTER("Org Shema", '<>%1', DepCatOrginal."Org Shema");
-                                    DepCat22.SETFILTER(Code, '%1', DepCatOrginal.Code);
-                                    DepCat22.SETFILTER(Description, '%1', DepCatOrginal.Description);
-                                    DepCat22.SETFILTER(Parent, '%1', DepCatOrginal.Parent);
-                                    IF DepCat22.FINDFIRST THEN BEGIN
-                                        DepCatOrginal."ID for GPS" := DepCat22."ID for GPS";
-                                        DepCatOrginal.Ispis := FALSE;
-                                    END
-                                    ELSE BEGIN
-                                        DepCatOrginal."ID for GPS" := 0;
-                                        DepCatOrginal.Ispis := FALSE;
-                                    END;
-
-
-                                    DepCatOrginal1.SETFILTER(Description, '%1', DepCatOrginal.Description);
-                                    DepCatOrginal1.SETFILTER(Code, '%1', DepCatOrginal.Code);
-                                    DepCatOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
-                                    IF NOT DepCatOrginal1.FINDFIRST THEN
-                                        DepCatOrginal.INSERT;
-                                UNTIL DepCatTemp.NEXT = 0;
+                                         //ovdje da pronađem id za gps ako postoji
 
 
 
-                            IF GroupTemp.FINDSET THEN
-                                REPEAT
-                                    GroupOrginal.INIT;
-                                    GroupOrginal.TRANSFERFIELDS(GroupTemp);
-                                    OrgSNew.RESET;
-                                    OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
-                                    IF OrgSNew.FINDFIRST THEN BEGIN
-                                        GroupOrginal."Last Date Modified" := OrgSNew."Date From";
-                                        GroupOrginal."Operator No." := OrgSNew."Operator No.";
-                                    END;
-                                    //ID za gps
-                                    GroupCat22.RESET;
-                                    GroupCat22.SETFILTER("Org Shema", '<>%1', GroupOrginal."Org Shema");
-                                    GroupCat22.SETFILTER(Code, '%1', GroupOrginal.Code);
-                                    GroupCat22.SETFILTER(Description, '%1', GroupOrginal.Description);
-                                    GroupCat22.SETFILTER("Belongs to Department Category", '%1', GroupOrginal."Belongs to Department Category");
-                                    IF GroupCat22.FINDFIRST THEN BEGIN
-                                        GroupOrginal."ID for GPS" := GroupCat22."ID for GPS";
-                                        GroupOrginal.Ispis := FALSE;
-                                    END
-                                    ELSE BEGIN
-                                        GroupOrginal."ID for GPS" := 0;
-                                        GroupOrginal.Ispis := FALSE;
-                                    END;
-                                    //ID za gps
 
-                                    GroupOrginal1.SETFILTER(Description, '%1', GroupOrginal.Description);
-                                    GroupOrginal1.SETFILTER(Code, '%1', GroupOrginal.Code);
-                                    GroupOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
-                                    IF NOT GroupOrginal1.FINDFIRST THEN
-                                        GroupOrginal.INSERT;
-                                UNTIL GroupTemp.NEXT = 0;
+                                         SectorParent22.RESET;
+                                         SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
+                                         SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
+                                         SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
+                                         SectorParent22.SETCURRENTKEY("ORG Shema");
+                                         SectorParent22.ASCENDING(FALSE);
+                                         IF SectorParent22.FINDFIRST THEN BEGIN
+                                             SectorOrginal.Parent := SectorParent22."Sector  Description";
+                                         END
+                                         ELSE BEGIN
+                                             SectorOrginal.Parent := '';
+                                         END;
 
-                            IF TeamTemp.FINDSET THEN
-                                REPEAT
-                                    TeamOrginal.INIT;
-                                    TeamOrginal.TRANSFERFIELDS(TeamTemp);
-                                    OrgSNew.RESET;
-                                    OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
-                                    IF OrgSNew.FINDFIRST THEN BEGIN
-                                        TeamOrginal."Last Date Modified" := OrgSNew."Date From";
-                                        TeamOrginal."Operator No." := OrgSNew."Operator No.";
-                                    END;
+                                         SectorParent2.RESET;
+                                         SectorParent2.SETFILTER("Org Shema", '<>%1', SectorTemp."Org Shema");
+                                         SectorParent2.SETFILTER(Code, '%1', SectorOrginal.Code);
+                                         SectorParent2.SETFILTER(Description, '%1', SectorOrginal.Description);
+                                         SectorParent2.SETFILTER(Parent, '%1', SectorOrginal.Parent);
+                                         IF SectorParent2.FINDFIRST THEN BEGIN
+                                             SectorOrginal."ID for GPS" := SectorParent2."ID for GPS";
+                                             SectorOrginal.Ispis := FALSE;
+                                         END
+                                         ELSE BEGIN
+                                             SectorOrginal."ID for GPS" := 0;
+                                             SectorOrginal.Ispis := FALSE;
+                                         END;
+
+                                         //ID za gps završava
+
+                                         SectorOrginal1.SETFILTER(Code, '%1', SectorOrginal.Code);
+                                         SectorOrginal1.SETFILTER(Description, '%1', SectorOrginal.Description);
+                                         SectorOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
+                                         IF NOT SectorOrginal1.FINDFIRST THEN
+                                             SectorOrginal.INSERT;
+                                     UNTIL SectorTemp.NEXT = 0;
+                             END;
 
 
-                                    //ID za gps
-                                    TeamCat22.RESET;
-                                    TeamCat22.SETFILTER("Org Shema", '<>%1', TeamOrginal."Org Shema");
-                                    TeamCat22.SETFILTER(Code, '%1', TeamOrginal.Code);
-                                    TeamCat22.SETFILTER(Name, '%1', TeamOrginal.Name);
-                                    TeamCat22.SETFILTER("Belongs to Group", '%1', TeamOrginal."Belongs to Group");
-                                    IF TeamCat22.FINDFIRST THEN BEGIN
-                                        TeamOrginal."ID for GPS" := TeamCat22."ID for GPS";
-                                        TeamOrginal.Ispis := FALSE;
-                                    END
-                                    ELSE BEGIN
-                                        TeamOrginal."ID for GPS" := 0;
-                                        TeamOrginal.Ispis := FALSE;
-                                    END;
-                                    //ID za gps
+                             IF DepCatTemp.FINDSET THEN
+                                 REPEAT
+
+                                     DepCatOrginal.INIT;
+                                     DepCatOrginal.TRANSFERFIELDS(DepCatTemp);
+                                     OrgSNew.RESET;
+                                     OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
+                                     IF OrgSNew.FINDFIRST THEN BEGIN
+                                         DepCatOrginal."Last Date Modified" := OrgSNew."Date From";
+                                         DepCatOrginal."Operator No." := OrgSNew."Operator No.";
+                                     END;
+
+
+                                     //ovdje da pronađem id za gps ako postoji
+                                     SectorParent2.RESET;
+                                     SectorParent2.SETFILTER(Code, '%1', COPYSTR(DepCatOrginal.Code, 1, 4));
+                                     SectorParent2.SETFILTER("Org Shema", '%1', DepCatOrginal."Org Shema");
+                                     SectorParent2.SETCURRENTKEY("Org Shema");
+                                     SectorParent2.ASCENDING(FALSE);
+                                     IF SectorParent2.FINDFIRST THEN BEGIN
+
+                                         DepCatOrginal.Parent := SectorParent2.Description;
+
+                                     END
+                                     ELSE BEGIN
+                                         DepCatOrginal.Parent := '';
+                                     END;
+
+                                     DepCat22.RESET;
+                                     DepCat22.SETFILTER("Org Shema", '<>%1', DepCatOrginal."Org Shema");
+                                     DepCat22.SETFILTER(Code, '%1', DepCatOrginal.Code);
+                                     DepCat22.SETFILTER(Description, '%1', DepCatOrginal.Description);
+                                     DepCat22.SETFILTER(Parent, '%1', DepCatOrginal.Parent);
+                                     IF DepCat22.FINDFIRST THEN BEGIN
+                                         DepCatOrginal."ID for GPS" := DepCat22."ID for GPS";
+                                         DepCatOrginal.Ispis := FALSE;
+                                     END
+                                     ELSE BEGIN
+                                         DepCatOrginal."ID for GPS" := 0;
+                                         DepCatOrginal.Ispis := FALSE;
+                                     END;
+
+
+                                     DepCatOrginal1.SETFILTER(Description, '%1', DepCatOrginal.Description);
+                                     DepCatOrginal1.SETFILTER(Code, '%1', DepCatOrginal.Code);
+                                     DepCatOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
+                                     IF NOT DepCatOrginal1.FINDFIRST THEN
+                                         DepCatOrginal.INSERT;
+                                 UNTIL DepCatTemp.NEXT = 0;
 
 
 
-                                    TeamOrginal1.SETFILTER(Name, '%1', TeamOrginal.Name);
-                                    TeamOrginal1.SETFILTER(Code, '%1', TeamOrginal.Code);
-                                    TeamOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
-                                    IF NOT TeamOrginal1.FINDFIRST THEN
-                                        TeamOrginal.INSERT;
-                                UNTIL TeamTemp.NEXT = 0;
-                            IF DepartmentTemp.FINDSET THEN
-                                REPEAT
-                                    DepartmentOrginal.INIT;
-                                    DepartmentOrginal.TRANSFERFIELDS(DepartmentTemp);
-                                    DepartmentOrginal1.SETFILTER(Description, '%1', DepartmentOrginal.Description);
-                                    DepartmentOrginal1.SETFILTER(Code, '%1', DepartmentOrginal.Code);
-                                    DepartmentOrginal1.SETFILTER("Department Categ.  Description", '%1', DepartmentOrginal."Department Categ.  Description");
-                                    DepartmentOrginal1.SETFILTER("Group Description", '%1', DepartmentOrginal."Group Description");
-                                    DepartmentOrginal1.SETFILTER("Team Description", '%1', DepartmentOrginal."Team Description");
-                                    DepartmentOrginal1.SETFILTER("ORG Shema", '%1', ORGShema.Code);
-                                    IF NOT DepartmentOrginal1.FINDFIRST THEN
-                                        DepartmentOrginal.INSERT;
-                                UNTIL DepartmentTemp.NEXT = 0;
-                            IF HeadOfTemp.FINDSET THEN
-                                REPEAT
-                                    HeadOfOrginal.INIT;
-                                    HeadOfOrginal.TRANSFERFIELDS(HeadOfTemp);
-                                    HeadOfOrginal1.SETFILTER("Department Code", '%1', HeadOfOrginal."Department Code");
-                                    HeadOfOrginal1.SETFILTER("Sector  Description", '%1', HeadOfOrginal."Sector  Description");
-                                    HeadOfOrginal1.SETFILTER("Department Categ.  Description", '%1', HeadOfOrginal."Department Categ.  Description");
-                                    HeadOfOrginal1.SETFILTER("Group Description", '%1', HeadOfOrginal."Group Description");
-                                    HeadOfOrginal1.SETFILTER("Team Description", '%1', HeadOfOrginal."Team Description");
-                                    HeadOfOrginal1.SETFILTER("ORG Shema", '%1', ORGShema.Code);
-                                    IF NOT HeadOfOrginal1.FINDFIRST THEN
-                                        HeadOfOrginal.INSERT;
-                                UNTIL HeadOfTemp.NEXT = 0;
-                            COMMIT;
-                            NewReport.RUN;
-                            COMMIT;
-                            IF DimensionTempPos.FINDSET THEN
-                                REPEAT
-                                    DimensionOrginalPos.INIT;
-                                    DimensionOrginalPos.TRANSFERFIELDS(DimensionTempPos);
-                                    DimensionOrginalPos1.RESET;
-                                    DimensionOrginalPos1.SETFILTER("Position Code", '%1', DimensionOrginalPos."Position Code");
-                                    DimensionOrginalPos1.SETFILTER("Position Description", '%1', DimensionOrginalPos."Position Description");
-                                    DimensionOrginalPos1.SETFILTER("Dimension Value Code", '%1', DimensionOrginalPos."Dimension Value Code");
-                                    DimensionOrginalPos1.SETFILTER("Org Belongs", '%1', DimensionOrginalPos."Org Belongs");
-                                    DimensionOrginalPos1.SETFILTER("ORG Shema", '%1', DimensionTempPos."ORG Shema");
-                                    IF NOT DimensionOrginalPos1.FINDFIRST THEN
-                                        DimensionOrginalPos.INSERT;
-                                UNTIL DimensionTempPos.NEXT = 0;
-                            IF BenefitsTemp.FINDSET THEN
-                                REPEAT
-                                    BenefitsOrginal.INIT;
-                                    BenefitsOrginal.TRANSFERFIELDS(BenefitsTemp);
-                                    BenefitsOrginal1.RESET;
-                                    BenefitsOrginal1.SETFILTER("Position Code", '%1', BenefitsTemp."Position Code");
-                                    BenefitsOrginal1.SETFILTER("Position Name", '%1', BenefitsTemp."Position Name");
-                                    BenefitsOrginal1.SETFILTER(Code, '%1', BenefitsTemp.Code);
-                                    BenefitsOrginal1.SETFILTER("Org. Structure", '%1', BenefitsTemp."Org. Structure");
-                                    IF NOT BenefitsOrginal1.FINDFIRST THEN
-                                        BenefitsOrginal.INSERT;
-                                UNTIL BenefitsTemp.NEXT = 0;
-                            IF PositionMenuTemp.FINDSET THEN
-                                REPEAT
-                                    PositionMenuOrginal.INIT;
-                                    PositionMenuOrginal.TRANSFERFIELDS(PositionMenuTemp);
-                                    OrgSNew.RESET;
-                                    OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
-                                    IF OrgSNew.FINDFIRST THEN BEGIN
-                                        PositionMenuOrginal."Last Date Modified" := OrgSNew."Date From";
-                                        PositionMenuOrginal."Operator No." := OrgSNew."Operator No.";
-                                    END;
+                             IF GroupTemp.FINDSET THEN
+                                 REPEAT
+                                     GroupOrginal.INIT;
+                                     GroupOrginal.TRANSFERFIELDS(GroupTemp);
+                                     OrgSNew.RESET;
+                                     OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
+                                     IF OrgSNew.FINDFIRST THEN BEGIN
+                                         GroupOrginal."Last Date Modified" := OrgSNew."Date From";
+                                         GroupOrginal."Operator No." := OrgSNew."Operator No.";
+                                     END;
+                                     //ID za gps
+                                     GroupCat22.RESET;
+                                     GroupCat22.SETFILTER("Org Shema", '<>%1', GroupOrginal."Org Shema");
+                                     GroupCat22.SETFILTER(Code, '%1', GroupOrginal.Code);
+                                     GroupCat22.SETFILTER(Description, '%1', GroupOrginal.Description);
+                                     GroupCat22.SETFILTER("Belongs to Department Category", '%1', GroupOrginal."Belongs to Department Category");
+                                     IF GroupCat22.FINDFIRST THEN BEGIN
+                                         GroupOrginal."ID for GPS" := GroupCat22."ID for GPS";
+                                         GroupOrginal.Ispis := FALSE;
+                                     END
+                                     ELSE BEGIN
+                                         GroupOrginal."ID for GPS" := 0;
+                                         GroupOrginal.Ispis := FALSE;
+                                     END;
+                                     //ID za gps
 
-                                    PoSMenDUp.RESET;
-                                    PoSMenDUp.SETFILTER(Code, '%1', PositionMenuOrginal.Code);
-                                    PoSMenDUp.SETFILTER(Description, '%1', PositionMenuOrginal.Description);
-                                    PoSMenDUp.SETFILTER("Department Code", '%1', PositionMenuOrginal."Department Code");
-                                    PoSMenDUp.SETFILTER("Org. Structure", '%1', ORGShema.Code);
-                                    IF NOT PoSMenDUp.FINDFIRST THEN
-                                        PositionMenuOrginal.INSERT;
-                                UNTIL PositionMenuTemp.NEXT = 0;
-                            PositionMenuOrginal.RESET;
-                            PositionMenuOrginal.SETFILTER("Department Code", '%1', '');
-                            PositionMenuOrginal.SETFILTER("Org. Structure", '%1', ORGShema.Code);
-                            IF PositionMenuOrginal.FINDSET THEN
-                                REPEAT
-                                    DimensionTempPos.RESET;
-                                    DimensionTempPos.SETFILTER("Position Code", '%1', PositionMenuOrginal.Code);
-                                    DimensionTempPos.SETFILTER("Position Description", '%1', PositionMenuOrginal.Description);
-                                    IF DimensionTempPos.FINDSET THEN
-                                        REPEAT
-                                            PositionMenuOrginal1.INIT;
-                                            PositionMenuOrginal1.Code := DimensionTempPos."Position Code";
-                                            OrgSNew.RESET;
-                                            OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
-                                            IF OrgSNew.FINDFIRST THEN BEGIN
-                                                PositionMenuOrginal1."Last Date Modified" := OrgSNew."Date From";
-                                                PositionMenuOrginal1."Operator No." := OrgSNew."Operator No.";
-                                            END;
-                                            PositionMenuOrginal1.Description := DimensionTempPos."Position Description";
-                                            PositionMenuOrginal1."Org. Structure" := DimensionTempPos."ORG Shema";
-                                            PositionMenuOrginal1."Key Function" := PositionMenuOrginal."Key Function";
-                                            PositionMenuOrginal1."Control Function" := PositionMenuOrginal."Control Function";
-                                            PositionMenuOrginal1."BJF/GJF" := PositionMenuOrginal."BJF/GJF";
-                                            PositionMenuOrginal1."Management Level" := PositionMenuOrginal."Management Level";
-                                            PositionMenuOrginal1.Role := PositionMenuOrginal.Role;
-                                            PositionMenuOrginal1."Role Name" := PositionMenuOrginal."Role Name";
-                                            PositionMenuOrginal1.Grade := PositionMenuOrginal.Grade;
-                                            PositionMenuOrginal1."Official Translation" := PositionMenuOrginal."Official Translation";
+                                     GroupOrginal1.SETFILTER(Description, '%1', GroupOrginal.Description);
+                                     GroupOrginal1.SETFILTER(Code, '%1', GroupOrginal.Code);
+                                     GroupOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
+                                     IF NOT GroupOrginal1.FINDFIRST THEN
+                                         GroupOrginal.INSERT;
+                                 UNTIL GroupTemp.NEXT = 0;
 
-                                            IF DimensionTempPos."Team Description" <> '' THEN
-                                                PositionMenuOrginal1."Department Code" := DimensionTempPos."Team Code";
-                                            IF (DimensionTempPos."Group Description" <> '') AND (DimensionTempPos."Team Description" = '') THEN
-                                                PositionMenuOrginal1."Department Code" := DimensionTempPos."Group Code";
-                                            IF (DimensionTempPos."Department Categ.  Description" <> '') AND (DimensionTempPos."Group Description" = '') THEN
-                                                PositionMenuOrginal1."Department Code" := DimensionTempPos."Department Category";
-                                            IF (DimensionTempPos."Sector  Description" <> '') AND (DimensionTempPos."Department Categ.  Description" = '') THEN
-                                                PositionMenuOrginal1."Department Code" := DimensionTempPos.Sector;
+                             IF TeamTemp.FINDSET THEN
+                                 REPEAT
+                                     TeamOrginal.INIT;
+                                     TeamOrginal.TRANSFERFIELDS(TeamTemp);
+                                     OrgSNew.RESET;
+                                     OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
+                                     IF OrgSNew.FINDFIRST THEN BEGIN
+                                         TeamOrginal."Last Date Modified" := OrgSNew."Date From";
+                                         TeamOrginal."Operator No." := OrgSNew."Operator No.";
+                                     END;
 
-                                            IF NOT PosMenOrg.GET(PositionMenuOrginal1.Code, PositionMenuOrginal1.Description, PositionMenuOrginal1."Department Code", PositionMenuOrginal1."Org. Structure") THEN
-                                                //Code,Description,Department Code,Org. Structure
-                                                PositionMenuOrginal1.INSERT;
 
-                                        UNTIL DimensionTempPos.NEXT = 0
-UNTIL PositionMenuOrginal.NEXT = 0;
-                            PositionMenuOrginal.RESET;
-                            PositionMenuOrginal.SETFILTER("Department Code", '%1', '');
-                            IF PositionMenuOrginal.FINDSET THEN
-                                REPEAT
-                                    PositionMenuOrginal.DELETE;
-                                UNTIL PositionMenuOrginal.NEXT = 0;
-                            ORGShema."Change Org" := TRUE;
-                            ORGShema.MODIFY;
-                        END;
-                    END;
+                                     //ID za gps
+                                     TeamCat22.RESET;
+                                     TeamCat22.SETFILTER("Org Shema", '<>%1', TeamOrginal."Org Shema");
+                                     TeamCat22.SETFILTER(Code, '%1', TeamOrginal.Code);
+                                     TeamCat22.SETFILTER(Name, '%1', TeamOrginal.Name);
+                                     TeamCat22.SETFILTER("Belongs to Group", '%1', TeamOrginal."Belongs to Group");
+                                     IF TeamCat22.FINDFIRST THEN BEGIN
+                                         TeamOrginal."ID for GPS" := TeamCat22."ID for GPS";
+                                         TeamOrginal.Ispis := FALSE;
+                                     END
+                                     ELSE BEGIN
+                                         TeamOrginal."ID for GPS" := 0;
+                                         TeamOrginal.Ispis := FALSE;
+                                     END;
+                                     //ID za gps
+
+
+
+                                     TeamOrginal1.SETFILTER(Name, '%1', TeamOrginal.Name);
+                                     TeamOrginal1.SETFILTER(Code, '%1', TeamOrginal.Code);
+                                     TeamOrginal1.SETFILTER("Org Shema", '%1', ORGShema.Code);
+                                     IF NOT TeamOrginal1.FINDFIRST THEN
+                                         TeamOrginal.INSERT;
+                                 UNTIL TeamTemp.NEXT = 0;
+                             IF DepartmentTemp.FINDSET THEN
+                                 REPEAT
+                                     DepartmentOrginal.INIT;
+                                     DepartmentOrginal.TRANSFERFIELDS(DepartmentTemp);
+                                     DepartmentOrginal1.SETFILTER(Description, '%1', DepartmentOrginal.Description);
+                                     DepartmentOrginal1.SETFILTER(Code, '%1', DepartmentOrginal.Code);
+                                     DepartmentOrginal1.SETFILTER("Department Categ.  Description", '%1', DepartmentOrginal."Department Categ.  Description");
+                                     DepartmentOrginal1.SETFILTER("Group Description", '%1', DepartmentOrginal."Group Description");
+                                     DepartmentOrginal1.SETFILTER("Team Description", '%1', DepartmentOrginal."Team Description");
+                                     DepartmentOrginal1.SETFILTER("ORG Shema", '%1', ORGShema.Code);
+                                     IF NOT DepartmentOrginal1.FINDFIRST THEN
+                                         DepartmentOrginal.INSERT;
+                                 UNTIL DepartmentTemp.NEXT = 0;
+                             IF HeadOfTemp.FINDSET THEN
+                                 REPEAT
+                                     HeadOfOrginal.INIT;
+                                     HeadOfOrginal.TRANSFERFIELDS(HeadOfTemp);
+                                     HeadOfOrginal1.SETFILTER("Department Code", '%1', HeadOfOrginal."Department Code");
+                                     HeadOfOrginal1.SETFILTER("Sector  Description", '%1', HeadOfOrginal."Sector  Description");
+                                     HeadOfOrginal1.SETFILTER("Department Categ.  Description", '%1', HeadOfOrginal."Department Categ.  Description");
+                                     HeadOfOrginal1.SETFILTER("Group Description", '%1', HeadOfOrginal."Group Description");
+                                     HeadOfOrginal1.SETFILTER("Team Description", '%1', HeadOfOrginal."Team Description");
+                                     HeadOfOrginal1.SETFILTER("ORG Shema", '%1', ORGShema.Code);
+                                     IF NOT HeadOfOrginal1.FINDFIRST THEN
+                                         HeadOfOrginal.INSERT;
+                                 UNTIL HeadOfTemp.NEXT = 0;
+                             COMMIT;
+                             NewReport.RUN;
+                             COMMIT;
+                             IF DimensionTempPos.FINDSET THEN
+                                 REPEAT
+                                     DimensionOrginalPos.INIT;
+                                     DimensionOrginalPos.TRANSFERFIELDS(DimensionTempPos);
+                                     DimensionOrginalPos1.RESET;
+                                     DimensionOrginalPos1.SETFILTER("Position Code", '%1', DimensionOrginalPos."Position Code");
+                                     DimensionOrginalPos1.SETFILTER("Position Description", '%1', DimensionOrginalPos."Position Description");
+                                     DimensionOrginalPos1.SETFILTER("Dimension Value Code", '%1', DimensionOrginalPos."Dimension Value Code");
+                                     DimensionOrginalPos1.SETFILTER("Org Belongs", '%1', DimensionOrginalPos."Org Belongs");
+                                     DimensionOrginalPos1.SETFILTER("ORG Shema", '%1', DimensionTempPos."ORG Shema");
+                                     IF NOT DimensionOrginalPos1.FINDFIRST THEN
+                                         DimensionOrginalPos.INSERT;
+                                 UNTIL DimensionTempPos.NEXT = 0;
+                             IF BenefitsTemp.FINDSET THEN
+                                 REPEAT
+                                     BenefitsOrginal.INIT;
+                                     BenefitsOrginal.TRANSFERFIELDS(BenefitsTemp);
+                                     BenefitsOrginal1.RESET;
+                                     BenefitsOrginal1.SETFILTER("Position Code", '%1', BenefitsTemp."Position Code");
+                                     BenefitsOrginal1.SETFILTER("Position Name", '%1', BenefitsTemp."Position Name");
+                                     BenefitsOrginal1.SETFILTER(Code, '%1', BenefitsTemp.Code);
+                                     BenefitsOrginal1.SETFILTER("Org. Structure", '%1', BenefitsTemp."Org. Structure");
+                                     IF NOT BenefitsOrginal1.FINDFIRST THEN
+                                         BenefitsOrginal.INSERT;
+                                 UNTIL BenefitsTemp.NEXT = 0;
+                             IF PositionMenuTemp.FINDSET THEN
+                                 REPEAT
+                                     PositionMenuOrginal.INIT;
+                                     PositionMenuOrginal.TRANSFERFIELDS(PositionMenuTemp);
+                                     OrgSNew.RESET;
+                                     OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
+                                     IF OrgSNew.FINDFIRST THEN BEGIN
+                                         PositionMenuOrginal."Last Date Modified" := OrgSNew."Date From";
+                                         PositionMenuOrginal."Operator No." := OrgSNew."Operator No.";
+                                     END;
+
+                                     PoSMenDUp.RESET;
+                                     PoSMenDUp.SETFILTER(Code, '%1', PositionMenuOrginal.Code);
+                                     PoSMenDUp.SETFILTER(Description, '%1', PositionMenuOrginal.Description);
+                                     PoSMenDUp.SETFILTER("Department Code", '%1', PositionMenuOrginal."Department Code");
+                                     PoSMenDUp.SETFILTER("Org. Structure", '%1', ORGShema.Code);
+                                     IF NOT PoSMenDUp.FINDFIRST THEN
+                                         PositionMenuOrginal.INSERT;
+                                 UNTIL PositionMenuTemp.NEXT = 0;
+                             PositionMenuOrginal.RESET;
+                             PositionMenuOrginal.SETFILTER("Department Code", '%1', '');
+                             PositionMenuOrginal.SETFILTER("Org. Structure", '%1', ORGShema.Code);
+                             IF PositionMenuOrginal.FINDSET THEN
+                                 REPEAT
+                                     DimensionTempPos.RESET;
+                                     DimensionTempPos.SETFILTER("Position Code", '%1', PositionMenuOrginal.Code);
+                                     DimensionTempPos.SETFILTER("Position Description", '%1', PositionMenuOrginal.Description);
+                                     IF DimensionTempPos.FINDSET THEN
+                                         REPEAT
+                                             PositionMenuOrginal1.INIT;
+                                             PositionMenuOrginal1.Code := DimensionTempPos."Position Code";
+                                             OrgSNew.RESET;
+                                             OrgSNew.SETFILTER(Status, '%1', OrgSNew.Status::Preparation);
+                                             IF OrgSNew.FINDFIRST THEN BEGIN
+                                                 PositionMenuOrginal1."Last Date Modified" := OrgSNew."Date From";
+                                                 PositionMenuOrginal1."Operator No." := OrgSNew."Operator No.";
+                                             END;
+                                             PositionMenuOrginal1.Description := DimensionTempPos."Position Description";
+                                             PositionMenuOrginal1."Org. Structure" := DimensionTempPos."ORG Shema";
+                                             PositionMenuOrginal1."Key Function" := PositionMenuOrginal."Key Function";
+                                             PositionMenuOrginal1."Control Function" := PositionMenuOrginal."Control Function";
+                                             PositionMenuOrginal1."BJF/GJF" := PositionMenuOrginal."BJF/GJF";
+                                             PositionMenuOrginal1."Management Level" := PositionMenuOrginal."Management Level";
+                                             PositionMenuOrginal1.Role := PositionMenuOrginal.Role;
+                                             PositionMenuOrginal1."Role Name" := PositionMenuOrginal."Role Name";
+                                             PositionMenuOrginal1.Grade := PositionMenuOrginal.Grade;
+                                             PositionMenuOrginal1."Official Translation" := PositionMenuOrginal."Official Translation";
+
+                                             IF DimensionTempPos."Team Description" <> '' THEN
+                                                 PositionMenuOrginal1."Department Code" := DimensionTempPos."Team Code";
+                                             IF (DimensionTempPos."Group Description" <> '') AND (DimensionTempPos."Team Description" = '') THEN
+                                                 PositionMenuOrginal1."Department Code" := DimensionTempPos."Group Code";
+                                             IF (DimensionTempPos."Department Categ.  Description" <> '') AND (DimensionTempPos."Group Description" = '') THEN
+                                                 PositionMenuOrginal1."Department Code" := DimensionTempPos."Department Category";
+                                             IF (DimensionTempPos."Sector  Description" <> '') AND (DimensionTempPos."Department Categ.  Description" = '') THEN
+                                                 PositionMenuOrginal1."Department Code" := DimensionTempPos.Sector;
+
+                                             IF NOT PosMenOrg.GET(PositionMenuOrginal1.Code, PositionMenuOrginal1.Description, PositionMenuOrginal1."Department Code", PositionMenuOrginal1."Org. Structure") THEN
+                                                 //Code,Description,Department Code,Org. Structure
+                                                 PositionMenuOrginal1.INSERT;
+
+                                         UNTIL DimensionTempPos.NEXT = 0
+ UNTIL PositionMenuOrginal.NEXT = 0;
+                             PositionMenuOrginal.RESET;
+                             PositionMenuOrginal.SETFILTER("Department Code", '%1', '');
+                             IF PositionMenuOrginal.FINDSET THEN
+                                 REPEAT
+                                     PositionMenuOrginal.DELETE;
+                                 UNTIL PositionMenuOrginal.NEXT = 0;
+                             ORGShema."Change Org" := TRUE;
+                             ORGShema.MODIFY;
+                         END;
+                     END;
+                     */
+                    end;
+                    Commit();
+                    UpdateDep.Run();
+                    Commit();
                     //NE DOSTAJE 1 END
                     IF (Rec."Employee No." <> '') THEN BEGIN
 

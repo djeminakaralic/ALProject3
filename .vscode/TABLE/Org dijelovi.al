@@ -30,7 +30,7 @@ table 50113 "ORG Dijelovi"
                      City:=Municipality.City;
                   Municipality.CALCFIELDS("Entity Code");
                   VALIDATE("Entity Code",Municipality."Entity Code");
-                     PostCode.RESET;
+                  g   PostCode.RESET;
                      PostCode.SETFILTER(City,Municipality.City);
                      IF PostCode.FINDFIRST THEN BEGIN
                        VALIDATE("Post Code",PostCode.Code);
@@ -41,6 +41,8 @@ table 50113 "ORG Dijelovi"
                   "Post Code":=' ';
                   "Entity Code":='';
                   END*/
+
+
 
                 IF Rec."Branch Agency" = 1 THEN BEGIN
                     ECL.RESET;
@@ -395,8 +397,14 @@ table 50113 "ORG Dijelovi"
                 IF "Municipality Code of agency" <> '' THEN BEGIN
                     Municipality.RESET;
                     Municipality.SETFILTER(Code, "Municipality Code of agency");
-                    IF Municipality.FINDFIRST THEN
+                    IF Municipality.FINDFIRST THEN begin
                         City := Municipality.City;
+                        Canton := Municipality."Canton Code";
+                    end
+                    else begin
+                        City := '';
+                        Canton := '';
+                    end;
                     Municipality.CALCFIELDS("Entity Code");
                     VALIDATE("Entity Code", Municipality."Entity Code");
                     PostCode.RESET;
@@ -541,6 +549,11 @@ table 50113 "ORG Dijelovi"
         field(50040; "For Calculation 16"; Decimal)
         {
             Caption = 'For Calculation';
+        }
+        field(50041; "Canton"; Code[10])
+        {
+            Caption = 'For Calculation';
+            TableRelation = Canton.Code;
         }
     }
 

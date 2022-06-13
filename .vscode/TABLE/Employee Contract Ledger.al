@@ -3592,11 +3592,9 @@ table 50071 "Employee Contract Ledger"
             Caption = 'Probation Months';
             Editable = false;
         }
-        field(50286; "Reason for Change"; Option)
+        field(50286; "Reason for Change"; enum "Reason for Change")
         {
             Caption = 'Reason for Change';
-            OptionCaption = ' ,Migration,New Contract,Position Change,Workplace Change,Disciplinary Measures,Contract Renewal,Organizational Changes 1,Organizational Changes 2,Organizational Changes 3,Organizational Changes 4,Workplace And Wage Change,Position Location And Wage Change,Wage Change,Workplace Description Change,Workplace Description And Wage Change,Organisational Structure Changes,Systematization Change,Change engagement type';
-            OptionMembers = " ",Migration,"New Contract","Position Change","Workplace Change","Disciplinary Measures","Contract Renewal","Organizational Changes 1","Organizational Changes 2","Organizational Changes 3","Organizational Changes 4","Workplace And Wage Change","Position Location And Wage Change","Wage Change","Workplace Description Change","Workplace Description And Wage Change","Organisational Structure Changes","Systematization Change","Change engagement type";
 
             trigger OnValidate()
             begin
@@ -5930,7 +5928,7 @@ table 50071 "Employee Contract Ledger"
             Editable = false;
 
         }
-        field(594130; "Rad u smjenama"; Boolean)
+        field(594130; "Rad u smjenama"; Enum "Shift Work")
         {
             Caption = 'Rad u smjenama';
         }
@@ -5972,6 +5970,17 @@ table 50071 "Employee Contract Ledger"
         field(5941378; "Employee Education Level"; enum School)
         {
             Caption = 'Employee Education Level';
+
+
+        }
+        field(5941379; "Canton"; Code[10])
+        {
+            Caption = 'Canton';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("ORG Dijelovi".Canton WHERE(Code = FIELD("Org Dio"),
+                                                               GF = FIELD("GF rada code")));
+
+            Editable = false;
 
 
         }

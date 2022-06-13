@@ -3,7 +3,6 @@ page 50144 "ECL Systematizations"
     ApplicationArea = BasicHR;
     Caption = 'Employees nk';
     //CardPageID = "Employee Card";
-    Editable = false;
     PageType = List;
     SourceTable = "ECL Systematization";
     UsageCategory = Lists;
@@ -250,6 +249,7 @@ page 50144 "ECL Systematizations"
                 Promoted = true;
                 PromotedIsBig = true;
                 Applicationarea = all;
+
                 RunObject = Report "Show record";
                 Visible = false;
             }
@@ -260,7 +260,7 @@ page 50144 "ECL Systematizations"
                 PromotedIsBig = true;
                 RunObject = Report "Update dep";
                 Applicationarea = all;
-                Visible = false;
+                Visible = true;
 
                 trigger OnAction()
                 begin
