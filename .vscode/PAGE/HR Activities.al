@@ -356,6 +356,14 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
+                field(Certification; Certification)
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
 
 
             }

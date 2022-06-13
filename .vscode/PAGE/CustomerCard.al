@@ -23,6 +23,10 @@ pageextension 50145 CustomerCard extends "Customer Card"
         }
         addafter(Payments)
         {
+            field("Social status category"; "Social status category")
+            {
+
+            }
             group("CR")
             {
                 field(Orderer; Orderer)
