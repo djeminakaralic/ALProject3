@@ -348,6 +348,14 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
+                field("Training Entry"; "Training Entry")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
 
 
             }

@@ -2788,11 +2788,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Department Category temporary - Field Department Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1055854345 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Department Category temporary - Field Department Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 1055854345 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2923,6 +2918,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Department Category temporary - Field Residence/Network - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 1055854345 - Field 3073143862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sector Belongs</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Department Category temporary - Field Sector Belongs - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1055854345 - Field 980877959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Time</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3052,11 +3052,6 @@
           <source>Department Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Department temporary - Field Department Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3673396209 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Department temporary - Field Department Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3673396209 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -4363,6 +4358,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Employee Benefits - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 3704219634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Education Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Employee Education Level - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3387969064 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4713,6 +4713,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Position Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Position Coefficient for Wage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 3801082735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position complexity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Position complexity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3387969064 - Field 2478708305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4722,6 +4732,11 @@
           <source>Position ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Position ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 2016667855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Responsibility</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Position Responsibility - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3387969064 - Field 165260790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prentice</source>
@@ -4802,6 +4817,11 @@
           <source> ,Residence,Network</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Residence/Network - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 244841840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field School - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3387969064 - Field 2662995888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sector</source>
@@ -5012,6 +5032,11 @@
           <source>Work Years on definitely</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Work Years - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3387969064 - Field 443172990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Workplace conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Workplace conditions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2005769165 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Education - Seminars</source>
@@ -7183,6 +7208,66 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Excel Template - Field Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2535686357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2535686357 - Field 2059984972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Org Schema</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager - Field ORG Shema - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2535686357 - Field 3493435768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Org Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager - Field Position Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2535686357 - Field 2478708305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager - Field Position Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2535686357 - Field 867945239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subordinate Org Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager - Field Subordinate Org Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2535686357 - Field 4043804506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subordinate Org Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager - Field Subordinate Org Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1001077736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager temporery</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager temporery - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1001077736 - Field 2059984972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Org Schema</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager temporery - Field ORG Shema - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1001077736 - Field 3493435768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Org Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager temporery - Field Position Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1001077736 - Field 2478708305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager temporery - Field Position Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1001077736 - Field 867945239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subordinate Org Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager temporery - Field Subordinate Org Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1001077736 - Field 4043804506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Subordinate Org Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Exe Manager temporery - Field Subordinate Org Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4051573732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production Matrix  BOM Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7427,11 +7512,6 @@
           <source>Department Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Group temporary - Field Department Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1634431544 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Group temporary - Field Department Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 1634431544 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -12253,11 +12333,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Minimal Education Level - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 4229043595 - Field 4213575185 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  </source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Minimal Education Level - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 4229043595 - Field 3270966457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. of Working Places</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12288,10 +12363,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Org. Structure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4229043595 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Position Coefficient for Wage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4229043595 - Field 3801082735 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position complexity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Position complexity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4229043595 - Field 254371960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Menu Identity</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Position Menu Identity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4229043595 - Field 2016667855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Responsibility</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Position Responsibility - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4229043595 - Field 2339353424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Role code</source>
@@ -12303,6 +12393,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Role Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4229043595 - Field 244841840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field School - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4229043595 - Field 2753007687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School of Graduation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field School of Graduation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4229043595 - Field 1973081390 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sector Identity</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12312,6 +12412,41 @@
           <source>Work Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Work Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4229043595 - Field 443172990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Workplace conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu temporary - Field Workplace conditions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3854462867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Minimal Educ Temp</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Educ Temp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3854462867 - Field 4213575185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimal Education Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Educ Temp - Field Minimal Education Level - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3854462867 - Field 4157433164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Org Shema</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Educ Temp - Field Org Shema - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3854462867 - Field 3493435768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Educ Temp - Field Position Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3854462867 - Field 1953365538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Educ Temp - Field Position Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3854462867 - Field 2753007687 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>School of Graduation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Minimal Educ Temp - Field School of Graduation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3658770668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Minimal Education</source>
@@ -13903,6 +14038,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sector temporary - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 15794697 - Field 1611336899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CEO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Sector temporary - Field CEO - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 15794697 - Field 2371602809 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Changing Department</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13917,11 +14057,6 @@
           <source>Department Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Sector temporary - Field Department Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 15794697 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Sector temporary - Field Department Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 15794697 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -15374,7 +15509,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field TypeOF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3275839077 - Field 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Year</source>
+          <source>Godina</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Year - Property Caption</note>
         </trans-unit>
@@ -23808,6 +23943,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Excel Template - Action ImportFile - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2852908459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Exe Manager List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 479094162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Exe Manager List temporery - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2420653498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Grades</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23938,6 +24083,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Head Of's - Action &amp;Show - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 279971287 - Action 2852908459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Head Of's - Action Exe Manager List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 279971287 - Action 666359516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update head of</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23967,6 +24117,11 @@
           <source>Sector Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Head Of's temporary sist - Control Sector  Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 396500045 - Action 2852908459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Head Of's temporary sist - Action Exe Manager List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 396500045 - Action 1235620153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Next</source>
@@ -25503,6 +25658,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Position menu temp - Action Position temporery dimension - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 622860298 - Action 2852908459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exe Manager List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Position menu temp - Action Exe Manager List - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 622860298 - Action 1955895994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Insert position</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -25592,6 +25752,11 @@
           <source>Position Minimal Education</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4065620001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Minimal Education</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Positions Minimal Education t - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1088320606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting List</source>
@@ -34732,6 +34897,21 @@
           <source>Employee Full Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Employee Full Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 946267734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Ime i prezime prvog nadređenog</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Manager1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 3328145179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Ime i prezime drugog nadređenog</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Manager2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Control 4200688530 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Nacionalnost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Control Nationallity - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2212959633 - Action 3057006853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
           <source>Import/Export Bank Statement</source>

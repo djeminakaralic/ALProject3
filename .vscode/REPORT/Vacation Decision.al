@@ -173,7 +173,7 @@ report 50109 VacationDecision
                 EmployeeRec.SetFilter("No.", '%1', DataItem5."Employee No.");
                 if EmployeeRec.FindFirst() then begin
 
-                    FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day"));
+                    FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day") / EmployeeRec."Hours In Day");
                     DrugiDioDana := "Total days" - FirstPart;
                 end;
 
