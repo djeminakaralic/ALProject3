@@ -677,7 +677,15 @@ table 50085 "HR Cue"
         {
             FieldClass = FlowField;
             CalcFormula = Count("Training Time Entry" where("Start date" = field(DateCatalogue)));
-            Caption = 'Trainings';
+            Caption = 'Održavanje treninga/edukacija';
+
+
+        }
+        field(50093; "Certification"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateCatalogue)));
+            Caption = 'Certifikati čiji rok ističe za mjesec dana';
 
 
         }

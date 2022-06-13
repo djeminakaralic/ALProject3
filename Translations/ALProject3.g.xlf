@@ -7933,6 +7933,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field CandidatesGFZenica - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 470349803 - Field 2391601916 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certifikati čiji rok ističe za mjesec dana</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Certification - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 470349803 - Field 3900362726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ClosedPosting</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8264,7 +8269,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Training Catalogue - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 1513740504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Trainings</source>
+          <source>Održavanje treninga/edukacija</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Training Entry - Property Caption</note>
         </trans-unit>
@@ -37458,6 +37463,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Employee Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3318887637 - Field 3310790758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
+          <source>Evidence of certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Evidence of certification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3318887637 - Field 3310790758 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
+          <source>,Certifikat,Atest,Potvrda,Uvjerenje</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Evidence of certification - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3318887637 - Field 713106971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
           <source>Exam Passed</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37488,6 +37503,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Language Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3318887637 - Field 56735747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
+          <source>Team Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Position - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3318887637 - Field 3999285606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
           <source>Sector Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37507,11 +37527,6 @@
           <source> ,Computer Knowledge,Languages,Certification</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Switch - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3318887637 - Field 2539461245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
-          <source>Team Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Team Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 433160313 - Field 3558390861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 10849778">
           <source>Age</source>
@@ -37723,6 +37738,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Due Date 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 475006745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Given amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Given amount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 68211241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Group Member</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37752,6 +37772,11 @@
           <source>Postponed VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Postponed VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2304779931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>To return</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field To return - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3163386377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>VAT Date</source>

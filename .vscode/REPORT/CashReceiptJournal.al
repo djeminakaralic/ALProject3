@@ -28,11 +28,33 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }*/
 
+
+
         addafter("Posting Date")
         {
             field("Payment Date And Time"; "Payment Date And Time")
             {
                 ApplicationArea = all;
+            }
+            field("Redni broj"; "Redni broj")
+            {
+
+            }
+
+            field("Social status"; "Social status")
+            {
+
+            }
+        }
+        addafter("Amount (LCY)")
+        {
+            field("Given amount"; "Given amount")
+            {
+
+            }
+            field("To return"; "To return")
+            {
+
             }
         }
 
@@ -216,6 +238,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     var
         GJline: Record "Gen. Journal Line";
+        Customer: Record Customer;
 
 
     /*trigger OnOpenPage()
