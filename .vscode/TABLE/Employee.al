@@ -2880,7 +2880,7 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = lookup("Employee Contract Ledger"."Engagement Type" where("Employee No." = FIELD("No."), Active = const(true)));
         }
-        field(503686; "Rad u smjenama"; Boolean)
+        field(503686; "Rad u smjenama"; enum "Shift Work")
         {
             FieldClass = FlowField;
             CalcFormula = lookup("Employee Contract Ledger"."Rad u smjenama" where("Employee No." = FIELD("No."), Active = const(true)));

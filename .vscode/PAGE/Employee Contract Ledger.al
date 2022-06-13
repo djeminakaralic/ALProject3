@@ -189,6 +189,10 @@ page 50051 "Employee Contract Ledger"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
+                field(Canton; Canton)
+                {
+                    ApplicationArea = all;
+                }
                 field("Org Municipality"; "Org Municipality")
                 {
 
@@ -208,6 +212,7 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
+
                 field("<Position Description>"; "Position Description")
                 {
 
@@ -246,22 +251,24 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
-                field("Contract Type"; "Contract Type")
-                {
-                    Visible = false;
-                    ApplicationArea = all;
-                    ShowMandatory = true;
-
-                }
                 field("Contract Type Name"; "Contract Type Name")
                 {
                     Editable = true;
 
                     ApplicationArea = all;
-                    Visible = false;
+                    Visible = true;
 
 
                 }
+                field("Contract Type"; "Contract Type")
+                {
+                    Visible = true;
+                    ApplicationArea = all;
+                    ShowMandatory = true;
+                    Editable = false;
+
+                }
+
                 field("Starting Date"; "Starting Date")
                 {
                     NotBlank = true;
