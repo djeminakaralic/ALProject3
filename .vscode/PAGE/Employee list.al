@@ -278,6 +278,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify("Ledger E&ntries")
+        {
+            Visible = false;
+        }
         modify(Contact)
         {
             Visible = false;
@@ -354,6 +358,32 @@ pageextension 50149 EmployeeList extends "Employee List"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = page "Employee Trainings Ledger";
+
+
+            }
+
+            action("Evidencija prerasporedjenih")
+            {
+                Caption = 'Prerasporedjeni';
+
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Evidencija prerasporedjenih";
+
+
+            }
+            action("Izvjestaj starosne strukture")
+            {
+                Caption = 'Izvjestaj starosne strukture';
+
+                Image = Ledger;
+                ApplicationArea = all;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Izvjestaj starosne strukture";
 
 
             }

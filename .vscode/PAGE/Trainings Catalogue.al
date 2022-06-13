@@ -19,6 +19,7 @@ page 50058 "Trainings Catalogue"
                 field(Name; Name)
                 { }
                 field(TypeOF; TypeOF) { }
+                field("Type of training name"; "Type of training name") { }
                 field(Type; Type)
                 {
 

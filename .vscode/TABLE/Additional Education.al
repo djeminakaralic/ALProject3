@@ -245,7 +245,7 @@ table 50200 "Additional Education"
         {
             Caption = 'Year of End';
         }
-        field(31; Status; enum "Employee Status")
+        field(31; Status; enum "Employee Status Ext")
         {
             FieldClass = FlowField;
             CalcFormula = Lookup(Employee.Status WHERE("No." = FIELD("Employee No.")));
@@ -271,7 +271,7 @@ table 50200 "Additional Education"
         {
             FieldClass = FlowField;
 
-            CalcFormula = Lookup("Employee Contract Ledger"."Team Description" WHERE("Employee No." = FIELD("Employee No.")));
+            CalcFormula = Lookup("Employee Contract Ledger"."Department Name" WHERE("Employee No." = FIELD("Employee No.")));
             Caption = 'Team';
             Editable = false;
 

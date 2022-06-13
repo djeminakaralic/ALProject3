@@ -4,25 +4,8 @@ tableextension 50071 EmployeeExtension extends Employee
 
     fields
     {
-        modify("Mobile Phone No.")
-        {
-            trigger OnAfterValidate()
-            begin
-                CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
-                      THEN
-                        ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Mobile Phone No.")
 
-                ELSE BEGIN
-                    "Mobile Phone No." := '';
-                END;
-            END;
 
-        }
         modify("Phone No.")
         {
             trigger OnAfterValidate()
@@ -42,6 +25,25 @@ tableextension 50071 EmployeeExtension extends Employee
             END;
 
         }
+        modify("Mobile Phone No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CLEAR(CheckInt);
+                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
+                  THEN
+                    IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
+                      THEN
+                        ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
+                    ELSE
+                        ERROR(Text017, "Mobile Phone No.")
+
+                ELSE BEGIN
+                    "Mobile Phone No." := '';
+                END;
+            END;
+        }
+
         field(50121; "Contribution Category Code"; Code[10])
         {
             Caption = 'Contribution Category Code';
@@ -3007,6 +3009,15 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = lookup("Employee Contract Ledger"."Manager 1 Last Name" where("Employee No." = FIELD("No."), Active = const(true)));
         }*/
+        field(503709; "Insurence number"; Text[250])
+        {
+            Caption = 'Insurance number';
+        }
+        field(503710; "Additional rights millitary"; Option)
+        {
+            Caption = 'Additional rights millitary';
+            OptionMembers = ,Borac,"Pripadnik boračke populacije","Šehidski status";
+        }
 
 
 
@@ -3043,10 +3054,8 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
-        WshShell: DotNet SendKeys;
         Education: Record "Additional Education";
 
-        reee: DotNet SendKeys;
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
         Municipality: Record Municipality;
