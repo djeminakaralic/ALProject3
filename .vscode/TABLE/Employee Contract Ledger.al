@@ -5984,6 +5984,14 @@ table 50071 "Employee Contract Ledger"
 
 
         }
+        field(5941380; "Status of employee"; enum "Employee Status Ext")
+        {
+            Caption = 'Status';
+
+
+
+        }
+
 
 
     }

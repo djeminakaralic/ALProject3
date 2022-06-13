@@ -609,9 +609,14 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }*/
-                field(Status; Status)
+                /*field(Status; Status)
                 {
                     ApplicationArea = all;
+                }*/
+                field("Status of employee"; "Status of employee")
+                {
+
+                    Caption = 'Status';
                 }
 
 

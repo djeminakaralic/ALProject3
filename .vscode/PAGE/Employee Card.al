@@ -2481,7 +2481,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     trigger OnDrillDown()
                     begin
 
-                        EmployeeContractLedger.RESET;
+                        //EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                         EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
