@@ -635,19 +635,20 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 }
 
 
-                field("Related Person to be informed"; "Related Person to be informed")
-                {
-                    //ĐK  Caption = 'Related Person to be informed';
-                    ApplicationArea = all;
-                }
-                field("Relationship with Related Per."; "Relationship with Related Per.")
-                {
-                    ApplicationArea = all;
-                }
+
 
                 group(Emergency)
                 {
                     Caption = 'Emergency';
+                    field("Related Person to be informed"; "Related Person to be informed")
+                    {
+                        //ĐK  Caption = 'Related Person to be informed';
+                        ApplicationArea = all;
+                    }
+                    field("Relationship with Related Per."; "Relationship with Related Per.")
+                    {
+                        ApplicationArea = all;
+                    }
                     grid("Tel. No. Of Related Person")
                     {
                         Caption = 'Tel. No. Of Related Person';
@@ -2887,10 +2888,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                         end;
                     }
-                    field("Employment Date2"; "Employment Date")
+                    /*field("Employment Date2"; "Employment Date")
                     {
                         ApplicationArea = all;
-                    }
+                    }*/
 
 
                     field(EmployeeContractLedgerBrutto; EmployeeContractLedger.Brutto)
@@ -3026,14 +3027,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-                    field("Professional Examination Date"; "Professional Examination Date")
+                    /*field("Professional Examination Date"; "Professional Examination Date")
                     {
                         ApplicationArea = all;
                     }
                     field("Professional Exam. Result"; "Professional Exam. Result")
                     {
                         ApplicationArea = all;
-                    }
+                    }*/
                     field(EmployeeContractLedgerEngagementType; EmployeeContractLedger."Engagement Type")
                     {
                         Caption = 'Contract Type';

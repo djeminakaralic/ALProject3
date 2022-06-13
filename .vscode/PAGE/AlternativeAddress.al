@@ -11,6 +11,7 @@ pageextension 50168 AlternativeAddress extends "Alternative Address Card"
         {
             Editable = false;
         }
+
         modify(Name)
         {
             Visible = false;

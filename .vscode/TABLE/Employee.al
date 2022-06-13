@@ -4,6 +4,44 @@ tableextension 50071 EmployeeExtension extends Employee
 
     fields
     {
+        modify("Mobile Phone No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CLEAR(CheckInt);
+                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
+                  THEN
+                    IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
+                      THEN
+                        ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
+                    ELSE
+                        ERROR(Text017, "Mobile Phone No.")
+
+                ELSE BEGIN
+                    "Mobile Phone No." := '';
+                END;
+            END;
+
+        }
+        modify("Phone No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CLEAR(CheckInt);
+                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No.", 5, 4))) OR (COPYSTR("Phone No.", 4, 1) <> ' '))
+                  THEN
+                    IF (COPYSTR("Phone No.", 4, 1) <> ' ')
+                      THEN
+                        ERROR(Text016, COPYSTR("Phone No.", 4, 1), 'razmak')
+                    ELSE
+                        ERROR(Text017, "Phone No.")
+
+                ELSE BEGIN
+                    "Phone No." := '';
+                END;
+            END;
+
+        }
         field(50121; "Contribution Category Code"; Code[10])
         {
             Caption = 'Contribution Category Code';
@@ -185,6 +223,7 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Company Mobile Phone No.';
             ExtendedDatatype = PhoneNo;
             FieldClass = Normal;
+
         }
         field(503557; "Dial Code Company Mobile"; Code[10])
         {
