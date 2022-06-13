@@ -48,7 +48,7 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         field(50000; Sex; Option)
         {
             Caption = 'Sex';
-            OptionCaption = ' ,Male,Female';
+            OptionCaption = ' ,Muško,Žensko';
             OptionMembers = " ",Male,Female;
         }
         field(50001; "Vacation Ease"; Boolean)

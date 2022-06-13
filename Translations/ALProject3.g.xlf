@@ -37714,7 +37714,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee_Relative_Ext - Field Spouse - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 433160313 - Field 652067758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 10849778">
-          <source>Team</source>
+          <source>Department</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee_Relative_Ext - Field Team Name - Property Caption</note>
         </trans-unit>
