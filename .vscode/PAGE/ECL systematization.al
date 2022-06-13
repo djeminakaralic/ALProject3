@@ -2845,6 +2845,8 @@ table 50055 "ECL systematization"
                                                 ECLORG1nEW.VALIDATE("Group Description", '');
                                         END;
 
+                                        //ĐK
+
 
                                         IF (ECLSYST2."Department Cat. Description" <> '') AND (ECLSYST2."Group Description" = '') THEN BEGIN
                                             DepartmentOrginal.RESET;
