@@ -6333,6 +6333,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Status - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 4256639551 - Field 2615854241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Status of employee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4256639551 - Field 326041280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Superior 1</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -23852,6 +23857,11 @@
           <source>Would you like to save the changes?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Page 4256639551 - Control 2615854241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Contract Ledger - Control Status of employee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4256639551 - Action 4254856415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy</source>

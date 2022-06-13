@@ -2481,7 +2481,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     trigger OnDrillDown()
                     begin
 
-                        //EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                         EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
@@ -3179,6 +3179,45 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }*/
+                }
+                group(Inactivity)
+                {
+                    field("Maner of termination"; EmployeeContractLedger."Manner of Term. Code")
+                    {
+                        Caption = 'Reason for termination';
+                        Editable = false;
+                        ApplicationArea = all;
+
+                        //   Visible = show;
+
+                        trigger OnDrillDown()
+                        begin
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedger.SETFILTER("Manner of Term. Code", '%1', 'MIROVANJE');
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field(EndingDate; EmployeeContractLedger."Ending Date")
+                    {
+                        Caption = 'Ending date of retirement';
+                        Editable = false;
+                        ApplicationArea = all;
+
+                        //   Visible = show;
+
+                        trigger OnDrillDown()
+                        begin
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedger.SETFILTER("Manner of Term. Code", '%1', 'MIROVANJE');
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
                 }
             }
         }
