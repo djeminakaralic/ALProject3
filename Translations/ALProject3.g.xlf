@@ -37704,7 +37704,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee_Relative_Ext - Field Sex - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 433160313 - Field 2087999386 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 10849778">
-          <source> ,Male,Female</source>
+          <source> ,Muško,Žensko</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee_Relative_Ext - Field Sex - Property OptionCaption</note>
         </trans-unit>

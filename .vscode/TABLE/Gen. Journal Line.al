@@ -116,7 +116,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50029; "Payment Type"; code[10])
         {
 
-            TableRelation = "Payment Type";
+            //TableRelation = "Payment Type";
             Caption = 'Social status category';
         }
 
