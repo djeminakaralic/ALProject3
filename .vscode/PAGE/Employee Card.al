@@ -705,6 +705,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
+                field("Insurence number"; "Insurence number")
+                {
+
+                }
                 field("Citizenship Description";
                 PersonalDocumentsCit1."Citizenship Description")
                 {
@@ -1006,6 +1010,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         END;
                         CurrPage.UPDATE;
                     end;
+                }
+                field("Additional rights millitary"; "Additional rights millitary")
+                {
+                    ApplicationArea = all;
                 }
                 field("Blood Donor"; "Blood Donor")
                 {
@@ -3122,10 +3130,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-                    field("Termination Date2"; "Termination Date")
+                    /*field("Termination Date2"; "Termination Date")
                     {
                         ApplicationArea = all;
-                    }
+                    }*/
                     field(EmployeeContractLedgerMannerofTermDescription; EmployeeContractLedger."Manner of Term. Description")
                     {
                         Caption = 'Manner of Termination Description';
@@ -3155,6 +3163,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             EmployeeContractLedger.SETFILTER("Ending Date", '<>%1', 0D);
+                            EmployeeContractLedger.SetFilter("Manner of Term. Code", '<>%1', 'MIROVANJE');
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
@@ -3195,6 +3204,24 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             EmployeeContractLedger.SETFILTER("Manner of Term. Code", '%1', 'MIROVANJE');
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                            CurrPage.UPDATE;
+                        end;
+                    }
+                    field(EmployeeContractLedgerGroundsforTerm; EmployeeContractLedger."Grounds for Term. Description")
+                    {
+                        Caption = 'Grounds for Termination Description';
+                        Editable = false;
+                        ApplicationArea = all;
+
+
+                        trigger OnDrillDown()
+                        begin
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            //EmployeeContractLedger.SETFILTER("Ending Date", '<>%1', 0D);
+                            EmployeeContractLedger.SetFilter("Manner of Term. Code", '%1', 'MIROVANJE');
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;

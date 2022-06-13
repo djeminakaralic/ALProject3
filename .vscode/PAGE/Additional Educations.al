@@ -34,15 +34,24 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                field("Title Description"; "Title Description")
-                {
-                    ApplicationArea = all;
-                }
                 field(Title; Title)
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
+                field("Title Description"; "Title Description")
+                {
+                    ApplicationArea = all;
+                }
+                field(Vocation; Vocation)
+                {
+
+                }
+                field("Vocation Description"; "Vocation Description")
+                {
+
+                }
+
                 field(Profession; Profession)
                 {
                     Visible = IsVisible;
@@ -69,7 +78,11 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                /*field("Team Description"; "Team Description")
+                field("Sector Description"; "Sector Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
                 }
@@ -77,15 +90,12 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                field("Department Cat.Description"; "Department Cat.Description")
-                {
-                    Caption = '<Department Categroy>';
-                    ApplicationArea = all;
-                }
-                field("Sector Description"; "Sector Description")
-                {
-                    ApplicationArea = all;
-                }*/
+                /* field("Department Cat.Description"; "Department Cat.Description")
+                 {
+                     Caption = '<Department Categroy>';
+                     ApplicationArea = all;
+                 }*/
+
             }
         }
     }

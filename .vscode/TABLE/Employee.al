@@ -3007,6 +3007,15 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = lookup("Employee Contract Ledger"."Manager 1 Last Name" where("Employee No." = FIELD("No."), Active = const(true)));
         }*/
+        field(503709; "Insurence number"; Text[250])
+        {
+            Caption = 'Insurance number';
+        }
+        field(503710; "Additional rights millitary"; Option)
+        {
+            Caption = 'Additional rights millitary';
+            OptionMembers = ,Borac,"Pripadnik boračke populacije","Šehidski status";
+        }
 
 
 
