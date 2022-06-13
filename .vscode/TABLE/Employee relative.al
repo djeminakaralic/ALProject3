@@ -18,7 +18,7 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
             trigger OnAfterValidate()
             begin
                 //HR01 start
-                Relative.SETFILTER("Code", '%1', "Relative Code");
+                /*Relative.SETFILTER("Code", '%1', "Relative Code");
                 IF Relative.FIND('-') THEN BEGIN
                     Relation := Relative.Relation;
                     Sex := Relative.Sex;
@@ -32,8 +32,15 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
                 IF Relation = Relation::" " THEN BEGIN
                     "Relative's Employee No." := '';
                     Sex := 0;
-                END;
+                END;*/
+                if ("Relative Code" = 'OTAC') or ("Relative Code" = 'SUPRUG') or ("Relative Code" = 'SIN') then begin
+                    Sex := 1
+                end
+                else begin
+                    sex := 2;
+                end;
             end;
+
 
         }
 
@@ -41,7 +48,7 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         field(50000; Sex; Option)
         {
             Caption = 'Sex';
-            OptionCaption = ' ,Male,Female';
+            OptionCaption = ' ,Muško,Žensko';
             OptionMembers = " ",Male,Female;
         }
         field(50001; "Vacation Ease"; Boolean)
@@ -167,9 +174,9 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         field(50017; "Team Name"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup("Employee Contract Ledger"."Team Description" WHERE("Employee No." = FIELD("Employee No."),
+            CalcFormula = Lookup("Employee Contract Ledger"."Department Name" WHERE("Employee No." = FIELD("Employee No."),
                                                                                       Active = FILTER(TRUE)));
-            Caption = 'Team';
+            Caption = 'Department';
             Editable = false;
 
         }

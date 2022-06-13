@@ -374,6 +374,20 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             }
+            action("Izvjestaj starosne strukture")
+            {
+                Caption = 'Izvjestaj starosne strukture';
+
+                Image = Ledger;
+                ApplicationArea = all;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Izvjestaj starosne strukture";
+
+
+            }
+
             /*action("Create Worksheet")
             {
                 Caption = 'Create Worksheet';
