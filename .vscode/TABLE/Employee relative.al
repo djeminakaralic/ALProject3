@@ -199,31 +199,10 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         }
         field(50161; "Relative Description"; Text[250])
         {
+            FieldClass = FlowField;
             CalcFormula = Lookup(Relative.Description WHERE(Code = FIELD("Relative Code")));
             Caption = 'Relative Code';
-            FieldClass = FlowField;
-            TableRelation = Relative;
 
-            trigger OnValidate()
-            begin
-
-                //HR01 start
-                Relative.SETFILTER(Code, '%1', "Relative Code");
-                IF Relative.FIND('-') THEN BEGIN
-                    Relation := Relative.Relation;
-                    Sex := Relative.Sex;
-                END;
-
-                //HR01 end
-
-                IF Relation <> Relation::Other THEN BEGIN
-                    "Relative's Employee No." := '';
-                END;
-                IF Relation = Relation::" " THEN BEGIN
-                    "Relative's Employee No." := '';
-                    Sex := 0;
-                END;
-            end;
         }
         field(50162; "Place of work"; Text[250])
         {
