@@ -3000,8 +3000,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ExeManager."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ExeManager."Position Description");
@@ -3354,8 +3354,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ExeManager."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ExeManager."Position Description");
@@ -3907,8 +3907,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ExeManager."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ExeManager."Position Description");
@@ -4623,8 +4623,8 @@ table 50055 "ECL systematization"
                                 //dodati exe manager
 
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ExeManager."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ExeManager."Position Description");
@@ -5497,8 +5497,8 @@ table 50055 "ECL systematization"
                                 //dodati exe manager
 
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ExeManager."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ExeManager."Position Description");
@@ -7406,8 +7406,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 //ĐK ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ECLSYST2."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ECLSYST2."Position Description");
@@ -7756,8 +7756,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 //ĐK ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ECLSYST2."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ECLSYST2."Position Description");
@@ -8307,8 +8307,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 //ĐK ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ECLSYST2."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ECLSYST2."Position Description");
@@ -9021,8 +9021,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 //ĐK   ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ECLSYST2."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ECLSYST2."Position Description");
@@ -9892,8 +9892,8 @@ table 50055 "ECL systematization"
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
                                 //ĐK     ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
                                 ExeManager.Reset();
-                                ExeManager.SetFilter("Subordinate Org Code", '%1', ECLSYST2.Sector);
-                                ExeManager.SetFilter("Subordinate Org Description", '%1', ECLSYST2."Sector Description");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
                                 if ExeManager.FindFirst() then begin
                                     ECLSYST2.SetFilter("Position Code", '%1', ECLSYST2."Position Code");
                                     ECLSYST2.SetFilter("Position Description", '%1', ECLSYST2."Position Description");
