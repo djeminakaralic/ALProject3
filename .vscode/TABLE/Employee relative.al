@@ -39,11 +39,10 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         }
 
 
-        field(50000; Sex; Option)
+        field(50000; Sex; enum "Employee Gender")
         {
             Caption = 'Sex';
-            OptionCaption = ' ,Muško,Žensko';
-            OptionMembers = " ",Male,Female;
+
         }
         field(50001; "Vacation Ease"; Boolean)
         {
@@ -172,6 +171,7 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
                                                                                       Active = FILTER(TRUE)));
             Caption = 'Department';
             Editable = false;
+
 
         }
         field(50018; "Department Name"; Text[250])

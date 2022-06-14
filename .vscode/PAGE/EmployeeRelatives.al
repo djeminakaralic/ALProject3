@@ -12,6 +12,7 @@ pageextension 50171 EmployeeRelatives extends "Employee Relatives"
             field("Line No."; "Line No.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Employee No."; "Employee No.")
             {
@@ -91,10 +92,12 @@ pageextension 50171 EmployeeRelatives extends "Employee Relatives"
             field("Team Name"; "Team Name")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Group Name"; "Group Name")
             {
                 ApplicationArea = all;
+
             }
             field("Department Name"; "Department Name")
             {
