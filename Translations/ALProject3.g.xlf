@@ -24203,16 +24203,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control   - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 66106115 - Control 1746888506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Disciplinary Measures</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Disciplinary Measures - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 66106115 - Action 314973630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>NewEmployee99</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Action &lt;Page Training Catalogue11&gt; - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 66106115 - Control 1650747261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employees</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24247,16 +24237,6 @@
           <source>Objectives</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Objectives1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 66106115 - Control 2615557485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Postings</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Postings - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 66106115 - Control 2224076204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Potential Employees2</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Potential Employees1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 66106115 - Control 2801623926 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Probation</source>
@@ -34952,6 +34932,11 @@
           <source>Employee Training Ledger</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Employee Trainings Ledger - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 2223097449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Izvjestaj prerasporedjenih</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Evidencija prerasporedjenih - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Izvjestaj starosne strukture</source>
