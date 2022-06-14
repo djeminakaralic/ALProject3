@@ -1418,11 +1418,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Comission Members - Field Department Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 675007005 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Comission Members - Field Department Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Table 675007005 - Field 814761759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Depth</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3822,11 +3817,6 @@
           <source>Department Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Dimension temporary - Field Department Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3185557317 - Field 903826216 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Dimension temporary - Field Department Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3185557317 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -16458,10 +16448,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Work experience - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2891291690 - Field 3443573266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 2891291690 - Field 1734965816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Days based on  Working conditions</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Working conditions - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Working conditi - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1637095154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Duration</source>
@@ -22653,25 +22643,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Approved - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2583320483 - Field 4125903188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 2583320483 - Field 547375566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attitude towards work obligations</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Attitude towards work obligations - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Attitude towards work obligati - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2583320483 - Field 4125903188 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 2583320483 - Field 547375566 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>1.00,2.00,3.00,3.50,4.00,4.50,5.00</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Attitude towards work obligations - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Attitude towards work obligati - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 2583320483 - Field 3701536959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 2583320483 - Field 3195632437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Deadline for completion of work</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Deadline for completion of work - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Deadline for completion of w - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2583320483 - Field 3701536959 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 2583320483 - Field 3195632437 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>1.00,2.00,3.00,3.50,4.00,4.50,5.00</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Deadline for completion of work - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Work Performance - Field Deadline for completion of w - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2583320483 - Field 1964419135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee No.</source>
