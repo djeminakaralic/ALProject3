@@ -1568,7 +1568,7 @@ table 50134 "Position temporery"
 
                     //ako je tim nadji grupu
                     FindLevelHigh.RESET;
-                    IF DepartmentNew."Department Type" = 9 THEN BEGIN
+                    IF DepartmentNew."Department Type".AsInteger() = 9 THEN BEGIN
                         FindLevelHigh.SETFILTER("Department Type", '%1', 2);
                         FindLevelHigh.SETFILTER("Group Code", '%1', DepartmentNew."Group Code");
                         FindLevelHigh.SETFILTER("Group Description", '%1', DepartmentNew."Group Description");
@@ -1600,7 +1600,7 @@ table 50134 "Position temporery"
                     END;
                     //ako je grupa nadji odjel
                     FindLevelHigh.RESET;
-                    IF DepartmentNew."Department Type" = 2 THEN BEGIN
+                    IF DepartmentNew."Department Type".AsInteger() = 2 THEN BEGIN
                         FindLevelHigh.SETFILTER("Department Type", '%1', 4);
                         FindLevelHigh.SETFILTER("Department Category", '%1', DepartmentNew."Department Category");
                         FindLevelHigh.SETFILTER("Department Categ.  Description", '%1', DepartmentNew."Department Categ.  Description");
@@ -1630,7 +1630,7 @@ table 50134 "Position temporery"
                     END;
                     //ako je odjel nadji sektor
                     FindLevelHigh.RESET;
-                    IF DepartmentNew."Department Type" = 4 THEN BEGIN
+                    IF DepartmentNew."Department Type".AsInteger() = 4 THEN BEGIN
                         FindLevelHigh.SETFILTER("Department Type", '%1', 8);
                         FindLevelHigh.SETFILTER(Sector, '%1', DepartmentNew.Sector);
                         FindLevelHigh.SETFILTER("Sector  Description", '%1', DepartmentNew."Sector  Description");

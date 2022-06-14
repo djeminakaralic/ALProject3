@@ -647,7 +647,7 @@ page 50062 "Group temporary sist"
                     RunObject = Page "Dimensions temporary";
                     ApplicationArea = all;
                     RunPageLink = "Group Description" = FIELD(Description),
-                                  "Department Type" = CONST(2),
+                                  "Department Type" = CONST(Group),
                                   "ORG Shema" = FIELD("Org Shema");
                     Visible = false;
                 }
@@ -665,7 +665,7 @@ page 50062 "Group temporary sist"
             DepartmentTempDelete.SETFILTER("Department Type", '<>%1', 2);
             IF DepartmentTempDelete.FINDSET THEN
                 REPEAT
-                    IF DepartmentTempDelete."Department Type" = 9 THEN BEGIN
+                    IF DepartmentTempDelete."Department Type".AsInteger() = 9 THEN BEGIN
                         DepCatDelete2.SETFILTER(Name, '%1', DepartmentTempDelete."Team Description");
                         IF DepCatDelete2.FINDFIRST THEN BEGIN
                             DepartmentTempDeletefOR.RESET;

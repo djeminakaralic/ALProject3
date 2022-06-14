@@ -864,8 +864,8 @@ report 50091 "Systematization job"
                                     AND (ECLCheck."Position Description" = EmployeeContractChangeOrgRename."Position Description")) THEN BEGIN
 
 
-                                            IF (EmployeeContractChangeOrgRename."Reason for Change" = 6) OR (EmployeeContractChangeOrgRename."Reason for Change" = 17)
-                                              OR (EmployeeContractChangeOrgRename."Reason for Change" = 1) THEN BEGIN
+                                            IF (EmployeeContractChangeOrgRename."Reason for Change".AsInteger() = 6) OR (EmployeeContractChangeOrgRename."Reason for Change".AsInteger() = 17)
+                                              OR (EmployeeContractChangeOrgRename."Reason for Change".AsInteger() = 1) THEN BEGIN
                                                 IF EmployeeContractChangeOrgRename."Wage Change" = ECLCheck."Wage Change" THEN BEGIN
                                                     EmployeeContractChangeOrgRename.Conflict := FALSE;
                                                     EmployeeContractChangeOrgRename.MODIFY;
@@ -894,7 +894,7 @@ report 50091 "Systematization job"
                                        AND (ECLCheck."IS Date From" = EmployeeContractChangeOrgRename."IS Date From") AND (EmployeeContractChangeOrgRename."IS Date To" = ECLOrg."IS Date To")
                                        AND (ECLCheck."Position Description" = EmployeeContractChangeOrgRename."Position Description")) THEN BEGIN
 
-                                            IF (ECLCheck."Reason for Change" = 6) OR (ECLCheck."Reason for Change" = 17) OR (ECLCheck."Reason for Change" = 1) THEN BEGIN
+                                            IF (ECLCheck."Reason for Change".AsInteger() = 6) OR (ECLCheck."Reason for Change".AsInteger() = 17) OR (ECLCheck."Reason for Change".AsInteger() = 1) THEN BEGIN
                                                 IF EmployeeContractChangeOrgRename."Wage Change" = ECLCheck."Wage Change" THEN BEGIN
                                                     EmployeeContractChangeOrgRename.Conflict := FALSE;
                                                     EmployeeContractChangeOrgRename.MODIFY;

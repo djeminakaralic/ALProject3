@@ -923,7 +923,7 @@ report 50221 "Department Temporary GROUP"
                             String := FORMAT(Code);
                             LengthString := STRLEN(String);
 
-                            IF "Department Type" = 9 THEN BEGIN //ako je TEAM       1. THEN BEGIN
+                            IF "Department Type".AsInteger() = 9 THEN BEGIN //ako je TEAM       1. THEN BEGIN
                                 LengthString := STRLEN(Code);
                                 SecondPartTeam := COPYSTR(Code, STRLEN(OldCode) + 1, LengthString);
 
@@ -1246,7 +1246,7 @@ report 50221 "Department Temporary GROUP"
 
 
 
-                            IF "Department Type" = 9 THEN BEGIN
+                            IF "Department Type".AsInteger() = 9 THEN BEGIN
                                 TeamTemp.SETFILTER("Org Shema", '%1', "ORG Shema");
                                 TeamTemp.SETFILTER(Code, '%1', Code);
                                 TeamTemp.SETFILTER(Name, '%1', "Team Description");
@@ -1601,7 +1601,7 @@ report 50221 "Department Temporary GROUP"
                             DepCategorytemp1.IsTrue := TRUE;
                             DepCategorytemp1."Fields for change" := UPPERCASE('***');
                             DepCategorytemp1."Residence/Network" := CentralaInsert;
-                            DepCategorytemp1."Department Type" := 2;
+                            DepCategorytemp1."Department Type" := DepCategorytemp1."Department Type"::Group;
                             DepCategorytemp1."Official Translate of Group" := NewDescriptionDef;
                             DepCategorytemp1.MODIFY;
                             FOR i := 1 TO STRLEN(NewCode) DO BEGIN

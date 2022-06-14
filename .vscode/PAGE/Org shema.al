@@ -175,7 +175,7 @@ page 50087 "ORG Shema"
                                         SectorNew.TRANSFERFIELDS(Sector);
 
                                         SectorIdentityNew := SectorIdentityNew + 1;
-                                        SectorNew."Department Type" := 8;
+                                        SectorNew."Department Type" := SectorNew."Department Type"::Sector;
                                         SectorNew.Identity := SectorIdentityNew;
 
                                         OSNew.SETFILTER(Status, '%1', OS.Status::Preparation);

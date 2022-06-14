@@ -77,9 +77,9 @@ table 50099 "Work Performance"
                 RealQualityGrade := RealOptionGrade; //smjestam taj decimalni broj
                 SetGrade("Scope of performed work"); //isti je postupak za preostale 3 ocjene
                 RealScopeGrade := RealOptionGrade;
-                SetGrade("Deadline for completion of work");
+                SetGrade("Deadline for completion of w");
                 RealDeadlineGrade := RealOptionGrade;
-                SetGrade("Attitude towards work obligations");
+                SetGrade("Attitude towards work obligati");
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
@@ -101,16 +101,16 @@ table 50099 "Work Performance"
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
                 RealScopeGrade := RealOptionGrade;
-                SetGrade("Deadline for completion of work");
+                SetGrade("Deadline for completion of w");
                 RealDeadlineGrade := RealOptionGrade;
-                SetGrade("Attitude towards work obligations");
+                SetGrade("Attitude towards work obligati");
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
                 CalculateIncrease(RealQualityGrade, RealScopeGrade, RealDeadlineGrade, RealAttitudeGrade, Rec.Grade);
             end;
         }
-        field(7; "Deadline for completion of work"; Option)
+        field(7; "Deadline for completion of w"; Option)
         {
             Caption = 'Deadline for completion of work';
             OptionMembers = "1.00","2.00","3.00","3.50","4.00","4.50","5.00";
@@ -126,9 +126,9 @@ table 50099 "Work Performance"
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
                 RealScopeGrade := RealOptionGrade;
-                SetGrade("Deadline for completion of work");
+                SetGrade("Deadline for completion of w");
                 RealDeadlineGrade := RealOptionGrade;
-                SetGrade("Attitude towards work obligations");
+                SetGrade("Attitude towards work obligati");
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;
@@ -137,7 +137,7 @@ table 50099 "Work Performance"
 
 
         }
-        field(8; "Attitude towards work obligations"; Option)
+        field(8; "Attitude towards work obligati"; Option)
         {
             Caption = 'Attitude towards work obligations';
             OptionMembers = "1.00","2.00","3.00","3.50","4.00","4.50","5.00";
@@ -152,9 +152,9 @@ table 50099 "Work Performance"
                 RealQualityGrade := RealOptionGrade;
                 SetGrade("Scope of performed work");
                 RealScopeGrade := RealOptionGrade;
-                SetGrade("Deadline for completion of work");
+                SetGrade("Deadline for completion of w");
                 RealDeadlineGrade := RealOptionGrade;
-                SetGrade("Attitude towards work obligations");
+                SetGrade("Attitude towards work obligati");
                 RealAttitudeGrade := RealOptionGrade;
 
                 Grade := (RealQualityGrade + RealScopeGrade + RealDeadlineGrade + RealAttitudeGrade) / 4;

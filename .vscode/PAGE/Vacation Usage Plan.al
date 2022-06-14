@@ -51,7 +51,7 @@ page 50059 "Vacation Usage Plan"
                 {
                     Editable = false;
                 }
-                field("Days based on Working conditions"; "Days based on Working conditions")
+                field("Days based on Working conditi"; "Days based on Working conditi")
                 {
                     Editable = false;
                 }
@@ -60,7 +60,7 @@ page 50059 "Vacation Usage Plan"
                     trigger OnValidate()
                     begin
 
-                        Rec."Total days" := Rec."Legal Grounds" + Rec."Days based on Military service" + Rec."Days based on Working conditions" + Rec."Days based on Work experience" + Rec."Days based on Disability" - Rec."Number of days" - Rec."Used days at previous employer";
+                        Rec."Total days" := Rec."Legal Grounds" + Rec."Days based on Military service" + Rec."Days based on Working conditi" + Rec."Days based on Work experience" + Rec."Days based on Disability" - Rec."Number of days" - Rec."Used days at previous employer";
                         IF Rec."Total days" > 35
                         then
                             Rec."Total days" := 35;

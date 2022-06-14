@@ -68,7 +68,7 @@ page 50040 "Dimensions temporary"
     trigger OnAfterGetRecord()
     begin
 
-        IF Rec."Department Type" = 8 THEN BEGIN
+        IF Rec."Department Type" = Rec."Department Type"::Sector THEN BEGIN
             Rec.FILTERGROUP(2);
             Rec.SETRANGE("Department Type", 8);
             Rec.SETRANGE(Code, Rec.Code);
@@ -76,7 +76,7 @@ page 50040 "Dimensions temporary"
 
             Rec.FILTERGROUP(0);
         END;
-        IF Rec."Department Type" = 4 THEN BEGIN
+        IF Rec."Department Type" = Rec."Department Type"::"Department Category" THEN BEGIN
             Rec.FILTERGROUP(2);
             Rec.SETRANGE("Department Type", 4);
             Rec.SETRANGE("Department Category", Rec."Department Category");
@@ -85,7 +85,7 @@ page 50040 "Dimensions temporary"
         END;
 
 
-        IF Rec."Department Type" = 2 THEN BEGIN
+        IF Rec."Department Type" = Rec."Department Type"::Group THEN BEGIN
             Rec.FILTERGROUP(2);
             Rec.SETRANGE("Department Type", 2);
             Rec.SETRANGE("Group Code", Rec."Group Code");
@@ -93,18 +93,12 @@ page 50040 "Dimensions temporary"
             Rec.FILTERGROUP(0);
         END;
 
-        IF Rec."Department Type" = 9 THEN BEGIN
-            Rec.FILTERGROUP(2);
-            Rec.SETRANGE("Department Type", 9);
-            Rec.SETRANGE("Team Code", Rec."Team Code");
-            Rec.SETRANGE("Team Description", Rec."Team Description");
-            Rec.FILTERGROUP(0);
-        END;
+
     end;
 
     trigger OnDeleteRecord(): Boolean
     begin
-        IF Rec."Department Type" = 8 THEN BEGIN
+        IF Rec."Department Type" = rec."Department Type"::Sector THEN BEGIN
             SectorTempBelong.RESET;
             SectorTempBelong.SETFILTER(Description, '%1', Rec.Description);
             IF SectorTempBelong.FINDFIRST THEN BEGIN

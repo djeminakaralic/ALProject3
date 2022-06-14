@@ -54,7 +54,7 @@ report 50018 "Department team New"
                     DepartmentTempNew.INIT;
                     DepartmentTempNew.Code := NewCode;
                     DepartmentTempNew.Description := NewDescription;
-                    DepartmentTempNew."Department Type" := 9;
+                    //ĐK DepartmentTempNew."Department Type" := 9;
                     DepartmentTempNew."Residence/Network" := CentralaInsert;
                     DepartmentTempNew."Group Description" := NewBelongs;
                     DepartmentTempNew."Team Code" := NewCode;

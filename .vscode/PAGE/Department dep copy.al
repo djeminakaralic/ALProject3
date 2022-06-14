@@ -20,7 +20,7 @@ report 50113 "Department dep copy"
                     DataItem1.Code := NewCode;
                     DataItem1.Description := NewDescription;
                     DataItem1."Residence/Network" := CentralaInsert;
-                    DataItem1."Department Type" := 4;
+                    DataItem1."Department Type" := DataItem1."Department Type"::"Department Category";
                     DataItem1."Official Translate of DepCat" := NewDescriptionDef;
                     DataItem1."Fields for change" := UPPERCASE('***');
                     DataItem1.IsTrue := TRUE;
@@ -55,7 +55,7 @@ report 50113 "Department dep copy"
                     DepartmentTempNew.INIT;
                     DepartmentTempNew.Code := NewCode;
                     DepartmentTempNew.Description := NewDescription;
-                    DepartmentTempNew."Department Type" := 4;
+                    DepartmentTempNew."Department Type" := DepartmentTempNew."Department Type"::"Department Category";
                     DepartmentTempNew."Residence/Network" := CentralaInsert;
                     DepartmentTempNew."Department Category" := NewCode;
                     DepartmentTempNew."Department Categ.  Description" := NewDescription;

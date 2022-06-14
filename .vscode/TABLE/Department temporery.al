@@ -31,17 +31,15 @@ table 50242 "Department temporary"
                     IF String1[I] = '.' THEN BEGIN
                         Brojac := Brojac + 1;
                         IF Brojac = 3 THEN BEGIN
-                            "Department Type" := 4;
+                            "Department Type" := "Department Type"::Group;
                         END;
                         IF (Brojac = 2) OR (Brojac = 1) THEN BEGIN
-                            "Department Type" := 8;
+                            "Department Type" := "Department Type"::Sector;
                         END;
 
-                        IF Brojac = 5 THEN BEGIN
-                            "Department Type" := 9;
-                        END;
+
                         IF Brojac = 4 THEN BEGIN
-                            "Department Type" := 2;
+                            "Department Type" := "Department Type"::"Department Category";
                         END;
                     END;
                 END;

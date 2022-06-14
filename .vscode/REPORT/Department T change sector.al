@@ -46,7 +46,7 @@ report 50016 "Department T change sector"
                                 END;
                             END;
 
-                            IF "Department Type" = 4 THEN BEGIN //ako je odjel
+                            IF "Department Type".AsInteger() = 4 THEN BEGIN //ako je odjel
                                 SecondPartDepCat := COPYSTR(Code, j + 1, LengthString);
                                 NewCodeDepCat := NewCode + SecondPartDepCat; //nova šifra odjela
 
@@ -284,7 +284,7 @@ report 50016 "Department T change sector"
 
 
 
-                            IF "Department Type" = 2 THEN BEGIN //ako je grupa
+                            IF "Department Type".AsInteger() =2  THEN BEGIN //ako je grupa
                                 SecondPartGroup := COPYSTR(Code, j + 1, LengthString);
                                 NewCodeGroup := NewCode + SecondPartGroup;
                                 IF DepartmentTempNew.GET(Code, "ORG Shema", "Team Description", "Department Categ.  Description", "Group Description", Description) THEN
@@ -501,7 +501,7 @@ report 50016 "Department T change sector"
                                     UNTIL DimensionsTemporery.NEXT = 0;
                             END;
 
-                            IF "Department Type" = 9 THEN BEGIN
+                            IF "Department Type".AsInteger() = 9 THEN BEGIN
                                 SecondPartTeam := COPYSTR(Code, j + 1, LengthString);
                                 NewCodeTeam := NewCode + SecondPartTeam;
                                 IF DepartmentTempNew.GET(Code, "ORG Shema", "Team Description", "Department Categ.  Description", "Group Description", Description) THEN
@@ -710,7 +710,7 @@ report 50016 "Department T change sector"
 
                             END;
 
-                            IF "Department Type" = 4 THEN BEGIN
+                            IF "Department Type".AsInteger() = 4 THEN BEGIN
                                 DepCatTemp.SETFILTER("Org Shema", '%1', "ORG Shema");
                                 DepCatTemp.SETFILTER(Code, '%1', Code);
                                 DepCatTemp.SETFILTER(Description, '%1', "Department Categ.  Description");
@@ -719,7 +719,7 @@ report 50016 "Department T change sector"
                                 END;
                             END;
 
-                            IF "Department Type" = 2 THEN BEGIN
+                            IF "Department Type".AsInteger() = 2 THEN BEGIN
                                 GroupTemp.SETFILTER("Org Shema", '%1', "ORG Shema");
                                 GroupTemp.SETFILTER(Code, '%1', Code);
                                 GroupTemp.SETFILTER(Description, '%1', "Group Description");
@@ -729,7 +729,7 @@ report 50016 "Department T change sector"
                             END;
 
 
-                            IF "Department Type" = 9 THEN BEGIN
+                            IF "Department Type".AsInteger() = 9 THEN BEGIN
                                 TeamTemp.SETFILTER("Org Shema", '%1', "ORG Shema");
                                 TeamTemp.SETFILTER(Code, '%1', Code);
                                 TeamTemp.SETFILTER(Name, '%1', "Team Description");
@@ -1001,7 +1001,7 @@ report 50016 "Department T change sector"
                             // SectorTemp1."Official Translate of Sector":=
                             SectorTemp1."Residence/Network" := CentralaInsert;
                             SectorTemp1."Official Translate of Sector" := OldDef;
-                            SectorTemp1."Department Type" := 8;
+                            SectorTemp1."Department Type" := SectorTemp1."Department Type"::Sector;
                             SectorTemp1."Fields for change" := UPPERCASE('***');
                             SectorTemp1.MODIFY;
 

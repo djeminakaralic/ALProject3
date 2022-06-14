@@ -19,7 +19,7 @@ report 50017 "Department T New"
                     "DataItem1".Code := NewCode;
                     "DataItem1".Description := NewDescription;
                     "DataItem1"."Residence/Network" := CentralaInsert;
-                    "DataItem1"."Department Type" := 8;
+                    "DataItem1"."Department Type" := "DataItem1"."Department Type"::Sector;
                     "DataItem1"."Fields for change" := UPPERCASE('***');
                     "DataItem1".IsTrue := TRUE;
                     "DataItem1"."Official Translate of Sector" := NewDescriptionDef;
@@ -41,7 +41,7 @@ report 50017 "Department T New"
                     DepartmentTempNew.INIT;
                     DepartmentTempNew.Code := NewCode;
                     DepartmentTempNew.Description := NewDescription;
-                    DepartmentTempNew."Department Type" := 8;
+                    DepartmentTempNew."Department Type" := DepartmentTempNew."Department Type"::Sector;
                     DepartmentTempNew."Residence/Network" := CentralaInsert;
                     DepartmentTempNew.Sector := NewCode;
                     DepartmentTempNew."Sector  Description" := NewDescription;

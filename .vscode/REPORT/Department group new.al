@@ -19,7 +19,7 @@ report 50015 "Department group New"
                     "DataItem1".Code := NewCode;
                     "DataItem1".Description := NewDescription;
                     "DataItem1"."Residence/Network" := CentralaInsert;
-                    "DataItem1"."Department Type" := 2;
+                    "DataItem1"."Department Type" := "DataItem1"."Department Type"::Group;
                     "DataItem1"."Fields for change" := UPPERCASE('***');
                     "DataItem1"."Belongs to Department Category" := NewBelongs;
                     "DataItem1"."Official Translate of Group" := NewDescriptionDef;
@@ -56,7 +56,7 @@ report 50015 "Department group New"
                     DepartmentTempNew.INIT;
                     DepartmentTempNew.Code := NewCode;
                     DepartmentTempNew.Description := NewDescription;
-                    DepartmentTempNew."Department Type" := 2;
+                    DepartmentTempNew."Department Type" := DepartmentTempNew."Department Type"::Group;
                     DepartmentTempNew."Residence/Network" := CentralaInsert;
                     DepartmentTempNew."Department Categ.  Description" := NewBelongs;
                     DepartmentTempNew."Group Code" := NewCode;

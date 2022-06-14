@@ -363,7 +363,7 @@ table 50250 "Sector temporary"
         ShopCalHoliday.SETRANGE(Code,Code);
         ShopCalHoliday.DELETEALL;
         */
-        IF Rec."Department Type" = 8 THEN BEGIN
+        IF Rec."Department Type" = Rec."Department Type"::Sector THEN BEGIN
             SectorTempBelong.RESET;
             SectorTempBelong.SETFILTER(Description, '%1', Rec.Description);
             IF SectorTempBelong.FINDFIRST THEN BEGIN
@@ -403,7 +403,7 @@ table 50250 "Sector temporary"
         ELSE BEGIN
             "Org Shema" := '';
         END;
-        "Department Type" := 8;
+        "Department Type" := "Department Type"::Sector;
         DepartmentTemp.RESET;
         DepartmentTemp.SETFILTER(Sector, '%1', Rec.Code);
         DepartmentTemp.SETFILTER("Sector  Description", '%1', Rec.Description);

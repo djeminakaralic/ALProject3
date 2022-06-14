@@ -48,11 +48,11 @@ page 51130 "Work Performance"
                 {
                     Editable = true;
                 }
-                field("Deadline for completion of work"; "Deadline for completion of work")
+                field("Deadline for completion of w"; "Deadline for completion of w")
                 {
                     Editable = true;
                 }
-                field("Attitude towards work obligations"; "Attitude towards work obligations")
+                field("Attitude towards work obligati"; "Attitude towards work obligati")
                 {
                     Editable = true;
                 }
@@ -94,8 +94,8 @@ page 51130 "Work Performance"
     begin
         Validate(Rec."Quality of performed work", "Quality of performed work"::"3.00");
         Validate(Rec."Scope of performed work", "Scope of performed work"::"3.00");
-        Validate(Rec."Deadline for completion of work", "Deadline for completion of work"::"3.00");
-        Validate(Rec."Attitude towards work obligations", "Attitude towards work obligations"::"3.00");
+        Validate(Rec."Deadline for completion of w", "Deadline for completion of w"::"3.00");
+        Validate(Rec."Attitude towards work obligati", "Attitude towards work obligati"::"3.00");
         MonthFilter := DATE2DMY(WORKDATE, 2);
         Validate(Rec."Month Of Performance", MonthFilter);
         YearFilter := DATE2DMY(WORKDATE, 3);

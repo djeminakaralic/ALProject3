@@ -467,7 +467,7 @@ page 50114 "Sector temporary sist"
                     RunObject = Page "Dimensions temporary";
                     RunPageLink = Code = FIELD(Code),
                                   "Sector  Description" = FIELD(Description),
-                                  "Department Type" = CONST(8);
+                                  "Department Type" = CONST(Sector);
                     RunPageOnRec = false;
                     Visible = false;
                     ApplicationArea = all;

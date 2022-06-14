@@ -315,15 +315,15 @@ table 50050 "Dimension temporary"
                     //"B-1WithRegions".SETFILTER("Org Shema","ORG Shema");
                     IF "B-1WithRegions".FINDFIRST THEN
                         "Department Categ.  Description" := "B-1WithRegions".Description;
-                    "Department Type" := "Department Type"::Department;
+                    "Department Type" := "Department Type"::"Department Category";
                     //"Department Idenity":="B-1WithRegions".Identity;
 
                 END
                 ELSE
                     "Department Categ.  Description" := '';
-                "Department Type" := "Department Type"::Department;
+                "Department Type" := "Department Type"::"Department Category";
 
-                IF "Department Type" = "Department Type"::Department THEN BEGIN
+                IF "Department Type" = "Department Type"::"Department Category" THEN BEGIN
                     Belongs := FORMAT(Rec."Department Category") + ' ' + '-' + ' ' + Rec."Department Categ.  Description";
                 END;
                 "Dimension Code" := 'TC';
@@ -545,7 +545,7 @@ table 50050 "Dimension temporary"
                 ELSE
                     "Department Category" := '';
 
-                "Department Type" := "Department Type"::Department;
+                "Department Type" := "Department Type"::"Department Category";
                 DepartmentTempNes.RESET;
                 DepartmentTempNes.SETFILTER("Department Categ.  Description", '%1', Rec."Department Categ.  Description");
                 //DepartmentTempNes.SETFILTER("Department Category",'%1',Rec."Department Category");
@@ -663,11 +663,10 @@ table 50050 "Dimension temporary"
                     UNTIL DimensionsForPositionTC.NEXT = 0;
             end;
         }
-        field(21; "Department Type"; Option)
+        field(21; "Department Type"; enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(39; "Dimension Code"; Code[20])
         {
@@ -753,7 +752,7 @@ table 50050 "Dimension temporary"
                         END;
                     UNTIL DimensionForPosition.NEXT = 0;
 
-                IF "Department Type" = 8 THEN BEGIN
+                IF "Department Type" = "Department Type"::Sector THEN BEGIN
                     SectorTempBelong.RESET;
                     SectorTempBelong.SETFILTER(Code, '%1', Rec.Code);
                     IF SectorTempBelong.FINDSET THEN
@@ -907,7 +906,7 @@ table 50050 "Dimension temporary"
                 END
                 ELSE
                     "Team Description" := '';
-                "Department Type" := "Department Type"::Team;
+                //ĐK  "Department Type".AsInteger() := 9;
                 DepartmentTempNes.RESET;
                 DepartmentTempNes.SETFILTER("Team Description", '%1', Rec."Team Description");
                 DepartmentTempNes.SETFILTER("Team Code", '%1', Rec."Team Code");
@@ -955,13 +954,13 @@ table 50050 "Dimension temporary"
 
             trigger OnValidate()
             begin
-                IF "Department Type" = "Department Type"::Department
+                IF "Department Type" = "Department Type"::"Department Category"
                   THEN
                     Belongs := FORMAT(Rec."Department Category") + ' ' + '-' + ' ' + Rec."Department Categ.  Description";
                 IF "Department Type" = "Department Type"::Group
                 THEN
                     Belongs := FORMAT(Rec."Group Code") + ' ' + '-' + ' ' + Rec."Group Description";
-                IF "Department Type" = "Department Type"::Team
+                IF "Department Type".AsInteger() = 9
                   THEN
                     Belongs := FORMAT(Rec."Team Code") + ' ' + '-' + ' ' + Rec."Team Description";
                 IF "Department Type" = "Department Type"::Sector

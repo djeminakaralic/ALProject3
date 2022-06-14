@@ -410,7 +410,7 @@ page 50129 "Dep.Category temporary sist"
                     ApplicationArea = all;
                     RunObject = Page "Dimensions temporary";
                     RunPageLink = "Department Categ.  Description" = FIELD(Description),
-                                  "Department Type" = CONST(4);
+                                  "Department Type" = CONST("Department Category");
                     Visible = false;
                 }
             }

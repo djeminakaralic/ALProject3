@@ -24,7 +24,7 @@ report 50120 "Department Temporary change1"
 
                             String := FORMAT(Code);
                             LengthString := STRLEN(String);
-                            IF "Department Type" = 2 THEN BEGIN //ako je grupa         1. THEN BEGIN
+                            IF "Department Type".AsInteger() = 2 THEN BEGIN //ako je grupa         1. THEN BEGIN
                                 SecondPartGroup := COPYSTR(Code, STRLEN(OldCode) + 1, LengthString); //npr A.6.1.1. aa kod je meni je kod grupa, treba da mi OldCode kolika je dužina npr A.6.1. da kopira od dužine odjela
                                 Brojac := 0;        //ako je tim a.6.1.1.1. treba da mi kopira od stare dužine odjela tj. A.6.1. DO KRAJA
                                 FOR i := 1 TO STRLEN(NewCode) DO BEGIN
@@ -297,7 +297,7 @@ report 50120 "Department Temporary change1"
 
 
 
-                            IF "Department Type" = 9 THEN BEGIN //ako je TEAM       1. THEN BEGIN
+                            IF "Department Type".AsInteger() = 9 THEN BEGIN //ako je TEAM       1. THEN BEGIN
                                 LengthString := STRLEN(Code);
                                 SecondPartTeam := COPYSTR(Code, STRLEN(OldCode) + 1, LengthString);
 
@@ -559,7 +559,7 @@ report 50120 "Department Temporary change1"
                                     UNTIL DimensionForPos.NEXT = 0;
                             END;
 
-                            IF "Department Type" = 2 THEN BEGIN
+                            IF "Department Type".AsInteger() = 2 THEN BEGIN
                                 GroupTemp.SETFILTER("Org Shema", '%1', "ORG Shema");
                                 GroupTemp.SETFILTER(Code, '%1', Code);
                                 GroupTemp.SETFILTER(Description, '%1', "Group Description");
@@ -605,7 +605,7 @@ report 50120 "Department Temporary change1"
                             END;
 
 
-                            IF "Department Type" = 9 THEN BEGIN
+                            IF "Department Type".AsInteger() = 9 THEN BEGIN
                                 TeamTemp.SETFILTER("Org Shema", '%1', "ORG Shema");
                                 TeamTemp.SETFILTER(Code, '%1', Code);
                                 TeamTemp.SETFILTER(Name, '%1', "Team Description");
@@ -939,7 +939,7 @@ report 50120 "Department Temporary change1"
                             DepCategorytemp1."Fields for change" := UPPERCASE('***');
                             DepCategorytemp1."Residence/Network" := CentralaInsert;
                             DepCategorytemp1."Official Translate of DepCat" := NewDescriptionDef;
-                            DepCategorytemp1."Department Type" := 4;
+                            DepCategorytemp1."Department Type" := DepCategorytemp1."Department Type"::Group;
                             DepCategorytemp1.MODIFY;
                             FOR i := 1 TO STRLEN(NewCode) DO BEGIN
                                 IF String[i] = '.' THEN BEGIN

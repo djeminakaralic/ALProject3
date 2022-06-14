@@ -214,11 +214,10 @@ table 50292 "Comission Members"
         {
             Caption = 'Manager Management Level';
         }
-        field(50330; "Department Type"; Option)
+        field(50330; "Department Type"; Enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector;
+
         }
         field(50331; Active; Boolean)
         {

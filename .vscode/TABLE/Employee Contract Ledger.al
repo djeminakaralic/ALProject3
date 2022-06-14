@@ -1886,8 +1886,8 @@ table 50071 "Employee Contract Ledger"
                     END;
                 END;
                 //END;
-                IF ("Reason for Change" = 3) OR ("Reason for Change" = 7) OR ("Reason for Change" = 8) OR ("Reason for Change" = 9) OR ("Reason for Change" = 10)
-             OR ("Reason for Change" = 12) OR ("Reason for Change" = 4) OR ("Reason for Change" = 11) OR ("Reason for Change" = 15) OR ("Reason for Change" = 16)
+                IF ("Reason for Change".AsInteger() = 3) OR ("Reason for Change".AsInteger() = 7) OR ("Reason for Change".AsInteger() = 8) OR ("Reason for Change".AsInteger() = 9) OR ("Reason for Change".AsInteger() = 10)
+             OR ("Reason for Change".AsInteger() = 12) OR ("Reason for Change".AsInteger() = 4) OR ("Reason for Change".AsInteger() = 11) OR ("Reason for Change".AsInteger() = 15) OR ("Reason for Change".AsInteger() = 16)
              THEN BEGIN
                     StavkeUgovora.RESET;
                     StavkeUgovora.SETFILTER("Show Record", '%1', TRUE);
@@ -3748,7 +3748,7 @@ table 50071 "Employee Contract Ledger"
                     "Position Description" := '';
                     "Position Code" := '';
                     "Org Belongs" := '';
-                    "Management Level" := 0;
+                    "Management Level" := "Management Level"::Empty;
                     "Key Function" := FALSE;
                     "Control Function" := FALSE;
                 END;
@@ -3875,7 +3875,7 @@ table 50071 "Employee Contract Ledger"
                     "Position Description" := '';
                     "Position Code" := '';
                     "Org Belongs" := '';
-                    "Management Level" := 0;
+                    "Management Level" := "Management Level"::Empty;
                     "Key Function" := FALSE;
                     "Control Function" := FALSE;
                 END;
@@ -4955,7 +4955,7 @@ table 50071 "Employee Contract Ledger"
                     "Position Description" := '';
                     "Position Code" := '';
                     "Org Belongs" := '';
-                    "Management Level" := 0;
+                    "Management Level" := "Management Level"::Empty;
                     "Key Function" := FALSE;
                     "Control Function" := FALSE;
                     "Sector Description" := '';
@@ -6091,7 +6091,7 @@ table 50071 "Employee Contract Ledger"
             Employee.SETFILTER("No.", "Employee No.");
             IF Employee.FINDFIRST THEN
                 "Employee Name" := Employee."First Name" + ' ' + Employee."Last Name";
-            "Minimal Education Level" := Employee."Education Level";
+            //ĐK   "Minimal Education Level" := Employee."Education Level";
             "Operator No." := Employee."New Number";
             "Internal ID" := Employee."Internal ID";
         END;

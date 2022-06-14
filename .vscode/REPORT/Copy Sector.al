@@ -21,7 +21,7 @@ report 50009 CopySector
                     "DataItem1".Description := NewDescription;
                     "DataItem1"."Official Translate of Sector" := NewDescriptionDef;
                     "DataItem1"."Residence/Network" := CentralaInsert;
-                    "DataItem1"."Department Type" := 8;
+                    "DataItem1"."Department Type" := "DataItem1"."Department Type"::Sector;
                     "DataItem1"."Fields for change" := UPPERCASE('***');
                     "DataItem1".IsTrue := TRUE;
                     "DataItem1"."Org Shema" := RealOrgShema;
@@ -42,7 +42,7 @@ report 50009 CopySector
                     DepartmentTempNew.INIT;
                     DepartmentTempNew.Code := NewCode;
                     DepartmentTempNew.Description := NewDescription;
-                    DepartmentTempNew."Department Type" := 8;
+                    DepartmentTempNew."Department Type" := DepartmentTempNew."Department Type"::Sector;
                     DepartmentTempNew."Residence/Network" := CentralaInsert;
                     DepartmentTempNew.Sector := NewCode;
                     DepartmentTempNew."Sector  Description" := NewDescription;

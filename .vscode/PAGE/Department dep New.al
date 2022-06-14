@@ -20,7 +20,7 @@ report 50014 "Department dep New"
                     DataItem1.Code := NewCode;
                     DataItem1.Description := NewDescription;
                     DataItem1."Residence/Network" := CentralaInsert;
-                    DataItem1."Department Type" := 4;
+                    DataItem1."Department Type" := DataItem1."Department Type"::"Department Category";
                     DataItem1."Official Translate of DepCat" := NewDescriptionDef;
                     DataItem1."Fields for change" := UPPERCASE('***');
                     DataItem1.IsTrue := TRUE;
@@ -55,7 +55,7 @@ report 50014 "Department dep New"
                     DepartmentTempNew.INIT;
                     DepartmentTempNew.Code := NewCode;
                     DepartmentTempNew.Description := NewDescription;
-                    DepartmentTempNew."Department Type" := 4;
+                    DepartmentTempNew."Department Type" := DepartmentTempNew."Department Type"::"Department Category";
                     DepartmentTempNew."Residence/Network" := CentralaInsert;
                     DepartmentTempNew."Department Category" := NewCode;
                     DepartmentTempNew."Department Categ.  Description" := NewDescription;
@@ -71,7 +71,7 @@ report 50014 "Department dep New"
                     DepartmentTempFind.RESET;
                     DepartmentTempFind.SETFILTER(Code, '%1', NewCode);
                     DepartmentTempFind.SETFILTER(Description, '%1', NewDescription);
-                    DepartmentTempFind.SETFILTER("Department Type", '%1', 4);
+                    DepartmentTempFind.SETFILTER("Department Type", '%1', DepartmentTempFind."Department Type"::"Department Category");
                     DepartmentTempFind.SETFILTER("ORG Shema", '%1', RealOrgShema);
                     IF NOT DepartmentTempFind.FINDFIRST THEN BEGIN
                         DepartmentTempNew.INSERT;

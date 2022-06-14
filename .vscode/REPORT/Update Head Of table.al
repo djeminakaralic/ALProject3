@@ -36,7 +36,7 @@ report 50107 "Update Head Of table"
                 HeadCheck."Department Code" := DepartmentTemp.Code;
 
                 //AKO JE SEKTOR
-                IF DepartmentTemp."Department Type" = 8 THEN BEGIN
+                IF DepartmentTemp."Department Type".AsInteger() = 8 THEN BEGIN
                     FindSek := FALSE;
                     HeadCheck.VALIDATE("Sector  Description", DepartmentTemp."Sector  Description");
 
@@ -67,7 +67,7 @@ report 50107 "Update Head Of table"
 
                 //AKO JE ODJEL
 
-                IF DepartmentTemp."Department Type" = 4 THEN BEGIN
+                IF DepartmentTemp."Department Type".AsInteger() = 4 THEN BEGIN
                     HeadCheck.VALIDATE("Department Categ.  Description", DepartmentTemp."Department Categ.  Description");
                     FindOdjel := FALSE;
 
@@ -99,7 +99,7 @@ report 50107 "Update Head Of table"
 
                 //AKO JE GRUPA
 
-                IF DepartmentTemp."Department Type" = 2 THEN BEGIN
+                IF DepartmentTemp."Department Type".AsInteger() = 2 THEN BEGIN
                     HeadCheck.VALIDATE("Group Description", DepartmentTemp."Group Description");
                     FindGrupa := FALSE;
 
@@ -128,7 +128,7 @@ report 50107 "Update Head Of table"
                 END;
 
 
-                IF DepartmentTemp."Department Type" = 9 THEN BEGIN
+                IF DepartmentTemp."Department Type".AsInteger() = 9 THEN BEGIN
                     IF DepartmentTemp."Entity of Agency" <> DepartmentTemp."Entity of Agency"::" " THEN BEGIN
                         HeadCheck."Team Description" := DepartmentTemp."Team Description";
                         HeadCheck."Team Code" := DepartmentTemp."Team Code";

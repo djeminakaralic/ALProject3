@@ -56,7 +56,7 @@ page 50119 "Team temporary sist"
                                 String := Rec.Code;
                                 DepartmentTemp.Code := Rec.Code;
                                 DepartmentTemp."Team Code" := Rec.Code;
-                                DepartmentTemp."Department Type" := 9;
+                                //    DepartmentTemp."Department Type" := 9;
 
 
                                 DepartmentTemp.INSERT;
@@ -129,7 +129,7 @@ page 50119 "Team temporary sist"
                                 String := Rec.Code;
                                 DepartmentTemp.Code := Rec.Code;
                                 DepartmentTemp."Team Code" := Rec.Code;
-                                DepartmentTemp."Department Type" := 9;
+                                // DepartmentTemp."Department Type" := 9;
                                 DepartmentTemp.INSERT;
                             END
                             ELSE BEGIN
@@ -220,7 +220,7 @@ page 50119 "Team temporary sist"
                                     DepartmentRename1."Department Group identity" := FindDep.Identity;
                                     "Group Identity" := FindDep.Identity;
                                 END;
-                                DepartmentRename1."Department Type" := 9;
+                                //  DepartmentRename1."Department Type" := 9;
                                 DepartmentRename1.MODIFY;
                             END;
                         END;
@@ -679,7 +679,7 @@ page 50119 "Team temporary sist"
                     ApplicationArea = all;
                     RunObject = Page "Dimensions temporary";
                     RunPageLink = "Team Description" = FIELD(Name),
-                                  "Department Type" = CONST(Team),
+                                  // "Department Type" = CONST(Team),
                                   "ORG Shema" = FIELD("Org Shema");
                     Visible = false;
                 }
@@ -696,7 +696,7 @@ page 50119 "Team temporary sist"
             DepartmentTempDelete.SETFILTER("Department Type", '<>%1', 9);
             IF DepartmentTempDelete.FINDSET THEN
                 REPEAT
-                    IF DepartmentTempDelete."Department Type" = 9 THEN BEGIN
+                    IF DepartmentTempDelete."Department Type".AsInteger() = 9 THEN BEGIN
                         DepCatDelete2.SETFILTER(Name, '%1', DepartmentTempDelete."Team Description");
                         IF DepCatDelete2.FINDFIRST THEN BEGIN
                             DepartmentTempDeletefOR.RESET;

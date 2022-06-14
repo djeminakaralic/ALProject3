@@ -308,7 +308,7 @@ table 50158 "Team temporary"
         {
             FieldClass = FlowField;
             CalcFormula = Count("Dimension temporary" WHERE("Team Description" = FIELD(Name),
-                                                             "Department Type" = CONST(Team),
+                                                             // "Department Type" = CONST(Team),
                                                              "ORG Shema" = FIELD("Org Shema"),
                                                              "Group Description" = FIELD("Belongs to Group")));
             Caption = 'Number of dimension value';
