@@ -666,7 +666,7 @@
             <Top>0.54667in</Top>
             <Left>0.64667in</Left>
             <Height>0.95in</Height>
-            <Width>9.525in</Width>
+            <Width>9.52501in</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -844,15 +844,35 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox12</rd:DefaultName>
-              <Top>0.99111in</Top>
+              <Top>1.15778in</Top>
               <Left>2.66111in</Left>
-              <Height>0.83889in</Height>
+              <Height>0.52222in</Height>
               <Width>5.74167in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
-                  <Style>None</Style>
+                  <Style>Solid</Style>
                 </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </TopBorder>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </BottomBorder>
+                <LeftBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </LeftBorder>
+                <RightBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </RightBorder>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
