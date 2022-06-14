@@ -140,7 +140,7 @@ pageextension 50168 AlternativeAddress extends "Alternative Address Card"
 
 
         }
-        moveafter(Active; Address)
+        movebefore("Municipality Code"; Address)
         moveafter("Municipality Name"; City)
         modify(City)
         {
