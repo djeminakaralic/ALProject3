@@ -481,6 +481,36 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Number of Children"; "Number of Children")
                     {
                         ApplicationArea = all;
+                        trigger OnDrillDown()
+                        var
+                            UserSetup: Record "User Setup";
+                        begin
+
+                            UserSetup.Reset();
+                            UserSetup.SetFilter("User ID", '%1', USERID);
+                            if not UserSetup.FindFirst() then begin
+                                UserSetup.Init();
+                                UserSetup.Validate("User ID", UserId);
+                                UserSetup.Insert();
+
+                            end
+                            else begin
+                                UserSetup."Open Value" := 'Child';
+                                UserSetup.Modify();
+
+                            end;
+
+                            EmployeeRelative.RESET;
+                            EmployeeRelative.SETFILTER("Employee No.", "No.");
+                            EmployeeRelative.SETFILTER(Relation, 'Child');
+                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
+                            EmployeeRelativePage.RUN;
+                            CurrPage.UPDATE;
+
+
+                        end;
+
+                        //ovo sigurno
 
                     }
                     field("Spouse Name"; "Spouse Name")
