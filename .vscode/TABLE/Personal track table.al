@@ -220,7 +220,7 @@ table 50124 "Personal track report"
         {
             Caption = 'Work Permit To';
         }
-        field(17; "Education Level"; Text[40])
+        field(17; "Education Level"; Text[250])
         {
             Caption = 'Education Level';
         }

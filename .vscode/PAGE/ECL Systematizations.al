@@ -263,7 +263,10 @@ page 50144 "ECL Systematizations"
                 Applicationarea = all;
                 Visible = true;
 
-
+                trigger OnAction()
+                begin
+                    NewReport.RUN;
+                end;
             }
             action(UpdateHeadOf)
             {

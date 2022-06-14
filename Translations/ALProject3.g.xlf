@@ -7028,8 +7028,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 791684153 - Field 1964727962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Naziv vrste treninga</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type of name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 791684153 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Location</source>
+          <source>Vrsta treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field TypeOF - Property Caption</note>
         </trans-unit>
@@ -10087,21 +10092,6 @@
           <source>Region</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment range - Field Region - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transaction Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 907492870 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Field Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 907492870 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2127312042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Finance Cue</source>
@@ -15657,6 +15647,21 @@
           <source>Location</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field TypeOF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3982664412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Training Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3982664412 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Type - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3982664412 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Type - Field Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1676039888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transport Header</source>
@@ -25033,11 +25038,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment range - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 4164150675 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transaction Types</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Types - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 792771594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activities</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26167,6 +26167,11 @@
           <source>Evidencija održavanja treninga/edukacija</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Training Time Entries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2019009885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trainings Types</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Training Types - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2202478900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Katalog treninga</source>
@@ -34948,11 +34953,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Employee Trainings Ledger - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Action 2223097449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Evidencija prerasporedjenih</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Evidencija prerasporedjenih - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Izvjestaj starosne strukture</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35944,7 +35944,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Additional rights millitary - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 2190955499 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
-          <source>,Borac,Pripadnik boračke populacije,Šehidski status</source>
+          <source> ,Borac,Pripadnik boračke populacije,Šehidski status</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Additional rights millitary - Property OptionCaption</note>
         </trans-unit>

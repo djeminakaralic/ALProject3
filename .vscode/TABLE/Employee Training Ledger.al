@@ -38,7 +38,6 @@ table 50057 "Employee Training Ledger"
                         Name := TrainingCatalogue.Name;
                         Type := TrainingCatalogue.Type;
                         TypeOF := TrainingCatalogue.TypeOF;
-                        "Type of name" := TrainingCatalogue."Type of training name";
 
                         Location := TrainingCatalogue.Location;
                         Month := TrainingCatalogue.Month;
@@ -132,13 +131,15 @@ table 50057 "Employee Training Ledger"
 
 
         }
-        field(22; TypeOF; Code[20])
+        field(22; TypeOF; code[20])
         {
-            Caption = 'Vrsta treninga/edukacije';
+            Caption = 'Vrsta treninga';
+            TableRelation = "Training Type";
         }
-        field(23; "Type of name"; text[250])
+        field(23; "Type of name"; code[20])
         {
             Caption = 'Naziv vrste treninga';
+            TableRelation = "Training Type";
         }
 
 
@@ -152,6 +153,7 @@ table 50057 "Employee Training Ledger"
     var
         TC: Record "Training Time Entry";
         TrainingCatalogue: record "Training Catalogue";
+
 
 }
 

@@ -60,10 +60,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
 
             }
-            field("Payment Type"; "Payment Type")
+            /*field("Payment Type"; "Payment Type")
             {
 
-            }
+            }*/
         }
 
 

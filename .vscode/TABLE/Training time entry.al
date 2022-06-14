@@ -122,15 +122,8 @@ table 50044 "Training Time Entry"
         field(22; TypeOF; code[20])
         {
             Caption = 'Location';
-            FieldClass = FlowField;
-            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
-
-        }
-        field(23; "Type of name"; Text[250])
-        {
-            Caption = 'Location';
-            FieldClass = FlowField;
-            CalcFormula = lookup("Training Catalogue"."Type of training name" where(Code = field(Code2)));
+            /*FieldClass = FlowField;
+            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));*/
 
         }
 

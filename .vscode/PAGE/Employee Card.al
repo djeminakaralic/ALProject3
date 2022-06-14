@@ -4113,7 +4113,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
             IF EmployeeContractLedger.FINDLAST THEN BEGIN
                 EmployeeContractLedger.CALCFIELDS("Minimal Education Level");
-                EmployeeContractLedger.CALCFIELDS("Residence/Network", "Manager 1 First Name", "Manager 1 Last Name");
+                EmployeeContractLedger.CALCFIELDS("Residence/Network", "Manager 1 First Name", "Manager 1 Last Name", "Manager 2 First Name", "Manager 2 Last Name");
                 EmployeeContractLedger.CALCFIELDS("Phisical Org Dio", "Phisical Org Dio Name", "Org Dio Name");
                 showMC := EmployeeContractLedger."Manager Contract";
                 IF (EmployeeContractLedger."Grounds for Term. Code" <> '') AND (EmployeeContractLedger."Ending Date" <> 0D) THEN

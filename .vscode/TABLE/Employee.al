@@ -3017,7 +3017,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(503710; "Additional rights millitary"; Option)
         {
             Caption = 'Additional rights millitary';
-            OptionMembers = ,Borac,"Pripadnik boračke populacije","Šehidski status";
+            OptionMembers = " ",Borac,"Pripadnik boračke populacije","Šehidski status";
         }
 
 
@@ -3055,7 +3055,9 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
+
         Education: Record "Additional Education";
+
 
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";

@@ -101,6 +101,7 @@ table 50200 "Additional Education"
         {
             Caption = 'Vocation';
             TableRelation = Vocation.Code;
+            Editable = false;
 
             trigger OnValidate()
             begin
@@ -154,10 +155,30 @@ table 50200 "Additional Education"
 
             end;
         }
-        field(14; "Vocation Description"; Text[120])
+        field(14; "Vocation Description"; Text[250])
         {
             Caption = 'Vocation Description';
-            Editable = false;
+            TableRelation = Vocation."Description New";
+
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                IF "Vocation Description" <> '' THEN BEGIN
+                    VocationRec.RESET;
+                    VocationRec.SETFILTER("Description New", "Vocation Description");
+                    IF VocationRec.FINDFIRST THEN
+                        Vocation := VocationRec.Code;
+
+                END
+                ELSE
+                    Vocation := '';
+
+                EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
+            end;
+
+
+            //dodati
         }
         field(15; "Title Description"; Text[120])
         {
