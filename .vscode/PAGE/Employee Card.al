@@ -370,6 +370,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                         DrillDown = true;
                         trigger OnDrillDown()
+                        var
+                            UserSetup: Record "User Setup";
                         begin
 
                             EmployeeRelative.RESET;
@@ -378,6 +380,19 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
+                            UserSetup.Reset();
+                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            if not UserSetup.FindFirst() then begin
+                                UserSetup.Init();
+                                UserSetup.Validate("User ID", UserId);
+
+                            end
+                            else begin
+                                UserSetup."Open Value" := 'Father';
+                                UserSetup.Modify();
+
+                            end;
+
 
                         end;
 
@@ -395,6 +410,18 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
+                            UserSetup.Reset();
+                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            if not UserSetup.FindFirst() then begin
+                                UserSetup.Init();
+                                UserSetup.Validate("User ID", UserId);
+
+                            end
+                            else begin
+                                UserSetup."Open Value" := 'Mother';
+                                UserSetup.Modify();
+
+                            end;
                         end;
                     }
                     field("Mother Maiden Name"; "Mother Maiden Name")
@@ -409,6 +436,18 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
+                            UserSetup.Reset();
+                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            if not UserSetup.FindFirst() then begin
+                                UserSetup.Init();
+                                UserSetup.Validate("User ID", UserId);
+
+                            end
+                            else begin
+                                UserSetup."Open Value" := 'Mother';
+                                UserSetup.Modify();
+
+                            end;
 
                         end;
                     }
@@ -445,6 +484,18 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
                             CurrPage.UPDATE;
+                            UserSetup.Reset();
+                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            if not UserSetup.FindFirst() then begin
+                                UserSetup.Init();
+                                UserSetup.Validate("User ID", UserId);
+
+                            end
+                            else begin
+                                UserSetup."Open Value" := 'Spouse';
+                                UserSetup.Modify();
+
+                            end;
 
                         end;
                     }

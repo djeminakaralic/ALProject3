@@ -221,7 +221,23 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
     trigger OnInsert()
     var
         myInt: Integer;
+        UserSetup: Record "User Setup";
     begin
+
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            if UserSetup."Open Value" = 'Father' then
+                Rec.Relation := Rec.Relation::Father;
+            if UserSetup."Open Value" = 'Mother' then
+                Rec.Relation := Rec.Relation::Mother;
+            if UserSetup."Open Value" = 'Spouse' then
+                Rec.Relation := Rec.Relation::Spouse;
+
+
+
+        end;
+
 
 
     end;
