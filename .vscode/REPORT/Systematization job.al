@@ -269,6 +269,9 @@ report 50091 "Systematization job"
                   */
 
 
+                Commit();
+                UpdateDep.run();
+                Commit();
                 OrgShema."Change Org" := TRUE;
                 OrgShema.MODIFY;
             END;
@@ -549,7 +552,7 @@ report 50091 "Systematization job"
                                             ELSE BEGIN
                                                 ECLOrg."Show Record" := TRUE;
                                                 IF (ECLOrg."Position Description" <> '') AND (ECLOrg."Starting Date" <> 0D) THEN
-                                                    ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::"Systematization Change";
+                                                    ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
                                                 ECLOrg.MODIFY(FALSE);
                                             END;
 
@@ -566,19 +569,19 @@ report 50091 "Systematization job"
         OrgShema.SETFILTER(Status, '%1', OrgShema.Status::Preparation);
         IF OrgShema.FINDLAST THEN BEGIN
             IF WORKDATE = CALCDATE('<-1D>', OrgShema."Date From") THEN BEGIN
-                IF OrgShema."Sent Mail Systematization" = FALSE THEN BEGIN
-                    CLEAR(ECLSYSEmail);
-                    ECLOrg.RESET;
-                    ECLOrg.SETFILTER("Org. Structure", '%1', OrgShema.Code);
-                    ECLOrg.SETFILTER("Show Record", '%1', TRUE);
-                    ECLOrg.SETFILTER("Position Description", '<>%1', '');
-                    ECLOrg.SETFILTER("Starting Date", '<>%1', 0D);
-                    IF ECLOrg.FINDSET THEN BEGIN
-                        REPORT.RUNMODAL(206, FALSE, FALSE, ECLOrg);
-                        COMMIT;
+                /* IF OrgShema."Sent Mail Systematization" = FALSE THEN BEGIN
+                     CLEAR(ECLSYSEmail);
+                     ECLOrg.RESET;
+                     ECLOrg.SETFILTER("Org. Structure", '%1', OrgShema.Code);
+                     ECLOrg.SETFILTER("Show Record", '%1', TRUE);
+                     ECLOrg.SETFILTER("Position Description", '<>%1', '');
+                     ECLOrg.SETFILTER("Starting Date", '<>%1', 0D);
+                     IF ECLOrg.FINDSET THEN BEGIN
+                         REPORT.RUNMODAL(206, FALSE, FALSE, ECLOrg);
+                         COMMIT;
 
-                    END;
-                END;
+                     END;
+                 END*/
                 PositionBenef.RESET;
                 PositionBenef.SETFILTER("Position Code", '%1', ECLOrg."Position Code");
                 PositionBenef.SETFILTER("Position Name", '%1', ECLOrg."Position Description");
@@ -610,15 +613,15 @@ report 50091 "Systematization job"
         OrgShema.SETFILTER(Status, '%1', OrgShema.Status::Active);
         IF OrgShema.FINDLAST THEN BEGIN
 
-            ECLOrg9.RESET;
-            ECLOrg9.SETFILTER("Org. Structure", '%1', OrgShema.Code);
-            ECLOrg9.SETFILTER("Show Record", '%1', TRUE);
-            ECLOrg9.SETFILTER("Position Description", '<>%1', '');
-            ECLOrg9.SETFILTER("Starting Date", '%1', CALCDATE('<+1D>', WORKDATE));
-            IF ECLOrg9.FINDSET THEN BEGIN
-                REPORT.RUNMODAL(213, FALSE, FALSE, ECLOrg9);
-                COMMIT;
-            END;
+            /*  ECLOrg9.RESET;
+              ECLOrg9.SETFILTER("Org. Structure", '%1', OrgShema.Code);
+              ECLOrg9.SETFILTER("Show Record", '%1', TRUE);
+              ECLOrg9.SETFILTER("Position Description", '<>%1', '');
+              ECLOrg9.SETFILTER("Starting Date", '%1', CALCDATE('<+1D>', WORKDATE));
+              IF ECLOrg9.FINDSET THEN BEGIN
+                  REPORT.RUNMODAL(213, FALSE, FALSE, ECLOrg9);
+                  COMMIT;
+              END;*/
         END;
 
         //na taj dan briše troškovne centre i dodjeljuje im nove troškovne centre
@@ -1056,6 +1059,7 @@ report 50091 "Systematization job"
         HeadOfOrginal: Record "Head Of's";
         HeadOfTemp: Record "Head Of's temporary";
         DimensionOrginalPos: Record "Dimension for position";
+        UpdateDep: Report "Update dep";
         DimensionTempPos: Record "Dimension temp for position";
         BenefitsTemp: Record "Position Benefits temporery";
         BenefitsOrginal: Record "Position Benefits";

@@ -15,318 +15,334 @@ page 50062 "Group temporary sist"
             {
                 field(Code; Code)
                 {
-                    Editable = false;
+
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
-                        OsPreparation.RESET;
-                        OsPreparation.SETFILTER(Status, '%1', 2);
-                        IF OsPreparation.FINDLAST THEN BEGIN
-                            "Org Shema" := OsPreparation.Code;
-                        END
-                        ELSE BEGIN
-                            "Org Shema" := '';
-                        END;
-                        "Department Type" := 2;
-                        /*SectorCheckLength.RESET;
-                        IF SectorCheckLength.FINDSET THEN REPEAT
-                        IF STRLEN(Rec.Code)<STRLEN(SectorCheckLength.Code) THEN ERROR(Text002);
-                        UNTIL SectorCheckLength.NEXT=0;*/
-                        IF Code <> '' THEN BEGIN
-                            IF Description = '' THEN BEGIN
-                                DepartmentTemp.INIT;
-                                DepartmentTemp.VALIDATE(Code, Code);
-                                String := Rec.Code;
-                                //IF String[STRLEN(Rec.Code)]='.' THEN
-                                DepartmentTemp.Code := Rec.Code;
-                                DepartmentTemp."Group Code" := Rec.Code;
-                                DepartmentTemp."Department Type" := 2;
-                                DepartmentTemp.INSERT;
+                    /*    trigger OnValidate()
+                        begin
+                            OsPreparation.RESET;
+                            OsPreparation.SETFILTER(Status, '%1', 2);
+                            IF OsPreparation.FINDLAST THEN BEGIN
+                                "Org Shema" := OsPreparation.Code;
                             END
                             ELSE BEGIN
-                                DepartmentTemp.SETFILTER("Group Code", '%1', xRec.Code);
-                                DepartmentTemp.SETFILTER("Group Description", '%1', Description);
-                                DepartmentTemp.SETFILTER("Department Type", '%1', 2);
-                                IF DepartmentTemp.FINDFIRST THEN BEGIN
-                                    IF DepartmentTemp1.GET(DepartmentTemp.Code, DepartmentTemp."ORG Shema", DepartmentTemp."Team Description", DepartmentTemp."Department Categ.  Description", DepartmentTemp."Group Description", DepartmentTemp.Description) THEN BEGIN
-                                        // IF String[STRLEN(Rec.Code)]='.' THEN BEGIN
-                                        DepartmentTemp1.RENAME(Rec.Code, "Org Shema", DepartmentTemp."Team Description", Rec."Belongs to Department Category", Rec.Description, Rec.Description);
-                                    END;
-                                    /* ELSE BEGIN
-                                     String:=FORMAT(Rec.Code);
-                                        LengthString:=STRLEN(String);
-                                        Brojac:=0;
-                                        FOR I:=1 TO LengthString DO BEGIN
-                                        IF String[I]='.'THEN BEGIN
-                                           Brojac:=Brojac+1;
-                                           IF Brojac=3 THEN
-                                           CodeDifferent:=I;
-                                              END;
-                                               END;
-                                     DepartmentTemp1.RENAME(COPYSTR(Rec.Code,1,CodeDifferent),"Org Shema",DepartmentTemp."Team Description",Rec."Belongs to Department Category",Rec.Description,'Glavna filijala');
-                                            END;*/
-                                    SectorFind.RESET;
-                                    String := FORMAT(Rec.Code);
-                                    LengthString := STRLEN(String);
-                                    Brojac := 0;
-                                    FOR I := 1 TO LengthString DO BEGIN
-                                        IF String[I] = '.' THEN BEGIN
-                                            Brojac := Brojac + 1;
-
-                                            IF Brojac = 2 THEN
-                                                SectorFind1 := I;
-
+                                "Org Shema" := '';
+                            END;
+                            "Department Type" := 2;
+                            /*SectorCheckLength.RESET;
+                            IF SectorCheckLength.FINDSET THEN REPEAT
+                            IF STRLEN(Rec.Code)<STRLEN(SectorCheckLength.Code) THEN ERROR(Text002);
+                            UNTIL SectorCheckLength.NEXT=0;
+                            IF Code <> '' THEN BEGIN
+                                IF Description = '' THEN BEGIN
+                                    DepartmentTemp.INIT;
+                                    DepartmentTemp.VALIDATE(Code, Code);
+                                    String := Rec.Code;
+                                    //IF String[STRLEN(Rec.Code)]='.' THEN
+                                    DepartmentTemp.Code := Rec.Code;
+                                    DepartmentTemp."Group Code" := Rec.Code;
+                                    DepartmentTemp."Department Type" := 2;
+                                    DepartmentTemp.INSERT;
+                                END
+                                ELSE BEGIN
+                                    DepartmentTemp.SETFILTER("Group Code", '%1', xRec.Code);
+                                    DepartmentTemp.SETFILTER("Group Description", '%1', Description);
+                                    DepartmentTemp.SETFILTER("Department Type", '%1', 2);
+                                    IF DepartmentTemp.FINDFIRST THEN BEGIN
+                                        IF DepartmentTemp1.GET(DepartmentTemp.Code, DepartmentTemp."ORG Shema", DepartmentTemp."Team Description", DepartmentTemp."Department Categ.  Description", DepartmentTemp."Group Description", DepartmentTemp.Description) THEN BEGIN
+                                            // IF String[STRLEN(Rec.Code)]='.' THEN BEGIN
+                                            DepartmentTemp1.RENAME(Rec.Code, "Org Shema", DepartmentTemp."Team Description", Rec."Belongs to Department Category", Rec.Description, Rec.Description);
                                         END;
-                                    END;
-                                    SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
-                                    IF SectorFind.FINDFIRST THEN BEGIN
+                                        /* ELSE BEGIN
+                                         String:=FORMAT(Rec.Code);
+                                            LengthString:=STRLEN(String);
+                                            Brojac:=0;
+                                            FOR I:=1 TO LengthString DO BEGIN
+                                            IF String[I]='.'THEN BEGIN
+                                               Brojac:=Brojac+1;
+                                               IF Brojac=3 THEN
+                                               CodeDifferent:=I;
+                                                  END;
+                                                   END;
+                                         DepartmentTemp1.RENAME(COPYSTR(Rec.Code,1,CodeDifferent),"Org Shema",DepartmentTemp."Team Description",Rec."Belongs to Department Category",Rec.Description,'Glavna filijala');
+                                                END;
+                                        SectorFind.RESET;
+                                        String := FORMAT(Rec.Code);
+                                        LengthString := STRLEN(String);
+                                        Brojac := 0;
+                                        FOR I := 1 TO LengthString DO BEGIN
+                                            IF String[I] = '.' THEN BEGIN
+                                                Brojac := Brojac + 1;
 
-                                        DepartmentTemp1.Sector := SectorFind.Code;
-                                        DepartmentTemp1."Sector  Description" := SectorFind.Description;
-                                        DepartmentTemp1."Sector Identity" := SectorFind.Identity;
-                                        DepartmentTemp1."Department Idenity" := Rec.Identity;
-                                        FindDep.RESET;
-                                        FindDep.SETFILTER(Description, '%1', Rec."Belongs to Department Category");
-                                        IF FindDep.FINDFIRST THEN BEGIN
-                                            DepartmentTemp1."Department Category" := FindDep.Code;
-                                            "Dep Cat Identity" := FindDep.Identity;
+                                                IF Brojac = 2 THEN
+                                                    SectorFind1 := I;
+
+                                            END;
                                         END;
-                                    END;
+                                        SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
+                                        IF SectorFind.FINDFIRST THEN BEGIN
 
-                                    DepartmentTemp1.MODIFY;
+                                            DepartmentTemp1.Sector := SectorFind.Code;
+                                            DepartmentTemp1."Sector  Description" := SectorFind.Description;
+                                            DepartmentTemp1."Sector Identity" := SectorFind.Identity;
+                                            DepartmentTemp1."Department Idenity" := Rec.Identity;
+                                            FindDep.RESET;
+                                            FindDep.SETFILTER(Description, '%1', Rec."Belongs to Department Category");
+                                            IF FindDep.FINDFIRST THEN BEGIN
+                                                DepartmentTemp1."Department Category" := FindDep.Code;
+                                                "Dep Cat Identity" := FindDep.Identity;
+                                            END;
+                                        END;
+
+                                        DepartmentTemp1.MODIFY;
+                                    END;
                                 END;
                             END;
-                        END;
-                        //END;
+                            //END;
 
 
-                        SectorFind.RESET;
-                        String := FORMAT(Rec.Code);
-                        LengthString := STRLEN(String);
-                        Brojac := 0;
-                        FOR I := 1 TO LengthString DO BEGIN
-                            IF String[I] = '.' THEN BEGIN
-                                Brojac := Brojac + 1;
+                            SectorFind.RESET;
+                            String := FORMAT(Rec.Code);
+                            LengthString := STRLEN(String);
+                            Brojac := 0;
+                            FOR I := 1 TO LengthString DO BEGIN
+                                IF String[I] = '.' THEN BEGIN
+                                    Brojac := Brojac + 1;
 
-                                IF Brojac = 2 THEN
-                                    SectorFind1 := I;
+                                    IF Brojac = 2 THEN
+                                        SectorFind1 := I;
 
+                                END;
                             END;
-                        END;
-                        SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
-                        IF SectorFind.FINDFIRST THEN BEGIN
-                            Rec."Identity Sector" := SectorFind.Identity;
-                        END;
+                            SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
+                            IF SectorFind.FINDFIRST THEN BEGIN
+                                Rec."Identity Sector" := SectorFind.Identity;
+                            END;
 
-                    end;
+                        end;*/
+
                 }
                 field(Description; Description)
                 {
-                    Editable = false;
+
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
-                        OsPreparation.RESET;
-                        OsPreparation.SETFILTER(Status, '%1', 2);
-                        IF OsPreparation.FINDLAST THEN BEGIN
-                            "Org Shema" := OsPreparation.Code;
-                        END
-                        ELSE BEGIN
-                            "Org Shema" := '';
-                        END;
-                        "Department Type" := 2;
-                        IF Rec.Description <> '' THEN BEGIN
-                            IF Rec.Code <> '' THEN BEGIN
-                                DepartmentTemp.SETFILTER("Group Code", '%1', Rec.Code);
-                                DepartmentTemp.SETFILTER("Department Type", '%1', 2);
+                    /*  trigger OnValidate()
+                      begin
+                          OsPreparation.RESET;
+                          OsPreparation.SETFILTER(Status, '%1', 2);
+                          IF OsPreparation.FINDLAST THEN BEGIN
+                              "Org Shema" := OsPreparation.Code;
+                          END
+                          ELSE BEGIN
+                              "Org Shema" := '';
+                          END;
+                          //ĐK "Department Type" := 2;
+                          IF Rec.Description <> '' THEN BEGIN
+                              IF Rec.Code <> '' THEN BEGIN
+                                  DepartmentTemp.SETFILTER("Group Code", '%1', Rec.Code);
+                                  DepartmentTemp.SETFILTER("Department Type", '%1', 2);
 
 
-                                IF DepartmentTemp.FIND('-') THEN BEGIN
-                                    /*IF STRPOS(Description,'Filijala')<>0 THEN BEGIN
-                               NewDescription:='Filijala';
-                               END
-                               ELSE BEGIN */
-                                    NewDescription := Description;
-                                    // END;
-                                    String := FORMAT(Rec.Code);
-                                    LengthString := STRLEN(String);
-                                    Brojac := 0;
-                                    TheLastCharacter := STRLEN(Rec.Code);
-                                    CheckPoint := Rec.Code;
-                                    // IF CheckPoint[TheLastCharacter]<>'.' THEN BEGIN
-                                    Brojac := 0;
-                                    FOR I := 1 TO STRLEN(Rec.Code) DO BEGIN
-                                        IF String[I] = '.' THEN BEGIN
-                                            Brojac := Brojac + 1;
-                                            IF Brojac = 2 THEN BEGIN
-                                                SectorFind1 := I;
-                                            END;
-                                        END;
-                                    END;
+                                  IF DepartmentTemp.FIND('-') THEN BEGIN
+                                      /*IF STRPOS(Description,'Filijala')<>0 THEN BEGIN
+                                 NewDescription:='Filijala';
+                                 END
+                                 ELSE BEGIN 
+                                      NewDescription := Description;
+                                      // END;
+                                      String := FORMAT(Rec.Code);
+                                      LengthString := STRLEN(String);
+                                      Brojac := 0;
+                                      TheLastCharacter := STRLEN(Rec.Code);
+                                      CheckPoint := Rec.Code;
+                                      // IF CheckPoint[TheLastCharacter]<>'.' THEN BEGIN
+                                      Brojac := 0;
+                                      FOR I := 1 TO STRLEN(Rec.Code) DO BEGIN
+                                          IF String[I] = '.' THEN BEGIN
+                                              Brojac := Brojac + 1;
+                                              IF Brojac = 2 THEN BEGIN
+                                                  SectorFind1 := I;
+                                              END;
+                                          END;
+                                      END;
 
 
-                                    IF DepartmentTemp1.GET(DepartmentTemp.Code, DepartmentTemp."ORG Shema", '', '', DepartmentTemp."Group Description", DepartmentTemp.Description) THEN
-                                        DepartmentTemp1.RENAME(Rec.Code, "Org Shema", '', Rec."Belongs to Department Category", Rec.Description, NewDescription);
+                                      IF DepartmentTemp1.GET(DepartmentTemp.Code, DepartmentTemp."ORG Shema", '', '', DepartmentTemp."Group Description", DepartmentTemp.Description) THEN
+                                          DepartmentTemp1.RENAME(Rec.Code, "Org Shema", '', Rec."Belongs to Department Category", Rec.Description, NewDescription);
 
-                                    /*
-                                    ELSE BEGIN
-                                    IF DepartmentTemp1.GET(DepartmentTemp.Code,DepartmentTemp."ORG Shema",'','',DepartmentTemp."Group Description",DepartmentTemp.Description) THEN
-                                    DepartmentTemp1.RENAME(Code,"Org Shema",'',Rec."Belongs to Department Category",Description,NewDescription);
-                                    END;*/
-                                    SectorFind.RESET;
-                                    String := FORMAT(Rec.Code);
-                                    LengthString := STRLEN(String);
-                                    Brojac := 0;
-                                    FOR I := 1 TO LengthString DO BEGIN
-                                        IF String[I] = '.' THEN BEGIN
-                                            Brojac := Brojac + 1;
+                                      /*
+                                      ELSE BEGIN
+                                      IF DepartmentTemp1.GET(DepartmentTemp.Code,DepartmentTemp."ORG Shema",'','',DepartmentTemp."Group Description",DepartmentTemp.Description) THEN
+                                      DepartmentTemp1.RENAME(Code,"Org Shema",'',Rec."Belongs to Department Category",Description,NewDescription);
+                                      END;
+                                      SectorFind.RESET;
+                                      String := FORMAT(Rec.Code);
+                                      LengthString := STRLEN(String);
+                                      Brojac := 0;
+                                      FOR I := 1 TO LengthString DO BEGIN
+                                          IF String[I] = '.' THEN BEGIN
+                                              Brojac := Brojac + 1;
 
-                                            IF Brojac = 2 THEN BEGIN
-                                                SectorFind1 := I;
-                                            END;
-                                        END;
-                                    END;
-                                    SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
-                                    IF SectorFind.FINDFIRST THEN BEGIN
+                                              IF Brojac = 2 THEN BEGIN
+                                                  SectorFind1 := I;
+                                              END;
+                                          END;
+                                      END;
+                                      SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
+                                      IF SectorFind.FINDFIRST THEN BEGIN
 
-                                        DepartmentTemp1.Sector := SectorFind.Code;
-                                        DepartmentTemp1."Sector  Description" := SectorFind.Description;
-                                        DepartmentTemp1."Sector Identity" := SectorFind.Identity;
-                                        "Dep Cat Identity" := FindDep.Identity;
-                                        FindDep.RESET;
-                                        FindDep.SETFILTER(Description, '%1', "Belongs to Department Category");
-                                        IF FindDep.FINDFIRST THEN BEGIN
-                                            DepartmentTemp1."Department Category" := FindDep.Code;
-                                            DepartmentTemp1."Department Idenity" := FindDep.Identity;
-                                            "Dep Cat Identity" := FindDep.Identity;
-                                        END;
-                                    END;
+                                          DepartmentTemp1.Sector := SectorFind.Code;
+                                          DepartmentTemp1."Sector  Description" := SectorFind.Description;
+                                          DepartmentTemp1."Sector Identity" := SectorFind.Identity;
+                                          "Dep Cat Identity" := FindDep.Identity;
+                                          FindDep.RESET;
+                                          FindDep.SETFILTER(Description, '%1', "Belongs to Department Category");
+                                          IF FindDep.FINDFIRST THEN BEGIN
+                                              DepartmentTemp1."Department Category" := FindDep.Code;
+                                              DepartmentTemp1."Department Idenity" := FindDep.Identity;
+                                              "Dep Cat Identity" := FindDep.Identity;
+                                          END;
+                                      END;
 
-                                    DepartmentTemp1.MODIFY;
+                                      DepartmentTemp1.MODIFY;
 
-                                END
-                                ELSE BEGIN
-                                    DepartmentTemp1.INIT;
-                                    /*IF STRPOS(Description,'Filijala')=0 THEN BEGIN
-                                    DepartmentTemp1.Description:='Filijala';
-                                    END
-                                    ELSE BEGIN
-                                    DepartmentTemp1.Description:=Description;
-                                    END;*/
-                                    DepartmentTemp1.Description := Rec.Description;
-                                    SectorFind.RESET;
-                                    String := FORMAT(Rec.Code);
-                                    LengthString := STRLEN(String);
-                                    Brojac := 0;
-                                    FOR I := 1 TO LengthString DO BEGIN
-                                        IF String[I] = '.' THEN BEGIN
-                                            Brojac := Brojac + 1;
+                                  END
+                                  ELSE BEGIN
+                                      DepartmentTemp1.INIT;
+                                      /*IF STRPOS(Description,'Filijala')=0 THEN BEGIN
+                                      DepartmentTemp1.Description:='Filijala';
+                                      END
+                                      ELSE BEGIN
+                                      DepartmentTemp1.Description:=Description;
+                                      END;
+                                      DepartmentTemp1.Description := Rec.Description;
+                                      SectorFind.RESET;
+                                      String := FORMAT(Rec.Code);
+                                      LengthString := STRLEN(String);
+                                      Brojac := 0;
+                                      FOR I := 1 TO LengthString DO BEGIN
+                                          IF String[I] = '.' THEN BEGIN
+                                              Brojac := Brojac + 1;
 
-                                            IF Brojac = 2 THEN BEGIN
-                                                SectorFind1 := I;
-                                            END;
-                                        END;
-                                    END;
-                                    SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
-                                    IF SectorFind.FINDFIRST THEN BEGIN
-                                        DepartmentTemp1.Sector := SectorFind.Code;
-                                        DepartmentTemp1."Sector  Description" := SectorFind.Description;
-                                        DepartmentTemp1."Sector Identity" := SectorFind.Identity;
-                                        FindDep.RESET;
-                                        FindDep.SETFILTER(Description, '%1', "Belongs to Department Category");
-                                        IF FindDep.FINDFIRST THEN BEGIN
-                                            DepartmentTemp1."Department Category" := FindDep.Code;
-                                            DepartmentTemp1."Department Idenity" := FindDep.Identity;
-                                            "Dep Cat Identity" := FindDep.Identity;
-                                        END;
-                                    END;
-                                    DepartmentTemp1.INSERT;
-                                END;
-                            END;
-                        END;
+                                              IF Brojac = 2 THEN BEGIN
+                                                  SectorFind1 := I;
+                                              END;
+                                          END;
+                                      END;
+                                      SectorFind.SETFILTER(Code, '%1', COPYSTR(Rec.Code, 1, SectorFind1));
+                                      IF SectorFind.FINDFIRST THEN BEGIN
+                                          DepartmentTemp1.Sector := SectorFind.Code;
+                                          DepartmentTemp1."Sector  Description" := SectorFind.Description;
+                                          DepartmentTemp1."Sector Identity" := SectorFind.Identity;
+                                          FindDep.RESET;
+                                          FindDep.SETFILTER(Description, '%1', "Belongs to Department Category");
+                                          IF FindDep.FINDFIRST THEN BEGIN
+                                              DepartmentTemp1."Department Category" := FindDep.Code;
+                                              DepartmentTemp1."Department Idenity" := FindDep.Identity;
+                                              "Dep Cat Identity" := FindDep.Identity;
+                                          END;
+                                      END;
+                                      DepartmentTemp1.INSERT;
+                                  END;
+                              END;
+                          END;
 
 
 
-                        CurrPage.UPDATE;
+                          CurrPage.UPDATE;
 
-                    end;
+                      end;*/
                 }
                 field("Official Translate of Group"; "Official Translate of Group")
                 {
-                    Visible = true;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Belongs to Department Category"; "Belongs to Department Category")
                 {
-                    Editable = false;
+
                     ApplicationArea = all;
 
-                    trigger OnValidate()
-                    begin
-                        IF "Belongs to Department Category" <> '' THEN BEGIN
-                            DepartmentRename.RESET;
-                            DepartmentRename.SETFILTER("Department Type", '%1', 2);
-                            DepartmentRename.SETFILTER("Group Code", '%1', Rec.Code);
-                            DepartmentRename.SETFILTER("Group Description", '%1', Rec.Description);
-                            IF DepartmentRename.FINDFIRST THEN BEGIN
+                    /*   trigger OnValidate()
+                       var
+                           SectorFi: Record "Sector temporary";
+                       begin
+                           IF "Belongs to Department Category" <> '' THEN BEGIN
+                               DepartmentRename.RESET;
+                               DepartmentRename.SETFILTER("Department Type", '%1', 2);
+                               DepartmentRename.SETFILTER("Group Code", '%1', Rec.Code);
+                               DepartmentRename.SETFILTER("Group Description", '%1', Rec.Description);
+                               IF DepartmentRename.FINDFIRST THEN BEGIN
 
-                                IF DepartmentRename1.GET(DepartmentRename.Code, DepartmentRename."ORG Shema", '', '', DepartmentRename."Group Description", DepartmentRename.Description)
-                                  THEN
-                                    DepartmentRename1.RENAME(DepartmentRename.Code, DepartmentRename."ORG Shema", '', "Belongs to Department Category", DepartmentRename."Group Description", DepartmentRename.Description);
-                                FindCodeForDep.RESET;
-                                FindCodeForDep.SETFILTER(Description, '%1', "Belongs to Department Category");
-                                IF FindCodeForDep.FINDFIRST THEN BEGIN
-                                    DepartmentRename1."Department Category" := FindCodeForDep.Code;
-                                    DepartmentRename1."Department Idenity" := FindCodeForDep.Identity;
-                                    Rec."Dep Cat Identity" := FindCodeForDep.Identity;
-                                END
-                                ELSE BEGIN
-                                    DepartmentRename1."Department Category" := '';
-                                END;
-                                DepartmentRename1.MODIFY;
-                            END;
-                        END;
-                        CurrPage.UPDATE;
-                    end;
+                                   IF DepartmentRename1.GET(DepartmentRename.Code, DepartmentRename."ORG Shema", '', '', DepartmentRename."Group Description", DepartmentRename.Description)
+                                     THEN
+                                       DepartmentRename1.RENAME(DepartmentRename.Code, DepartmentRename."ORG Shema", '', "Belongs to Department Category", DepartmentRename."Group Description", DepartmentRename.Description);
+                                   FindCodeForDep.RESET;
+                                   FindCodeForDep.SETFILTER(Description, '%1', "Belongs to Department Category");
+                                   IF FindCodeForDep.FINDFIRST THEN BEGIN
+                                       DepartmentRename1."Department Category" := FindCodeForDep.Code;
+                                       SectorFi.Reset();
+                                       SectorFi.SetFilter(Description, '%1', FindCodeForDep."Sector Belongs");
+                                       SectorFi.SetFilter("Org Shema", '%1', FindCodeForDep."Org Shema");
+                                       if SectorFi.FindFirst() then begin
+                                           DepartmentRename1.Sector := SectorFi.Code;
+                                           DepartmentRename1."Sector  Description" := SectorFi.Description;
+                                       end;
+
+
+                                       DepartmentRename1."Department Idenity" := FindCodeForDep.Identity;
+                                       Rec."Dep Cat Identity" := FindCodeForDep.Identity;
+                                   END
+                                   ELSE BEGIN
+                                       DepartmentRename1."Department Category" := '';
+                                   END;
+                                   DepartmentRename1.MODIFY;
+                               END;
+                           END;
+                           CurrPage.UPDATE;
+                       end;*/
                 }
                 field("Residence/Network"; "Residence/Network")
                 {
                     Editable = false;
                     ApplicationArea = all;
+                    Visible = false;
 
-                    trigger OnValidate()
-                    begin
-                        IF FORMAT(Rec."Residence/Network") <> '' THEN BEGIN
-                            IF Rec.Code <> '' THEN BEGIN
-                                IF Rec.Description <> '' THEN BEGIN
-                                    DepartmentTemp.RESET;
-                                    DepartmentTemp.SETFILTER("Group Code", '%1', Rec.Code);
-                                    DepartmentTemp.SETFILTER("Group Description", '%1', Rec.Description);
-                                    DepartmentTemp.SETFILTER("Department Type", '%1', 2);
-                                    IF DepartmentTemp.FINDFIRST THEN BEGIN
-                                        DepartmentTemp."Residence/Network" := "Residence/Network";
-                                        DepartmentTemp.MODIFY;
-                                    END;
+                    /*   trigger OnValidate()
+                       begin
+                           IF FORMAT(Rec."Residence/Network") <> '' THEN BEGIN
+                               IF Rec.Code <> '' THEN BEGIN
+                                   IF Rec.Description <> '' THEN BEGIN
+                                       DepartmentTemp.RESET;
+                                       DepartmentTemp.SETFILTER("Group Code", '%1', Rec.Code);
+                                       DepartmentTemp.SETFILTER("Group Description", '%1', Rec.Description);
+                                       DepartmentTemp.SETFILTER("Department Type", '%1', 2);
+                                       IF DepartmentTemp.FINDFIRST THEN BEGIN
+                                           DepartmentTemp."Residence/Network" := "Residence/Network";
+                                           DepartmentTemp.MODIFY;
+                                       END;
 
-                                END;
-                            END;
-                        END;
-                    end;
+                                   END;
+                               END;
+                           END;
+                       end;*/
                 }
                 field("Number Of Team  levels below"; "Number Of Team  levels below")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Number of dimension value"; "Number of dimension value")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Name of TC"; "Name of TC")
                 {
                     Editable = false;
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Fields for change"; "Fields for change")
                 {
@@ -334,6 +350,7 @@ page 50062 "Group temporary sist"
                     Style = Unfavorable;
                     StyleExpr = IsTrue;
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Org Shema"; "Org Shema")
                 {
@@ -356,139 +373,125 @@ page 50062 "Group temporary sist"
 
                 trigger OnAction()
                 begin
-                    Response := CONFIRM(Txt003);
-                    IF Response THEN BEGIN
-                        // StepNext.SETRECORD(Rec);
-                        InsertSectoR.RESET;
-                        InsertSectoR.SETFILTER("Group Code", '<>%1', '');
-                        InsertSectoR.SETFILTER("Group Description", '<>%1', '');
-                        IF InsertSectoR.FINDSET THEN
-                            REPEAT
-                                SectorTempIdentity.RESET;
-                                SectorTempIdentity.SETFILTER(Code, '%1', InsertSectoR."Group Code");
-                                SectorTempIdentity.SETFILTER(Description, '%1', InsertSectoR."Group Description");
-                                IF SectorTempIdentity.FINDFIRST THEN BEGIN
-                                    InsertSectoR."Department Group identity" := SectorTempIdentity.Identity;
-                                END;
-                            UNTIL InsertSectoR.NEXT = 0;
 
-                        SectorTemp1.RESET;
-                        SectorTemp1.SETFILTER(Code, '<>%1', '');
-                        IF SectorTemp1.FINDSET THEN
-                            REPEAT
-                                ECLSystematization.RESET;
-                                ECLSystematization.SETFILTER("Sector Description", '%1', SectorTemp1.Description);
-                                ECLSystematization.SETFILTER("Group Description", '<>%1', '');
-                                ECLSystematization.SETFILTER("Team Description", '%1', '');
-                                IF ECLSystematization.FINDFIRST THEN
-                                    REPEAT
-                                        ECLSystematization."Sector Identity" := SectorTemp1.Identity;
-                                        ECLSystematization.MODIFY;
-                                    UNTIL ECLSystematization.NEXT = 0;
-                            UNTIL SectorTemp1.NEXT = 0;
+                    // StepNext.SETRECORD(Rec);
+                    InsertSectoR.RESET;
+                    InsertSectoR.SETFILTER("Group Code", '<>%1', '');
+                    InsertSectoR.SETFILTER("Group Description", '<>%1', '');
+                    IF InsertSectoR.FINDSET THEN
+                        REPEAT
+                            SectorTempIdentity.RESET;
+                            SectorTempIdentity.SETFILTER(Code, '%1', InsertSectoR."Group Code");
+                            SectorTempIdentity.SETFILTER(Description, '%1', InsertSectoR."Group Description");
+                            IF SectorTempIdentity.FINDFIRST THEN BEGIN
+                                InsertSectoR."Department Group identity" := SectorTempIdentity.Identity;
+                            END;
+                        UNTIL InsertSectoR.NEXT = 0;
 
-                        //StepNextTabela.SETFILTER("Group Identity",'%1',Rec.Identity);
-                        IF Rec."Identity Sector" = 0 THEN BEGIN
-                            ValueSector1 := Rec.GETFILTER("Identity Sector");
-                            IF EVALUATE(ValueSector, ValueSector1) THEN
-                                StepNextTabela.SETFILTER("Identity Sector", '%1', ValueSector);
-                        END
-                        ELSE BEGIN
-                            StepNextTabela.SETFILTER("Identity Sector", '%1', Rec."Identity Sector");
-                        END;
-                        StepNext.SETTABLEVIEW(StepNextTabela);
-                        StepNext.RUN;
-                        /*NextMessage.RESET;
-                      NextMessage.SETFILTER(LastModified,'<>%1','');
-                       IF NextMessage.FINDFIRST THEN BEGIN
+                    SectorTemp1.RESET;
+                    SectorTemp1.SETFILTER(Code, '<>%1', '');
+                    IF SectorTemp1.FINDSET THEN
+                        REPEAT
+                            ECLSystematization.RESET;
+                            ECLSystematization.SETFILTER("Sector Description", '%1', SectorTemp1.Description);
+                            ECLSystematization.SETFILTER("Group Description", '<>%1', '');
+                            ECLSystematization.SETFILTER("Team Description", '%1', '');
+                            IF ECLSystematization.FINDFIRST THEN
+                                REPEAT
+                                    ECLSystematization."Sector Identity" := SectorTemp1.Identity;
+                                    ECLSystematization.MODIFY;
+                                UNTIL ECLSystematization.NEXT = 0;
+                        UNTIL SectorTemp1.NEXT = 0;
 
-                       MESSAGE('Poslednji izmijenjeni tim je' +' '+' ' +NextMessage.LastModified);
-                       END;*/
-                        SectorCheck.RESET;
-                        SectorCheck.SETFILTER("Identity Sector", '%1', Rec."Identity Sector");
-                        IF SectorCheck.FINDSET THEN
-                            REPEAT
-                                SectorCheck.CALCFIELDS("Number of dimension value");
-                                IF (SectorCheck."Number of dimension value" = 0) AND (Found1 = FALSE) THEN BEGIN
-                                    MESSAGE(Text008);
-                                    Found1 := TRUE;
-                                END;
-                                IF (SectorCheck."Residence/Network" = SectorCheck."Residence/Network"::" ") AND (Found2 = FALSE) THEN BEGIN
-                                    MESSAGE(Text009);
-                                    Found2 := TRUE;
-                                END;
-                            UNTIL SectorCheck.NEXT = 0;
-
-                        /*
-
-                        DimensionCorect.RESET;
-                        DimensionCorect.SETFILTER("Department Type",'%1',2);
-                        IF DimensionCorect.FINDSET THEN REPEAT
-                        DepCatCode.RESET;
-                        DepCatCode.SETFILTER(Description,'%1',DimensionCorect."Department Categ.  Description");
-                        IF DepCatCode.FINDFIRST THEN BEGIN
-                        DimensionCorect."Department Category":=DepCatCode.Code;
-                        END
-                         ELSE BEGIN
-                         DimensionCorect."Department Category":='';
-                         END;
-                         SectorCode.RESET;
-                         SectorCode.SETFILTER(Description,'%1',DimensionCorect."Sector  Description");
-                         IF SectorCode.FINDFIRST THEN BEGIN
-                         DimensionCorect.Sector:=SectorCode.Code;
-                         END
-                         ELSE BEGIN
-                         DimensionCorect.Sector:='';
-                         END;
-                         DimensionCorect.MODIFY;
-
-                        GroupCheck.RESET;
-                        GroupCheck.SETFILTER(Description,'%1',DimensionCorect."Group Description");
-                        IF GroupCheck.FINDFIRST THEN BEGIN
-                        IF DimensionCorrect1.GET(DimensionCorect.Code,DimensionCorect."Dimension Value Code",DimensionCorect."Team Description",
-                        DimensionCorect."Department Categ.  Description",DimensionCorect."Group Description",DimensionCorect."Group Code","Org Shema") THEN BEGIN
-                        IF DimensionCorect."Group Code"<>GroupCheck.Code THEN
-                        DimensionCorrect1.RENAME(DimensionCorect.Code,DimensionCorect."Dimension Value Code",DimensionCorect."Team Description",
-                        DimensionCorect."Department Categ.  Description",DimensionCorect."Group Description",GroupCheck.Code,"Org Shema") ;
-                         END;
-                          END;
-                        UNTIL DimensionCorect.NEXT=0;
-                        //Code,Dimension Value Code,Team Description,Department Categ.  Description,Group Description,Group Code,ORG Shema
-
-
-                        DimensiontempfoRposition.RESET;
-                        DimensiontempfoRposition.SETFILTER("Position Code",'<>%1','');
-                        DimensiontempfoRposition.SETFILTER(Sector,'<>%1','');
-                        DimensiontempfoRposition.SETFILTER("Sector  Description",'<>%1','');
-                        DimensiontempfoRposition.SETFILTER("Department Categ.  Description",'<>%1','');
-                        DimensiontempfoRposition.SETFILTER("Department Category",'<>%1','');
-                        DimensiontempfoRposition.SETFILTER("Group Code",'<>%1','');
-                        DimensiontempfoRposition.SETFILTER("Group Description",'<>%1','');
-                        DimensiontempfoRposition.SETFILTER("Team Code",'%1','');
-                        DimensiontempfoRposition.SETFILTER("Team Description",'%1','');
-
-                        IF DimensiontempfoRposition.FINDSET THEN REPEAT
-                          PositionMenuCorrect.RESET;
-                          PositionMenuCorrect.SETFILTER(Code,'%1',DimensiontempfoRposition."Position Code");
-                          PositionMenuCorrect.SETFILTER(Description,'%1',DimensiontempfoRposition."Position Description");
-                          IF PositionMenuCorrect.FINDFIRST THEN BEGIN
-                              IF PositionMenuCorrect1.GET(PositionMenuCorrect.Code,PositionMenuCorrect.Description,PositionMenuCorrect."Department Code",PositionMenuCorrect."Org. Structure") THEN BEGIN
-                                IF PositionMenuCorrect."Department Code"<>DimensiontempfoRposition."Group Code" THEN
-                                  PositionMenuCorrect1.RENAME(PositionMenuCorrect.Code,PositionMenuCorrect.Description,DimensiontempfoRposition."Group Code",PositionMenuCorrect."Org. Structure");
-                                END;
-                                  END;
-                                   PositionMenuCorrect.CALCFIELDS("Number of dimension value");
-                                   IF PositionMenuCorrect."Number of dimension value"<>1 THEN BEGIN
-                                      IF PositionMenuCorrect1.GET(PositionMenuCorrect.Code,PositionMenuCorrect.Description,PositionMenuCorrect."Department Code",PositionMenuCorrect."Org. Structure") THEN BEGIN
-                                   PositionMenuCorrect1.RENAME(PositionMenuCorrect.Code,PositionMenuCorrect.Description,'',PositionMenuCorrect."Org. Structure");
-                                        END;
-                                          END;
-                                  UNTIL DimensiontempfoRposition.NEXT=0;*/
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
+                    //StepNextTabela.SETFILTER("Group Identity",'%1',Rec.Identity);
+                    IF Rec."Identity Sector" = 0 THEN BEGIN
+                        ValueSector1 := Rec.GETFILTER("Identity Sector");
+                        IF EVALUATE(ValueSector, ValueSector1) THEN
+                            StepNextTabela.SETFILTER("Identity Sector", '%1', ValueSector);
+                    END
+                    ELSE BEGIN
+                        StepNextTabela.SETFILTER("Identity Sector", '%1', Rec."Identity Sector");
                     END;
+                    //ĐK  StepNext.SETTABLEVIEW(StepNextTabela);
+                    StepNext.RUN;
+                    /*NextMessage.RESET;
+                  NextMessage.SETFILTER(LastModified,'<>%1','');
+                   IF NextMessage.FINDFIRST THEN BEGIN
 
-                end;
+                   MESSAGE('Poslednji izmijenjeni tim je' +' '+' ' +NextMessage.LastModified);
+                   END;*/
+
+
+                    /*
+
+                    DimensionCorect.RESET;
+                    DimensionCorect.SETFILTER("Department Type",'%1',2);
+                    IF DimensionCorect.FINDSET THEN REPEAT
+                    DepCatCode.RESET;
+                    DepCatCode.SETFILTER(Description,'%1',DimensionCorect."Department Categ.  Description");
+                    IF DepCatCode.FINDFIRST THEN BEGIN
+                    DimensionCorect."Department Category":=DepCatCode.Code;
+                    END
+                     ELSE BEGIN
+                     DimensionCorect."Department Category":='';
+                     END;
+                     SectorCode.RESET;
+                     SectorCode.SETFILTER(Description,'%1',DimensionCorect."Sector  Description");
+                     IF SectorCode.FINDFIRST THEN BEGIN
+                     DimensionCorect.Sector:=SectorCode.Code;
+                     END
+                     ELSE BEGIN
+                     DimensionCorect.Sector:='';
+                     END;
+                     DimensionCorect.MODIFY;
+
+                    GroupCheck.RESET;
+                    GroupCheck.SETFILTER(Description,'%1',DimensionCorect."Group Description");
+                    IF GroupCheck.FINDFIRST THEN BEGIN
+                    IF DimensionCorrect1.GET(DimensionCorect.Code,DimensionCorect."Dimension Value Code",DimensionCorect."Team Description",
+                    DimensionCorect."Department Categ.  Description",DimensionCorect."Group Description",DimensionCorect."Group Code","Org Shema") THEN BEGIN
+                    IF DimensionCorect."Group Code"<>GroupCheck.Code THEN
+                    DimensionCorrect1.RENAME(DimensionCorect.Code,DimensionCorect."Dimension Value Code",DimensionCorect."Team Description",
+                    DimensionCorect."Department Categ.  Description",DimensionCorect."Group Description",GroupCheck.Code,"Org Shema") ;
+                     END;
+                      END;
+                    UNTIL DimensionCorect.NEXT=0;
+                    //Code,Dimension Value Code,Team Description,Department Categ.  Description,Group Description,Group Code,ORG Shema
+
+
+                    DimensiontempfoRposition.RESET;
+                    DimensiontempfoRposition.SETFILTER("Position Code",'<>%1','');
+                    DimensiontempfoRposition.SETFILTER(Sector,'<>%1','');
+                    DimensiontempfoRposition.SETFILTER("Sector  Description",'<>%1','');
+                    DimensiontempfoRposition.SETFILTER("Department Categ.  Description",'<>%1','');
+                    DimensiontempfoRposition.SETFILTER("Department Category",'<>%1','');
+                    DimensiontempfoRposition.SETFILTER("Group Code",'<>%1','');
+                    DimensiontempfoRposition.SETFILTER("Group Description",'<>%1','');
+                    DimensiontempfoRposition.SETFILTER("Team Code",'%1','');
+                    DimensiontempfoRposition.SETFILTER("Team Description",'%1','');
+
+                    IF DimensiontempfoRposition.FINDSET THEN REPEAT
+                      PositionMenuCorrect.RESET;
+                      PositionMenuCorrect.SETFILTER(Code,'%1',DimensiontempfoRposition."Position Code");
+                      PositionMenuCorrect.SETFILTER(Description,'%1',DimensiontempfoRposition."Position Description");
+                      IF PositionMenuCorrect.FINDFIRST THEN BEGIN
+                          IF PositionMenuCorrect1.GET(PositionMenuCorrect.Code,PositionMenuCorrect.Description,PositionMenuCorrect."Department Code",PositionMenuCorrect."Org. Structure") THEN BEGIN
+                            IF PositionMenuCorrect."Department Code"<>DimensiontempfoRposition."Group Code" THEN
+                              PositionMenuCorrect1.RENAME(PositionMenuCorrect.Code,PositionMenuCorrect.Description,DimensiontempfoRposition."Group Code",PositionMenuCorrect."Org. Structure");
+                            END;
+                              END;
+                               PositionMenuCorrect.CALCFIELDS("Number of dimension value");
+                               IF PositionMenuCorrect."Number of dimension value"<>1 THEN BEGIN
+                                  IF PositionMenuCorrect1.GET(PositionMenuCorrect.Code,PositionMenuCorrect.Description,PositionMenuCorrect."Department Code",PositionMenuCorrect."Org. Structure") THEN BEGIN
+                               PositionMenuCorrect1.RENAME(PositionMenuCorrect.Code,PositionMenuCorrect.Description,'',PositionMenuCorrect."Org. Structure");
+                                    END;
+                                      END;
+                              UNTIL DimensiontempfoRposition.NEXT=0;*/
+                    CurrPage.CLOSE();
+
+                END;
+
+
             }
             action(Previous)
             {
@@ -500,29 +503,28 @@ page 50062 "Group temporary sist"
                 trigger OnAction()
                 begin
 
-                    Response := CONFIRM(Txt006);
-                    IF Response THEN BEGIN
-                        IF Rec."Identity Sector" = 0 THEN BEGIN
-                            ValueSector1 := Rec.GETFILTER("Identity Sector");
-                            IF EVALUATE(ValueSector, ValueSector1) THEN
-                                PrevoiusTabela.SETFILTER("Identity Sector", '%1', ValueSector);
-                        END
-                        ELSE BEGIN
-                            PrevoiusTabela.SETFILTER("Identity Sector", '%1', Rec."Identity Sector");
-                        END;
-                        PreviousStep.SETTABLEVIEW(PrevoiusTabela);
 
-                        PreviousStep.RUN;
-                        /* PreviousMessage.RESET;
-                         PreviousMessage.SETFILTER(LastModified,'<>%1','');
-                         IF PreviousMessage.FINDFIRST THEN BEGIN
-                           MESSAGE('Poslednja izmijenjena grupa je' +' '+' ' +PreviousMessage.LastModified);
-                          END;*/
-                        CurrPage.CLOSE();
-                        CurrPage.EDITABLE(FALSE);
+                    IF Rec."Identity Sector" = 0 THEN BEGIN
+                        ValueSector1 := Rec.GETFILTER("Identity Sector");
+                        IF EVALUATE(ValueSector, ValueSector1) THEN
+                            PrevoiusTabela.SETFILTER("Identity Sector", '%1', ValueSector);
+                    END
+                    ELSE BEGIN
+                        PrevoiusTabela.SETFILTER("Identity Sector", '%1', Rec."Identity Sector");
                     END;
+                    //ĐK PreviousStep.SETTABLEVIEW(PrevoiusTabela);
 
-                end;
+                    PreviousStep.RUN;
+                    /* PreviousMessage.RESET;
+                     PreviousMessage.SETFILTER(LastModified,'<>%1','');
+                     IF PreviousMessage.FINDFIRST THEN BEGIN
+                       MESSAGE('Poslednja izmijenjena grupa je' +' '+' ' +PreviousMessage.LastModified);
+                      END;*/
+                    CurrPage.CLOSE();
+
+                END;
+
+
             }
             action("Change Code for levels below")
             {
@@ -531,6 +533,7 @@ page 50062 "Group temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -579,6 +582,7 @@ page 50062 "Group temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -607,6 +611,7 @@ page 50062 "Group temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Visible = false;
 
                 trigger OnAction()
                 begin
@@ -635,7 +640,7 @@ page 50062 "Group temporary sist"
             {
                 Caption = 'Dimension temporary';
                 Image = Administration;
-                Visible = true;
+                Visible = false;
                 action("Dimension temporary2")
                 {
                     Caption = 'Dimension temporary';
@@ -978,7 +983,7 @@ UNTIL PositionMenu.NEXT = 0;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        IsEditble := TRUE;
+        //ĐK   IsEditble := TRUE;
     end;
 
     trigger OnOpenPage()
@@ -989,7 +994,7 @@ UNTIL PositionMenu.NEXT = 0;
         SETRANGE("Employment Date", CALCDATE('-'+ FORMAT(HRsetup."New employee period"),TODAY),TODAY);
         SETFILTER(Testing,'%1',TRUE);*/
         //CurrPage.EDITABLE(FALSE);
-        IsEditble := FALSE;
+        //đK  IsEditble := FALSE;
         /*SectorInsertModify.RESET;
             SectorInsertModify.SETFILTER(LastModified,'<>%1','');
             IF SectorInsertModify.FINDFIRST THEN BEGIN
@@ -1020,7 +1025,7 @@ UNTIL PositionMenu.NEXT = 0;
         Pos: Record "Position";
         HRsetup: Record "Human Resources Setup";
         Response: Boolean;
-        StepNext: Page "Team temporary sist";
+        StepNext: Page "Position menu temp";
         PreviousStep: Page "Dep.Category temporary sist";
         Text1: Text;
         ResponseChange: Boolean;

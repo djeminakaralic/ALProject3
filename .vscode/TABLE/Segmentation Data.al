@@ -99,11 +99,10 @@ table 50088 "Segmentation Data 2"
 
             end;
         }
-        field(50006; "Management Level"; Option)
+        field(50006; "Management Level"; Enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = '0,B,B1,B2,B3';
-            OptionMembers = "0",B,B1,B2,B3;
+
         }
     }
 

@@ -231,7 +231,7 @@ table 50085 "HR Cue"
         field(50028; Transfers; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Employee Contract Ledger" WHERE("Reason for Change" = FILTER("Position Change" | "Workplace Change" | "Organizational Changes 1" | "Organizational Changes 2" | "Organizational Changes 3" | "Organizational Changes 4" | "Workplace And Wage Change" | "Position Location And Wage Change"),
+            CalcFormula = Count("Employee Contract Ledger" WHERE("Reason for Change" = FILTER(Relocation),
                                                                   Active = FILTER(TRUE),
                                                                   "Starting Date" = FIELD(DateFilter6)));
             Caption = 'Transfers';
@@ -656,8 +656,36 @@ table 50085 "HR Cue"
         field(50089; "Training"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Employee Training Ledger" WHERE(Status = const("In progress")));
+            CalcFormula = Count("Employee Training Ledger" WHERE("End date of certificate" = field(DateTraining)));
             Caption = 'Trainings';
+
+
+        }
+        field(50090; DateCatalogue; Date)
+        {
+            FieldClass = FlowFilter;
+        }
+        field(50091; "Training Catalogue"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Training Catalogue");
+            Caption = 'Trainings';
+
+
+        }
+        field(50092; "Training Entry"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Training Time Entry" where("Start date" = field(DateCatalogue)));
+            Caption = 'Održavanje treninga/edukacija';
+
+
+        }
+        field(50093; "Certification"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateCatalogue)));
+            Caption = 'Certifikati čiji rok ističe za mjesec dana';
 
 
         }

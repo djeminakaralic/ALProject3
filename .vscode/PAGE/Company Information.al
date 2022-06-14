@@ -29,9 +29,18 @@ pageextension 50020 MyExtensionComp extends "Company Information"
                 ApplicationArea = all;
             }
 
+            field("Tax No."; "Tax No.")
+            {
+                ApplicationArea = all;
+            }
+
         }
         addafter(GLN)
         {
+            field("Registration Text"; "Registration Text")
+            {
+                ApplicationArea = all;
+            }
 
             field(MBS; MBS)
             {

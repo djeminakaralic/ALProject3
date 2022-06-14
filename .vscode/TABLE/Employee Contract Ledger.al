@@ -556,8 +556,9 @@ table 50071 "Employee Contract Ledger"
                     Rec."Brutto After Contributtion" := BruttoAfterContribution;
                     Rec.Netto := BruttoAfterContribution - Tax;
                     Rec."Total Netto" := BruttoAfterContributionWE - TaxWe;
-                    IF Rec."No." <> 0 THEN
-                        Rec.MODIFY;
+                    /*ĐK vrati IF Rec."No." <> 0 THEN
+                             vrati      Rec.MODIFY;
+                            Message('');*/
 
                 END;
 
@@ -1782,6 +1783,10 @@ table 50071 "Employee Contract Ledger"
                 END;
 
                 IF Rec.Active = TRUE THEN BEGIN
+                    EmployeeDefaultDimension.RESET;
+                    EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
+                    IF EmployeeDefaultDimension.FINDFIRST THEN
+                        EmployeeDefaultDimension.DELETE;
 
                     EmployeeDefaultDimension.INIT;
                     EmployeeDefaultDimension."No." := Rec."Employee No.";
@@ -1805,10 +1810,7 @@ table 50071 "Employee Contract Ledger"
                         EmployeeDefaultDimension.Validate("Dimension Value Code", DimensionValue.Code);
 
                     end;
-                    EmployeeDefaultDimension.RESET;
-                    EmployeeDefaultDimension.SETFILTER("No.", '%1', "Employee No.");
-                    IF EmployeeDefaultDimension.FINDFIRST THEN
-                        EmployeeDefaultDimension.DELETE;
+
 
                     EmployeeDefaultDimension.Insert();
                     /* DimensionForPosition.RESET;
@@ -3590,11 +3592,9 @@ table 50071 "Employee Contract Ledger"
             Caption = 'Probation Months';
             Editable = false;
         }
-        field(50286; "Reason for Change"; Option)
+        field(50286; "Reason for Change"; enum "Reason for Change")
         {
             Caption = 'Reason for Change';
-            OptionCaption = ' ,Migration,New Contract,Position Change,Workplace Change,Disciplinary Measures,Contract Renewal,Organizational Changes 1,Organizational Changes 2,Organizational Changes 3,Organizational Changes 4,Workplace And Wage Change,Position Location And Wage Change,Wage Change,Workplace Description Change,Workplace Description And Wage Change,Organisational Structure Changes,Systematization Change,Change engagement type';
-            OptionMembers = " ",Migration,"New Contract","Position Change","Workplace Change","Disciplinary Measures","Contract Renewal","Organizational Changes 1","Organizational Changes 2","Organizational Changes 3","Organizational Changes 4","Workplace And Wage Change","Position Location And Wage Change","Wage Change","Workplace Description Change","Workplace Description And Wage Change","Organisational Structure Changes","Systematization Change","Change engagement type";
 
             trigger OnValidate()
             begin
@@ -3621,10 +3621,11 @@ table 50071 "Employee Contract Ledger"
         }
         field(50289; "Minimal Education Level"; Option)
         {
-            CalcFormula = Lookup(Position."Minimal Education Level" WHERE(Code = FIELD("Position Code")));
+            FieldClass = FlowField;
+            CalcFormula = lookup(Position."Minimal Education Level" WHERE(Code = FIELD("Position Code")));
             Caption = 'Education level';
             Editable = false;
-            FieldClass = FlowField;
+
             OptionCaption = ' ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  ';
             OptionMembers = " ","I Stepen četri razreda osnovne","II Stepen - osnovna škola","III Stepen - SSS srednja škola","IV Stepen - SSS srednja škola","V Stepen - VKV - SSS srednja škola","VI Stepen - VS viša škola","VII Stepen - VSS visoka stručna sprema","VII-1 Stepen - Specijalista","VII-2 Stepen - Magistratura","VIII Stepen - Doktorat  ";
         }
@@ -3798,23 +3799,23 @@ table 50071 "Employee Contract Ledger"
                 END;
 
                 IF "Department Cat. Description" = '' THEN BEGIN
-                    "Sector Code" := '';
-                    Sector := '';
+                    /* "Sector Code" := '';
+                               Sector := '';*/
                     "Department Cat. Description" := '';
                     "Department Category" := '';
-                    Group := '';
-                    "Group Description" := '';
-                    Team := '';
-                    "Team Description" := '';
-                    "Department Code" := '';
-                    "Department Name" := '';
-                    "Position Description" := '';
-                    "Position Code" := '';
-                    "Org Belongs" := '';
-                    "Management Level" := 0;
-                    "Key Function" := FALSE;
-                    "Control Function" := FALSE;
-                    "Sector Description" := '';
+                    /*    Group := '';
+                        "Group Description" := '';
+                        Team := '';
+                        "Team Description" := '';
+                        "Department Code" := '';
+                        "Department Name" := '';
+                        "Position Description" := '';
+                        "Position Code" := '';
+                        "Org Belongs" := '';
+                        "Management Level" := 0;
+                        "Key Function" := FALSE;
+                        "Control Function" := FALSE;
+                        "Sector Description" := '';*/
 
                 END;
             end;
@@ -4143,6 +4144,7 @@ table 50071 "Employee Contract Ledger"
 
                 //nova validacija
                 IF (xRec."No." = Rec."No.") THEN BEGIN
+                    PosD.Reset();
                     PosD.SETFILTER("Employee No.", '%1', "Employee No.");
                     PosD.SETFILTER(Description, '%1', xRec."Position Description");
                     PosD.SETFILTER("Org. Structure", '%1', Rec."Org. Structure");
@@ -4345,31 +4347,20 @@ table 50071 "Employee Contract Ledger"
                             Employee.SETFILTER("No.", "Employee No.");
                             IF Employee.FINDFIRST THEN
                                 PositionTempInsert."Employee Full Name" := Employee."Last Name" + ' ' + Employee."First Name";
+                            Rec."Employee Education Level" := Employee."Education Level";
                             PositionTempInsert."Employee No." := "Employee No.";
-                            ForSis.RESET;
-                            ForSis.SETFILTER(Code, '%1', Sector);
-                            ForSis.SETFILTER(Description, '%1', "Sector Description");
-                            ForSis.SETFILTER("Org Shema", '%1', "Org. Structure");
-                            IF ForSis.FINDFIRST THEN
-                                PositionTempInsert."Sector Identity" := ForSis.Identity;
-                            ForSis1.RESET;
-                            ForSis1.SETFILTER(Code, '%1', "Department Category");
-                            ForSis1.SETFILTER(Description, '%1', "Department Cat. Description");
-                            ForSis1.SETFILTER("Org Shema", '%1', "Org. Structure");
-                            IF ForSis1.FINDFIRST THEN
-                                PositionTempInsert."Department Category Identity" := ForSis1.Identity;
-                            PosMenIdentity.RESET;
-                            PosMenIdentity.SETFILTER(Description, '%1', "Position Description");
-                            PosMenIdentity.SETFILTER(Code, '%1', "Position Code");
-                            PosMenIdentity.SETFILTER("Department Code", '%1', "Department Code");
-                            PosMenIdentity.SETFILTER("Org. Structure", '%1', "Org. Structure");
-                            IF PosMenIdentity.FINDFIRST THEN
-                                PositionTempInsert."Position Menu Identity" := PosMenIdentity."Position Menu Identity";
+
+
+
 
 
                             PositionTempInsert."Org. Structure" := "Org. Structure";
-                            IF (PositionTempInsert."Management Level" <> 7) AND (PositionTempInsert."Management Level" <> 0) THEN BEGIN
-                                IF "Management Level" = 5 THEN BEGIN
+                            IF (PositionTempInsert."Management Level".AsInteger() <> 6) AND (PositionTempInsert."Management Level".AsInteger() <> 0) THEN BEGIN
+                                //nisi radnik
+                                IF "Management Level".AsInteger() = 5 THEN BEGIN //tim
+                                                                                 //voditelj odjela
+
+
                                     DepartmentCode.RESET;
                                     IF Team <> '' THEN BEGIN
                                         DepartmentCode.SETFILTER(Code, '%1', Group);
@@ -4404,9 +4395,12 @@ table 50071 "Employee Contract Ledger"
                                 END;
 
 
-                                IF "Management Level" = 4 THEN BEGIN
+                                IF "Management Level".AsInteger() = 5 THEN BEGIN //tim
                                     DepartmentCode.RESET;
-                                    DepartmentCode.SETFILTER(Code, '%1', "Department Category");
+                                    if Rec."Department Category" = '' then
+                                        DepartmentCode.SETFILTER(Code, '%1', Sector)
+                                    else
+                                        DepartmentCode.SETFILTER(Code, '%1', "Department Category");
                                     DepartmentCode.SETFILTER("ORG Shema", '%1', "Org. Structure");
                                     IF DepartmentCode.FINDSET THEN BEGIN
                                         BrojZapisa := DepartmentCode.COUNT;
@@ -4415,12 +4409,15 @@ table 50071 "Employee Contract Ledger"
                                         PositionTempInsert.VALIDATE("Disc. Department Name", "Department Cat. Description");
                                     END
                                     ELSE BEGIN
-                                        PositionTempInsert.VALIDATE("Disc. Department Code", "Department Category");
+                                        if Rec."Department Category" = '' then
+                                            PositionTempInsert.VALIDATE("Disc. Department Code", Sector)
+                                        else
+                                            PositionTempInsert.VALIDATE("Disc. Department Code", "Department Category");
                                         PositionTempInsert."Disc. Department Name" := '';
                                     END;
                                 END;
 
-                                IF "Management Level" = 3 THEN BEGIN
+                                IF "Management Level".AsInteger() = 4 THEN BEGIN //Odjel
                                     //IF (Rec."Department Cat. Description"<>'') AND (Rec."Group Description"='')THEN BEGIN
                                     DepartmentCode.RESET;
                                     DepartmentCode.SETFILTER(Code, '%1', Sector);
@@ -4436,8 +4433,14 @@ table 50071 "Employee Contract Ledger"
                                         PositionTempInsert."Disc. Department Name" := '';
                                     END;
                                 END;
-                                IF "Management Level" = "Management Level"::B1 THEN BEGIN
-                                    Uprava := COPYSTR(Rec.Sector, 1, 2);
+                                IF "Management Level".AsInteger() = 3 THEN BEGIN //Sektor
+                                    Department.Reset();
+                                    Department.SetFilter("Department Type", '%1', Department."Department Type"::CEO);
+                                    Department.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                    if Department.FindFirst() then
+                                        Uprava := Department.Code
+                                    else
+                                        Uprava := '';
                                     SectorT.RESET;
                                     SectorT.SETFILTER(Code, '%1', Uprava);
                                     SectorT.SETFILTER("Org Shema", '%1', "Org. Structure");
@@ -4512,7 +4515,7 @@ table 50071 "Employee Contract Ledger"
                                         PositionTempInsert."Disc. Department Name" := '';
                                     END;
                                 END;
-                                IF ("Management Level" = 7) OR ("Management Level" = 0) THEN BEGIN
+                                IF ("Management Level".AsInteger() = 6) OR ("Management Level".AsInteger() = 0) THEN BEGIN
                                     IF (Rec."Sector Description" <> '') AND ("Department Cat. Description" = '') THEN
                                         PositionTempInsert.VALIDATE("Disc. Department Code", Rec.Sector);
                                 END;
@@ -4520,6 +4523,8 @@ table 50071 "Employee Contract Ledger"
 
                             END;
                         END;
+                        if Rec."Management Level" = Rec."Management Level"::CEO then
+                            PositionTempInsert.VALIDATE("Disc. Department Code", Rec.Sector);
                         //END;
                         PositionFind.RESET;
                         PositionFind.SETFILTER(Code, '%1', "Position Code");
@@ -4576,7 +4581,7 @@ table 50071 "Employee Contract Ledger"
                 IF "Position Description" = '' THEN BEGIN
                     "Position ID" := '';
                     "Position Code" := '';
-                    "Management Level" := "Management Level"::" ";
+                    "Management Level" := "Management Level"::Empty;
                     "Key Function" := FALSE;
                     "Control Function" := FALSE;
                     "BJF/GJF" := "BJF/GJF"::" ";
@@ -4960,11 +4965,10 @@ table 50071 "Employee Contract Ledger"
 
             end;
         }
-        field(50361; "Management Level"; Option)
+        field(50361; "Management Level"; Enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
         }
         field(50362; "Agremeent Code"; Code[10])
         {
@@ -5924,7 +5928,7 @@ table 50071 "Employee Contract Ledger"
             Editable = false;
 
         }
-        field(594130; "Rad u smjenama"; Boolean)
+        field(594130; "Rad u smjenama"; Enum "Shift Work")
         {
             Caption = 'Rad u smjenama';
         }
@@ -5936,7 +5940,6 @@ table 50071 "Employee Contract Ledger"
         {
             Caption = 'Superior 2';
         }
-
         field(594133; "Position Coefficient for Wage"; Decimal)
         {
             Caption = 'Position Coefficient for Wage';
@@ -5961,8 +5964,34 @@ table 50071 "Employee Contract Ledger"
             FieldClass = FlowField;
             CalcFormula = count("Position Minimal Education" where("Position Code" = field("Position Code"), "Position Name" = field("Position Description"), "Org Shema" = field("Org. Structure")));
             Caption = 'School';
+            Editable = false;
 
         }
+        field(5941378; "Employee Education Level"; enum School)
+        {
+            Caption = 'Employee Education Level';
+
+
+        }
+        field(5941379; "Canton"; Code[10])
+        {
+            Caption = 'Canton';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("ORG Dijelovi".Canton WHERE(Code = FIELD("Org Dio"),
+                                                               GF = FIELD("GF rada code")));
+
+            Editable = false;
+
+
+        }
+        field(5941380; "Status of employee"; enum "Employee Status Ext")
+        {
+            Caption = 'Status';
+
+
+
+        }
+
 
 
     }
@@ -6001,7 +6030,7 @@ table 50071 "Employee Contract Ledger"
                 Emp.MODIFY;
             END;
         END;
-
+        WbDel.Reset();
         WbDel.SETFILTER("Employee No.", '%1', Rec."Employee No.");
         WbDel.SETFILTER("Contract Ledger Entry No.", '%1', Rec."No.");
 
@@ -6062,6 +6091,7 @@ table 50071 "Employee Contract Ledger"
             Employee.SETFILTER("No.", "Employee No.");
             IF Employee.FINDFIRST THEN
                 "Employee Name" := Employee."First Name" + ' ' + Employee."Last Name";
+            "Minimal Education Level" := Employee."Education Level";
             "Operator No." := Employee."New Number";
             "Internal ID" := Employee."Internal ID";
         END;

@@ -63,6 +63,10 @@ page 50186 "ORG Dijelovi"
                 {
                     ApplicationArea = all;
                 }
+                field(Canton; Canton)
+                {
+                    ApplicationArea = all;
+                }
                 field(Telephone; Telephone)
                 {
                     ApplicationArea = all;

@@ -63,9 +63,10 @@ table 50084 "Head Of's"
         field(50004; "Position Description"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup(Position.Description WHERE("Code" = FIELD("Position Code"),
+            CalcFormula = Lookup("Position Menu".Description WHERE("Code" = FIELD("Position Code"),
                                                             "Org. Structure" = FIELD("ORG Shema"),
-                                                             "Employee No." = FIELD("Employee No.")));
+                                                            "Department Code" = field("Department Code")
+                                                            ));
             Caption = 'Position Description';
             Editable = false;
 
@@ -82,7 +83,7 @@ table 50084 "Head Of's"
         field(50007; "Department Category"; Code[30])
         {
             Caption = 'Department';
-            TableRelation = "Department Category"."Code" WHERE("Org Shema" = FIELD("ORG Shema"));
+            TableRelation = "Department Category".Code WHERE("Org Shema" = FIELD("ORG Shema"));
 
             trigger OnValidate()
             begin
@@ -93,7 +94,7 @@ table 50084 "Head Of's"
         field(50008; "Group Code"; Code[30])
         {
             Caption = 'Group';
-            TableRelation = "Group"."Code" WHERE("Org Shema" = FIELD("ORG Shema"));
+            TableRelation = Group.Code WHERE("Org Shema" = FIELD("ORG Shema"));
         }
         field(50009; "Sector  Description"; Text[250])
         {
@@ -177,7 +178,7 @@ table 50084 "Head Of's"
         field(50012; "Team Code"; Code[30])
         {
             Caption = 'Team';
-            TableRelation = TeamT."Code" WHERE("Org Shema" = FIELD("ORG Shema"));
+            Editable = false;
         }
         field(50013; "Team Description"; Text[100])
         {
@@ -205,11 +206,10 @@ table 50084 "Head Of's"
                 END;
             end;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; Enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
         }
         field(50366; "Head's number of employee"; Integer)
         {

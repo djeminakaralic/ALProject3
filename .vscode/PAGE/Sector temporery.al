@@ -12,19 +12,7 @@ table 50250 "Sector temporary"
 
             trigger OnValidate()
             begin
-                /*IF Code <> xRec.Code THEN BEGIN
-                  HumanResSetup.GET;
-                  NoSeriesMgt.TestManual(HumanResSetup."B-1 Nos.");
-                  "No. Series" := '';
-                END;*/
-                //EVALUATE(Order,Code);
-                /*Dep.SETFILTER(Code,'%1',xRec.Code);
-                Dep.SETFILTER("ORG Shema",'%1',"Org Shema");
-                IF Dep.FINDSET THEN REPEAT
-                  IF Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",xRec.Description)
-                    THEN
-                    Dep.RENAME(Rec.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description",Rec.Description)
-                      UNTIL Dep.NEXT=0;*/
+
 
                 OsPreparation.RESET;
                 OsPreparation.SETFILTER(Status, '%1', 2);
@@ -34,25 +22,86 @@ table 50250 "Sector temporary"
                 ELSE BEGIN
                     "Org Shema" := '';
                 END;
-                "Department Type" := 8;
-                IF Rec.Code <> '' THEN BEGIN
-                    IF Rec.Description = '' THEN BEGIN
-                        DepartmentTemp.INIT;
-                        DepartmentTemp.Sector := Rec.Code;
-                        DepartmentTemp.VALIDATE(Code, Rec.Code);
-                        DepartmentTemp.INSERT;
-                    END
-                    ELSE BEGIN
-                        DepartmentTemp.SETFILTER(Code, '%1', xRec.Code);
-                        DepartmentTemp.SETFILTER(Description, '%1', Rec.Description);
-                        IF DepartmentTemp.FINDFIRST THEN BEGIN
-                            IF DepartmentTemp1.GET(DepartmentTemp.Code, DepartmentTemp."ORG Shema", '', '', '', DepartmentTemp.Description) THEN
-                                DepartmentTemp1.RENAME(Rec.Code, "Org Shema", '', '', '', xRec.Description);
-                        END;
-                    END;
-                END;
+
+
+
+                IF Code <> xRec.Code THEN BEGIN
+                    DepT.Reset();
+                    DepT.SETFILTER(Code, '%1', xRec.Code);
+                    DepT.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF DepT.FINDSET THEN
+                        REPEAT
+                            IF DepT.GET(xRec.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description", Rec.Description)
+                                                 THEN
+                                DepT.RENAME(Rec.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description", Rec.Description);
+
+                            DepT."Department Type" := Rec."Department Type";
+                            DepT.Sector := Rec.Code;
+                            DepT."Sector  Description" := Rec.Description;
+                            DepT.Modify();
+
+
+                        until DepT.Next() = 0;
+
+                    if xRec.Code <> '' then begin
+                        HeadOrg.Reset();
+                        HeadOrg.SETFILTER("Sector", '%1', xRec.Code);
+                        HeadOrg.SETFILTER("ORG Shema", '%1', "Org Shema");
+                        IF HeadOrg.FINDSET THEN
+                            REPEAT
+                                //"Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code"
+                                HeadOrg.Sector := Rec.Code;
+                                HeadOrg."Sector  Description" := Rec.Description;
+
+                                HeadOrg.Modify();
+
+
+                                if (HeadOrg."Department Categ.  Description" = '') and (HeadOrg."Group Description" = '') then begin
+
+                                    IF HeadU.GET(HeadOrg."Department Code", HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                     HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+                                                            THEN
+                                        HeadU.RENAME(Rec.Code, HeadOrg."ORG Shema", HeadOrg."Department Categ.  Description", HeadOrg."Group Description",
+                                  HeadOrg."Team Description", HeadOrg."Management Level", HeadOrg."Position Code")
+
+                                end;
+                            until HeadOrg.Next() = 0;
+                    end;
+
+
+                    "Department Type" := "Department Type"::Sector;
+
+                    //Dep
+                    DepT.Reset();
+                    DepT.SetFilter(Code, '%1', Rec.Code);
+                    DepT.setfilter("ORG Shema", '%1', Rec."Org Shema");
+                    if not DepT.FindFirst() then begin
+                        DepT.Init();
+                        DepT.Validate("ORG Shema", Rec."Org Shema");
+                        DepT.validate(Code, Rec.Code);
+                        DepT.validate(Description, Rec.Description);
+                        DepT."Sector Code" := Rec.Code;
+                        DepT.Sector := Rec.Code;
+                        DepT."Sector  Description" := Rec.Description;
+                        DepT."Department Type" := Rec."Department Type";
+                        DepT.Insert();
+
+                    end
+                    else begin
+
+                        DepT."Sector Code" := Rec.Code;
+                        DepT.Sector := Rec.Code;
+                        DepT."Sector  Description" := Rec.Description;
+                        DepT.Modify();
+
+                    end;
+
+
+                end;
+
 
             end;
+
         }
         field(2; Description; Text[250])
         {
@@ -69,48 +118,22 @@ table 50250 "Sector temporary"
                 ELSE BEGIN
                     "Org Shema" := '';
                 END;
-                "Department Type" := 8;
-                /* IF Rec.Description<>'' THEN BEGIN
-                   DepartmentTemp.SETFILTER(Sector,'%1',Rec.Code);
-                   DepartmentTemp.SETFILTER("Sector  Description",'%1',Rec.Description);
 
+                IF Description <> xRec.Description THEN BEGIN
+                    DepT.Reset();
+                    DepT.SETFILTER(Description, '%1', xRec.Description);
+                    DepT.SETFILTER("ORG Shema", '%1', "Org Shema");
+                    IF DepT.FINDSET THEN
+                        REPEAT
+                            IF DepT.GET(DepT.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description", xRec.Description)
+                                                 THEN
+                                DepT.RENAME(DepT.Code, DepT."ORG Shema", DepT."Team Description", DepT."Department Categ.  Description", DepT."Group Description", Rec.Description);
+                            DepT.Sector := Rec.Code;
+                            DepT."Sector  Description" := Rec.Description;
+                            DepT.Modify();
+                        until DepT.Next() = 0;
 
-
-                             IF Rec.Code<>'' THEN BEGIN
-                 DepartmentTemp.SETFILTER(Sector,'%1',Rec.Code);
-                 DepartmentTemp.SETFILTER("Department Type",'%1',8);
-                 DepartmentTemp.SETFILTER("Sector  Description",'%1',Rec.Description);
-                      IF DepartmentTemp.FIND('-') THEN BEGIN
-                 IF DepartmentTemp1.GET(DepartmentTemp.Code,DepartmentTemp."ORG Shema",'','','',DepartmentTemp.Description) THEN
-                 DepartmentTemp1.RENAME(Code,"Org Shema",'','','',Description);
-                 DepartmentTemp1.Sector:=Code;
-                 DepartmentTemp1."Sector  Description":=Description;
-                 DepartmentTemp1.MODIFY;
-
-                           END
-                 ELSE BEGIN
-                 DepartmentTemp.INIT;
-                 DepartmentTemp.Description:=Description;
-                 DepartmentTemp.Sector:=Code;
-                 DepartmentTemp."Sector  Description":=Description;
-                 DepartmentTemp.INSERT;
-                 END;
-              END;
-           END;*/
-                IF Rec.Description <> '' THEN BEGIN
-                    DepartmentTemp.SETFILTER("Department Type", '%1', 8);
-                    DepartmentTemp.SETFILTER(Sector, '%1', Rec.Code);
-                    IF DepartmentTemp.FINDFIRST THEN BEGIN
-                        IF DepartmentTemp1.GET(DepartmentTemp.Code, DepartmentTemp."ORG Shema", '', '', '', DepartmentTemp.Description) THEN
-                            DepartmentTemp1.RENAME(Rec.Code, "Org Shema", '', '', '', Rec.Description);
-                        DepartmentTemp1."Sector  Description" := Rec.Description;
-                        DepartmentTemp1.Sector := Rec.Code;
-                        DepartmentTemp1.MODIFY;
-
-                    END;
-
-                END;
-
+                end;
             end;
         }
         field(50000; "Org Shema"; Code[10])
@@ -135,15 +158,15 @@ table 50250 "Sector temporary"
             trigger OnValidate()
             begin
                 /*IF Rec."Changing Department" THEN BEGIN
-                  Dep.SETFILTER("ORG Shema",'%1',Rec."ORG Shema");
-                  Dep.SETFILTER(Code,'%1',Rec.Code);
-                  Dep.SETFILTER("Changing Department",'%1',FALSE);
-                  IF Dep.FINDSET THEN REPEAT
-                    Dep."Changing Department":=TRUE;
-                   Dep.MODIFY(TRUE);
+                  DepT.SETFILTER("ORG Shema",'%1',Rec."ORG Shema");
+                  DepT.SETFILTER(Code,'%1',Rec.Code);
+                  DepT.SETFILTER("Changing Department",'%1',FALSE);
+                  IF DepT.FINDSET THEN REPEAT
+                    DepT."Changing Department":=TRUE;
+                   DepT.MODIFY(TRUE);
                 
-                     Dep.GET(Dep.Code,Dep."ORG Shema",Dep."Team Description",Dep."Department Categ.  Description",Dep."Group Description");
-                    UNTIL Dep.NEXT=0;
+                     DepT.GET(DepT.Code,DepT."ORG Shema",DepT."Team Description",DepT."Department Categ.  Description",DepT."Group Description");
+                    UNTIL DepT.NEXT=0;
                     END;*/
 
             end;
@@ -229,7 +252,7 @@ table 50250 "Sector temporary"
         {
             FieldClass = FlowField;
             CalcFormula = Count("Department temporary" WHERE(Sector = FIELD("Code"),
-                                                              "Department Type" = FILTER(Team),
+                                                              "Department Type" = FILTER(Sector),
                                                               "Sector  Description" = FIELD(Description)));
             Caption = 'Number Of Team  levels below';
 
@@ -260,11 +283,10 @@ table 50250 "Sector temporary"
                 END;
             end;
         }
-        field(50017; "Department Type"; Option)
+        field(50017; "Department Type"; Enum "Department Type")
         {
             Caption = 'Department Type';
-            OptionCaption = ' ,GM,Group,CEO,Department,Branch Office,Region,Regional Center,Sector,Team';
-            OptionMembers = " ",GM,Group,CEO,Department,"Branch Office",Region,"Regional Center",Sector,Team;
+
         }
         field(50018; LastModified; Text[250])
         {
@@ -295,6 +317,23 @@ table 50250 "Sector temporary"
         }
         field(500405; Parent; Text[250])
         {
+            Caption = 'Parent';
+            TableRelation = "Sector temporary".Description WHERE("Org Shema" = FIELD("ORG Shema"));
+        }
+        field(500406; CEO; Boolean)
+        {
+
+
+            Caption = 'CEO';
+            trigger OnValidate()
+            begin
+                if CEO = true then
+                    "Department Type" := "Department Type"::CEO
+                else
+                    "Department Type" := "Department Type"::Sector;
+
+            end;
+
         }
     }
 
@@ -392,6 +431,9 @@ table 50250 "Sector temporary"
 
     var
         ShopCalendarWorkDays: Record "Department Category";
+        HeadOrg: Record "Head Of's temporary";
+        HeadU: Record "Head Of's temporary";
+        DepT: Record "Department temporary";
         ShopCalHoliday: Record "Group";
         HumanResSetup: Record "Human Resources Setup";
         NoSeriesMgt: Codeunit NoSeriesExtented;

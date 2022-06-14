@@ -10,6 +10,7 @@ page 50051 "Employee Contract Ledger"
     SourceTableView = WHERE("Show Record" = FILTER(true));
     UsageCategory = Lists;
     ApplicationArea = all;
+    RefreshOnActivate = true;
 
     layout
     {
@@ -27,7 +28,7 @@ page 50051 "Employee Contract Ledger"
                 }
                 field(Contract; Contract)
                 {
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Operator No."; "Operator No.")
@@ -188,6 +189,10 @@ page 50051 "Employee Contract Ledger"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
+                field(Canton; Canton)
+                {
+                    ApplicationArea = all;
+                }
                 field("Org Municipality"; "Org Municipality")
                 {
 
@@ -207,6 +212,7 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
+
                 field("<Position Description>"; "Position Description")
                 {
 
@@ -236,25 +242,33 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
+                field("Employee Education Level"; "Employee Education Level")
+                {
+                    ApplicationArea = all;
+                }
 
                 field("Engagement Type"; "Engagement Type")
                 {
                     ApplicationArea = all;
-                }
-                field("Contract Type"; "Contract Type")
-                {
-                    Visible = IsVisible;
-                    ApplicationArea = all;
-                    ShowMandatory = true;
                 }
                 field("Contract Type Name"; "Contract Type Name")
                 {
                     Editable = true;
 
                     ApplicationArea = all;
+                    Visible = true;
 
 
                 }
+                field("Contract Type"; "Contract Type")
+                {
+                    Visible = true;
+                    ApplicationArea = all;
+                    ShowMandatory = true;
+                    Editable = false;
+
+                }
+
                 field("Starting Date"; "Starting Date")
                 {
                     NotBlank = true;
@@ -416,6 +430,7 @@ page 50051 "Employee Contract Ledger"
                 field("Additional Benefits"; "Additional Benefits")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Employee Benefits"; "Employee Benefits")
                 {
@@ -445,6 +460,7 @@ page 50051 "Employee Contract Ledger"
                 {
 
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(KPI; KPI)
                 {
@@ -593,19 +609,17 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }*/
-                field(Status; Status)
+                /*field(Status; Status)
                 {
                     ApplicationArea = all;
+                }*/
+                field("Status of employee"; "Status of employee")
+                {
+
+                    Caption = 'Status';
                 }
 
-                field(Superior1; Superior1)
-                {
-                    ApplicationArea = all;
-                }
-                field(Superior2; Superior2)
-                {
-                    ApplicationArea = all;
-                }
+
             }
         }
     }
@@ -614,589 +628,573 @@ page 50051 "Employee Contract Ledger"
     {
         area(processing)
         {
-            action("Custom report layouts")
+            /*  action("Custom report layouts")
+              {
+                  Caption = 'Custom report layouts';
+                  Image = Agreement;
+                  RunObject = Page "Custom Report Layouts";
+                  Visible = IsVisible;
+                  ApplicationArea = all;
+              }*/
+            /*ĐK  group(Process)
+              {
+                  Caption = 'Process';
+                  //The property 'ToolTip' cannot be empty.
+                  //ToolTip = '';*/
+            action(Copy)
             {
-                Caption = 'Custom report layouts';
-                Image = Agreement;
-                RunObject = Page "Custom Report Layouts";
-                Visible = IsVisible;
+                Caption = 'Copy';
+                Image = Copy;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                Scope = Page;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+
+                    ECLCopy.COPY(Rec, FALSE);
+                    ECLCopy2.SETFILTER("No.", '<>%1', 0);
+                    IF ECLCopy2.FINDLAST THEN
+                        ECLCopy."No." := ECLCopy2."No." + 1
+                    ELSE
+                        ECLCopy."No." := 1;
+                    ECLCopy."Operator No." := USERID;
+                    ECLCopy.Active := FALSE;
+                    ECLCopy."Attachment No." := 0;
+                    ECLCopy."Reason for Change" := 0;
+                    ECLCopy."Ending Date" := 0D;
+                    //ECLCopy.VALIDATE("Starting Date",TODAY);
+                    ECLCopy."Starting Date" := 0D;
+                    ECLCopy.Change := FALSE;
+                    ECLCopy.VALIDATE("Manner of Term. Description", '');
+                    ECLCopy.VALIDATE("Grounds for Term. Description", '');
+                    ECLCopy.VALIDATE("Contract Type Name", '');
+                    ECLCopy.Status := 1;
+                    ECLCopy."Agreement Name" := '';
+                    ECLCopy."Agremeent Code" := '';
+                    ECLCopy."Sent Mail Change Pos" := FALSE;
+                    ECLCopy."Sent Mail Duration" := FALSE;
+                    ECLCopy."Sent Mail Employment" := FALSE;
+                    ECLCopy."Sent Mail Termination" := FALSE;
+
+                    ECLCopy.INSERT(TRUE);
+                    IF Rec."Org. Structure" <> ECLCopy."Org. Structure" THEN BEGIN
+                        Dep.RESET;
+                        Dep.SETFILTER("ORG Shema", '%1', ECLCopy."Org. Structure");
+                        Dep.SETFILTER(Code, '%1', ECLCopy."Department Code");
+                        Dep.SETFILTER(Description, '%1', ECLCopy."Department Name");
+                        IF Dep.FINDFIRST THEN BEGIN
+                            IF Dep."Department Type" = 8 THEN BEGIN
+                                ECLCopy.VALIDATE("Sector Description", '');
+                                ECLCopy.VALIDATE("Sector Description", Dep."Sector  Description");
+                                ECLCopy.MODIFY;
+                                PositionRec.RESET;
+                                PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
+                                PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
+                                PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
+                                IF PositionRec.FINDFIRST THEN BEGIN
+                                    ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
+                                    ECLCopy.MODIFY;
+                                END
+                                ELSE BEGIN
+                                    ECLCopy.VALIDATE("Position Description", '');
+                                END;
+                            END;
+
+                            IF Dep."Department Type" = 4 THEN BEGIN
+                                ECLCopy.VALIDATE("Department Cat. Description", '');
+                                ECLCopy.VALIDATE("Department Cat. Description", Dep."Department Categ.  Description");
+                                ECLCopy.MODIFY;
+                                PositionRec.RESET;
+                                PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
+                                PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
+                                PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
+                                IF PositionRec.FINDFIRST THEN BEGIN
+                                    ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
+                                    ECLCopy.MODIFY;
+                                END
+                                ELSE BEGIN
+                                    ECLCopy.VALIDATE("Position Description", '');
+                                END;
+                            END;
+                            IF Dep."Department Type" = 2 THEN BEGIN
+                                ECLCopy.VALIDATE("Group Description", '');
+                                ECLCopy.VALIDATE("Group Description", Dep."Group Description");
+                                ECLCopy.MODIFY;
+                                PositionRec.RESET;
+                                PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
+                                PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
+                                PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
+                                IF PositionRec.FINDFIRST THEN BEGIN
+                                    ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
+                                    ECLCopy.MODIFY;
+                                END
+                                ELSE BEGIN
+                                    ECLCopy.VALIDATE("Position Description", '');
+                                END;
+                            END;
+                            IF Dep."Department Type" = 9 THEN BEGIN
+                                ECLCopy.VALIDATE("Team Description", '');
+                                ECLCopy.VALIDATE("Team Description", Dep."Team Description");
+                                ECLCopy.MODIFY;
+                                PositionRec.RESET;
+                                PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
+                                PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
+                                PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
+                                IF PositionRec.FINDFIRST THEN BEGIN
+                                    ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
+                                    ECLCopy.MODIFY;
+                                END
+                                ELSE BEGIN
+                                    ECLCopy.VALIDATE("Position Description", '');
+                                END;
+                            END;
+                        END
+                        ELSE BEGIN
+                            ECLCopy.VALIDATE("Sector Description", '');
+                            ECLCopy.VALIDATE("Position Description", '');
+                            ECLCopy.MODIFY;
+                        END;
+
+                    END;
+                end;
+            }
+            /*     action("Copy Orginal")
+                 {
+                     Caption = 'Copy';
+                     ApplicationArea = all;
+                     Image = Copy;
+                     Promoted = false;
+                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
+                     //PromotedIsBig = false;
+                     Scope = Page;
+
+                     trigger OnAction()
+                     begin
+
+                         ECLCopy.COPY(Rec, FALSE);
+                         ECLCopy2.SETFILTER("No.", '<>%1', 0);
+                         IF ECLCopy2.FINDLAST THEN
+                             ECLCopy."No." := ECLCopy2."No." + 1
+                         ELSE
+                             ECLCopy."No." := 1;
+                         ECLCopy."Operator No." := USERID;
+
+                         ECLCopy.INSERT(TRUE);
+                     end;
+                 }
+                 action(RunReport)
+                 {
+                     Caption = 'RunReport';
+                     ApplicationArea = all;
+                     Image = Print;
+                     Promoted = true;
+                     PromotedCategory = Process;
+                     PromotedIsBig = true;
+                     Visible = false;
+
+                     trigger OnAction()
+                     begin
+                         /*DR.SETFILTER("Agreement Code",'%1',Rec."Agremeent Code");
+                         IF DR.FIND('-') THEN BEGIN
+                           CRL.SETFILTER("Report ID",'%1',DR."NAV Agreement Code");
+                           IF CRL.FIND('-') THEN BEGIN
+                            ReportLayoutSelection.SetTempLayoutSelected(FORMAT(CRL."REPORT ID"));
+                            IF "Agremeent Code"='26' THEN BEGIN
+                             ContractR.SetParam("Employee No.",'26');
+                              // REPORT.RUNMODAL(DR."NAV Agreement Code");
+                             ContractR.RUN;
+                             CreateAttachment;
+                             END;
+                             IF "Agremeent Code"='262' THEN BEGIN
+                               ECL.RESET;
+                               ECL.SETFILTER("Employee No.","Employee No.");
+                               IF ECL.FINDLAST THEN BEGIN
+                               ContractP.SetParam("Employee No.");
+                             ContractP.RUN;
+                               END;
+                               END;
+
+                             //REPORT.RUNMODAL(DR.NAV Agreement Code");
+                            ReportLayoutSelection.SetTempLayoutSelected(0);
+                            END;
+                           END;
+
+
+                     end;
+                 }*/
+
+            /*action(Open1)
+            {
+                Caption = 'Open';
+                Image = Edit;
+                ApplicationArea = all;
+                //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
+                //PromotedCategory = Process;
+                ShortCutKey = 'Return';
+
+                trigger OnAction()
+                begin
+                    OpenAttachment;
+
+                end;
+            }
+            action(Create)
+            {
+                Caption = 'Create';
+                Ellipsis = true;
+                ApplicationArea = all;
+                Image = New;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                Visible = false;
+
+                trigger OnAction()
+                begin
+                    CreateAttachment;
+                end;
+            }
+            action("Copy_from")
+            {
+                Caption = 'Copy_from';
+                Ellipsis = true;
+                Image = Copy;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                Visible = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    CopyFromAttachment;
+                end;
+            }
+            action(Import)
+            {
+                Caption = 'Import';
+                Ellipsis = true;
+                Image = Import;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    //ImportAttachment;
+                    Change := TRUE;
+                    MODIFY;
+                    IF "Attachment No." <> 0 THEN BEGIN
+                        IF Attachment.GET("Attachment No.") THEN
+                            Attachment.TESTFIELD("Read Only", FALSE);
+
+                    END;
+                    ECL.RESET;
+                    ECL.SETFILTER("Employee No.", '%1', Rec."Employee No.");
+                    IF ECL.FIND('-') THEN BEGIN
+                        BrojUgovora := ECL.COUNT;
+                    END;
+                    //ĐK   Attachment.SetParam(Rec."Employee No.", Rec."No.", 1);
+                    IF Attachment.ImportAttachmentFromClientFile('', FALSE, FALSE) THEN BEGIN
+                        "Attachment No." := Attachment."No.";
+
+                    END;
+
+
+                end;
+            }
+            action("Export")
+            {
+                Caption = 'Export';
+                Ellipsis = true;
+                Image = Export;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    ExportAttachment;
+                end;
+            }
+            action(Remove)
+            {
+                Caption = 'Remove';
+                Ellipsis = true;
+                Image = Cancel;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    RemoveAttachment(TRUE);
+                end;
+            }
+            action(Open2)
+            {
+                Caption = 'Open';
+                Image = Edit;
+                ApplicationArea = all;
+                //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
+                //PromotedCategory = New;
+                ShortCutKey = 'Return';
+
+                trigger OnAction()
+                begin
+                    OpenAttachment1;
+                end;
+            }
+            action(Create1)
+            {
+                Caption = 'Create1';
+                Ellipsis = true;
+                Image = New;
+                Promoted = true;
+                PromotedCategory = New;
+                ApplicationArea = all;
+                PromotedIsBig = true;
+                Visible = false;
+
+                trigger OnAction()
+                begin
+                    CreateAttachment1;
+                end;
+            }
+            action("Copy_from1")
+            {
+                Caption = 'Copy_from1';
+                Ellipsis = true;
+                Image = Copy;
+                Promoted = true;
+                PromotedCategory = New;
+                ApplicationArea = all;
+                PromotedIsBig = true;
+                Visible = false;
+
+                trigger OnAction()
+                begin
+                    CopyFromAttachment1;
+                end;
+            }
+            action(Import1)
+            {
+                Caption = 'Import1';
+                Ellipsis = true;
+                Image = Import;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    //ImportAttachment1;
+                    //ImportAttachment;
+
+                    "Change other documents" := TRUE;
+                    MODIFY;
+                    IF "Other Attachment No." <> 0 THEN BEGIN
+                        IF Attachment.GET("Other Attachment No.") THEN
+                            Attachment.TESTFIELD("Read Only", FALSE);
+
+                    END;
+                    ECL.RESET;
+                    ECL.SETFILTER("Employee No.", '%1', Rec."Employee No.");
+                    IF ECL.FIND('-') THEN BEGIN
+                        BrojUgovora := ECL.COUNT;
+                    END;
+                    //ĐK     Attachment.SetParam(Rec."Employee No.", Rec."No.", 2);
+                    IF Attachment.ImportAttachmentFromClientFile('', FALSE, FALSE) THEN BEGIN
+                        "Other Attachment No." := Attachment."No."
+                    END;
+
+                end;
+            }
+            action("E_xport1")
+            {
+                Caption = 'E_xport1';
+                Ellipsis = true;
+                Image = Export;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+                ApplicationArea = all;
+                Visible = false;
+
+                trigger OnAction()
+                begin
+                    ExportAttachment1;
+                end;
+            }
+            action(Remove1)
+            {
+                Caption = 'Remove1';
+                Ellipsis = true;
+                ApplicationArea = all;
+                Image = Cancel;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+                    RemoveAttachment1(TRUE);
+                end;
+            }
+            action("<Action80>")
+            {
+                Caption = 'Auto Import';
+                //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
+                //PromotedCategory = New;
+                Visible = false;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    // Auto Uvoz
+
+                    /*DR.SETFILTER("Agreement Code",'%1',Rec."Agremeent Code");
+                    IF DR.FINDLAST THEN BEGIN
+                      CRL.SETFILTER("Report ID",'%1',DR."NAV Agreement Code");
+                      IF CRL.FINDLAST THEN BEGIN
+                       ReportLayoutSelection.SetTempLayoutSelected(FORMAT(CRL."REPORT ID"));
+
+                      IF "Agremeent Code"='26' THEN BEGIN
+                        ContractR.SetParam("Employee No.",'26');
+
+                          // REPORT.RUNMODAL(DR."NAV Agreement Code");
+
+                          //ContractR.RUN;
+                          //CreateAttachment;
+
+                          tempSaveDest := 'C:\Temp\autouvoz_'+FORMAT(WORKDATE)+'.doc';
+
+                          // Prepare for temporary file allocation and word save
+                          // Specify that the temporary is opened as a binary file.
+                          tempFile.TEXTMODE(FALSE);
+
+                          // Specify that you can write to temporary file.
+                          tempFile.WRITEMODE(TRUE);
+
+                          // Create and open tempFile.
+                          tempFile.CREATE(tempSaveDest);
+
+                          // Close TempFile so that the SAVEASWORD function can write to it.
+                          tempFile.CLOSE;
+
+                          // Call the save function providing the temporary destination path
+                          ContractR.SAVEASWORD(tempSaveDest);
+
+                          // Now opeon the temp file from the temporary save destination
+                          tempFile.OPEN(tempSaveDest);
+
+                          // Create a new binary stream for the temmporary file
+                          tempFile.CREATEINSTREAM(NewStream);
+
+                        END;
+
+                        IF "Agremeent Code"='262' THEN BEGIN
+                          ECL.RESET;
+                          ECL.SETFILTER("Employee No.","Employee No.");
+                          IF ECL.FINDLAST THEN BEGIN
+                            ContractP.SetParam("Employee No.");
+                            ContractP.RUN;
+                            //ContractR.SAVEASWORD('C:\test.docx');
+                          END;
+                        END;
+
+                        //REPORT.RUNMODAL(DR.NAV Agreement Code");
+                      ReportLayoutSelection.SetTempLayoutSelected(0);
+                      END;
+                      END;
+
+
+
+
+
+
+
+                end;
+            }
+            action("Show/Hide record")
+            {
+                Caption = 'Show/Hide record';
+                RunObject = Report "ECL Show/Hide record";
                 ApplicationArea = all;
             }
-            group(Process)
-            {
-                Caption = 'Process';
-                //The property 'ToolTip' cannot be empty.
-                //ToolTip = '';
-                action(Copy)
-                {
-                    Caption = 'Copy';
-                    Image = Copy;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    Scope = Page;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-
-                        ECLCopy.COPY(Rec, FALSE);
-                        ECLCopy2.SETFILTER("No.", '<>%1', 0);
-                        IF ECLCopy2.FINDLAST THEN
-                            ECLCopy."No." := ECLCopy2."No." + 1
-                        ELSE
-                            ECLCopy."No." := 1;
-                        ECLCopy."Operator No." := USERID;
-                        ECLCopy.Active := FALSE;
-                        ECLCopy."Attachment No." := 0;
-                        ECLCopy."Reason for Change" := 0;
-                        ECLCopy."Ending Date" := 0D;
-                        //ECLCopy.VALIDATE("Starting Date",TODAY);
-                        ECLCopy."Starting Date" := 0D;
-                        ECLCopy.Change := FALSE;
-                        ECLCopy.VALIDATE("Manner of Term. Description", '');
-                        ECLCopy.VALIDATE("Grounds for Term. Description", '');
-                        ECLCopy.VALIDATE("Contract Type Name", '');
-                        ECLCopy.Status := 1;
-                        ECLCopy."Agreement Name" := '';
-                        ECLCopy."Agremeent Code" := '';
-                        ECLCopy."Sent Mail Change Pos" := FALSE;
-                        ECLCopy."Sent Mail Duration" := FALSE;
-                        ECLCopy."Sent Mail Employment" := FALSE;
-                        ECLCopy."Sent Mail Termination" := FALSE;
-
-                        ECLCopy.INSERT(TRUE);
-                        IF Rec."Org. Structure" <> ECLCopy."Org. Structure" THEN BEGIN
-                            Dep.RESET;
-                            Dep.SETFILTER("ORG Shema", '%1', ECLCopy."Org. Structure");
-                            Dep.SETFILTER(Code, '%1', ECLCopy."Department Code");
-                            Dep.SETFILTER(Description, '%1', ECLCopy."Department Name");
-                            IF Dep.FINDFIRST THEN BEGIN
-                                IF Dep."Department Type" = 8 THEN BEGIN
-                                    ECLCopy.VALIDATE("Sector Description", '');
-                                    ECLCopy.VALIDATE("Sector Description", Dep."Sector  Description");
-                                    ECLCopy.MODIFY;
-                                    PositionRec.RESET;
-                                    PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
-                                    PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
-                                    PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
-                                    IF PositionRec.FINDFIRST THEN BEGIN
-                                        ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
-                                        ECLCopy.MODIFY;
-                                    END
-                                    ELSE BEGIN
-                                        ECLCopy.VALIDATE("Position Description", '');
-                                    END;
-                                END;
-
-                                IF Dep."Department Type" = 4 THEN BEGIN
-                                    ECLCopy.VALIDATE("Department Cat. Description", '');
-                                    ECLCopy.VALIDATE("Department Cat. Description", Dep."Department Categ.  Description");
-                                    ECLCopy.MODIFY;
-                                    PositionRec.RESET;
-                                    PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
-                                    PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
-                                    PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
-                                    IF PositionRec.FINDFIRST THEN BEGIN
-                                        ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
-                                        ECLCopy.MODIFY;
-                                    END
-                                    ELSE BEGIN
-                                        ECLCopy.VALIDATE("Position Description", '');
-                                    END;
-                                END;
-                                IF Dep."Department Type" = 2 THEN BEGIN
-                                    ECLCopy.VALIDATE("Group Description", '');
-                                    ECLCopy.VALIDATE("Group Description", Dep."Group Description");
-                                    ECLCopy.MODIFY;
-                                    PositionRec.RESET;
-                                    PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
-                                    PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
-                                    PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
-                                    IF PositionRec.FINDFIRST THEN BEGIN
-                                        ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
-                                        ECLCopy.MODIFY;
-                                    END
-                                    ELSE BEGIN
-                                        ECLCopy.VALIDATE("Position Description", '');
-                                    END;
-                                END;
-                                IF Dep."Department Type" = 9 THEN BEGIN
-                                    ECLCopy.VALIDATE("Team Description", '');
-                                    ECLCopy.VALIDATE("Team Description", Dep."Team Description");
-                                    ECLCopy.MODIFY;
-                                    PositionRec.RESET;
-                                    PositionRec.SETFILTER(Description, '%1', ECLCopy."Position Description");
-                                    PositionRec.SETFILTER("Org. Structure", '%1', ECLCopy."Org. Structure");
-                                    PositionRec.SETFILTER("Department Code", '%1', ECLCopy."Department Code");
-                                    IF PositionRec.FINDFIRST THEN BEGIN
-                                        ECLCopy.VALIDATE("Position Description", ECLCopy."Position Description");
-                                        ECLCopy.MODIFY;
-                                    END
-                                    ELSE BEGIN
-                                        ECLCopy.VALIDATE("Position Description", '');
-                                    END;
-                                END;
-                            END
-                            ELSE BEGIN
-                                ECLCopy.VALIDATE("Sector Description", '');
-                                ECLCopy.VALIDATE("Position Description", '');
-                                ECLCopy.MODIFY;
-                            END;
-
-                        END;
-                    end;
-                }
-                action("Copy Orginal")
-                {
-                    Caption = 'Copy';
-                    ApplicationArea = all;
-                    Image = Copy;
-                    Promoted = false;
-                    //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedIsBig = false;
-                    Scope = Page;
-
-                    trigger OnAction()
-                    begin
-
-                        ECLCopy.COPY(Rec, FALSE);
-                        ECLCopy2.SETFILTER("No.", '<>%1', 0);
-                        IF ECLCopy2.FINDLAST THEN
-                            ECLCopy."No." := ECLCopy2."No." + 1
-                        ELSE
-                            ECLCopy."No." := 1;
-                        ECLCopy."Operator No." := USERID;
-
-                        ECLCopy.INSERT(TRUE);
-                    end;
-                }
-                action(RunReport)
-                {
-                    Caption = 'RunReport';
-                    ApplicationArea = all;
-                    Image = Print;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    Visible = false;
-
-                    trigger OnAction()
-                    begin
-                        /*DR.SETFILTER("Agreement Code",'%1',Rec."Agremeent Code");
-                        IF DR.FIND('-') THEN BEGIN
-                          CRL.SETFILTER("Report ID",'%1',DR."NAV Agreement Code");
-                          IF CRL.FIND('-') THEN BEGIN
-                           ReportLayoutSelection.SetTempLayoutSelected(FORMAT(CRL."REPORT ID"));
-                           IF "Agremeent Code"='26' THEN BEGIN
-                            ContractR.SetParam("Employee No.",'26');
-                             // REPORT.RUNMODAL(DR."NAV Agreement Code");
-                            ContractR.RUN;
-                            CreateAttachment;
-                            END;
-                            IF "Agremeent Code"='262' THEN BEGIN
-                              ECL.RESET;
-                              ECL.SETFILTER("Employee No.","Employee No.");
-                              IF ECL.FINDLAST THEN BEGIN
-                              ContractP.SetParam("Employee No.");
-                            ContractP.RUN;
-                              END;
-                              END;
-                        
-                            //REPORT.RUNMODAL(DR.NAV Agreement Code");
-                           ReportLayoutSelection.SetTempLayoutSelected(0);
-                           END;
-                          END;
-                          */
-
-                    end;
-                }
-                action(Open1)
-                {
-                    Caption = 'Open';
-                    Image = Edit;
-                    ApplicationArea = all;
-                    //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedCategory = Process;
-                    ShortCutKey = 'Return';
-
-                    trigger OnAction()
-                    begin
-                        OpenAttachment;
-
-                    end;
-                }
-                action(Create)
-                {
-                    Caption = 'Create';
-                    Ellipsis = true;
-                    ApplicationArea = all;
-                    Image = New;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    Visible = false;
-
-                    trigger OnAction()
-                    begin
-                        CreateAttachment;
-                    end;
-                }
-                action("Copy_from")
-                {
-                    Caption = 'Copy_from';
-                    Ellipsis = true;
-                    Image = Copy;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    Visible = true;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-                        CopyFromAttachment;
-                    end;
-                }
-                action(Import)
-                {
-                    Caption = 'Import';
-                    Ellipsis = true;
-                    Image = Import;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-                        //ImportAttachment;
-                        Change := TRUE;
-                        MODIFY;
-                        IF "Attachment No." <> 0 THEN BEGIN
-                            IF Attachment.GET("Attachment No.") THEN
-                                Attachment.TESTFIELD("Read Only", FALSE);
-                            /* IF NOT CONFIRM(Text001,FALSE) THEN
-                               EXIT;*/
-                        END;
-                        ECL.RESET;
-                        ECL.SETFILTER("Employee No.", '%1', Rec."Employee No.");
-                        IF ECL.FIND('-') THEN BEGIN
-                            BrojUgovora := ECL.COUNT;
-                        END;
-                        //ĐK   Attachment.SetParam(Rec."Employee No.", Rec."No.", 1);
-                        IF Attachment.ImportAttachmentFromClientFile('', FALSE, FALSE) THEN BEGIN
-                            "Attachment No." := Attachment."No.";
-                            /* Change:=TRUE;
-                             MODIFY;*/
-                        END;
-                        /*END ELSE
-                          ERROR(Text002);*/
-
-                    end;
-                }
-                action("Export")
-                {
-                    Caption = 'Export';
-                    Ellipsis = true;
-                    Image = Export;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-                        ExportAttachment;
-                    end;
-                }
-                action(Remove)
-                {
-                    Caption = 'Remove';
-                    Ellipsis = true;
-                    Image = Cancel;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-                        RemoveAttachment(TRUE);
-                    end;
-                }
-                action(Open2)
-                {
-                    Caption = 'Open';
-                    Image = Edit;
-                    ApplicationArea = all;
-                    //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedCategory = New;
-                    ShortCutKey = 'Return';
-
-                    trigger OnAction()
-                    begin
-                        OpenAttachment1;
-                    end;
-                }
-                action(Create1)
-                {
-                    Caption = 'Create1';
-                    Ellipsis = true;
-                    Image = New;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    ApplicationArea = all;
-                    PromotedIsBig = true;
-                    Visible = false;
-
-                    trigger OnAction()
-                    begin
-                        CreateAttachment1;
-                    end;
-                }
-                action("Copy_from1")
-                {
-                    Caption = 'Copy_from1';
-                    Ellipsis = true;
-                    Image = Copy;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    ApplicationArea = all;
-                    PromotedIsBig = true;
-                    Visible = false;
-
-                    trigger OnAction()
-                    begin
-                        CopyFromAttachment1;
-                    end;
-                }
-                action(Import1)
-                {
-                    Caption = 'Import1';
-                    Ellipsis = true;
-                    Image = Import;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-                        //ImportAttachment1;
-                        //ImportAttachment;
-
-                        "Change other documents" := TRUE;
-                        MODIFY;
-                        IF "Other Attachment No." <> 0 THEN BEGIN
-                            IF Attachment.GET("Other Attachment No.") THEN
-                                Attachment.TESTFIELD("Read Only", FALSE);
-                            /* IF NOT CONFIRM(Text001,FALSE) THEN
-                               EXIT;*/
-                        END;
-                        ECL.RESET;
-                        ECL.SETFILTER("Employee No.", '%1', Rec."Employee No.");
-                        IF ECL.FIND('-') THEN BEGIN
-                            BrojUgovora := ECL.COUNT;
-                        END;
-                        //ĐK     Attachment.SetParam(Rec."Employee No.", Rec."No.", 2);
-                        IF Attachment.ImportAttachmentFromClientFile('', FALSE, FALSE) THEN BEGIN
-                            "Other Attachment No." := Attachment."No."
-                        END;
-
-                    end;
-                }
-                action("E_xport1")
-                {
-                    Caption = 'E_xport1';
-                    Ellipsis = true;
-                    Image = Export;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-                    ApplicationArea = all;
-                    Visible = false;
-
-                    trigger OnAction()
-                    begin
-                        ExportAttachment1;
-                    end;
-                }
-                action(Remove1)
-                {
-                    Caption = 'Remove1';
-                    Ellipsis = true;
-                    ApplicationArea = all;
-                    Image = Cancel;
-                    Promoted = true;
-                    PromotedCategory = New;
-                    PromotedIsBig = true;
-
-                    trigger OnAction()
-                    begin
-                        RemoveAttachment1(TRUE);
-                    end;
-                }
-                action("<Action80>")
-                {
-                    Caption = 'Auto Import';
-                    //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
-                    //PromotedCategory = New;
-                    Visible = false;
-                    ApplicationArea = all;
-
-                    trigger OnAction()
-                    begin
-                        // Auto Uvoz
-
-                        /*DR.SETFILTER("Agreement Code",'%1',Rec."Agremeent Code");
-                        IF DR.FINDLAST THEN BEGIN
-                          CRL.SETFILTER("Report ID",'%1',DR."NAV Agreement Code");
-                          IF CRL.FINDLAST THEN BEGIN
-                           ReportLayoutSelection.SetTempLayoutSelected(FORMAT(CRL."REPORT ID"));
-                        
-                          IF "Agremeent Code"='26' THEN BEGIN
-                            ContractR.SetParam("Employee No.",'26');
-                        
-                              // REPORT.RUNMODAL(DR."NAV Agreement Code");
-                        
-                              //ContractR.RUN;
-                              //CreateAttachment;
-                        
-                              tempSaveDest := 'C:\Temp\autouvoz_'+FORMAT(WORKDATE)+'.doc';
-                        
-                              // Prepare for temporary file allocation and word save
-                              // Specify that the temporary is opened as a binary file.
-                              tempFile.TEXTMODE(FALSE);
-                        
-                              // Specify that you can write to temporary file.
-                              tempFile.WRITEMODE(TRUE);
-                        
-                              // Create and open tempFile.
-                              tempFile.CREATE(tempSaveDest);
-                        
-                              // Close TempFile so that the SAVEASWORD function can write to it.
-                              tempFile.CLOSE;
-                        
-                              // Call the save function providing the temporary destination path
-                              ContractR.SAVEASWORD(tempSaveDest);
-                        
-                              // Now opeon the temp file from the temporary save destination
-                              tempFile.OPEN(tempSaveDest);
-                        
-                              // Create a new binary stream for the temmporary file
-                              tempFile.CREATEINSTREAM(NewStream);
-                        
-                            END;
-                        
-                            IF "Agremeent Code"='262' THEN BEGIN
-                              ECL.RESET;
-                              ECL.SETFILTER("Employee No.","Employee No.");
-                              IF ECL.FINDLAST THEN BEGIN
-                                ContractP.SetParam("Employee No.");
-                                ContractP.RUN;
-                                //ContractR.SAVEASWORD('C:\test.docx');
-                              END;
-                            END;
-                        
-                            //REPORT.RUNMODAL(DR.NAV Agreement Code");
-                          ReportLayoutSelection.SetTempLayoutSelected(0);
-                          END;
-                          END;
-                        
-                        */
-
-                        // Run
-                        //CRL2.SETFILTER("Report ID",'%1',DR."NAV Agreement Code"); // 99001047 ce biti DR."NAV Agreement Code"
-                        //CRL2.SETFILTER("Report ID",'%1',99001047);
-                        //IF CRL2.FINDLAST THEN BEGIN
-                        //  ReportLayoutSelection.SetTempLayoutSelected(CRL2.ID);
-                        //  Certificatematernity.SetParam("Employee No.");
-                        //  Certificatematernity.RUN;
-                        //END;
-                        //ReportLayoutSelection.SetTempLayoutSelected(0);
-
-                        //MESSAGE('Auto izvoz prema: '+'C:\Windows\Temp\Ugovor_'+FORMAT(DR."NAV Agreement Code"));
-
-                        // Export
-                        //CLEAR(ReportLayoutSelection);
-                        //Certificatematernity.SAVEASWORD('C:\Windows\Temp\Ugovor_'+FORMAT(DR."NAV Agreement Code"));
-
-                        // Import
-                        // Importujemo tkoji smo exportovali u atachmente
-
-                    end;
-                }
-                action("Show/Hide record")
-                {
-                    Caption = 'Show/Hide record';
-                    RunObject = Report "ECL Show/Hide record";
-                    ApplicationArea = all;
-                }
-            }
-            group(Certifications1)
+        }
+        group(Certifications1)
+        {
+            Caption = 'Certifications';
+            Visible = false;
+            group(Certifications2)
             {
                 Caption = 'Certifications';
-                Visible = false;
-                group(Certifications2)
+                Image = LotInfo;
+                action("Certificate for maternity leave")
                 {
-                    Caption = 'Certifications';
-                    Image = LotInfo;
-                    action("Certificate for maternity leave")
-                    {
-                        Caption = 'Certificate for maternity leav';
-                        Image = "Report";
-                        ApplicationArea = all;
+                    Caption = 'Certificate for maternity leav';
+                    Image = "Report";
+                    ApplicationArea = all;
 
-                        trigger OnAction()
-                        begin
-                            CRL2.SETFILTER("Report ID", '%1', 99001047);
-                            IF CRL2.FIND('-') THEN BEGIN
-                                //ĐK  ReportLayoutSelection.SetTempLayoutSelected(CRL2.ID);
-                                // Certificatematernity.SetParam("Employee No.");
-                                //  Certificatematernity.RUN;
-                            END;
-                            //    ReportLayoutSelection.SetTempLayoutSelected(0);
+                    trigger OnAction()
+                    begin
+                        CRL2.SETFILTER("Report ID", '%1', 99001047);
+                        IF CRL2.FIND('-') THEN BEGIN
+                            //ĐK  ReportLayoutSelection.SetTempLayoutSelected(CRL2.ID);
+                            // Certificatematernity.SetParam("Employee No.");
+                            //  Certificatematernity.RUN;
+                        END;
+                        //    ReportLayoutSelection.SetTempLayoutSelected(0);
 
-                        end;
-                    }
+                    end;
                 }
-            }
-            group(Forms1)
+            }*/
+            // }
+            /*group(Forms1)
             {
                 Caption = 'Forms';
-                Image = LotInfo;
+                Image = LotInfo;*/
 
 
-                action(PD3100)
-                {
-                    Caption = 'PD3100';
-                    ApplicationArea = all;
-                    Image = Document;
+            /* ĐK  action(PD3100)
+               {
+                   Caption = 'PD3100';
+                   ApplicationArea = all;
+                   Image = Document;
 
-                    trigger OnAction()
-                    begin
-                        //  CLEAR(ObrazacPD300);
-                        // ObrazacPD300.SetParam(Rec."Employee No.", Rec."No.");
-                        //ObrazacPD300.RUN;
-                    end;
-                }
-                action(JS3100)
-                {
-                    Caption = 'JS3100';
-                    Image = Document;
-                    ApplicationArea = all;
+                   trigger OnAction()
+                   begin
+                       CLEAR(ObrazacPD300);
+                       ObrazacPD300.SetParam(Rec."Employee No.", Rec."No.");
+                       ObrazacPD300.RUN;
+                   end;
+               }*/
+            action(JS3100)
+            {
+                Caption = 'JS3100';
+                Image = Document;
+                ApplicationArea = all;
+                Promoted = true;
+                PromotedIsBig = true;
 
-                    trigger OnAction()
-                    begin
-                        //   CLEAR(ObrazacJS3100);
-                        // ObrazacJS3100.SetParam(Rec."Employee No.", Rec."No.");
-                        //ObrazacJS3100.RUN;
-                    end;
-                }
-
+                trigger OnAction()
+                begin
+                    CLEAR(ObrazacJS3100);
+                    ObrazacJS3100.SetParam(Rec."Employee No.", Rec."No.");
+                    ObrazacJS3100.RUN;
+                end;
             }
+
         }
+        //}
     }
 
     trigger OnAfterGetRecord()
@@ -1436,6 +1434,7 @@ page 50051 "Employee Contract Ledger"
     var
         show: Boolean;
         UserPersonalization: Record "User Personalization";
+        ObrazacJS3100: Report "Obrazac JS3100";
         Tip: Text;
         EditableNetto: Boolean;
         EditableBrutto: Boolean;

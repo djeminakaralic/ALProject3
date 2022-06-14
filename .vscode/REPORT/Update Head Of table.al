@@ -48,7 +48,7 @@ report 50107 "Update Head Of table"
                     IF DimensionCopy.FINDSET THEN
                         REPEAT
                             PositionMenuFind.RESET;
-                            PositionMenuFind.SETFILTER("Management Level", '%1|%2|%3', PositionMenuFind."Management Level"::B1, PositionMenuFind."Management Level"::CEO, PositionMenuFind."Management Level"::Exe);
+                            PositionMenuFind.SETFILTER("Management Level", '%1|%2|%3', PositionMenuFind."Management Level"::Sector, PositionMenuFind."Management Level"::CEO, PositionMenuFind."Management Level"::Exe);
                             PositionMenuFind.SETFILTER(Code, '%1', DimensionCopy."Position Code");
                             PositionMenuFind.SETFILTER(Description, '%1', DimensionCopy."Position Description");
                             PositionMenuFind.SETCURRENTKEY(Code);
@@ -80,7 +80,7 @@ report 50107 "Update Head Of table"
                     IF DimensionCopy.FINDFIRST THEN
                         REPEAT
                             PositionMenuFind.RESET;
-                            PositionMenuFind.SETFILTER("Management Level", '%1', PositionMenuFind."Management Level"::B2);
+                            PositionMenuFind.SETFILTER("Management Level", '%1', PositionMenuFind."Management Level"::"Department Category");
                             PositionMenuFind.SETFILTER(Code, '%1', DimensionCopy."Position Code");
                             PositionMenuFind.SETFILTER(Description, '%1', DimensionCopy."Position Description");
                             PositionMenuFind.SETCURRENTKEY(Code);
@@ -113,7 +113,7 @@ report 50107 "Update Head Of table"
                     IF DimensionCopy.FINDSET THEN
                         REPEAT
                             PositionMenuFind.RESET;
-                            PositionMenuFind.SETFILTER("Management Level", '%1', PositionMenuFind."Management Level"::B3);
+                            PositionMenuFind.SETFILTER("Management Level", '%1', PositionMenuFind."Management Level"::Group);
                             PositionMenuFind.SETFILTER(Code, '%1', DimensionCopy."Position Code");
                             PositionMenuFind.SETFILTER(Description, '%1', DimensionCopy."Position Description");
                             PositionMenuFind.SETCURRENTKEY(Code);
@@ -155,7 +155,7 @@ report 50107 "Update Head Of table"
                     IF DimensionCopy.FINDFIRST THEN
                         REPEAT
                             PositionMenuFind.RESET;
-                            PositionMenuFind.SETFILTER("Management Level", '%1', PositionMenuFind."Management Level"::B4);
+                            PositionMenuFind.SETFILTER("Management Level", '%1', 7);
                             PositionMenuFind.SETFILTER(Code, '%1', DimensionCopy."Position Code");
                             PositionMenuFind.SETFILTER(Description, '%1', DimensionCopy."Position Description");
                             PositionMenuFind.SETCURRENTKEY(Code);
@@ -203,7 +203,7 @@ report 50107 "Update Head Of table"
                         Positiiiiiooo.SETFILTER(Sector, '%1', SectorParent.Code);
                         Positiiiiiooo.SETFILTER("Sector  Description", '%1', SectorParent.Description);
                         Positiiiiiooo.SETFILTER("Org. Structure", '%1', SectorParent."Org Shema");
-                        Positiiiiiooo.SETFILTER("Management Level", '<>%1 & <>%2', Positiiiiiooo."Management Level"::" ", Positiiiiiooo."Management Level"::E);
+                        Positiiiiiooo.SETFILTER("Management Level", '<>%1 & <>%2', Positiiiiiooo."Management Level"::Empty, Positiiiiiooo."Management Level"::E);
                         IF Positiiiiiooo.FINDFIRST THEN BEGIN
                             SectorParent2.RESET;
                             SectorParent2.SETFILTER("ORG Shema", '%1', SectorParent."Org Shema");

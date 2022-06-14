@@ -324,11 +324,15 @@ page 50066 "HR activities"
                 Visible = show;
 
 
-
-
-
-
-                field("Education And Development"; "Education And Development")
+                /*field("Education And Development"; "Education And Development")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }*/
+                field(Training; Training)
                 {
                     Image = Receipt;
                     Style = Favorable;
@@ -336,7 +340,23 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
-                field(Training; Training)
+                field("Training Catalogue"; "Training Catalogue")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
+                field("Training Entry"; "Training Entry")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
+                field(Certification; Certification)
                 {
                     Image = Receipt;
                     Style = Favorable;
@@ -503,6 +523,8 @@ page 50066 "HR activities"
         SETRANGE("Expirings Measures Filter", CALCDATE('<-3D>', TODAY), TODAY);
         SETRANGE(LastYearFilter, DMY2DATE(1, 1, DATE2DMY(TODAY, 3) - 1), DMY2DATE(31, 12, DATE2DMY(TODAY, 3) - 1));
         SETRANGE(ThisYearFilter, DMY2DATE(1, 1, DATE2DMY(TODAY, 3)), DMY2DATE(31, 12, DATE2DMY(TODAY, 3)));
+        SetRange(DateTraining, CalcDate('<-30D>', Today), Today);
+        SetRange(DateCatalogue, CalcDate('<-30D>', Today), Today);
 
 
         UP.SETFILTER("User ID", '%1', USERID);

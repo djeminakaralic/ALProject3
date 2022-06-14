@@ -14,24 +14,94 @@ table 50132 "Position Menu"
             NotBlank = true;
 
             trigger OnValidate()
+            var
+                HeadOfOrg: Record "Head Of's";
+                HeadOf: Record "Head Of's";
+
             begin
+
                 /*Position.INIT;
                 Position.Code:=Code;
                 Position.Description:=Description;
                 Position."Org. Structure":="Org. Structure";
                 Position.INSERT;*/
+                if (Rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6) then begin
+                    HeadOfOrg.Reset();
+                    HeadOfOrg.SetFilter("Position Code", '%1', xRec.Code);
+                    HeadOfOrg.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                    HeadOfOrg.SetFilter("Department Code", Rec."Department Code");
+                    if HeadOfOrg.FindFirst then begin
+                        if HeadOf.Get(HeadOfOrg."Department Code", HeadOfOrg."ORG Shema",
+                         HeadOfOrg."Department Categ.  Description", HeadOfOrg."Group Description", HeadOfOrg."Team Description", HeadOfOrg."Management Level", HeadOfOrg."Position Code")
+                           then
+                            HeadOf.Rename(HeadOfOrg."Department Code", HeadOfOrg."ORG Shema",
+                            HeadOfOrg."Department Categ.  Description", HeadOfOrg."Group Description", HeadOfOrg."Team Description", HeadOfOrg."Management Level", Rec.Code)
 
+                        /*   ECLC.Reset();
+                            ECLC.SetFilter("Position Code", '%1', xRec.Code);
+                            ECLC.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                            ECLC.SetFilter("Department Code", Rec."Department Code");
+                            if ECLC.FindSet() then
+                                repeat
+                                    ECLC."Position Code" := Rec.Code;
+                                    ECLC.Modify();
+                                until ECLC.Next() = 0;
+
+*/
+                    end;
+                end;
             end;
+
         }
         field(2; Description; Text[250])
         {
             Caption = 'Description';
             Editable = true;
+
         }
         field(3; "Department Code"; Code[30])
         {
             Caption = 'Department Code';
             TableRelation = Department.Code WHERE("ORG Shema" = FIELD("Org. Structure"));
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                HeadOfOrg: Record "Head Of's";
+                HeadOf: Record "Head Of's";
+                dep: Record Department;
+
+
+            begin
+
+                if (Rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6) then begin
+                    HeadOfOrg.Reset();
+                    HeadOfOrg.SetFilter("Department Code", '%1', xRec."Department Code");
+                    HeadOfOrg.SetFilter("Position Code", '%1', Rec.Code);
+                    HeadOfOrg.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+
+                    if HeadOfOrg.FindFirst then begin
+                        HeadOfOrg.Delete();
+
+                    end;
+                    HeadOf.Init();
+                    HeadOf."ORG Shema" := Rec."Org. Structure";
+                    HeadOf."Management Level" := Rec."Management Level";
+                    dep.Reset();
+                    dep.SetFilter(Code, '%1', rec."Department Code");
+                    dep.SetFilter("ORG Shema", '%1', rec."Org. Structure");
+                    if dep.FindFirst() then begin
+                        HeadOf.Validate("Group Description", dep."Group Description");
+                        HeadOf.Validate("Department Categ.  Description", dep."Department Categ.  Description");
+                        HeadOf.Validate("Sector  Description", dep."Sector  Description");
+                        HeadOf."Position Code" := Rec.Code;
+                        HeadOf.Insert();
+                    end;
+
+
+
+
+                end;
+            end;
         }
         field(4; "Org. Structure"; Code[20])
         {
@@ -47,75 +117,53 @@ table 50132 "Position Menu"
             BlankZero = true;
             NotBlank = false;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
 
             trigger OnValidate()
+            var
+                HeadOfOrg: Record "Head Of's";
+                HeadOf: Record "Head Of's";
+                dep: Record Department;
+
             begin
-                /*IF (("Team Description"<>'')) THEN BEGIN
-                
-                       posDis.SETFILTER("Department Code",'%1',"Team Code");
-                       posDis.SETFILTER("Management Level",'%1',"Management Level");
-                       posDis.SETFILTER("Team Description",'%1',"Team Code");
-                       IF posDis.FIND('-') THEN BEGIN
-                     VALIDATE("Disc. Department Code",posDis."Disc. Department Code");
-                    VALIDATE("Disc. Department Name",posDis."Disc. Department Name");
-                    END
-                    ELSE BEGIN
-                     VALIDATE("Disc. Department Code","Team Code");
-                    VALIDATE("Disc. Department Name","Team Description");
-                    END;
-                    END;
-                
-                       posDis.RESET;
-                       IF (("Team Description"='') AND ("Group Description"<>'')) THEN BEGIN
-                
-                       posDis.SETFILTER("Department Code",'%1',"Group Code");
-                       posDis.SETFILTER("Management Level",'%1',"Management Level");
-                       posDis.SETFILTER("Group Description",'%1',"Group Code");
-                       IF posDis.FIND('-') THEN BEGIN
-                     VALIDATE("Disc. Department Code",posDis."Disc. Department Code");
-                     VALIDATE("Disc. Department Name",posDis."Disc. Department Name");
-                
-                     END
-                    ELSE BEGIN
-                     VALIDATE("Disc. Department Code","Group Code");
-                   VALIDATE("Disc. Department Name","Group Description");
-                    END;
-                    END;
-                
-                    posDis.RESET;
-                        IF (("Team Description"='') AND ("Group Description"='') AND  ("Department Categ.  Description"<>'')) THEN BEGIN
-                       posDis.SETFILTER("Department Code",'%1',"Department Category");
-                       posDis.SETFILTER("Management Level",'%1',"Management Level");
-                        posDis.SETFILTER("Department Categ.  Description",'%1',"Department Categ.  Description");
-                       IF posDis.FIND('-') THEN BEGIN
-                     VALIDATE("Disc. Department Code",posDis."Disc. Department Code");
-                     VALIDATE("Disc. Department Name",posDis."Disc. Department Name");
-                    END
-                    ELSE BEGIN
-                     VALIDATE("Disc. Department Code","Department Category");
-                     VALIDATE("Disc. Department Code","Department Code");
-                    END;
-                    END;
-                        IF (("Team Description"='') AND ("Group Description"='') AND  ("Department Categ.  Description"='')) THEN BEGIN
-                        posDis.RESET;
-                       posDis.SETFILTER("Department Code",'%1',Sector);
-                       posDis.SETFILTER("Management Level",'%1',"Management Level");
-                        posDis.SETFILTER("Sector  Description",'%1',"Sector  Description");
-                       IF posDis.FIND('-') THEN BEGIN
-                     VALIDATE("Disc. Department Code",posDis."Disc. Department Code");
-                     VALIDATE("Disc. Department Name",posDis."Disc. Department Name");
-                    END
-                    ELSE BEGIN
-                     VALIDATE("Disc. Department Code",Sector);
-                    VALIDATE("Disc. Department Code","Department Code");
-                    END;
-                END;
-                */
+
+                if (xRec."Management Level".AsInteger() <> 0) and (xRec."Management Level".AsInteger() <> 6) then begin
+                    HeadOfOrg.Reset();
+                    HeadOfOrg.SetFilter("Department Code", '%1', Rec."Department Code");
+                    HeadOfOrg.SetFilter("Position Code", '%1', Rec.Code);
+                    HeadOfOrg.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+
+                    if HeadOfOrg.FindFirst then begin
+                        HeadOfOrg.Delete();
+
+                    end;
+
+                    if (Rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6)
+                    then begin
+                        HeadOf.Init();
+                        HeadOf."ORG Shema" := Rec."Org. Structure";
+                        HeadOf."Management Level" := Rec."Management Level";
+                        dep.Reset();
+                        dep.SetFilter(Code, '%1', rec."Department Code");
+                        dep.SetFilter("ORG Shema", '%1', rec."Org. Structure");
+                        if dep.FindFirst() then begin
+                            HeadOf.Validate("Group Description", dep."Group Description");
+                            HeadOf.Validate("Department Categ.  Description", dep."Department Categ.  Description");
+                            HeadOf.Validate("Sector  Description", dep."Sector  Description");
+                            HeadOf.Validate("Position Code", Rec.Code);
+                            HeadOf.Insert();
+                        end;
+
+                    end;
+
+
+
+
+                end;
+
 
             end;
         }
@@ -607,11 +655,32 @@ table 50132 "Position Menu"
         {
         }
     }
+    trigger OnDelete()
+    var
+        myInt: Integer;
+        HeadOfOrg: Record "Head Of's";
+    begin
+
+        if (rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6) then begin
+            HeadOfOrg.Reset();
+            HeadOfOrg.SetFilter("Department Code", '%1', Rec."Department Code");
+            HeadOfOrg.SetFilter("Position Code", '%1', Rec.Code);
+            HeadOfOrg.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+            HeadOfOrg.SetFilter("Management Level", '%1', Rec."Management Level");
+            if HeadOfOrg.FindFirst() then
+                HeadOfOrg.Delete();
+
+
+
+        end;
+
+    end;
 
     var
         Position: Record "Position";
         RoleT: Record "Role";
         Roles: Record "Role";
+        ECLC: Record "Employee Contract Ledger";
 
     procedure UpdateCoeff(var Comp: Decimal; var Resp: decimal; var Conditi: Decimal): Decimal
     begin

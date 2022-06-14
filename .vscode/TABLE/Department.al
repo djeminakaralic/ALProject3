@@ -239,7 +239,7 @@ table 50043 Department
                 END;
                 IF "Department Categ.  Description" = '' THEN BEGIN
                     "Department Category" := '';
-                    Validate("Sector  Description", '');
+                    //   Validate("Sector  Description", '');
 
                 END;
                 if ("Department Type" = "Department Type"::"Department Category") then

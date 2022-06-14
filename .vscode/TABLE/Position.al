@@ -694,10 +694,10 @@ table 50135 Position
 
             trigger OnValidate()
             begin
-                IF "Management Level" = 8 //EXE ODGOVARA CEO
+                IF "Management Level".AsInteger() = 2 //EXE ODGOVARA CEO
                   THEN BEGIN
                     HeadOf.RESET;
-                    HeadOf.SETFILTER("Management Level", '%1', 6); //PRONA?I CEO (6)
+                    HeadOf.SETFILTER("Management Level", '%1', 1); //PRONA?I CEO (6)
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                     IF HeadOf.FINDFIRST THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
@@ -724,7 +724,7 @@ table 50135 Position
 
 
 
-                IF "Management Level" = 6 //UPRAVAA NIKOM
+                IF "Management Level".AsInteger() = 1 //UPRAVAA NIKOM
                 THEN BEGIN
                     "Manager 1 Code" := '';
                     "Manager 2 Code" := '';
@@ -738,33 +738,53 @@ table 50135 Position
 
 
 
-                IF "Management Level" = 2 THEN BEGIN //B1 ODGOVARA IZVRSNOM DIREKTORU TE ORGANIZACIJE
-                                                     //
+                IF "Management Level".AsInteger() = 3 THEN BEGIN //B1 ODGOVARA IZVRSNOM DIREKTORU TE ORGANIZACIJE
 
-                    FOR i := 1 TO STRLEN("Department Code") DO BEGIN
-                        String := "Department Code";
-                        IF String[i] = '.' THEN BEGIN
-                            Brojac := Brojac + 1;
-                            IF Brojac = 1 THEN
-                                PozicijaUprava := i;
-                        END;
-                    END;
+                    //
+
+                    ExeManager.Reset();
+                    ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+                    if ExeManager.FindFirst() then begin
+                        Posa.Reset();
+                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                        Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                        Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                        if Posa.FindFirst() then begin
+                            Uprava := Posa.Code
+                        end
+                        else begin
+                            Posa.Reset();
+                            Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                            Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                            if Posa.FindFirst() then
+                                Uprava := Posa.Code
+                            else
+                                Uprava := '';
+
+                        end;
 
 
-                    Uprava := COPYSTR("Department Code", 1, PozicijaUprava);
-                    SectorTabela.RESET;
-                    SectorTabela.SETFILTER(Code, '%1', Uprava);
-                    SectorTabela.SETFILTER("Org Shema", '%1', "Org. Structure");
-                    IF SectorTabela.FINDFIRST THEN BEGIN
-                        Uprava := COPYSTR("Department Code", 1, PozicijaUprava);
-                    END
-                    ELSE BEGIN
-                        Uprava := "Disc. Department Code";
-                    END;
+                    end
+                    else begin
+
+                        Posa.Reset();
+                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                        if Posa.FindFirst() then
+                            Uprava := Posa.Code
+                        else
+                            Uprava := '';
+                    end;
+
                     HeadOf.RESET;
                     HeadOf.RESET;
-                    HeadOf.SETFILTER("Department Code", '%1', Uprava);
+                    HeadOf.SETFILTER("Position code", '%1', Uprava);
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
                     IF HeadOf.FINDFIRST THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
                         "Manager 1 Code" := HeadOf."Employee No.";
@@ -782,13 +802,13 @@ table 50135 Position
                             "Manager 1 Position Code" := '';
                             "Manager 1 Position ID" := '';
                         END;
-
-                        "Disc. Department Code" := HeadOf."Department Code";
+                        if "Disc. Department Code" <> '' then
+                            "Disc. Department Code" := HeadOf."Department Code";
                         "Disc. Department Name" := '';
                     END;
                     IF "Manager 1 Code" = '' THEN BEGIN
                         HeadOf.RESET;
-                        HeadOf.SETFILTER("Management Level", '%1', 6); //DRUGI NADRE?ENI
+                        HeadOf.SETFILTER("Management Level", '%1', 1); //DRUGI NADRE?ENI
                         HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                         IF HeadOf.FINDFIRST THEN BEGIN
                             HeadOf.CALCFIELDS("Employee No.");
@@ -805,7 +825,7 @@ table 50135 Position
                         END;
                     END;
                     HeadOf.RESET;
-                    HeadOf.SETFILTER("Management Level", '%1', 6); //DRUGI NADRE?ENI
+                    HeadOf.SETFILTER("Management Level", '%1', 1); //DRUGI NADRE?ENI
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                     IF HeadOf.FINDFIRST THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
@@ -840,14 +860,14 @@ table 50135 Position
 
                 //AKO JE B2 MO?E I?I LEVELIMA IZNAD UKOLIKO NEMA
 
-                IF ("Management Level" = 3) THEN BEGIN  //EXE ODGOVARA CEO
+                IF ("Management Level".AsInteger() = 4) THEN BEGIN  //EXE ODGOVARA CEO
 
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', '');
                     HeadOf.SETFILTER("Department Category", '%1', '');
                     HeadOf.SETFILTER(Sector, '%1', Sector);
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                    HeadOf.SETFILTER("Management Level", '%1', 2);
+                    HeadOf.SETFILTER("Management Level", '%1', 3);
                     IF HeadOf.FIND('-') THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
                         "Manager 1 Code" := HeadOf."Employee No.";
@@ -946,14 +966,17 @@ table 50135 Position
 
 
                 //AKO JE B3 MO?E BITI LEVELIMA IZNAD
-                IF ("Management Level" = 4) THEN BEGIN  //
+                IF ("Management Level".AsInteger() = 5) THEN BEGIN  //
+
+                    //ovo je voditelj odjela
 
                     HeadOf.RESET;
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', '');
                     HeadOf.SETFILTER("Department Category", '%1', "Department Category");
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                    HeadOf.SETFILTER("Management Level", '%1', 3);
+                    HeadOf.SETFILTER("Management Level", '%1', 4);
+                    //da mu je nadređeni šef službe
                     IF HeadOf.FIND('-') THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");
                         "Manager 1 Code" := HeadOf."Employee No.";
@@ -989,11 +1012,131 @@ table 50135 Position
 
                     END
                     ELSE BEGIN
-                        "Manager 1 Code" := '';
-                        "Manager 1  Department Code" := '';
-                        "Manager 1 Position Code" := '';
-                        "Manager 1 Position ID" := '';
-                    END;
+
+                        //ovdje sada ako nema svoj raspored
+
+                        //ako nema službu
+
+                        if (Rec."Department Categ.  Description" = '') and (Rec."Group Description" <> '') then begin
+
+                            //onda bi ona trebala da odgovara ili svom sektoru ili svom izvršiocu ili direktno direktoru
+                            //može da odgovara rukovodiocu sektora: 
+
+                            HeadOf.RESET;
+                            HeadOf.SETFILTER("Team Code", '%1', '');
+                            HeadOf.SETFILTER("Group Code", '%1', '');
+                            HeadOf.SETFILTER("Department Category", '%1', '');
+                            HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                            HeadOf.SETFILTER("Management Level", '%1', 3);
+                            //rukovodilac sektora
+                            IF HeadOf.FIND('-') THEN BEGIN
+                                HeadOf.CALCFIELDS("Employee No.");
+                                "Manager 1 Code" := HeadOf."Employee No.";
+                                "Disc. Department Name" := '';
+
+                                Position.RESET;
+                                Position.SETFILTER("Employee No.", '%1', "Manager 1 Code");
+                                Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
+                                IF Position.FIND('-') THEN BEGIN
+
+                                    "Manager 1  Department Code" := Position."Department Code";
+                                    "Manager 1 Position Code" := Position.Code;
+                                    "Manager 1 Position ID" := Position."Position ID";
+
+                                END;
+                                Position.RESET;
+                                Position.SETFILTER("Employee No.", '%1', "Manager 1 Code");
+                                Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
+                                IF Position.FINDFIRST THEN BEGIN
+                                    Position.CALCFIELDS("Manager 1  Department Code", "Manager 1 Position Code", "Manager 1 Position ID");
+                                    "Manager 2 Code" := Position."Manager 1 Code";
+                                    "Manager 2  Department Code" := Position."Manager 1  Department Code";
+                                    "Manager 2 Position Code" := Position."Manager 1 Position Code";
+                                    "Manager 2 Position ID" := Position."Manager 1 Position ID";
+                                END
+                                ELSE BEGIN
+                                    "Manager 2  Department Code" := '';
+                                    "Manager 2 Code" := '';
+                                    "Manager 2 Position Code" := '';
+                                    "Manager 2 Position ID" := '';
+                                END;
+                            end;
+
+                            if "Manager 1 Code" = '' then begin
+
+                                //ako sada može biti samo izvršni ili uprava
+                                HeadOf.Reset();
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+                                end;
+
+                                if Uprava = '' then
+                                    HeadOf.SetFilter("Management Level", '%1', HeadOf."Management Level"::CEO)
+                                else
+                                    HeadOf.SetFilter("Position Code", '%1', Uprava);
+
+                                //dodaj
+                                HeadOf.SETFILTER(Sector, '%1', Sector);
+                                HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                                if HeadOf.FindFirst() then begin
+
+                                    HeadOf.CALCFIELDS("Employee No.");
+                                    "Manager 1 Code" := HeadOf."Employee No.";
+
+                                    Position.RESET;
+                                    Position.SETFILTER("Employee No.", '%1', "Manager 1 Code");
+                                    Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
+                                    IF Position.FINDFIRST THEN BEGIN
+
+                                        "Manager 1  Department Code" := Position."Department Code";
+                                        "Manager 1 Position Code" := Position.Code;
+                                        "Manager 1 Position ID" := Position."Position ID";
+                                    END
+                                    ELSE BEGIN
+                                        "Manager 1  Department Code" := '';
+                                        "Manager 1 Position Code" := '';
+                                        "Manager 1 Position ID" := '';
+                                    END;
+                                end;
+
+
+                            end;
+
+
+
+
+
+
+                        end
+                        else begin
+
+                            "Manager 1 Code" := '';
+                            "Manager 1  Department Code" := '';
+                            "Manager 1 Position Code" := '';
+                            "Manager 1 Position ID" := '';
+                        END;
+                    end;
 
 
 
@@ -1043,7 +1186,7 @@ table 50135 Position
 
 
                 //AKO JE B4 MO?E BITI LEVELIMA IZNAD
-                IF ("Management Level" = 5) THEN BEGIN  //
+                IF ("Management Level".AsInteger() = 7) THEN BEGIN  //
                     HeadOf.RESET;
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', "Group Code");
@@ -1124,7 +1267,13 @@ table 50135 Position
 
 
 
-                IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN  //
+                IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN  //
+
+                    //radnik
+
+                    //ako ima rukovodeća pozicija u listi rukovodioca prema njegovom rasporedu ona može
+                    //ili će biti rukovodeća pozicija sljedeći level iznad
+
                     HeadOf.RESET;
                     HeadOf.SETFILTER("Team Code", '%1', "Team Code");
                     HeadOf.SETFILTER("Group Code", '%1', "Group Code");
@@ -1132,6 +1281,10 @@ table 50135 Position
                     HeadOf.SETFILTER(Sector, '%1', Sector);
                     HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                     IF HeadOf.FIND('-') THEN BEGIN
+
+                        Head := true;
+
+                        //Postoji prema rasporedu
                         HeadOf.CALCFIELDS("Employee No.");
                         "Manager 1 Code" := HeadOf."Employee No.";
                         Position.RESET;
@@ -1152,8 +1305,98 @@ table 50135 Position
                         "Disc. Department Name" := '';
                     END
                     ELSE BEGIN
-                        "Manager 1 Code" := '';
-                        "Disc. Department Name" := '';
+
+
+                        Head := false;
+
+
+                        HeadOf.RESET;
+                        HeadOf.SETFILTER("Team Code", '%1', "Team Code");
+                        if "Group Description" <> '' then begin
+                            HeadOf.SETFILTER("Group Code", '%1', '');
+                            HeadOf.SetFilter("Department Categ.  Description", '%1', Rec."Department Categ.  Description");
+                        end;
+
+
+                        if ("Department Categ.  Description" <> '') and ("Group Description" = '')
+                        then
+                            HeadOf.SETFILTER("Department Category", '%1', '');
+
+                        if (("Department Categ.  Description" = '') and ("Group Description" <> '')) or (
+                            ("Group Description" = '') and ("Department Categ.  Description" = '')
+                        ) then begin
+
+                            if Rec."Management Level" = Rec."Management Level"::EXE then begin
+                                HeadOf.SetFilter("Management Level", '%1', HeadOf."Management Level"::CEO);
+                            end
+                            else begin
+
+                                //ovo samo ako je dio sektora
+
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+                                end;
+
+                                if Uprava = '' then
+                                    HeadOf.SetFilter("Management Level", '%1', HeadOf."Management Level"::CEO)
+                                else
+                                    HeadOf.SetFilter("Position Code", '%1', Uprava);
+
+
+
+                            end;
+                        end;
+
+                        //ako ne onda ću tražiti izvršnog direktora
+
+
+                        HeadOf.SETFILTER(Sector, '%1', Sector);
+                        HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                        if HeadOf.FindFirst() then begin
+
+                            HeadOf.CALCFIELDS("Employee No.");
+                            "Manager 1 Code" := HeadOf."Employee No.";
+
+                            Position.RESET;
+                            Position.SETFILTER("Employee No.", '%1', "Manager 1 Code");
+                            Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
+                            IF Position.FINDFIRST THEN BEGIN
+
+                                "Manager 1  Department Code" := Position."Department Code";
+                                "Manager 1 Position Code" := Position.Code;
+                                "Manager 1 Position ID" := Position."Position ID";
+                            END
+                            ELSE BEGIN
+                                "Manager 1  Department Code" := '';
+                                "Manager 1 Position Code" := '';
+                                "Manager 1 Position ID" := '';
+                            END;
+
+                            "Disc. Department Name" := '';
+
+                        end;
+
                     END;
 
 
@@ -1188,40 +1431,82 @@ table 50135 Position
 
                     END;
 
-
+                    //nešto što je odjel
                     IF ("Team Code" = '') AND ("Group Code" <> '') THEN BEGIN
-                        HeadOf.RESET;
-                        HeadOf.SETFILTER("Team Code", '%1', '');
-                        HeadOf.SETFILTER("Group Code", '%1', '');
-                        HeadOf.SETFILTER("Department Category", '%1', "Department Category");
-                        HeadOf.SETFILTER(Sector, '%1', Sector);
-                        HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                        IF HeadOf.FIND('-') THEN BEGIN
-                            HeadOf.CALCFIELDS("Employee No.");
-                            "Manager 2 Code" := HeadOf."Employee No.";
-                            Position.RESET;
-                            Position.SETFILTER("Employee No.", '%1', "Manager 2 Code");
-                            Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
-                            IF Position.FIND('-') THEN BEGIN
 
-                                "Manager 2  Department Code" := Position."Department Code";
+                        if Head = true then begin
+                            HeadOf.RESET;
+                            HeadOf.SETFILTER("Team Code", '%1', '');
+                            HeadOf.SETFILTER("Group Code", '%1', '');
+                            HeadOf.SETFILTER("Department Category", '%1', "Department Category");
+                            HeadOf.SETFILTER(Sector, '%1', Sector);
+                            HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                            IF HeadOf.FIND('-') THEN BEGIN
+                                HeadOf.CALCFIELDS("Employee No.");
+                                "Manager 2 Code" := HeadOf."Employee No.";
+                                Position.RESET;
+                                Position.SETFILTER("Employee No.", '%1', "Manager 2 Code");
+                                Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
+                                IF Position.FIND('-') THEN BEGIN
+
+                                    "Manager 2  Department Code" := Position."Department Code";
+                                END;
+
+                            END
+                            ELSE BEGIN
+                                "Manager 2 Code" := '';
+                                "Manager 2  Department Code" := '';
+                            END;
+                            IF "Manager 1 Code" = "Manager 2 Code" THEN BEGIN
+                                "Manager 2 Code" := '';
+                                "Manager 2  Department Code" := '';
                             END;
 
-                        END
-                        ELSE BEGIN
-                            "Manager 2 Code" := '';
-                            "Manager 2  Department Code" := '';
-                        END;
-                        IF "Manager 1 Code" = "Manager 2 Code" THEN BEGIN
-                            "Manager 2 Code" := '';
-                            "Manager 2  Department Code" := '';
-                        END;
+                        end
+                        else begin
+
+                            //nema rukovodeće pozicije, a bio je odjel. Znači drugi ruko. mu je sektor
+
+                            //kraj
+                            HeadOf.RESET;
+                            HeadOf.SETFILTER("Team Code", '%1', '');
+                            HeadOf.SETFILTER("Group Code", '%1', '');
+                            HeadOf.SETFILTER("Department Category", '%1', '');
+                            HeadOf.SETFILTER(Sector, '%1', Sector);
+                            HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                            IF HeadOf.FIND('-') THEN BEGIN
+                                HeadOf.CALCFIELDS("Employee No.");
+                                "Manager 2 Code" := HeadOf."Employee No.";
+                                Position.RESET;
+                                Position.SETFILTER("Employee No.", '%1', "Manager 2 Code");
+                                Position.SETFILTER("Org. Structure", '%1', "Org. Structure");
+                                IF Position.FIND('-') THEN BEGIN
+
+                                    "Manager 2  Department Code" := Position."Department Code";
+                                END;
+
+                            END
+                            ELSE BEGIN
+                                "Manager 2 Code" := '';
+                                "Manager 2  Department Code" := '';
+                            END;
+                            IF "Manager 1 Code" = "Manager 2 Code" THEN BEGIN
+                                "Manager 2 Code" := '';
+                                "Manager 2  Department Code" := '';
+                            END;
+
+
+                        end;
+
+
 
                     END;
 
 
 
                     IF ("Group Code" = '') AND ("Department Category" <> '') THEN BEGIN
+
+
                         HeadOf.RESET;
                         HeadOf.SETFILTER("Team Code", '%1', '');
                         HeadOf.SETFILTER("Group Code", '%1', '');
@@ -1249,21 +1534,46 @@ table 50135 Position
                             "Manager 2  Department Code" := '';
                         END;
                     END;
+
+
                     IF ("Department Category" = '') AND (Sector <> '') THEN BEGIN
-                        FOR i := 1 TO STRLEN("Department Code") DO BEGIN
-                            String := "Department Code";
-                            IF String[i] = '.' THEN BEGIN
-                                Brojac := Brojac + 1;
-                                IF Brojac = 1 THEN
-                                    PozicijaUprava := i;
-                            END;
-                        END;
-                        Uprava := COPYSTR("Department Code", 1, PozicijaUprava);
+
+                        //može da mu odgovara sektor ili izvršni ili uprava
+                        //znači ako je sektor, prvi nadređeni mu je šef njegovor sektora
+                        //drugi nadređeni mu je izvršni
+
+                        ExeManager.Reset();
+                        ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+                        if ExeManager.FindFirst() then begin
+                            Posa.Reset();
+                            Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                            Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                            Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                            if Posa.FindFirst() then begin
+                                Uprava := Posa.Code
+                            end
+                            else begin
+                                Posa.Reset();
+                                Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                if Posa.FindFirst() then
+                                    Uprava := Posa.Code
+                                else
+                                    Uprava := '';
+
+                            end;
+                        end;
+
+
+
                         HeadOf.RESET;
                         HeadOf.SETFILTER("Team Code", '%1', '');
                         HeadOf.SETFILTER("Group Code", '%1', '');
                         HeadOf.SETFILTER("Department Category", '%1', '');
-                        HeadOf.SETFILTER(Sector, '%1', Uprava);
+                        HeadOf.SETFILTER("position code", '%1', Uprava);
                         HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
                         IF HeadOf.FIND('-') THEN BEGIN
                             HeadOf.CALCFIELDS("Employee No.");
@@ -1344,6 +1654,31 @@ table 50135 Position
                 END;*/
                 //END;
                 IF "Employee No." = "Manager 1 Code" THEN "Manager Is Employee" := TRUE;
+                if ("Disc. Department Code" = '') and ("Disc. Department Name" = '') then begin
+                    "Manager 1" := '';
+                    "Manager 1  Department Code" := '';
+                    "Manager 1 Code" := '';
+                    "Manager 1 Position Code" := '';
+                    "Manager 1 Position ID" := '';
+                    "Manager 2  Department Code" := '';
+                    "Manager 2 Code" := '';
+                    "Manager 2 Position Code" := '';
+                    "Manager 2 Position ID" := '';
+
+
+                end;
+                IF Rec."Management Level" = Rec."Management Level"::CEO then begin
+                    "Manager 1" := '';
+                    "Manager 1  Department Code" := '';
+                    "Manager 1 Code" := '';
+                    "Manager 1 Position Code" := '';
+                    "Manager 1 Position ID" := '';
+                    "Manager 2  Department Code" := '';
+                    "Manager 2 Code" := '';
+                    "Manager 2 Position Code" := '';
+                    "Manager 2 Position ID" := '';
+
+                end;
 
             end;
         }
@@ -1612,11 +1947,10 @@ table 50135 Position
                     ERROR(DimMgt.GetDimErr);
             end;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
 
             trigger OnValidate()
             begin
@@ -1631,7 +1965,7 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN
                             VALIDATE("Disc. Department Code", "Team Code");
                             VALIDATE("Disc. Department Name", "Team Description");
                         END
@@ -1657,7 +1991,7 @@ table 50135 Position
 
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN
                             VALIDATE("Disc. Department Code", "Group Code");
                             VALIDATE("Disc. Department Name", "Group Description");
                         END
@@ -1679,7 +2013,7 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN BEGIN
                             VALIDATE("Disc. Department Code", "Department Category");
                             VALIDATE("Disc. Department Code", "Department Code");
                         END
@@ -1841,7 +2175,7 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" = 7) OR ("Management Level" = 0) THEN BEGIN
+                        IF ("Management Level".AsInteger() = 6) OR ("Management Level".AsInteger() = 0) THEN BEGIN
                             VALIDATE("Disc. Department Code", Sector);
                             VALIDATE("Disc. Department Code", "Department Code");
                         END;
@@ -1935,11 +2269,11 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" <> 0) AND ("Management Level" <> 7) THEN
+                        IF ("Management Level".AsInteger() <> 0) AND ("Management Level".AsInteger() <> 6) THEN
                             VALIDATE("Disc. Department Code", Sector)
                         ELSE
                             VALIDATE("Disc. Department Code", "Department Category");
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN
                             VALIDATE("Disc. Department Name", "Department Categ.  Description");
                     END;
                 END;
@@ -2033,11 +2367,11 @@ table 50135 Position
 
                     END
                     ELSE BEGIN
-                        IF ("Management Level" <> 0) AND ("Management Level" <> 7) THEN
+                        IF ("Management Level".AsInteger() <> 0) AND ("Management Level".AsInteger() <> 6) THEN
                             VALIDATE("Disc. Department Code", "Department Category")
                         ELSE
                             VALIDATE("Disc. Department Code", "Group Code");
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN
                             VALIDATE("Disc. Department Name", "Group Description");
                     END;
                 END;
@@ -2137,11 +2471,11 @@ table 50135 Position
                         VALIDATE("Disc. Department Name", posDis."Disc. Department Name");
                     END
                     ELSE BEGIN
-                        IF ("Management Level" <> 0) AND ("Management Level" <> 7) THEN
+                        IF ("Management Level".AsInteger() <> 0) AND ("Management Level".AsInteger() <> 6) THEN
                             VALIDATE("Disc. Department Code", "Group Code")
                         ELSE
                             VALIDATE("Disc. Department Code", "Team Code");
-                        IF ("Management Level" = 0) OR ("Management Level" = 7) THEN
+                        IF ("Management Level".AsInteger() = 0) OR ("Management Level".AsInteger() = 6) THEN
                             VALIDATE("Disc. Department Name", "Team Description");
                     END;
                 END;
@@ -2969,6 +3303,7 @@ table 50135 Position
          comm: Automation;
          param: Automation;*/
         lvarActiveConnection: Variant;
+        ExeManager: Record "Exe Manager";
         OrgStr: Record "ORG Shema";
         Pos: Record "Position";
         PosIDInt: Integer;
@@ -2984,9 +3319,12 @@ table 50135 Position
         HeadOfM: Record "Head Of's";
         DimMgt: Codeunit "DimensionManagement";
         VocationRec: Record "Vocation";
+        Head: Boolean;
         Position: Record "Position";
         Pos2: Record "Position";
         PosC: Record "Position";
+        Depa: Record Department;
+        Posa: Record "Position Menu";
         PosMenu: Record "Position Menu";
         Text000: Label 'You must not delete an active position!';
         posDis: Record "Position";
@@ -3002,7 +3340,7 @@ table 50135 Position
         DepartmentNew: Record "Department";
         FindLevelHigh: Record "Department";
         FIndDiscDepartmentCode: Record "Department";
-        Uprava: Code[10];
+        Uprava: Code[20];
         SectorRec: Record "Sector";
         DepCat: Record "Department Category";
         GroupRec: Record "Group";

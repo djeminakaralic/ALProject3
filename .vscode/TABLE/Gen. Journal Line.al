@@ -3,6 +3,19 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
     fields
     {
+        modify("Customer Id")
+        {
+            trigger OnAfterValidate()
+
+            begin
+                Customer.Reset();
+                Customer.SetFilter("No.", '%1', "Customer Id");
+                if Customer.FindFirst() then begin
+                    "Social status" := Customer."Social status category";
+                end;
+
+            end;
+        }
         //    VAT Base (retro.)
         field(50000; "VAT Date"; Date)
         {
@@ -69,6 +82,43 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
+        field(50024; "Payment Date And Time"; DateTime) //ED
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50025; "Given amount"; Decimal)
+        {
+            Caption = 'Given amount';
+
+            trigger OnValidate()
+            begin
+                "To return" := "Given amount" - Amount;
+            end;
+
+        }
+        field(50026; "To return"; Decimal)
+        {
+            Caption = 'To return';
+
+        }
+        field(50027; "Redni broj"; Integer)
+        {
+            Caption = 'Redni broj uplate';
+
+
+        }
+        field(50028; "Social status"; Option)
+        {
+            OptionMembers = ,S;
+            TableRelation = Customer."Social status category";
+            Caption = 'Social status category';
+        }
+        field(50029; "Payment Type"; code[10])
+        {
+
+            //TableRelation = "Payment Type";
+            Caption = 'Social status category';
+        }
 
 
     }
@@ -80,10 +130,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         //  GenJnlPostPreview.
 
         //"Gen. Jnl.-Post Preview".SaveCustLedgEntry(Rec);
+        "Redni broj" := 0;
+        "Redni broj" := xRec."Redni broj" + 1;
+
+
     end;
+
 
     var
         myInt: Integer;
+        Customer: Record Customer;
 
 
 

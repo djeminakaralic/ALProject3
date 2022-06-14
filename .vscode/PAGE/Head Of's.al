@@ -52,6 +52,11 @@ page 50065 "Head Of's"
                 {
                     ApplicationArea = all;
                 }
+                field("Department Code"; "Department Code")
+                {
+                    ApplicationArea = all;
+
+                }
                 field("Position Code"; "Position Code")
                 {
                     ApplicationArea = all;
@@ -60,11 +65,12 @@ page 50065 "Head Of's"
                 {
                     ApplicationArea = all;
                 }
-                field("Department Code"; "Department Code")
+
+                field("Management Level"; "Management Level")
                 {
                     ApplicationArea = all;
-                    Visible = false;
                 }
+
                 field("Department Name"; "Department Name")
                 {
                     ApplicationArea = all;
@@ -85,13 +91,10 @@ page 50065 "Head Of's"
                     Style = Unfavorable;
                     StyleExpr = TRUE;
                 }
-                field("Management Level"; "Management Level")
-                {
-                    ApplicationArea = all;
-                }
                 field("Head's number of employee"; "Head's number of employee")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
@@ -115,6 +118,18 @@ page 50065 "Head Of's"
                 Promoted = true;
                 PromotedIsBig = true;
                 RunObject = Report "Update Head Of orginal";
+                Visible = false;
+            }
+
+            action("Exe Manager List")
+            {
+                Caption = 'Exe Manager List';
+                Image = ListPage;
+                Promoted = true;
+                PromotedIsBig = true;
+                RunObject = page "Exe Manager List";
+                RunPageLink = "ORG Shema" = field("ORG Shema");
+
             }
         }
     }

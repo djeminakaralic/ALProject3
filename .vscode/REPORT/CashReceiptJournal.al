@@ -30,6 +30,44 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
 
 
+        addafter("Posting Date")
+        {
+            field("Payment Date And Time"; "Payment Date And Time")
+            {
+                ApplicationArea = all;
+            }
+            field("Redni broj"; "Redni broj")
+            {
+
+            }
+            field("Customer Id"; "Customer Id")
+            {
+
+            }
+
+            field("Social status"; "Social status")
+            {
+
+            }
+        }
+        addafter("Amount (LCY)")
+        {
+            field("Given amount"; "Given amount")
+            {
+
+            }
+            field("To return"; "To return")
+            {
+
+            }
+            /*field("Payment Type"; "Payment Type")
+            {
+
+            }*/
+        }
+
+
+
 
         /*addafter(Code)
         {
@@ -174,7 +212,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                RunObject = Report "Uplatnica";
+
+                trigger OnAction()
+                begin
+                    CurrPage.SETSELECTIONFILTER(GJline);
+                    Report.RunModal(50077, true, false, GJline);
+                end;
+
+                //RunObject = Report "Uplatnica";
             }
 
             action("Payroll")
@@ -199,6 +244,9 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
     }
 
+    var
+        GJline: Record "Gen. Journal Line";
+        Customer: Record Customer;
 
 
     /*trigger OnOpenPage()

@@ -54,7 +54,7 @@ table 50059 "Employee Blood Donation"
         field(43; "Group Name"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup("Employee Contract Ledger"."Group Description" WHERE("Employee No." = FIELD("Employee No.")));
+            CalcFormula = Lookup("Employee Contract Ledger"."Department Name" WHERE("Employee No." = FIELD("Employee No.")));
             Caption = 'Group';
             Editable = false;
 
@@ -62,7 +62,7 @@ table 50059 "Employee Blood Donation"
         field(45; "Team Name"; Text[250])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup("Employee Contract Ledger"."Team Description" WHERE("Employee No." = FIELD("Employee No.")));
+            CalcFormula = Lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No.")));
             Caption = 'Team';
             Editable = false;
 

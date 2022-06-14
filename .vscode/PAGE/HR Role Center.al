@@ -169,6 +169,13 @@ page 50003 "HR Role Center"
                     RunObject = Page "Positions";
                     ApplicationArea = all;
                 }
+                action(XML)
+                {
+                    Caption = 'XML';
+                    Image = XMLFile;
+                    RunObject = xmlport "Position Import";
+                    ApplicationArea = all;
+                }
                 action(Vocation)
                 {
                     Caption = 'Vocation';
@@ -252,6 +259,16 @@ page 50003 "HR Role Center"
                     Image = Dimensions;
                     RunObject = Page "ORG Dijelovi";
                 }
+                //Employees Import
+                action("Employees Import")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employees Import';
+                    Image = Dimensions;
+                    RunObject = xmlport "Employees Import";
+                    Visible = false;
+                }
+
                 action("ORG Shema")
                 {
                     ApplicationArea = all;
@@ -324,6 +341,7 @@ page 50003 "HR Role Center"
                     Image = AllocatedCapacity;
                     RunObject = Page "Dimension for Position";
                     RunPageMode = View;
+                    Visible = false;
                 }
                 action("Dimension Values")
                 {

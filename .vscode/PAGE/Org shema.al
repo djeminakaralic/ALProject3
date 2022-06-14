@@ -86,6 +86,7 @@ page 50087 "ORG Shema"
                     ApplicationArea = all;
                     Image = Hierarchy;
 
+
                     trigger OnAction()
                     begin
 
@@ -99,12 +100,64 @@ page 50087 "ORG Shema"
                                 Grade.SETFILTER("Org Shema", '%1', OSNew.Code);
                                 IF Grade.FINDSET THEN
                                     Grade.DELETEALL;
+
+                                UpdatePostTableInit.Reset();
+                                UpdatePostTableInit.SetFilter("Org Shema", '%1', OSNew.Code);
+                                if UpdatePostTableInit.FindSet() then
+                                    UpdatePostTableInit.DeleteAll();
+                                ExeManagerInit.Reset();
+                                ExeManagerInit.SetFilter("ORG Shema", '%1', OSNew.Code);
+                                if ExeManagerInit.FindSet() then
+                                    ExeManagerInit.DeleteAll();
+
+
                             END;
 
 
                             IF NOT SectorNew.ISEMPTY THEN BEGIN
                                 SectorNew.DELETEALL;
                             END;
+
+                            OS.Reset();
+                            OS.SETFILTER(Status, '%1', OS.Status::Active);
+                            IF OS.FINDLAST THEN BEGIN
+                                UpdatePostTable.Reset();
+                                UpdatePostTable.SetFilter("Org Shema", '%1', OS.Code);
+                                if UpdatePostTable.FindSet() then
+                                    repeat
+                                        UpdatePostTableInit.Init();
+                                        UpdatePostTableInit.TransferFields(UpdatePostTable);
+                                        OSNew.Reset();
+                                        OSNew.SETFILTER(Status, '%1', OS.Status::Preparation);
+                                        IF OSNew.FINDLAST THEN
+                                            UpdatePostTableInit."Org Shema" := OSNew.Code;
+                                        UpdatePostTableInit.Insert();
+
+                                    until UpdatePostTable.Next() = 0;
+                            end;
+
+
+                            OS.Reset();
+                            OS.SETFILTER(Status, '%1', OS.Status::Active);
+                            IF OS.FINDLAST THEN BEGIN
+
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("Org Shema", '%1', OS.Code);
+                                if ExeManager.FindSet() then
+                                    repeat
+                                        ExeManagerInit.Init();
+                                        ExeManagerInit.TransferFields(ExeManager);
+                                        OSNew.Reset();
+                                        OSNew.SETFILTER(Status, '%1', OS.Status::Preparation);
+                                        IF OSNew.FINDLAST THEN
+                                            ExeManagerInit."Org Shema" := OSNew.Code;
+                                        ExeManagerInit.Insert();
+
+                                    until ExeManager.Next() = 0;
+                            end;
+
+
+
                             Sector.RESET;
                             Sector.SETFILTER(Code, '<>%1', '');
                             Sector.SETCURRENTKEY(Identity);
@@ -120,6 +173,7 @@ page 50087 "ORG Shema"
                                         SectorNew.INIT;
                                         // SectorNew.COPY(Sector,FALSE);
                                         SectorNew.TRANSFERFIELDS(Sector);
+
                                         SectorIdentityNew := SectorIdentityNew + 1;
                                         SectorNew."Department Type" := 8;
                                         SectorNew.Identity := SectorIdentityNew;
@@ -128,7 +182,6 @@ page 50087 "ORG Shema"
                                         IF OSNew.FINDLAST THEN BEGIN
                                             SectorNew."Org Shema" := OSNew.Code;
                                             SectorNew."ID for GPS" := 0;
-                                            SectorNew.Parent := '';
                                             SectorNewCheck.RESET;
                                             SectorNewCheck.SETFILTER(Code, '%1', SectorNew.Code);
                                             SectorNewCheck.SETFILTER(Description, '%1', SectorNew.Description);
@@ -140,6 +193,10 @@ page 50087 "ORG Shema"
                                             ERROR(Text001);
                                         END;
                                     UNTIL Sector.NEXT = 0;
+
+
+
+
 
                                 IF NOT DepCatNew.ISEMPTY THEN BEGIN
                                     DepCatNew.DELETEALL;
@@ -166,7 +223,7 @@ page 50087 "ORG Shema"
                                         IF OSNew.FINDLAST THEN BEGIN
                                             DepCatNew."Org Shema" := OSNew.Code;
                                             DepCatNew."ID for GPS" := 0;
-                                            DepCatNew.Parent := '';
+
                                             DepCatNew.INSERT;
                                         END
                                         ELSE BEGIN
@@ -455,18 +512,17 @@ page 50087 "ORG Shema"
                                                 ECLCopy."Order By Managment" := 1;
                                             IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Exe THEN
                                                 ECLCopy."Order By Managment" := 2;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B1 THEN
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Sector THEN
                                                 ECLCopy."Order By Managment" := 3;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B2 THEN
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::"Department Category" THEN
                                                 ECLCopy."Order By Managment" := 4;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B3 THEN
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Group THEN
                                                 ECLCopy."Order By Managment" := 5;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::B4 THEN
-                                                ECLCopy."Order By Managment" := 6;
                                             IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::E THEN
+                                                ECLCopy."Order By Managment" := 6;
+
+                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::Empty THEN
                                                 ECLCopy."Order By Managment" := 7;
-                                            IF ECLOrginal."Management Level" = ECLOrginal."Management Level"::" " THEN
-                                                ECLCopy."Order By Managment" := 8;
                                             EmployeeDefaultDimension.RESET;
                                             EmployeeDefaultDimension.SETFILTER("No.", '%1', ECLOrginal."Employee No.");
                                             IF EmployeeDefaultDimension.FINDFIRST THEN BEGIN
@@ -776,6 +832,7 @@ page 50087 "ORG Shema"
                     Image = TeamSales;
                     RunObject = Page "Team temporary sist";
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 action("Positions and TC")
                 {
@@ -821,6 +878,7 @@ page 50087 "ORG Shema"
                 Caption = 'Org Correction';
                 Image = "Report";
                 Promoted = false;
+                Visible = false;
                 //The property 'PromotedCategory' can only be set if the property 'Promoted' is set to 'true'
                 //PromotedCategory = Process;
                 //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
@@ -833,6 +891,10 @@ page 50087 "ORG Shema"
 
     var
         Sector: Record "Sector";
+        UpdatePostTable: Record "Position Minimal Education";
+        ExeManager: Record "Exe Manager";
+        ExeManagerInit: Record "Exe Manager temporery";
+        UpdatePostTableInit: Record "Position Minimal Educ Temp";
         SectorNew: Record "Sector temporary";
         OS: Record "ORG Shema";
         DepCat: Record "Department Category";

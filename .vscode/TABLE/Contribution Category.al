@@ -20,7 +20,7 @@ table 50013 "Contribution Category"
         field(13; "Over Brutto"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Contribution Category Conn.".Percentage WHERE("Category Code" = FIELD(Code),
+            CalcFormula = Sum("Contribution Category Conn.".Percentage WHERE("Category Code" = FIELD(Code),
                                                                               "Over Brutto" = CONST(true)));
             Caption = 'Over brutto';
 
@@ -29,7 +29,7 @@ table 50013 "Contribution Category"
         field(14; "From Brutto"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Contribution Category Conn.".Percentage WHERE("Category Code" = FIELD(Code),
+            CalcFormula = Sum("Contribution Category Conn.".Percentage WHERE("Category Code" = FIELD(Code),
                                                                               "From Brutto" = CONST(true),
 
                                                              "Calculated in Total Brutto" = CONST(true)));
@@ -39,7 +39,7 @@ table 50013 "Contribution Category"
         field(15; "From Brutto(RS)"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Contribution Category Conn.".Percentage WHERE("Category Code" = FIELD(Code),
+            CalcFormula = Sum("Contribution Category Conn.".Percentage WHERE("Category Code" = FIELD(Code),
                                                                               "Percentage from Brutto (RS)" = CONST(true)));
             Caption = 'From brutto';
 

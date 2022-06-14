@@ -288,11 +288,10 @@ table 50083 "Head Of's temporary"
                 END;
             end;
         }
-        field(50365; "Management Level"; Option)
+        field(50365; "Management Level"; enum "Management Level")
         {
             Caption = 'Management Level';
-            OptionCaption = ' ,B,B1,B2,B3,B4,CEO,E,Exe';
-            OptionMembers = " ",B,B1,B2,B3,B4,CEO,E,Exe;
+
         }
         field(50366; "Head's number of employee"; Integer)
         {
@@ -306,7 +305,7 @@ table 50083 "Head Of's temporary"
 
     keys
     {
-        key(Key1; "Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description")
+        key(Key1; "Department Code", "ORG Shema", "Department Categ.  Description", "Group Description", "Team Description", "Management Level", "Position Code")
         {
         }
     }

@@ -699,7 +699,7 @@ UNTIL Bom.NEXT = 0;
         ELSE
             Personaltrack2."Employee type" := 2;
 
-        Personaltrack2.INSERT;
+        //NE    Personaltrack2.INSERT;
 
 
         //prebivalište
@@ -716,7 +716,7 @@ UNTIL Bom.NEXT = 0;
         PersonalTrack."Entity Real" := NewAddress."Entity Code";
         CompInf.GET;
         PersonalTrack."Employee activity" := CompInf."Industrial Classification";
-        PersonalTrack.INSERT;
+        //NE   PersonalTrack.INSERT;
     end;
 
     procedure EmployeeChange(OldEmployee: Record "Employee"; NewEmployee: Record "Employee")
@@ -1280,10 +1280,10 @@ UNTIL Bom.NEXT = 0;
         ELSE
             Personaltrack2."Employee type" := 2;
 
-        Personaltrack2.INSERT;
+        //NE    Personaltrack2.INSERT;
         CompInf.GET;
         PersonalTrack."Employee activity" := CompInf."Industrial Classification";
-        PersonalTrack.INSERT;
+        //NE  PersonalTrack.INSERT;
     end;
 
     procedure AdditionalEducation2(OldAdditionalE: Record "Additional Education"; NewAdditionalE: Record "Additional Education")
@@ -1828,13 +1828,13 @@ UNTIL Bom.NEXT = 0;
         ELSE
             Personaltrack2."Employee type" := 2;
 
-        Personaltrack2.INSERT;
+        //Personaltrack2.INSERT;
 
 
         CompInf.GET;
         PersonalTrack."Employee activity" := CompInf."Industrial Classification";
 
-        PersonalTrack.INSERT;
+        // PersonalTrack.INSERT;
     end;
 
     procedure PersonalDocument2(OldPersonalD: Record "Personal Documents"; NewPersonalD: Record "Personal Documents"; CodePersonal: Code[10])
@@ -2422,11 +2422,11 @@ UNTIL Bom.NEXT = 0;
             Personaltrack2."Employee type" := 1
         ELSE
             Personaltrack2."Employee type" := 2;
-        Personaltrack2.INSERT;
+        //  Personaltrack2.INSERT;
 
         CompInf.GET;
         PersonalTrack."Employee activity" := CompInf."Industrial Classification";
-        PersonalTrack.INSERT;
+        //  PersonalTrack.INSERT;
     end;
 
     procedure EmployeeContractLedger2(OldECL: Record "Employee Contract Ledger"; NewECL: Record "Employee Contract Ledger")
@@ -3059,7 +3059,7 @@ UNTIL Bom.NEXT = 0;
         ELSE
             Personaltrack2."Employee type" := 2;
 
-        Personaltrack2.INSERT;
+        //        Personaltrack2.INSERT;
 
 
         //prebivalište
@@ -3082,7 +3082,7 @@ UNTIL Bom.NEXT = 0;
 
             END;
 
-            PersonalTrack.INSERT;
+            //ĐK JOŠ NE     PersonalTrack.INSERT;
 
         END;
 

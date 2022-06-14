@@ -93,6 +93,18 @@ page 50064 "Head Of's temporary sist"
     {
         area(Processing)
         {
+
+            action("Exe Manager List")
+            {
+                Caption = 'Exe Manager List';
+                Image = ListPage;
+                Promoted = true;
+                PromotedIsBig = true;
+
+                RunObject = page "Exe Manager List temporery";
+                RunPageLink = "ORG Shema" = field("ORG Shema");
+
+            }
             action(Next)
             {
                 Image = NextSet;

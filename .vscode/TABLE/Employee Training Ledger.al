@@ -1,6 +1,8 @@
 table 50057 "Employee Training Ledger"
 {
     Caption = 'Employee Training Ledger';
+    LookupPageId = "Employee Trainings Ledger";
+    DrillDownPageId = "Employee Trainings Ledger";
 
 
     fields
@@ -35,6 +37,7 @@ table 50057 "Employee Training Ledger"
                         Code3Catalogue := TrainingCatalogue.Code;
                         Name := TrainingCatalogue.Name;
                         Type := TrainingCatalogue.Type;
+                        TypeOF := TrainingCatalogue.TypeOF;
 
                         Location := TrainingCatalogue.Location;
                         Month := TrainingCatalogue.Month;
@@ -128,6 +131,17 @@ table 50057 "Employee Training Ledger"
 
 
         }
+        field(22; TypeOF; code[20])
+        {
+            Caption = 'Vrsta treninga';
+            TableRelation = "Training Type";
+        }
+        field(23; "Type of name"; code[20])
+        {
+            Caption = 'Naziv vrste treninga';
+            TableRelation = "Training Type";
+        }
+
 
     }
     keys
@@ -139,6 +153,7 @@ table 50057 "Employee Training Ledger"
     var
         TC: Record "Training Time Entry";
         TrainingCatalogue: record "Training Catalogue";
+
 
 }
 

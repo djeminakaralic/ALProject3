@@ -4,6 +4,46 @@ tableextension 50071 EmployeeExtension extends Employee
 
     fields
     {
+
+
+        modify("Phone No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CLEAR(CheckInt);
+                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No.", 5, 4))) OR (COPYSTR("Phone No.", 4, 1) <> ' '))
+                  THEN
+                    IF (COPYSTR("Phone No.", 4, 1) <> ' ')
+                      THEN
+                        ERROR(Text016, COPYSTR("Phone No.", 4, 1), 'razmak')
+                    ELSE
+                        ERROR(Text017, "Phone No.")
+
+                ELSE BEGIN
+                    "Phone No." := '';
+                END;
+            END;
+
+        }
+        modify("Mobile Phone No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                CLEAR(CheckInt);
+                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
+                  THEN
+                    IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
+                      THEN
+                        ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
+                    ELSE
+                        ERROR(Text017, "Mobile Phone No.")
+
+                ELSE BEGIN
+                    "Mobile Phone No." := '';
+                END;
+            END;
+        }
+
         field(50121; "Contribution Category Code"; Code[10])
         {
             Caption = 'Contribution Category Code';
@@ -185,6 +225,7 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Company Mobile Phone No.';
             ExtendedDatatype = PhoneNo;
             FieldClass = Normal;
+
         }
         field(503557; "Dial Code Company Mobile"; Code[10])
         {
@@ -406,12 +447,7 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = Count("Work Duties Violation" WHERE("Employee No." = FIELD("No."), "Page Type" = FILTER('Clauses')));
         }
-        field(503576; "Lawsuits/Labor Disputes"; Integer)
-        {
-            Caption = 'Lawsuits/Labor Disputes';
-            FieldClass = FlowField;
-            CalcFormula = Count("Work Duties Violation" WHERE("Employee No." = FIELD("No."), "Page Type" = FILTER('Lawsuits')));
-        }
+
         field(50350; "Role Code"; Code[20])
         {
             Caption = 'Role Code';
@@ -1161,7 +1197,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50262; "Blood Donor"; Boolean)
         {
             Caption = 'Blood Donor';
-            Editable = false;
+            //Editable = false;
         }
         field(50156; "Days of Experience in Company"; Integer)
         {
@@ -2712,6 +2748,7 @@ tableextension 50071 EmployeeExtension extends Employee
                     "Municipality Name of Birth" := Municipality.Name;
                     VALIDATE("City of Birth", Municipality.City);
                     VALIDATE("Place of birth", Municipality.City);
+                    Municipality.calcfields("Country/Region Code");
                     "Country/Region Code of Birth" := Municipality."Country/Region Code";
                 END;
                 IF "Municipality Code of Birth" = '' THEN
@@ -2845,6 +2882,149 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Vojni staž se obračunava u ukupni staž';
         }
+        field(503678; "Department Category"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Department Category" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503679; "Department Cat. Description"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Department Cat. Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503680; Sector; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Sector where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503681; "Sector Description"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Sector Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503682; "Department Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Department Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503683; "Org Unit Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Org Unit Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503684; "Position Description"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503685; "Engagement Type"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Engagement Type" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503686; "Rad u smjenama"; enum "Shift Work")
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Rad u smjenama" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503687; "Superior1"; Text[250])
+        {
+            Caption = 'Superior 1';
+        }
+        field(503688; "Superior1Name"; Text[250])
+        {
+            Caption = 'Superior 2';
+        }
+        field(503689; Brutto; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Brutto where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503690; Netto; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger".Netto where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503700; "Netto Total"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Total Netto" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503701; "Position Coefficient for Wage"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Coefficient for Wage" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503702; "Starting Date"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Starting Date" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503703; "Ending Date"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Ending Date" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503704; "Contract type"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Contract Type" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503705; "Defaultdimension"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Default Dimension" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503706; "Contract Termination Date"; Date)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Contract Termination Date" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503707; Voocation; code[20])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Additional Education".Vocation where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503708; "Vocation Description"; text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Additional Education"."Vocation Description" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        /*field(503709; "Superior1 Last Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 1 Last Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503710; "Superior2"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 2" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503712; "Superior2Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 2 First Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }
+        field(503713; "Superior2 Last Name"; Text[250])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Manager 1 Last Name" where("Employee No." = FIELD("No."), Active = const(true)));
+        }*/
+        field(503709; "Insurence number"; Text[250])
+        {
+            Caption = 'Insurance number';
+        }
+        field(503710; "Additional rights millitary"; Option)
+        {
+            Caption = 'Additional rights millitary';
+            OptionMembers = " ",Borac,"Pripadnik boračke populacije","Šehidski status";
+        }
+
+
+
+
+
+
 
 
 
@@ -2875,9 +3055,10 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
-        WshShell: DotNet SendKeys;
 
-        reee: DotNet SendKeys;
+        Education: Record "Additional Education";
+
+
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
         Municipality: Record Municipality;

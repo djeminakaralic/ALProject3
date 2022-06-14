@@ -40,6 +40,20 @@ report 50105 "Update dep"
                     SectorOrginal.DELETE;
                 UNTIL SectorOrginal.NEXT = 0;
 
+            PosMinimal.Reset();
+            PosMinimal.SetFilter("Org Shema", '%1', OrgShema.code);
+            if PosMinimal.FindSet() then
+                repeat
+                    PosMinimal.Delete();
+                until PosMinimal.Next() = 0;
+
+            ExeManager.Reset();
+            ExeManager.SetFilter("ORG Shema", '%1', OrgShema.Code);
+            if ExeManager.FindSet() then
+                repeat
+                    ExeManager.Delete();
+                until ExeManager.Next() = 0;
+
             DepCatOrginal.RESET;
             DepCatOrginal.SETFILTER("Org Shema", '%1', OrgShema.Code);
             IF DepCatOrginal.FINDSET THEN
@@ -124,7 +138,7 @@ report 50105 "Update dep"
                             SectorParent22.RESET;
                             SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
                             SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
-                            SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::B1);
+                            SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
                             SectorParent22.SETCURRENTKEY("ORG Shema");
                             SectorParent22.ASCENDING(FALSE);
                             IF SectorParent22.FINDFIRST THEN BEGIN
@@ -155,6 +169,10 @@ report 50105 "Update dep"
                         END;
                     UNTIL SectorTemp.NEXT = 0;
             END;
+
+
+
+
             IF DepCatTemp.FINDSET THEN
                 REPEAT
                     DepCatOrginal.INIT;
@@ -170,20 +188,7 @@ report 50105 "Update dep"
                             DepCatOrginal."Operator No." := OrgSNew."Operator No.";
                         END;
 
-                        //ovdje da pronađem id za gps ako postoji
-                        SectorParent2.RESET;
-                        SectorParent2.SETFILTER(Code, '%1', COPYSTR(DepCatOrginal.Code, 1, 4));
-                        SectorParent2.SETFILTER("Org Shema", '%1', DepCatOrginal."Org Shema");
-                        SectorParent2.SETCURRENTKEY("Org Shema");
-                        SectorParent2.ASCENDING(FALSE);
-                        IF SectorParent2.FINDFIRST THEN BEGIN
 
-                            DepCatOrginal.Parent := SectorParent2.Description;
-
-                        END
-                        ELSE BEGIN
-                            DepCatOrginal.Parent := '';
-                        END;
 
                         DepCat22.RESET;
                         DepCat22.SETFILTER("Org Shema", '<>%1', DepCatOrginal."Org Shema");
@@ -202,6 +207,40 @@ report 50105 "Update dep"
                         DepCatOrginal.INSERT;
                     END;
                 UNTIL DepCatTemp.NEXT = 0;
+
+            if PosMinimalTemp.FindSet() then
+                repeat
+                    PosMinimalInit.Init();
+                    PosMinimalInit.TransferFields(PosMinimalTemp);
+                    PosMinimal.Reset();
+                    PosMinimal.SetFilter("Org Shema", '%1', PosMinimalInit."Org Shema");
+                    PosMinimal.SetFilter("Position Code", '%1', PosMinimalInit."Position Code");
+                    PosMinimal.SetFilter("Minimal Education Level", '%1', PosMinimalInit."Minimal Education Level");
+                    PosMinimal.SetFilter("School of Graduation", '%1', PosMinimalInit."School of Graduation");
+                    if not PosMinimal.FindFirst() then
+                        PosMinimalInit.Insert();
+                until PosMinimalTemp.Next() = 0;
+
+
+            if ExeMTemp.FindSet() then
+                repeat
+                    ExeManagerInit.Init();
+                    ExeManagerInit.TransferFields(ExeMTemp);
+                    ExeManager.Reset();
+                    ExeManager.SetFilter("Org Shema", '%1', ExeManagerInit."Org Shema");
+                    ExeManager.SetFilter("Position Code", '%1', ExeManagerInit."Position Code");
+                    ExeManager.SetFilter("Subordinate Org Description", '%1', ExeManagerInit."Subordinate Org Description");
+
+                    if not ExeManager.FindFirst() then
+                        ExeManagerInit.Insert();
+                until ExeMTemp.Next() = 0;
+
+
+
+
+
+
+
             IF GroupTemp.FINDSET THEN
                 REPEAT
                     GroupOrginal.INIT;
@@ -503,6 +542,14 @@ UNTIL BenefitsTemp.NEXT = 0;
 
     var
         OrgShema: Record "ORG Shema";
+        PosMinimal: Record "Position Minimal Education";
+
+        ExeManager: Record "Exe Manager";
+        PosMinimalInit: Record "Position Minimal Education";
+        PosMinimalTemp: Record "Position Minimal Educ Temp";
+        ExeMTemp: Record "Exe Manager temporery";
+
+        ExeManagerInit: Record "Exe Manager";
         ECLOrgKojiSeVidi: Record "Employee Contract Ledger";
         ECLNeVidi: Record "Employee Contract Ledger";
         DeleteUpdate: Record "Employee Contract Ledger";

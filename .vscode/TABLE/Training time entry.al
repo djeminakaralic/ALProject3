@@ -1,6 +1,8 @@
 table 50044 "Training Time Entry"
 {
     Caption = 'Evidencija održavanja obuka/edukacija';
+    LookupPageId = "Training Time Entries";
+    DrillDownPageId = "Training Time Entries";
 
     fields
     {
@@ -116,6 +118,13 @@ table 50044 "Training Time Entry"
             Caption = 'Number of people that attended';
             FieldClass = FlowField;
             CalcFormula = count("Employee Training Ledger" where(Code2Entry = field(Code)));
+        }
+        field(22; TypeOF; code[20])
+        {
+            Caption = 'Location';
+            /*FieldClass = FlowField;
+            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));*/
+
         }
 
     }

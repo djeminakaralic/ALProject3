@@ -34,6 +34,7 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
+
                 field("Title Description"; "Title Description")
                 {
                     ApplicationArea = all;
@@ -43,13 +44,27 @@ page 50147 "Education History"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
+
+                field("Vocation Description"; "Vocation Description")
+                {
+                    ApplicationArea=all;
+
+                }
+
+                field(Vocation; Vocation)
+                {
+                    ApplicationArea=all;
+
+                }
+
+
+                field("Profession Description"; "Profession Description")
+                {
+                    ApplicationArea = all;
+                }
                 field(Profession; Profession)
                 {
                     Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("Profession Description"; "Profession Description")
-                {
                     ApplicationArea = all;
                 }
                 field("To Date"; "To Date")
@@ -69,7 +84,11 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                /*field("Team Description"; "Team Description")
+                field("Sector Description"; "Sector Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
                 }
@@ -77,15 +96,12 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                field("Department Cat.Description"; "Department Cat.Description")
-                {
-                    Caption = '<Department Categroy>';
-                    ApplicationArea = all;
-                }
-                field("Sector Description"; "Sector Description")
-                {
-                    ApplicationArea = all;
-                }*/
+                /* field("Department Cat.Description"; "Department Cat.Description")
+                 {
+                     Caption = '<Department Categroy>';
+                     ApplicationArea = all;
+                 }*/
+
             }
         }
     }

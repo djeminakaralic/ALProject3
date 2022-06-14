@@ -1,31 +1,35 @@
-table 50016 "Position Minimal Education"
+table 50075 "Position Minimal Educ Temp"
+
+
 
 {
-    DataClassification = ToBeClassified;
+    DrillDownPageId = "Positions Minimal Education t";
+    LookupPageId = "Positions Minimal Education";
+
 
     fields
     {
         field(1; "Org Shema"; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption='Org Shema';
+            Caption = 'Org Shema';
             TableRelation = "ORG Shema".Code;
-            
+
         }
         field(2; "Position Code"; Code[20])
         {
-            TableRelation = "Position Menu".Code where("Org. Structure" = field("Org Shema"));
-            Caption='Position Code';
+            TableRelation = "Position Menu temporary".Code where("Org. Structure" = field("Org Shema"));
+            Caption = 'Position Code';
         }
         field(3; "Position Name"; Text[250])
         {
-            Caption='Position Name';
-            TableRelation = "Position Menu".Description where("Org. Structure" = field("Org Shema"));
+            Caption = 'Position Name';
+            TableRelation = "Position Menu temporary".Description where("Org. Structure" = field("Org Shema"));
 
         }
         field(4; "Minimal Education Level"; enum School)
         {
-            Caption='Minimal Education Level';
+            Caption = 'Minimal Education Level';
 
         }
         field(5; "School of Graduation"; Text[250])

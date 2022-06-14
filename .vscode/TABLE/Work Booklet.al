@@ -295,8 +295,7 @@ table 50208 "Work Booklet"
                 END;
                 //BH 01 update end
 
-                EmployeeCardPage.Update();
-                EmployeeListPage.Update();
+
             end;
         }
         //BH 01 start

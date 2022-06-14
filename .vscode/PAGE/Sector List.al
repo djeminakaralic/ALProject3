@@ -71,6 +71,7 @@ page 50115 Sector
             {
                 Caption = 'Remove changes';
                 Image = Change;
+                Visible = false;
 
                 trigger OnAction()
                 begin

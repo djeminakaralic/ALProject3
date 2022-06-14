@@ -126,15 +126,21 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         {
             Caption = 'Group Description';
             FieldClass = FlowField;
-            CalcFormula = lookup("Employee Contract Ledger"."Group Description" WHERE("Employee No." = FIELD("Employee No."), Active = filter(true)));
+            CalcFormula = lookup("Employee Contract Ledger"."Department Name" WHERE("Employee No." = FIELD("Employee No."), Active = filter(true)));
             Editable = false;
         }
-        field(45; "Team Description"; Text[250])
+        field(45; "Position"; Text[250])
         {
             Caption = 'Team Description';
             FieldClass = FlowField;
-            CalcFormula = lookup("Employee Contract Ledger"."Team Description" WHERE("Employee No." = FIELD("Employee No."), Active = filter(true)));
+            CalcFormula = lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."), Active = filter(true)));
             Editable = false;
+        }
+        field(46; "Evidence of certification"; Option)
+        {
+            OptionMembers = ,Certifikat,Atest,Potvrda,Uvjerenje;
+            Caption = 'Evidence of certification';
+
         }
 
 

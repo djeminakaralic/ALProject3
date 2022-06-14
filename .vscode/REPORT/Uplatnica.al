@@ -3,29 +3,39 @@ report 50077 Uplatnica
     DefaultLayout = RDLC;
     RDLCLayout = './Uplatnica.rdlc';
 
+
     dataset
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
-            column(BatchName; GJLine."Journal Batch Name")
+            //DataItemLink = "Line No." = field(LineNo);
+            //line = FIELD("No.");              
+            //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
+
+
+
+            column(BatchName; DataItem21."Journal Batch Name")
             {
             }
-            column(PostingDate; GJLine."Posting Date")
+            column(PostingDate; DataItem21."Posting Date")
             {
             }
-            column(DocumentNo; GJLine."Document No.")
+            column(DocumentNo; DataItem21."Document No.")
             {
             }
-            column(Amound; GJLine.Amount)
+            column(Amound; DataItem21.Amount)
             {
             }
-            column(Description; GJLine.Description)
+            column(Description; DataItem21.Description)
             {
             }
-            column(LineNo; GJLine."Line No.")
+            column(LineNo; DataItem21."Line No.")
             {
             }
-            column(PM; GJLine."Payment Method Code")
+            column(PM; DataItem21."Payment Method Code")
+            {
+            }
+            column(PaymentDT; DataItem21."Payment Date And Time")
             {
             }
             column(Adress_CompanyInfo; CompanyInformation.Address)
@@ -88,6 +98,22 @@ report 50077 Uplatnica
             column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
             {
             }
+            column(MBS; CompanyInformation.MBS)
+            {
+            }
+            column(MunicipalityName; CompanyInformation."Municipality Name")
+            {
+            }
+            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
+            {
+            }
+            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
+            {
+            }
+
+
+
+
 
             trigger OnAfterGetRecord()
             begin
@@ -113,6 +139,8 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
+
+
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
@@ -123,8 +151,25 @@ report 50077 Uplatnica
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
+
+                //za tabelu customer je key No.
+
+
+
             end;
         }
+
+
+        dataitem(DataItem22; "Bank Account")
+        {
+            column(BankName; DataItem22.Name)
+            {
+            }
+            column(BankAccNo; DataItem22."Bank Account No.")
+            {
+            }
+        }
+
     }
 
     requestpage
@@ -146,6 +191,7 @@ report 50077 Uplatnica
     var
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
+        BankAccount: Record "Bank Account";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
@@ -155,5 +201,6 @@ report 50077 Uplatnica
         ContAddress: Text[100];
         ContCity: Text[100];
         emp: Record Employee;
+        Cust: Record Customer;
 }
 

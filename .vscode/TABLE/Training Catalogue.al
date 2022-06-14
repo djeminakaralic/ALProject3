@@ -1,6 +1,8 @@
 table 50033 "Training Catalogue"
 {
     Caption = 'Katalog treninga';
+    LookupPageId = "Trainings Catalogue";
+    DrillDownPageId = "Trainings Catalogue";
 
     fields
     {
@@ -29,6 +31,17 @@ table 50033 "Training Catalogue"
         field(5; Month; Text[50])
         {
             Caption = 'Month';
+        }
+
+
+        field(6; TypeOF; Code[20])
+        {
+            Caption = 'Vrsta Treninga';
+            TableRelation = "Training Type";
+        }
+        field(7; Year; Integer)
+        {
+            Caption = 'Godina';
         }
 
     }
