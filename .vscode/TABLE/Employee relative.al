@@ -16,14 +16,23 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         modify("Relative Code")
         {
             trigger OnAfterValidate()
+            var
+                Relative: Record Relative;
             begin
 
-                if ("Relative Code" = 'OTAC') or ("Relative Code" = 'SUPRUG') or ("Relative Code" = 'SIN') then begin
-                    Sex := 1
+                Relative.Reset();
+                Relative.SetFilter(Code, '%1', "Relative Code");
+                if Relative.FindFirst() then begin
+                    Relation := Relative.Relation;
+                    Sex := Relative.Sex;
+
                 end
                 else begin
-                    sex := 2;
+                    Relation := Relation::" ";
+                    Sex := Sex::" ";
+
                 end;
+
             end;
 
 
@@ -230,6 +239,13 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
 
 
     }
+    trigger OnInsert()
+    var
+        myInt: Integer;
+    begin
+
+
+    end;
 
 
 
