@@ -28,6 +28,7 @@ page 50173 "Employee Bood Donations"
                 field("Team Name"; "Team Name")
                 {
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Group Name"; "Group Name")
                 {

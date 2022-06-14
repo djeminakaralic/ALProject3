@@ -46,6 +46,7 @@ page 50164 "Employee Activities"
                 field("Team Name"; "Team Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Group Name"; "Group Name")
                 {

@@ -47,13 +47,13 @@ page 50147 "Education History"
 
                 field("Vocation Description"; "Vocation Description")
                 {
-                    ApplicationArea=all;
+                    ApplicationArea = all;
 
                 }
 
                 field(Vocation; Vocation)
                 {
-                    ApplicationArea=all;
+                    ApplicationArea = all;
 
                 }
 
@@ -91,6 +91,7 @@ page 50147 "Education History"
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
+                    visible = false;
                 }
                 field("Group Description"; "Group Description")
                 {
