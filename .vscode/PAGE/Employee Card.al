@@ -3354,7 +3354,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         begin
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Enagement Type", '%1', 'MIROVANJE');
+                            EmployeeContractLedger.SETFILTER("Engagement Type", '%1', 'MIROVANJE');
                             EmployeeContractLedger.SetFilter(Active, '%1', true);
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;

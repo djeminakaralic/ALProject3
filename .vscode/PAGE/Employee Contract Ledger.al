@@ -444,21 +444,9 @@ page 50051 "Employee Contract Ledger"
                     ApplicationArea = all;
                     Visible = false;
                 }
-                field("Temporary disposition"; "Temporary disposition")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Temporary disposition starting"; "Temporary disposition starting")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
-                field("Temporary disposition ending"; "Temporary disposition ending")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
+
+
+
                 field("<Minimal Education Levell>"; "Minimal Education Level")
                 {
 
