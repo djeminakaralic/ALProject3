@@ -384,7 +384,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                RunObject = report "Izvjestaj starosne strukture";
+                RunObject = report "Evidencija prerasporedjenih";
 
 
             }
