@@ -251,21 +251,24 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }
-                field("Contract Type Name"; "Contract Type Name")
-                {
-                    Editable = true;
 
-                    ApplicationArea = all;
-                    Visible = true;
-
-
-                }
                 field("Contract Type"; "Contract Type")
                 {
                     Visible = true;
                     ApplicationArea = all;
                     ShowMandatory = true;
+
+
+                }
+                field("Contract Type Name"; "Contract Type Name")
+                {
                     Editable = false;
+
+                    ApplicationArea = all;
+                    Visible = true;
+
+
+
 
                 }
 
@@ -595,12 +598,26 @@ page 50051 "Employee Contract Ledger"
                   {
                       ApplicationArea = all;
                   }*/
+
+                field("Temporary disposition"; "Temporary disposition")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Additional Position"; "Additional Position")
                 {
                     Visible = true;
                     ApplicationArea = all;
                 }
                 field("Additional Responsiblity"; "Additional Responsiblity")
+                {
+                    ApplicationArea = all;
+                }
+                field("Temporary disposition starting"; "Temporary disposition starting")
+                {
+                    ApplicationArea = all;
+                }
+                field("Temporary disposition ending"; "Temporary disposition ending")
                 {
                     ApplicationArea = all;
                 }
@@ -613,10 +630,14 @@ page 50051 "Employee Contract Ledger"
                 {
                     ApplicationArea = all;
                 }*/
-                field("Status of employee"; "Status of employee")
-                {
+                /* field("Status of employee"; "Status of employee")
+                 {
 
-                    Caption = 'Status';
+                     Caption = 'Status';
+                 }*/
+                field(Status; Status)
+                {
+                    ApplicationArea = all;
                 }
 
 

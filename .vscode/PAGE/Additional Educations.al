@@ -84,16 +84,21 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
-                field("Sector Description"; "Sector Description")
-                {
-                    ApplicationArea = all;
-                }
+
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
                     visible = false;
                 }
                 field("Group Description"; "Group Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Department Cat.Description"; "Department Cat.Description")
+                {
+                    ApplicationArea = all;
+                }
+                field("Sector Description"; "Sector Description")
                 {
                     ApplicationArea = all;
                 }

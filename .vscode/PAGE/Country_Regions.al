@@ -10,6 +10,14 @@ pageextension 50172 Country_Region extends "Countries/Regions"
                 ApplicationArea = all;
             }
         }
+        modify("EU Country/Region Code")
+        {
+            Visible = false;
+        }
+        modify("Intrastat Code")
+        {
+            Visible = false;
+        }
     }
 
     actions

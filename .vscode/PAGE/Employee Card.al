@@ -952,6 +952,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 {
 
                     ApplicationArea = all;
+                    Visible = false;
                     trigger OnDrillDown()
                     begin
                         WorkBooklet.RESET;
@@ -967,6 +968,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 field("Work Experience Document"; "Work Experience Document")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                     trigger OnDrillDown()
                     begin
@@ -2626,7 +2628,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     begin
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
@@ -2643,7 +2645,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     begin
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
@@ -2702,7 +2704,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     begin
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
@@ -2718,13 +2720,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     begin
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
                     end;
                 }
-                /*field(ECLGroup; EmployeeContractLedger.Group)
+                field(ECLGroup; EmployeeContractLedger.Group)
                 {
                     Caption = 'Group';
                     Editable = false;
@@ -2734,7 +2736,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     begin
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
@@ -2751,12 +2753,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     begin
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
                         CurrPage.UPDATE;
                     end;
                 }
+                /*
                 field(ECLTeam; EmployeeContractLedger.Team)
                 {
                     Caption = 'Team';
@@ -3249,6 +3252,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             EmployeeContractLedger.SETFILTER("Ending Date", '<>%1', 0D);
+                            EmployeeContractLedger.SetFilter(Active, '%1', true);
+                            EmployeeContractLedger.SetFilter("Manner of Term. Description", '<>%1', '');
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
@@ -3266,8 +3271,11 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             EmployeeContractLedger.SETFILTER("Ending Date", '<>%1', 0D);
-                            EmployeeContractLedger.SetFilter("Manner of Term. Code", '<>%1', 'MIROVANJE');
+                            EmployeeContractLedger.SetFilter(Active, '%1', true);
+                            EmployeeContractLedger.SetFilter("Grounds for Term. Description", '<>%1', '');
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+
+
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
                         end;
@@ -3293,7 +3301,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     }*/
                 }
                 group(Inactivity)
+
                 {
+                    Caption = 'Inactivity';
+
                     field("Maner of termination"; EmployeeContractLedger."Manner of Term. Code")
                     {
                         Caption = 'Reason for termination';
@@ -3306,7 +3317,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         begin
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Manner of Term. Code", '%1', 'MIROVANJE');
+                            EmployeeContractLedger.SETFILTER("Engagement Type", '%1', 'MIROVANJE');
+                            EmployeeContractLedger.SetFilter(Active, '%1', true);
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
@@ -3342,7 +3354,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         begin
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
-                            EmployeeContractLedger.SETFILTER("Manner of Term. Code", '%1', 'MIROVANJE');
+                            EmployeeContractLedger.SETFILTER("Enagement Type", '%1', 'MIROVANJE');
+                            EmployeeContractLedger.SetFilter(Active, '%1', true);
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;

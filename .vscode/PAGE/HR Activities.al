@@ -189,7 +189,7 @@ page 50066 "HR activities"
             cuegroup("Unsegmented Positions1")
             {
                 Caption = 'Unsegmented Positions';
-                Visible = show;
+                Visible = false;
 
 
                 field("Unsegmented Positions"; "Unsegmented Positions")
@@ -207,12 +207,12 @@ page 50066 "HR activities"
                 field("For Calculation"; "For Calculation")
                 {
 
-                    Visible = show;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field(Calculated; Calculated)
                 {
-                    Visible = show;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("New Employees FC"; "New Employees FC")
@@ -240,7 +240,7 @@ page 50066 "HR activities"
                 }
                 field("Wage Change"; "Wage Change")
                 {
-                    Visible = show;
+                    Visible = false;
                     ApplicationArea = all;
                 }
             }
@@ -367,15 +367,7 @@ page 50066 "HR activities"
 
 
             }
-            cuegroup(Objectives1)
-            {
-                Caption = 'Objectives';
-                Visible = show;
 
-
-
-
-            }
             /* cuegroup(Postings)
              {
                  Caption = 'Postings';
@@ -570,7 +562,7 @@ page 50066 "HR activities"
         //  DBThisMonthFirst := CALCDATE('-SM-1D;', WORKDATE);
         SETRANGE(DateFilter6, ThisMonthFirst, ThisMonthLast);
         SETRANGE(DateFilter7, ThisMonthFirst, DBThisMonthLast);
-        SETRANGE(DateFilter8, 19800101D, DBThisMonthFirst);
+        SETRANGE(DateFilter8, 0D, DBThisMonthFirst);
         SETRANGE(DateFilter9, CALCDATE('+1D;', ThisMonthFirst), ThisMonthLast);
 
         UserPersonalisation.RESET;

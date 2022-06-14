@@ -256,7 +256,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(503557; "Dial Code Company Mobile"; Code[10])
         {
             TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Company M"),
-                                                    Type = FILTER('Mobile'));
+                                                    Type = FILTER(Mobile));
 
             trigger OnValidate()
             begin
@@ -2173,7 +2173,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50299; "Dial Code Mobile"; Code[10])
         {
             TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Mobile"),
-                                                    Type = FILTER('Mobile'));
+                                                    Type = FILTER(Mobile));
 
             trigger OnValidate()
             begin
@@ -2184,7 +2184,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50356; "Dial Code Company Home"; Code[10])
         {
             TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Company H"),
-                                                    Type = FILTER('Fixed'));
+                                                    Type = FILTER("Fixed"));
 
             trigger OnValidate()
             begin
@@ -3064,6 +3064,20 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Additional rights millitary';
             OptionMembers = " ",Borac,"Pripadnik boračke populacije","Šehidski status";
+        }
+        field(503711; "Group Code"; Code[30])
+        {
+            Caption = 'Group Code';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger".Group WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
+            //Department.Code WHERE (Type=FILTER(' '|Department))
+        }
+        field(503712; "Group Description"; Code[250])
+        {
+            Caption = 'Group Description';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Group Description" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
+            //Department.Code WHERE (Type=FILTER(' '|Department))
         }
 
 
