@@ -370,6 +370,10 @@ page 50066 "HR activities"
                     ApplicationArea = all;
 
                 }
+            }
+            cuegroup("Expiring Training")
+            {
+                Caption = 'Expiring Training';
                 field(Training; Training)
                 {
                     Image = Receipt;
