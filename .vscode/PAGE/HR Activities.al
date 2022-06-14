@@ -59,6 +59,12 @@ page 50066 "HR activities"
                     Visible = true;
                     ApplicationArea = all;
                 }
+            }
+            cuegroup("Absence")
+            {
+                Caption = 'Absence';
+
+
                 field("Inactive Employees"; "Inactive Employees")
                 {
                     Caption = 'Inactive Employees';
@@ -119,17 +125,7 @@ page 50066 "HR activities"
 
 
 
-            cuegroup("")
-            {
 
-                field("Temporary Disposition"; "Temporary Disposition")
-                {
-                    LookupPageID = "Employee Contract Ledger";
-                    ApplicationArea = all;
-                }
-
-
-            }
             cuegroup(Warnings)
             {
 
@@ -243,10 +239,16 @@ page 50066 "HR activities"
                     Visible = false;
                     ApplicationArea = all;
                 }
+                field("Temporary Disposition"; "Temporary Disposition")
+                {
+                    LookupPageID = "Employee Contract Ledger";
+                    ApplicationArea = all;
+                }
+
             }
-            cuegroup(" ")
+            cuegroup("Changes")
             {
-                Caption = ' ';
+                Caption = 'Changes';
                 Visible = show;
 
                 field("Surname Change"; "Surname Change")
@@ -267,6 +269,22 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
+                field("Education Level Change"; "Education Level Change")
+                {
+                    Image = Library;
+                    Importance = Promoted;
+                    Style = AttentionAccent;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
+            }
+            cuegroup("Fund")
+            {
+
+                Caption = 'Fund or Union Employees';
+
+
                 field("Internal Fund"; "Internal Fund")
                 {
                     Visible = show;
@@ -287,16 +305,10 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
-                field("Education Level Change"; "Education Level Change")
-                {
-                    Image = Library;
-                    Importance = Promoted;
-                    Style = AttentionAccent;
-                    StyleExpr = TRUE;
-                    Visible = show;
-                    ApplicationArea = all;
-                }
+
             }
+
+
             /*  cuegroup("Potential Employees1")
               {
                   Caption = 'Potential Employees2';
@@ -332,14 +344,7 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }*/
-                field(Training; Training)
-                {
-                    Image = Receipt;
-                    Style = Favorable;
-                    StyleExpr = TRUE;
-                    Visible = show;
-                    ApplicationArea = all;
-                }
+
                 field("Training Catalogue"; "Training Catalogue")
                 {
                     Image = Receipt;
@@ -349,6 +354,23 @@ page 50066 "HR activities"
                     ApplicationArea = all;
                 }
                 field("Training Entry"; "Training Entry")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+                }
+                field("Employee Training Ledger"; "Employee Training Ledger")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = true;
+                    ApplicationArea = all;
+
+                }
+                field(Training; Training)
                 {
                     Image = Receipt;
                     Style = Favorable;

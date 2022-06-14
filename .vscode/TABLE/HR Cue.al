@@ -690,6 +690,14 @@ table 50085 "HR Cue"
 
 
         }
+        field(50095; "Employee Training Ledger"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Training Ledger");
+            Caption = 'Employee Training Ledger';
+
+
+        }
     }
 
     keys
