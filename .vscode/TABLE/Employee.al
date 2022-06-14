@@ -10,36 +10,51 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             trigger OnAfterValidate()
             begin
+
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No.", 5, 4))) OR (COPYSTR("Phone No.", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Phone No.", 4, 1) <> ' ')
+
+                IF "Phone No." <> '' THEN BEGIN
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No.", 5, 4))) OR (COPYSTR("Phone No.", 4, 1) <> ' '))
                       THEN
-                        ERROR(Text016, COPYSTR("Phone No.", 4, 1), 'razmak')
+                        IF (COPYSTR("Phone No.", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Phone No.", 4, 1), 'razmak', "No.")
+                        ELSE
+                            ERROR(Text017, "Phone No.")
                     ELSE
-                        ERROR(Text017, "Phone No.")
-
+                        "Full Phone No." := "Country/Region Code Home" + ' ' + "Dial Code Home" + ' ' + "Phone No.";
+                END
                 ELSE BEGIN
-                    "Phone No." := '';
+                    IF (("Country/Region Code Home" <> '') OR ("Dial Code Home" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Full Phone No." := '';
                 END;
-            END;
 
+            end;
         }
         modify("Mobile Phone No.")
         {
             trigger OnAfterValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
-                      THEN
-                        ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Mobile Phone No.")
 
+                IF "Mobile Phone No." <> '' THEN BEGIN
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
+                      THEN
+                        IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Mobile Phone No.")
+                    ELSE
+                        "Full Mobile Phone No." := "Country/Region Code Mobile" + ' ' + "Dial Code Mobile" + ' ' + "Mobile Phone No.";
+                END
                 ELSE BEGIN
-                    "Mobile Phone No." := '';
+                    IF (("Country/Region Code Mobile" <> '') OR ("Dial Code Mobile" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Full Mobile Phone No." := '';
+
                 END;
             END;
         }
@@ -187,22 +202,33 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. Emergency", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. Emergency", 5, 4))) OR (COPYSTR("Phone No. Emergency", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Phone No. Emergency", 4, 1) <> ' ')
-                       THEN
-                        ERROR(Text016, COPYSTR("Phone No. Emergency", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Phone No. Emergency")
-                ELSE BEGIN
-                    IF ("Country/Region Code Emergency" <> '') AND ("Dial Code Emergency" <> '') AND ("Phone No. Emergency" <> '') THEN BEGIN
+                IF "Phone No. Emergency" <> '' THEN BEGIN
 
-                        "Tel. No. Of Related Person" := "Country/Region Code Emergency" + ' ' + "Dial Code Emergency" + ' ' + "Phone No. Emergency";
-                    END
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. Emergency", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. Emergency", 5, 4))) OR (COPYSTR("Phone No. Emergency", 4, 1) <> ' '))
+                      THEN
+                        IF (COPYSTR("Phone No. Emergency", 4, 1) <> ' ')
+                           THEN
+                            ERROR(Text016, COPYSTR("Phone No. Emergency", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Phone No. Emergency")
                     ELSE BEGIN
-                        "Tel. No. Of Related Person" := '';
+                        IF ("Country/Region Code Emergency" <> '') AND ("Dial Code Emergency" <> '') AND ("Phone No. Emergency" <> '') THEN BEGIN
+
+                            "Tel. No. Of Related Person" := "Country/Region Code Emergency" + ' ' + "Dial Code Emergency" + ' ' + "Phone No. Emergency";
+                        END
+                        ELSE BEGIN
+                            "Tel. No. Of Related Person" := '';
+                        END;
+
                     END;
 
+                END
+                ELSE BEGIN
+
+                    IF (("Country/Region Code Emergency" <> '') OR ("Dial Code Emergency" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Tel. No. Of Related Person" := '';
                 END;
             end;
         }
@@ -356,20 +382,31 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No. for Company", 5, 4))) OR (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' ')
+                IF "Mobile Phone No. for Company" <> '' THEN BEGIN
+
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No. for Company", 5, 4))) OR (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' '))
                       THEN
-                        ERROR(Text016, COPYSTR("Mobile Phone No. for Company", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Mobile Phone No. for Company")
-                ELSE BEGIN
-                    IF ("Country/Region Code Company M" <> '') AND ("Dial Code Company Mobile" <> '') AND ("Mobile Phone No. for Company" <> '') THEN BEGIN
-                        "Company Mobile Phone No." := "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company";
-                    END
+                        IF (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Mobile Phone No. for Company", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Mobile Phone No. for Company")
                     ELSE BEGIN
-                        "Company Mobile Phone No." := '';
+                        IF ("Country/Region Code Company M" <> '') AND ("Dial Code Company Mobile" <> '') AND ("Mobile Phone No. for Company" <> '') THEN BEGIN
+                            "Company Mobile Phone No." := "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company";
+                        END
+                        ELSE BEGIN
+                            "Company Mobile Phone No." := '';
+                        END;
                     END;
+                END
+                ELSE BEGIN
+
+                    IF (("Country/Region Code Company M" <> '') OR ("Dial Code Company Mobile" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+
+                    "Company Mobile Phone No." := '';
                 END;
             end;
         }
@@ -2168,21 +2205,30 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. for Company", 5, 4))) OR (COPYSTR("Phone No. for Company", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Phone No. for Company", 4, 1) <> ' ')
+                IF "Phone No. for Company" <> '' THEN BEGIN
+
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. for Company", 5, 4))) OR (COPYSTR("Phone No. for Company", 4, 1) <> ' '))
                       THEN
-                        ERROR(Text016, COPYSTR("Phone No. for Company", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Phone No. for Company")
-                ELSE BEGIN
-                    IF ("Country/Region Code Company H" <> '') AND ("Dial Code Company Home" <> '') AND ("Phone No. for Company" <> '')
-                      THEN BEGIN
-                        "Company Phone No." := "Country/Region Code Company H" + ' ' + "Dial Code Company Home" + ' ' + "Phone No. for Company";
-                    END
+                        IF (COPYSTR("Phone No. for Company", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Phone No. for Company", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Phone No. for Company")
                     ELSE BEGIN
-                        "Company Phone No." := '';
+                        IF ("Country/Region Code Company H" <> '') AND ("Dial Code Company Home" <> '') AND ("Phone No. for Company" <> '')
+                          THEN BEGIN
+                            "Company Phone No." := "Country/Region Code Company H" + ' ' + "Dial Code Company Home" + ' ' + "Phone No. for Company";
+                        END
+                        ELSE BEGIN
+                            "Company Phone No." := '';
+                        END;
                     END;
+                END
+                ELSE BEGIN
+                    IF (("Country/Region Code Company H" <> '') OR ("Dial Code Company Home" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Company Phone No." := '';
                 END;
             end;
         }

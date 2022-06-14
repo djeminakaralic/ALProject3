@@ -485,7 +485,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         var
                             UserSetup: Record "User Setup";
                         begin
-
+                            CurrPage.Update(true);
+                            SELECTLATESTVERSION;
                             UserSetup.Reset();
                             UserSetup.SetFilter("User ID", '%1', USERID);
                             if not UserSetup.FindFirst() then begin
@@ -505,7 +506,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeRelative.SETFILTER(Relation, 'Child');
                             EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
                             EmployeeRelativePage.RUN;
-                            CurrPage.UPDATE;
+                            CurrPage.UPDATE(true);
 
 
                         end;
