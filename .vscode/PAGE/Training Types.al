@@ -1,10 +1,10 @@
-page 50270 "Payment Types"
+page 50270 "Training Types"
 {
-    ApplicationArea = BasicEU;
-    Caption = 'Transaction Types';
+    // ApplicationArea = BasicEU;
+    Caption = 'Trainings Types';
     PageType = List;
-    SourceTable = "Transaction Type";
-    UsageCategory = Administration;
+    SourceTable = "Training Type";
+    //UsageCategory = Administration;
 
     layout
     {
