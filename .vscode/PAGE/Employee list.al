@@ -378,7 +378,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             action("Evidencija prerasporedjenih")
             {
-                Caption = 'Izvjestaj prerasporedjenih';
+                Caption = 'Evidencija prerasporedjenih';
                 Image = Report;
                 ApplicationArea = all;
                 Promoted = true;

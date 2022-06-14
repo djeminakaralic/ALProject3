@@ -119,7 +119,7 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#eaea3c</BackgroundColor>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -166,7 +166,7 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#eaea3c</BackgroundColor>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -213,7 +213,7 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#eaea3c</BackgroundColor>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -260,7 +260,7 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#eaea3c</BackgroundColor>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -307,7 +307,7 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>#eaea3c</BackgroundColor>
+                            <BackgroundColor>LightBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -711,20 +711,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Datum i vijeme pokretanja izvje–taja: </Value>
+                      <Value>Datum i vijeme pokretanja izvještaja: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
                       <Value>=Globals!ExecutionTime</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -745,7 +736,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>0.23in</Top>
+              <Top>0.51333in</Top>
               <Left>0.64667in</Left>
               <Height>0.375in</Height>
               <Width>4.78333in</Width>
@@ -812,7 +803,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox9</rd:DefaultName>
-              <Top>0.99111in</Top>
+              <Top>1.31333in</Top>
               <Left>0.64667in</Left>
               <Height>0.83889in</Height>
               <Width>3.39166in</Width>
@@ -834,7 +825,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>EVIDENCIJA PRERASPOREŔENIH</Value>
+                      <Value>EVIDENCIJA PRERASPOREĐENIH</Value>
                       <Style>
                         <FontSize>24pt</FontSize>
                       </Style>
@@ -844,61 +835,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox12</rd:DefaultName>
-              <Top>1.15778in</Top>
+              <Top>1.88556in</Top>
               <Left>2.66111in</Left>
               <Height>0.52222in</Height>
               <Width>5.74167in</Width>
               <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>Solid</Style>
-                </Border>
-                <TopBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </TopBorder>
-                <BottomBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </BottomBorder>
-                <LeftBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </LeftBorder>
-                <RightBorder>
-                  <Color>Black</Color>
-                  <Style>Solid</Style>
-                  <Width>1pt</Width>
-                </RightBorder>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox7">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>0.23in</Top>
-              <Left>7.18834in</Left>
-              <Height>0.375in</Height>
-              <Width>2.98333in</Width>
-              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -914,11 +855,11 @@
               <Value>=First(Fields!Picture.Value, "DataSet_Result")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0.255in</Top>
-              <Left>7.18834in</Left>
+              <Top>0.51333in</Top>
+              <Left>7.41334in</Left>
               <Height>0.35in</Height>
               <Width>2.98333in</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -973,6 +914,12 @@
             </Border>
           </Style>
         </PageFooter>
+        <PageHeight>8.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
+        <LeftMargin>0in</LeftMargin>
+        <RightMargin>0in</RightMargin>
+        <TopMargin>0in</TopMargin>
+        <BottomMargin>0in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
