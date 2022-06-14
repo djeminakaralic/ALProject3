@@ -273,6 +273,8 @@ pageextension 50149 EmployeeList extends "Employee List"
     actions
     {
         // Add changes to page actions here
+        Modify("Contact")
+        {
 
         modify(PayEmployee)
         {
@@ -288,6 +290,8 @@ pageextension 50149 EmployeeList extends "Employee List"
         }
 
 
+        }
+        
         addafter("Co&mments")
         {
 
@@ -375,6 +379,20 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             }
+
+            action("Evidencija prerasporedjenih")
+            {
+                Caption = 'Izvjestaj prerasporedjenih';
+                Image = Report;
+                ApplicationArea = all;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Evidencija prerasporedjenih";
+
+
+            }
+
 
             /*action("Create Worksheet")
             {

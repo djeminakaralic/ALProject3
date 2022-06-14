@@ -95,15 +95,16 @@ pageextension 50168 AlternativeAddress extends "Alternative Address Card"
                     Editable = false;
                     ApplicationArea = all;
                 }
+                field(Active; Active)
+                {
+                    ApplicationArea = all;
+                }
             }
             group("Current Address")
             {
                 Caption = 'Current Address';
                 Editable = true;
-                field(Active; Active)
-                {
-                    ApplicationArea = all;
-                }
+
 
                 field("Municipality Code"; "Municipality Code")
                 {
@@ -139,7 +140,7 @@ pageextension 50168 AlternativeAddress extends "Alternative Address Card"
 
 
         }
-        moveafter(Active; Address)
+        movebefore("Municipality Code"; Address)
         moveafter("Municipality Name"; City)
         modify(City)
         {
