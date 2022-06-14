@@ -26,6 +26,13 @@ tableextension 50147 Relative_ext extends Relative
             Caption = 'Order';
         }
     }
+    trigger OnInsert()
+    var
+        myInt: Integer;
+    begin
+
+
+    end;
 
     var
         myInt: Integer;
