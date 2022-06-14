@@ -233,6 +233,8 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
                 Rec.Relation := Rec.Relation::Mother;
             if UserSetup."Open Value" = 'Spouse' then
                 Rec.Relation := Rec.Relation::Spouse;
+            if UserSetup."Open Value" = 'Child' then
+                Rec.Relation := Rec.Relation::Child;
 
 
 
