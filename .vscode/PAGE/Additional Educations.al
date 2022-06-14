@@ -34,31 +34,37 @@ page 50147 "Education History"
                 {
                     ApplicationArea = all;
                 }
+
+                field("Title Description"; "Title Description")
+                {
+                    ApplicationArea = all;
+                }
                 field(Title; Title)
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
-                field("Title Description"; "Title Description")
+
+                field("Vocation Description"; "Vocation Description")
+                {
+                    ApplicationArea=all;
+
+                }
+
+                field(Vocation; Vocation)
+                {
+                    ApplicationArea=all;
+
+                }
+
+
+                field("Profession Description"; "Profession Description")
                 {
                     ApplicationArea = all;
                 }
-                field(Vocation; Vocation)
-                {
-
-                }
-                field("Vocation Description"; "Vocation Description")
-                {
-
-                }
-
                 field(Profession; Profession)
                 {
                     Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("Profession Description"; "Profession Description")
-                {
                     ApplicationArea = all;
                 }
                 field("To Date"; "To Date")
