@@ -136,9 +136,9 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
             CalcFormula = lookup("Employee Contract Ledger"."Position Description" WHERE("Employee No." = FIELD("Employee No."), Active = filter(true)));
             Editable = false;
         }
-        field(46; "Evidence of certification"; Option)
+        field(46; "Evidence of certification"; enum "Type certificate")
         {
-            OptionMembers = ,Certifikat,Atest,Potvrda,Uvjerenje;
+
             Caption = 'Evidence of certification';
 
         }
