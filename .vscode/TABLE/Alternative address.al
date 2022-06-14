@@ -2,6 +2,31 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
 {
     fields
     {
+
+        modify("Employee No.")
+        {
+            trigger OnAfterValidate()
+            var
+                Emp: Record Employee;
+            begin
+                Emp.Get("Employee No.");
+                Name := Emp."First Name";
+                "Name 2" := Emp."First Name";
+            end;
+        }
+        modify("Name 2")
+        {
+            trigger OnAfterValidate()
+            var
+                Emp: Record Employee;
+            begin
+
+            end;
+        }
+
+
+
+
         // Add changes to table fields here
         field(50000; "Municipality Code"; Code[10])
         {

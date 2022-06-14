@@ -6489,8 +6489,8 @@ table 50055 "ECL systematization"
                                     ECL5.ASCENDING;
                                     IF ECL5.FINDLAST THEN BEGIN
                                         IF ECL5."Reason for Change" = Rec."Reason for Change" THEN BEGIN
-                                            ECLOrg."Reason for Change" := 16;
-                                            Rec."Reason for Change" := 16;
+                                            ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
+                                            Rec."Reason for Change" := REc."Reason for Change"::Systematization;
                                         END
                                         ELSE BEGIN
                                             ECLOrg."Reason for Change" := Rec."Reason for Change";
@@ -10841,8 +10841,8 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                     ECL5.ASCENDING;
                                     IF ECL5.FINDLAST THEN BEGIN
                                         IF ECL5."Reason for Change" = Rec."Reason for Change" THEN BEGIN
-                                            ECLOrg."Reason for Change" := 16;
-                                            Rec."Reason for Change" := 16;
+                                            ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
+                                            Rec."Reason for Change" := Rec."Reason for Change"::Systematization;
                                         END;
                                     END;
                                 END;
@@ -10857,8 +10857,8 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                                     ECL5.ASCENDING;
                                     IF ECL5.FINDLAST THEN BEGIN
                                         IF ECL5."Reason for Change" = Rec."Reason for Change" THEN BEGIN
-                                            ECLOrg."Reason for Change" := 16;
-                                            Rec."Reason for Change" := 16;
+                                            ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
+                                            Rec."Reason for Change" := Rec."Reason for Change"::Systematization;
                                         END;
                                     END;
                                 END;
