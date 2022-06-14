@@ -11,6 +11,10 @@ pageextension 50079 AlternativeAddressList extends "Alternative Address List"
 
             }
         }
+        modify(Code)
+        {
+            Visible = false;
+        }
         addafter("Name 2")
         {
             field("Address CIPS"; "Address CIPS")

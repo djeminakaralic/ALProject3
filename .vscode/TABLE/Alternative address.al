@@ -2,6 +2,17 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
 {
     fields
     {
+
+        modify("Employee No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                "Name 2" := Employee."First Name";
+            end;
+        }
+
+
+
         // Add changes to table fields here
         field(50000; "Municipality Code"; Code[10])
         {
