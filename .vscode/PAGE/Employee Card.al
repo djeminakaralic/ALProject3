@@ -373,18 +373,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         var
                             UserSetup: Record "User Setup";
                         begin
-
-                            EmployeeRelative.RESET;
-                            EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER(Relation, 'Father');
-                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
-                            EmployeeRelativePage.RUN;
-                            CurrPage.UPDATE;
                             UserSetup.Reset();
-                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            UserSetup.SetFilter("User ID", '%1', USERID);
                             if not UserSetup.FindFirst() then begin
                                 UserSetup.Init();
                                 UserSetup.Validate("User ID", UserId);
+                                UserSetup.Insert();
 
                             end
                             else begin
@@ -392,6 +386,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                 UserSetup.Modify();
 
                             end;
+
+                            EmployeeRelative.RESET;
+                            EmployeeRelative.SETFILTER("Employee No.", "No.");
+                            EmployeeRelative.SETFILTER(Relation, 'Father');
+                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
+                            EmployeeRelativePage.RUN;
+                            CurrPage.UPDATE;
+
 
 
                         end;
@@ -402,19 +404,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                         DrillDown = true;
                         trigger OnDrillDown()
+                        var
+                            UserSetup: Record "User Setup";
                         begin
-
-                            EmployeeRelative.RESET;
-                            EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER(Relation, 'Mother');
-                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
-                            EmployeeRelativePage.RUN;
-                            CurrPage.UPDATE;
                             UserSetup.Reset();
-                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            UserSetup.SetFilter("User ID", '%1', USERID);
                             if not UserSetup.FindFirst() then begin
                                 UserSetup.Init();
                                 UserSetup.Validate("User ID", UserId);
+                                UserSetup.Insert();
 
                             end
                             else begin
@@ -422,6 +420,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                 UserSetup.Modify();
 
                             end;
+
+                            EmployeeRelative.RESET;
+                            EmployeeRelative.SETFILTER("Employee No.", "No.");
+                            EmployeeRelative.SETFILTER(Relation, 'Mother');
+                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
+                            EmployeeRelativePage.RUN;
+                            CurrPage.UPDATE;
+
                         end;
                     }
                     field("Mother Maiden Name"; "Mother Maiden Name")
@@ -429,18 +435,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                         DrillDown = true;
                         trigger OnDrillDown()
+                        var
+                            UserSetup: Record "User Setup";
                         begin
-                            EmployeeRelative.RESET;
-                            EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER(Relation, 'Mother');
-                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
-                            EmployeeRelativePage.RUN;
-                            CurrPage.UPDATE;
                             UserSetup.Reset();
-                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            UserSetup.SetFilter("User ID", '%1', USERID);
                             if not UserSetup.FindFirst() then begin
                                 UserSetup.Init();
                                 UserSetup.Validate("User ID", UserId);
+                                UserSetup.Insert();
 
                             end
                             else begin
@@ -448,6 +451,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                 UserSetup.Modify();
 
                             end;
+                            EmployeeRelative.RESET;
+                            EmployeeRelative.SETFILTER("Employee No.", "No.");
+                            EmployeeRelative.SETFILTER(Relation, 'Mother');
+                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
+                            EmployeeRelativePage.RUN;
+                            CurrPage.UPDATE;
+
+
+
 
                         end;
                     }
@@ -476,19 +488,16 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                         DrillDown = true;
                         trigger OnDrillDown()
+                        var
+                            UserSetup: Record "User Setup";
                         begin
 
-                            EmployeeRelative.RESET;
-                            EmployeeRelative.SETFILTER("Employee No.", "No.");
-                            EmployeeRelative.SETFILTER(Relation, 'Spouse');
-                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
-                            EmployeeRelativePage.RUN;
-                            CurrPage.UPDATE;
                             UserSetup.Reset();
-                            UserSetup.SetFilter(UserId, '%1', UserId);
+                            UserSetup.SetFilter("User ID", '%1', USERID);
                             if not UserSetup.FindFirst() then begin
                                 UserSetup.Init();
                                 UserSetup.Validate("User ID", UserId);
+                                UserSetup.Insert();
 
                             end
                             else begin
@@ -496,6 +505,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                                 UserSetup.Modify();
 
                             end;
+
+                            EmployeeRelative.RESET;
+                            EmployeeRelative.SETFILTER("Employee No.", "No.");
+                            EmployeeRelative.SETFILTER(Relation, 'Spouse');
+                            EmployeeRelativePage.SETTABLEVIEW(EmployeeRelative);
+                            EmployeeRelativePage.RUN;
+                            CurrPage.UPDATE;
+
 
                         end;
                     }
@@ -2100,6 +2117,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Lookup = true;
                 DrillDown = true;
                 trigger OnLookup(var Text: Text): Boolean
+
+
                 var
                     UserSetup: Record "User Setup";
                     UserSetupPage: page "User Setup";
