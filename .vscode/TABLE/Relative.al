@@ -3,11 +3,10 @@ tableextension 50147 Relative_ext extends Relative
     fields
     {
         // Add changes to table fields here
-        field(50000; Sex; Option)
+        field(50000; Sex; enum "Employee Gender")
         {
             Caption = 'Sex';
-            OptionCaption = ' ,Male,Female';
-            OptionMembers = " ",Male,Female;
+
         }
         field(50004; Relation; Option)
         {
