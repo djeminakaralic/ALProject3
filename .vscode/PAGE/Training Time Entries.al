@@ -22,7 +22,6 @@ page 50067 "Training Time Entries"
 
                 }
                 field(TypeOF; TypeOF) { }
-                field("Type of name"; "Type of name") { }
                 field(Type; Type)
                 {
 

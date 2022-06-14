@@ -1,7 +1,7 @@
 report 50051 "Izvjestaj starosne strukture"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Izvjestaj starosne strukture.rdlc';
+    RDLCLayout = './Izvjestaj starosne strukture.rdl';
 
     dataset
     {

@@ -2748,6 +2748,7 @@ tableextension 50071 EmployeeExtension extends Employee
                     "Municipality Name of Birth" := Municipality.Name;
                     VALIDATE("City of Birth", Municipality.City);
                     VALIDATE("Place of birth", Municipality.City);
+                    Municipality.calcfields("Country/Region Code");
                     "Country/Region Code of Birth" := Municipality."Country/Region Code";
                 END;
                 IF "Municipality Code of Birth" = '' THEN
@@ -3054,7 +3055,9 @@ tableextension 50071 EmployeeExtension extends Employee
         managerFull: Text;
         RoleCode: Code[30];
         RoleName: Text[250];
+
         Education: Record "Additional Education";
+
 
         positionMenuOrginal: Record "Position Menu";
         OldPrezime: Record "Employee Surname";
