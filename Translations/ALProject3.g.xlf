@@ -7034,7 +7034,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type of name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 791684153 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vrsta treninga/edukacije</source>
+          <source>Vrsta treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field TypeOF - Property Caption</note>
         </trans-unit>
@@ -15518,11 +15518,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 3275839077 - Field 3209631778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Naziv vrste treninga</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type of training name - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3275839077 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vrsta Treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15647,11 +15642,6 @@
           <source>Interni,Eksterni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type - Property OptionCaption</note>
-        </trans-unit>
-        <trans-unit id="Table 2852338211 - Field 1964727962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Location</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type of name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2852338211 - Field 526622851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location</source>
@@ -34962,11 +34952,6 @@
           <source>Employee Training Ledger</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Employee Trainings Ledger - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Action 2223097449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Prerasporedjeni</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Evidencija prerasporedjenih - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Izvjestaj starosne strukture</source>

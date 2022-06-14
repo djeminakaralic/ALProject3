@@ -34,9 +34,10 @@ table 50033 "Training Catalogue"
         }
 
 
-        field(6; TypeOF; enum "Type of Trainings")
+        field(6; TypeOF; Code[20])
         {
             Caption = 'Vrsta Treninga';
+            TableRelation = "Training Type";
         }
         field(7; Year; Integer)
         {

@@ -119,11 +119,11 @@ table 50044 "Training Time Entry"
             FieldClass = FlowField;
             CalcFormula = count("Employee Training Ledger" where(Code2Entry = field(Code)));
         }
-        field(22; TypeOF; enum "Type of Trainings")
+        field(22; TypeOF; code[20])
         {
             Caption = 'Location';
-            FieldClass = FlowField;
-            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
+            /*FieldClass = FlowField;
+            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));*/
 
         }
 

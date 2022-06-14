@@ -131,9 +131,15 @@ table 50057 "Employee Training Ledger"
 
 
         }
-        field(22; TypeOF; enum "Type of Trainings")
+        field(22; TypeOF; code[20])
         {
-            Caption = 'Location';
+            Caption = 'Vrsta treninga';
+            TableRelation = "Training Type";
+        }
+        field(23; "Type of name"; code[20])
+        {
+            Caption = 'Naziv vrste treninga';
+            TableRelation = "Training Type";
         }
 
 
@@ -147,6 +153,7 @@ table 50057 "Employee Training Ledger"
     var
         TC: Record "Training Time Entry";
         TrainingCatalogue: record "Training Catalogue";
+
 
 }
 
