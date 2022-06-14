@@ -23777,7 +23777,7 @@
           <source>Employee Absence</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Property Caption</note>
-        </trans-unit>
+        </trans-unit>F
         <trans-unit id="Page 3164093577 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set filters do not allow entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -28122,6 +28122,11 @@
           <source>Isplatnica</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Isplatnica - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izvjestaj starosne strukture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosne strukture - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2809061718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lock Calculation</source>
@@ -34938,6 +34943,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Employee Trainings Ledger - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Izvjestaj starosne strukture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvjestaj starosne strukture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 3074316842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Ažuriraj staž</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -37704,7 +37714,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee_Relative_Ext - Field Sex - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 433160313 - Field 2087999386 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 10849778">
-          <source> ,Male,Female</source>
+          <source> ,Muško,Žensko</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Employee_Relative_Ext - Field Sex - Property OptionCaption</note>
         </trans-unit>
