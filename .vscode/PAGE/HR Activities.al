@@ -297,27 +297,27 @@ page 50066 "HR activities"
                     ApplicationArea = all;
                 }
             }
-            cuegroup("Potential Employees1")
-            {
-                Caption = 'Potential Employees2';
-                Visible = false;
+            /*  cuegroup("Potential Employees1")
+              {
+                  Caption = 'Potential Employees2';
+                  Visible = false;
 
 
-                field("Invited to Interview"; "Invited to Interview")
-                {
-                    ApplicationArea = all;
-                }
-                field("Appropriate Candidates"; "Appropriate Candidates")
-                {
-                    ApplicationArea = all;
-                }
-                field("Inappropriate Candidates"; "Inappropriate Candidates")
-                {
-                    ApplicationArea = all;
-                }
+                  field("Invited to Interview"; "Invited to Interview")
+                  {
+                      ApplicationArea = all;
+                  }
+                  field("Appropriate Candidates"; "Appropriate Candidates")
+                  {
+                      ApplicationArea = all;
+                  }
+                  field("Inappropriate Candidates"; "Inappropriate Candidates")
+                  {
+                      ApplicationArea = all;
+                  }
 
 
-            }
+              }*/
             cuegroup(Trainings1)
             {
                 Caption = 'Trainings';
@@ -384,7 +384,7 @@ page 50066 "HR activities"
                      ApplicationArea = all;
                  }
                  field(ClosedPosting; ClosedPosting)
-                 {
+                 {xd
                      ApplicationArea = all;
                  }
              }
@@ -447,31 +447,31 @@ page 50066 "HR activities"
                         ApplicationArea = all;
                     }
                 */
-            cuegroup("Disciplinary Measures")
-            {
-                Caption = 'Disciplinary Measures';
-                Visible = show;
+            /* cuegroup("Disciplinary Measures")
+             {
+                 Caption = 'Disciplinary Measures';
+                 Visible = show;
 
-                field("Active Measures"; "Active Measures")
-                {
-                    ApplicationArea = all;
-                }
-                field("Expirings Measures"; "Expirings Measures")
-                {
-                    ApplicationArea = all;
-                }
+                 field("Active Measures"; "Active Measures")
+                 {
+                     ApplicationArea = all;
+                 }
+                 field("Expirings Measures"; "Expirings Measures")
+                 {
+                     ApplicationArea = all;
+                 }
 
-                actions
-                {
-                    action("<Page Training Catalogue11>")
-                    {
-                        Caption = 'NewEmployee99';
-                        RunObject = Page "Employee Card";
-                        RunPageMode = Create;
-                    }
+                 actions
+                 {
+                     action("<Page Training Catalogue11>")
+                     {
+                         Caption = 'NewEmployee99';
+                         RunObject = Page "Employee Card";
+                         RunPageMode = Create;
+                     }
 
-                }
-            }
+                 }
+             }*/
 
         }
     }
