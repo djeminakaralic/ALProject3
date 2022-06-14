@@ -1,7 +1,7 @@
 report 50052 "Evidencija prerasporedjenih"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Evidencija prerasporedjenih.rdlc';
+    RDLCLayout = './Evidencija prerasporedjenih.rdl';
 
     dataset
     {

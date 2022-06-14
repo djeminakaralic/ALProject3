@@ -376,6 +376,20 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
 
+            action("Evidencija prerasporedjenih")
+            {
+                Caption = 'Izvjestaj prerasporedjenih';
+                Image = Report;
+                ApplicationArea = all;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Izvjestaj starosne strukture";
+
+
+            }
+
+
             /*action("Create Worksheet")
             {
                 Caption = 'Create Worksheet';
