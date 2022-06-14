@@ -362,18 +362,6 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
 
-            action("Evidencija prerasporedjenih")
-            {
-                Caption = 'Evidencija prerasporedjenih';
-
-                Image = Ledger;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = report "Evidencija prerasporedjenih";
-
-
-            }
             action("Izvjestaj starosne strukture")
             {
                 Caption = 'Izvjestaj starosne strukture';
