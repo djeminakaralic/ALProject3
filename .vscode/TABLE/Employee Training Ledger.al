@@ -152,12 +152,7 @@ table 50057 "Employee Training Ledger"
         field(15; Grade; Integer)
         {
             Caption = 'Grade';
-            trigger OnValidate()
-            begin
-                if (Grade < 0) and (Grade > 10) then begin
-                    Error('Unos koji ste naveli je izvan opsega 1-10.');
-                end;
-            end;
+
         }
         field(16; Status; Option)
         {
