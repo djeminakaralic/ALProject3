@@ -68,7 +68,7 @@ xmlport 50004 "Employees Import"
                     EmpVec.SetFilter("First Name", '%1', ime);
                     EmpVec.SetFilter("Last Name", '%1', Prezime);
                     if EmpVec.FindFirst() then begin
-                        Message('Već postoji zaposlenik sa imenom i prezimenom' + format(EmpVec."No."))
+                        //    Message('Već postoji zaposlenik sa imenom i prezimenom' + format(EmpVec."No."))
                     end
                     else begin
 
