@@ -4,6 +4,7 @@ page 50058 "Trainings Catalogue"
     Caption = 'Katalog treninga';
     PageType = List;
     SourceTable = "Training Catalogue";
+    RefreshOnActivate = true;
 
 
     layout

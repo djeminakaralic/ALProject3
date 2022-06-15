@@ -677,7 +677,7 @@ table 50085 "HR Cue"
         field(50092; "Training Entry"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Training Time Entry" where("Start date" = field(DateCatalogue)));
+            CalcFormula = Count("Training Time Entry");
             Caption = 'Održavanje treninga/edukacija';
 
 

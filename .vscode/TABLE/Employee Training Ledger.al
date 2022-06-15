@@ -5,6 +5,8 @@ table 50057 "Employee Training Ledger"
     DrillDownPageId = "Employee Trainings Ledger";
 
 
+
+
     fields
     {
 
@@ -12,6 +14,7 @@ table 50057 "Employee Training Ledger"
         {
             AutoIncrement = true;
             Caption = 'Code';
+            Editable = false;
 
 
         }
@@ -19,11 +22,13 @@ table 50057 "Employee Training Ledger"
         {
             Caption = 'Employee No.';
             TableRelation = Employee."No.";
+
+
         }
         field(3; Code2Entry; Integer)
         {
             Caption = 'Training time entry code';
-            TableRelation = "Training Time Entry".Code;
+            TableRelation = "Training Time Entry";
             trigger OnValidate()
             begin
                 TC.Reset();
@@ -56,35 +61,41 @@ table 50057 "Employee Training Ledger"
         field(4; Code3Catalogue; Integer)
         {
             Caption = 'Training Catalogue Code';
+            Editable = false;
 
         }
         field(5; Name; Text[250])
         {
             Caption = 'Traning Name';
+            Editable = false;
 
 
         }
         field(6; Type; Option)
         {
-            OptionMembers = Interni,Eksterni;
+            OptionMembers = " ",Interni,Eksterni;
             Caption = 'Type';
+            Editable = false;
 
 
         }
         field(7; Location; Text[250])
         {
             Caption = 'Location';
+            Editable = false;
 
         }
-        field(8; Month; Text[50])
+        field(8; Month; Enum Month)
         {
             Caption = 'Month';
+            Editable = false;
 
         }
 
         field(9; "Start date of certificate"; Date)
         {
             Caption = 'Start date of certificate';
+            Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Training Time Entry"."End date" where(Code = field(Code2Entry)));
 
@@ -95,7 +106,7 @@ table 50057 "Employee Training Ledger"
             trigger OnValidate()
             begin
                 if ("End date of certificate" < "Start date of certificate") then
-                    Error('"End date" can not be before "Start date."');
+                    Error('Datum kraja važenja certifikata ne može biti manji od datuma početka avženja certifikata.');
             end;
 
         }
@@ -108,17 +119,28 @@ table 50057 "Employee Training Ledger"
         field(12; "Mandatory"; Boolean)
         {
             Caption = 'Mandatory';
+            trigger OnValidate()
+            begin
+                if Mandatory = true then begin
+
+                    Attended := true;
+
+                end;
+            end;
 
         }
         field(13; "Employee Name"; Text[50])
         {
             Caption = 'Employee Name';
             FieldClass = FlowField;
+            Editable = false;
             CalcFormula = lookup(Employee."First Name" where("No." = field("Employee No.")));
+
         }
         field(14; "Employee Last Name"; Text[50])
         {
             Caption = 'Employee Last Name';
+            Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup(Employee."Last Name" where("No." = field("Employee No.")));
 
@@ -126,10 +148,16 @@ table 50057 "Employee Training Ledger"
         field(15; Grade; Integer)
         {
             Caption = 'Grade';
+            trigger OnValidate()
+            begin
+                if (Grade < 0) and (Grade > 10) then begin
+                    Error('Unos koji ste naveli je izvan opsega 1-10.');
+                end;
+            end;
         }
         field(16; Status; Option)
         {
-            OptionMembers = "In progress",Finished,"In preparation";
+            OptionMembers = " ","In progress",Finished,"In preparation";
             Caption = 'Status';
 
 
@@ -138,11 +166,13 @@ table 50057 "Employee Training Ledger"
         {
             Caption = 'Vrsta treninga';
             TableRelation = "Training Type";
+            Editable = false;
         }
-        field(23; "Type of name"; code[20])
+        field(23; "Type of name"; Text[250])
         {
             Caption = 'Naziv vrste treninga';
             TableRelation = "Training Type";
+            Editable = false;
         }
 
 

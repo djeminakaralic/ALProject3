@@ -5,6 +5,7 @@ page 50070 "Employee Trainings Ledger"
     Caption = 'Employee Training Ledger';
     PageType = List;
     SourceTable = "Employee Training Ledger";
+    RefreshOnActivate = true;
 
 
     layout
