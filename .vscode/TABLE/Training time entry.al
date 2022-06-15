@@ -185,8 +185,8 @@ table 50044 "Training Time Entry"
         {
             Caption = 'Naziv vrste treninga';
             Editable = false;
-            FieldClass = FlowField;
-            CalcFormula = lookup("Training Catalogue"."Type of name" where(Code = field(Code2)));
+
+
 
 
         }
