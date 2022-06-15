@@ -143,7 +143,11 @@ report 50109 VacationDecision
             {
 
             }
-            column(Used_Days; "Used Days")
+            column(Used_Days; Used_Days)
+            {
+
+            }
+            column(Director; Director)
             {
 
             }
@@ -168,6 +172,14 @@ report 50109 VacationDecision
                 EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
 
+                Position.Reset();
+                Position.SetFilter("Management Level", '%1', Position."Management Level"::CEO);
+                if Position.FindFirst()
+                then begin
+                    Position.CalcFields("Employee Name", "Employee Last Name");
+                    Director := Position."Employee Name";
+                end;
+
 
                 EmployeeRec.Reset();
                 EmployeeRec.SetFilter("No.", '%1', DataItem5."Employee No.");
@@ -176,6 +188,20 @@ report 50109 VacationDecision
                     FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day") / EmployeeRec."Hours In Day");
                     DrugiDioDana := "Total days" - FirstPart;
                 end;
+
+                EmployeeAbsence.Reset();
+                EmployeeAbsence.SetFilter("Employee No.", '%1', DataItem5."Employee No.");
+                EmployeeAbsence.SetFilter("Vacation from Year", '%1', DataItem5.Year);
+                if EmployeeAbsence.Find() then
+                    repeat
+
+                        Used_Days := EmployeeAbsence.Count;
+
+                    until EmployeeAbsence.Next() = 0;
+
+
+
+
 
 
 
@@ -270,6 +296,10 @@ report 50109 VacationDecision
 
 
         Vacation: Record "Vacation Ground 2";
+        Director: Text;
+        Position: Record "Head Of's";
+        Used_Days: Integer;
+        EmployeeAbsence: record "Employee Absence";
 
 
 

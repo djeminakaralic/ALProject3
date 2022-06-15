@@ -5,6 +5,11 @@ page 50270 "Training Types"
     PageType = List;
     SourceTable = "Training Type";
     //UsageCategory = Administration;
+    //UsageCategory = Lists;
+    //ApplicationArea = all;
+    InsertAllowed = true;
+    RefreshOnActivate = true;
+
 
     layout
     {
@@ -15,11 +20,13 @@ page 50270 "Training Types"
                 ShowCaption = false;
                 field("Code"; Code)
                 {
+                    Caption = 'Code';
                     ApplicationArea = all;
 
                 }
                 field(Description; Description)
                 {
+                    Caption = 'Description';
                     ApplicationArea = all;
 
                 }
@@ -42,6 +49,7 @@ page 50270 "Training Types"
 
     actions
     {
+
     }
 }
 

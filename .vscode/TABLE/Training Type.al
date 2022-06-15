@@ -2,6 +2,7 @@ table 50218 "Training Type"
 {
     Caption = 'Training Type';
     LookupPageID = "Training Types";
+    DrillDownPageId = "Training Types";
 
     fields
     {

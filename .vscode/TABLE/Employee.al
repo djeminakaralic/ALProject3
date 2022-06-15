@@ -2778,6 +2778,7 @@ tableextension 50071 EmployeeExtension extends Employee
                 Municipality.RESET;
                 Municipality.SETFILTER(Code, "Municipality Code of Birth");
                 IF Municipality.FINDFIRST THEN BEGIN
+                    Municipality.CalcFields("Country/Region Code");
                     "Municipality Name of Birth" := Municipality.Name;
                     VALIDATE("City of Birth", Municipality.City);
                     VALIDATE("Place of birth", Municipality.City);

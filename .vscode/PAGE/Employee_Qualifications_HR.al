@@ -5,6 +5,7 @@ page 50213 Employee_Qualifications_HR
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Employee Qualification";
+    RefreshOnActivate = true;
 
     layout
     {
@@ -87,6 +88,10 @@ page 50213 Employee_Qualifications_HR
                 field("Evidence of certification"; "Evidence of certification")
                 {
                     ApplicationArea = all;
+                }
+                field("Expiration Date"; "Expiration Date")
+                {
+
                 }
                 field(Comment; Comment)
                 {

@@ -6,6 +6,24 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
 
     fields
     {
+        modify("To Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                if "To Date" <= "From Date" then begin
+                    Error('Datum kraja ne može biti manji od datuma početka.');
+                end;
+            end;
+        }
+        modify("Expiration Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                if "Expiration Date" <= "To Date" then begin
+                    Error('Datum isteka certifikata ne može biti manji od datuma početka važenja certifikata.');
+                end;
+            end;
+        }
         // Add changes to table fields here
         field(50000; Active; Boolean)
         {
@@ -142,6 +160,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
             Caption = 'Evidence of certification';
 
         }
+
 
 
 

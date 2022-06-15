@@ -101,6 +101,10 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
         }*/
+        modify("Country/Region Code")
+        {
+            Caption = 'Šifra države';
+        }
         addafter("Country/Region Code")
         {
             field("Municipality Code"; "Municipality Code")
@@ -108,6 +112,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
         }
+
         addafter(Comment)
         {
 
@@ -297,10 +302,25 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify("Misc. Articles &Overview")
+        {
+            Visible = false;
+        }
+        modify("Mi&sc. Article Information")
+        {
+            Visible = false;
+        }
+        modify("Co&nfidential Information")
+        { Visible = false; }
+        modify("Con&fidential Info. Overview")
+        {
+            Visible = false;
+        }
         /*modify(Contact)
         {
             Visible = false;
         }*/
+
 
 
 
@@ -353,6 +373,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                 end;
             }
 
+
             /*action("Import Worksheet")
             {
                 Caption = 'Import Worksheete';
@@ -379,43 +400,49 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
 
-            action("Izvjestaj starosne strukture")
+            group(Izvještaji)
             {
-                Caption = 'Izvjestaj starosne strukture';
-
-                Image = Ledger;
-                ApplicationArea = all;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = report "Izvjestaj starosne strukture";
 
 
-            }
 
-            action("Evidencija prerasporedjenih")
-            {
-                Caption = 'Evidencija prerasporedjenih';
-                Image = Report;
-                ApplicationArea = all;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = report "Evidencija prerasporedjenih";
+                action("Izvjestaj starosne strukture")
+                {
+                    Caption = 'Izvještaj starosne strukture';
 
-
-            }
-            action("Izvjestaj za trening")
-            {
-                Caption = 'Izvjestaj za trening';
-                Image = Report;
-                ApplicationArea = all;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = report "Izvjestaj za_trening";
+                    Image = Ledger;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Izvjestaj starosne strukture";
 
 
+                }
+
+                action("Evidencija preraspoređeni")
+                {
+                    Caption = 'Evidencija preraspoređeni';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Evidencija preraspoređeni";
+
+
+                }
+                action("Izvjestaj za trening")
+                {
+                    Caption = 'Izvještaj za trening';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Izvjestaj za_trening";
+
+
+                }
             }
 
             /*action("Create Worksheet")
