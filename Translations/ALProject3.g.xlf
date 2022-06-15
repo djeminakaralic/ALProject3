@@ -37533,11 +37533,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Evidence of certification - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3318887637 - Field 3310790758 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
-          <source>,Certifikat,Atest,Potvrda,Uvjerenje</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Evidence of certification - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3318887637 - Field 713106971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
           <source>Exam Passed</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39307,6 +39302,31 @@
           <source>Work in shifts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Shift Work - EnumValue Work in shifts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2086471295 - EnumValue 3478138521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Atest</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type certificate - EnumValue Atest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2086471295 - EnumValue 1906891756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certifikat</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type certificate - EnumValue Certifikat - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2086471295 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type certificate - EnumValue Empty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2086471295 - EnumValue 3362533310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Potvrda</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type certificate - EnumValue Potvrda - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2086471295 - EnumValue 993609958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uvjerenje</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Type certificate - EnumValue Uvjerenje - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3960065713 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Empty</source>
