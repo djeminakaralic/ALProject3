@@ -107,7 +107,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Prerasporedeni</Value>
+                                  <Value>Preraspoređeni</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -669,24 +669,21 @@
                   <TextRuns>
                     <TextRun>
                       <Value>Datum i vijeme pokretanja izvještaja: </Value>
-                      <Style />
+                      <Style>
+                        <Format>g</Format>
+                      </Style>
                     </TextRun>
                     <TextRun>
                       <Value>=Globals!ExecutionTime</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>User: </Value>
-                      <Style />
+                      <Style>
+                        <Format>g</Format>
+                      </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=User!UserID</Value>
-                      <Style />
+                      <Value>h</Value>
+                      <Style>
+                        <Format>g</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
@@ -695,8 +692,8 @@
               <rd:DefaultName>Textbox4</rd:DefaultName>
               <Top>0.51333in</Top>
               <Left>0.64667in</Left>
-              <Height>0.375in</Height>
-              <Width>4.78333in</Width>
+              <Height>0.20833in</Height>
+              <Width>4.375in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -782,7 +779,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>EVIDENCIJA PRERASPOREĐENIH</Value>
+                      <Value>EVIDENCIJA PRERASPOREĐENI</Value>
                       <Style>
                         <FontSize>24pt</FontSize>
                       </Style>
@@ -813,9 +810,9 @@
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>0.51333in</Top>
-              <Left>7.41334in</Left>
-              <Height>0.35in</Height>
-              <Width>2.98333in</Width>
+              <Left>7.17167in</Left>
+              <Height>0.66944in</Height>
+              <Width>3.225in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -823,6 +820,40 @@
                 </Border>
               </Style>
             </Image>
+            <Textbox Name="Textbox7">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>User: </Value>
+                      <Style />
+                    </TextRun>
+                    <TextRun>
+                      <Value>=User!UserID</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox7</rd:DefaultName>
+              <Top>0.74944in</Top>
+              <Left>0.64667in</Left>
+              <Height>0.25833in</Height>
+              <Width>2.91666in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -842,7 +873,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Globals!OverallPageNumber</Value>
+                      <Value>="Stranica "&amp;Globals!OverallPageNumber</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -851,9 +882,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.35278in</Top>
-              <Left>8.64667in</Left>
+              <Left>9.26335in</Left>
               <Height>0.3in</Height>
-              <Width>1.525in</Width>
+              <Width>0.90833in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
