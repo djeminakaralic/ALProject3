@@ -80,19 +80,19 @@ report 50054 "Izvjestaj za_trening"
                 //ZA DATUM DA ISPISE IME MJESECA I GODINU
                 Datum := FORMAT("To Date", 0, '<Month Text> <year4>');
 
-                /*IF "Proof Of Education" = 0 THEN
+                IF "Evidence of certification" = "Evidence of certification"::Empty THEN
                     VarDokazEdukacije := ' '
                 ELSE
-                    IF "Proof Of Education" = 1 THEN
+                    IF "Evidence of certification" = "Evidence of certification"::Certifikat THEN
                         VarDokazEdukacije := 'Certifikat'
                     ELSE
-                        IF "Proof Of Education" = 2 THEN
+                        IF "Evidence of certification" = "Evidence of certification"::Atest THEN
                             VarDokazEdukacije := 'Atest'
                         ELSE
-                            IF "Proof Of Education" = 3 THEN
+                            IF "Evidence of certification" = "Evidence of certification"::Uvjerenje THEN
                                 VarDokazEdukacije := 'Uvjerenje'
                             ELSE
-                                VarDokazEdukacije := 'Potvrda';*/
+                                VarDokazEdukacije := 'Potvrda';
 
                 CompInfo.GET;
                 CompInfo.CALCFIELDS(Picture);
