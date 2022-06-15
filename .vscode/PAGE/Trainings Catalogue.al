@@ -5,6 +5,7 @@ page 50058 "Trainings Catalogue"
     PageType = List;
     SourceTable = "Training Catalogue";
     RefreshOnActivate = true;
+    InsertAllowed = true;
 
 
     layout
@@ -23,8 +24,8 @@ page 50058 "Trainings Catalogue"
                 {
 
                     trigger OnValidate()
-                    var
-                        Trainingtype: Record "Training Type";
+
+
 
                     begin
                         Trainingtype.Reset();
@@ -55,4 +56,6 @@ page 50058 "Trainings Catalogue"
 
 
     }
+    var
+        Trainingtype: Record "Training Type";
 }
