@@ -177,7 +177,7 @@ report 50109 VacationDecision
                 if Position.FindFirst()
                 then begin
                     Position.CalcFields("Employee Name", "Employee Last Name");
-                    Director := Position."Employee Name" + ' ' + Position."Employee Last Name";
+                    Director := Position."Employee Name";
                 end;
 
 

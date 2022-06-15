@@ -15519,7 +15519,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 3275839077 - Field 1964727962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type of name</source>
+          <source>Naziv vrste treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type of name - Property Caption</note>
         </trans-unit>
@@ -16577,11 +16577,6 @@
           <source>Total Days</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Total days - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2891291690 - Field 1970272980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Used Days</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Used Days - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2891291690 - Field 993373283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Used days at previous employer</source>
