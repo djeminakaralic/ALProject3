@@ -5,16 +5,16 @@ report 50041 "Update Data"
 
     dataset
     {
-        dataitem(DataItemName; "Employee Contract Ledger")
+        dataitem(DataItemName; "Alternative Address")
         {
             trigger OnAfterGetRecord()
             begin
 
-                /*   DataItemName.Active := true;
-                   DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
-                   DataItemName.Address := '';
-                   DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
-                   DataItemName.Modify();*/
+                DataItemName.Active := true;
+                DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
+                DataItemName.Address := '';
+                DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
+                DataItemName.Modify();
 
                 /*   PosM.Reset();
                    PosM.SetFilter(Description, '%1', DataItemName.Description);
@@ -35,15 +35,15 @@ report 50041 "Update Data"
 
                    end;
    */
-                DataItemName.Validate("Position Description", DataItemName."Position Description");
-                DataItemName.Modify();
+                /*   DataItemName.Validate("Position Description", DataItemName."Position Description");
+                   DataItemName.Modify();*/
 
 
-                /*Emp.Reset();
+                Emp.Reset();
                 Emp.SetFilter("No.", '%1', DataItemName."Employee No.");
                 if Emp.FindFirst() then
                     Emp."Hours In Day" := 8;
-                Emp.Modify();*/
+                Emp.Modify();
             end;
 
 
