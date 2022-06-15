@@ -156,6 +156,9 @@ table 50044 "Training Time Entry"
             CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
 
 
+
+
+
         }
         field(23; "Type of name"; Text[250])
         {
