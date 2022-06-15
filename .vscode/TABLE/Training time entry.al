@@ -163,13 +163,14 @@ table 50044 "Training Time Entry"
 
             trigger OnValidate()
             var
+                Trainingtype: Record "Training Type";
 
             begin
-                Catalogue.Reset();
-                Catalogue.SetFilter(TypeOF, '%1', TypeOF);
-                if Catalogue.FindFirst() then begin
-                    Catalogue.CalcFields("Type of name");
-                    "Type of name" := Catalogue."Type of name";
+                Trainingtype.Reset();
+                Trainingtype.SetFilter(Code, '%1', TypeOF);
+                if Trainingtype.FindFirst() then begin
+
+                    "Type of name" := Trainingtype.Description;
                 end;
 
             end;
