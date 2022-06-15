@@ -465,6 +465,7 @@ pageextension 50149 EmployeeList extends "Employee List"
     var
         myInt: Integer;
     begin
+        Rec.CalcFields("Position Code");
 
         Ascending;
         EmployeeContractLedger.RESET;

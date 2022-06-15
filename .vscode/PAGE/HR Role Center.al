@@ -166,6 +166,7 @@ page 50003 "HR Role Center"
                 {
                     Caption = 'Position';
                     Image = Position;
+
                     RunObject = Page "Positions";
                     ApplicationArea = all;
                 }

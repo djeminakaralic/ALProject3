@@ -710,26 +710,13 @@ tableextension 50071 EmployeeExtension extends Employee
             OptionMembers = " ",M,S,D,W,P;
         }
 
-        field(50150; "Position Code"; Code[10])
+        field(50150; "Position Code"; Code[20])
         {
 
-            Caption = 'Position Code';
-            TableRelation = Position.Code;
 
-            trigger OnValidate()
-            begin
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Code" where("Employee No." = FIELD("No."), Active = const(true)));
 
-                //IF "Position Code"<>'' THEN BEGIN
-                /*ĐK  position.GET("Position Code");
-                  "Job Position" := position.Description;*/
-                MODIFY(TRUE);
-                //END
-                /*ELSE  BEGIN
-                  "Job Position":='';
-                  MODIFY(TRUE);
-                   END;   */
-
-            end;
         }
         field(50198; "Transport Allowance"; Boolean)
         {
