@@ -19,11 +19,13 @@ page 50270 "Training Types"
                 ShowCaption = false;
                 field("Code"; Code)
                 {
+                    Caption = 'Code';
                     ApplicationArea = all;
 
                 }
                 field(Description; Description)
                 {
+                    Caption = 'Description';
                     ApplicationArea = all;
 
                 }

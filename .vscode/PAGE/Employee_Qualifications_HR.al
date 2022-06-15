@@ -88,6 +88,10 @@ page 50213 Employee_Qualifications_HR
                 {
                     ApplicationArea = all;
                 }
+                field("Expiration Date"; "Expiration Date")
+                {
+
+                }
                 field(Comment; Comment)
                 {
                     ApplicationArea = all;
