@@ -77,10 +77,12 @@ table 50044 "Training Time Entry"
 
         field(12; "Travel cost ino"; Decimal)
         {
+            Caption = 'Troškovi puta inostranstvo';
 
         }
         field(13; "Travel cost home"; Decimal)
         {
+            Caption = 'Troškovi puta u zemlji';
 
         }
         field(14; "Daily rate home"; Decimal)
@@ -93,6 +95,7 @@ table 50044 "Training Time Entry"
         }
         field(16; "Number of days"; Integer)
         {
+            Caption = 'Broj dana';
 
         }
         field(17; "Daily rate home SUM"; Decimal)
@@ -121,11 +124,21 @@ table 50044 "Training Time Entry"
         }
         field(22; TypeOF; code[20])
         {
-            Caption = 'Location';
-            /*FieldClass = FlowField;
-            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));*/
+            Caption = 'Vrsta treninga';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
+
 
         }
+        field(23; "Type of name"; Text[250])
+        {
+            Caption = 'Naziv vrste treninga';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Training Catalogue"."Type of name" where(Code = field(Code2)));
+
+
+        }
+
 
     }
     keys

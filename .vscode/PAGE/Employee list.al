@@ -297,6 +297,20 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify("Misc. Articles &Overview")
+        {
+            Visible = false;
+        }
+        modify("Mi&sc. Article Information")
+        {
+            Visible = false;
+        }
+        modify("Co&nfidential Information")
+        { Visible = false; }
+        modify("Con&fidential Info. Overview")
+        {
+            Visible = false;
+        }
         /*modify(Contact)
         {
             Visible = false;
@@ -352,6 +366,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                     R_BroughtExperience.RUN;
                 end;
             }
+
 
             /*action("Import Worksheet")
             {
