@@ -47,9 +47,10 @@ table 50033 "Training Catalogue"
         field(8; "Type of name"; text[250])
         {
             Caption = 'Naziv vrste treninga';
-            FieldClass = FlowField;
-            CalcFormula = lookup("Training Type".Description where(Code = field(TypeOF)));
+            // FieldClass = FlowField;
+            //   CalcFormula = lookup("Training Type".Description where(Code = field(TypeOF)));
             Editable = false;
+            TableRelation = "Training Type";
 
         }
 

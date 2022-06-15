@@ -19,19 +19,7 @@ table 50044 "Training Time Entry"
         {
             Caption = 'Training catalogue code';
             TableRelation = "Training Catalogue";
-            trigger OnValidate()
-            var
-                Trainingtype: Record "Training Type";
 
-            begin
-                Trainingtype.Reset();
-                Trainingtype.SetFilter(Code, '%1', TypeOF);
-                if Trainingtype.FindFirst() then begin
-
-                    "Type of name" := Trainingtype.Description;
-                end;
-
-            end;
 
 
 
@@ -187,6 +175,10 @@ table 50044 "Training Time Entry"
         {
             Caption = 'Naziv vrste treninga';
             Editable = false;
+            FieldClass = FlowField;
+
+            CalcFormula = lookup("Training Catalogue"."Type of name" where(Code = field(Code2)));
+
 
 
 
