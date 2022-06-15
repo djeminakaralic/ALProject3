@@ -176,7 +176,7 @@ page 50003 "HR Role Center"
                     Image = XMLFile;
                     RunObject = xmlport "Position Import";
                     ApplicationArea = all;
-                    Visible = false;
+                    Visible = true;
                 }
                 action(Vocation)
                 {
