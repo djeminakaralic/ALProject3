@@ -31,6 +31,7 @@ page 50070 "Employee Trainings Ledger"
                 {
 
                 }
+                field(Name; Name) { }
                 field(Type; Type)
                 {
 
@@ -43,7 +44,16 @@ page 50070 "Employee Trainings Ledger"
                 field(Attended; Attended) { }
                 field(Mandatory; Mandatory) { }
                 field(Status; Status) { }
-                field(Grade; Grade) { }
+                field(Grade; Grade)
+                {
+
+                    trigger OnValidate()
+                    begin
+                        if (Grade < 0) or (Grade > 10) then begin
+                            Error('Unos koji ste naveli je izvan opsega 1-10.');
+                        end;
+                    end;
+                }
 
                 field("Start date of certificate"; "Start date of certificate") { }
                 field("End date of certificate"; "End date of certificate") { }

@@ -496,6 +496,13 @@ page 50003 "HR Role Center"
                     Image = "Report";
                     RunObject = Report "Vacation statistics";
                 }
+                action("Vacation")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Vacation Decision';
+                    Image = Report;
+                    RunObject = report VacationDecision;
+                }
 
             }
 
