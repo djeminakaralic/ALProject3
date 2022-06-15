@@ -61,6 +61,7 @@ table 50033 "Training Catalogue"
         }
         field(8; "Type of name"; text[250])
         {
+            Caption = 'Naziv vrste treninga';
 
         }
 

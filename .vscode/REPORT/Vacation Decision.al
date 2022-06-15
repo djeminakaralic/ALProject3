@@ -147,6 +147,10 @@ report 50109 VacationDecision
             {
 
             }
+            column(Director; Director)
+            {
+
+            }
 
 
             trigger OnAfterGetRecord()
@@ -168,6 +172,14 @@ report 50109 VacationDecision
                 EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
 
+                Position.Reset();
+                Position.SetFilter("Management Level", '%1', Position."Management Level"::CEO);
+                if Position.FindFirst()
+                then begin
+                    Position.CalcFields("Employee Name", "Employee Last Name");
+                    Director := Position."Employee Name" + ' ' + Position."Employee Last Name";
+                end;
+
 
                 EmployeeRec.Reset();
                 EmployeeRec.SetFilter("No.", '%1', DataItem5."Employee No.");
@@ -176,6 +188,8 @@ report 50109 VacationDecision
                     FirstPart := (AbsenceFill.GetHourPoolForVacation(DataItem5."Starting Date of I part", DataItem5."Ending Date of I part", EmployeeRec."Hours In Day") / EmployeeRec."Hours In Day");
                     DrugiDioDana := "Total days" - FirstPart;
                 end;
+
+
 
 
 
@@ -270,6 +284,8 @@ report 50109 VacationDecision
 
 
         Vacation: Record "Vacation Ground 2";
+        Director: Text;
+        Position: Record "Head Of's";
 
 
 

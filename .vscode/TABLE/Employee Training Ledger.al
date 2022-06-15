@@ -38,6 +38,7 @@ table 50057 "Employee Training Ledger"
                         Name := TrainingCatalogue.Name;
                         Type := TrainingCatalogue.Type;
                         TypeOF := TrainingCatalogue.TypeOF;
+                        "Type of name" := TrainingCatalogue."Type of name";
 
                         Location := TrainingCatalogue.Location;
                         Month := TrainingCatalogue.Month;
@@ -84,6 +85,8 @@ table 50057 "Employee Training Ledger"
         field(9; "Start date of certificate"; Date)
         {
             Caption = 'Start date of certificate';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Training Time Entry"."End date" where(Code = field(Code2Entry)));
 
         }
         field(10; "End date of certificate"; Date)
