@@ -20,7 +20,7 @@ table 50033 "Training Catalogue"
         }
         field(3; Type; Option)
         {
-            OptionMembers = " ",Interni,Eksterni;
+            OptionMembers = "-",Interni,Eksterni;
             Caption = 'Type';
 
         }
@@ -58,6 +58,7 @@ table 50033 "Training Catalogue"
         {
             Caption = 'Naziv vrste treninga';
             TableRelation = "Training Type";
+            Editable = false;
 
         }
 

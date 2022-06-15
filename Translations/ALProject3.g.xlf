@@ -7019,7 +7019,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 791684153 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Interni,Eksterni</source>
+          <source>-,Interni,Eksterni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Type - Property OptionCaption</note>
         </trans-unit>
@@ -15514,7 +15514,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3275839077 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Interni,Eksterni</source>
+          <source>-,Interni,Eksterni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Type - Property OptionCaption</note>
         </trans-unit>
@@ -15649,7 +15649,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2852338211 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Interni,Eksterni</source>
+          <source>-,Interni,Eksterni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type - Property OptionCaption</note>
         </trans-unit>

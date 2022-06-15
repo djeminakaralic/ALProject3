@@ -73,7 +73,7 @@ table 50057 "Employee Training Ledger"
         }
         field(6; Type; Option)
         {
-            OptionMembers = " ",Interni,Eksterni;
+            OptionMembers = "-",Interni,Eksterni;
             Caption = 'Type';
             Editable = false;
 

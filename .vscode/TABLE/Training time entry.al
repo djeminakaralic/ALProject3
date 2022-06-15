@@ -19,6 +19,12 @@ table 50044 "Training Time Entry"
         {
             Caption = 'Training catalogue code';
             TableRelation = "Training Catalogue";
+
+            trigger OnValidate()
+            begin
+                Catalogue.Reset();
+                Catalogue.CalcFields("Type of name");
+            end;
         }
         field(3; Name; Text[250])
         {
@@ -30,7 +36,7 @@ table 50044 "Training Time Entry"
         }
         field(4; Type; Option)
         {
-            OptionMembers = " ",Interni,Eksterni;
+            OptionMembers = "-",Interni,Eksterni;
             Editable = false;
             Caption = 'Type';
             FieldClass = FlowField;
@@ -159,6 +165,8 @@ table 50044 "Training Time Entry"
 
 
 
+
+
         }
         field(23; "Type of name"; Text[250])
         {
@@ -187,5 +195,8 @@ table 50044 "Training Time Entry"
         {
         }
     }
+
+    var
+        Catalogue: Record "Training Catalogue";
 
 }
