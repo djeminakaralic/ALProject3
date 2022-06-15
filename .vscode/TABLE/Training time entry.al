@@ -23,8 +23,21 @@ table 50044 "Training Time Entry"
             trigger OnValidate()
             begin
                 Catalogue.Reset();
-                Catalogue.CalcFields("Type of name");
+                Catalogue.SetFilter(code, '%1', Code2);
+                if Catalogue.FindFirst() then begin
+                    if Catalogue."Type of name" <> '' then begin
+                        "Type of name" := Catalogue."Type of name";
+                    end
+                    else begin
+                        "Type of name" := '';
+
+                    end
+
+
+                end;
             end;
+
+
         }
         field(3; Name; Text[250])
         {
