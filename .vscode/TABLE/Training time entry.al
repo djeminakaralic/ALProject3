@@ -25,6 +25,7 @@ table 50044 "Training Time Entry"
 
 
 
+
         }
         field(3; Name; Text[250])
         {
