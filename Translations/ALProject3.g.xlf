@@ -34984,7 +34984,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvještaji - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2223097449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Evidencija prerasporedjenih</source>
+          <source>Evidencija preraspoređeni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Evidencija prerasporedjenih - Property Caption</note>
         </trans-unit>

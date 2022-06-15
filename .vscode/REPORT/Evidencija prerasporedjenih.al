@@ -1,4 +1,4 @@
-report 50052 "Evidencija prerasporedjenih"
+report 50052 "Evidencija preraspoređeni"
 {
     DefaultLayout = RDLC;
     PreviewMode = Normal;

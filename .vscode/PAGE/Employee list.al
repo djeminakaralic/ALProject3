@@ -417,7 +417,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                 }
 
-                action("Evidencija prerasporedjenih")
+                action("Evidencija preraspoređeni")
                 {
                     Caption = 'Evidencija preraspoređeni';
                     Image = Report;
@@ -425,7 +425,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
-                    RunObject = report "Evidencija prerasporedjenih";
+                    RunObject = report "Evidencija preraspoređeni";
 
 
                 }
