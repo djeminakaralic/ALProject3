@@ -89,9 +89,9 @@ xmlport 50004 "Employees Import"
                         Department.Reset();
                         Department.SetFilter(Description, '%1', Org);
                         if Department.FindFirst() then begin
-                            if Department."Department Type".AsInteger() in [1, 2, 5] then
+                            if Department."Department Type".AsInteger() in [1, 2] then
                                 EmployeeContract.Validate("Sector Description", Department.Description);
-                            if Department."Department Type".AsInteger() = 3 then
+                            if Department."Department Type".AsInteger() in [3, 5] then
                                 EmployeeContract.Validate("Department Cat. Description", Department.Description);
                             if Department."Department Type".AsInteger() = 4 then
                                 EmployeeContract.Validate("Group Description", Department.Description);
