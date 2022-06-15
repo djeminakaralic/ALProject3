@@ -39,6 +39,7 @@ table 50057 "Employee Training Ledger"
                     TrainingCatalogue.reset;
                     TrainingCatalogue.SetFilter(TrainingCatalogue.Code, '%1', TC.Code2);
                     if TrainingCatalogue.FindFirst() then begin
+                        TrainingCatalogue.CalcFields("Type of name");
                         Code3Catalogue := TrainingCatalogue.Code;
                         Name := TrainingCatalogue.Name;
                         Type := TrainingCatalogue.Type;

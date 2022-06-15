@@ -168,6 +168,7 @@ table 50044 "Training Time Entry"
                 Catalogue.Reset();
                 Catalogue.SetFilter(TypeOF, '%1', TypeOF);
                 if Catalogue.FindFirst() then begin
+                    Catalogue.CalcFields("Type of name");
                     "Type of name" := Catalogue."Type of name";
                 end;
 
