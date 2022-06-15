@@ -43,10 +43,8 @@ table 50033 "Training Catalogue"
                 Training.SetFilter(Code, '%1', TypeOF);
                 if Training.FindFirst() then begin
                     "Type of name" := Training.Description;
-                end
-                else begin
-                    "Type of name" := '';
                 end;
+
             end;
 
 
