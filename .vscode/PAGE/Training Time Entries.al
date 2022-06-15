@@ -29,6 +29,7 @@ page 50067 "Training Time Entries"
                 }
 
                 field(Location; Location) { }
+                field("Location Name"; "Location Name") { }
                 field(Month; Month) { }
                 field("Start date"; "Start date") { }
                 field("End date"; "End date")

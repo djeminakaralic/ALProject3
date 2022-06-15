@@ -23,10 +23,24 @@ table 50033 "Training Catalogue"
             Caption = 'Type';
 
         }
-        field(4; Location; Text[250])
+        field(4; Location; Code[30])
         {
             Caption = 'Location';
             TableRelation = "Country/Region";
+            trigger OnValidate()
+            var
+                Country: Record "Country/Region";
+            begin
+                Country.Reset();
+                Country.SetFilter(Code, '%1', Location);
+                if Country.FindFirst() then begin
+                    "Location Name" := Country.Name;
+                end else begin
+                    "Location Name" := '';
+                end;
+            end;
+
+
 
         }
         field(5; Month; enum Month)
@@ -63,6 +77,13 @@ table 50033 "Training Catalogue"
         field(8; "Type of name"; text[250])
         {
             Caption = 'Naziv vrste treninga';
+
+        }
+        field(9; "Location Name"; Code[30])
+        {
+            Caption = 'Naziv lokazije';
+            TableRelation = "Country/Region";
+            Editable = false;
 
         }
 

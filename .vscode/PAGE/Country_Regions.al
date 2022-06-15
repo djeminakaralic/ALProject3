@@ -1,5 +1,6 @@
 pageextension 50172 Country_Region extends "Countries/Regions"
 {
+
     layout
     {
         // Add changes to page layout here

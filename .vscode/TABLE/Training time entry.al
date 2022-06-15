@@ -37,12 +37,23 @@ table 50044 "Training Time Entry"
             CalcFormula = lookup("Training Catalogue".Type where(Code = field(Code2)));
 
         }
-        field(5; Location; Text[250])
+
+        field(5; Location; Code[30])
         {
             Caption = 'Location';
-            Editable = false;
-            FieldClass = FlowField;
-            CalcFormula = lookup("Training Catalogue".Location where(Code = field(Code2)));
+            TableRelation = "Country/Region";
+            trigger OnValidate()
+            var
+                Country: Record "Country/Region";
+            begin
+                Country.Reset();
+                Country.SetFilter(Code, '%1', Location);
+                if Country.FindFirst() then begin
+                    "Location Name" := Country.Name;
+                end else begin
+                    "Location Name" := '';
+                end;
+            end;
 
         }
         field(6; Month; enum Month)
@@ -152,6 +163,14 @@ table 50044 "Training Time Entry"
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Training Catalogue"."Type of name" where(Code = field(Code2)));
+
+
+        }
+        field(24; "Location Name"; Code[30])
+        {
+            Caption = 'Naziv lokazije';
+            TableRelation = "Country/Region";
+            Editable = false;
 
 
         }
