@@ -6,6 +6,7 @@ page 50066 "HR activities"
     SourceTable = "HR Cue";
     UsageCategory = Lists;
     ApplicationArea = all;
+    RefreshOnActivate = true;
 
 
     layout
