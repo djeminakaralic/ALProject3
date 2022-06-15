@@ -19,6 +19,13 @@ table 50044 "Training Time Entry"
         {
             Caption = 'Training catalogue code';
             TableRelation = "Training Catalogue";
+
+
+
+
+
+
+
         }
         field(3; Name; Text[250])
         {
@@ -30,7 +37,7 @@ table 50044 "Training Time Entry"
         }
         field(4; Type; Option)
         {
-            OptionMembers = " ",Interni,Eksterni;
+            OptionMembers = "-",Interni,Eksterni;
             Editable = false;
             Caption = 'Type';
             FieldClass = FlowField;
@@ -156,13 +163,24 @@ table 50044 "Training Time Entry"
             CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
 
 
+
+
+
+
+
+
+
         }
         field(23; "Type of name"; Text[250])
         {
             Caption = 'Naziv vrste treninga';
             Editable = false;
             FieldClass = FlowField;
+
             CalcFormula = lookup("Training Catalogue"."Type of name" where(Code = field(Code2)));
+
+
+
 
 
         }
@@ -184,5 +202,8 @@ table 50044 "Training Time Entry"
         {
         }
     }
+
+    var
+        Catalogue: Record "Training Catalogue";
 
 }

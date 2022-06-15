@@ -19,7 +19,23 @@ page 50058 "Trainings Catalogue"
                 }
                 field(Name; Name)
                 { }
-                field(TypeOF; TypeOF) { }
+                field(TypeOF; TypeOF)
+                {
+
+                    trigger OnValidate()
+                    var
+                        Trainingtype: Record "Training Type";
+
+                    begin
+                        Trainingtype.Reset();
+                        Trainingtype.SetFilter(Code, '%1', TypeOF);
+                        if Trainingtype.FindFirst() then begin
+
+                            "Type of name" := Trainingtype.Description;
+                        end;
+
+                    end;
+                }
                 field("Type of name"; "Type of name") { }
                 field(Type; Type)
                 {
