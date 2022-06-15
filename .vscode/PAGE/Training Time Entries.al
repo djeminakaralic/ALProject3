@@ -43,6 +43,10 @@ page 50067 "Training Time Entries"
 
                     end;
                 }
+                field("Number of days"; "Number of days")
+                {
+
+                }
                 field(Status; Status) { }
                 field("Number of people"; "Number of people") { }
                 field("Travel cost home"; "Travel cost home") { }
@@ -61,14 +65,7 @@ page 50067 "Training Time Entries"
                         "Daily rate ino SUM" := "Daily rate ino" * "Number of days";
                     end;
                 }
-                field("Number of days"; "Number of days")
-                {
-                    trigger OnValidate()
-                    begin
-                        "Daily rate home SUM" := "Daily rate home" * "Number of days";
-                        "Daily rate ino SUM" := "Daily rate ino" * "Number of days";
-                    end;
-                }
+
                 field("Daily rate home SUM"; "Daily rate home SUM") { }
                 field("Daily rate ino SUM"; "Daily rate ino SUM") { }
                 field(Kotizacija; Kotizacija) { }

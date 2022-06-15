@@ -19,13 +19,14 @@ table 50033 "Training Catalogue"
         }
         field(3; Type; Option)
         {
-            OptionMembers = Interni,Eksterni;
+            OptionMembers = " ",Interni,Eksterni;
             Caption = 'Type';
 
         }
         field(4; Location; Text[250])
         {
             Caption = 'Location';
+            TableRelation = "Country/Region";
 
         }
         field(5; Month; enum Month)

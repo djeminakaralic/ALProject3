@@ -113,12 +113,13 @@ table 50044 "Training Time Entry"
         }
         field(17; "Daily rate home SUM"; Decimal)
         {
+            Editable = false;
 
 
         }
         field(18; "Daily rate ino SUM"; Decimal)
         {
-
+            Editable = false;
 
         }
         field(19; "Kotizacija"; Decimal)
@@ -154,6 +155,7 @@ table 50044 "Training Time Entry"
 
 
         }
+
 
 
     }

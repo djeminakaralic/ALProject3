@@ -14,6 +14,7 @@ table 50057 "Employee Training Ledger"
         {
             AutoIncrement = true;
             Caption = 'Code';
+            Editable = false;
 
 
         }
@@ -27,7 +28,7 @@ table 50057 "Employee Training Ledger"
         field(3; Code2Entry; Integer)
         {
             Caption = 'Training time entry code';
-            TableRelation = "Training Time Entry".Code;
+            TableRelation = "Training Time Entry";
             trigger OnValidate()
             begin
                 TC.Reset();
@@ -147,10 +148,16 @@ table 50057 "Employee Training Ledger"
         field(15; Grade; Integer)
         {
             Caption = 'Grade';
+            trigger OnValidate()
+            begin
+                if (Grade < 0) and (Grade > 10) then begin
+                    Error('Unos koji ste naveli je izvan opsega 1-10.');
+                end;
+            end;
         }
         field(16; Status; Option)
         {
-            OptionMembers = "In progress",Finished,"In preparation";
+            OptionMembers = " ","In progress",Finished,"In preparation";
             Caption = 'Status';
 
 
@@ -159,11 +166,13 @@ table 50057 "Employee Training Ledger"
         {
             Caption = 'Vrsta treninga';
             TableRelation = "Training Type";
+            Editable = false;
         }
-        field(23; "Type of name"; code[20])
+        field(23; "Type of name"; Text[250])
         {
             Caption = 'Naziv vrste treninga';
             TableRelation = "Training Type";
+            Editable = false;
         }
 
 
