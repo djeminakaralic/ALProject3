@@ -64,41 +64,49 @@ xmlport 50004 "Employees Import"
                         Employee.Gender := Employee.Gender::Male;
 
                     Employee."Employee ID" := JMBG;
+                    EmpVec.Reset();
+                    EmpVec.SetFilter("First Name", '%1', ime);
+                    EmpVec.SetFilter("Last Name", '%1', Prezime);
+                    if EmpVec.FindFirst() then begin
+                        Message('Već postoji zaposlenik sa imenom i prezimenom' + format(EmpVec."No."))
+                    end
+                    else begin
 
-                    Employee.Insert();
+                        Employee.Insert();
 
-                    AlternativeAddress.Init();
-                    AlternativeAddress.Validate("Employee No.", Employee."No.");
-                    AlternativeAddress.Validate(Address, 'Zagrebačka 27');
-                    AlternativeAddress.Validate("Municipality Code CIPS", '079');
-                    AlternativeAddress.Insert();
+                        AlternativeAddress.Init();
+                        AlternativeAddress.Validate("Employee No.", Employee."No.");
+                        AlternativeAddress.Validate(Address, 'Zagrebačka 27');
+                        AlternativeAddress.Validate("Municipality Code CIPS", '079');
+                        AlternativeAddress.Insert();
 
-                    EmployeeContract.Init();
-                    EmployeeContract.Validate("Employee No.", Employee."No.");
-                    EmployeeContract.Validate("Org. Structure", 'SIST 1');
-                    EmployeeContract.Validate("Reason for Change", EmployeeContract."Reason for Change"::Migration);
-                    EmployeeContract."Show Record" := true;
+                        EmployeeContract.Init();
+                        EmployeeContract.Validate("Employee No.", Employee."No.");
+                        EmployeeContract.Validate("Org. Structure", 'SIST 1');
+                        EmployeeContract.Validate("Reason for Change", EmployeeContract."Reason for Change"::Migration);
+                        EmployeeContract."Show Record" := true;
 
-                    Department.Reset();
-                    Department.SetFilter(Description, '%1', Org);
-                    if Department.FindFirst() then begin
-                        if Department."Department Type".AsInteger() in [1, 2, 5] then
-                            EmployeeContract.Validate("Sector Description", Department.Description);
-                        if Department."Department Type".AsInteger() = 3 then
-                            EmployeeContract.Validate("Department Cat. Description", Department.Description);
-                        if Department."Department Type".AsInteger() = 4 then
-                            EmployeeContract.Validate("Group Description", Department.Description);
-                        EmployeeContract.Validate("Org Unit Name", 'KJKP “Sarajevogas” d.o.o. Sarajevo');
-                        EmployeeContract.Validate("Position Description", Pozicija);
-                        EmployeeContract.Validate("Starting Date", 20220101D);
+                        Department.Reset();
+                        Department.SetFilter(Description, '%1', Org);
+                        if Department.FindFirst() then begin
+                            if Department."Department Type".AsInteger() in [1, 2, 5] then
+                                EmployeeContract.Validate("Sector Description", Department.Description);
+                            if Department."Department Type".AsInteger() = 3 then
+                                EmployeeContract.Validate("Department Cat. Description", Department.Description);
+                            if Department."Department Type".AsInteger() = 4 then
+                                EmployeeContract.Validate("Group Description", Department.Description);
+                            EmployeeContract.Validate("Org Unit Name", 'KJKP “Sarajevogas” d.o.o. Sarajevo');
+                            EmployeeContract.Validate("Position Description", Pozicija);
+                            EmployeeContract.Validate("Starting Date", 20220101D);
 
-                        EmployeeContract.Insert();
-                    end;
-
-
+                            EmployeeContract.Insert();
+                        end;
 
 
-                END;
+
+
+                    END;
+                end;
 
             }
         }
@@ -168,6 +176,7 @@ xmlport 50004 "Employees Import"
 
     var
         Datum: Date;
+        EmpVec: Record Employee;
         ol: Decimal;
         prevoz: Decimal;
         empno: Integer;
