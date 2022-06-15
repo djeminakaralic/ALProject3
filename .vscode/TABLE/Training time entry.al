@@ -20,22 +20,9 @@ table 50044 "Training Time Entry"
             Caption = 'Training catalogue code';
             TableRelation = "Training Catalogue";
 
-            trigger OnValidate()
-            begin
-                Catalogue.Reset();
-                Catalogue.SetFilter(code, '%1', Code2);
-                if Catalogue.FindFirst() then begin
-                    if Catalogue."Type of name" <> '' then begin
-                        "Type of name" := Catalogue."Type of name";
-                    end
-                    else begin
-                        "Type of name" := '';
-
-                    end
 
 
-                end;
-            end;
+
 
 
         }
@@ -173,6 +160,18 @@ table 50044 "Training Time Entry"
             FieldClass = FlowField;
 
             CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
+
+            trigger OnValidate()
+            var
+
+            begin
+                Catalogue.Reset();
+                Catalogue.SetFilter(TypeOF, '%1', TypeOF);
+                if Catalogue.FindFirst() then begin
+                    "Type of name" := Catalogue."Type of name";
+                end;
+
+            end;
 
 
 
