@@ -548,6 +548,7 @@ page 50222 "Position menu temp"
         HeadOfDelete.RESET;
         HeadOfDelete.SETFILTER("Position Code", '%1', Rec.Code);
         HeadOfDelete.SETFILTER("Position Description", '%1', Rec.Description);
+        HeadOfDelete.SetFilter("ORG Shema", '%1', rec."Org. Structure");
         IF HeadOfDelete.FINDFIRST THEN
             HeadOfDelete.DELETE;
 

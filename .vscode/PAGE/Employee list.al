@@ -28,14 +28,17 @@ pageextension 50149 EmployeeList extends "Employee List"
             field(Gender; Gender) { }
             field("Org Jed"; "Org Jed") { }
             field("Department Code"; "Department Code") { }
+            field("Department Name"; "Department Name") { }
+            field("Group Code"; "Group Code") { }
+            field("Group Description"; "Group Description") { }
             field("Department Category"; "Department Category") { }
             field("Department Cat. Description"; "Department Cat. Description") { }
 
 
             field(Sector; Sector) { }
             field("Sector Description"; "Sector Description") { }
-            field("Department Name"; "Department Name") { }
-            //field("Position Code"; "Position Code") { }
+
+            field("Position Code"; "Position Code") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
             field(Manager1; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
@@ -72,8 +75,15 @@ pageextension 50149 EmployeeList extends "Employee List"
             //field("Contract type"; "Contract type") { }
             // field("Contract Termination Date"; "Contract Termination Date") { }
             field("Education Level"; "Education Level") { }
+            field("Major of Graduation"; "Major of Graduation") { }
+
             field(Voocation; Voocation) { }
             field("Vocation Description"; "Vocation Description") { }
+            field(Title; Title) { }
+            field(Profession; Profession)
+            {
+
+            }
             field("Default Dimension"; "Default Dimension") { }
             field("Default Dimension Name"; "Default Dimension Name") { }
 
@@ -103,6 +113,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             field("Potential Employee"; "Potential Employee")
             {
+                Visible = false;
 
             }
             field("Documentation delivered"; "Documentation delivered")
@@ -115,11 +126,11 @@ pageextension 50149 EmployeeList extends "Employee List"
             }
             field("Appropriate candidate"; "Appropriate candidate")
             {
-
+                Visible = false;
             }
             field("Inappropriate candidate"; "Inappropriate candidate")
             {
-
+                Visible = false;
             }
             field("Probation Period"; "Probation Period")
             {
@@ -394,7 +405,18 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             }
+            action("Izvjestaj za trening")
+            {
+                Caption = 'Izvjestaj za trening';
+                Image = Report;
+                ApplicationArea = all;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = report "Izvjestaj za_trening";
 
+
+            }
 
             /*action("Create Worksheet")
             {
@@ -443,13 +465,14 @@ pageextension 50149 EmployeeList extends "Employee List"
     var
         myInt: Integer;
     begin
+        Rec.CalcFields("Position Code");
 
         Ascending;
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
         EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
         IF EmployeeContractLedger.FINDFIRST THEN BEGIN
-            EmployeeContractLedger.CALCFIELDS("Manager Department Code", "Manager 1 Position Code", "Manager Position ID", "Manager 1 First Name", "Manager 1 Last Name", "Manager 2 First Name", "Manager 1 Last Name");
+            EmployeeContractLedger.CALCFIELDS("Manager Department Code", "Manager 1 Position Code", "Manager Position ID", "Manager 1 First Name", "Manager 1 Last Name", "Manager 2 First Name", "Manager 1 Last Name", "Manager 2 Last Name");
 
         end
         ELSE BEGIN

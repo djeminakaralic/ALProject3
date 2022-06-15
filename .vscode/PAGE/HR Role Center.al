@@ -166,6 +166,7 @@ page 50003 "HR Role Center"
                 {
                     Caption = 'Position';
                     Image = Position;
+
                     RunObject = Page "Positions";
                     ApplicationArea = all;
                 }
@@ -175,6 +176,7 @@ page 50003 "HR Role Center"
                     Image = XMLFile;
                     RunObject = xmlport "Position Import";
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 action(Vocation)
                 {
@@ -385,6 +387,7 @@ page 50003 "HR Role Center"
             {
                 Caption = 'Import';
                 Image = Administration;
+                Visible = false;
                 /* action("Employee Contract Ledger Impor")
                  {
                      Caption = 'Employee Contract Ledger Impor';
@@ -523,6 +526,7 @@ page 50003 "HR Role Center"
                 action("Update TC")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Caption = 'Update TC';
                     Image = UpdateXML;
                     RunObject = report "Azuriraj troskovni centar";
@@ -615,10 +619,12 @@ page 50003 "HR Role Center"
             {
                 Caption = 'Zapošljavanje';
                 Image = HumanResources;
+                Visible = false;
             }
             group("Zapošljavanje")
             {
                 Caption = 'Zapošljavanje';
+                Visible = false;
                 Image = HumanResources;
 
                 action("Posting List")
@@ -674,6 +680,7 @@ page 50003 "HR Role Center"
                 action(PD3100)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Caption = 'PD3100';
                     Image = Document;
                     RunObject = Report "Obrazac PD3100";
@@ -968,6 +975,7 @@ page 50003 "HR Role Center"
             group("Module Budget")
             {
                 Caption = 'Module Budget';
+                Visible = false;
                 action(budget)
                 {
                     ApplicationArea = all;

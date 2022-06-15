@@ -39,9 +39,13 @@ tableextension 50179 User_setup_ext extends "User Setup"
         {
             Caption = 'Moguće obrisati obračun nakon knjiženja!';
         }
-         field(5001; "Wage Allowed"; Boolean)
+        field(5001; "Wage Allowed"; Boolean)
         {
             Caption = 'Wage Allowed';
+        }
+        field(5002; "Open Value"; Text[250])
+        {
+
         }
 
 

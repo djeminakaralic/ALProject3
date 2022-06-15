@@ -1,8 +1,8 @@
 table 52018 "Additional Responsibility"
 {
     Caption = 'Additional Responsibility';
-    DrillDownPageID = 99000814;
-    LookupPageID = 99000814;
+    DrillDownPageID = "Additional Responsibility";
+    LookupPageID = "Additional Responsibility";
 
     fields
     {

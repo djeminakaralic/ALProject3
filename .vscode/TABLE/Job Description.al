@@ -49,6 +49,10 @@ table 50093 "Job description"
         {
             Caption = 'Perpose of job';
         }
+        field(9; "Org Shema"; Code[20])
+        {
+            Caption = 'Org Shema';
+        }
     }
 
     keys

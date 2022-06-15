@@ -58,6 +58,7 @@ page 50103 "Position temporary sist"
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Team Code"; "Team Code")
                 {

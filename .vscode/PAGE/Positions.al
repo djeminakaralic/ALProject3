@@ -280,15 +280,11 @@ page 50049 Positions
                 Image = Job;
                 Promoted = true;
                 PromotedIsBig = true;
-                //ĐKRunObject = Page "Job description";
-                //ĐKRunPageLink = Job position Code=FIELD(Code);
+                RunObject = Page "Job description";
+                RunPageLink = "Job position Code" = FIELD(Code), "Org Shema" = field("Org. Structure");
                 RunPageOnRec = false;
 
-                trigger OnAction()
-                begin
-                    //JobDesc.SETRANGE("Job position Code",Code);
-                    //PAGE.RUN(50050,JobDesc);
-                end;
+
             }
             action("Training catalogue  -Position")
             {
@@ -318,7 +314,26 @@ page 50049 Positions
                 //ĐK RunPageLink = Document No.=FIELD(Code);
             }
         }
+
     }
+    trigger OnOpenPage()
+    begin
+        OrgShema.RESET;
+        OrgShema.SETFILTER(Status, '%1', 0);
+        IF OrgShema.FINDLAST THEN BEGIN
+            SETFILTER("Org. Structure", '%1', OrgShema.Code);
+        END;
+    end;
+
+    trigger OnAfterGetRecord()
+    begin
+        OrgShema.RESET;
+        OrgShema.SETFILTER(Status, '%1', 0);
+        IF OrgShema.FINDLAST THEN BEGIN
+            SETFILTER("Org. Structure", '%1', OrgShema.Code);
+        END;
+
+    end;
 
     var
         /*  position: Record "50053";
@@ -330,5 +345,6 @@ page 50049 Positions
         pos: Record Position;
         posecl: Record Position;
         EmployeeContractLedger: Record "Employee Contract Ledger";
+        OrgShema: Record "ORG Shema";
 }
 

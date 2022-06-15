@@ -1,7 +1,7 @@
 report 50003 "Vacation statistics"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Vacation statistics.rdlc';
+    RDLCLayout = './Vacation statistics.rdl';
     Caption = 'Vacation statistics';
 
     dataset

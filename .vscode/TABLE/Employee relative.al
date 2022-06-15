@@ -39,11 +39,10 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         }
 
 
-        field(50000; Sex; Option)
+        field(50000; Sex; enum "Employee Gender")
         {
             Caption = 'Sex';
-            OptionCaption = ' ,Muško,Žensko';
-            OptionMembers = " ",Male,Female;
+
         }
         field(50001; "Vacation Ease"; Boolean)
         {
@@ -173,6 +172,7 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
             Caption = 'Department';
             Editable = false;
 
+
         }
         field(50018; "Department Name"; Text[250])
         {
@@ -199,31 +199,10 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
         }
         field(50161; "Relative Description"; Text[250])
         {
+            FieldClass = FlowField;
             CalcFormula = Lookup(Relative.Description WHERE(Code = FIELD("Relative Code")));
             Caption = 'Relative Code';
-            FieldClass = FlowField;
-            TableRelation = Relative;
 
-            trigger OnValidate()
-            begin
-
-                //HR01 start
-                Relative.SETFILTER(Code, '%1', "Relative Code");
-                IF Relative.FIND('-') THEN BEGIN
-                    Relation := Relative.Relation;
-                    Sex := Relative.Sex;
-                END;
-
-                //HR01 end
-
-                IF Relation <> Relation::Other THEN BEGIN
-                    "Relative's Employee No." := '';
-                END;
-                IF Relation = Relation::" " THEN BEGIN
-                    "Relative's Employee No." := '';
-                    Sex := 0;
-                END;
-            end;
         }
         field(50162; "Place of work"; Text[250])
         {
@@ -242,7 +221,25 @@ tableextension 50068 Employee_Relative_Ext extends "Employee Relative"
     trigger OnInsert()
     var
         myInt: Integer;
+        UserSetup: Record "User Setup";
     begin
+
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            if UserSetup."Open Value" = 'Father' then
+                Rec.Relation := Rec.Relation::Father;
+            if UserSetup."Open Value" = 'Mother' then
+                Rec.Relation := Rec.Relation::Mother;
+            if UserSetup."Open Value" = 'Spouse' then
+                Rec.Relation := Rec.Relation::Spouse;
+            if UserSetup."Open Value" = 'Child' then
+                Rec.Relation := Rec.Relation::Child;
+
+
+
+        end;
+
 
 
     end;

@@ -239,6 +239,7 @@ table 50083 "Head Of's temporary"
         {
             Caption = 'Team';
             TableRelation = "Team temporary".Code WHERE("Org Shema" = FIELD("ORG Shema"));
+
         }
         field(50013; "Team Description"; Text[100])
         {

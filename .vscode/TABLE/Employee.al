@@ -10,36 +10,51 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             trigger OnAfterValidate()
             begin
+
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No.", 5, 4))) OR (COPYSTR("Phone No.", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Phone No.", 4, 1) <> ' ')
+
+                IF "Phone No." <> '' THEN BEGIN
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No.", 5, 4))) OR (COPYSTR("Phone No.", 4, 1) <> ' '))
                       THEN
-                        ERROR(Text016, COPYSTR("Phone No.", 4, 1), 'razmak')
+                        IF (COPYSTR("Phone No.", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Phone No.", 4, 1), 'razmak', "No.")
+                        ELSE
+                            ERROR(Text017, "Phone No.")
                     ELSE
-                        ERROR(Text017, "Phone No.")
-
+                        "Full Phone No." := "Country/Region Code Home" + ' ' + "Dial Code Home" + ' ' + "Phone No.";
+                END
                 ELSE BEGIN
-                    "Phone No." := '';
+                    IF (("Country/Region Code Home" <> '') OR ("Dial Code Home" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Full Phone No." := '';
                 END;
-            END;
 
+            end;
         }
         modify("Mobile Phone No.")
         {
             trigger OnAfterValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
-                      THEN
-                        ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Mobile Phone No.")
 
+                IF "Mobile Phone No." <> '' THEN BEGIN
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No.", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No.", 5, 4))) OR (COPYSTR("Mobile Phone No.", 4, 1) <> ' '))
+                      THEN
+                        IF (COPYSTR("Mobile Phone No.", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Mobile Phone No.", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Mobile Phone No.")
+                    ELSE
+                        "Full Mobile Phone No." := "Country/Region Code Mobile" + ' ' + "Dial Code Mobile" + ' ' + "Mobile Phone No.";
+                END
                 ELSE BEGIN
-                    "Mobile Phone No." := '';
+                    IF (("Country/Region Code Mobile" <> '') OR ("Dial Code Mobile" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Full Mobile Phone No." := '';
+
                 END;
             END;
         }
@@ -187,22 +202,33 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. Emergency", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. Emergency", 5, 4))) OR (COPYSTR("Phone No. Emergency", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Phone No. Emergency", 4, 1) <> ' ')
-                       THEN
-                        ERROR(Text016, COPYSTR("Phone No. Emergency", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Phone No. Emergency")
-                ELSE BEGIN
-                    IF ("Country/Region Code Emergency" <> '') AND ("Dial Code Emergency" <> '') AND ("Phone No. Emergency" <> '') THEN BEGIN
+                IF "Phone No. Emergency" <> '' THEN BEGIN
 
-                        "Tel. No. Of Related Person" := "Country/Region Code Emergency" + ' ' + "Dial Code Emergency" + ' ' + "Phone No. Emergency";
-                    END
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. Emergency", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. Emergency", 5, 4))) OR (COPYSTR("Phone No. Emergency", 4, 1) <> ' '))
+                      THEN
+                        IF (COPYSTR("Phone No. Emergency", 4, 1) <> ' ')
+                           THEN
+                            ERROR(Text016, COPYSTR("Phone No. Emergency", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Phone No. Emergency")
                     ELSE BEGIN
-                        "Tel. No. Of Related Person" := '';
+                        IF ("Country/Region Code Emergency" <> '') AND ("Dial Code Emergency" <> '') AND ("Phone No. Emergency" <> '') THEN BEGIN
+
+                            "Tel. No. Of Related Person" := "Country/Region Code Emergency" + ' ' + "Dial Code Emergency" + ' ' + "Phone No. Emergency";
+                        END
+                        ELSE BEGIN
+                            "Tel. No. Of Related Person" := '';
+                        END;
+
                     END;
 
+                END
+                ELSE BEGIN
+
+                    IF (("Country/Region Code Emergency" <> '') OR ("Dial Code Emergency" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Tel. No. Of Related Person" := '';
                 END;
             end;
         }
@@ -230,7 +256,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(503557; "Dial Code Company Mobile"; Code[10])
         {
             TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Company M"),
-                                                    Type = FILTER('Mobile'));
+                                                    Type = FILTER(Mobile));
 
             trigger OnValidate()
             begin
@@ -356,20 +382,31 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No. for Company", 5, 4))) OR (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' ')
+                IF "Mobile Phone No. for Company" <> '' THEN BEGIN
+
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Mobile Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Mobile Phone No. for Company", 5, 4))) OR (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' '))
                       THEN
-                        ERROR(Text016, COPYSTR("Mobile Phone No. for Company", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Mobile Phone No. for Company")
-                ELSE BEGIN
-                    IF ("Country/Region Code Company M" <> '') AND ("Dial Code Company Mobile" <> '') AND ("Mobile Phone No. for Company" <> '') THEN BEGIN
-                        "Company Mobile Phone No." := "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company";
-                    END
+                        IF (COPYSTR("Mobile Phone No. for Company", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Mobile Phone No. for Company", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Mobile Phone No. for Company")
                     ELSE BEGIN
-                        "Company Mobile Phone No." := '';
+                        IF ("Country/Region Code Company M" <> '') AND ("Dial Code Company Mobile" <> '') AND ("Mobile Phone No. for Company" <> '') THEN BEGIN
+                            "Company Mobile Phone No." := "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company";
+                        END
+                        ELSE BEGIN
+                            "Company Mobile Phone No." := '';
+                        END;
                     END;
+                END
+                ELSE BEGIN
+
+                    IF (("Country/Region Code Company M" <> '') OR ("Dial Code Company Mobile" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+
+                    "Company Mobile Phone No." := '';
                 END;
             end;
         }
@@ -673,26 +710,13 @@ tableextension 50071 EmployeeExtension extends Employee
             OptionMembers = " ",M,S,D,W,P;
         }
 
-        field(50150; "Position Code"; Code[10])
+        field(50150; "Position Code"; Code[20])
         {
 
-            Caption = 'Position Code';
-            TableRelation = Position.Code;
 
-            trigger OnValidate()
-            begin
+            FieldClass = FlowField;
+            CalcFormula = lookup("Employee Contract Ledger"."Position Code" where("Employee No." = FIELD("No."), Active = const(true)));
 
-                //IF "Position Code"<>'' THEN BEGIN
-                /*ĐK  position.GET("Position Code");
-                  "Job Position" := position.Description;*/
-                MODIFY(TRUE);
-                //END
-                /*ELSE  BEGIN
-                  "Job Position":='';
-                  MODIFY(TRUE);
-                   END;   */
-
-            end;
         }
         field(50198; "Transport Allowance"; Boolean)
         {
@@ -2136,7 +2160,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50299; "Dial Code Mobile"; Code[10])
         {
             TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Mobile"),
-                                                    Type = FILTER('Mobile'));
+                                                    Type = FILTER(Mobile));
 
             trigger OnValidate()
             begin
@@ -2147,7 +2171,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50356; "Dial Code Company Home"; Code[10])
         {
             TableRelation = "Dial Codes"."No." WHERE("Country Code" = FIELD("Country/Region Code Company H"),
-                                                    Type = FILTER('Fixed'));
+                                                    Type = FILTER("Fixed"));
 
             trigger OnValidate()
             begin
@@ -2168,21 +2192,30 @@ tableextension 50071 EmployeeExtension extends Employee
             trigger OnValidate()
             begin
                 CLEAR(CheckInt);
-                IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. for Company", 5, 4))) OR (COPYSTR("Phone No. for Company", 4, 1) <> ' '))
-                  THEN
-                    IF (COPYSTR("Phone No. for Company", 4, 1) <> ' ')
+                IF "Phone No. for Company" <> '' THEN BEGIN
+
+
+                    IF ((NOT EVALUATE(CheckInt, (COPYSTR("Phone No. for Company", 1, 3))) OR NOT EVALUATE(CheckInt, COPYSTR("Phone No. for Company", 5, 4))) OR (COPYSTR("Phone No. for Company", 4, 1) <> ' '))
                       THEN
-                        ERROR(Text016, COPYSTR("Phone No. for Company", 4, 1), 'razmak')
-                    ELSE
-                        ERROR(Text017, "Phone No. for Company")
-                ELSE BEGIN
-                    IF ("Country/Region Code Company H" <> '') AND ("Dial Code Company Home" <> '') AND ("Phone No. for Company" <> '')
-                      THEN BEGIN
-                        "Company Phone No." := "Country/Region Code Company H" + ' ' + "Dial Code Company Home" + ' ' + "Phone No. for Company";
-                    END
+                        IF (COPYSTR("Phone No. for Company", 4, 1) <> ' ')
+                          THEN
+                            ERROR(Text016, COPYSTR("Phone No. for Company", 4, 1), 'razmak')
+                        ELSE
+                            ERROR(Text017, "Phone No. for Company")
                     ELSE BEGIN
-                        "Company Phone No." := '';
+                        IF ("Country/Region Code Company H" <> '') AND ("Dial Code Company Home" <> '') AND ("Phone No. for Company" <> '')
+                          THEN BEGIN
+                            "Company Phone No." := "Country/Region Code Company H" + ' ' + "Dial Code Company Home" + ' ' + "Phone No. for Company";
+                        END
+                        ELSE BEGIN
+                            "Company Phone No." := '';
+                        END;
                     END;
+                END
+                ELSE BEGIN
+                    IF (("Country/Region Code Company H" <> '') OR ("Dial Code Company Home" <> '')) THEN
+                        MESSAGE('Molimo Vas da izvrsite opciju brisanja ostalih podataka za kontakt informacije!');
+                    "Company Phone No." := '';
                 END;
             end;
         }
@@ -3018,6 +3051,20 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Additional rights millitary';
             OptionMembers = " ",Borac,"Pripadnik boračke populacije","Šehidski status";
+        }
+        field(503711; "Group Code"; Code[30])
+        {
+            Caption = 'Group Code';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger".Group WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
+            //Department.Code WHERE (Type=FILTER(' '|Department))
+        }
+        field(503712; "Group Description"; Code[250])
+        {
+            Caption = 'Group Description';
+            FieldClass = FlowField;
+            CalcFormula = Lookup("Employee Contract Ledger"."Group Description" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
+            //Department.Code WHERE (Type=FILTER(' '|Department))
         }
 
 

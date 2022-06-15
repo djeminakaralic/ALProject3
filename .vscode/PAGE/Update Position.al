@@ -147,6 +147,19 @@ page 50050 "Update Position"
     {
         area(processing)
         {
+            action("Job description")
+            {
+                Caption = 'Job description';
+                Image = Job;
+                Promoted = true;
+                PromotedIsBig = true;
+                RunObject = Page "Job description";
+                RunPageLink = "Job position Code" = FIELD(Code), "Org Shema" = field("Org. Structure");
+                RunPageOnRec = false;
+
+
+            }
+
             /*ĐK action("Update Positions")
              {
                  Caption = 'Update Positions';
@@ -234,6 +247,16 @@ page 50050 "Update Position"
         IF OrgShema.FINDLAST THEN BEGIN
             SETFILTER("Org. Structure", '%1', OrgShema.Code);
         END;
+    end;
+
+    trigger OnAfterGetRecord()
+    begin
+        OrgShema.RESET;
+        OrgShema.SETFILTER(Status, '%1', 0);
+        IF OrgShema.FINDLAST THEN BEGIN
+            SETFILTER("Org. Structure", '%1', OrgShema.Code);
+        END;
+
     end;
 
     var

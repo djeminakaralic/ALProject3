@@ -72,10 +72,12 @@ page 50064 "Head Of's temporary sist"
                 field("Team Code"; "Team Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Head's number of employee"; "Head's number of employee")
                 {

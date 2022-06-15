@@ -135,6 +135,7 @@ page 50163 "Work booklet"
                 field("Team Name"; "Team Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Group Name"; "Group Name")
                 {

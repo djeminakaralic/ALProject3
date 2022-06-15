@@ -39,6 +39,10 @@ page 50075 "Job description"
                 {
                     ApplicationArea = all;
                 }
+                field("Org Shema"; "Org Shema")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
         area(factboxes)

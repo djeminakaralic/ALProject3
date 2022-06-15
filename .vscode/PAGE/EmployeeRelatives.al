@@ -7,11 +7,24 @@ pageextension 50171 EmployeeRelatives extends "Employee Relatives"
         {
             ApplicationArea = all;
         }
+        modify(Comment)
+        { Visible = false; }
+
+        //ĐK    moveafter("Birth Date"; Age);
+        addafter("Birth Date")
+        {
+            field(Age; Age)
+            {
+                ApplicationArea = all;
+            }
+        }
+
         addbefore("Relative Code")
         {
             field("Line No."; "Line No.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Employee No."; "Employee No.")
             {
@@ -57,18 +70,12 @@ pageextension 50171 EmployeeRelatives extends "Employee Relatives"
         }
         addafter("Relative's Employee No.")
         {
-            field(Relation; Relation)
-            {
-                ApplicationArea = all;
-            }
+
             field(Sex; Sex)
             {
                 ApplicationArea = all;
             }
-            field(Age; Age)
-            {
-                ApplicationArea = all;
-            }
+
             field("Health Insurance"; "Health Insurance")
             {
                 ApplicationArea = all;
@@ -91,10 +98,12 @@ pageextension 50171 EmployeeRelatives extends "Employee Relatives"
             field("Team Name"; "Team Name")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Group Name"; "Group Name")
             {
                 ApplicationArea = all;
+
             }
             field("Department Name"; "Department Name")
             {

@@ -14,7 +14,7 @@ table 50085 "HR Cue"
         }
         field(2; Employees; Integer)
         {
-            CalcFormula = Count(Employee WHERE(StatusExt = FILTER(Active | Inactive | Unpaid | Terminated | "On boarding")));
+            CalcFormula = Count(Employee WHERE(StatusExt = FILTER(Active | Inactive | Unpaid | Terminated | "On boarding" | "Left")));
             Caption = 'Employees';
             Editable = false;
             FieldClass = FlowField;
@@ -23,9 +23,10 @@ table 50085 "HR Cue"
         field(4; "Active Employees"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count(Employee WHERE(StatusExt = FILTER('Active'),
-                                                "Potential Employee" = CONST(false),
-                                                "Associates" = Const(FALSE)));
+            CalcFormula = Count(Employee WHERE(StatusExt = FILTER('Active')
+
+
+                                               ));
             Caption = 'Active Employees';
 
         }
@@ -115,7 +116,7 @@ table 50085 "HR Cue"
         field(50010; "Inactive - Terminated"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count(Employee WHERE(StatusExt = FILTER(Terminated),
+            CalcFormula = Count(Employee WHERE(StatusExt = FILTER(left),
                                                 "Potential Employee" = CONST(false)));
             Caption = 'Inactive - Terminated';
 
@@ -241,8 +242,8 @@ table 50085 "HR Cue"
         {
             FieldClass = FlowField;
             CalcFormula = Count("Employee Surname" WHERE("Last Date Modified" = FIELD(DateFilter6),
-                                                          "Number Of Surnames" = FILTER(> 1),
-                                                          "No." = FILTER('<> "9*"')));
+                                                          "Number Of Surnames" = FILTER(> 1)
+                                                          ));
             Caption = 'Surname Change';
 
         }
@@ -686,6 +687,14 @@ table 50085 "HR Cue"
             FieldClass = FlowField;
             CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateCatalogue)));
             Caption = 'Certifikati čiji rok ističe za mjesec dana';
+
+
+        }
+        field(50095; "Employee Training Ledger"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Training Ledger");
+            Caption = 'Employee Training Ledger';
 
 
         }

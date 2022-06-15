@@ -49,6 +49,7 @@ page 50231 "Union Employees"
                 field("Team Name"; "Team Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Group Name"; "Group Name")
                 {

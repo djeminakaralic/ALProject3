@@ -52,6 +52,7 @@ page 50040 "Dimensions temporary"
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Department Type"; "Department Type")
                 {

@@ -84,6 +84,7 @@ page 50235 "Dimension for Position"
                 field("Team Description"; "Team Description")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Sector Identity"; "Sector Identity")
                 {

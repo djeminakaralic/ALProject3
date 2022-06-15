@@ -62,6 +62,7 @@ page 50055 "Employee Level Of Disability"
                 field("Team Name"; "Team Name")
                 {
                     ApplicationArea = all;
+                    Visible=false;
                 }
                 field("Group Name"; "Group Name")
                 {
