@@ -176,7 +176,7 @@ page 50003 "HR Role Center"
                     Image = XMLFile;
                     RunObject = xmlport "Position Import";
                     ApplicationArea = all;
-                    Visible = false;
+                    Visible = true;
                 }
                 action(Vocation)
                 {
@@ -268,7 +268,7 @@ page 50003 "HR Role Center"
                     Caption = 'Employees Import';
                     Image = Dimensions;
                     RunObject = xmlport "Employees Import";
-                    Visible = false;
+                    Visible = true;
                 }
 
                 action("ORG Shema")

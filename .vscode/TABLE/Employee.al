@@ -5,11 +5,11 @@ tableextension 50071 EmployeeExtension extends Employee
     fields
     {
 
-
         modify("Phone No.")
         {
             trigger OnAfterValidate()
             begin
+
 
                 CLEAR(CheckInt);
 
