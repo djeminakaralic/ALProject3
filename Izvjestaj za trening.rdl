@@ -11,70 +11,6 @@
       <rd:DataSourceID>b0f9197a-1877-4cda-aafe-f89a3242e886</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="EmployeeFirstName_EmployeeQualification">
-          <DataField>EmployeeFirstName_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="EmployeeLastName_EmployeeQualification">
-          <DataField>EmployeeLastName_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="InstitutionCompany_EmployeeQualification">
-          <DataField>InstitutionCompany_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ToDate_EmployeeQualification">
-          <DataField>ToDate_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Datum">
-          <DataField>Datum</DataField>
-        </Field>
-        <Field Name="Status_EmployeeQualification">
-          <DataField>Status_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ProofOfEducation_EmployeeQualification">
-          <DataField>ProofOfEducation_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ExpirationDate_EmployeeQualification">
-          <DataField>ExpirationDate_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Type_EmployeeQualification">
-          <DataField>Type_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Department_Code">
-          <DataField>Department_Code</DataField>
-        </Field>
-        <Field Name="Adress">
-          <DataField>Adress</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="PhoneNo">
-          <DataField>PhoneNo</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="IDBr">
-          <DataField>IDBr</DataField>
-        </Field>
-        <Field Name="QualificationCode_EmployeeQualification">
-          <DataField>QualificationCode_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Description_EmployeeQualification">
-          <DataField>Description_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1244,6 +1180,15 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
+    <ReportParameter Name="RptTitle">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>RptTitle</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>RptTitle</Prompt>
+    </ReportParameter>
     <ReportParameter Name="Department_CodeCaption">
       <DataType>String</DataType>
       <DefaultValue>
@@ -1279,15 +1224,6 @@
         </Values>
       </DefaultValue>
       <Prompt>PhoneNoCaption</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="RptTitle">
-      <DataType>String</DataType>
-      <DefaultValue>
-        <Values>
-          <Value>RptTitle</Value>
-        </Values>
-      </DefaultValue>
-      <Prompt>RptTitle</Prompt>
     </ReportParameter>
   </ReportParameters>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
@@ -1329,4 +1265,68 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="EmployeeFirstName_EmployeeQualification">
+          <DataField>EmployeeFirstName_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="EmployeeLastName_EmployeeQualification">
+          <DataField>EmployeeLastName_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="InstitutionCompany_EmployeeQualification">
+          <DataField>InstitutionCompany_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ToDate_EmployeeQualification">
+          <DataField>ToDate_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Datum">
+          <DataField>Datum</DataField>
+        </Field>
+        <Field Name="Status_EmployeeQualification">
+          <DataField>Status_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ProofOfEducation_EmployeeQualification">
+          <DataField>ProofOfEducation_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ExpirationDate_EmployeeQualification">
+          <DataField>ExpirationDate_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Type_EmployeeQualification">
+          <DataField>Type_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Department_Code">
+          <DataField>Department_Code</DataField>
+        </Field>
+        <Field Name="Adress">
+          <DataField>Adress</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="PhoneNo">
+          <DataField>PhoneNo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="IDBr">
+          <DataField>IDBr</DataField>
+        </Field>
+        <Field Name="QualificationCode_EmployeeQualification">
+          <DataField>QualificationCode_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Description_EmployeeQualification">
+          <DataField>Description_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

@@ -26168,6 +26168,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Training Types - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2019009885 - Control 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Training Types - Control Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2019009885 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Training Types - Control Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2202478900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Katalog treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27968,10 +27978,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Electronic Sales VAT Book - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 2223097449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Evidencija prerasporedjenih</source>
+        <trans-unit id="Report 1802562597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Evidencija preraspoređeni</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Evidencija prerasporedjenih - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Evidencija preraspoređeni - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2530625394 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ExportGIP - 1022</source>
@@ -34983,10 +34993,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvještaji - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 501522804 - Action 2223097449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+        <trans-unit id="PageExtension 501522804 - Action 1802562597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Evidencija preraspoređeni</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Evidencija prerasporedjenih - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Evidencija preraspoređeni - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Izvještaj starosne strukture</source>
