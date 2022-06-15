@@ -5,6 +5,7 @@ page 50213 Employee_Qualifications_HR
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Employee Qualification";
+    RefreshOnActivate = true;
 
     layout
     {

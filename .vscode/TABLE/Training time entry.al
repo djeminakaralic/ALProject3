@@ -11,24 +11,27 @@ table 50044 "Training Time Entry"
         {
             AutoIncrement = true;
             Caption = 'Code';
+            Editable = false;
 
 
         }
         field(2; Code2; Integer)
         {
             Caption = 'Training catalogue code';
-            TableRelation = "Training Catalogue".Code;
+            TableRelation = "Training Catalogue";
         }
         field(3; Name; Text[250])
         {
             Caption = 'Traning Name';
+            Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Training Catalogue".Name where(Code = field(Code2)));
 
         }
         field(4; Type; Option)
         {
-            OptionMembers = Interni,Eksterni;
+            OptionMembers = " ",Interni,Eksterni;
+            Editable = false;
             Caption = 'Type';
             FieldClass = FlowField;
             CalcFormula = lookup("Training Catalogue".Type where(Code = field(Code2)));
@@ -37,13 +40,15 @@ table 50044 "Training Time Entry"
         field(5; Location; Text[250])
         {
             Caption = 'Location';
+            Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Training Catalogue".Location where(Code = field(Code2)));
 
         }
-        field(6; Month; Text[50])
+        field(6; Month; enum Month)
         {
             Caption = 'Month';
+            Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Training Catalogue".Month where(Code = field(Code2)));
         }
@@ -56,16 +61,23 @@ table 50044 "Training Time Entry"
         field(9; "End date"; Date)
         {
             Caption = 'End date';
+            //var AbsenceFill: Codeunit "Absence Fill";
             trigger OnValidate()
             begin
                 if ("End date" < "Start date") then
                     Error('"End date" can not be before "Start date."');
+
+
+
+
+
+
             end;
 
         }
         field(10; Status; Option)
         {
-            OptionMembers = "In progress",Finished,"In preparation";
+            OptionMembers = " ","In progress",Finished,"In preparation";
             Caption = 'Status';
 
         }
@@ -96,6 +108,7 @@ table 50044 "Training Time Entry"
         field(16; "Number of days"; Integer)
         {
             Caption = 'Broj dana';
+            Editable = false;
 
         }
         field(17; "Daily rate home SUM"; Decimal)
@@ -125,7 +138,9 @@ table 50044 "Training Time Entry"
         field(22; TypeOF; code[20])
         {
             Caption = 'Vrsta treninga';
+            Editable = false;
             FieldClass = FlowField;
+
             CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
 
 
@@ -133,6 +148,7 @@ table 50044 "Training Time Entry"
         field(23; "Type of name"; Text[250])
         {
             Caption = 'Naziv vrste treninga';
+            Editable = false;
             FieldClass = FlowField;
             CalcFormula = lookup("Training Catalogue"."Type of name" where(Code = field(Code2)));
 

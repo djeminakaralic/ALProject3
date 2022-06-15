@@ -28,7 +28,7 @@ table 50033 "Training Catalogue"
             Caption = 'Location';
 
         }
-        field(5; Month; Text[50])
+        field(5; Month; enum Month)
         {
             Caption = 'Month';
         }

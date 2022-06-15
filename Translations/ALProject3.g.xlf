@@ -15624,7 +15624,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Status - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2852338211 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>In progress,Finished,In preparation</source>
+          <source> ,In progress,Finished,In preparation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Status - Property OptionCaption</note>
         </trans-unit>
@@ -15644,7 +15644,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2852338211 - Field 1878130204 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Interni,Eksterni</source>
+          <source> ,Interni,Eksterni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Type - Property OptionCaption</note>
         </trans-unit>
@@ -39282,6 +39282,71 @@
           <source>Head of Sector</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Management Level - EnumValue Sector - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1953846482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>April</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue April - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1616698387 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>August</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue August - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 2410657597 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Decembar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Decembar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Empty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 2123496239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Februar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Februar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 181521653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Januar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Januar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1214488046 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Juli</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Juli - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 2840089676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Juni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Juni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 3848882482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Maj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1558470726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Februar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Mart - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1763264778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Novembar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Novembar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 1846331674 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Oktobar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Oktobar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3465500804 - EnumValue 521494709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Septembar</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Septembar - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1145711811 - EnumValue 2997449368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract Renewal</source>

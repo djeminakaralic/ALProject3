@@ -8,6 +8,7 @@ page 50270 "Training Types"
     //UsageCategory = Lists;
     //ApplicationArea = all;
     InsertAllowed = true;
+    RefreshOnActivate = true;
 
 
     layout
