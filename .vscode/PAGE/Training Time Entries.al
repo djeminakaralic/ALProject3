@@ -6,6 +6,8 @@ page 50067 "Training Time Entries"
     PageType = List;
     SourceTable = "Training Time Entry";
     RefreshOnActivate = true;
+    InsertAllowed = true;
+
 
 
     layout
@@ -22,7 +24,12 @@ page 50067 "Training Time Entries"
                 {
 
                 }
+                field(Name; Name) { }
                 field(TypeOF; TypeOF) { }
+                field("Type of name"; "Type of name")
+                {
+
+                }
                 field(Type; Type)
                 {
 

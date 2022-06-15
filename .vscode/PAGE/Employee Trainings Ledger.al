@@ -6,6 +6,7 @@ page 50070 "Employee Trainings Ledger"
     PageType = List;
     SourceTable = "Employee Training Ledger";
     RefreshOnActivate = true;
+    InsertAllowed = true;
 
 
     layout
