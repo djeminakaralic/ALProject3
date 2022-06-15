@@ -10,6 +10,7 @@ table 50033 "Training Catalogue"
         {
             AutoIncrement = true;
             Caption = 'Code';
+            Editable = false;
 
         }
         field(2; Name; Text[250])
