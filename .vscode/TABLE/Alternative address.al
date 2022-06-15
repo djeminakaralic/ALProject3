@@ -11,7 +11,7 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
             begin
                 Emp.Get("Employee No.");
                 Name := Emp."First Name";
-                "Name 2" := Emp."First Name";
+                "Name 2" := Emp."Last Name";
             end;
         }
         modify("Name 2")
