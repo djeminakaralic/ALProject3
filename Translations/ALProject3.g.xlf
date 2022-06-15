@@ -6978,6 +6978,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field Location - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 791684153 - Field 2563728230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Naziv lokacije</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Training Ledger - Field LocationName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 791684153 - Field 1461151337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Mandatory</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15493,11 +15498,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3275839077 - Field 3891454143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Location</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Training Catalogue - Field Location - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3275839077 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Month</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15587,6 +15587,11 @@
           <source>Location</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2852338211 - Field 390917702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Naziv lokazije</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Training Time Entry - Field Location Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2852338211 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Month</source>

@@ -45,7 +45,7 @@ table 50057 "Employee Training Ledger"
                         TypeOF := TrainingCatalogue.TypeOF;
                         "Type of name" := TrainingCatalogue."Type of name";
 
-                        Location := TrainingCatalogue.Location;
+                        //Location := TrainingCatalogue.Location;
                         Month := TrainingCatalogue.Month;
 
                     end;
@@ -83,6 +83,8 @@ table 50057 "Employee Training Ledger"
         {
             Caption = 'Location';
             Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Training Time Entry".Location where(Code = field(Code2Entry)));
 
         }
         field(8; Month; Enum Month)
@@ -173,6 +175,14 @@ table 50057 "Employee Training Ledger"
             Caption = 'Naziv vrste treninga';
             TableRelation = "Training Type";
             Editable = false;
+        }
+        field(24; LocationName; Text[250])
+        {
+            Caption = 'Naziv lokacije';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Training Time Entry"."Location Name" where(Code = field(Code2Entry)));
+
         }
 
 
