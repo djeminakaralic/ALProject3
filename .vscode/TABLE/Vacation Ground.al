@@ -596,14 +596,14 @@ table 50015 "Vacation Ground 2"
             CalcFormula = Max(OpRisk.Quantity WHERE ("Employee No."=FIELD("Employee No.")));
             FieldClass = FlowField;
         }*/
-        field(23; "Used Days"; Integer)
+        /*field(23; "Used Days"; Integer)
         {
 
             FieldClass = FlowField;
             CalcFormula = Count("Employee Absence" WHERE("Employee No." = FIELD("Employee No."),
                                                           "Vacation from Year" = FIELD(Year)));
 
-        }
+        }*/
         field(27; "Manager contract"; Boolean)
         {
             Caption = 'Manager contract';
