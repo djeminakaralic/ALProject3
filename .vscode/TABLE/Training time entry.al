@@ -19,6 +19,19 @@ table 50044 "Training Time Entry"
         {
             Caption = 'Training catalogue code';
             TableRelation = "Training Catalogue";
+            trigger OnValidate()
+            var
+                Trainingtype: Record "Training Type";
+
+            begin
+                Trainingtype.Reset();
+                Trainingtype.SetFilter(Code, '%1', TypeOF);
+                if Trainingtype.FindFirst() then begin
+
+                    "Type of name" := Trainingtype.Description;
+                end;
+
+            end;
 
 
 
@@ -161,19 +174,7 @@ table 50044 "Training Time Entry"
 
             CalcFormula = lookup("Training Catalogue".TypeOF where(Code = field(Code2)));
 
-            trigger OnValidate()
-            var
-                Trainingtype: Record "Training Type";
 
-            begin
-                Trainingtype.Reset();
-                Trainingtype.SetFilter(Code, '%1', TypeOF);
-                if Trainingtype.FindFirst() then begin
-
-                    "Type of name" := Trainingtype.Description;
-                end;
-
-            end;
 
 
 
