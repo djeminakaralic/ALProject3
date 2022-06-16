@@ -64,7 +64,7 @@ report 50052 "Evidencija preraspoređeni"
                 ELSE
                     PomocnaStariUgovor := '';
 
-                EmployeeContractLedger2.SETFILTER("Employee Name", '<>%1', DataItem1."Employee Name");
+                EmployeeContractLedger2.SETFILTER("Employee No.", '<>%1', DataItem1."Employee No.");
             end;
 
             trigger OnPreDataItem()
