@@ -2,6 +2,14 @@ pageextension 50149 EmployeeList extends "Employee List"
 {
     layout
     {
+        modify("Search Name")
+        {
+            Visible = false;
+        }
+        modify(Comment)
+        {
+            Visible = false;
+        }
         // Add changes to page layout here
         addafter("No.")
         {
@@ -41,6 +49,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Position Code"; "Position Code") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
+            field("Engagement Type"; "Engagement Type") { }
             field(Manager1; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
             {
                 Caption = 'Ime i prezime prvog nadređenog';
@@ -59,7 +68,8 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
 
-            field("Engagement Type"; "Engagement Type") { }
+
+            field("Position Coefficient for Wage"; "Position Coefficient for Wage") { }
             field(Brutto; Brutto) { }
             field(Netto; Netto)
             {
@@ -69,7 +79,8 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
-            field("Position Coefficient for Wage"; "Position Coefficient for Wage") { }
+
+
             field("Starting Date"; "Starting Date") { }
             field("Ending Date"; "Ending Date") { }
             //field("Contract type"; "Contract type") { }
@@ -84,6 +95,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
+
             field("Default Dimension"; "Default Dimension") { }
             field("Default Dimension Name"; "Default Dimension Name") { }
 
@@ -260,7 +272,9 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Entity Code CIPS"; "Entity Code CIPS") { }
             field(Canton; Canton) { }
             //field("Phone No."; "Phone No.") { }
-            field("Phone No. for Company"; "Phone No. for Company") { }
+            field("Phone No. Company"; "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company") { }
+
+
             field("Mother Maiden Name"; "Mother Maiden Name") { }
             field("Mother Name"; "Mother Name") { }
             field("Marital status"; "Marital status") { }
