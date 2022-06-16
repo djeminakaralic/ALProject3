@@ -24,26 +24,48 @@ xmlport 50008 "Employee No import"
                 {
                     MinOccurs = Zero;
                 }
+                textelement(Prezime)
+                {
+                    MinOccurs = Zero;
+                }
 
 
                 trigger OnAfterInsertRecord()
                 begin
-                    Employee.Reset();
-                    Employee.SETFILTER("No.", '%1', Iznos);
-                    IF Employee.FINDfirst THEN BEGIN
 
-                        if EmpOLD.get(Employee."No.") then begin
-                            EmpOLD.Rename(JMB);
-                            Evaluate(IznosInt, JMB);
-                            EmpOLD.Order := IznosInt;
-                            EmpOLD.Modify();
+
+
+                    /*    EmpOLD2.Reset();
+                        EmpOLD2.SetFilter("No.", '%1', JMB);
+                        if EmpOLD2.FindFirst() then begin
+                            if EmpOLD3.get(EmpOLD2."No.") then
+                                EmpOLD3.Rename(EmpOLD2."No." + '_' + format(EmpOLD2.Count))
+
                         end;
+    */
+
+                    brojac := brojac + 1;
 
 
 
 
-                    END;
+                    EmpOLD.Reset();
+                    EmpOLD.SetFilter("First Name", '%1', Iznos);
+                    EmpOLD.SetFilter("Last Name", '%1', Prezime);
+
+                    if EmpOLD.FindFirst() then begin
+                        EmpOLD.Rename(JMB);
+                        Evaluate(IznosInt, JMB);
+                        EmpOLD.Order := IznosInt;
+                        EmpOLD.Modify();
+                    end;
+
+
+
+
+
                 END;
+
 
             }
         }
@@ -65,18 +87,17 @@ xmlport 50008 "Employee No import"
         myInt: Integer;
     begin
 
-        EmpOLD.Reset();
-        EmpOLD.SetFilter("No.", '%1|%2|%3|%4', '111', '96', '12', '172');
-        if EmpOLD.FindSet() then
-            repeat
-                EmpOLD.Delete();
-            until EmpOLD.Next() = 0;
 
+
+        brojac := 765;
 
     end;
 
     var
         IznosInt: Integer;
         EmpOLD: Record Employee;
+        EmpOLD2: Record Employee;
+        brojac: Integer;
+        EmpOLD3: Record Employee;
 }
 

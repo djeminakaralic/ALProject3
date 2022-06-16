@@ -270,6 +270,15 @@ page 50003 "HR Role Center"
                     RunObject = xmlport "Employees Import";
                     Visible = true;
                 }
+                //
+                action("Employee No import")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employees Import';
+                    Image = Dimensions;
+                    RunObject = xmlport "Employee No import";
+                    Visible = true;
+                }
 
                 action("ORG Shema")
                 {

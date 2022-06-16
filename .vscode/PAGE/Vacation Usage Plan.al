@@ -123,7 +123,18 @@ page 50059 "Vacation Usage Plan"
                 Image = Report2;
 
                 trigger OnAction()
+                var
+                    Vacation: Record "Vacation Ground 2";
+                    VacationDecisionR: Report VacationDecision;
+
                 begin
+                    Vacation.Reset();
+                    Vacation.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    if Vacation.FindFirst() then begin
+                        VacationDecisionR.SETTABLEVIEW(Vacation);
+                        VacationDecisionR.RUN;
+                    end;
+
                     //SM start
                     /*ĐK  Selection := STRMENU(Text0004,1);
                               IF Selection = 0 THEN

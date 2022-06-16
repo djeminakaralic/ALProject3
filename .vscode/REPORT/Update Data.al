@@ -5,7 +5,7 @@ report 50041 "Update Data"
 
     dataset
     {
-        dataitem(DataItemName; Employee)
+        dataitem(DataItemName; "Employee Contract Ledger")
         {
 
 
@@ -20,37 +20,37 @@ report 50041 "Update Data"
 
             trigger OnAfterGetRecord()
             begin
-                Brojac := Brojac + 1;
-                OldNumber := DataItemName."No.";
+                /*                Brojac := Brojac + 1;
+                                OldNumber := DataItemName."No.";
 
-                Evaluate(CodeS, format(Brojac));
+                                Evaluate(CodeS, format(Brojac));
 
-                EmpOLD.Reset();
-                EmpOLD.SetFilter("No.", '%1', CodeS);
-                if EmpOLD.FindFirst() then begin
-                    if EmpOLD2.get(EmpOLD."No.") then
-                        EmpOLD2.Rename(EmpOLD2."No." + '_' + format(EmpOLD.Count))
+                                EmpOLD.Reset();
+                                EmpOLD.SetFilter("No.", '%1', CodeS);
+                                if EmpOLD.FindFirst() then begin
+                                    if EmpOLD2.get(EmpOLD."No.") then
+                                        EmpOLD2.Rename(EmpOLD2."No." + '_' + format(EmpOLD.Count))
 
-                end;
+                                end;
 
-                if Emp.Get(DataItemName."No.") then
-                    Emp.Rename(CodeS);
-
-
-                Emp.Order := Brojac;
-                Emp.Modify();
+                                if Emp.Get(DataItemName."No.") then
+                                    Emp.Rename(CodeS);
 
 
+                                Emp.Order := Brojac;
+                                Emp.Modify();
 
 
 
 
-                /* DataItemName.Active := true;
-                 DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
-                 DataItemName.Address := '';
-                 DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
-                 DataItemName.Modify();
- */
+
+
+                                /* DataItemName.Active := true;
+                                 DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
+                                 DataItemName.Address := '';
+                                 DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
+                                 DataItemName.Modify();
+                 */
                 /*   PosM.Reset();
                    PosM.SetFilter(Description, '%1', DataItemName.Description);
                    PosM.SetFilter("Department Code", '%1', DataItemName."Department Code");
@@ -70,8 +70,8 @@ report 50041 "Update Data"
 
                    end;
    */
-                /*   DataItemName.Validate("Position Description", DataItemName."Position Description");
-                   DataItemName.Modify();*/
+                DataItemName.Validate("Position Description", DataItemName."Position Description");
+                DataItemName.Modify();
 
 
                 /*      Emp.Reset();
@@ -120,9 +120,29 @@ report 50041 "Update Data"
                 end;
             }*/
 
-                if Brojac = 322 then
-                    CurrReport.Break();
 
+                /*if Brojac = 322 then
+                    CurrReport.Break();*/
+                /*       if copystr(DataItemName."No.", StrLen(DataItemName."No.") - 2, StrLen(DataItemName."No.")) <> '_1' then begin
+
+                           Emp.Reset();
+                           Emp.SetFilter("No.", '%', DataItemName."No." + '_1');
+                           if not Emp.FindFirst() then begin
+                               if EmpOLD.get(DataItemName."No.") then
+                                   EmpOLD.Rename(DataItemName."No." + '_1');
+
+                           end
+                           else begin
+                               if EmpOLD.get(DataItemName."No.") then
+                                   EmpOLD.Rename(DataItemName."No." + '__1');
+
+                           end;
+                       end;
+
+                       Brojac := Brojac + 1;
+                       if Brojac = 319 then
+                           CurrReport.Break();
+                   end;*/
             end;
         }
     }
@@ -132,12 +152,7 @@ report 50041 "Update Data"
     begin
         Brojac := 0;
 
-        EmpOLD.Reset();
-        EmpOLD.SetFilter("No.", '%1|%2|%3|%4', '111', '96', '12', '172');
-        if EmpOLD.FindSet() then
-            repeat
-                EmpOLD.Delete();
-            until EmpOLD.Next() = 0;
+
 
     end;
 
