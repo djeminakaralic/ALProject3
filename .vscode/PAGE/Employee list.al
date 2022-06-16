@@ -329,10 +329,10 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Blood Donor"; "Blood Donor") { }
             field("Blood Type"; "Blood Type") { }
 
-            field("Passport No."; "Passport No.") { }
+
             field("Citizenship 2"; "Citizenship 2") { }
             field("Additional Passport No."; "Additional Passport No.") { }
-            field(Nationallity; Nationallity) { }
+
             field("Residence Permit"; "Residence Permit") { }
             field("Residence Permit Expiry Date"; "Residence Permit Expiry Date") { }
             field("Work Permit"; "Work Permit") { }

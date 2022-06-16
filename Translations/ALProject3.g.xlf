@@ -23973,16 +23973,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Engagement Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 346890487 - Control 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Engagement Type - Control Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 346890487 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Engagement Type - Control Description - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 643899375 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entities</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24412,6 +24402,11 @@
           <source>Employee Default Dimension</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Employee Default Dimension - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 3957032978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employees Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Employee No import - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2066736455 - Action 2061216592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employees Import</source>
@@ -34162,6 +34157,11 @@
           <source>Employee Card is updated.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Work experience in Company - NamedType Text0001</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 3957032978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee No import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort Employee No import - Property Caption</note>
         </trans-unit>
         <trans-unit id="XmlPort 2061216592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employees Import</source>
