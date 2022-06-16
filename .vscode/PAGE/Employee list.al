@@ -2,6 +2,14 @@ pageextension 50149 EmployeeList extends "Employee List"
 {
     layout
     {
+        modify("Search Name")
+        {
+            Visible = false;
+        }
+        modify(Comment)
+        {
+            Visible = false;
+        }
         // Add changes to page layout here
         addafter("No.")
         {
@@ -41,6 +49,10 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Position Code"; "Position Code") { }
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
+            field("Engagement Type"; "Engagement Type") { }
+            field("Manager 1"; EmployeeContractLedger."Manager 1") { }
+            field(Manager1PositionCode; EmployeeContractLedger."Manager 1 Position Code") { }
+            field("Manager 1 position code"; EmployeeContractLedger."Manager 1 Position ID") { }
             field(Manager1; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
             {
                 Caption = 'Ime i prezime prvog nadređenog';
@@ -48,6 +60,9 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             }
+            field("Manager 2"; EmployeeContractLedger."Manager 2") { }
+            field(Manager2PositionCode; EmployeeContractLedger."Manager 2 Position Code") { }
+
             field(Manager2; EmployeeContractLedger."Manager 2 Last Name" + ' ' + EmployeeContractLedger."Manager 2 First Name")
             {
                 Caption = 'Ime i prezime drugog nadređenog';
@@ -59,7 +74,8 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
 
-            field("Engagement Type"; "Engagement Type") { }
+
+            field("Position Coefficient for Wage"; "Position Coefficient for Wage") { }
             field(Brutto; Brutto) { }
             field(Netto; Netto)
             {
@@ -69,21 +85,31 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
-            field("Position Coefficient for Wage"; "Position Coefficient for Wage") { }
+
+
             field("Starting Date"; "Starting Date") { }
             field("Ending Date"; "Ending Date") { }
-            //field("Contract type"; "Contract type") { }
+            field("Contract type"; "Contract type") { }
+            field("Employement type"; EmployeeContractLedger."Engagement Type") { }
+            field("First employment"; EmployeeContractLedger."First Time Employed") { }
+            field("Termination"; EmployeeContractLedger."Manner of Term. Code") { }
+            field("Termination name"; EmployeeContractLedger."Manner of Term. Description") { }
+            field("Grounds for termination"; EmployeeContractLedger."Grounds for Term. Code") { }
+            field("Grounds for term name"; EmployeeContractLedger."Grounds for Term. Description") { }
             // field("Contract Termination Date"; "Contract Termination Date") { }
             field("Education Level"; "Education Level") { }
             field("Major of Graduation"; "Major of Graduation") { }
+            field("Title Code"; "Title Code") { }
+            field(Title; Title) { }
 
             field(Voocation; Voocation) { }
             field("Vocation Description"; "Vocation Description") { }
-            field(Title; Title) { }
+
             field(Profession; Profession)
             {
 
             }
+
             field("Default Dimension"; "Default Dimension") { }
             field("Default Dimension Name"; "Default Dimension Name") { }
 
@@ -232,46 +258,90 @@ pageextension 50149 EmployeeList extends "Employee List"
             {
 
             }
+            field("Bank Account Code"; "Bank Account Code") { }
+            field("Bank Account No."; "Bank Account No.") { }
+            field("Bank No."; "Bank No.") { }
+            field("Refer To Number"; "Refer To Number") { }
+            field("Hours In Day"; "Hours In Day") { }
+            field("Transport Allowance"; "Transport Allowance") { }
+            field("Transport Amount Planned"; "Transport Amount Planned") { }
+            field("Transport Amount"; "Transport Amount") { }
+            field("Wage Type"; "Wage Type") { }
+            field(Meal; Meal) { }
+            field("Tax Deduction"; "Tax Deduction") { }
+            field("Tax Individual"; "Tax Individual") { }
+            field("General Tax"; "General Tax") { }
+            field("Additional Tax"; "Additional Tax") { }
+            field("Tax Deduction Amount"; "Tax Deduction Amount") { }
+            field("Wage Posting Group"; "Wage Posting Group") { }
+            field("Contribution Category Code"; "Contribution Category Code") { }
+            field("Calculate Wage Addition"; "Calculate Wage Addition") { }
+
             field("Disabled Person"; "Disabled Person") { }
             field("Disability Level"; "Disability Level") { }
 
             field("Disabled Child"; "Disabled Child") { }
-            field("Tax Deduction"; "Tax Deduction") { }
-            field("Tax Deduction Amount"; "Tax Deduction Amount") { }
-            field("Additional Tax"; "Additional Tax") { }
-            field("Wage Posting Group"; "Wage Posting Group") { }
-            // field("Employee Posting Group"; "Employee Posting Group") { }
+
             field("Chronic Disease"; "Chronic Disease") { }
             field(Nationallity; Nationallity)
             {
                 Caption = 'Nacionalnost';
             }
             field("Passport No."; "Passport No.") { }
-            field("Country/Region Code CIPS"; "Country/Region Code CIPS") { }
+
             field("Citizenship 1"; "Citizenship 1") { }
             field("City of Birth"; "City of Birth") { }
-            field("City CIPS"; "City CIPS") { }
-            field("Municipality Code CIPS"; "Municipality Code CIPS") { }
-            field("Municipality Name CIPS"; "Municipality Name CIPS") { }
             field("Municipality Code of Birth"; "Municipality Code of Birth") { }
             field("Municipality Name of Birth"; "Municipality Name of Birth") { }
-            field("Municipality Code for salary"; "Municipality Code for salary") { }
+            field("Country/Region Code of Birth"; "Country/Region Code of Birth") { }
             field("Address CIPS"; "Address CIPS") { }
+            field("Post Code CIPS"; "Post Code CIPS") { }
+
+            field("City CIPS"; "City CIPS") { }
+
+            field("Municipality Code CIPS"; "Municipality Code CIPS") { }
+            field("Municipality Name CIPS"; "Municipality Name CIPS") { }
+            field("Country/Region Code CIPS"; "Country/Region Code CIPS") { }
+
             field("Entity Code CIPS"; "Entity Code CIPS") { }
-            field(Canton; Canton) { }
+
+
+            field("Municipality Code for salary"; "Municipality Code for salary") { }
+            field("Mobile Phone No. for Company"; "Mobile Phone No. for Company") { }
+
             //field("Phone No."; "Phone No.") { }
-            field("Phone No. for Company"; "Phone No. for Company") { }
+            field("Phone No.Company"; "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company") { }
+            field("Company E-Mail"; "Company E-Mail") { }
+            field("Father Name"; "Father Name") { }
             field("Mother Maiden Name"; "Mother Maiden Name") { }
             field("Mother Name"; "Mother Name") { }
             field("Marital status"; "Marital status") { }
             field("Spouse Name"; "Spouse Name") { }
             field("Number of Children"; "Number of Children") { }
-            field("Phone No. Emergency"; "Phone No. Emergency") { }
+            field("Full Phone No."; "Full Phone No.") { }
+            field("Full Mobile Phone No."; "Full Mobile Phone No.") { }
             field("Employee Computer Knowledge"; "Employee Computer Knowledge") { }
             field("Employee Qualifications"; "Employee Qualifications") { }
             field("Employee Languages"; "Employee Languages") { }
             field("Driving Licence"; "Driving Licence") { }
             field("Driving Llicence Category"; "Driving Llicence Category") { }
+            field("Active Driver"; "Active Driver") { }
+            field("Blood Donor"; "Blood Donor") { }
+            field("Blood Type"; "Blood Type") { }
+
+
+            field("Citizenship 2"; "Citizenship 2") { }
+            field("Additional Passport No."; "Additional Passport No.") { }
+
+            field("Residence Permit"; "Residence Permit") { }
+            field("Residence Permit Expiry Date"; "Residence Permit Expiry Date") { }
+            field("Work Permit"; "Work Permit") { }
+            field("Type Of Work Permit"; "Type Of Work Permit") { }
+            field("Social Security No."; "Social Security No.") { }
+            field("Work Booklet No."; "Work Booklet No.") { }
+            field("Work Experience Document"; "Work Experience Document") { }
+            field("For Calculation"; "For Calculation") { }
+
 
 
 

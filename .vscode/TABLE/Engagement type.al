@@ -53,6 +53,7 @@ table 50073 "Engagement Type"
             Caption = 'Last Date Modified';
             Editable = false;
         }
+
     }
 
     keys

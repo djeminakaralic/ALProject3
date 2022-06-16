@@ -3,6 +3,7 @@ page 50216 "Engagement Type"
     PageType = List;
     SourceTable = "Engagement Type";
     Caption = 'Engagement Type';
+    RefreshOnActivate = true;
 
     layout
     {
