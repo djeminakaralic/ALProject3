@@ -58,13 +58,14 @@ report 50052 "Evidencija preraspoređeni"
                 EmployeeContractLedger2.SETFILTER("Starting Date", '<%1', DataItem1."Starting Date");
                 EmployeeContractLedger2.SETCURRENTKEY("Starting Date");
                 EmployeeContractLedger2.ASCENDING(FALSE);
+                EmployeeContractLedger2.SETFILTER("Show Record", '%1', FALSE);
                 PomocnaAktivniUgovor := '';
                 IF EmployeeContractLedger2.FINDFIRST THEN
                     PomocnaStariUgovor := EmployeeContractLedger2."Position Description"
                 ELSE
                     PomocnaStariUgovor := '';
 
-                EmployeeContractLedger2.SETFILTER("Employee No.", '<>%1', DataItem1."Employee No.");
+                //EmployeeContractLedger2.SETFILTER("Employee No.", '<>%1', DataItem1."Employee No.");
             end;
 
             trigger OnPreDataItem()
