@@ -14,13 +14,13 @@ page 50216 "Engagement Type"
                 field(Code; Code)
                 {
                     ApplicationArea = all;
-                    Caption = 'Code';
+
                 }
 
                 field(Description; Description)
                 {
                     ApplicationArea = all;
-                    Caption = 'Description';
+
                 }
                 field("No. of Contracts"; "No. of Contracts")
                 {
