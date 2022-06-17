@@ -77,6 +77,22 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Active Driver';
         }
+        field(50204; "Year1"; Boolean)
+        {
+            Caption = 'Year1';
+        }
+        field(50205; "Year 2"; Boolean)
+        {
+            Caption = 'Year2';
+        }
+        field(50206; "Year3"; Boolean)
+        {
+            Caption = 'Year3';
+        }
+        field(50209; "Year4"; Boolean)
+        {
+            Caption = 'Year4';
+        }
         field(50264; "Blood Donation History"; Integer)
         {
             FieldClass = FlowField;
@@ -2912,6 +2928,10 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Date of graduation';
         }
+        field(50201; "Retirement Date"; Date)
+        {
+            Caption = 'Retirement Date';
+        }
         field(503575; "Military count"; Boolean)
         {
             Caption = 'Vojni staž se obračunava u ukupni staž';
@@ -3052,6 +3072,11 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Additional rights millitary';
             OptionMembers = " ",Borac,"Pripadnik boračke populacije","Šehidski status";
+        }
+        field(50200; "Retirement Condition"; Option)
+        {
+            Caption = 'Retirement Condition';
+            OptionMembers = " ",Staž,"Godine života";
         }
         field(503711; "Group Code"; Code[30])
         {

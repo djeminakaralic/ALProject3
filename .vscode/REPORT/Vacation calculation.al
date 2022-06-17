@@ -1588,7 +1588,7 @@ report 50110 "Vacation Calculation"
         WB: Record "Work Booklet";
         ECL: Record "Employee Contract Ledger";
         Absence: Record "Employee Absence";
-        UsedDays: Integer;
+        UsedDays: Integer; 
         Year2: Integer;
         Datttt: Date;
         UsedDaysThisYear: Integer;

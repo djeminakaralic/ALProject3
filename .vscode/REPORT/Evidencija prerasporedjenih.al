@@ -18,6 +18,9 @@ report 50052 "Evidencija preraspoređeni"
             column(Status_EmployeeContractLedger; DataItem1.Status)
             {
             }
+            column(ID; DataItem1."Employee No.")
+            {
+            }
             column(StariUgovor; PomocnaStariUgovor)
             {
             }
@@ -46,6 +49,8 @@ report 50052 "Evidencija preraspoređeni"
             {
             }
 
+
+
             trigger OnAfterGetRecord()
             begin
 
@@ -58,14 +63,13 @@ report 50052 "Evidencija preraspoređeni"
                 EmployeeContractLedger2.SETFILTER("Starting Date", '<%1', DataItem1."Starting Date");
                 EmployeeContractLedger2.SETCURRENTKEY("Starting Date");
                 EmployeeContractLedger2.ASCENDING(FALSE);
-                // II nacin: dodan filter da se Edin ne bi ponavljao, radi
-                EmployeeContractLedger2.SETFILTER("Show Record", '%1', FALSE);
+                //dodan filter da se Edin ne bi ponavljao
+                EmployeeContractLedger2.SETFILTER("Show Record", '%1', TRUE);
                 PomocnaAktivniUgovor := '';
                 IF EmployeeContractLedger2.FINDFIRST THEN
                     PomocnaStariUgovor := EmployeeContractLedger2."Position Description"
                 ELSE
                     PomocnaStariUgovor := '';
-                // II nacin: isto radi, ali ipak provjeriti
                 //EmployeeContractLedger2.SETFILTER("Employee No.", '<>%1', DataItem1."Employee No.");
             end;
 
