@@ -964,6 +964,17 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Gender_EmployeeCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Gender_EmployeeCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Gender_EmployeeCaption</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1062,6 +1073,30 @@ End Function
         </Field>
         <Field Name="City_CompanyInformation">
           <DataField>City_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Gender_Employee">
+          <DataField>Gender_Employee</DataField>
+        </Field>
+        <Field Name="Muski">
+          <DataField>Muski</DataField>
+        </Field>
+        <Field Name="Zenski">
+          <DataField>Zenski</DataField>
+        </Field>
+        <Field Name="Ukupno">
+          <DataField>Ukupno</DataField>
+        </Field>
+        <Field Name="Sum50">
+          <DataField>Sum50</DataField>
+        </Field>
+        <Field Name="Sum60">
+          <DataField>Sum60</DataField>
+        </Field>
+        <Field Name="DobnaSum">
+          <DataField>DobnaSum</DataField>
+        </Field>
+        <Field Name="Selected">
+          <DataField>Selected</DataField>
         </Field>
       </Fields>
       <Query>
