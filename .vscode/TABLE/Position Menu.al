@@ -140,32 +140,33 @@ table 50132 "Position Menu"
                         HeadOfOrg.Delete();
 
                     end;
+                end;
 
-                    if (Rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6)
-                    then begin
-                        HeadOf.Init();
-                        HeadOf."ORG Shema" := Rec."Org. Structure";
-                        HeadOf."Management Level" := Rec."Management Level";
-                        dep.Reset();
-                        dep.SetFilter(Code, '%1', rec."Department Code");
-                        dep.SetFilter("ORG Shema", '%1', rec."Org. Structure");
-                        if dep.FindFirst() then begin
-                            HeadOf.Validate("Group Description", dep."Group Description");
-                            HeadOf.Validate("Department Categ.  Description", dep."Department Categ.  Description");
-                            HeadOf.Validate("Sector  Description", dep."Sector  Description");
-                            HeadOf.Validate("Position Code", Rec.Code);
-                            HeadOf.Insert();
-                        end;
-
+                if (Rec."Management Level".AsInteger() <> 0) and (Rec."Management Level".AsInteger() <> 6)
+                then begin
+                    HeadOf.Init();
+                    HeadOf."ORG Shema" := Rec."Org. Structure";
+                    HeadOf."Management Level" := Rec."Management Level";
+                    dep.Reset();
+                    dep.SetFilter(Code, '%1', rec."Department Code");
+                    dep.SetFilter("ORG Shema", '%1', rec."Org. Structure");
+                    if dep.FindFirst() then begin
+                        HeadOf.Validate("Group Description", dep."Group Description");
+                        HeadOf.Validate("Department Categ.  Description", dep."Department Categ.  Description");
+                        HeadOf.Validate("Sector  Description", dep."Sector  Description");
+                        HeadOf.Validate("Position Code", Rec.Code);
+                        HeadOf.Insert();
                     end;
-
-
-
 
                 end;
 
 
+
+
             end;
+
+
+
         }
         field(50366; "Control Function"; Boolean)
         {
