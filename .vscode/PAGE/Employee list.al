@@ -519,18 +519,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
-                action("Izvjestaj za trening")
-                {
-                    Caption = 'Izvještaj za trening';
-                    Image = Report;
-                    ApplicationArea = all;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    RunObject = report "Izvjestaj za_trening";
 
-
-                }
                 action("Uslov za penziju")
                 {
                     Caption = 'Uslov za penziju';
