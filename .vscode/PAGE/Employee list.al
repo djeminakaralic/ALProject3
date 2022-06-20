@@ -493,6 +493,20 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                 }
 
+                action("Izvjestaj starosna spolna")
+                {
+                    Caption = 'Izvještaj starosna spolna';
+
+                    Image = Ledger;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Izvjestaj starosna spolna";
+
+
+                }
+
                 action("Evidencija preraspoređeni")
                 {
                     Caption = 'Evidencija preraspoređeni';
