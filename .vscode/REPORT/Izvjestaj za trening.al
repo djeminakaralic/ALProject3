@@ -1,7 +1,7 @@
-report 50054 "Izvjestaj za_trening"
+report 50054 "Izvjestaj za trening"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Izvjestaj za trening.rdl';
+    RDLCLayout = './Izvjestaj za trening.rdlc';
 
     dataset
     {
@@ -28,7 +28,7 @@ report 50054 "Izvjestaj za_trening"
             column(Status_EmployeeQualification; Status)
             {
             }
-            column(ProofOfEducation_EmployeeQualification; DataItem1."Evidence of certification")
+            column(ProofOfEducation_EmployeeQualification; "Evidence of certification")
             {
             }
             column(ExpirationDate_EmployeeQualification; FORMAT("Expiration Date", 0, '<day,2>.<month,2>.<year4>'))
@@ -41,10 +41,10 @@ report 50054 "Izvjestaj za_trening"
             {
                 IncludeCaption = true;
             }
-            /*column(Picture; CompInfo.Picture)
+            column(Picture; CompInfo.Picture)
             {
                 IncludeCaption = true;
-            }*/
+            }
             column(Adress; CompInfo.Address)
             {
                 IncludeCaption = true;
@@ -67,9 +67,6 @@ report 50054 "Izvjestaj za_trening"
             {
             }
             column(Description_EmployeeQualification; Description)
-            {
-            }
-            column(Picture; CompInfo.Picture)
             {
             }
 

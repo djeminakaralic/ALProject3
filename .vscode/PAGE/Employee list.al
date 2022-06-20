@@ -493,6 +493,33 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                 }
 
+                action("Izvjestaj starosna spolna")
+                {
+                    Caption = 'Izvještaj starosna spolna';
+
+                    Image = Ledger;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Izvjestaj starosna spolna";
+
+
+                }
+                action("Izvjestaj za trening")
+                {
+                    Caption = 'Izvjestaj za trening';
+
+                    Image = Ledger;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Izvjestaj za trening";
+
+
+                }
+
                 action("Evidencija preraspoređeni")
                 {
                     Caption = 'Evidencija preraspoređeni';
@@ -505,18 +532,57 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
-                action("Izvjestaj za trening")
+
+                action("Uslov za penziju")
                 {
-                    Caption = 'Izvještaj za trening';
+                    Caption = 'Uslov za penziju';
                     Image = Report;
                     ApplicationArea = all;
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
-                    RunObject = report "Izvjestaj za_trening";
+                    RunObject = report "Uslov za penziju";
 
 
                 }
+                action("Uslovi za odlazak u penziju")
+                {
+                    Caption = 'Uslovi za odlazak u penziju';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslovi za odlazak u penziju";
+
+
+                }
+
+                action("Uslov za penziju1")
+                {
+                    Caption = 'Uslov za penziju1';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslov za penziju1";
+
+
+                }
+                action("Uslovi za odlazak u penziju1")
+                {
+                    Caption = 'Uslovi za odlazak u penziju1';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslovi za odlazak u penziju1";
+
+
+                }
+
             }
 
             /*action("Create Worksheet")
