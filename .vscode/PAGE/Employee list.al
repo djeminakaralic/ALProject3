@@ -517,6 +517,30 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
+                action("Uslov za penziju")
+                {
+                    Caption = 'Uslov za penziju';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslov za penziju";
+
+
+                }
+                action("Uslov za odlazak u penziju")
+                {
+                    Caption = 'Uslov za odlazak u penziju';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslov za odlazak u penziju";
+
+
+                }
             }
 
             /*action("Create Worksheet")
