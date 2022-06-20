@@ -72,7 +72,7 @@ report 50054 "Izvjestaj za trening"
 
             trigger OnAfterGetRecord()
             begin
-                CALCFIELDS("Employee First Name", "Employee Last Name");
+                DataItem1.CALCFIELDS("Employee First Name", "Employee Last Name");
 
                 //ZA DATUM DA ISPISE IME MJESECA I GODINU
                 Datum := FORMAT("To Date", 0, '<Month Text> <year4>');
@@ -140,7 +140,7 @@ report 50054 "Izvjestaj za trening"
             trigger OnPreDataItem()
             begin
                 SETFILTER(Status, '%1', Status::Active);
-                CALCFIELDS(Status);
+                DataItem1.CALCFIELDS(Status);
 
                 SETFILTER("Qualification Code", '<>%1', '');
 
