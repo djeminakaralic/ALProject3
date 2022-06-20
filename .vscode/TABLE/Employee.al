@@ -837,6 +837,7 @@ tableextension 50071 EmployeeExtension extends Employee
             begin
                 Employee1.RESET;
                 Employee1.SETFILTER("Employee ID", "Employee ID");
+                Employee1.SetFilter("No.", '<>%1', Rec."No.");
                 IF Employee1.FINDFIRST THEN BEGIN
                     IF "Employee with 2 JIB" = FALSE THEN
                         ERROR(Text007);
@@ -1639,15 +1640,18 @@ tableextension 50071 EmployeeExtension extends Employee
         }
         field(50217; "Employee User Name"; Code[50])
         {
-            /*ĐK  FieldClass = FlowField;
-             CalcFormula = Lookup(User."User Name" WHERE("Employee No." = FIELD("No.")));
-             Caption = 'Employee User Name';
-             Editable = false;*/
+            Caption = 'Employee User Name';
             FieldClass = FlowField;
-            CalcFormula = lookup("User Setup"."User ID" where("Employee No." = FIELD("No.")));
+            CalcFormula = Lookup(User."User Name" where("User Name" = field("Employee New User Name")));
+
             Editable = false;
 
+            /*    FieldClass = FlowField;
+                CalcFormula = lookup("User Setup"."User ID" where("Employee No." = FIELD("No.")));
+                Editable = false;*/
+
         }
+
         field(50202; "Work Permit"; Boolean)
         {
             Caption = 'Work Permit';
@@ -3091,6 +3095,17 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger"."Group Description" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
             //Department.Code WHERE (Type=FILTER(' '|Department))
+        }
+        field(503713; "Employee New User Name"; Code[50])
+        {
+            Caption = 'Employee User Name';
+
+            Editable = false;
+
+            /*    FieldClass = FlowField;
+                CalcFormula = lookup("User Setup"."User ID" where("Employee No." = FIELD("No.")));
+                Editable = false;*/
+
         }
 
 

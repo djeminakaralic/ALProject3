@@ -13,6 +13,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         // Add changes to page layout here
         addafter("No.")
         {
+            field(Order; Order)
+            {
+
+            }
             field("Old Employee No."; "Old Employee No.")
 
             {
@@ -527,6 +531,19 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
+                action("Uslov za penziju")
+                {
+                    Caption = 'Uslov za penziju';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslov za penziju";
+
+
+                }
+
             }
 
             /*action("Create Worksheet")

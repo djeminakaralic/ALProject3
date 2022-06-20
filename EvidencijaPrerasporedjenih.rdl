@@ -11,52 +11,6 @@
       <rd:DataSourceID>a49d04f6-5868-4da7-8fd0-5839f1aae968</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="EmployeeName_EmployeeContractLedger">
-          <DataField>EmployeeName_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="Status_EmployeeContractLedger">
-          <DataField>Status_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="StariUgovor">
-          <DataField>StariUgovor</DataField>
-        </Field>
-        <Field Name="StartingDate_EmployeeContractLedger">
-          <DataField>StartingDate_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="ReasonforChange_EmployeeContractLedger">
-          <DataField>ReasonforChange_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="BrojTelefona">
-          <DataField>BrojTelefona</DataField>
-        </Field>
-        <Field Name="Grad">
-          <DataField>Grad</DataField>
-        </Field>
-        <Field Name="Adresa">
-          <DataField>Adresa</DataField>
-        </Field>
-        <Field Name="kod">
-          <DataField>kod</DataField>
-        </Field>
-        <Field Name="AktivniUgovor">
-          <DataField>AktivniUgovor</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="ID">
-          <DataField>ID</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1027,4 +981,50 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="EmployeeName_EmployeeContractLedger">
+          <DataField>EmployeeName_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="Status_EmployeeContractLedger">
+          <DataField>Status_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+        </Field>
+        <Field Name="StariUgovor">
+          <DataField>StariUgovor</DataField>
+        </Field>
+        <Field Name="StartingDate_EmployeeContractLedger">
+          <DataField>StartingDate_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="ReasonforChange_EmployeeContractLedger">
+          <DataField>ReasonforChange_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="BrojTelefona">
+          <DataField>BrojTelefona</DataField>
+        </Field>
+        <Field Name="Grad">
+          <DataField>Grad</DataField>
+        </Field>
+        <Field Name="Adresa">
+          <DataField>Adresa</DataField>
+        </Field>
+        <Field Name="kod">
+          <DataField>kod</DataField>
+        </Field>
+        <Field Name="AktivniUgovor">
+          <DataField>AktivniUgovor</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

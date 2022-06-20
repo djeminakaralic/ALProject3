@@ -15,11 +15,14 @@ report 50041 "Update Data"
             begin
                 SetCurrentKey(Order);
                 Ascending;
+                SetFilter("Show Record", '%1', true);
 
             end;
 
             trigger OnAfterGetRecord()
             begin
+                if DataItemName."Employee No." = '2' then
+                    Message('');
                 /*                Brojac := Brojac + 1;
                                 OldNumber := DataItemName."No.";
 

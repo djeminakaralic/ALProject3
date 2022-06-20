@@ -3319,6 +3319,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             EmployeeContractLedger.SETFILTER("Engagement Type", '%1', 'MIROVANJE');
                             EmployeeContractLedger.SetFilter(Active, '%1', true);
+                            EmployeeContractLedger.SetFilter("Show Record", '%1', true);
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;
@@ -3336,6 +3337,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             //EmployeeContractLedger.SETFILTER("Ending Date", '<>%1', 0D);
+                            EmployeeContractLedger.SetFilter("Show Record", '%1', true);
                             EmployeeContractLedger.SetFilter("Manner of Term. Code", '%1', 'MIROVANJE');
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
@@ -3355,7 +3357,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedger.RESET;
                             EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                             EmployeeContractLedger.SETFILTER("Engagement Type", '%1', 'MIROVANJE');
+                            EmployeeContractLedger.SetFilter("Show Record", '%1', true);
                             EmployeeContractLedger.SetFilter(Active, '%1', true);
+                            EmployeeContractLedger.SetFilter("Show Record", '%1', true);
                             EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                             EmployeeContractLedgerPage.RUN;
                             CurrPage.UPDATE;

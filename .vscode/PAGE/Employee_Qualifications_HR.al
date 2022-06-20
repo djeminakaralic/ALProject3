@@ -2,10 +2,12 @@ page 50213 Employee_Qualifications_HR
 {
 
     PageType = List;
+    Caption = 'Employee Qualifications HR';
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Employee Qualification";
     RefreshOnActivate = true;
+
 
     layout
     {
@@ -112,6 +114,7 @@ page 50213 Employee_Qualifications_HR
                 field(Position; Position)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
 

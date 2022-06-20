@@ -322,7 +322,12 @@ page 50049 Positions
         OrgShema.SETFILTER(Status, '%1', 0);
         IF OrgShema.FINDLAST THEN BEGIN
             SETFILTER("Org. Structure", '%1', OrgShema.Code);
+            REPORT.RUNMODAL(50059, FALSE, TRUE);
         END;
+
+
+
+
     end;
 
     trigger OnAfterGetRecord()
