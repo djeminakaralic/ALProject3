@@ -73,8 +73,8 @@ tableextension 50071 EmployeeExtension extends Employee
         }
         field(51998; "Org. jed PU"; Code[10])
         {
-            FieldClass = FlowField;
-            TableRelation = "Dimension Value".Code;
+            //FieldClass = FlowField;
+            //TableRelation = "Dimension Value".Code;
             Caption = 'Org. jed PU';
         }
         field(52224; "Sector code"; Code[10])
