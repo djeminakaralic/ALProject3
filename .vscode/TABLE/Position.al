@@ -744,8 +744,23 @@ table 50135 Position
 
                     ExeManager.Reset();
                     ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
-                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
-                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+                    if Rec."Department Category" = '' then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                    if Rec."Department Categ.  Description" = '' then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+
+                    if (Rec."Group Code" = '') and (rec."Department Category" <> '') then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                    if (Rec."Group Description" = '') and (Rec."Department Categ.  Description" <> '') then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Categ.  Description");
+
+                    if Rec."Group Code" <> '' then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group Code");
+                    if Rec."Group Description" <> '' then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+
+
                     if ExeManager.FindFirst() then begin
                         Posa.Reset();
                         Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
@@ -862,6 +877,29 @@ table 50135 Position
 
                 IF ("Management Level".AsInteger() = 4) THEN BEGIN  //EXE ODGOVARA CEO
 
+
+                    ExeManager.Reset();
+                    ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                    if Rec."Department Category" = '' then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                    if Rec."Department Categ.  Description" = '' then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+
+                    if (Rec."Group Code" = '') and (rec."Department Category" <> '') then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                    if (Rec."Group Description" = '') and (Rec."Department Categ.  Description" <> '') then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Categ.  Description");
+
+                    if Rec."Group Code" <> '' then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group Code");
+                    if Rec."Group Description" <> '' then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                    if ExeManager.FindFirst() then begin
+                    end;
+
+
+
                     HeadOf.SETFILTER("Team Code", '%1', '');
                     HeadOf.SETFILTER("Group Code", '%1', '');
                     HeadOf.SETFILTER("Department Category", '%1', '');
@@ -968,14 +1006,58 @@ table 50135 Position
                 //AKO JE B3 MO?E BITI LEVELIMA IZNAD
                 IF ("Management Level".AsInteger() = 5) THEN BEGIN  //
 
+                    ExeManager.Reset();
+                    ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+
+                    if Rec."Department Category" = '' then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                    if Rec."Department Categ.  Description" = '' then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector  Description");
+
+                    if (Rec."Group Code" = '') and (rec."Department Category" <> '') then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                    if (Rec."Group Description" = '') and (Rec."Department Categ.  Description" <> '') then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Categ.  Description");
+
+                    if Rec."Group Code" <> '' then
+                        ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group Code");
+                    if Rec."Group Description" <> '' then
+                        ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+                    if ExeManager.FindFirst() then begin
+                        Posa.Reset();
+                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                        Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                        Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                        if Posa.FindFirst() then begin
+                            Uprava := Posa.Code
+
+
+                        end;
+                    end;
+
+
+
+
                     //ovo je voditelj odjela
 
-                    HeadOf.RESET;
-                    HeadOf.SETFILTER("Team Code", '%1', '');
-                    HeadOf.SETFILTER("Group Code", '%1', '');
-                    HeadOf.SETFILTER("Department Category", '%1', "Department Category");
-                    HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
-                    HeadOf.SETFILTER("Management Level", '%1', 4);
+                    if Uprava = '' then begin
+
+                        HeadOf.RESET;
+                        HeadOf.SETFILTER("Team Code", '%1', '');
+                        HeadOf.SETFILTER("Group Code", '%1', '');
+                        HeadOf.SETFILTER("Department Category", '%1', "Department Category");
+                        HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                        HeadOf.SETFILTER("Management Level", '%1', 4);
+                    end
+
+                    else begin
+                        HeadOf.Reset();
+                        HeadOf.SETFILTER("Position Code", '%1', ExeManager."Position Code");
+                        HeadOf.SETFILTER("ORG Shema", '%1', "Org. Structure");
+                        HeadOf.SETFILTER("Management Level", '<>%1 & <>%2', HeadOf."Management Level"::Empty, HeadOf."Management Level"::E);
+
+
+                    end;
                     //da mu je nadređeni šef službe
                     IF HeadOf.FIND('-') THEN BEGIN
                         HeadOf.CALCFIELDS("Employee No.");

@@ -47,6 +47,10 @@ tableextension 50179 User_setup_ext extends "User Setup"
         {
 
         }
+        field(5003; "New Username"; Text[250])
+        {
+
+        }
 
 
     }

@@ -13,6 +13,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         // Add changes to page layout here
         addafter("No.")
         {
+            field(Order; Order)
+            {
+
+            }
             field("Old Employee No."; "Old Employee No.")
 
             {

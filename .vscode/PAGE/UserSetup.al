@@ -11,6 +11,31 @@ pageextension 50107 UserSetup extends "User Setup"
                 Caption = 'Wage Allowed';
             }
         }
+        modify("User ID")
+        {
+            LookupPageId = "User Card";
+        }
+        modify("Time Sheet Admin.")
+        {
+            Visible=false;
+        }
+        modify("Sales Resp. Ctr. Filter")
+        {
+            Visible=false;
+        }
+        modify("Service Resp. Ctr. Filter")
+        {
+            Visible=false;
+        }
+        modify("Purchase Resp. Ctr. Filter")
+        {
+            Visible=false;
+        }
+        modify("Salespers./Purch. Code")
+        {
+            Visible=false;
+        }
+        
     }
 
     actions
