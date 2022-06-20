@@ -67,14 +67,15 @@ tableextension 50071 EmployeeExtension extends Employee
         field(51999; "Sifra UOJ"; Code[10])
         {
             FieldClass = FlowField;
+            //CalcFormula = Count("Employee Contract Ledger" WHERE("Employee No." = FIELD("No.")));
             Caption = 'Sifra UOJ';
-            TableRelation = "Employee Contract Ledger"; 
+            TableRelation = "Employee Contract Ledger";
         }
         field(51998; "Org. jed PU"; Code[10])
         {
             FieldClass = FlowField;
+            TableRelation = "Dimension Value".Code;
             Caption = 'Org. jed PU';
-            TableRelation = "Employee Contract Ledger"; 
         }
         field(52224; "Sector code"; Code[10])
         {
@@ -92,7 +93,7 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             FieldClass = FlowField;
             Caption = 'Naziv pozicije po sistem';
-            TableRelation = "Employee Contract Ledger"; 
+            TableRelation = "Employee Contract Ledger";
         }
         field(52227; "Tip RM"; Code[10])
         {
