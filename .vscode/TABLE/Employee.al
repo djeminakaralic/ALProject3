@@ -64,6 +64,41 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Contribution Category Code';
             TableRelation = "Contribution Category";
         }
+        field(51999; "Sifra UOJ"; Code[10])
+        {
+            FieldClass = FlowField;
+            Caption = 'Sifra UOJ';
+            TableRelation = "Employee Contract Ledger"; 
+        }
+        field(51998; "Org. jed PU"; Code[10])
+        {
+            FieldClass = FlowField;
+            Caption = 'Org. jed PU';
+            TableRelation = "Employee Contract Ledger"; 
+        }
+        field(52224; "Sector code"; Code[10])
+        {
+            FieldClass = FlowField;
+            Caption = 'Sector code';
+            TableRelation = "Employee Contract Ledger";
+        }
+        field(52225; "Šiffra pozicije po sistem."; Code[10])
+        {
+            FieldClass = FlowField;
+            Caption = 'Šiffra pozicije po sistem.';
+            TableRelation = "Employee Contract Ledger";
+        }
+        field(52226; "Naziv pozicije po sistem"; Text[300])
+        {
+            FieldClass = FlowField;
+            Caption = 'Naziv pozicije po sistem';
+            TableRelation = "Employee Contract Ledger"; 
+        }
+        field(52227; "Tip RM"; Code[10])
+        {
+            Caption = 'Tip RM';
+            TableRelation = "Employee Contract Ledger";
+        }
         field(50277; "Modified Employee No."; text[1000])
 
         {
@@ -135,11 +170,30 @@ tableextension 50071 EmployeeExtension extends Employee
             Editable = false;
 
         }
+        field(52000; "Level of Graduation"; Integer)
+        {
+            Caption = 'Level of Graduation';
+
+        }
         field(503570; Regres; Option)
         {
             Caption = 'Regres';
             OptionCaption = ' ,Yes,No';
             OptionMembers = " ",Yes,No;
+        }
+        field(52229; "Employee Type"; Option)
+        {
+            //FieldClass = FlowField;
+            Caption = 'Employee Type';
+            OptionCaption = ' ,Nedefinisano,Drzavni Sluzbenik,Namjestenik';
+            OptionMembers = " ",Nedefinisano,"Drzavni Sluzbenik",Namjestenik;
+            //TableRelation = Position;
+        }
+        field(52222; "Education Level PU"; Option)
+        {
+            Caption = 'Education Level PU';
+            OptionCaption = ' ,NK,PKV,KV-SSS/III stepen,VKV,SSS/IV,VŠ-VŠS,VSS,MR,DR,BCS_MA(300),BCS(180),BCS(240),DR(480)';
+            OptionMembers = " ",NK,PKV,"KV-SSS/III stepen",VKV,"SSS/IV","VŠ-VŠS",VSS,MR,DR,"BCS_MA(300)","BCS(180)","BCS(240)","DR(480)";
         }
 
         field(503562; "Regres Date"; Date)
@@ -150,7 +204,19 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Employment Abroad Remark';
         }
-        field(50273; Remark; text[300])
+        field(50273; "Naziv UOJ"; text[300])
+        {
+            //FieldClass = FlowField;
+            caption = 'Naziv UOJ';
+            //TableRelation = "Employee CL"; //ovo ne znam
+        }
+        field(52334; "Naziv Org. jed PU"; text[300])
+        {
+            //FieldClass = FlowField;
+            caption = 'Naziv Org. jed PU';
+            //TableRelation = "Employee CL"; //ovo ne znam
+        }
+        field(52333; Remark; text[300])
         {
             caption = 'Remark';
         }
