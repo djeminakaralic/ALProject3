@@ -529,6 +529,18 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
+                action("Uslovi za odlazak u penziju")
+                {
+                    Caption = 'Uslovi za odlazak u penziju';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Uslovi za odlazak u penziju";
+
+
+                }
 
             }
 
