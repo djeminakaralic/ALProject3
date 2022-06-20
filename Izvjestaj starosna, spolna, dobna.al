@@ -1,7 +1,7 @@
 report 50138 "Izvjestaj starosna spolna"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Izvjestaj starosna, spolna, dobna.rdlc';
+    RDLCLayout = './Izvjestaj starosna, spolna, dobna.rdl';
 
     dataset
     {

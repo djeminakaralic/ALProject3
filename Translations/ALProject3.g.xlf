@@ -35023,6 +35023,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvjestaj starosne strukture - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 359559372 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Izvještaj starosna spolna</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvjestaj starosna spolna - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2830548180 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Izvještaj za trening</source>
           <note from="Developer" annotates="general" priority="2"></note>
