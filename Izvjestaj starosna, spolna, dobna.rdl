@@ -11,6 +11,97 @@
       <rd:DataSourceID>1038316e-6dc4-4f8c-84ff-fc283e1a0607</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Sum3">
+          <DataField>Sum3</DataField>
+        </Field>
+        <Field Name="Sum34">
+          <DataField>Sum34</DataField>
+        </Field>
+        <Field Name="Sum45">
+          <DataField>Sum45</DataField>
+        </Field>
+        <Field Name="MaxSum">
+          <DataField>MaxSum</DataField>
+        </Field>
+        <Field Name="Sum5">
+          <DataField>Sum5</DataField>
+        </Field>
+        <Field Name="Sum1">
+          <DataField>Sum1</DataField>
+        </Field>
+        <Field Name="Sum12">
+          <DataField>Sum12</DataField>
+        </Field>
+        <Field Name="Sum2">
+          <DataField>Sum2</DataField>
+        </Field>
+        <Field Name="Sum25">
+          <DataField>Sum25</DataField>
+        </Field>
+        <Field Name="MaxSum2">
+          <DataField>MaxSum2</DataField>
+        </Field>
+        <Field Name="RadniStaz">
+          <DataField>RadniStaz</DataField>
+        </Field>
+        <Field Name="BirthDate">
+          <DataField>BirthDate</DataField>
+        </Field>
+        <Field Name="Godine">
+          <DataField>Godine</DataField>
+        </Field>
+        <Field Name="Status_Employee">
+          <DataField>Status_Employee</DataField>
+        </Field>
+        <Field Name="Years_Employee">
+          <DataField>Years_Employee</DataField>
+        </Field>
+        <Field Name="Address_CompanyInformation">
+          <DataField>Address_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Name_CompanyInformation">
+          <DataField>Name_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Date_CompanyInformation">
+          <DataField>Date_CompanyInformation</DataField>
+        </Field>
+        <Field Name="City_CompanyInformation">
+          <DataField>City_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Gender_Employee">
+          <DataField>Gender_Employee</DataField>
+        </Field>
+        <Field Name="Muski">
+          <DataField>Muski</DataField>
+        </Field>
+        <Field Name="Zenski">
+          <DataField>Zenski</DataField>
+        </Field>
+        <Field Name="Ukupno">
+          <DataField>Ukupno</DataField>
+        </Field>
+        <Field Name="Sum50">
+          <DataField>Sum50</DataField>
+        </Field>
+        <Field Name="Sum60">
+          <DataField>Sum60</DataField>
+        </Field>
+        <Field Name="DobnaSum">
+          <DataField>DobnaSum</DataField>
+        </Field>
+        <Field Name="Selected">
+          <DataField>Selected</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -34,8 +125,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>0.72499in</Top>
-            <Left>4.67221in</Left>
+            <Top>0.73332in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <Visibility>
@@ -70,8 +161,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>0.97499in</Top>
-            <Left>4.67221in</Left>
+            <Top>0.98332in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>1</ZIndex>
@@ -107,8 +198,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>1.22499in</Top>
-            <Left>4.67221in</Left>
+            <Top>1.23332in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>2</ZIndex>
@@ -144,8 +235,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>1.47499in</Top>
-            <Left>4.67221in</Left>
+            <Top>1.48332in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>3</ZIndex>
@@ -182,8 +273,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>0.28055in</Top>
-            <Left>2.24721in</Left>
+            <Top>0.28888in</Top>
+            <Left>2.64999in</Left>
             <Height>0.25in</Height>
             <Width>2.875in</Width>
             <ZIndex>4</ZIndex>
@@ -219,8 +310,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>0.72499in</Top>
-            <Left>1.11944in</Left>
+            <Top>0.73332in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.04167in</Width>
             <ZIndex>5</ZIndex>
@@ -256,8 +347,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>0.98888in</Top>
-            <Left>1.11944in</Left>
+            <Top>0.99721in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.44167in</Width>
             <ZIndex>6</ZIndex>
@@ -293,8 +384,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>1.25276in</Top>
-            <Left>1.11944in</Left>
+            <Top>1.26109in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.44167in</Width>
             <ZIndex>7</ZIndex>
@@ -332,8 +423,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>1.50276in</Top>
-            <Left>1.11944in</Left>
+            <Top>1.51109in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.44167in</Width>
             <ZIndex>8</ZIndex>
@@ -369,8 +460,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>1.76665in</Top>
-            <Left>1.11944in</Left>
+            <Top>1.77498in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>0.775in</Width>
             <ZIndex>9</ZIndex>
@@ -406,8 +497,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>1.72499in</Top>
-            <Left>4.67221in</Left>
+            <Top>1.73332in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>10</ZIndex>
@@ -443,8 +534,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.08915in</Top>
-            <Left>4.67221in</Left>
+            <Top>3.09748in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>11</ZIndex>
@@ -480,8 +571,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.33915in</Top>
-            <Left>4.67221in</Left>
+            <Top>3.34748in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>12</ZIndex>
@@ -517,8 +608,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.58915in</Top>
-            <Left>4.67221in</Left>
+            <Top>3.59748in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>13</ZIndex>
@@ -554,8 +645,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>3.83915in</Top>
-            <Left>4.67221in</Left>
+            <Top>3.84748in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>14</ZIndex>
@@ -592,8 +683,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.56971in</Top>
-            <Left>2.46665in</Left>
+            <Top>2.57804in</Top>
+            <Left>3.19999in</Left>
             <Height>0.25in</Height>
             <Width>2.425in</Width>
             <ZIndex>15</ZIndex>
@@ -629,8 +720,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.11693in</Top>
-            <Left>1.11944in</Left>
+            <Top>3.12526in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.04167in</Width>
             <ZIndex>16</ZIndex>
@@ -666,8 +757,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.36693in</Top>
-            <Left>1.11944in</Left>
+            <Top>3.37526in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.44167in</Width>
             <ZIndex>17</ZIndex>
@@ -703,8 +794,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.63081in</Top>
-            <Left>1.11944in</Left>
+            <Top>3.63914in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.44167in</Width>
             <ZIndex>18</ZIndex>
@@ -742,8 +833,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.8947in</Top>
-            <Left>1.11944in</Left>
+            <Top>3.90303in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>1.44167in</Width>
             <ZIndex>19</ZIndex>
@@ -779,8 +870,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>4.1447in</Top>
-            <Left>1.11944in</Left>
+            <Top>4.15303in</Top>
+            <Left>1.85278in</Left>
             <Height>0.25in</Height>
             <Width>0.775in</Width>
             <ZIndex>20</ZIndex>
@@ -816,8 +907,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
-            <Top>4.08915in</Top>
-            <Left>4.67221in</Left>
+            <Top>4.09748in</Top>
+            <Left>5.40555in</Left>
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <ZIndex>21</ZIndex>
@@ -851,8 +942,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.92444in</Top>
-            <Left>2.2911in</Left>
+            <Top>5.50416in</Top>
+            <Left>3.46666in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>22</ZIndex>
@@ -887,8 +978,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.17444in</Top>
-            <Left>2.2911in</Left>
+            <Top>5.75416in</Top>
+            <Left>3.46666in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>23</ZIndex>
@@ -923,8 +1014,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.42444in</Top>
-            <Left>2.2911in</Left>
+            <Top>6.00416in</Top>
+            <Left>3.46666in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>24</ZIndex>
@@ -959,8 +1050,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.92444in</Top>
-            <Left>2.98832in</Left>
+            <Top>5.50416in</Top>
+            <Left>4.16388in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>25</ZIndex>
@@ -995,8 +1086,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.17444in</Top>
-            <Left>2.98832in</Left>
+            <Top>5.75416in</Top>
+            <Left>4.16388in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>26</ZIndex>
@@ -1031,8 +1122,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.42444in</Top>
-            <Left>2.98832in</Left>
+            <Top>6.00416in</Top>
+            <Left>4.16388in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>27</ZIndex>
@@ -1067,10 +1158,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.92444in</Top>
-            <Left>4.10221in</Left>
+            <Top>5.50416in</Top>
+            <Left>5.27777in</Left>
             <Height>0.25in</Height>
-            <Width>1.09445in</Width>
+            <Width>1.34749in</Width>
             <ZIndex>28</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1103,10 +1194,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.17444in</Top>
-            <Left>4.10221in</Left>
+            <Top>5.75416in</Top>
+            <Left>5.27777in</Left>
             <Height>0.25in</Height>
-            <Width>1.09445in</Width>
+            <Width>1.34749in</Width>
             <ZIndex>29</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1139,10 +1230,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.42444in</Top>
-            <Left>4.10221in</Left>
+            <Top>6.00416in</Top>
+            <Left>5.27777in</Left>
             <Height>0.25in</Height>
-            <Width>1.09445in</Width>
+            <Width>1.34749in</Width>
             <ZIndex>30</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1178,8 +1269,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.67444in</Top>
-            <Left>2.2911in</Left>
+            <Top>5.25416in</Top>
+            <Left>3.46666in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>31</ZIndex>
@@ -1217,8 +1308,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.67444in</Top>
-            <Left>2.98832in</Left>
+            <Top>5.25416in</Top>
+            <Left>4.16388in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>32</ZIndex>
@@ -1256,10 +1347,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.67444in</Top>
-            <Left>4.10221in</Left>
+            <Top>5.25416in</Top>
+            <Left>5.27777in</Left>
             <Height>0.25in</Height>
-            <Width>1.09445in</Width>
+            <Width>1.34749in</Width>
             <ZIndex>33</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1295,10 +1386,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.67444in</Top>
-            <Left>5.19666in</Left>
+            <Top>5.25416in</Top>
+            <Left>6.62526in</Left>
             <Height>0.25in</Height>
-            <Width>0.95277in</Width>
+            <Width>1.0811in</Width>
             <ZIndex>34</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1334,10 +1425,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.17444in</Top>
-            <Left>5.19666in</Left>
+            <Top>5.75416in</Top>
+            <Left>6.62526in</Left>
             <Height>0.25in</Height>
-            <Width>0.95277in</Width>
+            <Width>1.0811in</Width>
             <ZIndex>35</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1373,10 +1464,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>6.42444in</Top>
-            <Left>5.19666in</Left>
+            <Top>6.00416in</Top>
+            <Left>6.62526in</Left>
             <Height>0.25in</Height>
-            <Width>0.95277in</Width>
+            <Width>1.0811in</Width>
             <ZIndex>36</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1413,10 +1504,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.92444in</Top>
-            <Left>5.19666in</Left>
+            <Top>5.50416in</Top>
+            <Left>6.62526in</Left>
             <Height>0.25in</Height>
-            <Width>0.95277in</Width>
+            <Width>1.0811in</Width>
             <ZIndex>37</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1454,8 +1545,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>4.97083in</Top>
-            <Left>2.46665in</Left>
+            <Top>4.55055in</Top>
+            <Left>3.9372in</Left>
             <Height>0.25in</Height>
             <Width>2.425in</Width>
             <ZIndex>38</ZIndex>
@@ -1491,8 +1582,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.39111in</Top>
-            <Left>2.2911in</Left>
+            <Top>4.97083in</Top>
+            <Left>3.46666in</Left>
             <Height>0.28333in</Height>
             <Width>0.69722in</Width>
             <ZIndex>39</ZIndex>
@@ -1529,8 +1620,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.39111in</Top>
-            <Left>2.98832in</Left>
+            <Top>4.97083in</Top>
+            <Left>4.16388in</Left>
             <Height>0.28333in</Height>
             <Width>1.11389in</Width>
             <ZIndex>40</ZIndex>
@@ -1567,10 +1658,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.39111in</Top>
-            <Left>4.10221in</Left>
+            <Top>4.97083in</Top>
+            <Left>5.27777in</Left>
             <Height>0.28333in</Height>
-            <Width>1.09445in</Width>
+            <Width>1.34749in</Width>
             <ZIndex>41</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1600,15 +1691,15 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>5.39111in</Top>
-            <Left>5.19666in</Left>
+            <Top>4.97083in</Top>
+            <Left>6.62526in</Left>
             <Height>0.28333in</Height>
-            <Width>0.95277in</Width>
+            <Width>1.0811in</Width>
             <ZIndex>42</ZIndex>
             <Visibility>
               <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
@@ -1641,8 +1732,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>0.48637in</Left>
+            <Top>7.60598in</Top>
+            <Left>0.68333in</Left>
             <Height>0.25in</Height>
             <Width>0.46389in</Width>
             <ZIndex>43</ZIndex>
@@ -1677,8 +1768,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>0.48637in</Left>
+            <Top>7.85598in</Top>
+            <Left>0.68333in</Left>
             <Height>0.25in</Height>
             <Width>0.46389in</Width>
             <ZIndex>44</ZIndex>
@@ -1713,8 +1804,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>0.95026in</Left>
+            <Top>7.60598in</Top>
+            <Left>1.14722in</Left>
             <Height>0.25in</Height>
             <Width>1.19722in</Width>
             <ZIndex>45</ZIndex>
@@ -1751,8 +1842,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>0.95026in</Left>
+            <Top>7.85598in</Top>
+            <Left>1.14722in</Left>
             <Height>0.25in</Height>
             <Width>1.19722in</Width>
             <ZIndex>46</ZIndex>
@@ -1788,8 +1879,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>2.14748in</Left>
+            <Top>7.60598in</Top>
+            <Left>2.34444in</Left>
             <Height>0.25in</Height>
             <Width>0.85555in</Width>
             <ZIndex>47</ZIndex>
@@ -1827,8 +1918,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>2.14748in</Left>
+            <Top>7.85598in</Top>
+            <Left>2.34444in</Left>
             <Height>0.25in</Height>
             <Width>0.85555in</Width>
             <ZIndex>48</ZIndex>
@@ -1867,8 +1958,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>0.48637in</Left>
+            <Top>7.35598in</Top>
+            <Left>0.68333in</Left>
             <Height>0.25in</Height>
             <Width>0.46389in</Width>
             <ZIndex>49</ZIndex>
@@ -1906,8 +1997,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>0.95026in</Left>
+            <Top>7.35598in</Top>
+            <Left>1.14722in</Left>
             <Height>0.25in</Height>
             <Width>1.19722in</Width>
             <ZIndex>50</ZIndex>
@@ -1945,8 +2036,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>2.14748in</Left>
+            <Top>7.35598in</Top>
+            <Left>2.34444in</Left>
             <Height>0.25in</Height>
             <Width>0.85555in</Width>
             <ZIndex>51</ZIndex>
@@ -1984,8 +2075,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>3.00303in</Left>
+            <Top>7.35598in</Top>
+            <Left>3.19999in</Left>
             <Height>0.25in</Height>
             <Width>0.95in</Width>
             <ZIndex>52</ZIndex>
@@ -2023,8 +2114,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>3.00303in</Left>
+            <Top>7.85598in</Top>
+            <Left>3.19999in</Left>
             <Height>0.25in</Height>
             <Width>0.95in</Width>
             <ZIndex>53</ZIndex>
@@ -2060,8 +2151,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>3.00303in</Left>
+            <Top>7.60598in</Top>
+            <Left>3.19999in</Left>
             <Height>0.25in</Height>
             <Width>0.95in</Width>
             <ZIndex>54</ZIndex>
@@ -2100,8 +2191,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>7.29403in</Top>
-            <Left>2.24721in</Left>
+            <Top>6.5107in</Top>
+            <Left>2.44417in</Left>
             <Height>0.25in</Height>
             <Width>2.425in</Width>
             <ZIndex>55</ZIndex>
@@ -2137,8 +2228,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>0.48637in</Left>
+            <Top>7.07265in</Top>
+            <Left>0.68333in</Left>
             <Height>0.28333in</Height>
             <Width>0.46389in</Width>
             <ZIndex>56</ZIndex>
@@ -2175,8 +2266,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>0.95026in</Left>
+            <Top>7.07265in</Top>
+            <Left>1.14722in</Left>
             <Height>0.28333in</Height>
             <Width>1.19722in</Width>
             <ZIndex>57</ZIndex>
@@ -2213,8 +2304,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>2.14748in</Left>
+            <Top>7.07265in</Top>
+            <Left>2.34444in</Left>
             <Height>0.28333in</Height>
             <Width>0.85555in</Width>
             <ZIndex>58</ZIndex>
@@ -2251,8 +2342,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>3.00303in</Left>
+            <Top>7.07265in</Top>
+            <Left>3.19999in</Left>
             <Height>0.28333in</Height>
             <Width>0.95in</Width>
             <ZIndex>59</ZIndex>
@@ -2287,8 +2378,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>3.95303in</Left>
+            <Top>7.60598in</Top>
+            <Left>4.14999in</Left>
             <Height>0.25in</Height>
             <Width>0.97222in</Width>
             <ZIndex>60</ZIndex>
@@ -2326,8 +2417,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>3.95303in</Left>
+            <Top>7.85598in</Top>
+            <Left>4.14999in</Left>
             <Height>0.25in</Height>
             <Width>0.97222in</Width>
             <ZIndex>61</ZIndex>
@@ -2363,8 +2454,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>4.92525in</Left>
+            <Top>7.60598in</Top>
+            <Left>5.12221in</Left>
             <Height>0.25in</Height>
             <Width>0.90278in</Width>
             <ZIndex>62</ZIndex>
@@ -2402,8 +2493,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>4.92525in</Left>
+            <Top>7.85598in</Top>
+            <Left>5.12221in</Left>
             <Height>0.25in</Height>
             <Width>0.90278in</Width>
             <ZIndex>63</ZIndex>
@@ -2439,8 +2530,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>5.82803in</Left>
+            <Top>7.60598in</Top>
+            <Left>6.02499in</Left>
             <Height>0.25in</Height>
             <Width>1.01666in</Width>
             <ZIndex>64</ZIndex>
@@ -2478,8 +2569,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>5.82803in</Left>
+            <Top>7.85598in</Top>
+            <Left>6.02499in</Left>
             <Height>0.25in</Height>
             <Width>1.01666in</Width>
             <ZIndex>65</ZIndex>
@@ -2518,8 +2609,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>3.95303in</Left>
+            <Top>7.35598in</Top>
+            <Left>4.14999in</Left>
             <Height>0.25in</Height>
             <Width>0.97222in</Width>
             <ZIndex>66</ZIndex>
@@ -2557,8 +2648,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>4.92525in</Left>
+            <Top>7.35598in</Top>
+            <Left>5.12221in</Left>
             <Height>0.25in</Height>
             <Width>0.90278in</Width>
             <ZIndex>67</ZIndex>
@@ -2596,8 +2687,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>5.82803in</Left>
+            <Top>7.35598in</Top>
+            <Left>6.02499in</Left>
             <Height>0.25in</Height>
             <Width>1.01666in</Width>
             <ZIndex>68</ZIndex>
@@ -2635,8 +2726,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.13931in</Top>
-            <Left>6.84469in</Left>
+            <Top>7.35598in</Top>
+            <Left>7.04165in</Left>
             <Height>0.25in</Height>
             <Width>0.95in</Width>
             <ZIndex>69</ZIndex>
@@ -2674,8 +2765,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.63931in</Top>
-            <Left>6.84469in</Left>
+            <Top>7.85598in</Top>
+            <Left>7.04165in</Left>
             <Height>0.25in</Height>
             <Width>0.95in</Width>
             <ZIndex>70</ZIndex>
@@ -2711,8 +2802,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>8.38931in</Top>
-            <Left>6.84469in</Left>
+            <Top>7.60598in</Top>
+            <Left>7.04165in</Left>
             <Height>0.25in</Height>
             <Width>0.95in</Width>
             <ZIndex>71</ZIndex>
@@ -2749,8 +2840,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>3.95303in</Left>
+            <Top>7.07265in</Top>
+            <Left>4.14999in</Left>
             <Height>0.28333in</Height>
             <Width>0.97222in</Width>
             <ZIndex>72</ZIndex>
@@ -2787,8 +2878,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>4.92525in</Left>
+            <Top>7.07265in</Top>
+            <Left>5.12221in</Left>
             <Height>0.28333in</Height>
             <Width>0.90278in</Width>
             <ZIndex>73</ZIndex>
@@ -2825,8 +2916,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>5.82803in</Left>
+            <Top>7.07265in</Top>
+            <Left>6.02499in</Left>
             <Height>0.28333in</Height>
             <Width>1.01666in</Width>
             <ZIndex>74</ZIndex>
@@ -2863,8 +2954,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
-            <Top>7.85598in</Top>
-            <Left>6.84469in</Left>
+            <Top>7.07265in</Top>
+            <Left>7.04165in</Left>
             <Height>0.28333in</Height>
             <Width>0.95in</Width>
             <ZIndex>75</ZIndex>
@@ -2900,8 +2991,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox38</rd:DefaultName>
-            <Top>4.97083in</Top>
-            <Left>4.89165in</Left>
+            <Top>4.55055in</Top>
+            <Left>6.3622in</Left>
             <Height>0.25in</Height>
             <Width>1.16666in</Width>
             <ZIndex>76</ZIndex>
@@ -2936,8 +3027,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox38</rd:DefaultName>
-            <Top>7.29403in</Top>
-            <Left>4.66137in</Left>
+            <Top>6.5107in</Top>
+            <Left>4.86917in</Left>
             <Height>0.25in</Height>
             <Width>1.16666in</Width>
             <ZIndex>77</ZIndex>
@@ -2955,10 +3046,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>9.925in</Height>
+        <Height>9.05in</Height>
         <Style />
       </Body>
-      <Width>8.20499in</Width>
+      <Width>8.20831in</Width>
       <Page>
         <PageHeader>
           <Height>2.73334in</Height>
@@ -3126,9 +3217,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>
               <Top>0.23833in</Top>
-              <Left>6.85499in</Left>
+              <Left>7.31165in</Left>
               <Height>0.25in</Height>
-              <Width>1.16666in</Width>
+              <Width>0.84166in</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -3161,9 +3252,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox28</rd:DefaultName>
               <Top>0.23833in</Top>
-              <Left>5.76332in</Left>
+              <Left>6.3622in</Left>
               <Height>0.25in</Height>
-              <Width>1.09167in</Width>
+              <Width>0.94945in</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -3373,95 +3464,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Sum3">
-          <DataField>Sum3</DataField>
-        </Field>
-        <Field Name="Sum34">
-          <DataField>Sum34</DataField>
-        </Field>
-        <Field Name="Sum45">
-          <DataField>Sum45</DataField>
-        </Field>
-        <Field Name="MaxSum">
-          <DataField>MaxSum</DataField>
-        </Field>
-        <Field Name="Sum5">
-          <DataField>Sum5</DataField>
-        </Field>
-        <Field Name="Sum1">
-          <DataField>Sum1</DataField>
-        </Field>
-        <Field Name="Sum12">
-          <DataField>Sum12</DataField>
-        </Field>
-        <Field Name="Sum2">
-          <DataField>Sum2</DataField>
-        </Field>
-        <Field Name="Sum25">
-          <DataField>Sum25</DataField>
-        </Field>
-        <Field Name="MaxSum2">
-          <DataField>MaxSum2</DataField>
-        </Field>
-        <Field Name="RadniStaz">
-          <DataField>RadniStaz</DataField>
-        </Field>
-        <Field Name="BirthDate">
-          <DataField>BirthDate</DataField>
-        </Field>
-        <Field Name="Godine">
-          <DataField>Godine</DataField>
-        </Field>
-        <Field Name="Status_Employee">
-          <DataField>Status_Employee</DataField>
-        </Field>
-        <Field Name="Years_Employee">
-          <DataField>Years_Employee</DataField>
-        </Field>
-        <Field Name="Address_CompanyInformation">
-          <DataField>Address_CompanyInformation</DataField>
-        </Field>
-        <Field Name="Name_CompanyInformation">
-          <DataField>Name_CompanyInformation</DataField>
-        </Field>
-        <Field Name="Date_CompanyInformation">
-          <DataField>Date_CompanyInformation</DataField>
-        </Field>
-        <Field Name="City_CompanyInformation">
-          <DataField>City_CompanyInformation</DataField>
-        </Field>
-        <Field Name="Gender_Employee">
-          <DataField>Gender_Employee</DataField>
-        </Field>
-        <Field Name="Muski">
-          <DataField>Muski</DataField>
-        </Field>
-        <Field Name="Zenski">
-          <DataField>Zenski</DataField>
-        </Field>
-        <Field Name="Ukupno">
-          <DataField>Ukupno</DataField>
-        </Field>
-        <Field Name="Sum50">
-          <DataField>Sum50</DataField>
-        </Field>
-        <Field Name="Sum60">
-          <DataField>Sum60</DataField>
-        </Field>
-        <Field Name="DobnaSum">
-          <DataField>DobnaSum</DataField>
-        </Field>
-        <Field Name="Selected">
-          <DataField>Selected</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
