@@ -73,8 +73,8 @@ tableextension 50071 EmployeeExtension extends Employee
         }
         field(51998; "Org. jed PU"; Code[10])
         {
-            FieldClass = FlowField;
-            CalcFormula = Lookup("Employee"."Org. jed PU" WHERE("No." = FIELD("No.")));
+            //FieldClass = FlowField;
+            //CalcFormula = Lookup("Employee"."Org. jed PU" WHERE("No." = FIELD("No.")));
             //FieldClass = FlowField;
             //TableRelation = "Dimension Value".Code;
             Caption = 'Org. jed PU';
