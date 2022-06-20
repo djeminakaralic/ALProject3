@@ -66,8 +66,8 @@ tableextension 50071 EmployeeExtension extends Employee
         }
         field(51999; "Sifra UOJ"; Code[10])
         {
-            FieldClass = FlowField;
-            //CalcFormula = Count("Employee Contract Ledger" WHERE("Employee No." = FIELD("No.")));
+            //FieldClass = FlowField;
+            //CalcFormula=Lookup("Employee CL"."Org. jed PU" WHERE (No.=FIELD(No.),Active=FILTER(Yes)))
             Caption = 'Sifra UOJ';
             TableRelation = "Employee Contract Ledger";
         }
