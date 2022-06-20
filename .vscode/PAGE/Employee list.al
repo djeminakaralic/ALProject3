@@ -506,6 +506,19 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
+                action("Izvjestaj za trening")
+                {
+                    Caption = 'Izvjestaj za trening';
+
+                    Image = Ledger;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Izvjestaj za trening";
+
+
+                }
 
                 action("Evidencija preraspoređeni")
                 {
