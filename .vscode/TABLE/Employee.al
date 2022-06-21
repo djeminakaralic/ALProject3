@@ -121,9 +121,9 @@ tableextension 50071 EmployeeExtension extends Employee
             Editable = false;
 
         }
-        field(52000; "Level od Graduation"; Integer)
+        field(52000; "Level of Graduation"; Integer)
         {
-            Caption = 'Level od Graduation';
+            Caption = 'Level of Graduation';
         }
         field(50266; "Employee Qualifications"; Integer)
         {
@@ -3129,9 +3129,9 @@ tableextension 50071 EmployeeExtension extends Employee
             CalcFormula = Lookup("Employee Contract Ledger".Group WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
             //Department.Code WHERE (Type=FILTER(' '|Department))
         }
-        field(51999; "Šifra UOJ"; Code[30])
+        field(51999; "Sifra UOJ"; Code[30])
         {
-            Caption = 'Šifra UOJ';
+            Caption = 'Sifra UOJ';
         }
         field(503712; "Group Description"; Code[250])
         {
