@@ -12,6 +12,10 @@ tableextension 50097 GeneralLedgerSetup extends "General Ledger Setup"
         {
             Caption = 'Travel No. Series';
         }
+        field(50005; "Is Simple Page"; Boolean)
+        {
+            Caption = 'Is Simple Page';
+        }
     }
 
     var

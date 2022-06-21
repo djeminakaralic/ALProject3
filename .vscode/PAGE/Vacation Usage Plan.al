@@ -32,7 +32,13 @@ page 50059 "Vacation Usage Plan"
                 field("Document No."; "Document No.")
                 {
                     ApplicationArea = all;
+                    Visible = Simple;
 
+                }
+                field("Document Text"; "Document Text")
+                {
+                    ApplicationArea = all;
+                    Visible = Simple;
                 }
                 //ED 02 END
                 field("Work experience"; "Work experience")
@@ -215,16 +221,44 @@ page 50059 "Vacation Usage Plan"
     }
 
     trigger OnOpenPage()
+    var
+        GeneralL: Record "General Ledger Setup";
     begin
         CurrentYear := (DATE2DMY(TODAY, 3));
         LastYear := (DATE2DMY(TODAY, 3) - 1);
         SETRANGE(Year, LastYear, CurrentYear);
+        GeneralL.Get();
+        if GeneralL."Is Simple Page" = false
+        then
+            Simple := false
+        else
+            Simple := true;
+
+
     end;
+
+    trigger OnAfterGetRecord()
+    var
+        myInt: Integer;
+        GeneralL: Record "General Ledger Setup";
+    begin
+        GeneralL.Get();
+        if GeneralL."Is Simple Page" = false
+        then
+            Simple := false
+        else
+            Simple := true;
+
+
+    end;
+
 
     var
         //ĐKR_AnnualLeave: Report "50044";
         //ĐK R_AnnualLeave2: Report "50045";
         Text0001: Label 'Vacation period is not entered for %1 %2.';
+
+        Simple: Boolean;
         t_emp: Record "Employee";
         Temp: Boolean;
         Text0002: Label 'Do you want to print Annual Leave Resolution for first part of leave?';
