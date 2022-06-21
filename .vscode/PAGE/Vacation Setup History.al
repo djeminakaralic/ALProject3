@@ -50,12 +50,12 @@ page 50133 "Vacation setup history"
                 field("Insert Document No."; "Insert Document No.")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+                    Visible = Simple;
                 }
                 field("No. series Code"; "No. series Code")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+                    Visible = Simple;
                 }
 
             }
