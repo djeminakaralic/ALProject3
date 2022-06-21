@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -7,9 +7,125 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="BatchName">
+          <DataField>BatchName</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="Amound">
+          <DataField>Amound</DataField>
+        </Field>
+        <Field Name="AmoundFormat">
+          <DataField>AmoundFormat</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="LineNo">
+          <DataField>LineNo</DataField>
+        </Field>
+        <Field Name="PM">
+          <DataField>PM</DataField>
+        </Field>
+        <Field Name="PaymentDT">
+          <DataField>PaymentDT</DataField>
+        </Field>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Homepage_CompanyInfo">
+          <DataField>Homepage_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Country">
+          <DataField>Country</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="CName">
+          <DataField>CName</DataField>
+        </Field>
+        <Field Name="CAddress">
+          <DataField>CAddress</DataField>
+        </Field>
+        <Field Name="CCity">
+          <DataField>CCity</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="IndustrialClassification_CompanyInfo">
+          <DataField>IndustrialClassification_CompanyInfo</DataField>
+        </Field>
+        <Field Name="MBS">
+          <DataField>MBS</DataField>
+        </Field>
+        <Field Name="MunicipalityName">
+          <DataField>MunicipalityName</DataField>
+        </Field>
+        <Field Name="Registration_CompanyInfo">
+          <DataField>Registration_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Tax_CompanyInfo">
+          <DataField>Tax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="BankAccNo">
+          <DataField>BankAccNo</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -338,7 +454,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentDT.Value + " " + Fields!DocumentNo.Value</Value>
+                                  <Value>=FORMAT(Fields!PaymentDT.Value,7)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -373,6 +489,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -611,7 +728,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1219,14 +1335,17 @@
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2.5cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
-        <TopMargin>0cm</TopMargin>
-        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1266,119 +1385,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="BatchName">
-          <DataField>BatchName</DataField>
-        </Field>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="Amound">
-          <DataField>Amound</DataField>
-        </Field>
-        <Field Name="AmoundFormat">
-          <DataField>AmoundFormat</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="LineNo">
-          <DataField>LineNo</DataField>
-        </Field>
-        <Field Name="PM">
-          <DataField>PM</DataField>
-        </Field>
-        <Field Name="PaymentDT">
-          <DataField>PaymentDT</DataField>
-        </Field>
-        <Field Name="Adress_CompanyInfo">
-          <DataField>Adress_CompanyInfo</DataField>
-        </Field>
-        <Field Name="City_CompanyInfo">
-          <DataField>City_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="Phone1_CompanyInfo">
-          <DataField>Phone1_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone2_CompanyInfo">
-          <DataField>Phone2_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Fax_CompanyInfo">
-          <DataField>Fax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Email_CompanyInfo">
-          <DataField>Email_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Homepage_CompanyInfo">
-          <DataField>Homepage_CompanyInfo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInfo">
-          <DataField>RegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Postcode_CompanyInfo">
-          <DataField>Postcode_CompanyInfo</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_CompanyInfo">
-          <DataField>VATRegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="GiroNo_CompanyInfo">
-          <DataField>GiroNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Country">
-          <DataField>Country</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="CName">
-          <DataField>CName</DataField>
-        </Field>
-        <Field Name="CAddress">
-          <DataField>CAddress</DataField>
-        </Field>
-        <Field Name="CCity">
-          <DataField>CCity</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="IndustrialClassification_CompanyInfo">
-          <DataField>IndustrialClassification_CompanyInfo</DataField>
-        </Field>
-        <Field Name="MBS">
-          <DataField>MBS</DataField>
-        </Field>
-        <Field Name="MunicipalityName">
-          <DataField>MunicipalityName</DataField>
-        </Field>
-        <Field Name="Registration_CompanyInfo">
-          <DataField>Registration_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Tax_CompanyInfo">
-          <DataField>Tax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="BankName">
-          <DataField>BankName</DataField>
-        </Field>
-        <Field Name="BankAccNo">
-          <DataField>BankAccNo</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
