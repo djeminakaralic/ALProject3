@@ -40,7 +40,7 @@ table 50126 "Points per Experience Years"
             Caption = 'UpperLimit2';
             trigger OnValidate()
             begin
-                UpperLimit := strKeep(UpperLimit2, '0123456789');
+                //UpperLimit := strKeep(UpperLimit2, '0123456789');
             end;
         }
         field(7; LowerLimit2; Text[30])
