@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -7,6 +7,7 @@
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -16,9 +17,9 @@
         <ReportItems>
           <Line Name="Line1">
             <Top>4.70641cm</Top>
-            <Left>1.34003cm</Left>
+            <Left>1.29858cm</Left>
             <Height>0cm</Height>
-            <Width>13.28337cm</Width>
+            <Width>13.17841cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -97,13 +98,13 @@
                   <Width>0.85681cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.18048cm</Width>
+                  <Width>4.06381cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.40501cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.73611cm</Width>
+                  <Width>3.85277cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -338,7 +339,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentDT.Value + " " + Fields!DocumentNo.Value</Value>
+                                  <Value>=FORMAT(Fields!PaymentDT.Value,7)</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -430,7 +431,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amound.Value</Value>
+                                  <Value>="=" &amp; Fields!Amound.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>n2</Format>
@@ -466,6 +467,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -611,7 +613,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -623,7 +624,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Gotovina/kartično = " + Fields!Amound.Value</Value>
+                                  <Value>="Gotovina/kartično = " &amp; Fields!Amound.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -689,7 +690,7 @@
             <Top>11.22482cm</Top>
             <Left>1.29858cm</Left>
             <Height>1.8cm</Height>
-            <Width>13.17841cm</Width>
+            <Width>13.1784cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -718,7 +719,7 @@
             <Top>3.35703cm</Top>
             <Left>1.26682cm</Left>
             <Height>1.05834cm</Height>
-            <Width>13.31253cm</Width>
+            <Width>13.21016cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -1219,9 +1220,6 @@
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2.5cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
-        <TopMargin>0cm</TopMargin>
-        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>

@@ -16478,6 +16478,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Days based on Working conditi - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Document No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 1637095154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Duration</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -28179,7 +28184,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosna spolna - Control Selected - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3697989730 - Control 90423963 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ', Starosna, Spolna, Dobna</source>
+          <source> ,Starosna,Spolna,Dobna</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosna spolna - Control Selected - Property OptionCaption</note>
         </trans-unit>

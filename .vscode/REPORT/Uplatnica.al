@@ -1,7 +1,7 @@
 report 50077 Uplatnica
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Uplatnica.rdlc';
+    RDLCLayout = './Uplatnica.rdl';
 
 
     dataset
