@@ -1,4 +1,4 @@
-report 50138 "Izvjestaj starosna spolna"
+report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Izvjestaj starosna, spolna, dobna.rdl';
