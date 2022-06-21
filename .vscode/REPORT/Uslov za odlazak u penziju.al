@@ -287,6 +287,7 @@ report 50222 "Uslovi za odlazak u penziju"
                 Godina4 := DATE2DMY(TODAY, 3) + 3;
                 Godina5 := DATE2DMY(TODAY, 3) + 4;
                 SETFILTER(Status, '%1', 0);
+                SetFilter("Birth Date", '<>%1', 0D);
                 //TODAY:=DMY2DATE('<01>',1);
                 //TODAY:=DMY2DATE('<01>',2);
             end;
@@ -320,7 +321,7 @@ report 50222 "Uslovi za odlazak u penziju"
                 EmployeeRec."Retirement Condition" := 0;
                 EmployeeRec."Retirement Date" := 0D;
                 EmployeeRec.MODIFY;
-            UNTIL EmployeeRec.NEXT = 0; 
+            UNTIL EmployeeRec.NEXT = 0;
         END;
     end;
 
