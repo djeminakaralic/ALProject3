@@ -103,6 +103,14 @@ table 50189 "Vacation setup history"
         {
             Caption = '<Dani između dva prekida radnog odnosa (BD)>';
         }
+        field(50012; "Insert Document No."; Boolean)
+        {
+            Caption = 'Insert Document No.';
+        }
+        field(50013; "No. series Code"; Code[20])
+        {
+            Caption = 'Document No. series Code';
+        }
     }
 
     keys

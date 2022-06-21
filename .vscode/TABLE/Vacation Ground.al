@@ -642,9 +642,41 @@ table 50015 "Vacation Ground 2"
         field(33; "First Part"; Integer)
         {
         }
-        field(36; "Document No."; Text[250])
+        field(37; "No. Series"; Code[20])
+        {
+
+        }
+        field(38; "Document Text"; Text[250])
+        {
+            Caption = 'Document Text';
+        }
+        field(36; "Document No."; Code[20])
         {
             Caption = 'Document No.';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                GeneralLedgerSetup: Record "General Ledger Setup";
+                VacHistory: Record "Vacation setup history";
+                NoSeriesMgt: Codeunit NoSeriesExtented;
+            begin
+                GeneralLedgerSetup.get();
+
+                IF (GeneralLedgerSetup."Is Simple Page" = false) and (Rec."Document No." <> '') THEN BEGIN
+                    VacHistory.Reset();
+                    VacHistory.SetFilter(Year, '%1', Rec.Year);
+                    if VacHistory.FindFirst() then
+                        NoSeriesMgt.InitSeries(VacHistory."No. series Code", xRec."No. Series", 0D, Rec."Document No.", "No. Series")
+
+                    else
+                        Error('Vacation Setup history!');
+
+
+                END;
+
+
+
+            end;
         }
     }
 

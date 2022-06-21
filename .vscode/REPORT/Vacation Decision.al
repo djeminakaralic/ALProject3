@@ -155,6 +155,13 @@ report 50109 VacationDecision
 
             trigger OnAfterGetRecord()
             begin
+
+
+                if "Document No." = '' then
+                    BrojDokumenta := DataItem5."Document No."
+                else
+                    BrojDokumenta := DataItem5."Document Text";
+
                 CompanyInformation.get;
                 CompanyInformation.CalcFields(Picture);
                 DatumRjesenjaT := FORMAT("Date of report", 0, '<Day,2>.<Month,2>.<Year4>.');
@@ -172,8 +179,16 @@ report 50109 VacationDecision
                 EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
 
+                OrgShema.Reset();
+                OrgShema.SetFilter("Date From", '<=%1', "Date of report");
+                OrgShema.SetCurrentKey("Date From");
+                OrgShema.Ascending;
+                OrgShema.FindLast();
+
                 Position.Reset();
                 Position.SetFilter("Management Level", '%1', Position."Management Level"::CEO);
+                Position.SetFilter("ORG Shema", '%1', OrgShema.Code);
+
                 if Position.FindFirst()
                 then begin
                     Position.CalcFields("Employee Name", "Employee Last Name");
@@ -192,12 +207,8 @@ report 50109 VacationDecision
                 EmployeeAbsence.Reset();
                 EmployeeAbsence.SetFilter("Employee No.", '%1', DataItem5."Employee No.");
                 EmployeeAbsence.SetFilter("Vacation from Year", '%1', DataItem5.Year);
-                if EmployeeAbsence.Find() then
-                    repeat
-
-                        Used_Days := EmployeeAbsence.Count;
-
-                    until EmployeeAbsence.Next() = 0;
+                if EmployeeAbsence.FindFirst() then
+                    Used_Days := EmployeeAbsence.Count;
 
                 //ĐK
 
@@ -235,10 +246,10 @@ report 50109 VacationDecision
         {
             area(content)
             {
-                field(BrojDokumenta; BrojDokumenta)
-                {
-                    Caption = 'Broj dokumenta';
-                }
+                /* field(BrojDokumenta; BrojDokumenta)
+                 {
+                     Caption = 'Broj dokumenta';
+                 }*/
                 /*field(DatumRjesenja; DatumRjesenja)
                 {
                     Caption = 'Datum rješenja';
@@ -273,6 +284,9 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+
+        OrgShema: Record "ORG Shema";
+
         DatumRjesenja: Date;
         DatumRjesenjaT: Text;
         BrojDokumenta: Text;
