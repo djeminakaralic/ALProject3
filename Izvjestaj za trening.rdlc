@@ -10,6 +10,70 @@
       <rd:DataSourceID>b0f9197a-1877-4cda-aafe-f89a3242e886</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="EmployeeFirstName_EmployeeQualification">
+          <DataField>EmployeeFirstName_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="EmployeeLastName_EmployeeQualification">
+          <DataField>EmployeeLastName_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="InstitutionCompany_EmployeeQualification">
+          <DataField>InstitutionCompany_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ToDate_EmployeeQualification">
+          <DataField>ToDate_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Datum">
+          <DataField>Datum</DataField>
+        </Field>
+        <Field Name="Status_EmployeeQualification">
+          <DataField>Status_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ProofOfEducation_EmployeeQualification">
+          <DataField>ProofOfEducation_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ExpirationDate_EmployeeQualification">
+          <DataField>ExpirationDate_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Type_EmployeeQualification">
+          <DataField>Type_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Department_Code">
+          <DataField>Department_Code</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="Adress">
+          <DataField>Adress</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="PhoneNo">
+          <DataField>PhoneNo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="IDBr">
+          <DataField>IDBr</DataField>
+        </Field>
+        <Field Name="QualificationCode_EmployeeQualification">
+          <DataField>QualificationCode_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Description_EmployeeQualification">
+          <DataField>Description_EmployeeQualification</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -18,33 +82,33 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.33333in</Width>
+                  <Width>0.26875in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.875in</Width>
+                  <Width>0.58541in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.33056in</Width>
+                  <Width>1.44305in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.23333in</Width>
+                  <Width>1.12708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.51667in</Width>
+                  <Width>1.24375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.30833in</Width>
+                  <Width>1.20208in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.49167in</Width>
+                  <Width>1.31042in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.24167in</Width>
+                  <Width>1.03542in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.4625in</Height>
+                  <Height>0.38333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -55,7 +119,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">RB</Value>
+                                  <Value>RB</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -110,7 +174,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">OJ</Value>
+                                  <Value>OJ</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -165,7 +229,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Ime i prezime</Value>
+                                  <Value>Ime i prezime</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -220,7 +284,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Vrsta obuke</Value>
+                                  <Value>Vrsta obuke</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -275,7 +339,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Edukaciona kuća</Value>
+                                  <Value>Edukaciona kuća</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -330,7 +394,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Obuka provedena</Value>
+                                  <Value>Obuka provedena</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -385,7 +449,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Dokaz edukacije</Value>
+                                  <Value>Dokaz edukacije</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -440,7 +504,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Važenje certifikata</Value>
+                                  <Value>Važenje certifikata</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -489,7 +553,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.4625in</Height>
+                  <Height>0.38333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -500,7 +564,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=RowNumber(Nothing)</Value>
+                                  <Value>=RowNumber(Nothing)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -552,7 +616,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Department_Code.Value</Value>
+                                  <Value>=Fields!Department_Code.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -604,7 +668,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!EmployeeFirstName_EmployeeQualification.Value &amp; " " &amp; Fields!EmployeeLastName_EmployeeQualification.Value</Value>
+                                  <Value>=Fields!EmployeeFirstName_EmployeeQualification.Value &amp; " " &amp; Fields!EmployeeLastName_EmployeeQualification.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -656,7 +720,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Description_EmployeeQualification.Value</Value>
+                                  <Value>=Fields!Description_EmployeeQualification.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -708,7 +772,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!InstitutionCompany_EmployeeQualification.Value</Value>
+                                  <Value>=Fields!InstitutionCompany_EmployeeQualification.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -760,7 +824,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Datum.Value+"."</Value>
+                                  <Value>=Fields!Datum.Value+"."</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -812,7 +876,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!ProofOfEducation_EmployeeQualification.Value</Value>
+                                  <Value>=Fields!ProofOfEducation_EmployeeQualification.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -865,7 +929,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=IIF(Format(Fields!ExpirationDate_EmployeeQualification.Value)="","","do "+Fields!ExpirationDate_EmployeeQualification.Value)</Value>
+                                  <Value>=IIF(Format(Fields!ExpirationDate_EmployeeQualification.Value)="","","do "+Fields!ExpirationDate_EmployeeQualification.Value)</Value>
                                   <Style>
                                     <Format>dd.MM.yyyy</Format>
                                   </Style>
@@ -918,10 +982,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.23in</Top>
-            <Left>0.955in</Left>
-            <Height>0.925in</Height>
-            <Width>10.33056in</Width>
+            <Top>0.16333in</Top>
+            <Left>0.2411in</Left>
+            <Height>0.76666in</Height>
+            <Width>8.21596in</Width>
             <ToolTip>=InScope("Ime i prezime")</ToolTip>
             <Style>
               <Border>
@@ -930,17 +994,17 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>2.05833in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>12.28556in</Width>
+      <Width>10.47376in</Width>
       <Page>
         <PageHeader>
-          <Height>2.53333in</Height>
+          <Height>2.725in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -951,7 +1015,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Parameters!RptTitle.Value</Value>
+                      <Value>=Parameters!RptTitle.Value</Value>
                       <Style>
                         <FontSize>16pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -964,10 +1028,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>1.48833in</Top>
-              <Left>3.43555in</Left>
-              <Height>0.73333in</Height>
-              <Width>5.37778in</Width>
+              <Top>2.08889in</Top>
+              <Left>1.49388in</Left>
+              <Height>0.60833in</Height>
+              <Width>6.36111in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -985,13 +1049,21 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">Datum i vrijeme pokretanja izvještaja: </Value>
+                      <Value>Datum i vrijeme pokretanja izvještaja: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Globals!ExecutionTime</Value>
+                      <Value>=Globals!ExecutionTime</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
+                        <Format>g</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>h</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>g</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1021,11 +1093,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">Naziv: </Value>
+                      <Value>Naziv: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Fields!Name.Value</Value>
+                      <Value>=Fields!Name.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1036,11 +1108,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">ID broj: </Value>
+                      <Value>ID broj: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Fields!IDBr.Value</Value>
+                      <Value>=Fields!IDBr.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1051,11 +1123,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">Tel: </Value>
+                      <Value>Tel: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Fields!PhoneNo.Value</Value>
+                      <Value>=Fields!PhoneNo.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1066,11 +1138,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">Grad: </Value>
+                      <Value>Grad: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Fields!City.Value</Value>
+                      <Value>=Fields!City.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1081,11 +1153,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">Adresa: </Value>
+                      <Value>Adresa: </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Fields!Adress.Value</Value>
+                      <Value>=Fields!Adress.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1098,7 +1170,7 @@
               <Top>0.82167in</Top>
               <Left>0.16333in</Left>
               <Height>0.96666in</Height>
-              <Width>3.34167in</Width>
+              <Width>4.08334in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1115,10 +1187,10 @@
               <Value>=Fields!Picture.Value</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0.23in</Top>
-              <Left>9.14666in</Left>
-              <Height>0.5in</Height>
-              <Width>2.1389in</Width>
+              <Top>0.205in</Top>
+              <Left>7.30497in</Left>
+              <Height>0.25in</Height>
+              <Width>1.98057in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1126,6 +1198,18 @@
                 </Border>
               </Style>
             </Image>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>0.50833in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
             <Textbox Name="Textbox6">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -1133,7 +1217,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">="Br. str: " &amp; Globals!PageNumber</Value>
+                      <Value>="Stranica " &amp; Globals!PageNumber</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -1141,11 +1225,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>2.2in</Top>
-              <Left>0.16333in</Left>
-              <Height>0.29166in</Height>
-              <Width>1.35in</Width>
-              <ZIndex>4</ZIndex>
+              <Top>0.14167in</Top>
+              <Left>4.05706in</Left>
+              <Height>0.21666in</Height>
+              <Width>1.62916in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1162,7 +1245,7 @@
               <Style>None</Style>
             </Border>
           </Style>
-        </PageHeader>
+        </PageFooter>
         <Style />
       </Page>
     </ReportSection>
@@ -1262,68 +1345,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="EmployeeFirstName_EmployeeQualification">
-          <DataField>EmployeeFirstName_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="EmployeeLastName_EmployeeQualification">
-          <DataField>EmployeeLastName_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="InstitutionCompany_EmployeeQualification">
-          <DataField>InstitutionCompany_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ToDate_EmployeeQualification">
-          <DataField>ToDate_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Datum">
-          <DataField>Datum</DataField>
-        </Field>
-        <Field Name="Status_EmployeeQualification">
-          <DataField>Status_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ProofOfEducation_EmployeeQualification">
-          <DataField>ProofOfEducation_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ExpirationDate_EmployeeQualification">
-          <DataField>ExpirationDate_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Type_EmployeeQualification">
-          <DataField>Type_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Department_Code">
-          <DataField>Department_Code</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="Adress">
-          <DataField>Adress</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="PhoneNo">
-          <DataField>PhoneNo</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="IDBr">
-          <DataField>IDBr</DataField>
-        </Field>
-        <Field Name="QualificationCode_EmployeeQualification">
-          <DataField>QualificationCode_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Description_EmployeeQualification">
-          <DataField>Description_EmployeeQualification</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>

@@ -1,7 +1,8 @@
 report 50054 "Izvjestaj za trening"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Izvjestaj za trening.rdlc';
+    RDLCLayout = './Izvjestaj za trening.rdl';
+    PreviewMode = Normal;
 
     dataset
     {

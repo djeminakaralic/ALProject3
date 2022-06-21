@@ -39,12 +39,13 @@
             <Height>0.25in</Height>
             <Width>2.02778in</Width>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -76,12 +77,13 @@
             <Width>2.02778in</Width>
             <ZIndex>1</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -113,12 +115,13 @@
             <Width>2.02778in</Width>
             <ZIndex>2</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -150,12 +153,13 @@
             <Width>2.02778in</Width>
             <ZIndex>3</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -188,12 +192,13 @@
             <Width>2.875in</Width>
             <ZIndex>4</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -225,12 +230,13 @@
             <Width>1.04167in</Width>
             <ZIndex>5</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -262,12 +268,13 @@
             <Width>1.44167in</Width>
             <ZIndex>6</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -299,12 +306,13 @@
             <Width>1.44167in</Width>
             <ZIndex>7</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -338,12 +346,13 @@
             <Width>1.44167in</Width>
             <ZIndex>8</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -375,12 +384,13 @@
             <Width>0.775in</Width>
             <ZIndex>9</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -412,12 +422,13 @@
             <Width>2.02778in</Width>
             <ZIndex>10</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -449,7 +460,7 @@
             <Width>2.02778in</Width>
             <ZIndex>11</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -486,7 +497,7 @@
             <Width>2.02778in</Width>
             <ZIndex>12</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -523,7 +534,7 @@
             <Width>2.02778in</Width>
             <ZIndex>13</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -560,7 +571,7 @@
             <Width>2.02778in</Width>
             <ZIndex>14</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -598,7 +609,7 @@
             <Width>2.425in</Width>
             <ZIndex>15</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -635,7 +646,7 @@
             <Width>1.04167in</Width>
             <ZIndex>16</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -672,7 +683,7 @@
             <Width>1.44167in</Width>
             <ZIndex>17</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -709,7 +720,7 @@
             <Width>1.44167in</Width>
             <ZIndex>18</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -748,7 +759,7 @@
             <Width>1.44167in</Width>
             <ZIndex>19</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -785,7 +796,7 @@
             <Width>0.775in</Width>
             <ZIndex>20</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -822,7 +833,7 @@
             <Width>2.02778in</Width>
             <ZIndex>21</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -852,12 +863,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.50416in</Top>
-            <Left>3.46666in</Left>
+            <Left>3.65167in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>22</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -888,12 +899,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.75416in</Top>
-            <Left>3.46666in</Left>
+            <Left>3.65167in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>23</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -924,12 +935,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>6.00416in</Top>
-            <Left>3.46666in</Left>
+            <Left>3.65167in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>24</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -960,12 +971,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.50416in</Top>
-            <Left>4.16388in</Left>
+            <Left>4.34889in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>25</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -996,12 +1007,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.75416in</Top>
-            <Left>4.16388in</Left>
+            <Left>4.34889in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>26</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1032,12 +1043,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>6.00416in</Top>
-            <Left>4.16388in</Left>
+            <Left>4.34889in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>27</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1068,12 +1079,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.50416in</Top>
-            <Left>5.27777in</Left>
+            <Left>5.46278in</Left>
             <Height>0.25in</Height>
             <Width>1.34749in</Width>
             <ZIndex>28</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1104,12 +1115,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.75416in</Top>
-            <Left>5.27777in</Left>
+            <Left>5.46278in</Left>
             <Height>0.25in</Height>
             <Width>1.34749in</Width>
             <ZIndex>29</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1140,12 +1151,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>6.00416in</Top>
-            <Left>5.27777in</Left>
+            <Left>5.46278in</Left>
             <Height>0.25in</Height>
             <Width>1.34749in</Width>
             <ZIndex>30</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1179,12 +1190,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.25416in</Top>
-            <Left>3.46666in</Left>
+            <Left>3.65167in</Left>
             <Height>0.25in</Height>
             <Width>0.69722in</Width>
             <ZIndex>31</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1218,12 +1229,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.25416in</Top>
-            <Left>4.16388in</Left>
+            <Left>4.34889in</Left>
             <Height>0.25in</Height>
             <Width>1.11389in</Width>
             <ZIndex>32</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1257,12 +1268,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.25416in</Top>
-            <Left>5.27777in</Left>
+            <Left>5.46278in</Left>
             <Height>0.25in</Height>
             <Width>1.34749in</Width>
             <ZIndex>33</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1296,12 +1307,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.25416in</Top>
-            <Left>6.62526in</Left>
+            <Left>6.81027in</Left>
             <Height>0.25in</Height>
             <Width>1.0811in</Width>
             <ZIndex>34</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1335,12 +1346,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.75416in</Top>
-            <Left>6.62526in</Left>
+            <Left>6.81027in</Left>
             <Height>0.25in</Height>
             <Width>1.0811in</Width>
             <ZIndex>35</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1374,12 +1385,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>6.00416in</Top>
-            <Left>6.62526in</Left>
+            <Left>6.81027in</Left>
             <Height>0.25in</Height>
             <Width>1.0811in</Width>
             <ZIndex>36</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1414,12 +1425,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>5.50416in</Top>
-            <Left>6.62526in</Left>
+            <Left>6.81027in</Left>
             <Height>0.25in</Height>
             <Width>1.0811in</Width>
             <ZIndex>37</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1455,17 +1466,18 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>4.55055in</Top>
-            <Left>3.9372in</Left>
+            <Left>4.12221in</Left>
             <Height>0.25in</Height>
             <Width>2.425in</Width>
             <ZIndex>38</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -1492,12 +1504,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>4.97083in</Top>
-            <Left>3.46666in</Left>
+            <Left>3.65167in</Left>
             <Height>0.28333in</Height>
             <Width>0.69722in</Width>
             <ZIndex>39</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1530,12 +1542,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>4.97083in</Top>
-            <Left>4.16388in</Left>
+            <Left>4.34889in</Left>
             <Height>0.28333in</Height>
             <Width>1.11389in</Width>
             <ZIndex>40</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1568,12 +1580,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>4.97083in</Top>
-            <Left>5.27777in</Left>
+            <Left>5.46278in</Left>
             <Height>0.28333in</Height>
             <Width>1.34749in</Width>
             <ZIndex>41</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1606,12 +1618,12 @@
             </Paragraphs>
             <rd:DefaultName>Textbox39</rd:DefaultName>
             <Top>4.97083in</Top>
-            <Left>6.62526in</Left>
+            <Left>6.81027in</Left>
             <Height>0.28333in</Height>
             <Width>1.0811in</Width>
             <ZIndex>42</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1647,7 +1659,7 @@
             <Width>0.46389in</Width>
             <ZIndex>43</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1683,7 +1695,7 @@
             <Width>0.46389in</Width>
             <ZIndex>44</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1719,7 +1731,7 @@
             <Width>1.19722in</Width>
             <ZIndex>45</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1757,7 +1769,7 @@
             <Width>1.19722in</Width>
             <ZIndex>46</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1794,7 +1806,7 @@
             <Width>0.85555in</Width>
             <ZIndex>47</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1833,7 +1845,7 @@
             <Width>0.85555in</Width>
             <ZIndex>48</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1873,7 +1885,7 @@
             <Width>0.46389in</Width>
             <ZIndex>49</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1912,7 +1924,7 @@
             <Width>1.19722in</Width>
             <ZIndex>50</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1951,7 +1963,7 @@
             <Width>0.85555in</Width>
             <ZIndex>51</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -1990,7 +2002,7 @@
             <Width>0.95in</Width>
             <ZIndex>52</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2029,7 +2041,7 @@
             <Width>0.95in</Width>
             <ZIndex>53</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2066,7 +2078,7 @@
             <Width>0.95in</Width>
             <ZIndex>54</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2106,7 +2118,7 @@
             <Width>2.425in</Width>
             <ZIndex>55</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2143,7 +2155,7 @@
             <Width>0.46389in</Width>
             <ZIndex>56</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2181,7 +2193,7 @@
             <Width>1.19722in</Width>
             <ZIndex>57</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2219,7 +2231,7 @@
             <Width>0.85555in</Width>
             <ZIndex>58</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2257,7 +2269,7 @@
             <Width>0.95in</Width>
             <ZIndex>59</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2293,7 +2305,7 @@
             <Width>0.97222in</Width>
             <ZIndex>60</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2332,7 +2344,7 @@
             <Width>0.97222in</Width>
             <ZIndex>61</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2369,7 +2381,7 @@
             <Width>0.90278in</Width>
             <ZIndex>62</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2408,7 +2420,7 @@
             <Width>0.90278in</Width>
             <ZIndex>63</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2445,7 +2457,7 @@
             <Width>1.01666in</Width>
             <ZIndex>64</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2484,7 +2496,7 @@
             <Width>1.01666in</Width>
             <ZIndex>65</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2524,7 +2536,7 @@
             <Width>0.97222in</Width>
             <ZIndex>66</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2563,7 +2575,7 @@
             <Width>0.90278in</Width>
             <ZIndex>67</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2602,7 +2614,7 @@
             <Width>1.01666in</Width>
             <ZIndex>68</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2641,7 +2653,7 @@
             <Width>0.95in</Width>
             <ZIndex>69</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2680,7 +2692,7 @@
             <Width>0.95in</Width>
             <ZIndex>70</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2717,7 +2729,7 @@
             <Width>0.95in</Width>
             <ZIndex>71</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2755,7 +2767,7 @@
             <Width>0.97222in</Width>
             <ZIndex>72</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2793,7 +2805,7 @@
             <Width>0.90278in</Width>
             <ZIndex>73</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2831,7 +2843,7 @@
             <Width>1.01666in</Width>
             <ZIndex>74</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2869,7 +2881,7 @@
             <Width>0.95in</Width>
             <ZIndex>75</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -2901,17 +2913,18 @@
             </Paragraphs>
             <rd:DefaultName>Textbox38</rd:DefaultName>
             <Top>4.55055in</Top>
-            <Left>6.3622in</Left>
+            <Left>6.54721in</Left>
             <Height>0.25in</Height>
-            <Width>1.16666in</Width>
+            <Width>0.94945in</Width>
             <ZIndex>76</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2942,7 +2955,7 @@
             <Width>1.16666in</Width>
             <ZIndex>77</ZIndex>
             <Visibility>
-              <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+              <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
             </Visibility>
             <Style>
               <Border>
@@ -3094,7 +3107,7 @@
               <Width>4.61666in</Width>
               <ZIndex>3</ZIndex>
               <Visibility>
-                <Hidden>=IIF(Fields!Selected.Value = 1, false, true)</Hidden>
+                <Hidden>=IIF(Fields!Selected.Value = "Starosna", false, true)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -3203,7 +3216,7 @@
               <Width>4.61666in</Width>
               <ZIndex>6</ZIndex>
               <Visibility>
-                <Hidden>=IIF(Fields!Selected.Value = 2, false, true)</Hidden>
+                <Hidden>=IIF(Fields!Selected.Value = "Spolna", false, true)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -3244,7 +3257,7 @@
               <Width>4.61666in</Width>
               <ZIndex>7</ZIndex>
               <Visibility>
-                <Hidden>=IIF(Fields!Selected.Value = 3, false, true)</Hidden>
+                <Hidden>=IIF(Fields!Selected.Value = "Dobna", false, true)</Hidden>
               </Visibility>
               <Style>
                 <Border>

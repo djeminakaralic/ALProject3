@@ -1,4 +1,4 @@
-report 50138 "Izvjestaj starosna spolna"
+report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Izvjestaj starosna, spolna, dobna.rdl';
@@ -189,6 +189,7 @@ report 50138 "Izvjestaj starosna spolna"
                     field(Selected; Selected)
                     {
                         Caption = 'Izbor:';
+                        OptionCaption = ', Starosna, Spolna, Dobna';
                     }
                 }
             }
@@ -225,6 +226,6 @@ report 50138 "Izvjestaj starosna spolna"
         Sum50: Integer;
         Sum60: Integer;
         DobnaSum: Integer;
-        Selected: Option " ","1","2","3";
+        Selected: Option " ","Starosna","Spolna","Dobna";
 }
 
