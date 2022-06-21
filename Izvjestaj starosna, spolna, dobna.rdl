@@ -3,7 +3,7 @@
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
-      <ConnectionProperties>
+      <ConnectionProperties>      
         <DataProvider>SQL</DataProvider>
         <ConnectString />
       </ConnectionProperties>
