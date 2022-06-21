@@ -18,11 +18,7 @@ table 50044 "Training Time Entry"
         field(2; Code2; Integer)
         {
             Caption = 'Training catalogue code';
-            TableRelation = "Training Catalogue".Name;
-
-
-
-
+            TableRelation = "Training Catalogue".Code;
 
 
 
