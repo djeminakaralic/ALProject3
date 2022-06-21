@@ -132,9 +132,9 @@
         <ReportItems>
           <Line Name="Line1">
             <Top>4.70641cm</Top>
-            <Left>1.34003cm</Left>
+            <Left>1.29858cm</Left>
             <Height>0cm</Height>
-            <Width>13.28337cm</Width>
+            <Width>13.17841cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -213,13 +213,13 @@
                   <Width>0.85681cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.18048cm</Width>
+                  <Width>4.06381cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.40501cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.73611cm</Width>
+                  <Width>3.85277cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -489,7 +489,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -547,7 +546,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amound.Value</Value>
+                                  <Value>="=" &amp; Fields!Amound.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <Format>n2</Format>
@@ -583,6 +582,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -739,7 +739,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Gotovina/kartično = " + Fields!Amound.Value</Value>
+                                  <Value>="Gotovina/kartično = " &amp; Fields!Amound.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -805,7 +805,7 @@
             <Top>11.22482cm</Top>
             <Left>1.29858cm</Left>
             <Height>1.8cm</Height>
-            <Width>13.17841cm</Width>
+            <Width>13.1784cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -834,7 +834,7 @@
             <Top>3.35703cm</Top>
             <Left>1.26682cm</Left>
             <Height>1.05834cm</Height>
-            <Width>13.31253cm</Width>
+            <Width>13.21016cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
