@@ -40,10 +40,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
 
             }
-            field("Customer Id"; "Customer Id")
-            {
 
-            }
 
             field("Social status"; "Social status")
             {
