@@ -10,6 +10,70 @@
       <rd:DataSourceID>b0f9197a-1877-4cda-aafe-f89a3242e886</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="EmployeeFirstName_EmployeeQualification">
+          <DataField>EmployeeFirstName_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="EmployeeLastName_EmployeeQualification">
+          <DataField>EmployeeLastName_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="InstitutionCompany_EmployeeQualification">
+          <DataField>InstitutionCompany_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ToDate_EmployeeQualification">
+          <DataField>ToDate_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Datum">
+          <DataField>Datum</DataField>
+        </Field>
+        <Field Name="Status_EmployeeQualification">
+          <DataField>Status_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ProofOfEducation_EmployeeQualification">
+          <DataField>ProofOfEducation_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="ExpirationDate_EmployeeQualification">
+          <DataField>ExpirationDate_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Type_EmployeeQualification">
+          <DataField>Type_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Department_Code">
+          <DataField>Department_Code</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="Adress">
+          <DataField>Adress</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="PhoneNo">
+          <DataField>PhoneNo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="IDBr">
+          <DataField>IDBr</DataField>
+        </Field>
+        <Field Name="QualificationCode_EmployeeQualification">
+          <DataField>QualificationCode_EmployeeQualification</DataField>
+        </Field>
+        <Field Name="Description_EmployeeQualification">
+          <DataField>Description_EmployeeQualification</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -18,33 +82,33 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.25625in</Width>
+                  <Width>0.26875in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.61458in</Width>
+                  <Width>0.58541in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.47222in</Width>
+                  <Width>1.44305in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.15625in</Width>
+                  <Width>1.12708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.43959in</Width>
+                  <Width>1.24375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.23125in</Width>
+                  <Width>1.20208in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.01459in</Width>
+                  <Width>1.31042in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.16459in</Width>
+                  <Width>1.03542in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.4625in</Height>
+                  <Height>0.38333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -489,7 +553,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.4625in</Height>
+                  <Height>0.38333in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -918,10 +982,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.11333in</Top>
-            <Left>0.34111in</Left>
-            <Height>0.925in</Height>
-            <Width>9.34931in</Width>
+            <Top>0.16333in</Top>
+            <Left>0.2411in</Left>
+            <Height>0.76666in</Height>
+            <Width>8.21596in</Width>
             <ToolTip>=InScope("Ime i prezime")</ToolTip>
             <Style>
               <Border>
@@ -930,17 +994,17 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>2.05833in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>9.84389in</Width>
+      <Width>10.00709in</Width>
       <Page>
         <PageHeader>
-          <Height>2.53333in</Height>
+          <Height>2.725in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -964,8 +1028,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>1.73in</Top>
-              <Left>1.86055in</Left>
+              <Top>2.08889in</Top>
+              <Left>1.49388in</Left>
               <Height>0.60833in</Height>
               <Width>6.36111in</Width>
               <Style>
@@ -1123,10 +1187,10 @@
               <Value>=Fields!Picture.Value</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0.23in</Top>
-              <Left>7.55152in</Left>
-              <Height>0.5in</Height>
-              <Width>2.1389in</Width>
+              <Top>0.205in</Top>
+              <Left>6.47649in</Left>
+              <Height>0.25in</Height>
+              <Width>1.98057in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1142,7 +1206,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1in</Height>
+          <Height>0.50833in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1161,10 +1225,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>0.16667in</Top>
-              <Left>3.57166in</Left>
-              <Height>0.29166in</Height>
-              <Width>2.16667in</Width>
+              <Top>0.14167in</Top>
+              <Left>3.40499in</Left>
+              <Height>0.21666in</Height>
+              <Width>1.62916in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1281,68 +1345,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="EmployeeFirstName_EmployeeQualification">
-          <DataField>EmployeeFirstName_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="EmployeeLastName_EmployeeQualification">
-          <DataField>EmployeeLastName_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="InstitutionCompany_EmployeeQualification">
-          <DataField>InstitutionCompany_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ToDate_EmployeeQualification">
-          <DataField>ToDate_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Datum">
-          <DataField>Datum</DataField>
-        </Field>
-        <Field Name="Status_EmployeeQualification">
-          <DataField>Status_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ProofOfEducation_EmployeeQualification">
-          <DataField>ProofOfEducation_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="ExpirationDate_EmployeeQualification">
-          <DataField>ExpirationDate_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Type_EmployeeQualification">
-          <DataField>Type_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Department_Code">
-          <DataField>Department_Code</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="Adress">
-          <DataField>Adress</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="PhoneNo">
-          <DataField>PhoneNo</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="IDBr">
-          <DataField>IDBr</DataField>
-        </Field>
-        <Field Name="QualificationCode_EmployeeQualification">
-          <DataField>QualificationCode_EmployeeQualification</DataField>
-        </Field>
-        <Field Name="Description_EmployeeQualification">
-          <DataField>Description_EmployeeQualification</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
