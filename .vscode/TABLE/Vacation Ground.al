@@ -642,6 +642,10 @@ table 50015 "Vacation Ground 2"
         field(33; "First Part"; Integer)
         {
         }
+        field(36; "Document No."; Text[250])
+        {
+            Caption = 'Document No.';
+        }
     }
 
     keys

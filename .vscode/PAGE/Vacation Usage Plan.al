@@ -29,6 +29,11 @@ page 50059 "Vacation Usage Plan"
                 {
                     Editable = false;
                 }
+                field("Document No."; "Document No.")
+                {
+                    ApplicationArea = all;
+
+                }
                 //ED 02 END
                 field("Work experience"; "Work experience")
                 {
@@ -100,7 +105,7 @@ page 50059 "Vacation Usage Plan"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Vacation Usage Plan Calculation")
             {
@@ -109,8 +114,7 @@ page 50059 "Vacation Usage Plan"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                //ĐK RunObject = Report 50012;
-                RunObject = report 50010; //ED 
+                RunObject = report "Vacation Calculation2"; //ED 
 
                 trigger OnAction()
                 begin
@@ -121,6 +125,9 @@ page 50059 "Vacation Usage Plan"
             {
                 Caption = 'Annual Leave Resolution';
                 Image = Report2;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 var
@@ -130,10 +137,9 @@ page 50059 "Vacation Usage Plan"
                 begin
                     Vacation.Reset();
                     Vacation.SetFilter("Employee No.", '%1', Rec."Employee No.");
-                    if Vacation.FindFirst() then begin
-                        VacationDecisionR.SETTABLEVIEW(Vacation);
-                        VacationDecisionR.RUN;
-                    end;
+
+                    Report.RUN(50109, TRUE, TRUE, Vacation);
+
 
                     //SM start
                     /*ĐK  Selection := STRMENU(Text0004,1);

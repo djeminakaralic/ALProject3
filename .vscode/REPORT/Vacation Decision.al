@@ -199,6 +199,8 @@ report 50109 VacationDecision
 
                     until EmployeeAbsence.Next() = 0;
 
+                //ĐK
+
 
 
 
