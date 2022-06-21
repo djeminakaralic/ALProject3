@@ -64,10 +64,30 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Contribution Category Code';
             TableRelation = "Contribution Category";
         }
+        field(51998; "Org. jed PU"; Code[10])
+        {
+            Caption = 'Org. jed PU';
+        }
+        field(52224; "Sector Code"; Code[10])
+        {
+            Caption = 'Sector Code';
+        }
+        field(52225; "Šiffra pozicije po sistem."; Code[10])
+        {
+            Caption = 'Šiffra pozicije po sistem.';
+        }
+        field(52227; "Tip RM"; Code[10])
+        {
+            Caption = 'Tip RM';
+        }
         field(50277; "Modified Employee No."; text[1000])
 
         {
             Caption = 'Modified Employee No.';
+        }
+        field(52226; "Naziv pozicije po sistem"; text[1000])
+        {
+            Caption = 'Naziv pozicije po sistem';
         }
         field(50280; Order; Integer)
         {
@@ -100,6 +120,10 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Blood Donation History';
             Editable = false;
 
+        }
+        field(52000; "Level od Graduation"; Integer)
+        {
+            Caption = 'Level od Graduation';
         }
         field(50266; "Employee Qualifications"; Integer)
         {
@@ -141,6 +165,18 @@ tableextension 50071 EmployeeExtension extends Employee
             OptionCaption = ' ,Yes,No';
             OptionMembers = " ",Yes,No;
         }
+        field(52229; "Employee Type"; Option)
+        {
+            Caption = 'Employee Type';
+            OptionCaption = ' ,Nedefinisano,Drzavni Sluzbenik,Namjestenik';
+            OptionMembers = " ",Nedefinisano,"Drzavni Sluzbenik",Namjestenik;
+        }
+        field(52222; "Education Level PU"; Option)
+        {
+            Caption = 'Education Level PU';
+            OptionCaption = ' ,NK,PKV,KV-SSS/III stepen,VKV,SSS/IV,VŠ-VŠS,VSS,MR,DR,BCS_MA(300),BCS(180),BCS(240),DR(480)';
+            OptionMembers = " ",NK,PKV,"KV-SSS/III stepen",VKV,"SSS/IV","VŠ-VŠS",VSS,MR,DR,"BCS_MA(300)","BCS(180)","BCS(240)","DR(480)";
+        }
         field(503562; "Regres Date"; Date)
         {
             Caption = 'Regres date';
@@ -152,6 +188,14 @@ tableextension 50071 EmployeeExtension extends Employee
         field(52333; Remark; text[300])
         {
             caption = 'Remark';
+        }
+        field(52334; "Naziv Org. jed PU"; text[300])
+        {
+            caption = 'Naziv Org. jed PU';
+        }
+        field(50273; "Naziv UOJ"; text[300])
+        {
+            caption = 'Naziv UOJ';
         }
         field(50207; "Employee Category"; Option)
         {
@@ -2886,7 +2930,6 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Days';
         }
-
         field(70014; "Brought Years in C"; Integer)
         {
             Caption = 'Brought Years in C';
@@ -2899,8 +2942,6 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Brought Days in C';
         }
-
-
         field(70017; "Total Brought Years"; Integer)
         {
             Caption = 'Total Brought Years';
@@ -3087,6 +3128,10 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = Lookup("Employee Contract Ledger".Group WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
             //Department.Code WHERE (Type=FILTER(' '|Department))
+        }
+        field(51999; "Šifra UOJ"; Code[30])
+        {
+            Caption = 'Šifra UOJ';
         }
         field(503712; "Group Description"; Code[250])
         {
