@@ -107,6 +107,13 @@ page 50051 "Employee Contract Ledger"
                     ApplicationArea = all;
                     Visible = false;
                 }
+
+                field("Group Description"; "Group Description")
+                {
+
+                    ShowMandatory = true;
+                    ApplicationArea = all;
+                }
                 field("<Group>"; Group)
                 {
 
@@ -114,7 +121,8 @@ page 50051 "Employee Contract Ledger"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
-                field("Group Description"; "Group Description")
+
+                field("Department Cat. Description"; "Department Cat. Description")
                 {
 
                     ShowMandatory = true;
@@ -126,7 +134,8 @@ page 50051 "Employee Contract Ledger"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
-                field("Department Cat. Description"; "Department Cat. Description")
+
+                field("Sector Description"; "Sector Description")
                 {
 
                     ShowMandatory = true;
@@ -137,12 +146,6 @@ page 50051 "Employee Contract Ledger"
                     Editable = false;
                     Enabled = true;
                     Visible = IsVisible;
-                    ApplicationArea = all;
-                }
-                field("Sector Description"; "Sector Description")
-                {
-
-                    ShowMandatory = true;
                     ApplicationArea = all;
                 }
                 field("Department Code"; "Department Code")

@@ -2991,7 +2991,72 @@ table 50055 "ECL systematization"
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -3331,9 +3396,75 @@ table 50055 "ECL systematization"
 
                                 END;
 
-                                ECLSYST2.RESET;
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
+
+
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -3876,7 +4007,72 @@ table 50055 "ECL systematization"
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
+
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -4581,7 +4777,71 @@ table 50055 "ECL systematization"
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -5444,7 +5704,71 @@ table 50055 "ECL systematization"
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -6651,18 +6975,8 @@ table 50055 "ECL systematization"
 
 
 
-                                        SectorParent22.RESET;
-                                        SectorParent22.SETFILTER("ORG Shema", '%1', SectorTemp."Org Shema");
-                                        SectorParent22.SETFILTER(Sector, '%1', COPYSTR(SectorTemp.Code, 1, 2));
-                                        SectorParent22.SETFILTER("Management Level", '%1|%2|%3', SectorParent22."Management Level"::CEO, SectorParent22."Management Level"::Exe, SectorParent22."Management Level"::Sector);
-                                        SectorParent22.SETCURRENTKEY("ORG Shema");
-                                        SectorParent22.ASCENDING(FALSE);
-                                        IF SectorParent22.FINDFIRST THEN BEGIN
-                                            SectorOrginal.Parent := SectorParent22."Sector  Description";
-                                        END
-                                        ELSE BEGIN
-                                            SectorOrginal.Parent := '';
-                                        END;
+
+
 
                                         SectorParent2.RESET;
                                         SectorParent2.SETFILTER("Org Shema", '<>%1', SectorTemp."Org Shema");
@@ -7336,7 +7650,71 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -7678,7 +8056,71 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -8221,7 +8663,71 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -8927,7 +9433,71 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -9790,7 +10360,71 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
                                 ECLSYST2.RESET;
                                 ECLSYST2.SETFILTER("Order By Managment", '%1', 2);
-                                ECLSYST2.SETFILTER(Sector, '%1', COPYSTR(Rec.Sector, 1, j));
+                                ExeManager.Reset();
+                                ExeManager.SetFilter("ORG Shema", '%1', Rec."Org. Structure");
+                                if Rec."Department Category" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec.Sector);
+                                if Rec."Department Cat. Description" = '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Sector Description");
+
+                                if (Rec.Group = '') and (rec."Department Category" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Department Category");
+                                if (Rec."Group Description" = '') and (Rec."Department Cat. Description" <> '') then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Department Cat. Description");
+
+                                if Rec."Group" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Code", '%1', Rec."Group");
+                                if Rec."Group Description" <> '' then
+                                    ExeManager.SetFilter("Subordinate Org Description", '%1', Rec."Group Description");
+
+                                if ExeManager.FindFirst() then begin
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter(Code, '%1', ExeManager."Position Code");
+                                    Posa.SetFilter(Description, '%1', ExeManager."Position Description");
+                                    if Posa.FindFirst() then begin
+                                        Uprava := Posa.Code
+                                    end
+                                    else begin
+                                        Posa.Reset();
+                                        Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                        Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                        if Posa.FindFirst() then
+                                            Uprava := Posa.Code
+                                        else
+                                            Uprava := '';
+
+                                    end;
+
+
+                                end
+                                else begin
+
+                                    Posa.Reset();
+                                    Posa.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                                    Posa.SetFilter("Management Level", '%1', Posa."Management Level"::CEO);
+
+                                    if Posa.FindFirst() then
+                                        Uprava := Posa.Code
+                                    else
+                                        Uprava := '';
+                                end;
+
+
+                                HeadOfExe.RESET;
+                                HeadOfExe.SETFILTER("Position code", '%1', Uprava);
+                                HeadOfExe.SETFILTER("ORG Shema", '%1', "Org. Structure");
+
+                                IF HeadOfExe.FINDFIRST THEN
+                                    HeadOfExe.CalcFields("Employee No.");
+
+
+
+
+
+
+                                ECLSYST2.SETFILTER("Employee No.", '%1', HeadOfExe."Employee No.");
                                 IF ECLSYST2.FINDFIRST THEN BEGIN
                                     ECLOrg.RESET;
                                     ECLOrg.SETFILTER("Employee No.", '%1', ECLSYST2."Employee No.");
@@ -11222,6 +11856,9 @@ UNTIL PositionMenuOrginal.NEXT = 0;
 
     var
         AttachmentRecord: Record "Attachment";
+        HeadOfExe: Record "Head Of's temporary";
+        ExeManager: Record "Exe Manager temporery";
+        Posa: Record "Position Menu temporary";
         gro: Date;
         ECLCD: Record "ECL systematization";
         BruttoTotal: Decimal;
@@ -11269,6 +11906,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
         comm: Automation;
         param: Automation;*/
         lvarActiveConnection: Variant;
+        Uprava: Code[20];
         WDV: Record "Work Duties Violation";
         WDVM: Record "Work Duties Violation";
         WDVR: Record "Work Duties Violation";

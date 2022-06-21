@@ -16,6 +16,9 @@ page 50058 "Trainings Catalogue"
             {
                 field(Code; Code)
                 {
+                    ApplicationArea = all;
+                    Editable = false;
+
 
                 }
                 field(Name; Name)
