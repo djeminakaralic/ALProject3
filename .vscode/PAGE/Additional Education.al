@@ -9,6 +9,7 @@ table 52018 "Additional Responsibility"
         field(1; "Entry No."; Code[20])
         {
             Caption = 'Entry No.';
+
         }
         field(2; Name; Text[250])
         {
