@@ -18,12 +18,6 @@ report 50112 "Uslov za penziju"
             column(EducationLevel_Employee; "Education Level")
             {
             }
-            /*column(EducationLevelPU_Employee; Employee."Education Level PU")
-            {
-            }
-            column(LevelofGraduation_Employee; Employee."Level of Graduation")
-            {
-            }*/
             column(No_Employee; "No.")
             {
             }
@@ -33,9 +27,6 @@ report 50112 "Uslov za penziju"
             column(LastName_Employee; "Last Name")
             {
             }
-            /*column(NazivUOJ_Employee; Employee."Naziv UOJ")
-            {
-            }*/
             column(OrgjedPU_Employee; "Department Code")
             {
             }
