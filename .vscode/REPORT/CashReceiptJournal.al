@@ -40,13 +40,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
 
             }
-
-
+        }
+        addafter(Description)
+        {
             field("Social status"; "Social status")
             {
-
             }
         }
+
         addafter("Amount (LCY)")
         {
             field("Given amount"; "Given amount")

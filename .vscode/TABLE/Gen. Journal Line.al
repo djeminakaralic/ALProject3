@@ -3,7 +3,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
     fields
     {
-        modify("Customer Id")
+        /*modify("Customer Id")
         {
             trigger OnAfterValidate()
 
@@ -15,7 +15,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 end;
 
             end;
-        }
+        }*/
         //    VAT Base (retro.)
         field(50000; "VAT Date"; Date)
         {
