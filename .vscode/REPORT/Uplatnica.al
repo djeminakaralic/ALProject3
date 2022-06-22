@@ -1,5 +1,6 @@
 report 50077 Uplatnica
 {
+    //ED
     DefaultLayout = RDLC;
     RDLCLayout = './Uplatnica.rdl';
 
@@ -151,7 +152,6 @@ report 50077 Uplatnica
 
             trigger OnPreDataItem()
             begin
-
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
