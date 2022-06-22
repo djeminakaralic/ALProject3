@@ -38103,6 +38103,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - NamedType Text001</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2612190612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Address_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3427083286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Bin Checked</source>
           <note from="Developer" annotates="general" priority="2"></note>

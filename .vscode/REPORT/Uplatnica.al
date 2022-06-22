@@ -32,6 +32,9 @@ report 50077 Uplatnica
             column(LineNo; DataItem21."Line No.")
             {
             }
+            column(Address_Customer; DataItem21.Address_Cust)
+            {
+            }
             column(PM; DataItem21."Payment Method Code")
             {
             }

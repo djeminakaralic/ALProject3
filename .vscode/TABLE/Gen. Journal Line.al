@@ -110,6 +110,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             //TableRelation = "Payment Type";
             Caption = 'Social status category';
         }
+        field(50030; "Address_Cust"; Text[100])
+        {
+            Caption = 'Address';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -127,6 +131,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Customer.Get("Account No.");
                 Message(Customer.Address);
                 "Social status" := Customer."Social status category";
+                Address_Cust := Customer.Address;
             end;
         }
 

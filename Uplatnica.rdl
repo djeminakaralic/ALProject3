@@ -1288,6 +1288,9 @@ End Function
         <Field Name="LineNo">
           <DataField>LineNo</DataField>
         </Field>
+        <Field Name="Address_Customer">
+          <DataField>Address_Customer</DataField>
+        </Field>
         <Field Name="PM">
           <DataField>PM</DataField>
         </Field>
