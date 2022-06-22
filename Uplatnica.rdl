@@ -906,8 +906,8 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>5.23557cm</Top>
-            <Left>12.83378cm</Left>
-            <Height>4.63021cm</Height>
+            <Left>1.29858cm</Left>
+            <Height>3.28223cm</Height>
             <Width>10.80982cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
@@ -927,7 +927,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!AccountNo.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -957,7 +957,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=Fields!Description.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
