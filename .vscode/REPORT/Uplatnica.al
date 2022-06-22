@@ -3,7 +3,7 @@ report 50077 Uplatnica
     //ED
     DefaultLayout = RDLC;
     RDLCLayout = './Uplatnica.rdl';
-
+    PreviewMode = Normal;
 
     dataset
     {
@@ -12,7 +12,6 @@ report 50077 Uplatnica
             //DataItemLink = "Line No." = field(LineNo);
             //line = FIELD("No.");              
             //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
-
 
 
             column(BatchName; DataItem21."Journal Batch Name")

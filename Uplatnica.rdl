@@ -342,6 +342,7 @@
                                   <Value>=Fields!PaymentDT.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <Format>g</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -374,6 +375,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
