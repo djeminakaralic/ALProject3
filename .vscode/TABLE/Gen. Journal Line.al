@@ -129,10 +129,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             end;
         }
 
-
-
     }
-
 
 
     trigger OnInsert()
