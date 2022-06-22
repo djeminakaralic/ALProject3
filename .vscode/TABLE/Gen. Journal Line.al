@@ -141,6 +141,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         myInt: Integer;
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
-        Text001: Label 'error iznos';
+        Text001: Label 'Given amount cannot be less than amount.';
 
 }
