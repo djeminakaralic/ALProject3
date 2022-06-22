@@ -78,7 +78,7 @@ report 50010 "Vacation Calculation2"
                             IF EmployeeC.FINDLAST THEN BEGIN
 
 
-                                PlanGO.INSERT;
+                                PlanGO.INSERT(true);
                             END;
                             //PlanGO.MODIFY;
                         END;

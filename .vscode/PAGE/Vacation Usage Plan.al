@@ -29,6 +29,17 @@ page 50059 "Vacation Usage Plan"
                 {
                     Editable = false;
                 }
+                field("Document No."; "Document No.")
+                {
+                    ApplicationArea = all;
+                    Visible = Simple;
+
+                }
+                field("Document Text"; "Document Text")
+                {
+                    ApplicationArea = all;
+                    Visible = not Simple;
+                }
                 //ED 02 END
                 field("Work experience"; "Work experience")
                 {
@@ -100,7 +111,7 @@ page 50059 "Vacation Usage Plan"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Vacation Usage Plan Calculation")
             {
@@ -109,8 +120,7 @@ page 50059 "Vacation Usage Plan"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                //ĐK RunObject = Report 50012;
-                RunObject = report 50010; //ED 
+                RunObject = report "Vacation Calculation2"; //ED 
 
                 trigger OnAction()
                 begin
@@ -121,6 +131,9 @@ page 50059 "Vacation Usage Plan"
             {
                 Caption = 'Annual Leave Resolution';
                 Image = Report2;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 var
@@ -130,10 +143,11 @@ page 50059 "Vacation Usage Plan"
                 begin
                     Vacation.Reset();
                     Vacation.SetFilter("Employee No.", '%1', Rec."Employee No.");
-                    if Vacation.FindFirst() then begin
-                        VacationDecisionR.SETTABLEVIEW(Vacation);
-                        VacationDecisionR.RUN;
-                    end;
+                    Vacation.SetFilter("Date of report", '%1', Rec."Date of report");
+
+
+                    Report.RUN(50109, TRUE, TRUE, Vacation);
+
 
                     //SM start
                     /*ĐK  Selection := STRMENU(Text0004,1);
@@ -209,16 +223,44 @@ page 50059 "Vacation Usage Plan"
     }
 
     trigger OnOpenPage()
+    var
+        GeneralL: Record "General Ledger Setup";
     begin
         CurrentYear := (DATE2DMY(TODAY, 3));
         LastYear := (DATE2DMY(TODAY, 3) - 1);
         SETRANGE(Year, LastYear, CurrentYear);
+        GeneralL.Get();
+        if GeneralL."Is Simple Page" = false
+        then
+            Simple := false
+        else
+            Simple := true;
+
+
     end;
+
+    trigger OnAfterGetRecord()
+    var
+        myInt: Integer;
+        GeneralL: Record "General Ledger Setup";
+    begin
+        GeneralL.Get();
+        if GeneralL."Is Simple Page" = false
+        then
+            Simple := false
+        else
+            Simple := true;
+
+
+    end;
+
 
     var
         //ĐKR_AnnualLeave: Report "50044";
         //ĐK R_AnnualLeave2: Report "50045";
         Text0001: Label 'Vacation period is not entered for %1 %2.';
+
+        Simple: Boolean;
         t_emp: Record "Employee";
         Temp: Boolean;
         Text0002: Label 'Do you want to print Annual Leave Resolution for first part of leave?';

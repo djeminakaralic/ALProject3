@@ -189,6 +189,7 @@ report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna
                     field(Selected; Selected)
                     {
                         Caption = 'Izbor:';
+                        OptionCaption = ' ,Starosna,Spolna,Dobna';
                     }
                 }
             }

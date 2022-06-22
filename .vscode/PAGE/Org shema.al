@@ -371,6 +371,12 @@ page 50087 "ORG Shema"
                                     REPEAT
                                         PositionMenuNew.INIT;
                                         PositionMenuNew.TRANSFERFIELDS(PositionMenu);
+
+
+
+
+
+
                                         Sector.RESET;
                                         Sector.SETFILTER(Identity, '%1', PositionMenu."Sector Identity");
                                         IF Sector.FINDFIRST THEN BEGIN

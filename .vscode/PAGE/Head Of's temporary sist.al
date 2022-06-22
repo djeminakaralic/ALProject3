@@ -113,6 +113,8 @@ page 50064 "Head Of's temporary sist"
                 Promoted = true;
                 PromotedIsBig = true;
                 Visible = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -131,6 +133,7 @@ page 50064 "Head Of's temporary sist"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

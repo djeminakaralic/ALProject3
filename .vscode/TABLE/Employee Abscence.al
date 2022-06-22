@@ -134,6 +134,23 @@ tableextension 51921 MyExtension extends "Employee Absence"
         field(50141; "Order"; Integer)
         {
         }
+        modify("From Date")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+                VacationSetup: Record "Vacation Setup";
+            begin
+
+                if "Cause of Absence Code" = VacationSetup."Vacation Code" then
+                    "Vacation from Year" := Date2DMY("From Date", 3);
+                if "Cause of Absence Code" = VacationSetup."Vacation Code Last Year" then
+                    "Vacation from Year" := Date2DMY("From Date", 3) - 1;
+
+
+
+            end;
+        }
 
         field(50142; "Short Code"; Code[10])
         {

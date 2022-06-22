@@ -2571,14 +2571,18 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                     trigger OnDrillDown()
                     begin
+                        SELECTLATESTVERSION;
 
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                         EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
                         EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
                         EmployeeContractLedgerPage.RUN;
-                        CurrPage.UPDATE;
+                        CurrPage.UPDATE(true);
                     end;
+
+
+
                 }
 
                 field(Manager2; EmployeeContractLedger."Manager 2 Last Name" + ' ' + EmployeeContractLedger."Manager 2 First Name")

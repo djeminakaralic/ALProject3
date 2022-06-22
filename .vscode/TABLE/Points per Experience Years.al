@@ -22,22 +22,27 @@ table 50126 "Points per Experience Years"
         {
             Caption = 'Upper Limit';
 
-            trigger OnValidate()
+            /*trigger OnValidate()
             begin
                 UpperLimit2 := FORMAT(UpperLimit) + 'Y';
-            end;
+            end;*/
         }
         field(5; LowerLimit; Integer)
         {
             Caption = 'Lower Limit';
-            trigger OnValidate()
+
+            /*trigger OnValidate()
             begin
                 LowerLimit2 := FORMAT(LowerLimit) + 'Y';
-            end;
+            end;*/
         }
         field(6; UpperLimit2; Text[30])
         {
             Caption = 'UpperLimit2';
+            trigger OnValidate()
+            begin
+                //UpperLimit := strKeep(UpperLimit2, '0123456789');
+            end;
         }
         field(7; LowerLimit2; Text[30])
         {

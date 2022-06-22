@@ -47,6 +47,7 @@ report 50109 VacationDecision
             column(BrojDokumenta; BrojDokumenta)
             {
             }
+            column(ShortYear; ShortYear) { }
             column(DatumRjesenjaT; DatumRjesenjaT)
             {
             }
@@ -151,10 +152,24 @@ report 50109 VacationDecision
             {
 
             }
+            column(Izvrsni; Izvrsni)
+            {
+
+            }
 
 
             trigger OnAfterGetRecord()
             begin
+
+
+                if "Document No." <> '' then
+                    BrojDokumenta := DataItem5."Document No."
+                else
+                    BrojDokumenta := DataItem5."Document Text";
+
+                ShortYear := format(copystr(format(Date2DMY("Date of report", 3)), strlen(format(Date2DMY("Date of report", 3))) - 1, strlen(format(Date2DMY("Date of report", 3)))));
+
+
                 CompanyInformation.get;
                 CompanyInformation.CalcFields(Picture);
                 DatumRjesenjaT := FORMAT("Date of report", 0, '<Day,2>.<Month,2>.<Year4>.');
@@ -172,13 +187,38 @@ report 50109 VacationDecision
                 EndSecondpartT := FORMAT("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.');
                 DanJavljanjanaposaoT := FORMAT(DanJavljanjanaposao, 0, '<Day,2>.<Month,2>.<Year4>.');
 
+                OrgShema.Reset();
+                OrgShema.SetFilter("Date From", '<=%1', "Date of report");
+                OrgShema.SetCurrentKey("Date From");
+                OrgShema.Ascending;
+                OrgShema.FindLast();
+
                 Position.Reset();
                 Position.SetFilter("Management Level", '%1', Position."Management Level"::CEO);
+                Position.SetFilter("ORG Shema", '%1', OrgShema.Code);
+
                 if Position.FindFirst()
                 then begin
                     Position.CalcFields("Employee Name", "Employee Last Name");
                     Director := Position."Employee Name";
                 end;
+
+                ExeManager.Reset();
+                ExeManager.SetFilter("Subordinate Org Description", '%1', Sector);
+                ExeManager.SetFilter("ORG Shema", '%1', OrgShema.Code);
+                if ExeManager.FindFirst() then begin
+                    ExeDescr := StrPos(ExeManager."Position Description", ' za ');
+                    Izvrsni := CopyStr(ExeManager."Position Description", ExeDescr + 4, StrLen(ExeManager."Position Description"));
+
+
+                end
+                else begin
+                    Izvrsni := '';
+                end;
+
+                //Izvrsni
+
+
 
 
                 EmployeeRec.Reset();
@@ -192,12 +232,10 @@ report 50109 VacationDecision
                 EmployeeAbsence.Reset();
                 EmployeeAbsence.SetFilter("Employee No.", '%1', DataItem5."Employee No.");
                 EmployeeAbsence.SetFilter("Vacation from Year", '%1', DataItem5.Year);
-                if EmployeeAbsence.Find() then
-                    repeat
+                if EmployeeAbsence.FindFirst() then
+                    Used_Days := EmployeeAbsence.Count;
 
-                        Used_Days := EmployeeAbsence.Count;
-
-                    until EmployeeAbsence.Next() = 0;
+                //ĐK
 
 
 
@@ -233,10 +271,10 @@ report 50109 VacationDecision
         {
             area(content)
             {
-                field(BrojDokumenta; BrojDokumenta)
-                {
-                    Caption = 'Broj dokumenta';
-                }
+                /* field(BrojDokumenta; BrojDokumenta)
+                 {
+                     Caption = 'Broj dokumenta';
+                 }*/
                 /*field(DatumRjesenja; DatumRjesenja)
                 {
                     Caption = 'Datum rješenja';
@@ -266,15 +304,37 @@ report 50109 VacationDecision
     labels
     {
     }
+    trigger OnInitReport()
+    var
+        myInt: Integer;
+    begin
 
+
+    end;
+
+    procedure SetParam(ReportDateInit: Date)
+    begin
+        ReportD := ReportDateInit;
+
+    end;
 
     var
 
         Year1: Text;
+        ExeManager: Record "Exe Manager";
+
+        ExeDescr: Integer;
+
+        ShortYear: Text[2];
+        ReportD: Date;
+
+        OrgShema: Record "ORG Shema";
+
         DatumRjesenja: Date;
         DatumRjesenjaT: Text;
         BrojDokumenta: Text;
         BrojDanaPrviDio: Integer;
+        Izvrsni: Text[250];
         DanJavljanjanaposao: Date;
         DanJavljanjanaposaoT: Text;
         StartFirstpartT: Text;
@@ -297,6 +357,7 @@ report 50109 VacationDecision
 
         Vacation: Record "Vacation Ground 2";
         Director: Text;
+
         Position: Record "Head Of's";
         Used_Days: Integer;
         EmployeeAbsence: record "Employee Absence";

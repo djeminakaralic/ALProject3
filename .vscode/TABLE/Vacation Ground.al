@@ -642,6 +642,23 @@ table 50015 "Vacation Ground 2"
         field(33; "First Part"; Integer)
         {
         }
+        field(37; "No. Series"; Code[20])
+        {
+
+        }
+        field(38; "Document Text"; Text[250])
+        {
+            Caption = 'Document Text';
+        }
+        field(36; "Document No."; Code[20])
+        {
+            Caption = 'Document No.';
+
+        }
+
+
+
+
     }
 
     keys
@@ -654,6 +671,35 @@ table 50015 "Vacation Ground 2"
     fieldgroups
     {
     }
+
+    trigger OnInsert()
+    var
+        myInt: Integer;
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        VacHistory: Record "Vacation setup history";
+        NoSeriesMgt: Codeunit NoSeriesExtented;
+        CodeN: Code[20];
+    begin
+        GeneralLedgerSetup.get();
+
+        IF (GeneralLedgerSetup."Is Simple Page" = true) THEN BEGIN
+            VacHistory.Reset();
+            CodeN := '';
+            VacHistory.SetFilter(Year, '%1', Rec.Year);
+            if VacHistory.FindFirst() then begin
+                NoSeriesMgt.InitSeries(VacHistory."No. series Code", xRec."No. Series", 0D, CodeN, "No. Series");
+                Rec."Document No." := CodeN;
+            end
+            else begin
+                Error('Vacation Setup history!');
+
+            end;
+
+        END;
+
+
+
+    end;
 
     var
         t_Employee: Record "Employee";
