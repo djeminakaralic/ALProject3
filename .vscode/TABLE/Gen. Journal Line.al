@@ -106,7 +106,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50029; "Payment Type"; code[10])
         {
-
             //TableRelation = "Payment Type";
             Caption = 'Social status category';
         }
@@ -128,6 +127,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "Social status" := Customer."Social status category";
             end;
         }
+
 
     }
 
