@@ -89,16 +89,16 @@ report 50109 VacationDecision
             {
 
             }
-            column(StartFirstpart; "Starting Date of I part")
+            column(StartFirstpart; format("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.'))
             {
             }
-            column(EndFirstpart; "Ending Date of I part")
+            column(EndFirstpart; format("Ending Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.'))
             {
             }
-            column(Start2part; "Starting Date of II part")
+            column(Start2part; format("Starting Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.'))
             {
             }
-            column(End2part; "Ending Date of II part")
+            column(End2part; format("Ending Date of II part", 0, '<Day,2>.<Month,2>.<Year4>.'))
             {
             }
             column(Position; "Position Name")
