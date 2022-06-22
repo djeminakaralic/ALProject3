@@ -43,24 +43,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
         field(50003; "Compensation"; Boolean)
         {
-
             DataClassification = ToBeClassified;
-
         }
-
-
         field(50008; "Due Date 2"; Date)
         {
-
             DataClassification = ToBeClassified;
-
         }
-
         field(50009; "Due Date 3"; Date)
         {
-
             DataClassification = ToBeClassified;
-
         }
         field(50019; "Group Member"; Boolean)
         {
@@ -127,10 +118,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Error(Text001);
                 "To return" := "Given amount" - Amount;
             end;
-        }
-        modify(Description)
-        {
-            editable = false;
         }
 
     }
