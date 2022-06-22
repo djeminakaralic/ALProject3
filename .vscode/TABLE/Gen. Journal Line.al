@@ -106,9 +106,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Redni broj uplate';
 
         }
-        field(50028; "Social status"; Option)
+        field(50028; "Social status"; enum "Social Status")
         {
-            OptionMembers = ,S;
             TableRelation = Customer."Social status category";
             Caption = 'Social status category';
         }

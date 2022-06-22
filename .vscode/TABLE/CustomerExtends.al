@@ -138,10 +138,9 @@ tableextension 50105 CustomerExtends extends "Customer"
         {
             Caption = 'Message test';
         }
-        field(50033; "Social status category"; Option)
+        field(50033; "Social status category"; enum "Social Status")
         {
             Caption = 'Social status category';
-            OptionMembers = ,S;
 
         }
 
@@ -153,4 +152,5 @@ tableextension 50105 CustomerExtends extends "Customer"
 
     var
         myInt: Integer;
+
 }
