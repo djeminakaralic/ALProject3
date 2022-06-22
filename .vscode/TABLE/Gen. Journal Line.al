@@ -92,6 +92,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
+                if "Given amount" < Amount then
+                    Error(Text001);
                 "To return" := "Given amount" - Amount;
             end;
 
@@ -99,7 +101,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50026; "To return"; Decimal)
         {
             Caption = 'To return';
-
+            Editable = false;
         }
         field(50027; "No. Line"; Integer)
         {
@@ -119,7 +121,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
 
 
+
     }
+
+
 
     trigger OnInsert()
     begin
@@ -135,9 +140,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     var
         myInt: Integer;
         Customer: Record Customer;
-
         GJLine: Record "Gen. Journal Line";
-
-
+        Text001: Label 'error iznos';
 
 }
