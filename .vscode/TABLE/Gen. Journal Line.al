@@ -3,7 +3,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
     fields
     {
-        modify("Customer Id")
+        /*modify("Customer Id")
         {
             trigger OnAfterValidate()
 
@@ -15,7 +15,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 end;
 
             end;
-        }
+        }*/
         //    VAT Base (retro.)
         field(50000; "VAT Date"; Date)
         {
@@ -43,24 +43,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
         field(50003; "Compensation"; Boolean)
         {
-
             DataClassification = ToBeClassified;
-
         }
-
-
         field(50008; "Due Date 2"; Date)
         {
-
             DataClassification = ToBeClassified;
-
         }
-
         field(50009; "Due Date 3"; Date)
         {
-
             DataClassification = ToBeClassified;
-
         }
         field(50019; "Group Member"; Boolean)
         {
@@ -82,7 +73,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(50024; "Payment Date And Time"; DateTime) //ED
+        field(50024; "Payment Date"; Date) //ED
         {
             DataClassification = ToBeClassified;
         }
@@ -92,46 +83,82 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                "To return" := "Given amount" - Amount;
+                if "Given amount" < Amount then
+                    Error(Text001);
+                if (Amount <> 0) then
+                    "To return" := "Given amount" - Amount;
             end;
 
         }
         field(50026; "To return"; Decimal)
         {
             Caption = 'To return';
-
+            Editable = false;
         }
-        field(50027; "Redni broj"; Integer)
+        field(50027; "No. Line"; Integer)
         {
             Caption = 'Redni broj uplate';
 
         }
-        field(50028; "Social status"; Option)
+        field(50028; "Social status"; enum "Social Status")
         {
-            OptionMembers = ,S;
-            TableRelation = Customer."Social status category";
+            //TableRelation = Customer."Social status category";
             Caption = 'Social status category';
         }
         field(50029; "Payment Type"; code[10])
         {
-
             //TableRelation = "Payment Type";
             Caption = 'Social status category';
+        }
+        field(50030; "Address_Cust"; Text[100])
+        {
+            Caption = 'Address';
+        }
+        field(50031; "RegistrationNo_Cust"; Text[20])
+        {
+            Caption = 'Registration No.';
+        }
+        field(50032; "VATRegistrationNo_Cust"; Text[20])
+        {
+            Caption = 'VAT Registration No.';
+        }
+        field(50033; "Payment Time"; Time) //ED
+        {
+            DataClassification = ToBeClassified;
+        }
+        modify(Amount)
+        {
+            trigger OnAfterValidate()
+            begin
+                if ("Given amount" <> 0) AND ("Given amount" < Amount) then
+                    Error(Text001);
+                if ("Given amount" <> 0) then
+                    "To return" := "Given amount" - Amount;
+            end;
+        }
+        modify("Account No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                Customer.Get("Account No.");
+                "Social status" := Customer."Social status category";
+                Address_Cust := Customer.Address;
+                RegistrationNo_Cust := Customer."Registration No.";
+                VATRegistrationNo_Cust := Customer."VAT Registration No.";
+            end;
         }
 
 
     }
 
+
     trigger OnInsert()
-    var
-        GenJnlPostPreview: Codeunit "Gen. Jnl.-Post Preview";
     begin
-        //  GenJnlPostPreview.
 
-        //"Gen. Jnl.-Post Preview".SaveCustLedgEntry(Rec);
-        "Redni broj" := 0;
-        "Redni broj" := xRec."Redni broj" + 1;
-
+        if GJLine.FindLast() then
+            Rec."No. Line" := GJLine."No. Line" + 1
+        else
+            Rec."No. Line" := 1;
 
     end;
 
@@ -139,7 +166,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     var
         myInt: Integer;
         Customer: Record Customer;
-
-
+        GJLine: Record "Gen. Journal Line";
+        Text001: Label 'Given amount cannot be less than amount.';
 
 }

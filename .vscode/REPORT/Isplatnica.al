@@ -1,7 +1,9 @@
 report 50084 Isplatnica
 {
+    //ED
     DefaultLayout = RDLC;
-    RDLCLayout = './Isplatnica.rdlc';
+
+    RDLCLayout = './Isplatnica.rdl';
 
     dataset
     {

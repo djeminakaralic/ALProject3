@@ -1,6 +1,8 @@
 report 50077 Uplatnica
 {
+    //ED
     DefaultLayout = RDLC;
+
     RDLCLayout = './Uplatnica.rdl';
 
 
@@ -8,12 +10,6 @@ report 50077 Uplatnica
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
-            //DataItemLink = "Line No." = field(LineNo);
-            //line = FIELD("No.");              
-            //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
-
-
-
             column(BatchName; DataItem21."Journal Batch Name")
             {
             }
@@ -32,10 +28,25 @@ report 50077 Uplatnica
             column(LineNo; DataItem21."Line No.")
             {
             }
+            column(Address_Customer; DataItem21.Address_Cust)
+            {
+            }
+            column(AccountNo; DataItem21."Account No.")
+            {
+            }
+            column(RegistrationNo_Cust; DataItem21.RegistrationNo_Cust)
+            {
+            }
+            column(VATRegistrationNo_Cust; DataItem21.VATRegistrationNo_Cust)
+            {
+            }
             column(PM; DataItem21."Payment Method Code")
             {
             }
-            column(PaymentDT; DataItem21."Payment Date And Time")
+            column(PaymentDate; DataItem21."Payment Date")
+            {
+            }
+            column(PaymentTime; DataItem21."Payment Time")
             {
             }
             column(Adress_CompanyInfo; CompanyInformation.Address)
@@ -114,7 +125,6 @@ report 50077 Uplatnica
 
 
 
-
             trigger OnAfterGetRecord()
             begin
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
@@ -126,20 +136,19 @@ report 50077 Uplatnica
                 ContCity:=Cont."Post Code"+', '+Cont.City;
                 END;     */
 
-                emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
+                /*emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
 
                 IF emp.FIND('-') THEN BEGIN
 
                     ContName := emp."First Name" + emp."Last Name";
                     ContAddress := emp.Address;
                     ContCity := emp."Post Code" + ', ' + emp.City;
-                END;
+                END;*/
 
             end;
 
             trigger OnPreDataItem()
             begin
-
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
@@ -151,9 +160,6 @@ report 50077 Uplatnica
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
-
-                //za tabelu customer je key No.
-
 
 
             end;

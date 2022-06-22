@@ -32,21 +32,27 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Posting Date")
         {
-            field("Payment Date And Time"; "Payment Date And Time")
+            field("Payment Date"; "Payment Date")
             {
                 ApplicationArea = all;
             }
-            field("Redni broj"; "Redni broj")
+            field("Payment Time"; "Payment Time")
+            {
+                ApplicationArea = all;
+            }
+            field("No. Line"; "No. Line")
             {
 
             }
 
-
+        }
+        addafter(Description)
+        {
             field("Social status"; "Social status")
             {
-
             }
         }
+
         addafter("Amount (LCY)")
         {
             field("Given amount"; "Given amount")

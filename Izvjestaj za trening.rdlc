@@ -82,33 +82,33 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.26875in</Width>
+                  <Width>0.28333in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.58541in</Width>
+                  <Width>0.48437in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.44305in</Width>
+                  <Width>1.34201in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.12708in</Width>
+                  <Width>1.02604in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.24375in</Width>
+                  <Width>1.14271in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.20208in</Width>
+                  <Width>1.10104in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.31042in</Width>
+                  <Width>1.20938in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.03542in</Width>
+                  <Width>0.93438in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.38333in</Height>
+                  <Height>0.3625in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -553,7 +553,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.38333in</Height>
+                  <Height>0.3625in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -984,8 +984,8 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.16333in</Top>
             <Left>0.2411in</Left>
-            <Height>0.76666in</Height>
-            <Width>8.21596in</Width>
+            <Height>0.72499in</Height>
+            <Width>7.52325in</Width>
             <ToolTip>=InScope("Ime i prezime")</ToolTip>
             <Style>
               <Border>
@@ -1001,7 +1001,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>10.47376in</Width>
+      <Width>8.95709in</Width>
       <Page>
         <PageHeader>
           <Height>2.725in</Height>
@@ -1028,10 +1028,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>2.08889in</Top>
-              <Left>1.49388in</Left>
+              <Top>2.04723in</Top>
+              <Left>1.06055in</Left>
               <Height>0.60833in</Height>
-              <Width>6.36111in</Width>
+              <Width>5.6538in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1188,7 +1188,7 @@
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>0.205in</Top>
-              <Left>7.30497in</Left>
+              <Left>6.71435in</Left>
               <Height>0.25in</Height>
               <Width>1.98057in</Width>
               <ZIndex>3</ZIndex>
@@ -1226,7 +1226,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.14167in</Top>
-              <Left>4.05706in</Left>
+              <Left>2.89039in</Left>
               <Height>0.21666in</Height>
               <Width>1.62916in</Width>
               <Style>
