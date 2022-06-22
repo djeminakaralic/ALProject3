@@ -138,10 +138,11 @@ tableextension 50105 CustomerExtends extends "Customer"
         {
             Caption = 'Message test';
         }
-        field(50033; "Social status category"; Option)
+        field(50033; "Social status category"; Enum)
         {
             Caption = 'Social status category';
             OptionMembers = ,S;
+
         }
 
 
