@@ -127,6 +127,10 @@ report 50112 "Uslov za penziju"
         {
             area(content)
             {
+                field(datum; datum)
+                {
+                    Caption = 'datum';
+                }
                 field(Mjesec; Mjesec)
                 {
                     Caption = 'Mjesec';
@@ -143,6 +147,7 @@ report 50112 "Uslov za penziju"
                 {
                     Caption = 'Na osn. staža';
                 }
+
             }
         }
 
