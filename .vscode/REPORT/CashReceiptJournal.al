@@ -36,10 +36,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
             }
-            field("Redni broj"; "Redni broj")
+            field("No. Line"; "No. Line")
             {
 
             }
+
         }
         addafter(Description)
         {

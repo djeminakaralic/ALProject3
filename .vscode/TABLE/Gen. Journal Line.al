@@ -101,7 +101,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'To return';
 
         }
-        field(50027; "Redni broj"; Integer)
+        field(50027; "No. Line"; Integer)
         {
             Caption = 'Redni broj uplate';
 
@@ -122,14 +122,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     }
 
     trigger OnInsert()
-    var
-        GenJnlPostPreview: Codeunit "Gen. Jnl.-Post Preview";
-    begin
-        //  GenJnlPostPreview.
 
-        //"Gen. Jnl.-Post Preview".SaveCustLedgEntry(Rec);
-        "Redni broj" := 0;
-        "Redni broj" := xRec."Redni broj" + 1;
+    begin
+
+
 
 
     end;
