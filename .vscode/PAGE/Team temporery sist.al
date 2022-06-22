@@ -284,6 +284,8 @@ page 50119 "Team temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -539,6 +541,7 @@ page 50119 "Team temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

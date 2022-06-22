@@ -804,29 +804,49 @@ table 50055 "ECL systematization"
 
                 END;
 
-                IF ("Department Cat. Description" = '') AND ("Sector Description" <> '') THEN BEGIN
-                    IF "Position Description" <> '' THEN BEGIN
-                        ECLTC.RESET;
-                        ECLTC.SETFILTER("Position Code", '%1', "Position Code");
-                        ECLTC.SETFILTER("Position Description", '%1', "Position Description");
-                        ECLTC.SETFILTER(Sector, '%1', Sector);
-                        ECLTC.SETFILTER("Department Category", '%1', "Department Category");
-                        ECLTC.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                        ECLTC.SETFILTER("Group Code", '%1', '');
-                        ECLTC.SETFILTER("Group Description", '%1', '');
-                        ECLTC.SETFILTER("Team Code", '%1', '');
-                        ECLTC.SETFILTER("Team Description", '%1', '');
-                        IF ECLTC.FINDFIRST THEN BEGIN
-                            VALIDATE("Dimension  Name", ECLTC."Dimension  Name");
-                        END
-                        ELSE BEGIN
-                            "Dimension  Name" := '';
-                            "Dimension Value Code" := '';
-                        END;
-                    END;
-                END;
 
-            end;
+                DVCheck.Reset();
+                DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                DVCheck.SetFilter(Name, '%1', Rec.Sector);
+                if not DVCheck.FindFirst() then begin
+                    DVCheck.Init();
+                    DVCheck."Dimension Code" := 'TC';
+                    DVCheck.Code := Rec.Sector;
+                    DVCheck.Name := Rec."Sector Description";
+                    DVCheck.Status := DVCheck.Status::A;
+                end;
+
+                DVCheck.Reset();
+                DVCheck.SetFilter(Name, '%1', '');
+                if DVCheck.FindFirst() then
+                    Rec.validate("Dimension  Name", Rec.Sector);
+
+
+
+
+                /*   IF ("Department Cat. Description" = '') AND ("Sector Description" <> '') THEN BEGIN
+                       IF "Position Description" <> '' THEN BEGIN
+                           ECLTC.RESET;
+                           ECLTC.SETFILTER("Position Code", '%1', "Position Code");
+                           ECLTC.SETFILTER("Position Description", '%1', "Position Description");
+                           ECLTC.SETFILTER(Sector, '%1', Sector);
+                           ECLTC.SETFILTER("Department Category", '%1', "Department Category");
+                           ECLTC.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
+                           ECLTC.SETFILTER("Group Code", '%1', '');
+                           ECLTC.SETFILTER("Group Description", '%1', '');
+                           ECLTC.SETFILTER("Team Code", '%1', '');
+                           ECLTC.SETFILTER("Team Description", '%1', '');
+                           IF ECLTC.FINDFIRST THEN BEGIN
+                               VALIDATE("Dimension  Name", ECLTC."Dimension  Name");
+                           END
+                           ELSE BEGIN
+                               "Dimension  Name" := '';
+                               "Dimension Value Code" := '';
+                           END;
+                       END;*/
+            END;
+
+
         }
         field(50301; "Department Category"; Code[30])
         {
@@ -902,28 +922,22 @@ table 50055 "ECL systematization"
                     "Position Description" := '';
                 END;
 
-                IF ("Department Cat. Description" <> '') AND ("Group Description" = '') THEN BEGIN
-                    IF "Position Description" <> '' THEN BEGIN
-                        ECLTC.RESET;
-                        ECLTC.SETFILTER("Position Code", '%1', "Position Code");
-                        ECLTC.SETFILTER("Position Description", '%1', "Position Description");
-                        ECLTC.SETFILTER(Sector, '%1', Sector);
-                        ECLTC.SETFILTER("Department Category", '%1', "Department Category");
-                        ECLTC.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                        ECLTC.SETFILTER("Group Code", '%1', Group);
-                        ECLTC.SETFILTER("Group Description", '%1', "Group Description");
-                        ECLTC.SETFILTER("Team Code", '%1', '');
-                        ECLTC.SETFILTER("Team Description", '%1', '');
-                        IF ECLTC.FINDFIRST THEN BEGIN
-                            VALIDATE("Dimension  Name", ECLTC."Dimension  Name");
-                        END
-                        ELSE BEGIN
-                            "Dimension  Name" := '';
-                            "Dimension Value Code" := '';
-                        END;
-                    END;
-                END;
 
+                DVCheck.Reset();
+                DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                DVCheck.SetFilter(Name, '%1', Rec.Sector);
+                if not DVCheck.FindFirst() then begin
+                    DVCheck.Init();
+                    DVCheck."Dimension Code" := 'TC';
+                    DVCheck.Code := Rec.Sector;
+                    DVCheck.Name := Rec."Sector Description";
+                    DVCheck.Status := DVCheck.Status::A;
+                end;
+
+                DVCheck.Reset();
+                DVCheck.SetFilter(Name, '%1', '');
+                if DVCheck.FindFirst() then
+                    Rec.validate("Dimension  Name", Rec.Sector);
             end;
         }
         field(50303; Group; Code[30])
@@ -1009,27 +1023,21 @@ table 50055 "ECL systematization"
                 END;
 
 
-                IF ("Group Description" <> '') AND ("Team Description" = '') THEN BEGIN
-                    IF "Position Description" <> '' THEN BEGIN
-                        ECLTC.RESET;
-                        ECLTC.SETFILTER("Position Code", '%1', "Position Code");
-                        ECLTC.SETFILTER("Position Description", '%1', "Position Description");
-                        ECLTC.SETFILTER(Sector, '%1', Sector);
-                        ECLTC.SETFILTER("Department Category", '%1', "Department Category");
-                        ECLTC.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                        ECLTC.SETFILTER("Group Code", '%1', Group);
-                        ECLTC.SETFILTER("Group Description", '%1', "Group Description");
-                        ECLTC.SETFILTER("Team Code", '%1', '');
-                        ECLTC.SETFILTER("Team Description", '%1', '');
-                        IF ECLTC.FINDFIRST THEN BEGIN
-                            VALIDATE("Dimension  Name", ECLTC."Dimension  Name");
-                        END
-                        ELSE BEGIN
-                            "Dimension  Name" := '';
-                            "Dimension Value Code" := '';
-                        END;
-                    END;
-                END;
+                DVCheck.Reset();
+                DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                DVCheck.SetFilter(Name, '%1', Rec.Sector);
+                if not DVCheck.FindFirst() then begin
+                    DVCheck.Init();
+                    DVCheck."Dimension Code" := 'TC';
+                    DVCheck.Code := Rec.Sector;
+                    DVCheck.Name := Rec."Sector Description";
+                    DVCheck.Status := DVCheck.Status::A;
+                end;
+
+                DVCheck.Reset();
+                DVCheck.SetFilter(Name, '%1', '');
+                if DVCheck.FindFirst() then
+                    Rec.validate("Dimension  Name", Rec.Sector);
 
             end;
         }
@@ -1319,6 +1327,39 @@ table 50055 "ECL systematization"
                 PosMe.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
                 PosMe.SetFilter("Department Code", '%1', Rec."Department Code");
                 if PosMe.FindFirst() then begin
+
+                    IF PosMe."Management Level" = PosMe."Management Level"::CEO THEN BEGIN
+                        Rec."Order By Managment" := 1;
+
+                    END;
+                    IF PosMe."Management Level" = PosMe."Management Level"::Exe THEN BEGIN
+                        Rec."Order By Managment" := 2;
+
+                    END;
+                    IF PosMe."Management Level" = PosMe."Management Level"::Sector THEN BEGIN
+                        "Order By Managment" := 3;
+
+                    END;
+                    IF PosMe."Management Level" = PosMe."Management Level"::"Department Category" THEN BEGIN
+                        "Order By Managment" := 4;
+
+                    END;
+                    IF PosMe."Management Level" = PosMe."Management Level"::Group THEN BEGIN
+                        "Order By Managment" := 5;
+
+                    END;
+                    IF PosMe."Management Level" = PosMe."Management Level"::E THEN BEGIN
+                        "Order By Managment" := 6;
+
+                    END;
+
+                    IF PosMe."Management Level" = PosMe."Management Level"::Empty THEN BEGIN
+                        "Order By Managment" := 7;
+                    end;
+
+
+
+
                     "Position Code" := PosMe.Code;
                     Rec."Position Coefficient for Wage" := PosMe."Position Coefficient for Wage";
                     Rec."Position complexity" := PosMe."Position complexity";
@@ -1331,23 +1372,23 @@ table 50055 "ECL systematization"
 
 
                 IF "Position Description" <> '' THEN BEGIN
-                    ECLTC.RESET;
-                    ECLTC.SETFILTER("Position Code", '%1', "Position Code");
-                    ECLTC.SETFILTER("Position Description", '%1', "Position Description");
-                    ECLTC.SETFILTER(Sector, '%1', Sector);
-                    ECLTC.SETFILTER("Department Category", '%1', "Department Category");
-                    ECLTC.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                    ECLTC.SETFILTER("Group Code", '%1', Group);
-                    ECLTC.SETFILTER("Group Description", '%1', "Group Description");
-                    ECLTC.SETFILTER("Team Code", '%1', Team);
-                    ECLTC.SETFILTER("Team Description", '%1', "Team Description");
-                    IF ECLTC.FINDFIRST THEN BEGIN
-                        VALIDATE("Dimension  Name", ECLTC."Dimension  Name");
-                    END
-                    ELSE BEGIN
-                        "Dimension  Name" := '';
-                        "Dimension Value Code" := '';
-                    END;
+
+                    DVCheck.Reset();
+                    DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                    DVCheck.SetFilter(Name, '%1', Rec.Sector);
+                    if not DVCheck.FindFirst() then begin
+                        DVCheck.Init();
+                        DVCheck."Dimension Code" := 'TC';
+                        DVCheck.Code := Rec.Sector;
+                        DVCheck.Name := Rec."Sector Description";
+                        DVCheck.Status := DVCheck.Status::A;
+                    end;
+
+                    DVCheck.Reset();
+                    DVCheck.SetFilter(Name, '%1', '');
+                    if DVCheck.FindFirst() then
+                        Rec.validate("Dimension  Name", Rec.Sector);
+
                 END
                 ELSE BEGIN
                     "Position Code" := '';
@@ -1748,29 +1789,25 @@ table 50055 "ECL systematization"
 
                 END;
 
-                IF "Team Description" <> '' THEN BEGIN
-                    IF "Position Description" <> '' THEN BEGIN
-                        ECLTC.RESET;
-                        ECLTC.SETFILTER("Position Code", '%1', "Position Code");
-                        ECLTC.SETFILTER("Position Description", '%1', "Position Description");
-                        ECLTC.SETFILTER(Sector, '%1', Sector);
-                        ECLTC.SETFILTER("Department Category", '%1', "Department Category");
-                        ECLTC.SETFILTER("Department Categ.  Description", '%1', "Department Cat. Description");
-                        ECLTC.SETFILTER("Group Code", '%1', Group);
-                        ECLTC.SETFILTER("Group Description", '%1', "Group Description");
-                        ECLTC.SETFILTER("Team Code", '%1', Team);
-                        ECLTC.SETFILTER("Team Description", '%1', "Team Description");
-                        IF ECLTC.FINDFIRST THEN BEGIN
-                            VALIDATE("Dimension  Name", ECLTC."Dimension  Name");
-                        END
-                        ELSE BEGIN
-                            "Dimension  Name" := '';
-                            "Dimension Value Code" := '';
-                        END;
-                    END;
-                END;
 
-            end;
+                DVCheck.Reset();
+                DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                DVCheck.SetFilter(Name, '%1', Rec.Sector);
+                if not DVCheck.FindFirst() then begin
+                    DVCheck.Init();
+                    DVCheck."Dimension Code" := 'TC';
+                    DVCheck.Code := Rec.Sector;
+                    DVCheck.Name := Rec."Sector Description";
+                    DVCheck.Status := DVCheck.Status::A;
+                end;
+
+                DVCheck.Reset();
+                DVCheck.SetFilter(Name, '%1', '');
+                if DVCheck.FindFirst() then
+                    Rec.validate("Dimension  Name", Rec.Sector);
+            END;
+
+
         }
         field(50361; "Management Level"; enum "Management Level")
         {
@@ -11751,14 +11788,11 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                     DimensiontempForPos.SETFILTER("Group Description", '%1', "Group Description");
                     DimensiontempForPos.SETFILTER("Team Description", '%1', "Team Description");
                     DimensiontempForPos.SETFILTER("Position Description", '%1', "Position Description");
-                    IF DimensiontempForPos.FINDFIRST THEN BEGIN
-                        "Dimension  Name" := DimensiontempForPos."Dimension  Name";
-                        "Dimension Value Code" := DimensiontempForPos."Dimension Value Code";
-                    END;
+
 
                     PositionMenuTemp.RESET;
-                    PositionMenuTemp.SETFILTER(Description, '%1', DimensiontempForPos."Position Description");
-                    PositionMenuTemp.SETFILTER(Code, '%1', DimensiontempForPos."Position Code");
+                    PositionMenuTemp.SETFILTER(Description, '%1', Rec."Position Description");
+                    PositionMenuTemp.SETFILTER(Code, '%1', Rec."Position Code");
                     IF PositionMenuTemp.FINDFIRST THEN BEGIN
 
                         IF PositionMenuTemp."Management Level" = PositionMenuTemp."Management Level"::CEO THEN BEGIN
@@ -11799,6 +11833,22 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                 END;
 
                 //Rec."Difference Org/Position":=FALSE;
+
+                DVCheck.Reset();
+                DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                DVCheck.SetFilter(Name, '%1', Rec.Sector);
+                if not DVCheck.FindFirst() then begin
+                    DVCheck.Init();
+                    DVCheck."Dimension Code" := 'TC';
+                    DVCheck.Code := Rec.Sector;
+                    DVCheck.Name := Rec."Sector Description";
+                    DVCheck.Status := DVCheck.Status::A;
+                end;
+
+                DVCheck.Reset();
+                DVCheck.SetFilter(Name, '%1', '');
+                if DVCheck.FindFirst() then
+                    Rec.validate("Dimension  Name", Rec.Sector);
             end;
         }
         field(594119; "Engagement Type "; Text[100])
@@ -11858,6 +11908,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
         AttachmentRecord: Record "Attachment";
         HeadOfExe: Record "Head Of's temporary";
         ExeManager: Record "Exe Manager temporery";
+        DVCheck: Record "Dimension Value";
         Posa: Record "Position Menu temporary";
         gro: Date;
         ECLCD: Record "ECL systematization";

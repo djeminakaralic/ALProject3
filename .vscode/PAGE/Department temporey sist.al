@@ -204,6 +204,8 @@ page 50131 "Department temporary sist"
                 Promoted = true;
                 PromotedIsBig = true;
                 Visible = false;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -225,6 +227,7 @@ page 50131 "Department temporary sist"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

@@ -2,6 +2,7 @@ report 50091 "Systematization job"
 {
     ProcessingOnly = true;
     ShowPrintStatus = false;
+    Caption = 'Systematization job';
 
     dataset
     {
@@ -654,7 +655,34 @@ report 50091 "Systematization job"
                             IF ECLSyst.FINDFIRST THEN BEGIN
                                 EmployeeDefaultDimension.INIT;
                                 EmployeeDefaultDimension.VALIDATE("No.", ECLSyst."Employee No.");
-                                EmployeeDefaultDimension."Dimension Value Code" := ECLSyst."Dimension Value Code";
+                                if ECLSyst."Dimension Value Code" = '' then begin
+
+
+                                    DVCheck.Reset();
+                                    DVCheck.SetFilter("Dimension Code", '%1', 'TC');
+                                    DVCheck.SetFilter(Name, '%1', ECLSyst.Sector);
+                                    if not DVCheck.FindFirst() then begin
+                                        DVCheck.Init();
+                                        DVCheck."Dimension Code" := 'TC';
+                                        DVCheck.Code := ECLSyst.Sector;
+                                        DVCheck.Name := ECLSyst."Sector Description";
+                                        DVCheck.Status := DVCheck.Status::A;
+                                    end;
+
+                                    DVCheck.Reset();
+                                    DVCheck.SetFilter(Name, '%1', '');
+                                    if DVCheck.FindFirst() then
+                                        ECLSyst.validate("Dimension  Name", ECLSyst.Sector);
+
+                                    EmployeeDefaultDimension."Dimension Value Code" := ECLSyst."Dimension Value Code";
+
+
+                                end
+                                else begin
+
+
+                                    EmployeeDefaultDimension."Dimension Value Code" := ECLSyst."Dimension Value Code";
+                                end;
                                 EmployeeDefaultDimension."Dimension Code" := 'TC';
                                 EmployeeDefaultDimension."Amount Distribution Coeff." := 1;
                                 EmployeeDefaultDimension.INSERT;
@@ -1025,6 +1053,7 @@ report 50091 "Systematization job"
 
     var
         ECL: Record "Employee Contract Ledger";
+        DVCheck: Record "Dimension Value";
         ReportStatusUpdate: Report "StatusExt update";
         Employee: Record "Employee";
         ECL2: Record "Employee Contract Ledger";

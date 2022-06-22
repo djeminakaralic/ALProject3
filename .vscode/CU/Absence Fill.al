@@ -859,6 +859,20 @@ codeunit 50304 "Absence Fill"
 
     end;
 
+    procedure ValidateDate(StartDate: Date; EndDate: Date)
+    var
+        Text000: Label 'Start Date must have value.';
+        Text001: Label 'End Date must not be before Start date.';
+    begin
+        IF EndDate <> 0D THEN BEGIN
+            IF StartDate = 0D THEN
+                ERROR(Text000);
+            IF EndDate < StartDate THEN
+                ERROR(Text001);
+        END;
+
+    end;
+
     procedure GetHoursByType(EmployeeCode: Code[20]; WorkType: Code[20]; Month: Integer; Year: Integer) HoursByType: Decimal
     var
         AbsenceEmp: Record "Employee Absence";

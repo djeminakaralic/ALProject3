@@ -47,6 +47,7 @@ report 50109 VacationDecision
             column(BrojDokumenta; BrojDokumenta)
             {
             }
+            column(ShortYear; ShortYear) { }
             column(DatumRjesenjaT; DatumRjesenjaT)
             {
             }
@@ -157,10 +158,13 @@ report 50109 VacationDecision
             begin
 
 
-                if "Document No." = '' then
+                if "Document No." <> '' then
                     BrojDokumenta := DataItem5."Document No."
                 else
                     BrojDokumenta := DataItem5."Document Text";
+
+                ShortYear := format(copystr(format(Date2DMY("Date of report", 3)), strlen(format(Date2DMY("Date of report", 3))) - 2, strlen(format(Date2DMY("Date of report", 3)))));
+
 
                 CompanyInformation.get;
                 CompanyInformation.CalcFields(Picture);
@@ -279,11 +283,26 @@ report 50109 VacationDecision
     labels
     {
     }
+    trigger OnInitReport()
+    var
+        myInt: Integer;
+    begin
 
+
+    end;
+
+    procedure SetParam(ReportDateInit: Date)
+    begin
+        ReportD := ReportDateInit;
+
+    end;
 
     var
 
         Year1: Text;
+
+        ShortYear: Text[2];
+        ReportD: Date;
 
         OrgShema: Record "ORG Shema";
 

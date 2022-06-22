@@ -370,6 +370,8 @@ page 50062 "Group temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -499,6 +501,7 @@ page 50062 "Group temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

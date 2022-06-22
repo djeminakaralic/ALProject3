@@ -133,6 +133,8 @@ page 50021 "Wage Wizard Step 2"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -230,6 +232,7 @@ page 50021 "Wage Wizard Step 2"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

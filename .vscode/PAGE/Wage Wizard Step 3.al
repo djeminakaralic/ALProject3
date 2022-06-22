@@ -138,6 +138,8 @@ page 50031 "Wage Wizard Step 3"
                 PromotedCategory = New;
                 PromotedIsBig = true;
                 RunObject = Page 50025;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -171,6 +173,7 @@ page 50031 "Wage Wizard Step 3"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin
