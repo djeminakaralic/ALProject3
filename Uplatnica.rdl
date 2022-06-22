@@ -1324,6 +1324,9 @@ End Function
         <Field Name="PaymentDate">
           <DataField>PaymentDate</DataField>
         </Field>
+        <Field Name="PaymentTime">
+          <DataField>PaymentTime</DataField>
+        </Field>
         <Field Name="Adress_CompanyInfo">
           <DataField>Adress_CompanyInfo</DataField>
         </Field>

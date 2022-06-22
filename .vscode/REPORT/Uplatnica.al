@@ -46,6 +46,9 @@ report 50077 Uplatnica
             column(PaymentDate; DataItem21."Payment Date")
             {
             }
+            column(PaymentTime; DataItem21."Payment Time")
+            {
+            }
             column(Adress_CompanyInfo; CompanyInformation.Address)
             {
             }
