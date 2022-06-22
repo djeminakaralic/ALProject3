@@ -38099,7 +38099,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GeneralLedgerSetup - Field Travel No. Series - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1821163035">
-          <source>error iznos</source>
+          <source>Given amount cannot be less than amount.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - NamedType Text001</note>
         </trans-unit>
