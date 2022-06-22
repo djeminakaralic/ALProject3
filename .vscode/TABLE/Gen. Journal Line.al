@@ -124,6 +124,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             begin
                 Customer.Get("Account No.");
+                Message(Customer.Address);
                 "Social status" := Customer."Social status category";
             end;
         }
