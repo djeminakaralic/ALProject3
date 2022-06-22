@@ -38178,6 +38178,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Postponed VAT - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2246128794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Registration No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field RegistrationNo_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 1318000657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Social status category</source>
           <note from="Developer" annotates="general" priority="2"></note>

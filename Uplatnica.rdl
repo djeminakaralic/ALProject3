@@ -1311,6 +1311,9 @@ End Function
         <Field Name="AccountNo">
           <DataField>AccountNo</DataField>
         </Field>
+        <Field Name="RegistrationNo_Cust">
+          <DataField>RegistrationNo_Cust</DataField>
+        </Field>
         <Field Name="PM">
           <DataField>PM</DataField>
         </Field>

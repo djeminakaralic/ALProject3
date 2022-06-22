@@ -114,6 +114,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Address';
         }
+        field(50031; "RegistrationNo_Cust"; Text[20])
+        {
+            Caption = 'Registration No.';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
