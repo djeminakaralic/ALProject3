@@ -114,7 +114,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             trigger OnAfterValidate()
             begin
-                if (Amount <> 0) AND ("Given amount" < Amount) then
+                if ("Given amount" <> 0) AND ("Given amount" < Amount) then
                     Error(Text001);
                 "To return" := "Given amount" - Amount;
             end;
