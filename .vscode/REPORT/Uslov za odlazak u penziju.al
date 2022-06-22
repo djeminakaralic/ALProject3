@@ -94,6 +94,9 @@ report 50222 "Uslovi za odlazak u penziju"
                 END;
 
 
+                if "No." = '1' then
+                    Message(format("Years of Experience"));
+
                 IF (("Years of Experience" = 40)) THEN BEGIN
                     Year3 := TRUE;
                     "Retirement Condition" := 1;
