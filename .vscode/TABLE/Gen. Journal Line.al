@@ -110,6 +110,18 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             //TableRelation = "Payment Type";
             Caption = 'Social status category';
         }
+        field(50030; "Address_Cust"; Text[100])
+        {
+            Caption = 'Address';
+        }
+        field(50031; "RegistrationNo_Cust"; Text[20])
+        {
+            Caption = 'Registration No.';
+        }
+        field(50032; "VATRegistrationNo_Cust"; Text[20])
+        {
+            Caption = 'VAT Registration No.';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -125,8 +137,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             begin
                 Customer.Get("Account No.");
-                Message(Customer.Address);
                 "Social status" := Customer."Social status category";
+                Address_Cust := Customer.Address;
+                RegistrationNo_Cust := Customer."Registration No.";
+                VATRegistrationNo_Cust := Customer."VAT Registration No.";
             end;
         }
 
