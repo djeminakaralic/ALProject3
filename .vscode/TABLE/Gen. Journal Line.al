@@ -119,6 +119,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             //TableRelation = "Payment Type";
             Caption = 'Social status category';
         }
+        modify(Amount)
+        {
+            trigger OnAfterValidate()
+            begin
+                if "Given amount" < Amount then
+                    Error(Text001);
+                "To return" := "Given amount" - Amount;
+            end;
+        }
 
 
 
