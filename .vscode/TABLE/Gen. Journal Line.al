@@ -119,6 +119,14 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "To return" := "Given amount" - Amount;
             end;
         }
+        modify("Account No.")
+        {
+            trigger OnAfterValidate()
+            begin
+                Customer.Get("Account No.");
+                "Social status" := Customer."Social status category";
+            end;
+        }
 
     }
 
