@@ -41,6 +41,9 @@ report 50077 Uplatnica
             column(RegistrationNo_Cust; DataItem21.RegistrationNo_Cust)
             {
             }
+            column(VATRegistrationNo_Cust; DataItem21.VATRegistrationNo_Cust)
+            {
+            }
             column(PM; DataItem21."Payment Method Code")
             {
             }

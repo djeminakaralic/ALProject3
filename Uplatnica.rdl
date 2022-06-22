@@ -1314,6 +1314,9 @@ End Function
         <Field Name="RegistrationNo_Cust">
           <DataField>RegistrationNo_Cust</DataField>
         </Field>
+        <Field Name="VATRegistrationNo_Cust">
+          <DataField>VATRegistrationNo_Cust</DataField>
+        </Field>
         <Field Name="PM">
           <DataField>PM</DataField>
         </Field>
