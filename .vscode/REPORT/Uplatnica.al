@@ -10,11 +10,6 @@ report 50077 Uplatnica
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
-            //DataItemLink = "Line No." = field(LineNo);
-            //line = FIELD("No.");              
-            //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
-
-
             column(BatchName; DataItem21."Journal Batch Name")
             {
             }
