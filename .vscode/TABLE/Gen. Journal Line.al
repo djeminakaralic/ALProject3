@@ -122,9 +122,12 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     }
 
     trigger OnInsert()
-
     begin
 
+        if GJLine.FindLast() then
+            Rec."No. Line" := GJLine."No. Line" + 1
+        else
+            Rec."No. Line" := 1;
 
 
 
@@ -134,6 +137,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     var
         myInt: Integer;
         Customer: Record Customer;
+
+        GJLine: Record "Gen. Journal Line";
 
 
 
