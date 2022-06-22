@@ -30,6 +30,7 @@ table 50126 "Points per Experience Years"
         field(5; LowerLimit; Integer)
         {
             Caption = 'Lower Limit';
+
             /*trigger OnValidate()
             begin
                 LowerLimit2 := FORMAT(LowerLimit) + 'Y';
