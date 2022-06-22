@@ -36,6 +36,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
             }
+            field("Payment Time"; "Payment Time")
+            {
+                ApplicationArea = all;
+            }
             field("No. Line"; "No. Line")
             {
 
