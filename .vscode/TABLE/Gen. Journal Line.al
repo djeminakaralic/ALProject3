@@ -128,6 +128,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "To return" := "Given amount" - Amount;
             end;
         }
+        modify(Description)
+        {
+            editable = false;
+        }
 
     }
 
