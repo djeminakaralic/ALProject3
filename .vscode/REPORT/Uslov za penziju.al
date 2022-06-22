@@ -127,9 +127,9 @@ report 50112 "Uslov za penziju"
         {
             area(content)
             {
-                field(datum; datum)
+                field(datee; datee)
                 {
-                    Caption = 'datum';
+                    Caption = 'datee';
                 }
                 field(Mjesec; Mjesec)
                 {
@@ -196,5 +196,6 @@ report 50112 "Uslov za penziju"
         R_WorkExperience: Report "Work experience in Company";
         R_BroughtExperience: Report "Update Brought Experience";
         Godina4: Integer;
+        datee: Date;
 }
 
