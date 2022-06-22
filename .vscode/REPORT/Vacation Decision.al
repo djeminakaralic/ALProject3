@@ -163,7 +163,7 @@ report 50109 VacationDecision
                 else
                     BrojDokumenta := DataItem5."Document Text";
 
-                ShortYear := format(copystr(format(Date2DMY("Date of report", 3)), strlen(format(Date2DMY("Date of report", 3))) - 2, strlen(format(Date2DMY("Date of report", 3)))));
+                ShortYear := format(copystr(format(Date2DMY("Date of report", 3)), strlen(format(Date2DMY("Date of report", 3))) - 1, strlen(format(Date2DMY("Date of report", 3)))));
 
 
                 CompanyInformation.get;
