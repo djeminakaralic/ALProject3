@@ -5,7 +5,7 @@ enum 50223 "Social Status"
 
     value(0; " ")
     {
-        Caption = 'Active';
+        Caption = ' ';
     }
     value(1; S)
     {

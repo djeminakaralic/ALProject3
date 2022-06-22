@@ -39689,7 +39689,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum Shift Work - EnumValue Work in shifts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3245369585 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Active</source>
+          <source> </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Social Status - EnumValue   - Property Caption</note>
         </trans-unit>
