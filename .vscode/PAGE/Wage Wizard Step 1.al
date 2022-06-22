@@ -297,6 +297,8 @@ page 50020 "Wage Wizard Step 1"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin

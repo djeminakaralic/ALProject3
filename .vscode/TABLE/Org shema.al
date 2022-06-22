@@ -25,6 +25,8 @@ table 50114 "ORG Shema"
 
             trigger OnValidate()
             begin
+                ABsFill.ValidateDate("Date From", "Date To");
+
 
 
                 IF "Date From" >= TODAY THEN BEGIN
@@ -48,6 +50,7 @@ table 50114 "ORG Shema"
                 Item: Record "Item";
                 ItemUnitOfMeasure: Record "Item Unit of Measure";
             begin
+                ABsFill.ValidateDate("Date From", "Date To");
                 /*IF (Status = Status::Blocked) AND ("Date To" <> xRec."Date To") THEN
                   FIELDERROR(Status);
                 Item.SETRANGE("Production BOM No.",Code);
@@ -188,6 +191,7 @@ table 50114 "ORG Shema"
     var
         //  ProdBOMHeader: Record "Institution/Company";
         ProdBOMVersion: Record "ORG Shema";
+        ABsFill: Codeunit "Absence Fill";
         NoSeriesMgt: Codeunit "NoSeriesManagement";
         Text001: Label 'You cannot rename the %1 when %2 is %3.';
         OrgShema: Record "ORG Shema";

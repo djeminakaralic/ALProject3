@@ -106,6 +106,8 @@ page 50114 "Sector temporary sist"
                 ApplicationArea = all;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
 
 

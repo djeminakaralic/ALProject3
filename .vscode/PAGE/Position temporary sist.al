@@ -225,6 +225,8 @@ page 50103 "Position temporary sist"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -267,6 +269,7 @@ page 50103 "Position temporary sist"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

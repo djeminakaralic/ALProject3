@@ -215,6 +215,8 @@ page 50144 "ECL Systematizations"
                 Promoted = true;
                 PromotedIsBig = true;
                 Applicationarea = all;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -233,6 +235,7 @@ page 50144 "ECL Systematizations"
                 Promoted = true;
                 PromotedIsBig = true;
                 Applicationarea = all;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

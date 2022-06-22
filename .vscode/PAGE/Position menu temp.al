@@ -213,6 +213,8 @@ page 50222 "Position menu temp"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Next step';
+
 
                 trigger OnAction()
                 begin
@@ -370,6 +372,7 @@ page 50222 "Position menu temp"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
+                Caption = 'Previous step';
 
                 trigger OnAction()
                 begin

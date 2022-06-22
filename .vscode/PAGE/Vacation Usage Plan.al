@@ -38,7 +38,7 @@ page 50059 "Vacation Usage Plan"
                 field("Document Text"; "Document Text")
                 {
                     ApplicationArea = all;
-                    Visible = Simple;
+                    Visible = not Simple;
                 }
                 //ED 02 END
                 field("Work experience"; "Work experience")
@@ -143,6 +143,8 @@ page 50059 "Vacation Usage Plan"
                 begin
                     Vacation.Reset();
                     Vacation.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    Vacation.SetFilter("Date of report", '%1', Rec."Date of report");
+
 
                     Report.RUN(50109, TRUE, TRUE, Vacation);
 
