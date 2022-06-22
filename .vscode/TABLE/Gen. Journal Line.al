@@ -132,6 +132,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Message(Customer.Address);
                 "Social status" := Customer."Social status category";
                 Address_Cust := Customer.Address;
+                Message(Address_Cust);
             end;
         }
 
