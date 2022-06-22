@@ -34143,6 +34143,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3445183201 - Control 4257611907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>datee</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Control datee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3445183201 - Control 865715638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Godina</source>
           <note from="Developer" annotates="general" priority="2"></note>
