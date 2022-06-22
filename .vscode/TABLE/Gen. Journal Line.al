@@ -118,6 +118,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Registration No.';
         }
+        field(50032; "VATRegistrationNo_Cust"; Text[20])
+        {
+            Caption = 'VAT Registration No.';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -137,6 +141,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "Social status" := Customer."Social status category";
                 Address_Cust := Customer.Address;
                 RegistrationNo_Cust := Customer."Registration No.";
+                "VAT Registration No." := Customer."VAT Registration No.";
             end;
         }
 
