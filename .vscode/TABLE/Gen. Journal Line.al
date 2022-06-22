@@ -73,7 +73,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(50024; "Payment Date And Time"; DateTime) //ED
+        field(50024; "Payment Date"; Date) //ED
         {
             DataClassification = ToBeClassified;
         }
