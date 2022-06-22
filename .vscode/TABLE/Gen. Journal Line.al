@@ -137,11 +137,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             begin
                 Customer.Get("Account No.");
-                Message(Customer.Address);
                 "Social status" := Customer."Social status category";
                 Address_Cust := Customer.Address;
                 RegistrationNo_Cust := Customer."Registration No.";
-                "VAT Registration No." := Customer."VAT Registration No.";
+                VATRegistrationNo_Cust := Customer."VAT Registration No.";
             end;
         }
 
