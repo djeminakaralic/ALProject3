@@ -123,13 +123,6 @@ report 50077 Uplatnica
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
-            column(BankName; BankAccount.Name)
-            {
-            }
-            column(BankAccNo; BankAccount."Bank Account No.")
-            {
-            }
-
 
 
 
@@ -175,7 +168,7 @@ report 50077 Uplatnica
         }
 
 
-        /*dataitem(DataItem22; "Bank Account")
+        dataitem(DataItem22; "Bank Account")
         {
             column(BankName; DataItem22.Name)
             {
@@ -183,7 +176,7 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
-        }*/
+        }
 
     }
 
