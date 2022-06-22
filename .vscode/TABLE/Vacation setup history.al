@@ -110,6 +110,7 @@ table 50189 "Vacation setup history"
         field(50013; "No. series Code"; Code[20])
         {
             Caption = 'Document No. series Code';
+            TableRelation = "No. Series".Code;
         }
     }
 

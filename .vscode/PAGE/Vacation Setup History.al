@@ -47,6 +47,17 @@ page 50133 "Vacation setup history"
                     Caption = '<Dani između dva prekida radnog odnosa (BD)>';
                     Visible = false;
                 }
+                field("Insert Document No."; "Insert Document No.")
+                {
+                    ApplicationArea = all;
+                    Visible = Simple;
+                }
+                field("No. series Code"; "No. series Code")
+                {
+                    ApplicationArea = all;
+                    Visible = Simple;
+                }
+
             }
         }
     }
@@ -54,5 +65,39 @@ page 50133 "Vacation setup history"
     actions
     {
     }
+
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+
+    begin
+
+        GeneralL.Get();
+        if GeneralL."Is Simple Page" = false
+        then
+            Simple := false
+        else
+            Simple := true;
+
+
+
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    var
+        myInt: Integer;
+    begin
+        GeneralL.Get();
+        if GeneralL."Is Simple Page" = false
+        then
+            Simple := false
+        else
+            Simple := true;
+
+    end;
+
+    var
+        Simple: Boolean;
+        GeneralL: Record "General Ledger Setup";
 }
 

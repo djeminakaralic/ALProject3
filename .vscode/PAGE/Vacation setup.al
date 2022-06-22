@@ -54,10 +54,12 @@ page 50134 "Vacation setup"
                 field("Base Days RS"; "Base Days RS")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Base Days BD"; "Base Days BD")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Vacation Validation Date"; "Vacation Validation Date")
                 {
