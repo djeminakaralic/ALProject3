@@ -152,6 +152,10 @@ report 50109 VacationDecision
             {
 
             }
+            column(Izvrsni; Izvrsni)
+            {
+
+            }
 
 
             trigger OnAfterGetRecord()
@@ -198,6 +202,23 @@ report 50109 VacationDecision
                     Position.CalcFields("Employee Name", "Employee Last Name");
                     Director := Position."Employee Name";
                 end;
+
+                ExeManager.Reset();
+                ExeManager.SetFilter("Subordinate Org Description", '%1', Sector);
+                ExeManager.SetFilter("ORG Shema", '%1', OrgShema.Code);
+                if ExeManager.FindFirst() then begin
+                    ExeDescr := StrPos(ExeManager."Position Description", ' za ');
+                    Izvrsni := CopyStr(ExeManager."Position Description", ExeDescr + 4, StrLen(ExeManager."Position Description"));
+
+
+                end
+                else begin
+                    Izvrsni := '';
+                end;
+
+                //Izvrsni
+
+
 
 
                 EmployeeRec.Reset();
@@ -300,6 +321,9 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+        ExeManager: Record "Exe Manager";
+
+        ExeDescr: Integer;
 
         ShortYear: Text[2];
         ReportD: Date;
@@ -310,6 +334,7 @@ report 50109 VacationDecision
         DatumRjesenjaT: Text;
         BrojDokumenta: Text;
         BrojDanaPrviDio: Integer;
+        Izvrsni: Text[250];
         DanJavljanjanaposao: Date;
         DanJavljanjanaposaoT: Text;
         StartFirstpartT: Text;
@@ -332,6 +357,7 @@ report 50109 VacationDecision
 
         Vacation: Record "Vacation Ground 2";
         Director: Text;
+
         Position: Record "Head Of's";
         Used_Days: Integer;
         EmployeeAbsence: record "Employee Absence";
