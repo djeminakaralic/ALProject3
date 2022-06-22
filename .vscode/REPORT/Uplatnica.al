@@ -138,14 +138,14 @@ report 50077 Uplatnica
                 ContCity:=Cont."Post Code"+', '+Cont.City;
                 END;     */
 
-                emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
+                /*emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
 
                 IF emp.FIND('-') THEN BEGIN
 
                     ContName := emp."First Name" + emp."Last Name";
                     ContAddress := emp.Address;
                     ContCity := emp."Post Code" + ', ' + emp.City;
-                END;
+                END;*/
 
             end;
 
@@ -163,9 +163,6 @@ report 50077 Uplatnica
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
-
-                //za tabelu customer je key No.
-
 
 
             end;
