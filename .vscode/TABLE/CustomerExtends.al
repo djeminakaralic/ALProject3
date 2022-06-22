@@ -142,6 +142,7 @@ tableextension 50105 CustomerExtends extends "Customer"
         {
             Caption = 'Social status category';
             OptionMembers = ,S;
+
         }
 
 
