@@ -1,6 +1,7 @@
 report 50095 "Svi radnici"
 {
     DefaultLayout = RDLC;
+    PreviewMode = Normal;
     RDLCLayout = './Svi radnici.rdlc';
 
     dataset

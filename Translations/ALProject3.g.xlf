@@ -33903,6 +33903,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Summary per Payment Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1897769306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Svi radnici</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1897769306 - ReportColumn 2019904683 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - ReportColumn EL - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 1897769306 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izaberi izvještaj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Control Izaberi izvještaj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1897769306 - Control 3117446396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izbor:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Control Select - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1897769306 - Control 3117446396 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Otišli u zadanom intervalu,Po stvarnoj stručnoj spremi,Spisak po radnim mjestima,Spisak po sektorima,Spisak po spolu,Spisak svih radnika,Došli u zadanom intervalu</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Control Select - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Report 2388636337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Systematization e-mail</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34147,11 +34172,6 @@
           <source>Uslov za penziju</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 3445183201 - Control 4257611907 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>datee</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Control datee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3445183201 - Control 865715638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Godina</source>
@@ -35137,6 +35157,11 @@
           <source>Izvjestaj za trening</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvjestaj za trening - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 2543486751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Lista svih radnika</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Lista svih radnika - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 3445183201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Uslov za penziju</source>
