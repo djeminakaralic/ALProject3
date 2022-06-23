@@ -122,10 +122,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "VATRegistrationNo_Cust"; Text[20])
+        /*field(50033; "VATRegistrationNo_Cust"; Text[20])
         {
             Caption = 'VAT Registration No.';
-        }
+        }*/
         modify(Amount)
         {
             trigger OnAfterValidate()
