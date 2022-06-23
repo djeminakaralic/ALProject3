@@ -13,14 +13,22 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
             field("No. Line"; "No. Line")
             {
-
+                ApplicationArea = all;
             }
 
+        }
+        addafter("No. Line")
+        {
+            field("Payment Type"; "Payment Type")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter(Description)
         {
             field("Social status"; "Social status")
             {
+                ApplicationArea = all;
             }
         }
 
