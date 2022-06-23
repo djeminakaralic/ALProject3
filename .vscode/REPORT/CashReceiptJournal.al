@@ -3,32 +3,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     layout
     {
         // Add changes to page layout here
-        /*modify(Code)
-        {
-            Visible = false;
-        }
-        Modify("Country/Region Code")
-        {
-            Editable = false;
-        }
-        modify(Name)
-        {
-            Visible = false;
-        }
-        modify("Address 2")
-        {
-            Visible = false;
-        }
-        modify("Phone No.")
-        {
-            Visible = false;
-        }
-        modify(Communication)
-        {
-            Visible = false;
-        }*/
-
-
 
         addafter("Posting Date")
         {
@@ -90,114 +64,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 {
                     ApplicationArea = all;
                 }
-                field("Date From (CIPS)"; "Date From (CIPS)")
-                {
-                    ApplicationArea = all;
-                }
-                field("Date To (CIPS)"; "Date To (CIPS)")
-                {
-                    ApplicationArea = all;
-                }
-                field("Municipality Name CIPS"; "Municipality Name CIPS")
-                {
-                    Enabled = true;
-                    ApplicationArea = all;
-                }
-                field("Place Of Living"; "Place Of Living")
-                {
-                    ApplicationArea = all;
-                }
-
-                field("City CIPS"; "City CIPS")
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
-                field("Post Code CIPS"; "Post Code CIPS")
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
-                field("County Code CIPS"; "County Code CIPS")
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
-                field("County CIPS"; "County CIPS")
-                {
-                    ApplicationArea = all;
-                }
-                field("Entity Code CIPS"; "Entity Code CIPS")
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
-                field("Country/Region Code CIPS"; "Country/Region Code CIPS")
-                {
-                    Editable = false;
-                    ApplicationArea = all;
-                }
+                
             }
-            group("Current Address")
-            {
-                Caption = 'Current Address';
-                Editable = true;
-                field(Active; Active)
-                {
-                    ApplicationArea = all;
-                }
-
-                field("Municipality Code"; "Municipality Code")
-                {
-                    ApplicationArea = all;
-                }
-                field("Date From"; "Date From")
-                {
-                    ApplicationArea = all;
-                }
-                field("Date To"; "Date To")
-                {
-                    ApplicationArea = all;
-                }
-                field("Municipality Name"; "Municipality Name")
-                {
-                    ApplicationArea = all;
-                }
-
-
-                field("County Code"; "County Code")
-                {
-                    ApplicationArea = all;
-                    Editable = false;
-                }
-
-                field("Entity Code"; "Entity Code")
-                {
-                    ApplicationArea = all;
-                    Editable = false;
-                }
-
+           
             }
-
 
         }*/
-
-
-        /*moveafter(Active; Address)
-        moveafter("Municipality Name"; City)
-        modify(City)
-        {
-            Editable = false;
-            ApplicationArea = all;
-        }
-        moveafter(City; "Post Code")
-        modify("Post Code")
-        {
-            Editable = false;
-            ApplicationArea = all;
-        }
-        moveafter("County Code"; County)*/
-
 
     }
 
