@@ -1,4 +1,4 @@
-report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna
+report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna struktura izvjestaj
 {
     DefaultLayout = RDLC;
     PreviewMode = Normal;
