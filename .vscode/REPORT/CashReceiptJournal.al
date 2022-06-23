@@ -7,7 +7,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Posting Date")
         {
-            field("Payment Date"; "Payment Date")
+            field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
             }
