@@ -1273,6 +1273,12 @@ End Function
         <Field Name="Tax_CompanyInfo">
           <DataField>Tax_CompanyInfo</DataField>
         </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="BankAccNo">
+          <DataField>BankAccNo</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
