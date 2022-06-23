@@ -98,13 +98,13 @@
                   <Width>0.92429cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.04132cm</Width>
+                  <Width>6.33984cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.38252cm</Width>
+                  <Width>4.3296cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.83028cm</Width>
+                  <Width>1.6848cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -578,7 +578,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="UKUPNO KM: "</Value>
+                                  <Value>="UKUPNO KM: Gotovina/kartično = "</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -624,7 +624,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="Gotovina/kartično = " &amp; Fields!Amound.Value</Value>
+                                  <Value>=Fields!Amound.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -680,6 +680,9 @@
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
+                  <Visibility>
+                    <Hidden>=Fields!DocumentNo.Value=""</Hidden>
+                  </Visibility>
                 </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>Before</KeepWithGroup>
@@ -690,7 +693,7 @@
             <Top>9.64672cm</Top>
             <Left>0.41001cm</Left>
             <Height>1.8cm</Height>
-            <Width>13.17841cm</Width>
+            <Width>13.27853cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -1178,6 +1181,9 @@
                   <TablixMembers>
                     <TablixMember />
                   </TablixMembers>
+                  <Visibility>
+                    <Hidden>=Fields!BankAccNo.Value=""</Hidden>
+                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -1233,7 +1239,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.22507cm</Width>
+      <Width>15.06026cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
