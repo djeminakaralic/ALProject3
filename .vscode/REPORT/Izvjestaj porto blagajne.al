@@ -2,7 +2,7 @@ report 50085 "Izvještaj porto blagajne"
 {
     //ED
     DefaultLayout = RDLC;
-    PreviewMode = PrintLayout;
+    PreviewMode = Normal;
     RDLCLayout = './Izvjestaj porto blagajne.rdl';
 
 
