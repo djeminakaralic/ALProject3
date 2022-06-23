@@ -132,6 +132,10 @@ page 50163 "Work booklet"
                 {
                     ApplicationArea = all;
                 }
+                field("Hours change"; "Hours change")
+                {
+                    ApplicationArea = all;
+                }
                 field("Team Name"; "Team Name")
                 {
                     ApplicationArea = all;
@@ -154,25 +158,25 @@ page 50163 "Work booklet"
                 {
                     ApplicationArea = all;
                     Editable = true;
+                    Visible = false;
                 }
                 field("Is dekra"; "Is dekra")
                 {
                     ApplicationArea = all;
                     Caption = 'Is dekra';
+                    Visible = false;
                 }
                 field("Is not dekra"; "Is not dekra")
                 {
                     ApplicationArea = all;
                     Caption = 'Is not dekra';
+                    Visible = false;
                 }
                 field(Status; Status)
                 {
                     ApplicationArea = all;
                 }
-                field("Hours change"; "Hours change")
-                {
-                    ApplicationArea = all;
-                }
+
 
             }
         }

@@ -2571,6 +2571,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                     trigger OnDrillDown()
                     begin
+                        CurrPage.UPDATE(TRUE);
                         SELECTLATESTVERSION;
 
                         EmployeeContractLedger.RESET;
@@ -2638,7 +2639,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         CurrPage.UPDATE;
                     end;
                 }
-                field(ECLSectorDescription; EmployeeContractLedger."Sector Description")
+                field(ECLSectorDescription; "Sector Description")
                 {
                     Caption = 'Sector';
                     Editable = false;

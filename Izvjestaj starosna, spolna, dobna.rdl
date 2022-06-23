@@ -2968,13 +2968,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>9.05in</Height>
+        <Height>22.987cm</Height>
         <Style />
       </Body>
-      <Width>8.20831in</Width>
+      <Width>20.84911cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.73334in</Height>
+          <Height>6.94268cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -3278,7 +3278,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.71667in</Height>
+          <Height>1.82034cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -3319,6 +3319,13 @@
             </Border>
           </Style>
         </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2.5cm</LeftMargin>
+        <RightMargin>2.5cm</RightMargin>
+        <TopMargin>2.5cm</TopMargin>
+        <BottomMargin>2.5cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -3384,7 +3391,7 @@ End Function
 </Code>
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">

@@ -2,7 +2,7 @@ report 50077 Uplatnica
 {
     //ED
     DefaultLayout = RDLC;
-    PreviewMode = Normal;
+    PreviewMode = PrintLayout;
     RDLCLayout = './Uplatnica.rdl';
 
 
@@ -10,15 +10,13 @@ report 50077 Uplatnica
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
-            //DataItemLink = "Line No." = field(LineNo);
-            //line = FIELD("No.");              
-            //DataItemTableView = WHERE("Account Type" = FILTER('Customer'), Description = FILTER('Elmira Dedović'));
-
-
             column(BatchName; DataItem21."Journal Batch Name")
             {
             }
             column(PostingDate; DataItem21."Posting Date")
+            {
+            }
+            column(PaymentDT; DataItem21."Payment DT")
             {
             }
             column(DocumentNo; DataItem21."Document No.")
@@ -46,9 +44,6 @@ report 50077 Uplatnica
             {
             }
             column(PM; DataItem21."Payment Method Code")
-            {
-            }
-            column(PaymentDT; DataItem21."Payment Date And Time")
             {
             }
             column(Adress_CompanyInfo; CompanyInformation.Address)
