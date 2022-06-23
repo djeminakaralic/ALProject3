@@ -1100,7 +1100,7 @@ table 50071 "Employee Contract Ledger"
                         Status := Status::Active;
                         //ext
                         IF "Starting Date" <> 0D THEN BEGIN
-                            IF ("Reason for Change" = "Reason for Change"::"New Contract") OR ("Reason for Change" = "Reason for Change"::Migration) THEN BEGIN
+                            IF ("Reason for Change".AsInteger() = 2) OR ("Reason for Change".AsInteger() = 1) THEN BEGIN
                                 ECLExtern.RESET;
                                 ECLExtern.SETFILTER("Employee No.", '%1', Rec."Employee No.");
                                 ECLExtern.SETFILTER("Reason for Change", '%1|%2', 1, 2);
@@ -1311,16 +1311,18 @@ table 50071 "Employee Contract Ledger"
                       END;
                 IF ECL."Reason for Change"=ECL."Reason for Change"::"New Contract" THEN
                 "Registration Date":="Starting Date";*/
-                IF "Reason for Change" = "Reason for Change"::"New Contract" THEN BEGIN
+                IF "Reason for Change".AsInteger() = 1 THEN BEGIN
                     Emp.RESET;
                     Emp.SETFILTER("No.", "Employee No.");
                     IF Emp.FINDFIRST THEN BEGIN
                         Emp."Employment Date" := "Starting Date";
                         Emp.MODIFY;
+
+                        //dodati i radnu knjižicu ako je nema
                     END;
                 END;
 
-                IF "Reason for Change" = "Reason for Change"::"New Contract" THEN
+                IF "Reason for Change".AsInteger() = 1 THEN
                     "Registration Date" := "Starting Date";
 
 
@@ -1390,7 +1392,7 @@ table 50071 "Employee Contract Ledger"
                  END;
                   END;
                    END; nk2709 ExternalDate*/
-                IF (("Reason for Change" = "Reason for Change"::"New Contract")) THEN BEGIN
+                IF (("Reason for Change".AsInteger() = 1)) or ("Reason for Change".AsInteger() = 2) THEN BEGIN
                     WorkBook.SETFILTER("Contract Ledger Entry No.", '%1', "No.");
                     IF NOT WorkBook.FINDFIRST THEN BEGIN
                         WorkBook.INIT;
@@ -1833,7 +1835,7 @@ table 50071 "Employee Contract Ledger"
                 END;
                 IF (xRec."Starting Date" <> Rec."Starting Date") OR (xRec."Ending Date" <> Rec."Ending Date") THEN BEGIN
 
-                    IF Rec."Reason for Change" = Rec."Reason for Change"::"New Contract" THEN BEGIN
+                    IF Rec."Reason for Change".AsInteger() = 1 THEN BEGIN
 
                         WbMod.RESET;
                         WbMod.SETFILTER("Current Company", '%1', TRUE);
@@ -6220,7 +6222,7 @@ table 50071 "Employee Contract Ledger"
 
             IF WbMod.FINDLAST THEN BEGIN
                 IF ((WbMod."Starting Date" <> "Starting Date") AND (xRec."Starting Date" <> Rec."Starting Date") AND
-              ((Rec."Reason for Change" = Rec."Reason for Change"::"New Contract") OR (Rec."Reason for Change" = Rec."Reason for Change"::Migration))) THEN
+              ((Rec."Reason for Change".AsInteger() = 1) OR (Rec."Reason for Change".AsInteger() = 2))) THEN
                     WbMod."Starting Date" := "Starting Date";
                 IF ((WbMod."Ending Date" <> TODAY) AND (xRec."Ending Date" <> Rec."Ending Date")) THEN BEGIN
                     IF (Rec."Ending Date" = 0D) OR (Rec."Ending Date" > TODAY) THEN
@@ -6247,7 +6249,7 @@ table 50071 "Employee Contract Ledger"
 
 
         IF (xRec."Ending Date" <> Rec."Ending Date") OR (Rec."Starting Date" <> xRec."Starting Date") THEN BEGIN
-            IF Rec."Reason for Change" = Rec."Reason for Change"::"New Contract" THEN BEGIN
+            IF Rec."Reason for Change".AsInteger() = 1 THEN BEGIN
                 WbMod.RESET;
                 WbMod.SETFILTER("Current Company", '%1', TRUE);
                 WbMod.SETFILTER("Employee No.", '%1', Rec."Employee No.");
