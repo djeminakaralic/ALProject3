@@ -24,7 +24,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>6.12572in</Height>
+                  <Height>6.15236in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -146,6 +146,22 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
+                                      <Value />
+                                      <Style>
+                                        <FontStyle>Normal</FontStyle>
+                                        <FontWeight>Bold</FontWeight>
+                                        <TextDecoration>None</TextDecoration>
+                                        <Color>#000000</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
                                       <Value>R J E Š E NJ E</Value>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
@@ -163,6 +179,22 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>o korištenju godišnjeg odmora</Value>
+                                      <Style>
+                                        <FontStyle>Normal</FontStyle>
+                                        <FontWeight>Bold</FontWeight>
+                                        <TextDecoration>None</TextDecoration>
+                                        <Color>#000000</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value />
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
                                         <FontWeight>Bold</FontWeight>
@@ -334,9 +366,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox21</rd:DefaultName>
-                              <Top>13.54312cm</Top>
+                              <Top>14.00879cm</Top>
                               <Left>0.15cm</Left>
-                              <Height>0.49417cm</Height>
+                              <Height>0.6cm</Height>
                               <Width>2.52118cm</Width>
                               <ZIndex>8</ZIndex>
                               <Style>
@@ -430,9 +462,9 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox24</rd:DefaultName>
-                              <Top>13.54312cm</Top>
+                              <Top>14.00879cm</Top>
                               <Left>2.74173cm</Left>
-                              <Height>1.76636cm</Height>
+                              <Height>1.61819cm</Height>
                               <Width>4.17193cm</Width>
                               <ZIndex>9</ZIndex>
                               <Style>
@@ -460,7 +492,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox21</rd:DefaultName>
-                              <Top>12.13853cm</Top>
+                              <Top>12.56892cm</Top>
                               <Left>12.57783cm</Left>
                               <Height>0.4871cm</Height>
                               <Width>3.89648cm</Width>
@@ -478,7 +510,24 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=REPLACE(REPLACE(Code.TextOnlyJustify("Prvi dio radnik će koristiti od '"+Format(Fields!StartFirstpart.value)+" godine do "+Format(Fields!EndFirstpart.value)+" godine ("+format(Fields!FirstPart.value)+" radna dana);, s tim da se javi na posao '"+FORMAT(Fields!DanJavljanjanaposaoT.Value)+" godine;, dok će drugi dio '("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana); koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za "+Fields!Izvrsni.value+"." + "                                                                              Radnik je ranije iskoristio "+format(Fields!Used_Days.value)+" dan/a godišnjeg odmora.", new System.Drawing.Font("Arial",10), false,642),"'","&lt;b&gt;"),";","&lt;/b&gt;")</Value>
+                                      <Value>=REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Code.TextOnlyJustify("Prvi dio radnik će koristiti od? "+Format(Fields!StartFirstpart.value)+" godine do "+Format(Fields!EndFirstpart.value)+" godine?("+format(Fields!FirstPart.value)+" radna dana), s tim da se javi na posao;"+FORMAT(Fields!DanJavljanjanaposaoT.Value)+" godine, dok će drugi dio?("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za "+Fields!Izvrsni.value+"." + "&lt;br&gt; Radnik je ranije iskoristio "+format(Fields!Used_Days.value)+" dan/a godišnjeg odmora.", new System.Drawing.Font("Arial",10), false,640),"dio?(","dio &lt;b&gt;("),"od?","od&lt;b&gt;"),"dana)","dana)&lt;/b&gt;"),"posao","posao"),"godine,","godine,&lt;/b&gt;"),"dana)","dana)"),",","&lt;b&gt;,&lt;/b&gt;"),"godine?(","&lt;/b&gt; &lt;b&gt;godine ("),";"," &lt;b&gt;")</Value>
+                                      <MarkupType>HTML</MarkupType>
+                                      <Style>
+                                        <FontStyle>Normal</FontStyle>
+                                        <FontWeight>Normal</FontWeight>
+                                        <TextDecoration>None</TextDecoration>
+                                        <Color>#000000</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <SpaceBefore>0pt</SpaceBefore>
+                                  <SpaceAfter>0pt</SpaceAfter>
+                                  <Style />
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value />
                                       <MarkupType>HTML</MarkupType>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
@@ -1044,7 +1093,7 @@
                               </Style>
                             </Image>
                             <Line Name="Line2">
-                              <Top>13.36673cm</Top>
+                              <Top>13.8324cm</Top>
                               <Left>0.15cm</Left>
                               <Height>0cm</Height>
                               <Width>16.32431cm</Width>
@@ -1089,7 +1138,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox21</rd:DefaultName>
-                              <Top>12.80202cm</Top>
+                              <Top>13.23241cm</Top>
                               <Left>12.57783cm</Left>
                               <Height>0.4236cm</Height>
                               <Width>3.89648cm</Width>
@@ -1129,7 +1178,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.00222in</Top>
             <Left>0in</Left>
-            <Height>6.12572in</Height>
+            <Height>6.15236in</Height>
             <Width>6.48595in</Width>
             <Style>
               <Border>
@@ -1138,7 +1187,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>15.56497cm</Height>
+        <Height>15.63262cm</Height>
         <Style />
       </Body>
       <Width>16.47431cm</Width>
