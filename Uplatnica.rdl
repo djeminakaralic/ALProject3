@@ -339,7 +339,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!BatchName.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>t</Format>
@@ -375,7 +375,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1170,6 +1169,9 @@ End Function
         </Field>
         <Field Name="PostingDate">
           <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="PaymentDT">
+          <DataField>PaymentDT</DataField>
         </Field>
         <Field Name="DocumentNo">
           <DataField>DocumentNo</DataField>
