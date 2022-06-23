@@ -34348,11 +34348,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payment Slip - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4113372704 - Action 3324647799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
-          <source>Payroll</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payroll - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
