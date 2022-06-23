@@ -5,7 +5,7 @@ enum 50225 "Payment Type"
 
     value(0; "1")
     {
-        Caption = '0';
+        Caption = '1';
     }
     value(1; "2")
     {
