@@ -121,7 +121,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Payment Type';
             OptionCaption = ' ,1,2,3,6,7,8,9,10,11,12,15,18,20,24';
-            OptionMembers = "","1","2","3","6","7","8","9","10","11","12","15","18","20","24";
+            OptionMembers = " ","1","2","3","6","7","8","9","10","11","12","15","18","20","24";
         }
         modify(Amount)
         {
