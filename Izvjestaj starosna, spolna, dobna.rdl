@@ -3410,8 +3410,8 @@
             </Border>
           </Style>
         </PageFooter>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
         <LeftMargin>2.5cm</LeftMargin>
         <RightMargin>2.5cm</RightMargin>
         <TopMargin>2.5cm</TopMargin>
