@@ -2,7 +2,7 @@ report 50085 "Izvještaj porto blagajne"
 {
     //ED
     DefaultLayout = RDLC;
-    PreviewMode = Normal;
+    PreviewMode = PrintLayout;
     RDLCLayout = './Izvjestaj porto blagajne.rdl';
 
 
@@ -126,6 +126,10 @@ report 50085 "Izvještaj porto blagajne"
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
+
+                CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
+                IF CountryRegion.FINDFIRST THEN
+                    Country := CountryRegion.Name;
 
 
             end;

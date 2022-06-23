@@ -190,113 +190,12 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox6">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Iznos</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>6.21453cm</Top>
-            <Left>9.20649cm</Left>
-            <Height>0.6cm</Height>
-            <Width>4.39208cm</Width>
-            <ZIndex>6</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox7">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Broj uplata</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>6.21453cm</Top>
-            <Left>4.82105cm</Left>
-            <Height>0.6cm</Height>
-            <Width>4.39208cm</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox8">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Računi</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>6.21453cm</Top>
-            <Left>0.47836cm</Left>
-            <Height>0.6cm</Height>
-            <Width>4.34269cm</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
         <Height>19.89667cm</Height>
         <Style>
           <Border>
-            <Style>None</Style>
+            <Style>Solid</Style>
+            <Width>1.5pt</Width>
           </Border>
         </Style>
       </Body>
