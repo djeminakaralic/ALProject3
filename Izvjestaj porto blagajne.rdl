@@ -155,21 +155,18 @@
                   <TextRun>
                     <Value>Datum i vijeme pokretanja izvještaja: </Value>
                     <Style>
-                      <FontWeight>Bold</FontWeight>
                       <Format>g</Format>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Globals!ExecutionTime</Value>
                     <Style>
-                      <FontWeight>Bold</FontWeight>
                       <Format>g</Format>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>h</Value>
                     <Style>
-                      <FontWeight>Bold</FontWeight>
                       <Format>g</Format>
                     </Style>
                   </TextRun>
@@ -269,23 +266,11 @@ End Function
         <Field Name="AmoundFormat">
           <DataField>AmoundFormat</DataField>
         </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="LineNo">
-          <DataField>LineNo</DataField>
-        </Field>
         <Field Name="Address_Customer">
           <DataField>Address_Customer</DataField>
         </Field>
         <Field Name="AccountNo">
           <DataField>AccountNo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_Cust">
-          <DataField>RegistrationNo_Cust</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_Cust">
-          <DataField>VATRegistrationNo_Cust</DataField>
         </Field>
         <Field Name="PM">
           <DataField>PM</DataField>
@@ -328,21 +313,6 @@ End Function
         </Field>
         <Field Name="Picture_CompanyInfo">
           <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Country">
-          <DataField>Country</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="CName">
-          <DataField>CName</DataField>
-        </Field>
-        <Field Name="CAddress">
-          <DataField>CAddress</DataField>
-        </Field>
-        <Field Name="CCity">
-          <DataField>CCity</DataField>
         </Field>
         <Field Name="User">
           <DataField>User</DataField>

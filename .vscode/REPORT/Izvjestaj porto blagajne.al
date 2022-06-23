@@ -22,24 +22,14 @@ report 50085 "Izvještaj porto blagajne"
             column(Amound; DataItem21.Amount)
             {
             }
-            column(Description; DataItem21.Description)
-            {
-            }
-            column(LineNo; DataItem21."Line No.")
-            {
-            }
+
             column(Address_Customer; DataItem21.Address_Cust)
             {
             }
             column(AccountNo; DataItem21."Account No.")
             {
             }
-            column(RegistrationNo_Cust; DataItem21.RegistrationNo_Cust)
-            {
-            }
-            column(VATRegistrationNo_Cust; DataItem21.VATRegistrationNo_Cust)
-            {
-            }
+
             column(PM; DataItem21."Payment Method Code")
             {
             }
@@ -82,21 +72,7 @@ report 50085 "Izvještaj porto blagajne"
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
             }
-            column(Country; Country)
-            {
-            }
-            column(City; City)
-            {
-            }
-            column(CName; ContName)
-            {
-            }
-            column(CAddress; ContAddress)
-            {
-            }
-            column(CCity; ContCity)
-            {
-            }
+
             column(User; USERID)
             {
             }
