@@ -83,7 +83,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             action("Payment Slip")
             {
                 Caption = 'Payment Slip';
-                Image = Journal;
+                Image = PostedPayableVoucher;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
@@ -115,6 +115,16 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Blagajnički dnevnik";
+            }
+
+            action("Izvještaj porto blagajne")
+            {
+                Caption = 'Izvještaj porto blagajne';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Izvještaj porto blagajne";
             }
         }
     }

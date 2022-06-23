@@ -34348,6 +34348,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Cash Diary - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Action 1991143175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Izvještaj porto blagajne</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Izvještaj porto blagajne - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4113372704 - Action 2211706696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Payment Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
