@@ -71,17 +71,6 @@ report 50222 "Uslovi za odlazak u penziju"
                 Uslov := '';
                 temp1 := 0;
 
-                EmployeeC.RESET;
-                EmployeeC.SETFILTER("Employee No.", '%1', "No.");
-                EmployeeC.SETFILTER("Show Record", '%1', TRUE);
-                EmployeeC.SETFILTER("Starting Date", '<=%1', datee);
-                EmployeeC.SETFILTER("Ending Date", '%1|>=%2', 0D, datee);
-                EmployeeC.SETCURRENTKEY("Starting Date");
-                EmployeeC.ASCENDING;
-                IF EmployeeC.FINDLAST THEN BEGIN
-                    //koliko godina radnog staza ima
-                END;
-
 
                 IF "Birth Date" <> 0D THEN BEGIN
                     Starost := (TODAY - "Birth Date") / 365 DIV 1;
@@ -360,6 +349,5 @@ report 50222 "Uslovi za odlazak u penziju"
         Godina4: Integer;
         Godina5: Integer;
         EmployeeC: Record "Employee Contract Ledger";
-        datee: Date;
 }
 
