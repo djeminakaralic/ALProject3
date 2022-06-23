@@ -2,7 +2,7 @@ report 50085 "Izvještaj porto blagajne"
 {
     //ED
     DefaultLayout = RDLC;
-    PreviewMode = PrintLayout;
+    PreviewMode = Normal;
     RDLCLayout = './Izvjestaj porto blagajne.rdl';
 
 
@@ -16,13 +16,6 @@ report 50085 "Izvještaj porto blagajne"
             column(PostingDate; DataItem21."Posting Date")
             {
             }
-            column(DocumentNo; DataItem21."Document No.")
-            {
-            }
-            column(Amound; DataItem21.Amount)
-            {
-            }
-
             column(Address_Customer; DataItem21.Address_Cust)
             {
             }
@@ -126,10 +119,6 @@ report 50085 "Izvještaj porto blagajne"
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
-
-                CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
-                IF CountryRegion.FINDFIRST THEN
-                    Country := CountryRegion.Name;
 
 
             end;
