@@ -300,15 +300,6 @@ End Function
         <Field Name="PostingDate">
           <DataField>PostingDate</DataField>
         </Field>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="Amound">
-          <DataField>Amound</DataField>
-        </Field>
-        <Field Name="AmoundFormat">
-          <DataField>AmoundFormat</DataField>
-        </Field>
         <Field Name="Address_Customer">
           <DataField>Address_Customer</DataField>
         </Field>
