@@ -332,14 +332,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentDT">
+                        <Textbox Name="DateTime">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BatchName.Value</Value>
+                                  <Value>=Fields!PaymentDT.Value &amp; " " &amp; Fields!BatchName.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>t</Format>
@@ -351,7 +351,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentDT</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1107,8 +1106,7 @@
         <Height>19.89667cm</Height>
         <Style>
           <Border>
-            <Style>Solid</Style>
-            <Width>1.5pt</Width>
+            <Style>None</Style>
           </Border>
         </Style>
       </Body>
