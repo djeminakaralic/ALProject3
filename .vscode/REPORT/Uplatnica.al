@@ -43,12 +43,10 @@ report 50077 Uplatnica
             column(PM; DataItem21."Payment Method Code")
             {
             }
-            column(PaymentDate; DataItem21."Payment DT")
+            column(PaymentDT; DataItem21."Payment DT")
             {
             }
-            column(PaymentTime; DataItem21."Payment Time")
-            {
-            }
+
             column(Adress_CompanyInfo; CompanyInformation.Address)
             {
             }

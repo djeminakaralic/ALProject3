@@ -122,10 +122,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "Payment Time"; Time) //ED
-        {
-            DataClassification = ToBeClassified;
-        }
         modify(Amount)
         {
             trigger OnAfterValidate()

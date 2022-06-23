@@ -38163,11 +38163,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment DT - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 1581984921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Payment Time</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Time - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Social status category</source>
           <note from="Developer" annotates="general" priority="2"></note>
