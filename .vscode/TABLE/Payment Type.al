@@ -1,4 +1,4 @@
-enum 50224 "Payment Type"
+enum 50225 "Payment Type"
 {
     Extensible = true;
     AssignmentCompatibility = true;

@@ -38203,11 +38203,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 907492870 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source> ,1,2,3,6,7,8,9,10,11,12,15,18,20,24</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Type - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 1132033293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Postponed VAT</source>
           <note from="Developer" annotates="general" priority="2"></note>
