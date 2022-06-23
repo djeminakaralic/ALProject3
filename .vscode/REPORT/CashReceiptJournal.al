@@ -11,14 +11,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
             }
-            field("No. Line"; "No. Line")
-            {
-                ApplicationArea = all;
-            }
 
-        }
-        addafter("No. Line")
-        {
             field("Payment Type"; "Payment Type")
             {
                 ApplicationArea = all;
@@ -42,6 +35,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
 
             }
+        }
+        modify("Applied (Yes/No)")
+        {
+            Visible = false;
         }
 
 

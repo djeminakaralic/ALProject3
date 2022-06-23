@@ -557,6 +557,18 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
                 }
+                action("Lista svih radnika")
+                {
+                    Caption = 'Lista svih radnika';
+                    Image = Report;
+                    ApplicationArea = all;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = report "Svi radnici";
+
+
+                }
 
 
             }

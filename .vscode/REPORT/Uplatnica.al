@@ -16,6 +16,9 @@ report 50077 Uplatnica
             column(PostingDate; DataItem21."Posting Date")
             {
             }
+            column(PaymentDT; DataItem21."Payment DT")
+            {
+            }
             column(DocumentNo; DataItem21."Document No.")
             {
             }
