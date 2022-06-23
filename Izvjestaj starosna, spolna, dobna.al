@@ -1,4 +1,4 @@
-report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna struktura izvjestaj
+report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna struktura (izvjestaj)
 {
     DefaultLayout = RDLC;
     PreviewMode = Normal;
@@ -189,10 +189,8 @@ report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna struktura izvj
                     Caption = 'Izaberi izvještaj';
                     field(Selected; Selected)
                     {
-
                         Caption = 'Izbor:';
                         OptionCaption = ' ,Starosna struktura,Spolna struktura,Dobna struktura';
-
                     }
                 }
             }
