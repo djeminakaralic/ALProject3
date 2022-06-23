@@ -39643,6 +39643,76 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Septembar - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 2347438355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>0</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 3822923715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 165653036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>11</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 11 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 803349653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>12</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 12 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 1909833864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>15</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 15 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 334562059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>18</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 18 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 4260528206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 2494642710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>20</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 20 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 4238823538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>24</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 24 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 3622831589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>3</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 3 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 1709741738 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>6</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 6 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 1072045121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>7</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 7 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 3791740612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>8</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 8 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 907492870 - EnumValue 3154043995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>9</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Type - EnumValue 9 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 1145711811 - EnumValue 2997449368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract Renewal</source>
           <note from="Developer" annotates="general" priority="2"></note>
