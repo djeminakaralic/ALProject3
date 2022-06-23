@@ -1,5 +1,6 @@
 pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 {
+    //ED
     layout
     {
         // Add changes to page layout here
