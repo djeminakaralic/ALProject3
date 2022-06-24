@@ -73,7 +73,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(50024; "Payment Date"; Date) //ED
+        field(50024; "Payment DT"; DateTime) //ED
         {
             DataClassification = ToBeClassified;
         }
@@ -105,11 +105,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             //TableRelation = Customer."Social status category";
             Caption = 'Social status category';
         }
-        field(50029; "Payment Type"; code[10])
-        {
-            //TableRelation = "Payment Type";
-            Caption = 'Social status category';
-        }
         field(50030; "Address_Cust"; Text[100])
         {
             Caption = 'Address';
@@ -122,9 +117,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "Payment Time"; Time) //ED
+        field(50033; "Payment Type"; Code[10])
         {
-            DataClassification = ToBeClassified;
+            Caption = 'Payment Type';
+            TableRelation = "Payment Type";
         }
         modify(Amount)
         {

@@ -7,24 +7,21 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Posting Date")
         {
-            field("Payment Date"; "Payment Date")
+            field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
             }
-            field("Payment Time"; "Payment Time")
+
+            field("Payment Type"; "Payment Type")
             {
                 ApplicationArea = all;
             }
-            field("No. Line"; "No. Line")
-            {
-
-            }
-
         }
         addafter(Description)
         {
             field("Social status"; "Social status")
             {
+                ApplicationArea = all;
             }
         }
 
@@ -32,59 +29,28 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             field("Given amount"; "Given amount")
             {
-
+                ApplicationArea = all;
             }
             field("To return"; "To return")
             {
-
+                ApplicationArea = all;
             }
-            /*field("Payment Type"; "Payment Type")
-            {
-
-            }*/
         }
-
-
-
-
-        /*addafter(Code)
+        modify("Applied (Yes/No)")
         {
-
-            group("CIPS Address")
-            {
-                Caption = 'CIPS Address';
-                Editable = VisibleCIPS;
-                Visible = VisibleCIPS;
-                field("Address CIPS"; "Address CIPS")
-                {
-                    Enabled = true;
-                    Visible = true;
-                    ApplicationArea = all;
-                }
-                field("Municipality Code CIPS"; "Municipality Code CIPS")
-                {
-                    ApplicationArea = all;
-                }
-                
-            }
-           
-            }
-
-        }*/
-
+            Visible = false;
+        }
     }
 
     actions
     {
-
-
         addafter(Card)
         {
 
             action("Payment Slip")
             {
                 Caption = 'Payment Slip';
-                Image = Journal;
+                Image = PostedPayableVoucher;
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
@@ -98,7 +64,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 //RunObject = Report "Uplatnica";
             }
 
-            action("Payroll")
+            /*action("Payroll")
             {
                 Caption = 'Payroll';
                 Image = Journal;
@@ -106,7 +72,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Isplatnica";
-            }
+            }*/
 
             action("Cash Diary")
             {
@@ -117,24 +83,21 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedIsBig = true;
                 RunObject = Report "Blagajnički dnevnik";
             }
+
+            action("Izvještaj porto blagajne")
+            {
+                Caption = 'Izvještaj porto blagajne';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Izvještaj porto blagajne";
+            }
         }
     }
 
     var
         GJline: Record "Gen. Journal Line";
         Customer: Record Customer;
-
-
-    /*trigger OnOpenPage()
-    begin
-        
-
-    end;
-
-    trigger OnQueryClosePage(CloseAction: Action): Boolean
-    begin
-
-
-    end;*/
 
 }

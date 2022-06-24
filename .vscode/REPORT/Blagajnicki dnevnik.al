@@ -1,9 +1,9 @@
 report 50075 "Blagajnički dnevnik"
 {
-    //ED 03 START
+    //ED
 
     DefaultLayout = RDLC;
-    RDLCLayout = './Blagajnički dnevnik.rdlc';
+    RDLCLayout = './Blagajnički dnevnik.rdl';
 
     dataset
     {
@@ -175,6 +175,6 @@ report 50075 "Blagajnički dnevnik"
         EmmployeeName: Text[150];
         BALE: Record "Bank Account Ledger Entry";
 
-    //ED 03 END
+
 }
 

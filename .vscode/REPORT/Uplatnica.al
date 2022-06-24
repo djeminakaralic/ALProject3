@@ -16,6 +16,9 @@ report 50077 Uplatnica
             column(PostingDate; DataItem21."Posting Date")
             {
             }
+            column(PaymentDT; DataItem21."Payment DT")
+            {
+            }
             column(DocumentNo; DataItem21."Document No.")
             {
             }
@@ -41,12 +44,6 @@ report 50077 Uplatnica
             {
             }
             column(PM; DataItem21."Payment Method Code")
-            {
-            }
-            column(PaymentDate; DataItem21."Payment Date")
-            {
-            }
-            column(PaymentTime; DataItem21."Payment Time")
             {
             }
             column(Adress_CompanyInfo; CompanyInformation.Address)

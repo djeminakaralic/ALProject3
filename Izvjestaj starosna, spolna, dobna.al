@@ -1,6 +1,7 @@
-report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna
+report 50138 "Izvjestaj starosna spolna"
 {
     DefaultLayout = RDLC;
+    PreviewMode = Normal;
     RDLCLayout = './Izvjestaj starosna, spolna, dobna.rdl';
 
     dataset
@@ -189,7 +190,7 @@ report 50138 "Izvjestaj starosna spolna" // starosna spolna dobna
                     field(Selected; Selected)
                     {
                         Caption = 'Izbor:';
-                        OptionCaption = ' ,Starosna,Spolna,Dobna';
+                        OptionCaption = ' ,Starosna struktura,Spolna struktura,Dobna struktura';
                     }
                 }
             }

@@ -95,7 +95,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.82904cm</Width>
+                  <Width>1.09654cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>5.98001cm</Width>
@@ -104,7 +104,7 @@
                   <Width>4.78997cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.58955cm</Width>
+                  <Width>1.32205cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -332,17 +332,31 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentDate">
+                        <Textbox Name="DateTime">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentDate.Value</Value>
+                                  <Value>=Fields!PaymentDT.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
-                                    <Format>d. M. yyyy.</Format>
+                                    <Format>g</Format>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value xml:space="preserve">  </Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!BatchName.Value</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -351,7 +365,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentDate</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1044,20 +1057,22 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Gotovina/kartično = " &amp; SUM(Fields!Amound.Value)</Value>
+                    <Value>="Gotovina/kartično =" &amp; SUM(Fields!Amound.Value)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>10.882cm</Top>
-            <Left>9.25941cm</Left>
+            <Left>9.45342cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.32901cm</Width>
+            <Width>4.135cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -1076,7 +1091,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Ukupno KM</Value>
+                    <Value>Ukupno KM:</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -1087,9 +1102,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
             <Top>10.8712cm</Top>
-            <Left>7.27287cm</Left>
+            <Left>7.48656cm</Left>
             <Height>0.6108cm</Height>
-            <Width>1.98654cm</Width>
+            <Width>1.96686cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1105,8 +1120,7 @@
         <Height>19.89667cm</Height>
         <Style>
           <Border>
-            <Style>Solid</Style>
-            <Width>1.5pt</Width>
+            <Style>None</Style>
           </Border>
         </Style>
       </Body>
@@ -1168,6 +1182,9 @@ End Function
         <Field Name="PostingDate">
           <DataField>PostingDate</DataField>
         </Field>
+        <Field Name="PaymentDT">
+          <DataField>PaymentDT</DataField>
+        </Field>
         <Field Name="DocumentNo">
           <DataField>DocumentNo</DataField>
         </Field>
@@ -1197,12 +1214,6 @@ End Function
         </Field>
         <Field Name="PM">
           <DataField>PM</DataField>
-        </Field>
-        <Field Name="PaymentDate">
-          <DataField>PaymentDate</DataField>
-        </Field>
-        <Field Name="PaymentTime">
-          <DataField>PaymentTime</DataField>
         </Field>
         <Field Name="Adress_CompanyInfo">
           <DataField>Adress_CompanyInfo</DataField>
