@@ -33963,11 +33963,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - ReportColumn EL - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Report 1897769306 - ReportColumn 3304560676 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Female,Male</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - ReportColumn Spol - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Report 1897769306 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Izaberi izvještaj</source>
           <note from="Developer" annotates="general" priority="2"></note>
