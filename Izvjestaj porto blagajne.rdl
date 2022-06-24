@@ -11,6 +11,88 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="BatchName">
+          <DataField>BatchName</DataField>
+        </Field>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="Address_Customer">
+          <DataField>Address_Customer</DataField>
+        </Field>
+        <Field Name="AccountNo">
+          <DataField>AccountNo</DataField>
+        </Field>
+        <Field Name="PM">
+          <DataField>PM</DataField>
+        </Field>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="IndustrialClassification_CompanyInfo">
+          <DataField>IndustrialClassification_CompanyInfo</DataField>
+        </Field>
+        <Field Name="MBS">
+          <DataField>MBS</DataField>
+        </Field>
+        <Field Name="MunicipalityName">
+          <DataField>MunicipalityName</DataField>
+        </Field>
+        <Field Name="Registration_CompanyInfo">
+          <DataField>Registration_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Tax_CompanyInfo">
+          <DataField>Tax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="PaymentTypeEnum">
+          <DataField>PaymentTypeEnum</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -155,19 +237,19 @@
                   <TextRun>
                     <Value>Datum i vijeme pokretanja izvještaja: </Value>
                     <Style>
-                      <Format>g</Format>
+                      <Format>t</Format>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Globals!ExecutionTime</Value>
                     <Style>
-                      <Format>g</Format>
+                      <Format>t</Format>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>h</Value>
+                    <Value> h</Value>
                     <Style>
-                      <Format>g</Format>
+                      <Format>t</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -216,7 +298,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Računi</Value>
+                                  <Value>RAČUNI</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -226,9 +308,28 @@
                           <rd:DefaultName>Textbox4</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -246,7 +347,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Broj uplata</Value>
+                                  <Value>BROJ UPLATA</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -256,9 +357,28 @@
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -276,7 +396,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Iznos</Value>
+                                  <Value>IZNOS</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -286,9 +406,28 @@
                           <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -300,11 +439,11 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.56885cm</Height>
+                  <Height>0.6cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentTypeEnum">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -318,12 +457,31 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentTypeEnum</rd:DefaultName>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -351,9 +509,28 @@
                           <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -381,9 +558,28 @@
                           <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -405,21 +601,14 @@
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
-                <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
-                <TablixMember>
-                  <Group Name="Details" />
-                  <TablixMembers>
-                    <TablixMember />
-                  </TablixMembers>
-                </TablixMember>
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>6.18808cm</Top>
             <Left>0.47836cm</Left>
-            <Height>1.1377cm</Height>
+            <Height>1.16885cm</Height>
             <Width>13.1202cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
@@ -435,7 +624,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Ukupno:</Value>
+                    <Value>UKUPNO:</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -474,9 +663,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
             <Top>7.32578cm</Top>
-            <Left>4.89162cm</Left>
+            <Left>4.85176cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.36562cm</Width>
+            <Width>4.37341cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -504,9 +693,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>7.32578cm</Top>
-            <Left>9.25724cm</Left>
+            <Left>9.22516cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.34132cm</Width>
+            <Width>4.3734cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -579,6 +768,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -618,86 +813,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="BatchName">
-          <DataField>BatchName</DataField>
-        </Field>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="Address_Customer">
-          <DataField>Address_Customer</DataField>
-        </Field>
-        <Field Name="AccountNo">
-          <DataField>AccountNo</DataField>
-        </Field>
-        <Field Name="PM">
-          <DataField>PM</DataField>
-        </Field>
-        <Field Name="Adress_CompanyInfo">
-          <DataField>Adress_CompanyInfo</DataField>
-        </Field>
-        <Field Name="City_CompanyInfo">
-          <DataField>City_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="Phone1_CompanyInfo">
-          <DataField>Phone1_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone2_CompanyInfo">
-          <DataField>Phone2_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Fax_CompanyInfo">
-          <DataField>Fax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Email_CompanyInfo">
-          <DataField>Email_CompanyInfo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInfo">
-          <DataField>RegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Postcode_CompanyInfo">
-          <DataField>Postcode_CompanyInfo</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_CompanyInfo">
-          <DataField>VATRegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="GiroNo_CompanyInfo">
-          <DataField>GiroNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="IndustrialClassification_CompanyInfo">
-          <DataField>IndustrialClassification_CompanyInfo</DataField>
-        </Field>
-        <Field Name="MBS">
-          <DataField>MBS</DataField>
-        </Field>
-        <Field Name="MunicipalityName">
-          <DataField>MunicipalityName</DataField>
-        </Field>
-        <Field Name="Registration_CompanyInfo">
-          <DataField>Registration_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Tax_CompanyInfo">
-          <DataField>Tax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="PaymentTypeEnum">
-          <DataField>PaymentTypeEnum</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
