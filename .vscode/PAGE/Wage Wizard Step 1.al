@@ -301,12 +301,55 @@ page 50020 "Wage Wizard Step 1"
 
 
                 trigger OnAction()
+                var
+                    EmployeeUpdateREd: Record Employee;
+                    EmployeeAbsence: Record "Employee Absence";
+                    StartingDate: Date;
+                    EndingDate: Date;
+                    AbsFill: Codeunit "Absence Fill";
+                    Datum: Record Date;
+
                 begin
                     IF Rec."Wage Calculation Type" = "Wage Calculation Type"::Normal THEN BEGIN
                         //EC01
                         //R_WorkExperience.SetEndingDate(Rec."Date Of Calculation");
                         R_WorkExperience.RUN;
                         R_BroughtExperience.RUN;
+
+                        StartingDate := AbsFill.GetMonthRange(Rec."Month Of Wage", Rec."Year Of Wage", true);
+                        EndingDate := AbsFill.GetMonthRange(Rec."Month Of Wage", Rec."Year Of Wage", false);
+
+
+                        EmployeeUpdateREd.SetFilter("For Calculation", '%1', true);
+                        if EmployeeUpdateREd.FindFirst() then
+                            repeat
+                                EmployeeAbsence.SetFilter("Employee No.", '%1', EmployeeUpdateREd."No."); //trazim odsustvo za jednog zaposlenog
+                                EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate); //filter na unesene datume u request page-u
+                                if NOT EmployeeAbsence.FindFirst() then begin //u tabeli nema nijednog odsustva za ovog zaposlenog
+                                    WageSetup.Get();
+                                    AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, EmployeeUpdateREd, WageSetup."Workday Code");
+                                end
+                                else begin //pronađeno je barem 1 odsustvo
+
+                                    Datum.RESET;
+                                    Datum.SETFILTER("Period Type", '%1', 0);
+                                    Datum.SETRANGE("Period Start", StartingDate, EndingDate); //uzimam dane izmedju unesenih datuma
+                                    Datum.FINDFIRST;
+
+                                    repeat
+                                        EmployeeAbsence.Reset();
+                                        EmployeeAbsence.SetFilter("Employee No.", '%1', EmployeeUpdateREd."No.");
+                                        EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start"); //jedan dan
+                                        if NOT EmployeeAbsence.FindFirst() then begin //nije pronadjeno odustvo na ovaj dan
+                                            WageSetup.Get();
+                                            AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", EmployeeUpdateREd, WageSetup."Workday Code");
+                                        end;
+                                    until Datum.NEXT = 0; //sljedeći datum
+                                end;
+                            until EmployeeUpdateREd.Next() = 0; //sljedeci zaposlenik
+
+
+
                         //EC01e
 
                         Response := CONFIRM(Txt006);
