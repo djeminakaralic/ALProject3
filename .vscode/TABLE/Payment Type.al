@@ -17,6 +17,7 @@ table 50219 "Payment Type"
         }
     }
 
+
     keys
     {
         key(Key1; "Code")
