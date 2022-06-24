@@ -1835,7 +1835,7 @@ table 50071 "Employee Contract Ledger"
                 END;
                 IF (xRec."Starting Date" <> Rec."Starting Date") OR (xRec."Ending Date" <> Rec."Ending Date") THEN BEGIN
 
-                    IF Rec."Reason for Change".AsInteger() = 1 THEN BEGIN
+                    IF Rec."Reason for Change".AsInteger() = 2 THEN BEGIN
 
                         WbMod.RESET;
                         WbMod.SETFILTER("Current Company", '%1', TRUE);
