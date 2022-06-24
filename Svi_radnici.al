@@ -108,9 +108,10 @@ report 50095 "Svi radnici"
                 //Prikazi:=FALSE Entry No. je polje
                 //Prikazi:=TRUE;
 
-                DataItem1.CALCFIELDS(Gender);
+                //DataItem1.CALCFIELDS(Gender);
+                //Spol := FORMAT(DataItem1.Gender);
                 DataItem1.CALCFIELDS("Minimal Education Level");
-                Spol := FORMAT(DataItem1.Gender);
+                //Spol := FORMAT(DataItem1.Gender);
                 VrstaUgovora := DataItem1."Engagement Type";
                 Koeficijent := DataItem1."Position Coefficient for Wage";
                 //STRUCNA SPREMA POZICIJE - NA BC TO RADI
@@ -131,6 +132,7 @@ report 50095 "Svi radnici"
                     Ime := E."First Name";
                     Prezime := E."Last Name";
                     ImeRoditelja := E."Father Name";
+                    Spol:=E.Gender;
                     //Koeficijent := E."Work Experience Percentage";
                     EmploymentDate := FORMAT(E."Employment Date", 0, '<day,2>.<month,2>.<year4>.'); //ovo ne koristim kao employment date
                     DatumRodjenja := FORMAT(E."Birth Date", 0, '<day,2>.<month,2>.<year4>.');
@@ -139,6 +141,7 @@ report 50095 "Svi radnici"
                     Prezime := '';
                     EmploymentDate := '';
                     ImeRoditelja := '';
+                    Spol:='';
                 END;
                 // TITULA I ZVANJE RADNIKA
                 AE.RESET;
@@ -166,7 +169,8 @@ report 50095 "Svi radnici"
 
             trigger OnPreDataItem()
             begin
-
+                
+                NazivOrgana:='';
                 IF Select = Select::"Otišli u zadanom intervalu" THEN
                     DataItem1.SETFILTER("Grounds for Term. Description", '<>%1', '');
                 IF Select = Select::"Došli u zadanom intervalu" THEN
