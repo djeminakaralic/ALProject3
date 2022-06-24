@@ -2672,6 +2672,9 @@ End Function
         <Field Name="Spol">
           <DataField>Spol</DataField>
         </Field>
+        <Field Name="Gender">
+          <DataField>Gender</DataField>
+        </Field>
         <Field Name="Sektor">
           <DataField>Sektor</DataField>
         </Field>
