@@ -79,9 +79,9 @@ report 50085 "Izvještaj porto blagajne"
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
-            /*column(PaymentTypeEnum; PaymentType)
+            column(PTCode; PaymentType.Code)
             {
-            }*/
+            }
             column(Datee; Datee)
             {
             }
@@ -160,7 +160,7 @@ report 50085 "Izvještaj porto blagajne"
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
-        //PaymentType: Enum "Payment Type";
+        PaymentType: Record "Payment Type";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
