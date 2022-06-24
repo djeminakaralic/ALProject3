@@ -62,7 +62,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
             }
-
             column(User; USERID)
             {
             }
