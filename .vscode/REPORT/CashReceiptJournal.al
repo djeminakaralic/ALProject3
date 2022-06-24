@@ -42,32 +42,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
 
 
-
-        /*addafter(Code)
-        {
-
-            group("CIPS Address")
-            {
-                Caption = 'CIPS Address';
-                Editable = VisibleCIPS;
-                Visible = VisibleCIPS;
-                field("Address CIPS"; "Address CIPS")
-                {
-                    Enabled = true;
-                    Visible = true;
-                    ApplicationArea = all;
-                }
-                field("Municipality Code CIPS"; "Municipality Code CIPS")
-                {
-                    ApplicationArea = all;
-                }
-                
-            }
-           
-            }
-
-        }*/
-
     }
 
     actions
@@ -127,18 +101,5 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     var
         GJline: Record "Gen. Journal Line";
         Customer: Record Customer;
-
-
-    /*trigger OnOpenPage()
-    begin
-        
-
-    end;
-
-    trigger OnQueryClosePage(CloseAction: Action): Boolean
-    begin
-
-
-    end;*/
 
 }
