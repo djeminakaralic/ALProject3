@@ -153,19 +153,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Datum i vijeme pokretanja izvještaja: </Value>
-                    <Style>
-                      <Format>t</Format>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
-                    <Style>
-                      <Format>t</Format>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value> h</Value>
+                    <Value>="Datum izvještaja: " &amp; Fields!Datee.Value</Value>
                     <Style>
                       <Format>t</Format>
                     </Style>
@@ -799,6 +787,9 @@ End Function
         </Field>
         <Field Name="PaymentTypeEnum">
           <DataField>PaymentTypeEnum</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
         </Field>
       </Fields>
       <Query>

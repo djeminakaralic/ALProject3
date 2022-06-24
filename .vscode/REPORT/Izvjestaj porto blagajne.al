@@ -82,6 +82,9 @@ report 50085 "Izvještaj porto blagajne"
             column(PaymentTypeEnum; PaymentType)
             {
             }
+            column(Datee; Datee)
+            {
+            }
 
 
 
