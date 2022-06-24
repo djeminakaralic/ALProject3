@@ -126,7 +126,7 @@ report 50095 "Svi radnici"
                 //UZIMANJE IMENA I PREZIMENA RADNIKA, te imena jednog roditelja
                 E.RESET;
                 E.SETFILTER("No.", '%1', "Employee No.");
-                E.SETFILTER(Active, '%1', TRUE);
+                E.SETFILTER(StatusExt, '%1', 0);
                 IF E.FINDFIRST THEN BEGIN
                     Ime := E."First Name";
                     Prezime := E."Last Name";
