@@ -74,15 +74,17 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         addafter("&Line")
         {
-
-            action("Payroll")
+            group("Payroll2")
             {
-                Caption = 'Payroll';
-                Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = Report "Isplatnica";
+                action("Payroll")
+                {
+                    Caption = 'Payroll';
+                    Image = Journal;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = Report "Isplatnica";
+                }
             }
         }
 
