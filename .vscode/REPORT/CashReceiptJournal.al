@@ -72,6 +72,20 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     actions
     {
+        addafter(IncomingDoc)
+        {
+
+            action("Payroll")
+            {
+                Caption = 'Payroll';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Isplatnica";
+            }
+        }
+
 
 
         addafter(Card)
