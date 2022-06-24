@@ -81,7 +81,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
-
             column(PaymentTypeEnum; PaymentType)
             {
             }
