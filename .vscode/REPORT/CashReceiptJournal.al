@@ -72,7 +72,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     actions
     {
-        addafter(IncomingDoc)
+        addafter("&Line")
         {
 
             action("Payroll")
