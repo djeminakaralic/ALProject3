@@ -141,7 +141,7 @@ report 50095 "Svi radnici"
                     Prezime := '';
                     EmploymentDate := '';
                     ImeRoditelja := '';
-                    Spol := '';
+                    Spol := ' ';
                 END;
                 // TITULA I ZVANJE RADNIKA
                 AE.RESET;
