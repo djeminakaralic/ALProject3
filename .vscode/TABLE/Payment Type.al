@@ -1,3 +1,41 @@
+table 50219 "Payment Type"
+{
+    Caption = 'Vrsta uplate';
+    /*DrillDownPageID = "Employment Contracts";
+    LookupPageID = "Employment Contracts";*/
+
+    fields
+    {
+        field(1; "Code"; Code[10])
+        {
+            Caption = 'Code';
+            NotBlank = true;
+        }
+        field(2; Description; Text[200])
+        {
+            Caption = 'Description';
+        }
+    }
+
+    keys
+    {
+        key(Key1; "Code")
+        {
+            Clustered = true;
+        }
+    }
+
+    fieldgroups
+    {
+    }
+}
+
+
+
+/*        
+
+
+
 enum 50225 "Payment Type"
 {
     Extensible = true;
@@ -63,4 +101,4 @@ enum 50225 "Payment Type"
     //1,2,3,6,7,8,9,10,11,12,15,18,20,24
 
 
-}
+}*/

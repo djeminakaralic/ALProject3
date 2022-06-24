@@ -117,9 +117,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "Payment Type"; Enum "Payment Type")
+        field(50033; "Payment Type"; Code[10])
         {
             Caption = 'Payment Type';
+            TableRelation = "Payment Type";
         }
         modify(Amount)
         {
