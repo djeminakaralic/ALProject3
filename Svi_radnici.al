@@ -41,9 +41,7 @@ report 50095 "Svi radnici"
             }
             column(Spol; Spol)
             {
-                //IncludeCaption = true;
-                OptionCaption = ',Female,Male';
-                OptionMembers = "<",Female,"Male>";
+            
             }
             column(Gender; Gender)
             {
