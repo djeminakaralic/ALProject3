@@ -123,13 +123,8 @@ report 50085 "Izvještaj porto blagajne"
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
 
-
             end;
         }
-
-
-
-
     }
 
     requestpage
