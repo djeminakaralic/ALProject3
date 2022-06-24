@@ -656,9 +656,6 @@ End Function
         <Field Name="Email_CompanyInfo">
           <DataField>Email_CompanyInfo</DataField>
         </Field>
-        <Field Name="Homepage_CompanyInfo">
-          <DataField>Homepage_CompanyInfo</DataField>
-        </Field>
         <Field Name="RegistrationNo_CompanyInfo">
           <DataField>RegistrationNo_CompanyInfo</DataField>
         </Field>
@@ -691,6 +688,9 @@ End Function
         </Field>
         <Field Name="Tax_CompanyInfo">
           <DataField>Tax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="PaymentTypeEnum">
+          <DataField>PaymentTypeEnum</DataField>
         </Field>
       </Fields>
       <Query>

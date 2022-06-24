@@ -47,9 +47,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Email_CompanyInfo; CompanyInformation."E-Mail")
             {
             }
-            column(Homepage_CompanyInfo; CompanyInformation."Home Page")
-            {
-            }
             column(RegistrationNo_CompanyInfo; CompanyInformation."Registration No.")
             {
             }
@@ -82,6 +79,10 @@ report 50085 "Izvještaj porto blagajne"
             {
             }
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
+            {
+            }
+
+            column(PaymentTypeEnum; PaymentType)
             {
             }
 
@@ -149,6 +150,7 @@ report 50085 "Izvještaj porto blagajne"
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
+        PaymentType: Enum "Payment Type";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
