@@ -11,8 +11,8 @@ page 50094 "Payroll Role Center"
             {
                 ApplicationArea = all;
                 Visible = true;
-            }
 
+            }
             part("Payroll Activities"; "Payroll Activities")
             {
                 ApplicationArea = all;
