@@ -111,7 +111,7 @@ report 50095 "Svi radnici"
                 DataItem1.CALCFIELDS(Gender);
                 DataItem1.CALCFIELDS("Minimal Education Level");
                 Spol := FORMAT(DataItem1.Gender);
-                VrstaUgovora := DataItem1."Contract Type Name";
+                VrstaUgovora := DataItem1."Engagement Type";
                 Koeficijent := DataItem1."Position Coefficient for Wage";
                 //STRUCNA SPREMA POZICIJE - NA BC TO RADI
                 EL := DataItem1."Minimal Education Level";
