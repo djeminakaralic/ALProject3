@@ -465,8 +465,13 @@ page 50094 "Payroll Role Center"
 
                 //Create Timesheet GAS
 
-
-
+                action("Create absence Registration")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Create Absence Registration';
+                    Image = Absence;
+                    RunObject = Page "Employee Absence";
+                }
 
                 action("Absence Registration")
                 {

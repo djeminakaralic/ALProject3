@@ -140,6 +140,30 @@ page 51129 "Employee Absence"
                     END;
                 end;
             }
+            action("Insert Work Performance")
+            {
+                Caption = 'Insert Work Performance';
+                Image = Insert;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+
+                    WP: Record "Work performance";
+                    WPPage: Page "Work Performance";
+                begin
+                    WP.Reset();
+                    WP.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    WP.SetFilter("Month Of Performance", '%1', Date2DMY(Rec."From Date", 2));
+                    WP.SetFilter("Year Of Performance", '%1', Date2DMY(Rec."From Date", 3));
+                    WPPage.SetTableView(WP);
+                    WPPage.Run();
+                end;
+
+            }
+
         }
         area(processing)
         {
