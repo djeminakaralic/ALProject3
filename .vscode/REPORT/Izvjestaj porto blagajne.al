@@ -5,6 +5,7 @@ report 50085 "Izvještaj porto blagajne"
     PreviewMode = Normal;
     RDLCLayout = './Izvjestaj porto blagajne.rdl';
 
+
     dataset
     {
         dataitem(DataItem21; "Gen. Journal Line")
