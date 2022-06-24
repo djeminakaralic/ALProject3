@@ -23878,6 +23878,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Action &amp;Unapprove All - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3164093577 - Action 2102508682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Insert Work Performance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Employee Absence - Action Insert Work Performance - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2701905267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Activities</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -25432,6 +25437,11 @@
           <source>Cause of Absence Subtype</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Cause of Absence Subtype - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1091715438 - Action 3064061924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Absence Registration</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Create absence Registration - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1091715438 - Action 1413736415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Timesheets Export</source>
@@ -33952,6 +33962,11 @@
           <source> ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - ReportColumn EL - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 1897769306 - ReportColumn 3304560676 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>,Female,Male</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - ReportColumn Spol - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Report 1897769306 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Izaberi izvještaj</source>
