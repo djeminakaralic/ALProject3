@@ -25098,6 +25098,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment range - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 907492870 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a code for the employment contract.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Control Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 907492870 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a description for the employment contract.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Control Description - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 792771594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activities</source>
           <note from="Developer" annotates="general" priority="2"></note>
