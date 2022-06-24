@@ -29,19 +29,17 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             field("Given amount"; "Given amount")
             {
-
+                ApplicationArea = all;
             }
             field("To return"; "To return")
             {
-
+                ApplicationArea = all;
             }
         }
         modify("Applied (Yes/No)")
         {
             Visible = false;
         }
-
-
     }
 
     actions
