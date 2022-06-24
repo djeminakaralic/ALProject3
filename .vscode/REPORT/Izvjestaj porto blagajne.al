@@ -79,9 +79,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
-            column(PTCode; PaymentType.Code)
-            {
-            }
             column(Datee; Datee)
             {
             }
@@ -117,13 +114,20 @@ report 50085 "Izvještaj porto blagajne"
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-                PaymentType.Get();
 
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
 
             end;
+        }
+
+        dataitem(DataItem22; "Payment Type")
+        {
+            column(PTCode; DataItem22.Code)
+            {
+            }
+
         }
     }
 
@@ -157,7 +161,6 @@ report 50085 "Izvještaj porto blagajne"
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
-        PaymentType: Record "Payment Type";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
