@@ -1,8 +1,8 @@
 table 50132 "Position Menu"
 {
     Caption = 'Position';
-    DrillDownPageID = "Position";
-    LookupPageID = "Position";
+    DrillDownPageID = "Update Position";
+    LookupPageID = "Update Position";
 
 
     fields
@@ -605,9 +605,20 @@ table 50132 "Position Menu"
             trigger OnValidate()
             var
                 myInt: Integer;
+                ecl: Record "Employee Contract Ledger";
             begin
                 "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
-
+                ecl.Reset();
+                ecl.SetFilter("Position Description", '%1', rec.Description);
+                ecl.SetFilter("Position Code", '%1', Rec.Code);
+                ecl.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                ecl.SetFilter(Active, '%1', true);
+                ecl.SetFilter("Grounds for Term. Description", '%1', '');
+                if ecl.FindSet() then
+                    repeat
+                        ecl.Validate("Position Description", Rec.Description);
+                        ecl.Modify();
+                    until ecl.Next() = 0;
             end;
         }
 
@@ -618,9 +629,20 @@ table 50132 "Position Menu"
             trigger OnValidate()
             var
                 myInt: Integer;
+                ecl: Record "Employee Contract Ledger";
             begin
                 "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
-
+                ecl.Reset();
+                ecl.SetFilter("Position Description", '%1', rec.Description);
+                ecl.SetFilter("Position Code", '%1', Rec.Code);
+                ecl.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                ecl.SetFilter(Active, '%1', true);
+                ecl.SetFilter("Grounds for Term. Description", '%1', '');
+                if ecl.FindSet() then
+                    repeat
+                        ecl.Validate("Position Description", Rec.Description);
+                        ecl.Modify();
+                    until ecl.Next() = 0;
             end;
         }
         field(50410; "Workplace conditions"; Decimal)
@@ -629,9 +651,20 @@ table 50132 "Position Menu"
             trigger OnValidate()
             var
                 myInt: Integer;
+                ecl: Record "Employee Contract Ledger";
             begin
                 "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
-
+                ecl.Reset();
+                ecl.SetFilter("Position Description", '%1', rec.Description);
+                ecl.SetFilter("Position Code", '%1', Rec.Code);
+                ecl.SetFilter("Org. Structure", '%1', Rec."Org. Structure");
+                ecl.SetFilter(Active, '%1', true);
+                ecl.SetFilter("Grounds for Term. Description", '%1', '');
+                if ecl.FindSet() then
+                    repeat
+                        ecl.Validate("Position Description", Rec.Description);
+                        ecl.Modify();
+                    until ecl.Next() = 0;
             end;
         }
 

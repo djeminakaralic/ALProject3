@@ -2648,6 +2648,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                     trigger OnDrillDown()
                     begin
+                        CurrPage.Update();
+                        SelectLatestVersion();
                         EmployeeContractLedger.RESET;
                         EmployeeContractLedger.SETFILTER("Employee No.", "No.");
                         EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
