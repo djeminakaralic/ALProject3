@@ -349,21 +349,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox5">
+                        <Textbox Name="PTCode">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!PTCode.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <rd:DefaultName>PTCode</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -784,6 +784,9 @@ End Function
         </Field>
         <Field Name="Tax_CompanyInfo">
           <DataField>Tax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="PTCode">
+          <DataField>PTCode</DataField>
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
