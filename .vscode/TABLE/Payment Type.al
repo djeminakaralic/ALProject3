@@ -1,8 +1,8 @@
 table 50219 "Payment Type"
 {
     Caption = 'Vrsta uplate';
-    DrillDownPageID = "Employment Contracts";
-    LookupPageID = "Employment Contracts";
+    DrillDownPageID = "Payment Type";
+    LookupPageID = "Payment Type";
 
     fields
     {
@@ -11,7 +11,7 @@ table 50219 "Payment Type"
             Caption = 'Code';
             NotBlank = true;
         }
-        field(2; Description; Text[200])
+        field(2; Description; Text[300])
         {
             Caption = 'Description';
         }

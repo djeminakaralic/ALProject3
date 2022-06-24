@@ -23,7 +23,6 @@ page 50229 "Payment Type"
                     ApplicationArea = BasicHR;
                     ToolTip = 'Specifies a description for the employment contract.';
                 }
-
             }
         }
         area(factboxes)
