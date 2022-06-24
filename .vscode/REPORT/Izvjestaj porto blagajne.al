@@ -22,7 +22,6 @@ report 50085 "Izvještaj porto blagajne"
             column(AccountNo; DataItem21."Account No.")
             {
             }
-
             column(PM; DataItem21."Payment Method Code")
             {
             }
@@ -130,9 +129,19 @@ report 50085 "Izvještaj porto blagajne"
 
     requestpage
     {
-
         layout
         {
+            area(content)
+            {
+                group("Date")
+                {
+                    Caption = 'Datum izvještaja';
+                    field(Datee; Datee)
+                    {
+                        Caption = 'Datum izvještaja: ';
+                    }
+                }
+            }
         }
 
         actions
@@ -159,5 +168,6 @@ report 50085 "Izvještaj porto blagajne"
         ContCity: Text[100];
         emp: Record Employee;
         Cust: Record Customer;
+        Datee: Date;
 }
 

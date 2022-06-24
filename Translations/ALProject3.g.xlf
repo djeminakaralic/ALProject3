@@ -28238,6 +28238,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1991143175 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum izvještaja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1991143175 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum izvještaja: </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Datee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 2809061718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lock Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
