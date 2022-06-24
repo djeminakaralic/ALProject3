@@ -112,7 +112,7 @@ report 50095 "Svi radnici"
                 DataItem1.CALCFIELDS("Minimal Education Level");
                 Spol := FORMAT(DataItem1.Gender);
                 VrstaUgovora := DataItem1."Contract Type Name";
-                Koeficijent := DataItem1."Percentage of Variable";
+                //Koeficijent := DataItem1."Percentage of Variable";
                 //STRUCNA SPREMA POZICIJE - NA BC TO RADI
                 EL := DataItem1."Minimal Education Level";
                 P.RESET;
@@ -131,6 +131,7 @@ report 50095 "Svi radnici"
                     Ime := E."First Name";
                     Prezime := E."Last Name";
                     ImeRoditelja := E."Father Name";
+                    Koeficijent := E."Work Experience Percentage";
                     EmploymentDate := FORMAT(E."Employment Date", 0, '<day,2>.<month,2>.<year4>.'); //ovo ne koristim kao employment date
                     DatumRodjenja := FORMAT(E."Birth Date", 0, '<day,2>.<month,2>.<year4>.');
                 END ELSE BEGIN
