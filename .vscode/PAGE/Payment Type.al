@@ -1,7 +1,7 @@
 page 50229 "Payment Type"
 {
     ApplicationArea = BasicHR;
-    Caption = 'Payment Type';
+    Caption = 'Vrsta uplate';
     PageType = List;
     SourceTable = "Payment Type";
     UsageCategory = Administration;

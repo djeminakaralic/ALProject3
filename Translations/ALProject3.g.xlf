@@ -25099,7 +25099,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment range - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Payment Type</source>
+          <source>Vrsta uplate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Property Caption</note>
         </trans-unit>
