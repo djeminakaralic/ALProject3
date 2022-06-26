@@ -117,6 +117,7 @@ table 50188 "Wage Addition Type"
         field(119; "Posting Group"; Code[20])
         {
             Caption = 'Posting Group';
+            TableRelation = TS_knjizenja.vrnaloga;
         }
         field(120; "Wage Increase/Decrease"; Boolean)
         {
@@ -144,6 +145,13 @@ table 50188 "Wage Addition Type"
         {
             Caption = 'Bonus and material right';
         }
+        field(50024; "Payment Type"; Option)
+        {
+            Caption = 'Payment Type';
+            OptionCaption = ',Regular Work,Additional,Work Performance,Other Additional';
+            OptionMembers = "<","Regular Work","Additional>","Work Performance","Other Additional";
+        }
+
         field(125; "Other bonus from brutto"; Boolean)
         {
             Caption = 'Other bonus from brutto';

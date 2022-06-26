@@ -7,6 +7,9 @@ codeunit 50001 "Wage Precalculation"
     end;
 
     var
+        CPE: Record "Contribution Per Employee";
+        ECL: Record "Employee Contract Ledger";
+        WADate: Record "Wage Amounts";
         R_WorkExperience: Report "Work experience in Company";
         R_BroughtExperience: Report "Update Brought Experience";
         Emp: Record "Employee";
@@ -20,7 +23,7 @@ codeunit 50001 "Wage Precalculation"
         ReductionReal: Record "Reduction per Wage";
         TransHeader: Record "Transport Header";
         MealHeader: Record "Meal Header";
-        RedType: Record "Reduction Types";
+        RedType: Record "Reduction types";
         TempEmployee: Record "Employee" temporary;
         AbsenceFill: Codeunit "Absence Fill";
         AbsenceEmp: Record "Employee Absence";
@@ -63,6 +66,13 @@ codeunit 50001 "Wage Precalculation"
         RecWageHeader: Record "Wage Header";
         RecWageHeader2: Record "Wage Header";
         WageCalcA: Codeunit "Wage Calculation";
+        AbsenceFillEmp: Codeunit "Absence Fill";
+        EndDateEmp: Date;
+        StartDateEmp: Date;
+        COA: Record "Cause of Absence";
+        AbsenceEmpTotal: Record "Employee Absence";
+        SickLeave: Decimal;
+        ELD: Record "Employee Level Of Disability";
 
     procedure ClosedForm(var Header: Record "Wage Header")
     begin
@@ -95,6 +105,7 @@ codeunit 50001 "Wage Precalculation"
                 InitRec := TRUE
             ELSE BEGIN
                 InitMonth := InitMonth + 1;
+
                 IF InitMonth > 12 THEN BEGIN
                     InitYear := InitYear + 1;
                     InitMonth := 1;
@@ -252,80 +263,118 @@ codeunit 50001 "Wage Precalculation"
         CompInfo.GET;
 
         IF CompInfo."Entity Code" = '' THEN
-            AddError(CompInfo.FIELDCAPTION("Entity Code"), CompInfo.TABLECAPTION, Employee."No.", 0, ErrCount);
+            AddError(CompInfo.FIELDCAPTION("Entity Code"), CompInfo.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
 
         IF Employee.FINDFIRST THEN
             REPEAT
                 IF NOT WageType.GET(Employee."Wage Type") THEN
-                    AddError(Employee.FIELDCAPTION("Wage Type"), WageType.TABLECAPTION, Employee."No.", 0, ErrCount);
+                    AddError(Employee.FIELDCAPTION("Wage Type"), WageType.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
 
                 /*IF (WageType."Wage Calculation Type" =
                   WageType."Wage Calculation Type"::Coefficient) THEN
                  AddError('Koeficijent',Employee.TABLECAPTION, Employee."No.",0,ErrCount);*/
 
-                IF Employee."Post Code" = '' THEN
-                    AddError(Employee.FIELDCAPTION("Post Code"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
-                IF NOT Post.GET(Employee."Post Code", Employee.City) THEN
-                    AddError(Employee.FIELDCAPTION("Post Code"), Post.TABLECAPTION, Employee."No.", 0, ErrCount);
-                IF Employee.County = '' THEN
-                    AddError(Employee.FIELDCAPTION(County), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
+                IF Employee."Post Code CIPS" = '' THEN
+                    AddError(Employee.FIELDCAPTION("Post Code CIPS"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
+                IF NOT Post.GET(Employee."Post Code CIPS", Employee."City CIPS") THEN
+                    AddError(Employee.FIELDCAPTION("Post Code CIPS"), Post.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
+                IF Employee."County CIPS" = '' THEN
+                    AddError(Employee.FIELDCAPTION(County), Employee.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
                 /*NK01: Since amount distribution based on dimension is in place, there is no need for this error
                 IF Employee."Global Dimension 1 Code" = '' THEN
-                  AddError(Employee.FIELDCAPTION("Global Dimension 1 Code"), Employee.TABLECAPTION, Employee."No.",0,ErrCount);
+                  AddError(Employee.FIELDCAPTION("Global Dimension 1 Code"), Employee.TABLECAPTION, Employee."No.",0,ErrCount,0);
                 */
                 IF Employee."Wage Type" = '' THEN
-                    AddError(Employee.FIELDCAPTION("Wage Type"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
+                    AddError(Employee.FIELDCAPTION("Wage Type"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
                 IF Employee."Contribution Category Code" = '' THEN
-                    AddError(Employee.FIELDCAPTION("Contribution Category Code"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
-                /*ĐK IF Employee."Emplymt. Contract Code" = '' THEN
-                    AddError(Employee.FIELDCAPTION("Emplymt. Contract Code"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
-*/
-                //IF Employee."Tax Deduction" = 0 THEN
-                //  AddError(Employee.FIELDCAPTION("Tax Deduction"),Employee.TABLECAPTION, Employee."No.",1,ErrCount);
-                //IF Employee."Bank Account No." = '' THEN
-                //  AddError(Employee.FIELDCAPTION("Bank Account No."),Employee.TABLECAPTION, Employee."No.",1,ErrCount);
+                    AddError(Employee.FIELDCAPTION("Contribution Category Code"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
+                /*  IF Employee."Emplymt. Contract Code" = '' THEN
+                   AddError(Employee.FIELDCAPTION("Emplymt. Contract Code"), Employee.TABLECAPTION, Employee."No.",0,ErrCount,0);
 
-                IF Employee."Employee ID" = '' THEN
-                    AddError(Employee.FIELDCAPTION("Employee ID"), Employee.TABLECAPTION, Employee."No.", 0, ErrCount);
+                 //IF Employee."Tax Deduction" = 0 THEN
+                 //  AddError(Employee.FIELDCAPTION("Tax Deduction"),Employee.TABLECAPTION, Employee."No.",1,ErrCount);
+                 //IF Employee."Bank Account No." = '' THEN
+                 //  AddError(Employee.FIELDCAPTION("Bank Account No."),Employee.TABLECAPTION, Employee."No.",1,ErrCount);
 
-                IF NOT Municipality.GET(Employee."Municipality Code") THEN
-                    AddError(Employee.FIELDCAPTION("Municipality Code"), Municipality.TABLECAPTION, Employee."No.", 0, ErrCount);
+                 IF Employee."Employee ID" = '' THEN
+                   AddError(Employee.FIELDCAPTION("Employee ID"),Employee.TABLECAPTION, Employee."No.",0,ErrCount,0);*/
+
+                IF NOT Municipality.GET(Employee."Municipality Code CIPS") THEN
+                    AddError(Employee.FIELDCAPTION("Municipality Code CIPS"), Municipality.TABLECAPTION, Employee."No.", 0, ErrCount, 0);
                 IF Municipality."Tax Number" = '' THEN
                     AddError('Opština:' + FORMAT(Municipality.FIELDCAPTION("Tax Number") + Municipality.Code),
-                      Municipality.TABLECAPTION, Municipality.Code, 0, ErrCount);
+                      Municipality.TABLECAPTION, Municipality.Code, 0, ErrCount, 0);
+
+
+
+                AbsenceEmp.RESET;
+                AbsenceEmpTotal.RESET;
+
+                StartDateEmp := AbsenceFillEmp.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", TRUE);
+                EndDateEmp := AbsenceFillEmp.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", FALSE);
+                SickLeave := 0;
+                COA.SETFILTER("Calculation Type", '%1', 2);
+                IF COA.FINDFIRST THEN
+                    REPEAT
+                        AbsenceEmp.SETFILTER("From Date", '%1', EndDateEmp);
+                        AbsenceEmp.SETFILTER("Employee No.", '%1', Employee."No.");
+                        AbsenceEmp.SETFILTER("Cause of Absence Code", '%1', COA.Code);
+
+
+
+                        IF AbsenceEmp.FINDFIRST THEN BEGIN
+                            IF ((Employee."Transport Amount" <> 0) AND (Employee."Transport Confirmed" = FALSE)) THEN BEGIN
+
+                                AbsenceEmpTotal.SETFILTER("Employee No.", '%1', Employee."No.");
+                                AbsenceEmpTotal.SETFILTER("From Date", '%1..%2', StartDateEmp, EndDateEmp);
+                                AbsenceEmpTotal.SETFILTER("Cause of Absence Code", '%1', 'B*');
+                                IF AbsenceEmpTotal.FINDFIRST THEN BEGIN
+                                    AbsenceEmpTotal.CALCSUMS(Quantity);
+                                    SickLeave += AbsenceEmpTotal.Quantity;
+
+                                END;
+                                AddError('Ukupno sati na bolovanju:' + ' ' + FORMAT(SickLeave), Employee."First Name" + ' ' + Employee."Last Name", AbsenceEmp."Employee No.", 0, ErrCount, Employee."Transport Amount");
+                            END;
+                        END;
+                    UNTIL COA.NEXT = 0;
             UNTIL Employee.NEXT = 0;
 
         AddTaxes.RESET;
         AddTaxes.SETFILTER(Active, '%1', TRUE);
         AddTaxes.SETFILTER("From Brutto", '%1', TRUE);
         IF NOT AddTaxes.FINDFIRST THEN
-            AddError(TxtAddTaxFrom, AddTaxes.TABLECAPTION, '', 0, ErrCount);
+            AddError(TxtAddTaxFrom, AddTaxes.TABLECAPTION, '', 0, ErrCount, 0);
 
         AddTaxes.RESET;
         AddTaxes.SETFILTER(Active, '%1', TRUE);
         AddTaxes.SETFILTER("Over Brutto", '%1', TRUE);
         IF NOT AddTaxes.FINDFIRST THEN
-            AddError(TxtAddTAxOver, AddTaxes.TABLECAPTION, '', 0, ErrCount);
+            AddError(TxtAddTAxOver, AddTaxes.TABLECAPTION, '', 0, ErrCount, 0);
 
 
         Taxes.RESET;
         Taxes.SETFILTER(Active, '%1', TRUE);
         IF NOT Taxes.FINDFIRST THEN
-            AddError(TxtTax, Taxes.TABLECAPTION, '', 0, ErrCount);
+            AddError(TxtTax, Taxes.TABLECAPTION, '', 0, ErrCount, 0);
 
         HasError := GlobalHasErrors;
 
     end;
 
-    procedure AddError(Desc: Text[250]; Tab: Text[250]; Val: Text[250]; Stat: Integer; var ErrorCount: Integer)
+    procedure AddError(Desc: Text[250]; Tab: Text[250]; Val: Text[250]; Stat: Integer; var ErrorCount: Integer; Transport: Decimal)
     begin
+
         ErrorCount := ErrorCount + 1;
         WITH Errors DO BEGIN
             "No." := ErrorCount;
             Description := Desc;
             Table := Tab;
             Value := Val;
-            Status := Stat;
+            IF Transport = 0 THEN
+                Status := Stat
+            ELSE
+                Status := 2;
+            "Transport Amount" := Transport;
             INSERT;
         END;
 
@@ -353,6 +402,14 @@ codeunit 50001 "Wage Precalculation"
         StartDate := AbsenceFill.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", TRUE);
         EndDate := AbsenceFill.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", FALSE);
 
+        WADate.SETFILTER("Application Date", '>=%1', StartDate);
+        WADate.SETFILTER("Application Date", '>=%1', EndDate);
+        IF WADate.FINDFIRST
+            THEN
+            REPEAT
+                WADate.VALIDATE("Application Date", WADate."Application Date");
+                WADate.MODIFY;
+            UNTIL WADate.NEXT = 0;
         StartNewCalc;
     end;
 
@@ -367,12 +424,11 @@ codeunit 50001 "Wage Precalculation"
 
         Reset;
 
-
         CalcHours;
-
         CalcMeal;
-
         CalcTransport;
+        CalcSD;
+        CalcIB;
 
         /*
         IF WageHeader."Wage Calculation Type" = WageHeader."Wage Calculation Type"::Normal THEN
@@ -403,11 +459,19 @@ codeunit 50001 "Wage Precalculation"
         GLSetup: Record "General Ledger Setup";
         increment: Integer;
         MonthDay: array[12] of Integer;
+        COACT: Record "Cause of Absence";
+        AbsenceCT: Record "Employee Absence";
+        StartDate: Date;
+        EndDate: Date;
     begin
         WageCalcNo := '0000000000';
         WageCalc.RESET;
-        IF WageCalc.FIND('+') THEN
-            WageCalcNo := WageCalc."No.";
+        /*IF WageCalc.FIND('+') THEN
+         WageCalcNo := WageCalc."No.";*/
+        CPE.RESET;
+        CPE.SETCURRENTKEY("Wage Calc No.");
+        IF CPE.FIND('+') THEN
+            WageCalcNo := CPE."Wage Calc No.";
 
         IF WageHeader.Reduction THEN BEGIN
             RedNo := '0000000000';
@@ -424,9 +488,9 @@ codeunit 50001 "Wage Precalculation"
         //SD end
 
         IF WageHeader."Wage Calculation Type" = WageHeader."Wage Calculation Type"::Normal THEN
-            Employee.SETRANGE("For Calculation", TRUE);
-        /*ELSE
-         Employee.SETRANGE("Calculate Wage Addition", TRUE);*/
+            Employee.SETRANGE("For Calculation", TRUE)
+        ELSE
+            Employee.SETRANGE("Calculate Wage Addition", TRUE);
 
         Window.OPEN('Otvaranje obračunskih linija\@1@@@@@@@@@@@@@@@@@@@@@  ::Radnici\');
         Window.UPDATE(1, 0);
@@ -478,6 +542,7 @@ codeunit 50001 "Wage Precalculation"
 
         CurrRecNo := 0;
         Employee.SETFILTER("No.", '<>%1', '');
+        Employee.SetFilter("For Calculation", '%1', true);
         IF Employee.FINDFIRST THEN
             REPEAT
                 CurrRecNo += 1;
@@ -572,7 +637,25 @@ codeunit 50001 "Wage Precalculation"
                         WageCalcTemp."No." := WageCalcNo;
                         WageCalcTemp."Wage Header No." := WageHeader."No.";
                         WageCalcTemp."Document Year" := DATE2DMY(WORKDATE, 3);
+                        EndDate := AbsenceFill.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", FALSE);
+
                         WageCalcTemp."Employee No." := Employee."No.";
+                        ECL.Reset();
+                        ECL.SetFilter("Starting Date", '<=%1', EndDate);
+                        ECL.SetFilter("Employee No.", '%1', Employee."No.");
+                        ECL.SetCurrentKey("Starting Date");
+                        ECL.Ascending;
+                        if ECL.FindLast() then begin
+
+                            WageCalcTemp."Position Coefficient for Wage" := ECL."Position Coefficient for Wage";
+                            WageCalcTemp."Wage Base" := WageSetup."Wage Base";
+                        end
+                        else begin
+                            WageCalcTemp."Position Coefficient for Wage" := 0;
+                            WageCalcTemp."Wage Base" := WageSetup."Wage Base";
+
+                        end;
+
                         WageCalcTemp."Month Of Calculation" := WageHeader."Month of Calculation";
                         WageCalcTemp."Year Of Calculation" := WageHeader."Year of Calculation";
                         WageCalcTemp."Entry No." := WageHeader."Entry No.";
@@ -582,7 +665,12 @@ codeunit 50001 "Wage Precalculation"
                         WageCalcTemp."Work Experience Percentage" := Employee."Work Experience Percentage";
                         WageCalcTemp."Post Code" := Employee."Post Code";
                         WageCalcTemp."Wage Type" := Employee."Wage Type";
-                        WageCalcTemp.Invalid := Employee."Disabled Person";
+                        ELD.RESET;
+                        ELD.SETFILTER("Employee No.", '%1', WageCalcTemp."Employee No.");
+                        IF ELD.FIND('-') THEN BEGIN
+                            IF ((ELD."Level of Disability" = '60') OR (ELD."Level of Disability" = '70') OR (ELD."Level of Disability" = '80') OR (ELD."Level of Disability" = '90') OR (ELD."Level of Disability" = '100') OR (ELD.Code = '10')) THEN
+                                WageCalcTemp.Invalid := Employee."Disabled Person";
+                        END;
                         WageType.GET(Employee."Wage Type");
                         WageCalcTemp."User ID" := USERID;
                         WageCalcTemp.SGC := Employee."Statistics Group Code";
@@ -590,15 +678,17 @@ codeunit 50001 "Wage Precalculation"
                             WageCalcTemp."Global Dimension 1 Code" := EmplDefDim."Dimension Value Code";
                         IF EmplDefDim."Dimension Code" = GLSetup."Global Dimension 2 Code" THEN
                             WageCalcTemp."Global Dimension 2 Code" := EmplDefDim."Dimension Value Code";
-                        ECT.GET(Employee."Emplymt. Contract Code");
+                        // ECT.GET(Employee."Emplymt. Contract Code");
                         WageCalcTemp."Calculation Type" := ECT."Calculation Type";
                         //WageCalcTemp."Position Code" := Employee."Position Code";
 
                         WageCalcTemp."Contribution Category Code" := Employee."Contribution Category Code";
                         WageCalcTemp."Base Tax Deduction" := Employee."Tax Deduction Amount" * EmplDefDim."Amount Distribution Coeff.";
                         WageCalcTemp."Tax Deductions" := Employee."Tax Deduction Amount" * EmplDefDim."Amount Distribution Coeff.";
+                        WageCalcTemp."Iznos poreske kartice" := Employee."Iznos poreske kartice" * EmplDefDim."Amount Distribution Coeff.";
+                        WageCalcTemp."Iznos ličnog odbitka" := Employee."Iznos ličnog odbitka" * EmplDefDim."Amount Distribution Coeff.";
 
-                        PostCode.GET(Employee."Post Code", Employee.City);
+                        PostCode.GET(Employee."Post Code CIPS", Employee."City CIPS");
                         WageCalcTemp."Entity Code" := PostCode."Entity Code";
 
                         IF Employee."Hours In Day" <> WageSetup."Hours in Day" THEN
@@ -607,6 +697,26 @@ codeunit 50001 "Wage Precalculation"
                         ELSE
                             WageCalcTemp."Hour Pool" := WageHeader."Hour Pool" * EmplDefDim."Amount Distribution Coeff.";
                         WageCalcTemp.INSERT;
+
+                        Employee.CALCFIELDS("Department code");
+                        IF ((Employee."Contact Center") OR (Employee."Hours In Day" < 8)) THEN BEGIN
+                            WageCalcTemp."Hour Pool" := 0;
+                            WageCalcTemp.MODIFY;
+                            StartDate := AbsenceFill.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", TRUE);
+                            EndDate := AbsenceFill.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", FALSE);
+                            COACT.RESET;
+                            COACT.SETFILTER("Added To Hour Pool", '%1', FALSE);
+                            IF COACT.FINDFIRST THEN
+                                REPEAT
+                                    AbsenceCT.SETFILTER("Employee No.", WageCalcTemp."Employee No.");
+                                    AbsenceCT.SETFILTER("Cause of Absence Code", '%1', COACT.Code);
+                                    AbsenceCT.SETFILTER("From Date", '%1..%2', StartDate, EndDate);
+                                    AbsenceCT.CALCSUMS(Quantity);
+                                    WageCalcTemp."Hour Pool" += AbsenceCT.Quantity;
+                                    WageCalcTemp.MODIFY;
+                                UNTIL COACT.NEXT = 0;
+
+                        END;
                     UNTIL EmplDefDim.NEXT = 0;
 
             UNTIL Employee.NEXT = 0
@@ -627,7 +737,6 @@ codeunit 50001 "Wage Precalculation"
 
     procedure CalcMeal()
     begin
-
         IF WageHeader.Meal THEN BEGIN
             MealHeader.SETFILTER("Month Of Wage", '%1', WageHeader."Month Of Wage");
             MealHeader.SETFILTER("Year Of Wage", '%1', WageHeader."Year Of Wage");
@@ -646,7 +755,6 @@ codeunit 50001 "Wage Precalculation"
                 MealHeader."Date Of Calculation" := WageHeader."Date Of Calculation";
                 MealHeader.MODIFY;
             END;
-
             AbsenceFill.CalcMeal(MealHeader);
         END;
     end;
@@ -760,7 +868,6 @@ codeunit 50001 "Wage Precalculation"
 
         WageCalcA.AdditionsCalculation(Rec."Month Of Wage", Rec."Year Of Wage", Rec."No.", Rec."Date Of Calculation");
 
-
         /*
         IF WageHeader."Wage Calculation Type" = WageHeader."Wage Calculation Type"::Normal THEN
          CalculateNetto;
@@ -769,6 +876,18 @@ codeunit 50001 "Wage Precalculation"
          CalculateAdditionNetto;
         */
 
+    end;
+
+    procedure CalcSD()
+    begin
+
+        AbsenceFill.CalcStimulationDestimulation(WageHeader);
+    end;
+
+    procedure CalcIB()
+    begin
+
+        AbsenceFill.CalcIncentiveBonus(WageHeader);
     end;
 }
 

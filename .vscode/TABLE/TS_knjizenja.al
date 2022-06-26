@@ -1,6 +1,9 @@
 table 50173 TS_knjizenja
 {
     Caption = 'TS_knjizenja';
+    DrillDownPageId = "TS_knjizenja_Wage";
+    LookupPageId = "TS_knjizenja_Wage";
+
 
     fields
     {
@@ -16,6 +19,18 @@ table 50173 TS_knjizenja
         field(3; D_C; Code[1])
         {
             Caption = 'D ili C';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                if ((Rec.D_C <> 'D') and (Rec.D_C <> 'C')) then begin
+                    if Rec.D_C <> '' then begin
+                        Message('Vrijednost mora biti duguje ili potražuje. Molimo Vas da unesete ili oznaku D koja označava duguje ili oznaku C koja označava potražuje!');
+                        Rec.D_C := '';
+                    end;
+                end
+
+            end;
         }
         field(4; opis; Text[100])
         {
@@ -66,13 +81,17 @@ table 50173 TS_knjizenja
 
     keys
     {
-        key(Key1; idd)
+        key(Key1; idd, vrnaloga)
         {
         }
     }
 
     fieldgroups
     {
+        fieldgroup(DropDown; vrnaloga, opis)
+        {
+        }
     }
+
 }
 

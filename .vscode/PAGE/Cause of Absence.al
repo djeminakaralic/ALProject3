@@ -2,11 +2,20 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
 {
     layout
     {
+
+        addbefore(Code)
+        {
+            field("Short Code"; "Short Code")
+            {
+
+            }
+        }
         // Add changes to page layout here
         addafter("Unit of Measure Code")
         {
             field("No Report"; "No Report")
             {
+                Visible = false;
 
             }
             field(Coefficient; Coefficient)
@@ -14,14 +23,6 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
 
             }
             field("Calculated Sick Leave"; "Calculated Sick Leave")
-            {
-
-            }
-            field("Work Experience Basis"; "Work Experience Basis")
-            {
-
-            }
-            field("Added To Hour Pool"; "Added To Hour Pool")
             {
 
             }
@@ -34,26 +35,44 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             {
 
             }
+            field("Work Experience Basis"; "Work Experience Basis")
+            {
+                Visible = false;
+
+            }
+            field("Added To Hour Pool"; "Added To Hour Pool")
+            {
+
+            }
+
             field(Vacation; Vacation)
             {
 
             }
+            field(Holiday; Holiday)
+            { }
+
             field("Bussiness trip"; "Bussiness trip")
             {
+                Visible = false;
 
             }
             field("Insurance Basis"; "Insurance Basis")
             {
+                Visible = false;
 
             }
             field("Work Abroad"; "Work Abroad")
             {
 
+                Visible = false;
             }
             field("Calculation Type"; "Calculation Type")
             {
 
             }
+            field("Payment Type"; "Payment Type")
+            { }
             field("Meal Calculated"; "Meal Calculated")
             {
 
@@ -62,16 +81,32 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             {
 
             }
-            field("Short Code"; "Short Code")
-            {
 
-            }
             field("Description 2"; "Description 2")
             {
+                Visible = false;
 
             }
-            field(Holiday; Holiday)
-            { }
+
+            field("Posting Group"; "Posting Group")
+            {
+                ApplicationArea = all;
+
+            }
+            field("G/L Account No."; "G/L Account No.")
+            {
+                ApplicationArea = all;
+
+
+            }
+            field("G/L Balance Account No."; "G/L Balance Account No.")
+            {
+                ApplicationArea = all;
+            }
+        }
+        modify("Total Absence (Base)")
+        {
+            Visible = false;
         }
     }
 

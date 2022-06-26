@@ -64,6 +64,7 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         field(50014; "Description 2"; Text[50])
         {
             Caption = 'Description 2';
+
         }
         field(50015; Holiday; Boolean)
         {
@@ -76,6 +77,7 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         field(50023; "Posting Group"; Code[20])
         {
             Caption = 'Posting Group';
+            TableRelation = TS_knjizenja.vrnaloga;
         }
         field(50016; "Bussiness trip"; Boolean)
         {
@@ -109,6 +111,11 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         }
         field(50022; "Unpaid days"; Boolean)
         {
+        }
+        field(50024; "Payment Type"; Option)
+        {
+            OptionCaption = ',Regular Work,Additional,Work Performance,Other Additional';
+            OptionMembers = "<","Regular Work","Additional>","Work Performance","Other Additional";
         }
     }
 

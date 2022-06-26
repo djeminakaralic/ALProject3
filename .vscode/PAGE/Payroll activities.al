@@ -12,34 +12,44 @@ page 50092 "Payroll Activities"
             field(WORKDATE; WORKDATE)
             {
                 Caption = 'WorkDate';
+                ApplicationArea = all;
             }
             cuegroup(Information)
             {
-
                 Caption = 'Information';
                 field("For Calculation"; "For Calculation")
                 {
+                    ApplicationArea = all;
 
                 }
+                field(Calculated; Calculated)
+                {
 
+                    ApplicationArea = all;
+                }
                 field("New Employees FC"; "New Employees FC")
                 {
                     Image = Checklist;
                     Importance = Additional;
+                    ApplicationArea = all;
                 }
-                /*  field("Terminated Employees"; "Terminated Employees")
-                  {
-                      Image = Checklist;
-                      Importance = Additional;
-                  }*/
+                field("Terminated Employees"; "Terminated Employees")
+                {
+                    Image = Checklist;
+                    Importance = Additional;
+                    ApplicationArea = all;
+                }
                 field("Wage Change"; "Wage Change")
                 {
+                    ApplicationArea = all;
                 }
                 field("For Calculation Witout Meal"; "For Calculation Witout Meal")
                 {
+                    ApplicationArea = all;
                 }
                 field("Negative Payment"; "Negative Payment")
                 {
+                    ApplicationArea = all;
                     Style = Unfavorable;
                     StyleExpr = TRUE;
 
@@ -49,15 +59,59 @@ page 50092 "Payroll Activities"
                         PAGE.RUNMODAL(50018, WageCalc);
                     end;
                 }
+                field(Additions; Additions)
+                {
+                    ApplicationArea = all;
 
-
-
+                }
+                field(Transfers; Transfers)
+                {
+                    ApplicationArea = all;
+                    Image = Checklist;
+                    Importance = Promoted;
+                    Style = Attention;
+                    StyleExpr = TRUE;
+                }
             }
-            cuegroup(" ")
+            cuegroup("Changes")
             {
-                Caption = ' ';
-
-
+                Caption = 'Changes';
+                field("Surname Change"; "Surname Change")
+                {
+                    ApplicationArea = all;
+                    Image = Checklist;
+                    Importance = Additional;
+                    Style = Strong;
+                    StyleExpr = TRUE;
+                }
+                field("Adress Change"; "Adress Change")
+                {
+                    ApplicationArea = all;
+                    Image = Checklist;
+                    Importance = Promoted;
+                    Style = Strong;
+                    StyleExpr = TRUE;
+                }
+                field("Internal Fund"; "Internal Fund")
+                {
+                    ApplicationArea = all;
+                }
+                field("External Fund"; "External Fund")
+                {
+                    ApplicationArea = all;
+                }
+                field("Union Employees"; "Union Employees")
+                {
+                    ApplicationArea = all;
+                }
+                field("Education Level Change"; "Education Level Change")
+                {
+                    ApplicationArea = all;
+                    Image = Library;
+                    Importance = Promoted;
+                    Style = AttentionAccent;
+                    StyleExpr = TRUE;
+                }
 
             }
             cuegroup(Contracts)
@@ -65,20 +119,31 @@ page 50092 "Payroll Activities"
                 Caption = 'Contracts';
                 field("Regular Contracts"; "Regular Contracts")
                 {
+                    ApplicationArea = all;
                 }
-
+                field("Temporary Service Contracts"; "Temporary Service Contracts")
+                {
+                    ApplicationArea = all;
+                }
+                field("Author Contracts"; "Author Contracts")
+                {
+                    ApplicationArea = all;
+                }
             }
             cuegroup("Wage history")
             {
                 Caption = 'Wage history';
                 field("Opened calculations"; "Opened calculations")
                 {
+
+                    ApplicationArea = all;
                     Image = Cash;
                     Style = Favorable;
                     StyleExpr = TRUE;
                 }
                 field("Closed calculations"; "Closed calculations")
                 {
+                    ApplicationArea = all;
                 }
 
             }

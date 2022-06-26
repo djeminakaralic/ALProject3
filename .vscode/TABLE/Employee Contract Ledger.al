@@ -4219,7 +4219,7 @@ table 50071 "Employee Contract Ledger"
                                 "Position Responsibility" := PosMenuFind."Position Responsibility";
                                 "Position complexity" := PosMenuFind."Position complexity";
                                 Wagesetup.Get();
-                                Validate(Brutto, Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage");
+                                Validate(Brutto, ROUND(Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage", 0.01, '>'));
                                 "Workplace conditions" := PosMenuFind."Workplace conditions";
                             END;
 

@@ -7,6 +7,16 @@ codeunit 50304 "Absence Fill"
 
     var
         Calendar: Record "Base Calendar";
+        WA: Record "Wage Addition";
+        WA2: Record "Wage Addition";
+        IB: Record "Wage Addition IB";
+        WAIB: Record "Wage Addition";
+        WAIB2: Record "Wage Addition";
+
+        WAP: Record "Wage Addition SD";
+        WASD: Record "Wage Addition";
+        WASD2: Record "Wage Addition";
+        StartDateWA: Date;
         VaactionG: record "Vacation Grounds";
         CalendarChange: Record "Base Calendar Change";
         Datum: Record "Date";
@@ -158,42 +168,88 @@ codeunit 50304 "Absence Fill"
         IF Employee.FINDFIRST THEN
             REPEAT
 
-                CurrRecNo += 1;
-                Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
-                wb.SETFILTER("Employee No.", '%1', Employee."No.");
-                wb.SETFILTER("Current Company", '%1', TRUE);
-                IF Employee."Returned to Company" THEN BEGIN
-                    IF wb.FIND('-') THEN BEGIN
-                        IF (((wb."Ending Date" > StartDate))) then begin //ĐKOR ((wb."Ending Date">010115D) AND (wb."Ending Date"<311215D)))) THEN BEGIN
-                            IF (wb."Starting Date" >= StartDate) THEN
-                                FromDateFilter := wb."Starting Date"
-                            ELSE
-                                FromDateFilter := StartDate;
-                        END;
-                        //  MESSAGE(Employee."No.");
-                        //MESSAGE(FORMAT(FromDateFilter));
-                    END
+                /*Obrada korekcija u RAIF_u
+                     CurrRecNo += 1;
+                     Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
+                     wb.SETFILTER("Employee No.", '%1', Employee."No.");
+                     wb.SETFILTER("Current Company", '%1', TRUE);
+                     IF Employee."Returned to Company" THEN BEGIN
+                         IF wb.FIND('-') THEN BEGIN
+                             IF (((wb."Ending Date" > StartDate))) then begin //ĐKOR ((wb."Ending Date">010115D) AND (wb."Ending Date"<311215D)))) THEN BEGIN
+                                 IF (wb."Starting Date" >= StartDate) THEN
+                                     FromDateFilter := wb."Starting Date"
+                                 ELSE
+                                     FromDateFilter := StartDate;
+                             END;
+                             //  MESSAGE(Employee."No.");
+                             //MESSAGE(FORMAT(FromDateFilter));
+                         END
 
-                END;
+                     END;
 
-                IF NOT Employee."Returned to Company" THEN BEGIN
-                    IF wb.FIND('+') THEN BEGIN
-                        IF (wb."Starting Date" >= StartDate) THEN
-                            FromDateFilter := wb."Starting Date"
-                        ELSE
-                            FromDateFilter := StartDate;
-                    END;
-                END;
-                wb2.SETFILTER("Employee No.", '%1', Employee."No.");
-                wb2.SETFILTER("Current Company", '%1', TRUE);
-                IF wb2.FIND('+') THEN BEGIN
-                    IF (wb2."Ending Date" <= EndDate) THEN
-                        ToDateFilter := wb2."Ending Date"
-                    ELSE
-                        ToDateFilter := EndDate;
-                END;
+                     IF NOT Employee."Returned to Company" THEN BEGIN
+                         IF wb.FIND('+') THEN BEGIN
+                             IF (wb."Starting Date" >= StartDate) THEN
+                                 FromDateFilter := wb."Starting Date"
+                             ELSE
+                                 FromDateFilter := StartDate;
+                         END;
+                     END;
+                     wb2.SETFILTER("Employee No.", '%1', Employee."No.");
+                     wb2.SETFILTER("Current Company", '%1', TRUE);
+                     IF wb2.FIND('+') THEN BEGIN
+                         IF (wb2."Ending Date" <= EndDate) THEN
+                             ToDateFilter := wb2."Ending Date"
+                         ELSE
+                             ToDateFilter := EndDate;
+                     END;
 
 
+
+                     AbsenceTemp.RESET;
+                     AbsenceTemp.SETRANGE("From Date", FromDateFilter, ToDateFilter);
+                     IF AbsenceTemp.FINDFIRST THEN
+                         REPEAT
+                             AbsenceEmp.RESET;
+                             AbsenceEmp.SETFILTER("Employee No.", Employee."No.");
+                             AbsenceEmp.SETRANGE("From Date", AbsenceTemp."From Date");
+                             InsertDay := TRUE;
+                             IF AbsenceEmp.FINDFIRST THEN
+                                 REPEAT
+                                     Cause.GET(AbsenceEmp."Cause of Absence Code");
+                                     InsertDay := InsertDay AND Cause."Added To Hour Pool"; //boolean +
+                                 UNTIL AbsenceEmp.NEXT = 0;
+                             IF InsertDay THEN BEGIN
+                                 AbsenceEmp.TRANSFERFIELDS(AbsenceTemp);
+                                 AbsenceEmp."Entry No." := LastEntry;
+                                 AbsenceEmp."Employee No." := Employee."No.";
+
+                                 AbsenceEmp."Statistics Group Code" := Employee."Statistics Group Code";
+
+                                 IF HoursInDay <> 0 THEN
+                                     AbsenceEmp.Quantity := HoursInDay;
+
+                                 AbsenceEmp.INSERT;
+                                 LastEntry := LastEntry + 1;
+                             END;
+                         UNTIL AbsenceTemp.NEXT = 0;
+                 UNTIL Employee.NEXT = 0
+             ELSE BEGIN
+                 Window.CLOSE;
+                 MESSAGE(Txt002);
+                 EXIT;
+             END;
+
+             Window.CLOSE;
+         end;*/
+                IF (Employee."Employment Date" <= EndDate) AND (Employee."Employment Date" >= StartDate) THEN
+                    FromDateFilter := Employee."Employment Date"
+                ELSE
+                    FromDateFilter := StartDate;
+                IF (Employee."Termination Date" <= EndDate) AND (Employee."Termination Date" >= StartDate) THEN
+                    ToDateFilter := Employee."Termination Date"
+                ELSE
+                    ToDateFilter := EndDate;
 
                 AbsenceTemp.RESET;
                 AbsenceTemp.SETRANGE("From Date", FromDateFilter, ToDateFilter);
@@ -530,6 +586,100 @@ codeunit 50304 "Absence Fill"
         END;
     end;
 
+    procedure CalcIncentiveBonus(WageHeaderIB: Record "Wage Header")
+    var
+        Employee: Record "Employee";
+        MealLineTemp: Record "Meal Line Temp";
+        MealLine: Record "Meal Line";
+        Absences: Record "Employee Absence";
+        COA: Record "Cause of Absence";
+        MealNo: Code[20];
+        MealAmount: Decimal;
+        MealBasis: Decimal;
+        MealHalfDayBasis: Decimal;
+        WorkDays: array[31] of Boolean;
+        WorkDaysNo: Integer;
+        WorkDaysHalfDayNo: Integer;
+        ReductionAmount: Decimal;
+        Reduction: Record "Reduction";
+        WageHeader: Record "Wage Header";
+        RestDiff: Decimal;
+        NoSeriesMgt: Codeunit NoSeriesExtented;
+        MealCoeff: Decimal;
+        CTHours: Integer;
+    begin
+
+        IB.SETFILTER("Month of Wage", '%1', WageHeaderIB."Month Of Wage");
+        IB.SETFILTER("Year of Wage", '%1', WageHeaderIB."Year Of Wage");
+        IF IB.FIND('-') THEN
+            REPEAT
+                WAIB.INIT;
+                WAIB2.SETFILTER("Entry No.", '<>%1', 0);
+                IF WAIB2.FINDLAST THEN
+                    WAIB."Entry No." := WAIB2."Entry No." + 1
+                ELSE
+                    WAIB."Entry No." := 1;
+                WAIB.VALIDATE("Employee No.", IB."Employee No.");
+                WAIB.VALIDATE("Wage Addition Type", IB."Wage Addition Type");
+                /* IF IB."Calculate By Days" THEN BEGIN
+                   //Nonworking := CalendarMgmt.CheckDateStatus(CurrentCalendarCode,"Period Start",Description);
+                   END;*/
+                WAIB.VALIDATE(Amount, IB.Amount);
+                WAIB."Month of Wage" := WageHeaderIB."Month Of Wage";
+                WAIB."Year of Wage" := WageHeaderIB."Year Of Wage";
+                WAIB."System Entry" := TRUE;
+                WAIB.INSERT;
+
+            UNTIL IB.NEXT = 0;
+
+    end;
+
+
+    procedure CalcStimulationDestimulation(WageHeaderSD: Record "Wage Header")
+    var
+        Employee: Record "Employee";
+        MealLineTemp: Record "Meal Line Temp";
+        MealLine: Record "Meal Line";
+        Absences: Record "Employee Absence";
+        COA: Record "Cause of Absence";
+        MealNo: Code[20];
+        MealAmount: Decimal;
+        MealBasis: Decimal;
+        MealHalfDayBasis: Decimal;
+        WorkDays: array[31] of Boolean;
+        WorkDaysNo: Integer;
+        WorkDaysHalfDayNo: Integer;
+        ReductionAmount: Decimal;
+        Reduction: Record "Reduction";
+        WageHeader: Record "Wage Header";
+        RestDiff: Decimal;
+        NoSeriesMgt: Codeunit NoSeriesExtented;
+        MealCoeff: Decimal;
+        CTHours: Integer;
+    begin
+        StartDateWA := GetMonthRange(WageHeaderSD."Month Of Wage", WageHeaderSD."Year Of Wage", TRUE);
+        WAP.SETFILTER("From Date", '<=%1', StartDateWA);
+        WAP.SETFILTER("To Date", '%1|>=%2', 0D, StartDateWA);
+        IF WAP.FIND('-') THEN
+            REPEAT
+                WASD.INIT;
+                WASD2.SETFILTER("Entry No.", '<>%1', 0);
+                IF WASD2.FINDLAST THEN
+                    WASD."Entry No." := WASD2."Entry No." + 1
+                ELSE
+                    WASD."Entry No." := 1;
+                WASD.VALIDATE("Employee No.", WAP."Employee No.");
+                WASD.VALIDATE("Wage Addition Type", WAP."Wage Addition Type");
+                WASD.VALIDATE(Amount, WAP.Amount);
+                WASD."Month of Wage" := WageHeaderSD."Month Of Wage";
+                WASD."Year of Wage" := WageHeaderSD."Year Of Wage";
+                WASD."System Entry" := TRUE;
+                WASD.INSERT;
+
+            UNTIL WAP.NEXT = 0;
+    end;
+
+
     procedure CheckPeriod(Absence: Record "Employee Absence")
     var
         TargetDate: Date;
@@ -695,8 +845,8 @@ codeunit 50304 "Absence Fill"
                                     ELSE
                                         ERROR(Txt006);
                                 UNTIL Employee.NEXT = 0
-                            ELSE
-                                MESSAGE(Txt002);
+                            // ELSE
+                            //   MESSAGE(Txt002);
                         END
                         ELSE BEGIN
                             TransLineTemp.DELETEALL;
@@ -733,6 +883,8 @@ codeunit 50304 "Absence Fill"
         RestDiff: Decimal;
         NoSeriesMgt: Codeunit NoSeriesManagement;
         MealCoeff: Decimal;
+        CTHours: Integer;
+
     begin
 
         IF (MealHeader."No." <> '')
@@ -754,13 +906,17 @@ codeunit 50304 "Absence Fill"
                                 MealNo := INCSTR(ML."Line No.")
                             ELSE
                                 MealNo := '0000000000';
+                            CTHours := 0;
                             IF Employee.FINDFIRST THEN
                                 REPEAT
                                     WageType.GET(Employee."Wage Type");
                                     MealCoeff := Employee."Hours In Day" / 8;
-
-                                    MealBasis := WageSetup.Meal * MealCoeff;
-                                    Message(Format(MealBasis));
+                                    IF ((Employee."Contribution Category Code" = 'FBIH') OR (Employee."Contribution Category Code" = 'FBIHRS') OR (Employee."Contribution Category Code" = 'BD')) THEN
+                                        MealBasis := WageSetup.Meal * MealCoeff;
+                                    IF ((Employee."Contribution Category Code" = 'RS')) THEN
+                                        MealBasis := WageSetup."Meal Total RS" * MealCoeff;
+                                    IF ((Employee."Contribution Category Code" = 'BDPIOFBIH') OR (Employee."Contribution Category Code" = 'BDPIORS')) THEN
+                                        MealBasis := WageSetup."Meal Nontaxable BD" * MealCoeff;
                                     MealHalfDayBasis := WageSetup."Meal - Half Day" * MealCoeff;
                                     Absences.RESET;
                                     Absences.SETCURRENTKEY("Employee No.", "Cause of Absence Code", "From Date", "To Date");
@@ -775,10 +931,14 @@ codeunit 50304 "Absence Fill"
                                     COA.SETRANGE("Meal Calculated", TRUE);
                                     IF COA.FINDFIRST THEN
                                         REPEAT
-                                            Absences.SETFILTER("Cause of Absence Code", '%1', COA."Code");
-                                            Absences.SETFILTER(Quantity, '>0');
+                                            Absences.SETFILTER("Cause of Absence Code", '%1', COA.Code);
+                                            IF COA."Short Code" = '202' THEN
+                                                Absences.SETFILTER(Quantity, '>=5')
+                                            ELSE
+                                                Absences.SETFILTER(Quantity, '>0');
                                             IF Absences.FINDFIRST THEN
                                                 REPEAT
+
                                                     IF NOT WorkDays[DATE2DMY(Absences."From Date", 1)] THEN BEGIN
                                                         WorkDays[DATE2DMY(Absences."From Date", 1)] := TRUE;
                                                         WorkDaysNo += 1;
@@ -803,36 +963,53 @@ codeunit 50304 "Absence Fill"
                                                 UNTIL Absences.NEXT = 0;
                                         UNTIL COA.NEXT = 0;
 
-                                    /*IF WorkDaysNo<>0 THEN BEGIN
-                                         MealBasis:=270/WorkDaysNo*MealCoeff;;
-                                         MealHalfDayBasis:=135/ WorkDaysNo;
-                                         END;
-                                         //NK
-                                    MealAmount := ROUND(MealBasis*WorkDaysNo + MealHalfDayBasis*WorkDaysHalfDayNo,0.01,'=');   */
-                                    Message(Format(WorkDaysNo));
-                                    MealAmount := MealBasis * WorkDaysNo + MealHalfDayBasis * WorkDaysHalfDayNo;
-                                    IF MealAmount <> 0 THEN BEGIN
+                                    CTHours := 0;
+                                    COA.RESET;
+                                    COA.SETRANGE("Added To Hour Pool", FALSE);
+                                    COA.SETRANGE("Meal Calculated", TRUE);
+                                    IF COA.FINDFIRST THEN
+                                        REPEAT
+                                            Absences.SETFILTER("Cause of Absence Code", '%1', COA.Code);
+                                            Absences.SETFILTER(Quantity, '>0');
+                                            IF Absences.FINDFIRST THEN
+                                                REPEAT
+                                                    CTHours += Absences.Quantity;
+
+                                                UNTIL Absences.NEXT = 0;
+                                        UNTIL COA.NEXT = 0;
+                                    Employee.CALCFIELDS("Department code");
+                                    IF NOT Employee."Contact Center" THEN
+                                        MealAmount := MealBasis * WorkDaysNo + MealHalfDayBasis * WorkDaysHalfDayNo
+                                    ELSE
+                                        MealAmount := (MealBasis / 8) * (CTHours);
+
+                                    IF ((MealAmount <> 0) AND ((CTHours <> 0) OR (WorkDaysNo <> 0))) THEN BEGIN
                                         MealLineTemp.INIT;
                                         MealNo := INCSTR(MealNo);
                                         MealLineTemp."Document No." := MealHeader."No.";
                                         MealLineTemp."Line No." := MealNo;
                                         MealLineTemp."Employee No." := Employee."No.";
-                                        MealLineTemp.Workdays := WorkDaysNo;
+                                        IF (NOT (Employee."Contact Center") OR (Employee."Hours In Day" < 8)) THEN
+                                            MealLineTemp.Workdays := WorkDaysNo
+                                        ELSE
+                                            MealLineTemp.Workdays := CTHours;
                                         MealLineTemp."Basis For Meal" := MealBasis;
                                         MealLineTemp.Amount := MealAmount;
                                         //WG01
-                                        IF ((Employee."Contribution Category Code" = 'BDPIOFBIH') OR (Employee."Contribution Category Code" = 'BDPIORS')) THEN BEGIN
+                                        IF ((Employee."Contribution Category Code" = 'RS')) THEN BEGIN
+
+                                            //BD=!  IF( (Employee."Contribution Category Code"='BDPIOFBIH') OR (Employee."Contribution Category Code"='BDPIORS') OR (Employee."Contribution Category Code"='RS')) THEN BEGIN
                                             ConCat.SETFILTER(Code, '%1', Employee."Contribution Category Code");
                                             IF ConCat.FINDFIRST THEN BEGIN
                                                 ConCat.CALCFIELDS("From Brutto");
                                                 ConCat.CALCFIELDS("From Brutto(RS)");
-                                                IF (Employee."Contribution Category Code" = 'BDPIORS') THEN BEGIN
+                                                IF ((Employee."Contribution Category Code" = 'RS')) THEN BEGIN
 
-                                                    MealLineTemp."Brutto Amount" := (MealLineTemp.Amount) / ((1 - ConCat."From Brutto" / 100) * 0.9);
+                                                    MealLineTemp."Brutto Amount" := (MealLineTemp.Amount) / ((1 - ConCat."From Brutto" / 100));
                                                     MealLineTemp."Netto Before Tax" := (MealLineTemp."Brutto Amount") - (MealLineTemp."Brutto Amount" * (ConCat."From Brutto" / 100));
                                                 END
                                                 ELSE BEGIN
-                                                    MealLineTemp."Brutto Amount" := (MealLineTemp.Amount) / ((1 - ConCat."From Brutto" / 100) * 0.9);
+                                                    MealLineTemp."Brutto Amount" := (MealLineTemp.Amount) / ((1 - ConCat."From Brutto" / 100));
                                                     MealLineTemp."Netto Before Tax" := (MealLineTemp."Brutto Amount") - (MealLineTemp."Brutto Amount" * (ConCat."From Brutto" / 100));
                                                 END;
                                             END;
@@ -840,6 +1017,48 @@ codeunit 50304 "Absence Fill"
                                         //WG01
 
                                         MealLineTemp.INSERT;
+                                        IF ((Employee."Contribution Category Code" = 'FBIH') OR (Employee."Contribution Category Code" = 'FBIHRS') OR (Employee."Contribution Category Code" = 'BDPIOFBIH')
+                                         OR (Employee."Contribution Category Code" = 'BDPIORS')) THEN BEGIN
+                                            WA.INIT;
+                                            WA2.SETFILTER("Entry No.", '<>%1', 0);
+                                            IF WA2.FINDLAST THEN
+                                                WA."Entry No." := WA2."Entry No." + 1
+                                            ELSE
+                                                WA."Entry No." := 1;
+                                            WageSetup.Get();
+                                            WA.VALIDATE("Employee No.", MealLineTemp."Employee No.");
+                                            IF ((Employee."Contribution Category Code" = 'FBIH') OR (Employee."Contribution Category Code" = 'FBIHRS')) THEN BEGIN
+                                                WA.VALIDATE("Wage Addition Type", WageSetup."Meal Code FBiH Taxable");
+                                                WA.Description := WA.Description;
+                                                WageSetup.GET;
+                                                IF ((Employee."Hours In Day" <> 8)) THEN
+                                                    WA.VALIDATE(Amount, (WageSetup."Meal Taxable FBiH Untaxable" * Employee."Hours In Day" / 8) * MealLineTemp.Workdays)
+                                                ELSE
+                                                    WA.VALIDATE(Amount, WageSetup."Meal Taxable FBiH Untaxable" * MealLineTemp.Workdays);
+                                                IF (Employee."Contact Center") THEN
+                                                    WA.VALIDATE(Amount, (WageSetup."Meal Taxable FBiH Untaxable" / 8) * MealLineTemp.Workdays);
+                                            END
+                                            ELSE BEGIN
+                                                WA.VALIDATE("Wage Addition Type", '824');
+                                                WA.Description := 'TOPLI OBROK BD OPOREZIVI';
+                                                WageSetup.GET;
+                                                IF ((Employee."Hours In Day" <> 8)) THEN
+                                                    WA.VALIDATE(Amount, (WageSetup."Meal Taxable BD" * Employee."Hours In Day" / 8) * MealLineTemp.Workdays)
+                                                ELSE
+                                                    WA.VALIDATE(Amount, WageSetup."Meal Taxable BD" * MealLineTemp.Workdays);
+                                                IF (Employee."Contact Center") THEN
+                                                    WA.VALIDATE(Amount, (WageSetup."Meal Taxable BD" / 8) * MealLineTemp.Workdays);
+
+
+                                            END;
+                                            // WA."Amount to Pay":=WageSetup."Meal Taxable FBiH Untaxable"*MealLineTemp.Workdays;
+                                            WA."Month of Wage" := MealHeader."Month Of Wage";
+                                            WA."Year of Wage" := MealHeader."Year Of Wage";
+                                            WA."System Entry" := TRUE;
+                                            WA.Meal := TRUE;
+                                            WA.INSERT;
+
+                                        END;
                                     END;
                                 UNTIL Employee.NEXT = 0;
                         END
@@ -856,7 +1075,6 @@ codeunit 50304 "Absence Fill"
         END
         ELSE
             MESSAGE(Txt009);
-
     end;
 
     procedure ValidateDate(StartDate: Date; EndDate: Date)

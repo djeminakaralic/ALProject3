@@ -48,8 +48,9 @@ table 50020 "Tax Per Employee"
         }
         field(32; Percentage; Decimal)
         {
-            CalcFormula = Lookup("Tax Class".Percentage WHERE(Code = FIELD("Tax Code")));
             FieldClass = FlowField;
+            CalcFormula = Lookup("Tax Class".Percentage WHERE(Code = FIELD("Tax Code")));
+
         }
         field(33; "Wage Calculation Entry No."; Code[20])
         {
@@ -57,9 +58,8 @@ table 50020 "Tax Per Employee"
         }
         field(34; D; Code[20])
         {
-            FieldClass = FlowField;
             CalcFormula = Lookup("Contribution Per Employee"."Global Dimension 1 Code" WHERE("Employee No." = FIELD("Employee No.")));
-
+            FieldClass = FlowField;
         }
         field(198; "Wage Calculation Type"; Option)
         {
@@ -71,15 +71,24 @@ table 50020 "Tax Per Employee"
         {
             Caption = 'Calculated';
         }
-        field(200; "Payment Date"; Date)
-        {
-            Caption = 'Payment Date';
-        }
         field(216; "JIB Contributes"; Text[30])
         {
             Caption = 'JIB Contributes';
         }
+        field(217; Paid; Boolean)
+        {
+            Caption = 'Paid';
+        }
         field(50371; "JIB Contributes DL"; Text[30])
+        {
+        }
+        field(503568; "Org Jed"; Code[10])
+        {
+        }
+        field(503569; GF; Code[10])
+        {
+        }
+        field(503570; "Payment date"; Date)
         {
         }
     }

@@ -69,6 +69,14 @@ table 50143 "Contribution Payments Setup"
         {
             Caption = 'Refer To Number';
         }
+        field(16; "Revenue Type TC"; Text[30])
+        {
+            Caption = 'Revenue Type';
+        }
+        field(17; "Budget organisation"; Text[1000])
+        {
+            Caption = 'Budžetska organizacija';
+        }
     }
 
     keys

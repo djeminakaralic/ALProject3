@@ -3,18 +3,19 @@ page 50032 "Wage Addition"
     Caption = 'Wage Addition';
     PageType = List;
     SourceTable = "Wage Addition";
-    UsageCategory = Administration;
-    ApplicationArea = All;
+    UsageCategory = Lists;
+    ApplicationArea = all;
 
     layout
     {
         area(content)
         {
-            repeater(Group2)
+            group("K")
             {
                 field("Wage Year"; YearFilter)
                 {
                     Caption = 'Wage Year';
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -32,6 +33,7 @@ page 50032 "Wage Addition"
                 }
                 field("Wage Month"; MonthFilter)
                 {
+                    ApplicationArea = all;
                     Caption = 'Wage Month';
 
                     trigger OnValidate()
@@ -52,56 +54,58 @@ page 50032 "Wage Addition"
             {
                 field("Employee No."; "Employee No.")
                 {
+                    ApplicationArea = all;
+                }
+                field("Internal ID"; "Internal ID")
+                {
+                    ApplicationArea = all;
                 }
                 field("First Name"; "First Name")
                 {
+                    ApplicationArea = all;
                     Editable = false;
                 }
                 field("Last Name"; "Last Name")
                 {
+                    ApplicationArea = all;
                     Editable = false;
                 }
                 field("Wage Addition Type"; "Wage Addition Type")
                 {
-                }
-                field(Use; Use)
-                {
+                    ApplicationArea = all;
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = all;
                 }
-                field("Amount to Pay"; "Amount to Pay")
+                field("No. Of Hours"; "No. Of Hours")
                 {
+                    ApplicationArea = all;
                 }
-                field(Taxable; Taxable)
+                field("No. Of Days"; "No. Of Days")
                 {
-                }
-                field("Add. Taxable"; "Add. Taxable")
-                {
+                    ApplicationArea = all;
                 }
                 field(Amount; Amount)
                 {
-                }
-                field("Calculated Amount"; "Calculated Amount")
-                {
+                    ApplicationArea = all;
                 }
                 field(Brutto; Brutto)
                 {
+                    ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Year of Wage"; "Year of Wage")
                 {
+                    ApplicationArea = all;
                 }
                 field("Month of Wage"; "Month of Wage")
                 {
+                    ApplicationArea = all;
                 }
-                field("Wage Header No."; "Wage Header No.")
+                field("Sent e-mail"; "Sent e-mail")
                 {
-                }
-                field("Wage Header Entry No."; "Wage Header Entry No.")
-                {
-                }
-                field(Locked; Locked)
-                {
+                    ApplicationArea = all;
                 }
             }
         }
@@ -109,6 +113,232 @@ page 50032 "Wage Addition"
 
     actions
     {
+        area(processing)
+        {
+            action("Insert Additional Wage")
+            {
+                Caption = 'Insert Additional Wage';
+                Image = RollUpCosts;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    WAM: Record "Wage Addition";
+                    WAM2: Record "Wage Addition";
+                    emp: Record "Employee";
+                    ConCat: Record "Contribution Category";
+                begin
+
+                    MAI.SETFILTER("Misc. Article Code", '%1', '1312');
+                    MAI.SETFILTER("To Date", '%1', 0D);
+                    IF MAI.FIND('-') THEN
+                        REPEAT
+
+                            WAM.INIT;
+                            IF WAM2.FINDLAST THEN
+                                WAM."Entry No." := WAM2."Entry No." + 1
+                            ELSE
+                                WAM."Entry No." := 0;
+                            WAM.VALIDATE("Employee No.", MAI."Employee No.");
+                            WageSetup.GET;
+                            WAM.VALIDATE("Wage Addition Type", WageSetup."Additional Wage Code");
+
+                            IF WAmount.GET(MAI."Employee No.") THEN BEGIN
+                                ConCat.SETFILTER(Code, '%1', WAM."Contribution Category Code");
+                                IF ConCat.FINDSET THEN BEGIN
+                                    ConCat.CALCFIELDS("From Brutto");
+                                    IF DATE2DMY(WORKDATE, 2) <= 6 THEN BEGIN
+                                        wc.RESET;
+                                        wc.SETFILTER("Month Of Wage", '%1..%2', 1, 6);
+                                        wc.SETFILTER("Year of Wage", '%1', DATE2DMY(WORKDATE, 3));
+                                        wc.SETFILTER("Employee No.", '%1', MAI."Employee No.");
+                                        IF wc.FINDFIRST THEN BEGIN
+                                            wc.CALCSUMS("Wage (Base)");
+                                            WAM.VALIDATE(Amount, (wc."Wage (Base)" / wc.COUNT) - ((wc."Wage (Base)" / wc.COUNT) * ConCat."From Brutto" / 100));
+
+                                        END;
+                                    END;
+                                    IF DATE2DMY(WORKDATE, 2) > 6 THEN BEGIN
+                                        wc.RESET;
+                                        wc.SETFILTER("Month Of Wage", '%1..%2', 1, 6);
+                                        wc.SETFILTER("Year of Wage", '%1', DATE2DMY(WORKDATE, 3));
+                                        wc.SETFILTER("Employee No.", '%1', MAI."Employee No.");
+                                        IF wc.FINDFIRST THEN BEGIN
+                                            wc.CALCSUMS("Wage (Base)");
+                                            WAM.VALIDATE(Amount, (wc."Wage (Base)" / wc.COUNT) - ((wc."Wage (Base)" / wc.COUNT) * ConCat."From Brutto" / 100));
+
+                                        END;
+                                    END;
+
+                                END;
+                            END;
+                            WAM.VALIDATE("Year of Wage", DATE2DMY(WORKDATE, 3));
+                            WAM.VALIDATE("Month of Wage", DATE2DMY(WORKDATE, 2));
+                            WAM.INSERT(TRUE);
+
+
+                        UNTIL MAI.NEXT = 0;
+
+                    MAI.RESET;
+                    WAM.RESET;
+                    WAM2.RESET;
+                    MAI.SETFILTER("Misc. Article Code", '%1', '1312');
+                    MAI.SETFILTER("To Date", '<=%1', AbsenceFill.GetMonthRange(DATE2DMY(WORKDATE, 2), DATE2DMY(WORKDATE, 3), FALSE));
+
+                    //StartDate := GetMonthRange(CurrentMonth, CurrentYear, TRUE);
+                    //EndDate := GetMonthRange(CurrentMonth, CurrentYear, FALSE);
+                    IF MAI.FIND('-') THEN
+                        REPEAT
+
+                            WAM.INIT;
+                            IF WAM2.FINDLAST THEN
+                                WAM."Entry No." := WAM2."Entry No." + 1
+                            ELSE
+                                WAM."Entry No." := 0;
+                            WAM.VALIDATE("Employee No.", MAI."Employee No.");
+                            WageSetup.GET;
+                            WAM.VALIDATE("Wage Addition Type", WageSetup."Additional Wage Code");
+
+                            IF WAmount.GET(MAI."Employee No.") THEN BEGIN
+                                ConCat.SETFILTER(Code, '%1', WAM."Contribution Category Code");
+                                IF ConCat.FINDSET THEN BEGIN
+                                    ConCat.CALCFIELDS("From Brutto");
+                                    IF DATE2DMY(WORKDATE, 2) <= 6 THEN BEGIN
+                                        wc.RESET;
+                                        wc.SETFILTER("Month Of Wage", '%1..%2', 1, 6);
+                                        wc.SETFILTER("Year of Wage", '%1', DATE2DMY(WORKDATE, 3));
+                                        wc.SETFILTER("Employee No.", '%1', MAI."Employee No.");
+                                        IF wc.FINDFIRST THEN BEGIN
+                                            wc.CALCSUMS("Wage (Base)");
+                                            WAM.VALIDATE(Amount, (wc."Wage (Base)" / wc.COUNT) - ((wc."Wage (Base)" / wc.COUNT) * ConCat."From Brutto" / 100));
+
+                                        END;
+                                    END;
+                                    IF DATE2DMY(WORKDATE, 2) > 6 THEN BEGIN
+                                        wc.RESET;
+                                        wc.SETFILTER("Month Of Wage", '%1..%2', 7, 12);
+                                        wc.SETFILTER("Year of Wage", '%1', DATE2DMY(WORKDATE, 3));
+                                        wc.SETFILTER("Employee No.", '%1', MAI."Employee No.");
+                                        IF wc.FINDFIRST THEN BEGIN
+                                            wc.CALCSUMS("Wage (Base)");
+                                            WAM.VALIDATE(Amount, (wc."Wage (Base)" / wc.COUNT) - ((wc."Wage (Base)" / wc.COUNT) * ConCat."From Brutto" / 100));
+
+                                        END;
+                                    END;
+                                END;
+                            END;
+                            WAM.VALIDATE("Year of Wage", DATE2DMY(WORKDATE, 3));
+                            WAM.VALIDATE("Month of Wage", DATE2DMY(WORKDATE, 2));
+                            WAM.INSERT(TRUE);
+
+
+                        UNTIL MAI.NEXT = 0;
+                end;
+            }
+            action("Insert Half Additional Wage")
+            {
+                Caption = 'Insert Additional Wage';
+                Image = SalesTax;
+                Promoted = true;
+                PromotedCategory = New;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    WAM: Record "Wage Addition";
+                    WAM2: Record "Wage Addition";
+                    emp: Record "Employee";
+                    ConCat: Record "Contribution Category";
+                begin
+
+                    MAI.SETFILTER("Misc. Article Code", '%1', '1312');
+                    MAI.SETFILTER("To Date", '%1', 0D);
+                    IF MAI.FIND('-') THEN
+                        REPEAT
+
+                            WAM.INIT;
+                            IF WAM2.FINDLAST THEN
+                                WAM."Entry No." := WAM2."Entry No." + 1
+                            ELSE
+                                WAM."Entry No." := 0;
+                            WAM.VALIDATE("Employee No.", MAI."Employee No.");
+                            WageSetup.GET;
+                            WAM.VALIDATE("Wage Addition Type", WageSetup."HAlf Additional Wage Code");
+
+                            IF WAmount.GET(MAI."Employee No.") THEN BEGIN
+                                ConCat.SETFILTER(Code, '%1', WAM."Contribution Category Code");
+                                IF ConCat.FINDSET THEN BEGIN
+                                    ConCat.CALCFIELDS("From Brutto");
+                                    IF DATE2DMY(WORKDATE, 2) <= 6 THEN BEGIN
+                                        wc.RESET;
+                                        wc.SETFILTER("Month Of Wage", '%1..%2', 1, 6);
+                                        wc.SETFILTER("Year of Wage", '%1', DATE2DMY(WORKDATE, 3));
+                                        wc.SETFILTER("Employee No.", '%1', MAI."Employee No.");
+                                        IF wc.FINDFIRST THEN BEGIN
+                                            wc.CALCSUMS("Wage (Base)");
+                                            WAM.VALIDATE(Amount, ((wc."Wage (Base)" / wc.COUNT) - ((wc."Wage (Base)" / wc.COUNT) * ConCat."From Brutto" / 100)) / 2);
+
+                                        END;
+                                    END;
+                                    IF DATE2DMY(WORKDATE, 2) > 6 THEN BEGIN
+                                        wc.RESET;
+                                        wc.SETFILTER("Month Of Wage", '%1..%2', 7, 12);
+                                        wc.SETFILTER("Year of Wage", '%1', DATE2DMY(WORKDATE, 3));
+                                        wc.SETFILTER("Employee No.", '%1', MAI."Employee No.");
+                                        IF wc.FINDFIRST THEN BEGIN
+                                            wc.CALCSUMS("Wage (Base)");
+                                            WAM.VALIDATE(Amount, ((wc."Wage (Base)" / wc.COUNT) - ((wc."Wage (Base)" / wc.COUNT) * ConCat."From Brutto" / 100)) / 2);
+
+                                        END;
+                                    END;
+                                END;
+                            END;
+
+                            WAM.VALIDATE("Year of Wage", DATE2DMY(WORKDATE, 3));
+                            WAM.VALIDATE("Month of Wage", DATE2DMY(WORKDATE, 2));
+                            WAM.INSERT(TRUE);
+
+
+                        UNTIL MAI.NEXT = 0;
+                    /*
+                    MAI.RESET;
+                    WAM.RESET;
+                    WAM2.RESET;
+                    MAI.SETFILTER("Misc. Article Code",'%1',1312);
+                    MAI.SETFILTER("To Date",'<%1',AbsenceFill.GetMonthRange(DATE2DMY(WORKDATE,2), DATE2DMY(WORKDATE,3), FALSE));
+                    
+                    //StartDate := GetMonthRange(CurrentMonth, CurrentYear, TRUE);
+                    //EndDate := GetMonthRange(CurrentMonth, CurrentYear, FALSE);
+                    IF MAI.FIND('-') THEN REPEAT
+                    
+                       WAM.INIT;
+                        IF WAM2.FINDLAST THEN
+                       WAM."Entry No.":=WAM2."Entry No."+1
+                        ELSE
+                          WAM."Entry No.":=0;
+                       WAM.VALIDATE("Employee No.",MAI."Employee No.");
+                       WageSetup.GET;
+                       WAM.VALIDATE("Wage Addition Type",WageSetup."Additional Wage Code");
+                    
+                       IF WAmount.GET(MAI."Employee No.") THEN BEGIN
+                            ConCat.SETFILTER(Code,'%1',WAM."Contribution Category Code");
+                          IF ConCat.FINDSET THEN
+                            BEGIN
+                                  ConCat.CALCFIELDS("From Brutto");
+                       WAM.VALIDATE(Amount,WAmount."Wage Amount"-(WAmount."Wage Amount"*ConCat."From Brutto"/100));
+                         END; END;
+                       WAM.VALIDATE("Year of Wage",DATE2DMY(WORKDATE,3));
+                       WAM.VALIDATE("Month of Wage",DATE2DMY(WORKDATE,2));
+                       WAM.INSERT(TRUE);
+                    
+                    
+                    UNTIL MAI.NEXT=0;*/
+
+                end;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()
@@ -137,16 +367,6 @@ page 50032 "Wage Addition"
 
     trigger OnOpenPage()
     begin
-
-        //INT1.0 start
-        UTemp.SETFILTER("User ID", '%1', USERID);
-        IF UTemp.FINDFIRST THEN
-            WageAllowed := UTemp."Wage Allowed";
-
-        IF WageAllowed = FALSE THEN
-            ERROR(error1);
-        //INT1.0 end
-
         MonthFilter := DATE2DMY(WORKDATE, 2);
         YearFilter := DATE2DMY(WORKDATE, 3);
         SETFILTER("Wage Header No.", '%1', '');
@@ -162,15 +382,16 @@ page 50032 "Wage Addition"
         MonthFilter: Integer;
         WageSetup: Record "Wage Setup";
         WH: Record "Wage Header";
-        //ĐK WagePrecalculation: Codeunit "50001";
-        //ĐK R_WorkExperience: Report "50041";
-        //ĐK R_BroughtExperience: Report "50042";
+        WagePrecalculation: Codeunit "Wage Precalculation";
+        R_WorkExperience: Report "Work experience in Company";
+        R_BroughtExperience: Report "Update Brought Experience";
         HasError: Boolean;
-        //ĐKCalcWage: Codeunit "50002";
+        CalcWage: Codeunit "Wage Calculation";
         WA: Record "Wage Addition";
-        UTemp: Record "User Setup";
-        WageAllowed: Boolean;
-        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+        MAI: Record "Misc. Article Information";
+        WAmount: Record "Wage Amounts";
+        AbsenceFill: Codeunit "Absence Fill";
+        wc: Record "Wage Calculation";
 
     procedure SetFilters()
     begin

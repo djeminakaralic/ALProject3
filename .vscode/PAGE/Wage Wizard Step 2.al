@@ -3,8 +3,6 @@ page 50021 "Wage Wizard Step 2"
     Caption = 'Wage Wizard  Step 2-Work Hours';
     PageType = Document;
     SourceTable = "Wage Header";
-    UsageCategory = Administration;
-    ApplicationArea = All;
 
     layout
     {
@@ -13,59 +11,66 @@ page 50021 "Wage Wizard Step 2"
             group(Basic)
             {
                 Caption = 'Basic';
-                group("Basic information")
+                field("No."; "No.")
                 {
 
-                    Caption = 'Basic Inf';
-
-                    field("No."; "No.")
-                    {
-                    }
-                    field("Year Of Wage"; "Year Of Wage")
-                    {
-                    }
-                    field("Month Of Wage"; "Month Of Wage")
-                    {
-                    }
-                    field("Entry No."; "Entry No.")
-                    {
-                    }
-                    field(Description; Description)
-                    {
-                    }
-                    field("Last Calculation In Month"; "Last Calculation In Month")
-                    {
-                    }
-                    field(Status; Status)
-                    {
-                    }
-                    field("Date Of Calculation"; "Date Of Calculation")
-                    {
-                    }
-                    field("Year of Calculation"; "Year of Calculation")
-                    {
-                    }
-                    field("Month of Calculation"; "Month of Calculation")
-                    {
-                    }
-                    field("Closing Date"; "Closing Date")
-                    {
-                    }
-                    field("User ID"; "User ID")
-                    {
-                    }
-                    field("Wage Calculation Type"; "Wage Calculation Type")
-                    {
-                    }
+                    ApplicationArea = all;
                 }
-                group("Wage Part")
+                field("Year Of Wage"; "Year Of Wage")
                 {
-                    part(Employees; "Wage Wizard Step 2 Subform Emp")
-                    {
-                    }
-                    part(Absences; "Wage Wizard Step 2 Subform Abs")
-                    {
-                    }
+                    ApplicationArea = all;
+                }
+                field("Month Of Wage"; "Month Of Wage")
+                {
+                    ApplicationArea = all;
+                }
+                field("Entry No."; "Entry No.")
+                {
+                    ApplicationArea = all;
+                }
+                field(Description; Description)
+                {
+                    ApplicationArea = all;
+                }
+                field("Last Calculation In Month"; "Last Calculation In Month")
+                {
+                    ApplicationArea = all;
+                }
+                field(Status; Status)
+                {
+                    ApplicationArea = all;
+                }
+                field("Date Of Calculation"; "Date Of Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Year of Calculation"; "Year of Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Month of Calculation"; "Month of Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Closing Date"; "Closing Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("User ID"; "User ID")
+                {
+                    ApplicationArea = all;
+                }
+                field("Wage Calculation Type"; "Wage Calculation Type")
+                {
+                    ApplicationArea = all;
+                }
+                part(Employees; "Wage Wizard Step 2 Subform Emp")
+                {
+                    ApplicationArea = all;
+                }
+                part(Absences; "Wage Wizard Step 2 Subform Abs")
+                {
+                    ApplicationArea = all;
                 }
             }
             group(Parameters)
@@ -73,15 +78,19 @@ page 50021 "Wage Wizard Step 2"
                 Caption = 'Parameters';
                 field("Hour Pool"; "Hour Pool")
                 {
+                    ApplicationArea = all;
                 }
                 field(Transportation; Transportation)
                 {
+                    ApplicationArea = all;
                 }
                 field(Reduction; Reduction)
                 {
+                    ApplicationArea = all;
                 }
                 field("Minimum Wage"; "Minimum Wage")
                 {
+                    ApplicationArea = all;
                 }
             }
             group(Totals)
@@ -89,36 +98,47 @@ page 50021 "Wage Wizard Step 2"
                 Caption = 'Totals';
                 field("Temp Brutto"; "Temp Brutto")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Net Wage"; "Temp Net Wage")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Final Net Wage"; "Temp Final Net Wage")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Add. Tax From Brutto"; "Temp Add. Tax From Brutto")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Add. Tax Over Brutto"; "Temp Add. Tax Over Brutto")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Tax"; "Temp Tax")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Added Tax Per City"; "Temp Added Tax Per City")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Wage Reduction"; "Temp Wage Reduction")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Transport"; "Temp Transport")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Sick Leave-Company"; "Temp Sick Leave-Company")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Sick Leave-Fund"; "Temp Sick Leave-Fund")
                 {
+                    ApplicationArea = all;
                 }
             }
         }
@@ -133,8 +153,7 @@ page 50021 "Wage Wizard Step 2"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
-                Caption = 'Next step';
-
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
@@ -168,6 +187,7 @@ page 50021 "Wage Wizard Step 2"
                 Image = Cancel;
                 Promoted = true;
                 PromotedIsBig = true;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
@@ -181,6 +201,7 @@ page 50021 "Wage Wizard Step 2"
                 Image = Employee;
                 Promoted = true;
                 PromotedIsBig = true;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
@@ -197,12 +218,13 @@ page 50021 "Wage Wizard Step 2"
                 Image = Absence;
                 Promoted = true;
                 PromotedIsBig = true;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
 
                     CurrPage.Employees.PAGE.GETRECORD(Employee);
-                    CurrPage.Absences.PAGE.FilterMe(Employee."No.", StartDate, EndDate);
+                    // CurrPage.Absences.PAGE.FilterMe(Employee."No.", StartDate, EndDate);
                 end;
             }
             action("Show This Round")
@@ -210,21 +232,23 @@ page 50021 "Wage Wizard Step 2"
                 Image = Route;
                 Promoted = true;
                 PromotedIsBig = true;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
-                    CurrPage.Employees.PAGE.FilterMeRound;
+                    //NKBC   CurrPage.Employees.PAGE.FilterMeRound;
                 end;
             }
             action("Show Selected")
             {
                 Image = SelectEntries;
                 Promoted = true;
+                ApplicationArea = all;
                 PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
-                    CurrPage.Employees.PAGE.FilterMe;
+                    //NKBC  CurrPage.Employees.PAGE.FilterMe;
                 end;
             }
             action(Previous)
@@ -232,7 +256,7 @@ page 50021 "Wage Wizard Step 2"
                 Image = PreviousSet;
                 Promoted = true;
                 PromotedIsBig = true;
-                Caption = 'Previous step';
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
@@ -265,6 +289,7 @@ page 50021 "Wage Wizard Step 2"
                 Image = UnitOfMeasure;
                 Promoted = true;
                 PromotedIsBig = true;
+                ApplicationArea = all;
             }
         }
     }
@@ -276,7 +301,7 @@ page 50021 "Wage Wizard Step 2"
             Rec.RESET;
             Rec.GET(RecKey, RecKey2);
         END;
-        OnAfterGetCurrRecord;
+        OnAfterGetCurrRecord2;
     end;
 
     trigger OnClosePage()
@@ -291,20 +316,11 @@ page 50021 "Wage Wizard Step 2"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        OnAfterGetCurrRecord;
+        OnAfterGetCurrRecord2;
     end;
 
     trigger OnOpenPage()
     begin
-
-        //INT1.0 start
-        UTemp.SETFILTER("User ID", '%1', USERID);
-        IF UTemp.FINDFIRST THEN
-            WageAllowed := UTemp."Wage Allowed";
-
-        IF WageAllowed = FALSE THEN
-            ERROR(error1);
-        //INT1.0 end
 
         FILTERGROUP(10);
         //Rec.SETRANGE("No.", Rec."No.");
@@ -340,7 +356,7 @@ page 50021 "Wage Wizard Step 2"
         ReductionTemp: Record "Reduction per Wage";
         Step1: Page "Wage Wizard Step 1";
         Step3: Page "Wage Wizard Step 3";
-        Step4: Page "Wage Wizard Step 4";
+        Step4: Page "Wage Wizard Step 4n";
         AbsenceFill: Codeunit "Absence Fill";
         StartDate: Date;
         EndDate: Date;
@@ -358,16 +374,13 @@ page 50021 "Wage Wizard Step 2"
         Txt007: Label 'Morate unijeti šifru ugovora za djelatnika %1';
         Txt008: Label 'Unazad godinu dana ne postoji radni mjesec za djelatnika %1';
         Err01: Label 'U kalendaru ne postoji %1';
-        UTemp: Record "User Setup";
-        WageAllowed: Boolean;
-        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 
-    procedure UpdateAbsences(var EmployeeRec: Record Employee)
+    procedure UpdateAbsences(var EmployeeRec: Record "Employee")
     begin
         AbsenceFill.FillAbsence(Rec."Month Of Wage", Rec."Year Of Wage", EmployeeRec);
     end;
 
-    procedure OnAfterGetCurrRecord()
+    procedure OnAfterGetCurrRecord2()
     begin
         //bt01
         xRec := Rec;
@@ -379,9 +392,9 @@ page 50021 "Wage Wizard Step 2"
     procedure EmployeesOnActivate()
     begin
 
-        CurrPage.Employees.PAGE.SetWCType(Rec."Wage Calculation Type");
-        CurrPage.Employees.PAGE.FilterMe;
-        CurrPage.Absences.PAGE.RefreshMe;
+        //NKBC CurrPage.Employees.PAGE.SetWCType(Rec."Wage Calculation Type");
+        //NKBC CurrPage.Employees.PAGE.FilterMe;
+        //NKBC CurrPage.Absences.PAGE.RefreshMe;
     end;
 }
 

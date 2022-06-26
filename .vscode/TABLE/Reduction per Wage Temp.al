@@ -54,16 +54,24 @@ table 50025 "Reduction per Wage Temp"
         field(47; "Year of Wage"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Wage Header"."Year Of Wage" WHERE("No." = FIELD("Wage Header No.")));
+            CalcFormula = Lookup("Wage Header"."Year Of Wage" WHERE("No." = FIELD("Wage Header No.")));
             Caption = 'Year of Wage';
 
         }
         field(48; "Month of Wage"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Wage Header"."Month Of Wage" WHERE("No." = FIELD("Wage Header No.")));
+            CalcFormula = Lookup("Wage Header"."Month Of Wage" WHERE("No." = FIELD("Wage Header No.")));
             Caption = 'Month of Wage';
 
+        }
+        field(49; "Reduction Name"; Text[50])
+        {
+            Caption = 'Reduction Name';
+        }
+        field(50; "Bank Account No."; Text[30])
+        {
+            Caption = 'Bank Account No.';
         }
     }
 

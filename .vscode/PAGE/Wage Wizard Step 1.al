@@ -16,20 +16,25 @@ page 50020 "Wage Wizard Step 1"
                 field("No."; "No.")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
                 field("Entry No."; "Entry No.")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
-                repeater(Group2)
+                group(Period)
                 {
                     //The GridLayout property is only supported on controls of type Grid
                     //GridLayout = Rows;
+
                     field("Month Of Wage"; "Month Of Wage")
                     {
                         BlankZero = true;
                         Style = Unfavorable;
                         StyleExpr = true;
+                        ApplicationArea = all;
+
 
                         trigger OnValidate()
                         begin
@@ -126,6 +131,8 @@ page 50020 "Wage Wizard Step 1"
                     {
                         Style = Unfavorable;
                         StyleExpr = TRUE;
+                        ApplicationArea = all;
+
 
                         trigger OnValidate()
                         begin
@@ -146,6 +153,7 @@ page 50020 "Wage Wizard Step 1"
                                 RecWageHeader4.MODIFY;
                                 CurrPage.UPDATE(FALSE);
                                 RecWageHeader4."Hour Pool" := AbsenceFill.GetHourPool(Rec."Month Of Wage", Rec."Year Of Wage", WageSetup."Hours in Day");
+                                RecWageHeader4.Description := HeaderDescription + ' ' + FORMAT("Month Of Wage") + '.' + FORMAT("Year Of Wage");
                                 RecWageHeader4.MODIFY;
                             END;
 
@@ -161,6 +169,7 @@ page 50020 "Wage Wizard Step 1"
                     Importance = Promoted;
                     Style = Attention;
                     StyleExpr = TRUE;
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -189,45 +198,57 @@ page 50020 "Wage Wizard Step 1"
                 field("Closing Date"; "Closing Date")
                 {
                     Visible = true;
+                    ApplicationArea = all;
                 }
-                field("Hour Pool"; "Hour Pool")
-                {
-                }
-                field("Average Yearly Hour Pool"; "Average Yearly Hour Pool")
-                {
-                    Editable = false;
-                }
+
+
                 field(Status; Status)
                 {
                     Editable = false;
                 }
+
                 field("Date Of Calculation"; "Date Of Calculation")
                 {
-                    Editable = true;
+                    ApplicationArea = all;
+                }
+                field(Description; Description)
+                {
+                    Editable = false;
+                    ApplicationArea = all;
+                }
+                field("Hour Pool"; "Hour Pool")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
+                }
+                field("Average Yearly Hour Pool"; "Average Yearly Hour Pool")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Year of Calculation"; "Year of Calculation")
                 {
                     Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Month of Calculation"; "Month of Calculation")
                 {
                     Editable = false;
+                    ApplicationArea = all;
                 }
             }
             group("Wage Setup")
             {
                 Caption = 'Wage Setup';
-                field(Description; Description)
-                {
-                    Editable = false;
-                }
                 field("General Coefficient"; "General Coefficient")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
                 field(Taxable; Taxable)
                 {
                     Editable = false;
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -238,6 +259,7 @@ page 50020 "Wage Wizard Step 1"
                 field(Reduction; Reduction)
                 {
                     Editable = false;
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -247,6 +269,7 @@ page 50020 "Wage Wizard Step 1"
                 field(Meal; Meal)
                 {
                     Editable = false;
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -257,6 +280,7 @@ page 50020 "Wage Wizard Step 1"
                 field(Transportation; Transportation)
                 {
                     Editable = false;
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -267,18 +291,22 @@ page 50020 "Wage Wizard Step 1"
                 field("Average Add Period Start"; "Average Add Period Start")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
                 field("Average Add Period End"; "Average Add Period End")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
                 field("Average Add Amount"; "Average Add Amount")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
                 field("Average Add Percentage"; "Average Add Percentage")
                 {
                     Visible = false;
+                    ApplicationArea = all;
                 }
                 field("Brutto Sum"; "Brutto Sum")
                 {
@@ -297,8 +325,7 @@ page 50020 "Wage Wizard Step 1"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
-                Caption = 'Next step';
-
+                ApplicationArea = all;
 
                 trigger OnAction()
                 var
@@ -308,14 +335,24 @@ page 50020 "Wage Wizard Step 1"
                     EndingDate: Date;
                     AbsFill: Codeunit "Absence Fill";
                     Datum: Record Date;
-
                 begin
                     IF Rec."Wage Calculation Type" = "Wage Calculation Type"::Normal THEN BEGIN
-                        //EC01
-                        //R_WorkExperience.SetEndingDate(Rec."Date Of Calculation");
-                        R_WorkExperience.RUN;
+                        Commit();
                         R_BroughtExperience.RUN;
+                        R_WorkExperience.SetEndingDate(Rec."Date Of Calculation");
+                        R_WorkExperience.RUN;
+                        Commit();
 
+                        //EC01
+                        /*R_BroughtExperience.RUN;
+                        R_WorkExperience.SetEndingDate(Rec."Date Of Calculation");
+                        R_WorkExperience.RUN;
+
+                        COMMIT;
+                        TCReport.SetParam("Month Of Wage","Year Of Wage");
+                        TCReport.RUN;
+                        COMMIT;*/
+                        //EC01e
                         StartingDate := AbsFill.GetMonthRange(Rec."Month Of Wage", Rec."Year Of Wage", true);
                         EndingDate := AbsFill.GetMonthRange(Rec."Month Of Wage", Rec."Year Of Wage", false);
 
@@ -349,8 +386,6 @@ page 50020 "Wage Wizard Step 1"
                             until EmployeeUpdateREd.Next() = 0; //sljedeci zaposlenik
 
 
-
-                        //EC01e
 
                         Response := CONFIRM(Txt006);
                         IF Response THEN BEGIN
@@ -414,11 +449,13 @@ page 50020 "Wage Wizard Step 1"
                             CurrPage.CLOSE;
                         END;
                     END;
+
                 end;
             }
             action(Cancel)
             {
                 Image = Cancel;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
@@ -464,14 +501,12 @@ page 50020 "Wage Wizard Step 1"
         TypeOption: Label 'Normal,Fixed Add,Average Add,Average Coefficient Add;';
     begin
 
-        //INT1.0 start
         UTemp.SETFILTER("User ID", '%1', USERID);
         IF UTemp.FINDFIRST THEN
             WageAllowed := UTemp."Wage Allowed";
 
         IF WageAllowed = FALSE THEN
             ERROR(error1);
-        //INT1.0 end
 
         //WageHeader.RESET;
         /*WageHeader.SETRANGE(Status,0);
@@ -536,9 +571,9 @@ page 50020 "Wage Wizard Step 1"
 
             RecWageHeader."Month of Calculation" := DATE2DMY(WORKDATE, 2);
             RecWageHeader."Year of Calculation" := DATE2DMY(WORKDATE, 3);
-            RecWageHeader."Date Of Calculation" := CALCDATE('SM', CALCDATE('-SM-1D', WORKDATE));
-            RecWageHeader."Closing Date" := CALCDATE('SM', CALCDATE('-SM-1D', WORKDATE));
-            RecWageHeader."Wage Calculation Type" := 0;
+            RecWageHeader."Date Of Calculation" := CALCDATE('1M', CALCDATE('-SM-1D', WORKDATE));
+            RecWageHeader."Closing Date" := CALCDATE('1M', CALCDATE('-SM-1D', WORKDATE));
+
 
             IF RecWageHeader."Wage Calculation Type" = RecWageHeader."Wage Calculation Type"::Normal THEN BEGIN
                 RecWageHeader.Meal := TRUE;
@@ -554,7 +589,6 @@ page 50020 "Wage Wizard Step 1"
             END;
 
             RecWageHeader."Hour Pool" := AbsenceFill.GetHourPool(RecWageHeader."Month of Calculation", RecWageHeader."Year of Calculation", WageSetup."Hours in Day");
-
             RecWageHeader."User ID" := USERID;
             RecWageHeader."General Coefficient" := WageSetup."General Coefficient";
             RecWageHeader."Coefficient Increase" := WageSetup."Coefficient Increase";
@@ -625,6 +659,7 @@ page 50020 "Wage Wizard Step 1"
         HeaderDescriptionAddition: Text[250];
         HeaderDescription: Text[250];
         WH: Record "Wage Header";
+        //NK BCTCReport: Report "Employee Contract Ledger";
         WageSetup: Record "Wage Setup";
         HourPool: Integer;
         CopyLastHeader: Boolean;
@@ -653,7 +688,11 @@ page 50020 "Wage Wizard Step 1"
         WagePrecalculation: Codeunit "Wage Precalculation";
         HasError: Boolean;
         FinalForm: Page "Wage Wizard Step 5";
-        ErrorsForm: Page "Wage Wizard Step 4";
+        ErrorsForm: Page "Wage Wizard Step 4n";
+        UTemp: Record "User Setup";
+        WageAllowed: Boolean;
+        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+
         CalcWage: Codeunit "Wage Calculation";
         Txt001: Label 'Postavke plaća nisu unesene!';
         Txt002: Label 'Do you want to quit wage calculation?';
@@ -688,9 +727,6 @@ page 50020 "Wage Wizard Step 1"
         WHeader: Record "Wage Header" temporary;
         Txt012: Label 'Wage for';
         Txt013: Label 'Additions for';
-        UTemp: Record "User Setup";
-        WageAllowed: Boolean;
-        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 
     procedure FormatWageCalcTypeFields()
     begin

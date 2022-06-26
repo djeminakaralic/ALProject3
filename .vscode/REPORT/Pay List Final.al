@@ -96,9 +96,22 @@ report 50056 "Pay List Final"
                 column(WorkExperiencePercentage; FORMAT(WorkExperiencePercentage, 0, '<Precision,2:2><Sign><Integer Thousand><Decimals>'))
                 {
                 }
+                column(BrutoBod; BrutoBod)
+                {
+
+                }
+                column(KoeficijentRadnogMjesta; KoeficijentRadnogMjesta)
+                {
+
+                }
                 column(WageBase; FORMAT(WageBase, 0, '<Precision,2:2><Sign><Integer Thousand><Decimals>'))
                 {
                 }
+                column(Sati; Sati)
+                {
+
+                }
+
                 column(IDMonth; IDMonth)
                 {
                 }
@@ -237,6 +250,7 @@ report 50056 "Pay List Final"
                     column(PaymentType; DataItem182.Description)
                     {
                     }
+
                     column(Amount; DataItem182."Cost Amount (Netto)")
                     {
                     }
@@ -255,6 +269,44 @@ report 50056 "Pay List Final"
                     column(COADescription; UPPERCASE(COADescription))
                     {
                     }
+                    column(TipUlazaP; TipUlazaP)
+                    {
+
+                    }
+                    column(TIpUlazaR; TIpUlazaR)
+                    { }
+                    column(Suma1_B; Suma1_B)
+                    {
+
+                    }
+                    column(Suma1_N; Suma1_N) { }
+                    column(Suma1_S; Suma1_S) { }
+
+
+                    column(Suma2_B; Suma2_B)
+                    {
+
+                    }
+                    column(Suma2_N; Suma2_N) { }
+                    column(Suma2_S; Suma2_S) { }
+
+                    column(Suma3_B; Suma3_B)
+                    {
+
+                    }
+                    column(Suma3_N; Suma3_N) { }
+                    column(Suma3_S; Suma3_S) { }
+
+                    column(Suma4_B; Suma4_B)
+                    {
+
+                    }
+                    column(Suma4_N; Suma4_N) { }
+                    column(Suma4_S; Suma4_S) { }
+                    column(SumaR_2; SumaR_2) { }
+                    column(Suma_R1; Suma_R1) { }
+
+
                     column(StartDate; StartDate)
                     {
                     }
@@ -319,6 +371,8 @@ report 50056 "Pay List Final"
                     trigger OnAfterGetRecord()
                     begin
 
+
+
                         PaymentOrder.RESET;
                         PaymentOrder.SETFILTER(SvrhaDoznake3, '%1', "Employee No.");
                         PaymentOrder.SETFILTER("Wage Header No.", '%1', "Document No.");
@@ -342,6 +396,37 @@ report 50056 "Pay List Final"
                             IF WageCalculation.FINDFIRST THEN BEGIN
                                 ws.GET;
                                 WorkExperiencePercentage := WageCalculation."Work Experience Percentage";
+                                BrutoBod := WageCalculation."Wage Base";
+                                KoeficijentRadnogMjesta := WageCalculation."Position Coefficient for Wage";
+                                Sati := WageCalculation."Hour Pool";
+
+                                ECL.RESET;
+                                FinalDate := ABSFill.GetMonthRange(IDMonth, IDYear, FALSE);
+                                ECL.RESET;
+                                ECL.SETFILTER("Employee No.", '%1', EmployeeFilter);
+                                ECL.SETFILTER("Starting Date", '<=%1', FinalDate);
+                                ECL.SETFILTER("Ending Date", '%1|>=%2', 0D, FinalDate);
+                                ECL.SETFILTER("Show Record", '%1', TRUE);
+                                ECL.SETCURRENTKEY("Starting Date");
+                                ECL.ASCENDING;
+                                IF ECL.FINDLAST THEN BEGIN
+                                    WageBase := ECL.Brutto;
+                                END
+                                ELSE BEGIN
+                                    ECL.RESET;
+                                    ECL.SETFILTER("Employee No.", '%1', EmployeeFilter);
+                                    ECL.SETFILTER("Starting Date", '<=%1', FinalDate);
+                                    ECL.SETFILTER("Ending Date", '%1|>=%2', 0D, StartDate);
+                                    ECL.SETFILTER("Show Record", '%1', TRUE);
+                                    ECL.SETCURRENTKEY("Starting Date");
+                                    ECL.ASCENDING;
+                                    IF ECL.FINDLAST THEN BEGIN
+                                        WageBase := ECL.Brutto;
+
+                                    END;
+                                END;
+
+
 
                                 // Coefficient:=WageCalculation."Tax Deductions"/ws."Base Tax Deduction";
 
@@ -376,7 +461,39 @@ report 50056 "Pay List Final"
                                         Coefficient := WageCalculation."Tax Deductions" / TaxDed.Amount
                                     ELSE
                                         Coefficient := 0;
-                                END;
+                                END
+                                else begin
+                                    BrutoBod := 0;
+                                    KoeficijentRadnogMjesta := 0;
+                                    Sati := 0;
+                                    ECL.RESET;
+                                    FinalDate := ABSFill.GetMonthRange(IDMonth, IDYear, FALSE);
+                                    ECL.RESET;
+                                    ECL.SETFILTER("Employee No.", '%1', EmployeeFilter);
+                                    ECL.SETFILTER("Starting Date", '<=%1', FinalDate);
+                                    ECL.SETFILTER("Ending Date", '%1|>=%2', 0D, FinalDate);
+                                    ECL.SETFILTER("Show Record", '%1', TRUE);
+                                    ECL.SETCURRENTKEY("Starting Date");
+                                    ECL.ASCENDING;
+                                    IF ECL.FINDLAST THEN BEGIN
+                                        WageBase := ECL.Brutto;
+                                    END
+                                    ELSE BEGIN
+                                        ECL.RESET;
+                                        ECL.SETFILTER("Employee No.", '%1', EmployeeFilter);
+                                        ECL.SETFILTER("Starting Date", '<=%1', FinalDate);
+                                        ECL.SETFILTER("Ending Date", '%1|>=%2', 0D, StartDate);
+                                        ECL.SETFILTER("Show Record", '%1', TRUE);
+                                        ECL.SETCURRENTKEY("Starting Date");
+                                        ECL.ASCENDING;
+                                        IF ECL.FINDLAST THEN BEGIN
+                                            WageBase := ECL.Brutto;
+
+                                        END;
+                                    END;
+
+
+                                end;
 
 
                                 IF (WageCalculation."Contribution Category Code" = 'RS') THEN BEGIN
@@ -425,18 +542,41 @@ report 50056 "Pay List Final"
                         END;
 
                         COADescription := '';
+                        TipUlazaP := 0;
+                        TIpUlazaR := 0;
                         COA.RESET;
                         COA.SETFILTER("Short Code", '%1', Description);
                         IF COA.FINDFIRST THEN BEGIN
                             COADescription := COA.Description;
+                            if COA."Payment Type" = COA."Payment Type"::"Regular Work" then
+                                TipUlazaP := 1;
+                            if COA."Payment Type" = COA."Payment Type"::"Additional>" then
+                                TipUlazaP := 3;
+                            if COA."Payment Type" = COA."Payment Type"::"Other Additional" then
+                                TipUlazaP := 4;
+
+                            if COA."Payment Type" = COA."Payment Type"::"Work Performance" then
+                                TipUlazaP := 2;
+
+
                         END
                         ELSE BEGIN
                             WAT.RESET;
                             WAT.SETFILTER(Code, '%1', Description);
                             IF WAT.FINDFIRST THEN BEGIN
                                 COADescription := WAT.Description;
-                                IF WAT.Code = '820' THEN
-                                    WAT.Code := '990';
+                                if WAT."Payment Type" = WAT."Payment Type"::"Regular Work" then
+                                    TipUlazaP := 1;
+                                if WAT."Payment Type" = WAT."Payment Type"::"Additional>" then
+                                    TipUlazaP := 3;
+                                if WAT."Payment Type" = WAT."Payment Type"::"Other Additional" then
+                                    TipUlazaP := 4;
+
+                                if WAT."Payment Type" = WAT."Payment Type"::"Work Performance" then
+                                    TipUlazaP := 2;
+
+
+
 
 
                             END
@@ -491,9 +631,9 @@ report 50056 "Pay List Final"
 
                                     END
                                     ELSE
-                                        IF Description = '999' THEN
+                                        IF ("Entry Type" = 14) THEN
                                             COADescription := 'Minuli rad';
-                                    IF Description = '830' THEN
+                                    IF ("Entry Type" = 7) THEN
                                         COADescription := 'Naknada za prevoz u novcu';
 
 
@@ -501,6 +641,44 @@ report 50056 "Pay List Final"
                                 END;
                             END;
                         END;
+
+                        IF ("Entry Type" = 14) THEN begin
+                            COADescription := 'Minuli rad';
+                            TipUlazaP := 3;
+                        end;
+
+                        IF (DataItem182."Entry Type" = 7) THEN begin
+                            COADescription := 'Naknada za prevoz u novcu';
+                            TipUlazaP := 4;
+                        end;
+
+                        if TipUlazaP = 1 then begin
+                            Suma1_B += DataItem182."Cost Amount (Brutto)";
+                            Suma1_N += DataItem182."Cost Amount (Netto)";
+                            Suma1_S += DataItem182.Hours;
+
+                        end;
+
+                        if TipUlazaP = 2 then begin
+                            Suma2_B += "Cost Amount (Brutto)";
+                            Suma2_N += "Cost Amount (Netto)";
+                            Suma2_S += Hours;
+
+                        end;
+
+                        if TipUlazaP = 3 then begin
+                            Suma3_B += "Cost Amount (Brutto)";
+                            Suma3_N += "Cost Amount (Netto)";
+                            Suma3_S += Hours;
+
+                        end;
+
+                        if TipUlazaP = 4 then begin
+                            Suma4_B += "Cost Amount (Brutto)";
+                            Suma4_N += "Cost Amount (Netto)";
+                            Suma4_S += Hours;
+
+                        end;
 
 
 
@@ -548,7 +726,7 @@ report 50056 "Pay List Final"
                         WVE4.SETFILTER("AT From neto", '%1', FALSE);
                         WVE4.SETFILTER("Contribution Type", '<>%1', '');
                         WVE4.SETFILTER("Wage Calculation Type", '%1', WVE4."Wage Calculation Type"::Regular);
-                        //2,12,14,13,11,7,9);
+                        //2,12,14,13,11,7,9);CO
                         IF WVE4.FINDFIRST THEN BEGIN
                             WVE4.CALCSUMS("Cost Amount (Netto)");
                             PAymentContributionOver := WVE4."Cost Amount (Netto)";
@@ -617,11 +795,17 @@ report 50056 "Pay List Final"
                             ReductionTypes.SETFILTER(Code, '%1', ReductionCode);
                             IF ReductionTypes.FINDFIRST THEN BEGIN
                                 ReductionText := ReductionTypes.Description;
+                                if ReductionTypes."Reduction Type" = ReductionTypes."Reduction Type"::Memberships then
+                                    TIpUlazaR := 1;
+                                if ReductionTypes."Reduction Type" = ReductionTypes."Reduction Type"::Unions then
+                                    TIpUlazaR := 2;
+
                                 EntryValue := DataItem182."Entry No.";
                                 ReductionList.RESET;
                                 ReductionList.SETFILTER("No.", '%1', DataItem182."Reduction No.");
                                 IF ReductionList.FINDFIRST THEN BEGIN
                                     Partija := ReductionList."Party No.";
+
                                     ReductionAmount := ReductionList."Reduction Amount";
                                     //ReductionDue:=ReductionList."Remaining Due";
                                     //ReductionDue:=ReductionList."Reduction Amount"-(ReductionList."Opening balance"+ReductionList."Paid Amount");
@@ -647,6 +831,15 @@ report 50056 "Pay List Final"
                                 END;
                             END;
                             AmountR := DataItem182."Cost Amount (Netto)";
+
+                            if TIpUlazaR = 1 then begin
+                                Suma_R1 += AmountR;
+                            end;
+
+                            if TIpUlazaR = 2 then begin
+                                SumaR_2 += AmountR;
+                            end;
+
                             //TotalAmountR:=TotalAmountR+AmountR;
                             CALCSUMS("Cost Amount (Netto)");
                         END;
@@ -772,6 +965,20 @@ report 50056 "Pay List Final"
                     trigger OnPreDataItem()
                     begin
                         //SETFILTER("Entry Type",'%1|%2|%3|%4|%5|%6|%7|%8|%9',2,6,7,9,10,11,12,13,14);
+                        Suma1_B := 0;
+                        Suma1_N := 0;
+                        Suma1_S := 0;
+                        Suma2_B := 0;
+                        Suma2_N := 0;
+                        Suma2_S := 0;
+
+                        Suma3_B := 0;
+                        Suma3_N := 0;
+                        Suma3_S := 0;
+
+                        Suma4_B := 0;
+                        Suma4_N := 0;
+                        Suma4_S := 0;
 
                         WH.RESET;
                         WH.SETRANGE("Month Of Wage", IDMonth);
@@ -870,31 +1077,6 @@ report 50056 "Pay List Final"
                       WageBase:=0;
                     END;*/
 
-                    ECL.RESET;
-                    FinalDate := ABSFill.GetMonthRange(IDMonth, IDYear, FALSE);
-                    ECL.RESET;
-                    ECL.SETFILTER("Employee No.", '%1', EmployeeFilter);
-                    ECL.SETFILTER("Starting Date", '<=%1', FinalDate);
-                    ECL.SETFILTER("Ending Date", '%1|>=%2', 0D, FinalDate);
-                    ECL.SETFILTER("Show Record", '%1', TRUE);
-                    ECL.SETCURRENTKEY("Starting Date");
-                    ECL.ASCENDING;
-                    IF ECL.FINDLAST THEN BEGIN
-                        WageBase := ECL.Brutto;
-                    END
-                    ELSE BEGIN
-                        ECL.RESET;
-                        ECL.SETFILTER("Employee No.", '%1', EmployeeFilter);
-                        ECL.SETFILTER("Starting Date", '<=%1', FinalDate);
-                        ECL.SETFILTER("Ending Date", '%1|>=%2', 0D, StartDate);
-                        ECL.SETFILTER("Show Record", '%1', TRUE);
-                        ECL.SETCURRENTKEY("Starting Date");
-                        ECL.ASCENDING;
-                        IF ECL.FINDLAST THEN BEGIN
-                            WageBase := ECL.Brutto;
-
-                        END;
-                    END;
 
                 end;
 
@@ -1067,6 +1249,33 @@ report 50056 "Pay List Final"
 
     var
         PaymentOrder: Record "Payment Order";
+        TipUlazaP: Integer;
+        Suma1_S: Decimal;
+        Suma1_B: Decimal;
+        Suma1_N: Decimal;
+
+        Suma2_S: Decimal;
+        Suma2_B: Decimal;
+        Suma2_N: Decimal;
+
+        Suma3_S: Decimal;
+        Suma3_B: Decimal;
+        Suma3_N: Decimal;
+
+        Suma4_S: Decimal;
+        Suma4_B: Decimal;
+        Suma4_N: Decimal;
+
+        Suma_R1: Decimal;
+        SumaR_2: Decimal;
+
+
+        TIpUlazaR: Integer;
+
+        BrutoBod: Decimal;
+        KoeficijentRadnogMjesta: Decimal;
+
+        TipUlaza: Record "Wage Value Entry";
         BankAccount: Code[20];
         DepartmentR: Code[20];
         ei: Code[10];
@@ -1128,6 +1337,7 @@ report 50056 "Pay List Final"
         LMHourValue: Decimal;
         SatnicaT: Decimal;
         WCForEC: Record "Wage Calculation";
+        Sati: Decimal;
         WCAdd: Record "Wage Calculation";
         ",": Decimal;
         WAPerc: Decimal;

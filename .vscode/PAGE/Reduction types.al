@@ -29,6 +29,11 @@ page 50026 "Reduction types"
                 {
                     Visible = true;
                 }
+                field("Posting Group"; "Posting Group")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("G/L Account"; "G/L Account")
                 {
                     Visible = true;
@@ -38,10 +43,15 @@ page 50026 "Reduction types"
                 }
                 field("Transit  Account"; "Transit  Account")
                 {
+                    Visible = false;
                 }
                 field("Transit  Account 2"; "Transit  Account 2")
                 {
+                    Visible = false;
                 }
+                field("Reduction Type"; "Reduction Type")
+                { }
+
             }
         }
     }

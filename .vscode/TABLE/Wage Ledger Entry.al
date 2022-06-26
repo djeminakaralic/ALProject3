@@ -191,15 +191,31 @@ table 50029 "Wage Ledger Entry"
         }
         field(198; "Wage Calculation Type"; Option)
         {
-            FieldClass = FlowField;
-            CalcFormula = Lookup ("Wage Value Entry"."Wage Calculation Type" WHERE("Employee No." = FIELD("Employee No.")));
-
+            FieldClass = Normal;
             OptionCaption = 'Regular,Temporary Service Contracts-Residents,Temporary Service Contracts-No Residents,Author Contracts,Additions';
             OptionMembers = Regular,"Temporary Service Contracts-Residents","Temporary Service Contracts-No Residents","Author Contracts",Additions;
         }
         field(199; "Wage Calculation Entry No."; Code[20])
         {
             Caption = 'No.';
+        }
+        field(209; "Netto Taxable"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Value Entry"."Cost Amount (Netto)" WHERE("Employee No." = FIELD("Employee No."),
+                                                                              "Document No." = FIELD("Document No."),
+                                                                              "Entry Type" = FILTER('Net Wage|Taxable|Untaxable|Use|Work Experience|Transport|Meal to pay'),
+                                                                              "Wage Calculation Type" = FILTER('Regular')));
+
+        }
+        field(210; Netto; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Value Entry"."Cost Amount (Actual)" WHERE("Employee No." = FIELD("Employee No."),
+                                                                               "Document No." = FIELD("Document No."),
+                                                                               "Entry Type" = FILTER('Net Wage|Taxable|Untaxable|Use|Work Experience|Transport|Meal to pay|Tax'),
+                                                                               "Wage Calculation Type" = FILTER('Regular')));
+
         }
     }
 

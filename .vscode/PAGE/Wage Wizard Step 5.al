@@ -9,204 +9,142 @@ page 50028 "Wage Wizard Step 5"
     {
         area(content)
         {
-            /* group(Basic)
-             {
-                 Caption = 'Basic';
-                 grid("Basic Information")
-                 {
-                     GridLayout = Rows;
-                     //Visible = false;
-                     Group("Information of Wage2")
-
-                     {
-
-
-                         field("No."; "No.")
-                         {
-                         }
-                         field("Year Of Wage"; "Year Of Wage")
-                         {
-                         }
-                         field("Month Of Wage"; "Month Of Wage")
-                         {
-                         }
-                         field(Description; Description)
-                         {
-                         }
-                         field(Status; Status)
-                         {
-                         }
-                         field("Date Of Calculation"; "Date Of Calculation")
-                         {
-                         }
-                         field("Year of Calculation"; "Year of Calculation")
-                         {
-                         }
-                         field("Month of Calculation"; "Month of Calculation")
-                         {
-                         }
-                         field("User ID"; "User ID")
-                         {
-                         }
-                         field("Wage Calculation Type"; "Wage Calculation Type")
-                         {
-                         }
-                         field("Negative Payment"; "Negative Payment")
-                         {
-                             Importance = Promoted;
-                             Style = Unfavorable;
-                             StyleExpr = TRUE;
-
-                             trigger OnDrillDown()
-                             begin
-                                 WCTemp.RESET;
-                                 WCTemp.SETFILTER(Payment, '<%1', 0);
-                                 WCPage.SETTABLEVIEW(WCTemp);
-                                 WCPage.RUN;
-                                 CurrPage.UPDATE;
-                             end;
-                         }
-                     }
-                     group(WagePart)
-                     {
-                         part("Wage Calculation Temp Subform"; "Wage Calculation Temp Subform")
-                         {
-                             SubPageLink = "Wage Header No." = FIELD("No.");
-                             SubPageView = WHERE(MasterLine = CONST(false));
-                         }
-                     }
-                 }
-             }*/
-
-            group("Basic") //globalna grupa
+            group(Basic)
             {
-
-
                 Caption = 'Basic';
-                //The GridLayout property is only supported on controls of type Grid
-                /*grid("Basic information")
+                field("No."; "No.")
                 {
-                    
+                    ApplicationArea = all;
 
-                    GridLayout = Rows;
-                    Visible = true;*/
-                Group("Basic information of wage")
-
+                }
+                field("Year Of Wage"; "Year Of Wage")
                 {
-                    Caption = '';
-
-                    field("No."; "No.")
-                    {
-                    }
-                    field("Year Of Wage"; "Year Of Wage")
-                    {
-                    }
-                    field("Month Of Wage"; "Month Of Wage")
-                    {
-                    }
-                    field(Description; Description)
-                    {
-                    }
-                    field(Status; Status)
-                    {
-                    }
-                    field("Date Of Calculation"; "Date Of Calculation")
-                    {
-                    }
-                    field("Year of Calculation"; "Year of Calculation")
-                    {
-                    }
-                    field("Month of Calculation"; "Month of Calculation")
-                    {
-                    }
-                    field("User ID"; "User ID")
-                    {
-                    }
-                    field("Wage Calculation Type"; "Wage Calculation Type")
-                    {
-                    }
-                    field("Negative Payment"; "Negative Payment")
-                    {
-                        Importance = Promoted;
-                        Style = Unfavorable;
-                        StyleExpr = TRUE;
-
-                        trigger OnDrillDown()
-                        begin
-                            WCTemp.RESET;
-                            WCTemp.SETFILTER(Payment, '<%1', 0);
-                            WCPage.SETTABLEVIEW(WCTemp);
-                            WCPage.RUN;
-                            CurrPage.UPDATE;
-                        end;
-                    }
+                    ApplicationArea = all;
+                }
+                field("Month Of Wage"; "Month Of Wage")
+                {
+                    ApplicationArea = all;
                 }
 
-                //  }
-                group("Wage part")
+                field(Description; Description)
                 {
-
-
-
-                    Caption = '';
-
-
-
-
-                    part("Wage Calculation Temp Subform"; "Wage Calculation Temp Subform")
-                    {
-                        SubPageLink = "Wage Header No." = FIELD("No.");
-                        SubPageView = WHERE(MasterLine = CONST(false));
-                    }
+                    ApplicationArea = all;
                 }
-                //}
+                field(Status; Status)
+                {
+                    ApplicationArea = all;
+                }
+                field("Date Of Calculation"; "Date Of Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Year of Calculation"; "Year of Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Month of Calculation"; "Month of Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("User ID"; "User ID")
+                {
+                    ApplicationArea = all;
+                }
+                field("Wage Calculation Type"; "Wage Calculation Type")
+                {
+                    ApplicationArea = all;
+                }
+                field("Negative Payment"; "Negative Payment")
+                {
+                    ApplicationArea = all;
+                    Importance = Promoted;
+                    Style = Unfavorable;
+                    StyleExpr = TRUE;
+
+
+                    trigger OnDrillDown()
+                    begin
+                        WCTemp.RESET;
+                        WCTemp.SETFILTER(Payment, '<%1', 0);
+                        //ĐK WageCalc.copyfilters(WCTemp);
+                        WCPage.SETTABLEVIEW(WCTemp);
+                        WCPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                part("Wage Calculation Temp Subform"; "Wage Calculation Temp Subform")
+                {
+                    SubPageLink = "Wage Header No." = FIELD("No.");
+                    SubPageView = WHERE(MasterLine = CONST(false));
+                    Visible = wage;
+                }
+                part("Wage Addition Calculated"; "Wage Addition Calculated")
+                {
+                    SubPageLink = "Wage Header No." = FIELD("No."),
+                                   "Closing Date" = field("Closing Date");
+                    Visible = Additions;
+                }
             }
-
             group(Parameters)
             {
                 Caption = 'Parameters';
                 field("Hour Pool"; "Hour Pool")
                 {
+                    ApplicationArea = all;
                 }
                 field(Transportation; Transportation)
                 {
+                    ApplicationArea = all;
                 }
                 field(Reduction; Reduction)
                 {
+                    ApplicationArea = all;
                 }
+
             }
             group(Totals)
             {
                 Caption = 'Totals';
                 field("Temp Brutto"; "Temp Brutto")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Net Wage"; "Temp Net Wage")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Final Net Wage"; "Temp Final Net Wage")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Add. Tax From Brutto"; "Temp Add. Tax From Brutto")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Add. Tax Over Brutto"; "Temp Add. Tax Over Brutto")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Tax"; "Temp Tax")
                 {
+                    ApplicationArea = all;
                 }
+
                 field("Temp Wage Reduction"; "Temp Wage Reduction")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Transport"; "Temp Transport")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Sick Leave-Company"; "Temp Sick Leave-Company")
                 {
+                    ApplicationArea = all;
                 }
                 field("Temp Sick Leave-Fund"; "Temp Sick Leave-Fund")
                 {
+                    ApplicationArea = all;
                 }
             }
         }
@@ -221,28 +159,44 @@ page 50028 "Wage Wizard Step 5"
                 Image = NextSet;
                 Promoted = true;
                 PromotedIsBig = true;
-                Caption = 'Next step';
-
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
+                    /*Rec.CALCFIELDS("Negative Payment");
+                    IF Rec."Negative Payment"=0 THEN BEGIN
+                    Response :=CONFIRM(Txt001);
+                    IF Response THEN
+                      BEGIN
+                        ConfirmClose := FALSE;
+                        CloseCalc.CloseCalc(Rec);
+                        DoNotActivateWPClose := TRUE;
+                        IF Rec."Wage Calculation Type"=0 THEN BEGIN
+                          R_Additions.SetWHNo(Rec."No.");
+                         R_Additions.RUN;
+                    
+                      END;
+                        CurrPage.CLOSE;
+                      END;
+                      END
+                    ELSE BEGIN
+                      ERROR(Txt003);
+                      END;*/
                     Rec.CALCFIELDS("Negative Payment");
-                    IF Rec."Negative Payment" = 0 THEN BEGIN
+                    BEGIN
+                        IF Rec."Negative Payment" <> 0 THEN MESSAGE(Txt003);
                         Response := CONFIRM(Txt001);
                         IF Response THEN BEGIN
                             ConfirmClose := FALSE;
                             CloseCalc.CloseCalc(Rec);
                             DoNotActivateWPClose := TRUE;
-                            /*IF Rec."Wage Calculation Type"=0 THEN BEGIN
-                              R_Additions.SetWHNo(Rec."No.");
-                             R_Additions.RUN;
+                            /* IF Rec."Wage Calculation Type"=0 THEN BEGIN
+                               R_Additions.SetWHNo(Rec."No.");
+                              R_Additions.RUN;
 
-                          END;*/
+                           END;*/
                             CurrPage.CLOSE;
                         END;
-                    END
-                    ELSE BEGIN
-                        ERROR(Txt003);
                     END;
 
                 end;
@@ -252,6 +206,7 @@ page 50028 "Wage Wizard Step 5"
                 Image = Cancel;
                 Promoted = true;
                 PromotedIsBig = true;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 begin
@@ -284,16 +239,6 @@ page 50028 "Wage Wizard Step 5"
 
     trigger OnOpenPage()
     begin
-
-        //INT1.0 start
-        UTemp.SETFILTER("User ID", '%1', USERID);
-        IF UTemp.FINDFIRST THEN
-            WageAllowed := UTemp."Wage Allowed";
-
-        IF WageAllowed = FALSE THEN
-            ERROR(error1);
-        //INT1.0 end
-
         FILTERGROUP(10);
         Rec.SETFILTER("No.", Rec."No.");
         Rec.SETRANGE("Entry No.", Rec."Entry No.");
@@ -303,7 +248,12 @@ page 50028 "Wage Wizard Step 5"
         CurrPage.UPDATE(FALSE);
         DoNotActivateWPClose := FALSE;
 
+
         ConfirmClose := TRUE;
+        IF Rec."Wage Calculation Type" = Rec."Wage Calculation Type"::"Fixed Add" THEN
+            Additions := TRUE
+        ELSE
+            Wage := TRUE;
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -331,7 +281,7 @@ page 50028 "Wage Wizard Step 5"
     var
         Response: Boolean;
         RecKey: Code[10];
-        Step4: Page "Wage Wizard Step 4";
+        Step4: Page "Wage Wizard Step 4n";
         CloseCalc: Codeunit "Close Wage Calculation";
         RecKey2: Integer;
         WC: Record "Wage Calculation Temp";
@@ -340,12 +290,12 @@ page 50028 "Wage Wizard Step 5"
         ConfirmClose: Boolean;
         Txt001: Label 'Are you sure you wish to close this calculation?';
         Txt002: Label 'Are you sure you wish to return to previous step?';
-        R_Additions: Report "Additions";
-        WCPage: Page "Wage Calculation Subform";
+        //NKBC R_Additions: Report "Additions";
+        WCPage: Page "Wage Calculation Temp Subform";
         Txt003: Label 'Ne možete nastaviti dalje. Postoje obračun sa negativnom isplatom!';
         WCTemp: Record "Wage Calculation Temp";
-        UTemp: Record "User Setup";
-        WageAllowed: Boolean;
-        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+        Additions: Boolean;
+        Wage: Boolean;
+        WageCalc: Record "Wage Calculation";
 }
 

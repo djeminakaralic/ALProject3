@@ -56,15 +56,49 @@ table 50024 "Reduction per Wage"
         field(47; "Year of Wage"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Wage Header"."Year Of Wage" WHERE("No." = FIELD("Wage Header No.")));
+            CalcFormula = Lookup("Wage Header"."Year Of Wage" WHERE("No." = FIELD("Wage Header No.")));
             Caption = 'Year of Wage';
 
         }
         field(48; "Month of Wage"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Wage Header"."Month Of Wage" WHERE("No." = FIELD("Wage Header No.")));
+            CalcFormula = Lookup("Wage Header"."Month Of Wage" WHERE("No." = FIELD("Wage Header No.")));
             Caption = 'Month of Wage';
+
+        }
+        field(49; "Reduction Name"; Text[50])
+        {
+            Caption = 'Reduction Name';
+        }
+        field(50; "Bank Account No."; Text[30])
+        {
+            Caption = 'Bank Account No.';
+        }
+        field(51; "First Name"; Text[30])
+        {
+            CalcFormula = Lookup(Employee."First Name" WHERE("No." = FIELD("Employee No.")));
+            Caption = 'First Name';
+            FieldClass = FlowField;
+        }
+        field(52; "Last Name"; Text[30])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Employee."Last Name" WHERE("No." = FIELD("Employee No.")));
+            Caption = 'Last Name';
+
+        }
+        field(53; "Reduction Name 2"; Text[100])
+        {
+            CalcFormula = Lookup("Reduction Types".Description WHERE(Code = FIELD(Type)));
+            Caption = 'Reduction Name';
+            FieldClass = FlowField;
+        }
+        field(54; "Party No."; Code[20])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Reduction."Party No." WHERE("No." = FIELD("Reduction No.")));
+            Caption = 'Party No.';
 
         }
     }
