@@ -119,61 +119,61 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.0998in</Width>
+                  <Width>0.39422in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.5793in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.42479in</Width>
+                  <Width>1.00471in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.39167in</Width>
+                  <Width>0.95834in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.34231in</Width>
+                  <Width>1.04495in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.25045in</Width>
+                  <Width>0.80045in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.0998in</Width>
+                  <Width>0.53313in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.77072in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.02564in</Width>
+                  <Width>0.61731in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.30064in</Width>
+                  <Width>0.83397in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.57147in</Width>
+                  <Width>0.93814in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.62897in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.53814in</Width>
+                  <Width>1.08814in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.77649in</Width>
+                  <Width>0.77649in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.22564in</Width>
+                  <Width>0.89231in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.40897in</Width>
+                  <Width>0.8673in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.33397in</Width>
+                  <Width>0.75897in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.84167in</Width>
+                  <Width>1.625in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.275in</Width>
+                  <Width>0.775in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -202,7 +202,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Redni broj</Value>
+                                  <Value>R.br.</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -900,19 +900,6 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Stručna sprema za radno mjesto</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -944,19 +931,6 @@
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
@@ -1041,19 +1015,6 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Datum zasnivanja radnog odnosa</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -1088,19 +1049,6 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Datum prestanka radnog odnosa</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -1132,19 +1080,6 @@
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
@@ -2407,7 +2342,7 @@
             <Top>1.06334in</Top>
             <Left>0.45001in</Left>
             <Height>1.28334in</Height>
-            <Width>26.30614in</Width>
+            <Width>17.88743in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
