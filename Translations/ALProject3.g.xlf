@@ -18403,6 +18403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Netto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1059656092 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order for Pay list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1059656092 - Field 3723654799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Other bonus from brutto</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36137,6 +36142,11 @@
           <source>No Report</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field No Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Order for Pay list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Order - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Payment Type</source>
