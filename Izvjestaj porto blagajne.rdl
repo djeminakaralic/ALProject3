@@ -349,21 +349,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Ime">
+                        <Textbox Name="PTCode">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Ime.Value</Value>
+                                  <Value>=Fields!PTCode.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Ime</rd:DefaultName>
+                          <rd:DefaultName>PTCode</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -621,7 +621,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>16.09856cm</Width>
+      <Width>14.14064cm</Width>
       <Page>
         <PageFooter>
           <Height>2.54cm</Height>
@@ -669,6 +669,7 @@
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2.5cm</LeftMargin>
+        <RightMargin>2.5cm</RightMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
