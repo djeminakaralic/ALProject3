@@ -11,6 +11,106 @@
       <rd:DataSourceID>fe656078-9e94-46f1-a6fb-06134399be65</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="Amound">
+          <DataField>Amound</DataField>
+        </Field>
+        <Field Name="AmoundFormat">
+          <DataField>AmoundFormat</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Ext">
+          <DataField>Ext</DataField>
+        </Field>
+        <Field Name="Datum">
+          <DataField>Datum</DataField>
+        </Field>
+        <Field Name="Brdokumenta">
+          <DataField>Brdokumenta</DataField>
+        </Field>
+        <Field Name="Kolicina">
+          <DataField>Kolicina</DataField>
+        </Field>
+        <Field Name="KolicinaFormat">
+          <DataField>KolicinaFormat</DataField>
+        </Field>
+        <Field Name="DatumIS">
+          <DataField>DatumIS</DataField>
+        </Field>
+        <Field Name="BrdokumentaIS">
+          <DataField>BrdokumentaIS</DataField>
+        </Field>
+        <Field Name="KolicinaIS">
+          <DataField>KolicinaIS</DataField>
+        </Field>
+        <Field Name="KolicinaISFormat">
+          <DataField>KolicinaISFormat</DataField>
+        </Field>
+        <Field Name="PostingDatefilter">
+          <DataField>PostingDatefilter</DataField>
+        </Field>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Homepage_CompanyInfo">
+          <DataField>Homepage_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="PrethodniSaldo">
+          <DataField>PrethodniSaldo</DataField>
+        </Field>
+        <Field Name="PrethodniSaldoFormat">
+          <DataField>PrethodniSaldoFormat</DataField>
+        </Field>
+        <Field Name="EmmployeeName">
+          <DataField>EmmployeeName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -19,16 +119,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.41644cm</Width>
+                  <Width>2.69884cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>7.21029cm</Width>
+                  <Width>6.49269cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80067cm</Width>
+                  <Width>2.87041cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.91179cm</Width>
+                  <Width>2.08307cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.19419cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -46,7 +149,7 @@
                                 <TextRun>
                                   <Value>R. br.</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -93,7 +196,7 @@
                                 <TextRun>
                                   <Value>Dokument</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -131,6 +234,53 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox11">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -140,7 +290,7 @@
                                 <TextRun>
                                   <Value>ULAZ</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -187,7 +337,7 @@
                                 <TextRun>
                                   <Value>IZLAZ</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -239,7 +389,7 @@
                                 <TextRun>
                                   <Value>=Fields!DocumentNo.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -282,7 +432,7 @@
                                 <TextRun>
                                   <Value>=Fields!Ext.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -290,6 +440,51 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Ext</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Fields!EmmployeeName.Value)</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -325,7 +520,7 @@
                                 <TextRun>
                                   <Value>=abs(Fields!Kolicina.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
@@ -371,7 +566,7 @@
                                 <TextRun>
                                   <Value>=abs(Fields!KolicinaIS.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
@@ -416,6 +611,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -432,7 +628,7 @@
             <Top>6.27606cm</Top>
             <Left>0.32103cm</Left>
             <Height>1.14708cm</Height>
-            <Width>16.33919cm</Width>
+            <Width>16.3392cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -448,7 +644,7 @@
                   <TextRun>
                     <Value>UKUPNO:</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -483,7 +679,7 @@
                   <TextRun>
                     <Value>Ukupni primitak:</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -517,7 +713,7 @@
                   <TextRun>
                     <Value>Odbija se izdatak:</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -551,7 +747,7 @@
                   <TextRun>
                     <Value>=IIF(Sum(Fields!KolicinaIS.Value)&gt;abs(Sum(Fields!Kolicina.Value)),Sum(Fields!KolicinaIS.Value)-abs(Sum(Fields!Kolicina.Value)),0)</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -587,7 +783,7 @@
                   <TextRun>
                     <Value>=abs(Sum(Fields!KolicinaIS.Value))</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -858,7 +1054,7 @@
                   <TextRun>
                     <Value>=IIF(abs(Sum(Fields!Kolicina.Value))&gt;Sum(Fields!KolicinaIS.Value),abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value),0)</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -870,8 +1066,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.03752cm</Top>
-            <Left>12.41822cm</Left>
+            <Top>8.96697cm</Top>
+            <Left>12.34767cm</Left>
             <Height>0.59294cm</Height>
             <Width>1.97724cm</Width>
             <ZIndex>15</ZIndex>
@@ -894,7 +1090,7 @@
                   <TextRun>
                     <Value>=abs(Sum(Fields!Kolicina.Value))</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -929,7 +1125,7 @@
                   <TextRun>
                     <Value>PRETHODNI SALDO:</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -976,7 +1172,7 @@
                   <TextRun>
                     <Value>=IIF((Fields!PrethodniSaldo.Value)&gt;0 , Fields!PrethodniSaldo.Value , 0)</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -988,8 +1184,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.66573cm</Top>
-            <Left>12.41823cm</Left>
+            <Top>9.63046cm</Top>
+            <Left>12.34767cm</Left>
             <Height>0.48711cm</Height>
             <Width>2.01251cm</Width>
             <ZIndex>19</ZIndex>
@@ -1012,7 +1208,7 @@
                   <TextRun>
                     <Value>=IIF((Fields!PrethodniSaldo.Value)&lt;0 , Fields!PrethodniSaldo.Value, 0)</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -1048,7 +1244,7 @@
                   <TextRun>
                     <Value>=0</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -1083,7 +1279,7 @@
                   <TextRun>
                     <Value>=0</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -1094,8 +1290,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>8.3957cm</Top>
-            <Left>12.38295cm</Left>
+            <Top>8.39571cm</Top>
+            <Left>12.34767cm</Left>
             <Height>0.53598cm</Height>
             <Width>2.01251cm</Width>
             <ZIndex>22</ZIndex>
@@ -1118,7 +1314,7 @@
                   <TextRun>
                     <Value>STANJE BLAGAJNE:</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1590,6 +1786,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1629,104 +1831,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="Amound">
-          <DataField>Amound</DataField>
-        </Field>
-        <Field Name="AmoundFormat">
-          <DataField>AmoundFormat</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="Ext">
-          <DataField>Ext</DataField>
-        </Field>
-        <Field Name="Datum">
-          <DataField>Datum</DataField>
-        </Field>
-        <Field Name="Brdokumenta">
-          <DataField>Brdokumenta</DataField>
-        </Field>
-        <Field Name="Kolicina">
-          <DataField>Kolicina</DataField>
-        </Field>
-        <Field Name="KolicinaFormat">
-          <DataField>KolicinaFormat</DataField>
-        </Field>
-        <Field Name="DatumIS">
-          <DataField>DatumIS</DataField>
-        </Field>
-        <Field Name="BrdokumentaIS">
-          <DataField>BrdokumentaIS</DataField>
-        </Field>
-        <Field Name="KolicinaIS">
-          <DataField>KolicinaIS</DataField>
-        </Field>
-        <Field Name="KolicinaISFormat">
-          <DataField>KolicinaISFormat</DataField>
-        </Field>
-        <Field Name="PostingDatefilter">
-          <DataField>PostingDatefilter</DataField>
-        </Field>
-        <Field Name="Adress_CompanyInfo">
-          <DataField>Adress_CompanyInfo</DataField>
-        </Field>
-        <Field Name="City_CompanyInfo">
-          <DataField>City_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone1_CompanyInfo">
-          <DataField>Phone1_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone2_CompanyInfo">
-          <DataField>Phone2_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Fax_CompanyInfo">
-          <DataField>Fax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Email_CompanyInfo">
-          <DataField>Email_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Homepage_CompanyInfo">
-          <DataField>Homepage_CompanyInfo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInfo">
-          <DataField>RegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Postcode_CompanyInfo">
-          <DataField>Postcode_CompanyInfo</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_CompanyInfo">
-          <DataField>VATRegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="GiroNo_CompanyInfo">
-          <DataField>GiroNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="PrethodniSaldo">
-          <DataField>PrethodniSaldo</DataField>
-        </Field>
-        <Field Name="PrethodniSaldoFormat">
-          <DataField>PrethodniSaldoFormat</DataField>
-        </Field>
-        <Field Name="EmmployeeName">
-          <DataField>EmmployeeName</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
