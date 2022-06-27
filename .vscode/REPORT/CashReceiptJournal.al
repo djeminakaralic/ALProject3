@@ -11,7 +11,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
                 Editable = true;
-                AutoFormatExpression := FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
+                AutoFormatExpression = FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
             }
 
             field("Payment Type"; "Payment Type")
