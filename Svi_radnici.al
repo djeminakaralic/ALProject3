@@ -115,12 +115,14 @@ report 50095 "Svi radnici"
 
               
                 DataItem1.CALCFIELDS("Minimal Education Level");
+                //Pisanje kolone Sluzba\Odjel
                 Pomocna:='';
-                if DataItem1."Department Category"='' then Pomocna:= DataItem1."Department Code";
-                if DataItem1."Department Code"='' then Pomocna:=DataItem1."Department Category";
+                if DataItem1."Department Category"='' then Pomocna:= DataItem1."Department Category";
+                if DataItem1."Group Description"='' then Pomocna:=DataItem1."Group Description";
                 if DataItem1."Department Category"<>'' then
-                   if DataItem1."Department Code"<>'' then
-                   Pomocna:= DataItem1."Department Category"+'\'+DataItem1."Department Code";
+                   if DataItem1."Group Description"<>'' then
+                   Pomocna:= DataItem1."Department Category"+'\'+DataItem1."Group Description";
+
                 VrstaUgovora := DataItem1."Engagement Type";
                 Koeficijent := DataItem1."Position Coefficient for Wage";
                 
