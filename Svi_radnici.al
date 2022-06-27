@@ -134,7 +134,14 @@ report 50095 "Svi radnici"
                     Ime := E."First Name";
                     Prezime := E."Last Name";
                     ImeRoditelja := E."Father Name";
-                    Spol :=FORMAT(E.Gender);
+                    Spol:='';
+                    if E.Gender=E.Gender::Female then 
+                    Spol:='Žensko';
+
+                    if E.Gender=E.Gender::Male then 
+                    Spol:='Muško';
+
+                //    Spol :=FORMAT(E.Gender);
                     //Koeficijent := E."Work Experience Percentage";
                     EmploymentDate := FORMAT(E."Employment Date", 0, '<day,2>.<month,2>.<year4>.'); //ovo ne koristim kao employment date
                     DatumRodjenja := FORMAT(E."Birth Date", 0, '<day,2>.<month,2>.<year4>.');
@@ -143,7 +150,7 @@ report 50095 "Svi radnici"
                     Prezime := '';
                     EmploymentDate := '';
                     ImeRoditelja := '';
-                    Spol := ' ';
+                    Spol := '';
                 END;
                 // TITULA I ZVANJE RADNIKA
                 AE.RESET;
@@ -171,7 +178,7 @@ report 50095 "Svi radnici"
 
             trigger OnPreDataItem()
             begin
-                Spol:='';
+               // Spol:='';
                 NazivOrgana := '';
                 IF Select = Select::"Otišli u zadanom intervalu" THEN
                     DataItem1.SETFILTER("Grounds for Term. Description", '<>%1', '');
