@@ -10,7 +10,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Payment DT"; FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.'))
             {
                 ApplicationArea = all;
-
+                Editable = true;
             }
 
             field("Payment Type"; "Payment Type")
