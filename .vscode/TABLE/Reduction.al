@@ -106,6 +106,7 @@ table 50023 Reduction
             CalcFormula = Sum("Reduction per Wage".Amount WHERE("Employee No." = FIELD("Employee No."),
                                                                 "Reduction No." = FIELD("No.")));
             Caption = 'Paid Amount';
+            Editable = false;
 
         }
         field(45; Description; Text[50])
@@ -290,6 +291,7 @@ table 50023 Reduction
         {
             Caption = 'Remaining Due';
         }
+
     }
 
     keys

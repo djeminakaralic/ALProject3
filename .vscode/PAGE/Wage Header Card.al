@@ -3,9 +3,10 @@ page 50017 "Wage Header Card"
     Caption = 'Wage Header Card';
     DeleteAllowed = false;
     InsertAllowed = false;
-
     PageType = Card;
     SourceTable = "Wage Header";
+    UsageCategory = Lists;
+    ApplicationArea = all;
 
     layout
     {
@@ -16,44 +17,47 @@ page 50017 "Wage Header Card"
                 Caption = 'Basic';
                 field("No."; "No.")
                 {
+                    ApplicationArea = all;
                 }
                 field("Year Of Wage"; "Year Of Wage")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Month Of Wage"; "Month Of Wage")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Entry No."; "Entry No.")
                 {
+                    ApplicationArea = all;
                 }
                 field(Description; Description)
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Wage Calculation Type"; "Wage Calculation Type")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Status; Status)
                 {
+                    ApplicationArea = all;
                 }
                 field("Date Of Calculation"; "Date Of Calculation")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Year of Calculation"; "Year of Calculation")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Month of Calculation"; "Month of Calculation")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Average Wage"; "Average Wage")
                 {
-
+                    ApplicationArea = all;
                     trigger OnValidate()
                     begin
                         WageSetup.GET;
@@ -83,7 +87,8 @@ page 50017 "Wage Header Card"
                                 cpe1."Amount Over Wage" := ("Average Wage" * WageSetup."Invaalid Fund %" / 100) * ((Employees DIV WageSetup."No. Of Employees") - "Disabled Employees");
                                 cpe1."Amount Over Neto" := ("Average Wage" * WageSetup."Invaalid Fund %" / 100) * ((Employees DIV WageSetup."No. Of Employees") - "Disabled Employees");
                                 cpe1.Basis := "Average Wage";
-                                cpe1."Global Dimension 1 Code" := cpe1."Global Dimension 1 Code";
+                                WageSetup.GET;
+                                cpe1."Global Dimension 1 Code" := WageSetup."Global Dimension 1 Code Fund";
                                 cpe1.INSERT;
                             END
                             ELSE BEGIN
@@ -111,7 +116,7 @@ page 50017 "Wage Header Card"
                             wve."Wage Posting Group" := 'FBiH';
                             wve."Wage Ledger Entry No." := WLE."Entry No.";
                             wve."User ID" := USERID;
-                            //WVE."Global Dimension 1 Code":=WLE."Global Dimension 1 Code";
+                            wve."Global Dimension 1 Code" := WageSetup."Global Dimension 1 Code Fund";
                             //WVE."Global Dimension 2 Code":=WLE."Global Dimension 2 Code";
                             //WVE."Shortcut Dimension 4 Code":=WLE."Shortcut Dimension 4 Code";
                             wve."Document Date" := TODAY;
@@ -140,10 +145,12 @@ page 50017 "Wage Header Card"
                 }
                 field("Payment Date"; "Payment Date")
                 {
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
                         WC.SETFILTER("Wage Header No.", '%1', "No.");
+                        WC.SETFILTER("Wage Calculation Type", '%1', 0);
                         IF WC.FIND('-') THEN
                             REPEAT
                                 WC."Payment Date" := "Payment Date";
@@ -153,25 +160,31 @@ page 50017 "Wage Header Card"
                 }
                 field("Closing Date"; "Closing Date")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
-
                 field("User ID"; "User ID")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Timestamp_WH; Timestamp_WH)
                 {
+                    ApplicationArea = all;
                     Editable = false;
                 }
                 field("Payment Orders printed"; "Payment Orders printed")
                 {
+                    ApplicationArea = all;
                     Style = Attention;
                     StyleExpr = TRUE;
                 }
+                field(Employees; Employees)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
                 field("Brutto Sum"; "Brutto Sum")
                 {
-
+                    ApplicationArea = all;
                     trigger OnValidate()
                     begin
                         WageSetup.GET;
@@ -208,8 +221,8 @@ page 50017 "Wage Header Card"
                                     cpe1.Basis := Rec."Average Wage - Chamber"
                                 ELSE
                                     cpe1.Basis := "Chamber Amount";
-
-                                cpe1."Global Dimension 1 Code" := cpe."Global Dimension 1 Code";
+                                WageSetup.GET;
+                                cpe1."Global Dimension 1 Code" := WageSetup."Global Dimension 1 Code Chambe";
                                 cpe1.INSERT;
                             END
                             ELSE BEGIN
@@ -237,7 +250,7 @@ page 50017 "Wage Header Card"
                             wve."Wage Posting Group" := 'FBiH';
                             wve."Wage Ledger Entry No." := WLE."Entry No.";
                             wve."User ID" := USERID;
-                            //WVE."Global Dimension 1 Code":=WLE."Global Dimension 1 Code";
+                            wve."Global Dimension 1 Code" := WageSetup."Global Dimension 1 Code Chambe";
                             //WVE."Global Dimension 2 Code":=WLE."Global Dimension 2 Code";
                             //WVE."Shortcut Dimension 4 Code":=WLE."Shortcut Dimension 4 Code";
                             wve."Document Date" := TODAY;
@@ -277,15 +290,15 @@ page 50017 "Wage Header Card"
                 Caption = 'Parameters';
                 field("Hour Pool"; "Hour Pool")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Transportation; Transportation)
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Reduction; Reduction)
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
             }
             group(Chamber)
@@ -293,13 +306,16 @@ page 50017 "Wage Header Card"
                 Caption = 'Chamber';
                 field("Average Wage - Chamber"; "Average Wage - Chamber")
                 {
+                    ApplicationArea = all;
                 }
                 field("Average Wage - Chamber(triple)"; "Average Wage - Chamber(triple)")
                 {
+                    ApplicationArea = all;
                     Caption = 'Average Wage - Chamber(triple)';
                 }
                 field("Chamber Amount"; "Chamber Amount")
                 {
+                    ApplicationArea = all;
                 }
             }
             group(Totals)
@@ -307,67 +323,82 @@ page 50017 "Wage Header Card"
                 Caption = 'Totals';
                 field(Brutto; Brutto)
                 {
-                    Editable = false;
+                    ApplicationArea = all;
+                    Editable = true;
                 }
                 field("Net Wage"; "Net Wage")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax From Brutto"; "Add. Tax From Brutto")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax Over Brutto"; "Add. Tax Over Brutto")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Wage Reduction"; "Wage Reduction")
                 {
-                    Editable = false;
-                }
-                field("Wage Reduction Loan"; "Wage Reduction Loan")
-                {
-                    Editable = false;
-                }
-                field("Wage Reduction Phone"; "Wage Reduction Phone")
-                {
-                    Editable = false;
-                }
-                field("Wage Reduction Other"; "Wage Reduction Other")
-                {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Transport; Transport)
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
-                field("Meal Amount"; "Meal Amount")
-                {
-                    Editable = false;
-                }
+
                 field("Sick Leave-Company"; "Sick Leave-Company")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Sick Leave-Fund"; "Sick Leave-Fund")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Untaxable Wage"; "Untaxable Wage")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax Basis"; "Tax Basis")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Tax; Tax)
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Payment; Payment)
                 {
+                    ApplicationArea = all;
                     Editable = false;
+                }
+            }
+            group(Additions)
+            {
+                Caption = 'Additions';
+                field("Addition Sum"; "Addition Sum")
+                {
+                    ApplicationArea = all;
+                }
+                field("Addition Netto"; "Addition Netto")
+                {
+                    ApplicationArea = all;
+                }
+                field("Addition Brutto"; "Addition Brutto")
+                {
+                    ApplicationArea = all;
+                }
+                field("Addition Tax"; "Addition Tax")
+                {
+                    ApplicationArea = all;
+                }
+                field("Addition Contr. From"; "Addition Contr. From")
+                {
+                    ApplicationArea = all;
+                }
+                field("Addition Contr. To"; "Addition Contr. To")
+                {
+                    ApplicationArea = all;
                 }
             }
             group("Totals TS")
@@ -375,30 +406,31 @@ page 50017 "Wage Header Card"
                 Caption = 'Totals for Temporary services';
                 field("Brutto TS"; "Brutto TS")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Net Wage TS"; "Net Wage TS")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax From Brutto TS"; "Add. Tax From Brutto TS")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax Over Brutto TS"; "Add. Tax Over Brutto TS")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax Basis TS"; "Tax Basis TS")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax TS"; "Tax TS")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Payment Date (TS Residents)"; "Payment Date (TS Residents)")
                 {
+                    ApplicationArea = all;
 
                     trigger OnValidate()
                     begin
@@ -416,31 +448,31 @@ page 50017 "Wage Header Card"
                 Caption = 'Totals for Temporary services Non Residents';
                 field("Brutto TS NR"; "Brutto TS NR")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Net Wage TS NR"; "Net Wage TS NR")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax From Brutto TS NR"; "Add. Tax From Brutto TS NR")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax Over Brutto TS NR"; "Add. Tax Over Brutto TS NR")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax Basis TS NR"; "Tax Basis TS NR")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax TS NR"; "Tax TS NR")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Payment Date (TS No Residents)"; "Payment Date (TS No Residents)")
                 {
-
+                    ApplicationArea = all;
                     trigger OnValidate()
                     begin
                         WC.SETFILTER("Wage Header No.", '%1', "No.");
@@ -457,31 +489,31 @@ page 50017 "Wage Header Card"
                 Caption = 'Totals for Author Contracts';
                 field("Brutto TS AC"; "Brutto TS AC")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Net Wage TS AC"; "Net Wage TS AC")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax From Brutto TS AC"; "Add. Tax From Brutto TS AC")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Add. Tax Over Brutto TS AC"; "Add. Tax Over Brutto TS AC")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax Basis TS AC"; "Tax Basis TS AC")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Tax TS AC"; "Tax TS AC")
                 {
-                    Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Payment Date (Author Contract)"; "Payment Date (Author Contract)")
                 {
-
+                    ApplicationArea = all;
                     trigger OnValidate()
                     begin
                         WC.SETFILTER("Wage Header No.", '%1', "No.");
@@ -500,401 +532,907 @@ page 50017 "Wage Header Card"
     {
         area(processing)
         {
-            group("Payment Orders2")
+            group("Payment Orders1")
             {
                 Caption = 'Payment Orders';
-                group("Payment Orders")
+                Image = Payables;
+                action("Priprema UPP naloga")
+                {
+                    //  Caption = 'Payment Order preparation';
+                    Image = Payment;
+                    Promoted = false;
+                    ApplicationArea = all;
+
+                    trigger OnAction()
+                    var
+                        WithConfirm: Boolean;
+                    begin
+                        IF Rec."Negative Payment" = 0 THEN BEGIN
+                            Municipality.SETFILTER(Code, '<>%1', '');
+                            IF Municipality.FIND('-') THEN
+                                REPEAT
+                                    Municipality."For Calculation" := 0;
+                                    Municipality."For Calculation 2" := 0;
+                                    Municipality.MODIFY;
+                                UNTIL Municipality.NEXT = 0;
+                            //WithConfirm := CONFIRM(Txt005,FALSE);
+                            CloseWageCalc.POrdersInitValue(Rec, WithConfirm);
+                        END
+                        ELSE BEGIN
+                            ERROR(Txt013);
+                        END;
+                    end;
+                }
+                action("Priprema UPP naloga - odvojeni obračun dodataka")
+                {
+                    Caption = 'Priprema UPP naloga - odvojeni obračun dodataka';
+                    Image = Payment;
+                    Promoted = false;
+                    ApplicationArea = all;
+
+
+                    trigger OnAction()
+                    var
+                        WithConfirm: Boolean;
+                    begin
+                        CloseWageCalc.POrdersAdditionsInitValue(Rec, WithConfirm);
+
+
+                        /*Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+                         Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       //WithConfirm := CONFIRM(Txt005,FALSE);
+
+                       CloseWageCalc.DoprinosiDodaci(Rec);
+
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+
+                       Orgdijelovi.RESET;
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       CloseWageCalc.DoprinosiDodaciBD(Rec);
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+                         Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       CloseWageCalc.DoprinosiDodaciBDRS(Rec);
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+                       Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       CloseWageCalc.DoprinosiRS(Rec);
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                          Municipality."For Calculation 3":=0;
+                           Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+                         Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       CloseWageCalc.DoprinosiRSFBIH(Rec);
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+                       Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       CloseWageCalc.PoreziDodaciBDRS(Rec);
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+
+                       Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+
+                       CloseWageCalc.DodaciPoBankama(Rec);
+                       CloseWageCalc.PoreziDodaci(Rec);
+                         Municipality.SETFILTER(Code,'<>%1','');
+                         IF Municipality.FIND('-') THEN REPEAT
+                         Municipality."For Calculation":=0;
+                         Municipality."For Calculation 2":=0;
+                         Municipality."For Calculation 3":=0;
+                         Municipality."For Calculation 4":=0;
+                         Municipality."For Calculation FA 3":=0;
+                         Municipality."For Calculation 5":=0;
+                         Municipality."For Calculation 6":=0;
+                         Municipality."For Calculation 7":=0;
+                         Municipality."For Calculation FA":=0;
+                         Municipality."For Calculation 8":=0;
+                         Municipality."For Calculation 9":=0;
+                         Municipality."For Calculation 10":=0;
+                         Municipality."For Calculation 11":=0;
+                         Municipality."For Calculation 12":=0;
+                         Municipality."For Calculation 13":=0;
+                         Municipality.MODIFY;
+                         UNTIL Municipality.NEXT=0;
+
+                       Orgdijelovi.RESET;
+
+                        IF Orgdijelovi.FINDFIRST THEN REPEAT
+                       Orgdijelovi."For Calculation":=0;
+                       Orgdijelovi."For Calculation 2":=0;
+                       Orgdijelovi."For Calculation 3":=0;
+                       Orgdijelovi."For Calculation 4":=0;
+                       Orgdijelovi."For Calculation 5":=0;
+                       Orgdijelovi."For Calculation 6":=0;
+                       Orgdijelovi."For Calculation 7":=0;
+                       Orgdijelovi."For Calculation FA":=0;
+                       Orgdijelovi."For Calculation FA 2":=0;
+                       Orgdijelovi."For Calculation FA 3":=0;
+                       Orgdijelovi."For Calculation 8":=0;
+                       Orgdijelovi."For Calculation 9":=0;
+                       Orgdijelovi."For Calculation 10":=0;
+                       Orgdijelovi."For Calculation 11":=0;
+                       Orgdijelovi."For Calculation 12":=0;
+                       Orgdijelovi."For Calculation 13":=0;
+                       Orgdijelovi."For Calculation 14":=0;
+                       Orgdijelovi."For Calculation 15":=0;
+                       Orgdijelovi.MODIFY;
+                        UNTIL Orgdijelovi.NEXT=0;
+                       CloseWageCalc.PoreziDodaciRS(Rec);
+                       CloseWageCalc.PoreziDodaciBD(Rec);*/
+
+
+                    end;
+                }
+                action("Pregled UPP naloga")
                 {
                     Caption = 'Payment Orders';
-                    Image = Payables;
-                    action("Priprema Virmana")
-                    {
-                        Caption = 'Payment Order preparation';
-                        Image = Payment;
-                        Promoted = false;
-                        //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                        //PromotedIsBig = false;
+                    Image = Check;
+                    RunObject = Page "Payment Orders";
+                    ApplicationArea = all;
+                }
 
-                        trigger OnAction()
-                        var
-                            WithConfirm: Boolean;
-                        begin
-                            Municipality.SETFILTER(Code, '<>%1', '');
-                            IF Municipality.FIND('-') THEN
-                                REPEAT
-                                    Municipality."For Calculation" := 0;
-                                    Municipality."For Calculation 2" := 0;
-                                    Municipality.MODIFY;
-                                UNTIL Municipality.NEXT = 0;
-                            //WithConfirm := CONFIRM(Txt005,FALSE);
-                            CloseWageCalc.POrdersInitValue(Rec, WithConfirm);
-                        end;
-                    }
-                    action("Priprema Virmana - odvojeni obračun dodataka")
-                    {
-                        Caption = 'un dodataka';
-                        Image = Payment;
-                        Promoted = false;
-                        //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                        //PromotedIsBig = false;
+                action("Priprema  UPP naloga - privremeni i povremeni ugovori")
+                {
+                    Caption = ' i povremeni ugovori';
+                    Image = Payment;
+                    Promoted = false;
+                    ApplicationArea = all;
+                    //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
+                    //PromotedIsBig = false;
 
-                        trigger OnAction()
-                        var
-                            WithConfirm: Boolean;
-                        begin
-                            Municipality.SETFILTER(Code, '<>%1', '');
-                            IF Municipality.FIND('-') THEN
-                                REPEAT
-                                    Municipality."For Calculation" := 0;
-                                    Municipality."For Calculation 2" := 0;
-                                    Municipality.MODIFY;
-                                UNTIL Municipality.NEXT = 0;
+                    trigger OnAction()
+                    var
+                        WithConfirm: Boolean;
+                    begin
+                        CompanyInfo.get();
+                        Municipality.SETFILTER(Code, '<>%1', '');
+                        IF Municipality.FIND('-') THEN
+                            REPEAT
+                                Municipality."For Calculation" := 0;
+                                Municipality."For Calculation 2" := 0;
+                                Municipality."For Calculation 3" := 0;
+                                Municipality.MODIFY;
+                            UNTIL Municipality.NEXT = 0;
 
-                            //WithConfirm := CONFIRM(Txt005,FALSE);
-
-                            /*CloseWageCalc.DoprinosiDodaci(Rec);
-                              Municipality.SETFILTER(Code,'<>%1','');
-                              IF Municipality.FIND('-') THEN REPEAT
-                              Municipality."For Calculation":=0;
-                              Municipality."For Calculation 2":=0;
-                              Municipality.MODIFY;
-                              UNTIL Municipality.NEXT=0;*/
+                        WithConfirm := CONFIRM(Txt005, FALSE);
 
 
-                            /*CloseWageCalc.DoprinosiBDDodaci(Rec);
-                              Municipality.SETFILTER(Code,'<>%1','');
-                              IF Municipality.FIND('-') THEN REPEAT
-                              Municipality."For Calculation":=0;
-                              Municipality."For Calculation 2":=0;
-                              Municipality.MODIFY;
-                              UNTIL Municipality.NEXT=0;
-                            
-                            CloseWageCalc.DoprinosiFBIHRSDodaci(Rec);
-                              Municipality.SETFILTER(Code,'<>%1','');
-                              IF Municipality.FIND('-') THEN REPEAT
-                              Municipality."For Calculation":=0;
-                              Municipality."For Calculation 2":=0;
-                              Municipality.MODIFY;
-                              UNTIL Municipality.NEXT=0;*/
-
-                            CloseWageCalc.DodaciPoBankama(Rec);
-                            //CloseWageCalc.PoreziDodaci(Rec);
-                            CloseWageCalc.POrdersInitValue(Rec, WithConfirm);
-
-                        end;
-                    }
-                    action("Pregled Virmana")
-                    {
-                        Caption = 'Payment Orders';
-                        Image = Check;
-                        RunObject = Page 50042;
-                    }
-                    action("Pregled UPP naloga po poslovnicama")
-                    {
-                        Caption = 'a';
-                        Image = CheckDuplicates;
-                        RunObject = Page 99000766;
-                        Visible = false;
-                    }
-                    action("Priprema  UPP naloga - privremeni i povremeni ugovori")
-                    {
-                        Caption = ' i povremeni ugovori';
-                        Image = Payment;
-                        Promoted = false;
-                        //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                        //PromotedIsBig = false;
-
-                        trigger OnAction()
-                        var
-                            WithConfirm: Boolean;
-                        begin
-                            Municipality.SETFILTER(Code, '<>%1', '');
-                            IF Municipality.FIND('-') THEN
-                                REPEAT
-                                    Municipality."For Calculation" := 0;
-                                    Municipality."For Calculation 2" := 0;
-                                    Municipality.MODIFY;
-                                UNTIL Municipality.NEXT = 0;
-
-                            WithConfirm := CONFIRM(Txt005, FALSE);
-
-                            CloseWageCalc.DoprinosiTC(Rec);
-                            Municipality.SETFILTER(Code, '<>%1', '');
-                            IF Municipality.FIND('-') THEN
-                                REPEAT
-                                    Municipality."For Calculation" := 0;
-                                    Municipality."For Calculation 2" := 0;
-                                    Municipality.MODIFY;
-                                UNTIL Municipality.NEXT = 0;
+                        Municipality.SETFILTER(Code, '<>%1', '');
+                        IF Municipality.FIND('-') THEN
+                            REPEAT
+                                Municipality."For Calculation" := 0;
+                                Municipality."For Calculation 2" := 0;
+                                Municipality.MODIFY;
+                            UNTIL Municipality.NEXT = 0;
 
 
-                            CloseWageCalc.DoprinosiTCNR(Rec);
-                            Municipality.SETFILTER(Code, '<>%1', '');
-                            IF Municipality.FIND('-') THEN
-                                REPEAT
-                                    Municipality."For Calculation" := 0;
-                                    Municipality."For Calculation 2" := 0;
-                                    Municipality.MODIFY;
-                                UNTIL Municipality.NEXT = 0;
+                        Municipality.SETFILTER(Code, '<>%1', '');
+                        IF Municipality.FIND('-') THEN
+                            REPEAT
+                                Municipality."For Calculation" := 0;
+                                Municipality."For Calculation 2" := 0;
+                                Municipality."For Calculation 3" := 0;
+                                Municipality.MODIFY;
+                            UNTIL Municipality.NEXT = 0;
 
+
+                        if CompanyInfo."Entity Code" <> 'RS' then begin
                             CloseWageCalc.UOD(Rec);
                             CloseWageCalc.DoprinosiTCAC(Rec);
+                            CloseWageCalc.DoprinosiTC(Rec);
+                            CloseWageCalc.DoprinosiTCNR(Rec);
                             CloseWageCalc.PoreziTC(Rec);
                             CloseWageCalc.PoreziTCNR(Rec);
                             CloseWageCalc.PoreziTCAC(Rec);
-                            AddTaxPE.SETFILTER(Calculated, '%1', FALSE);
-                            AddTaxPE.SETFILTER("Wage Calculation Type", '%1|%2|%3', 1, 2, 3);
-                            IF AddTaxPE.FIND('-') THEN
-                                REPEAT
-                                    AddTaxPE.Calculated := TRUE;
-                                    AddTaxPE.MODIFY;
-                                UNTIL AddTaxPE.NEXT = 0;
-                        end;
-                    }
-                }
-            }
-            group("Journal Creation2")
-            {
-                Caption = 'Journal Creation';
-                Image = Reconcile;
-                group("Journal Creation")
-                {
-                    Caption = 'Journal Creation';
-                    Image = Journals;
-                    action("Kreiraj nalog za knjiženje")
-                    {
-                        Caption = 'Tranfer calculation to Gen. Journal';
-                        Image = Post;
-                        Promoted = false;
-                        //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                        //PromotedIsBig = false;
-
-                        trigger OnAction()
-                        begin
-                            //
-                            IF CONFIRM(Txt003, FALSE, Rec.Description) THEN BEGIN
-                                WLE.SETRANGE("Document No.", xRec."No.");
-                                WLE.SETRANGE("Wage Header Entry No.", xRec."Entry No.");
-                                REPORT.RUNMODAL(REPORT::"Post Wage to GL", TRUE, TRUE, WLE);
-                            END;
-                        end;
-                    }
-
-                    action("Pregled naloga za knjiženje")
-                    {
-                        Caption = 'Look calculation to Gen. Journal';
-                        Image = ShowList;
-                        Promoted = false;
-                        //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
-                        //PromotedIsBig = false;
-
-                        trigger OnAction()
-                        var
-                            GenJournal: Page "General Journal";
-                        begin
+                        end
+                        else begin
 
 
-                            GenJournal.Run();
-
-
-
-                            /* WLE.SETRANGE("Document No.", xRec."No.");
-                             WLE.SETRANGE("Wage Header Entry No.", xRec."Entry No.");
-                             REPORT.RUNMODAL(REPORT::"Post Wage to GL", TRUE, TRUE, WLE);*/
-
+                            CloseWageCalc.UOD(Rec);
+                            CloseWageCalc.DoprinosiTCACRS(Rec);
+                            CloseWageCalc.DoprinosiTCRS(Rec);
+                            CloseWageCalc.DoprinosiTCNR(Rec);
+                            CloseWageCalc.PoreziTC(Rec);
+                            CloseWageCalc.PoreziTCNR(Rec);
+                            CloseWageCalc.PoreziTCAC(Rec);
 
                         end;
-                    }
-
-
-                }
-
-            }
-
-            group("Lock calculation3")
-            {
-                Caption = 'Lock calculation';
-                Image = Alerts;
-                group("Lock calculation2")
-                {
-                    Caption = 'Lock calculation';
-                    Image = Alerts;
-                    action("Zaključi obračun")
-                    {
-                        Image = Lock;
-                        Promoted = true;
-                        PromotedIsBig = true;
-
-                        trigger OnAction()
-                        begin
-                            BEGIN
-                                CurrPage.SETSELECTIONFILTER(wh);
-                                REPORT.RUNMODAL(REPORT::"Lock Calculation", FALSE, FALSE, wh);
-                            END;
-                        end;
-                    }
-                }
-            }
-            group(Export)
-
-
-            {
-                Caption = 'Export';
-                action("Export MIP")
-
-
-                {
-
-                    Caption = 'Export MIP';
-                    Image = ExportFile;
-                    trigger OnAction()
-                    begin
-                        // MIPXML.Run();
-                        Xmlport.Run(50001, false, false);
-                    end;
-
-
-                }
-                action("Export GIP")
-                {
-                    Caption = 'Export GIP';
-                    Image = ExportFile;
-                    trigger OnAction()
-                    begin
-                        Xmlport.Run(50002, false, false);
+                        AddTaxPE.SETFILTER(Calculated, '%1', FALSE);
+                        AddTaxPE.SETFILTER("Wage Calculation Type", '%1|%2|%3', 1, 2, 3);
+                        IF AddTaxPE.FIND('-') THEN
+                            REPEAT
+                                AddTaxPE.Calculated := TRUE;
+                                AddTaxPE.MODIFY;
+                            UNTIL AddTaxPE.NEXT = 0;
                     end;
                 }
+                /*ĐK  action("Priprema virmana za eksterno bankatstvo")
+                  {
+                      //Hypo export
+                      Caption = 'Priprema virmana za eksterno bankatstvo';
+                      Image = Check;
+                      RunObject = Report "Hypo export";
+                      ApplicationArea = all;
+
+                  }*/
 
             }
-            group(Delete)
+
+
+
+
+            action("Kreiraj nalog za knjiženje")
+
+            {
+                Caption = 'Tranfer calculation to Gen. Journal';
+                Image = Post;
+                Promoted = false;
+                ApplicationArea = all;
+                //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
+                //PromotedIsBig = false;
+
+                trigger OnAction()
+                begin
+                    IF Rec."Negative Payment" = 0 THEN BEGIN
+                        IF CONFIRM(Txt003, FALSE, Rec.Description) THEN BEGIN
+                            WLE.SETRANGE("Document No.", xRec."No.");
+                            WLE.SETRANGE("Wage Header Entry No.", xRec."Entry No.");
+                            Commit();
+                            REPORT.RUNMODAL(REPORT::"Post Wage to GL", TRUE, TRUE, WLE);
+                            Commit();
+                        END;
+                    END
+                    ELSE BEGIN
+                        ERROR(Txt013);
+                    END;
+                end;
+
+            }
+
+            group("Create files1")
+            {
+                Caption = 'Create files';
+                Image = Transactions;
+                Visible = true;
+                /*       action("Wage Posting")
+                       {
+                           Caption = 'Wage Posting';
+                           Image = WageLines;
+                           ApplicationArea = all;
+                           trigger OnAction()
+                           var
+                               R_TS1: Report "TS_knjizenja 1";
+                               WH: Record "Wage Header";
+                               Calc: Record "Wage Calculation";
+                               FileManagement: Codeunit "File Management";
+                               filename: Text;
+                           begin
+                               IF Rec."Negative Payment" = 0 THEN BEGIN
+                                   WH.RESET;
+                                   WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
+                                   WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
+
+                                   IF NOT WH.FIND('-') THEN
+                                       ERROR('Ne postoji obračun plata!')
+                                   ELSE BEGIN
+
+
+                                       CLEAR(R_TS1);
+                                       CLEAR(FileManagement);
+                                       WS.GET;
+                                       PO.RESET;
+                                       WH.CALCFIELDS("Payment UPP");
+                                       filename := WS."Export Report Path" + FORMAT(WH."Payment UPP") + '~02~LD RBBH~' + FORMAT(WH."Date Of Calculation") + '.xls';
+                                       R_TS1.SetParam(Rec."No.");
+                                       PO.SetRange("Wage Header No.", Rec."No.");
+                                       R_TS1.SAVEASEXCEL(filename);
+                                       FileManagement.DownloadToFile(filename, filename);
+                                       //FileManagement.DownloadToFile(filename, filename);
+
+
+                                   END;
+                               END
+                               ELSE BEGIN
+                                   ERROR(Txt013);
+                               END;
+                           end;
+                       }*/
+                action("Wage Posting Additions")
+                {
+                    Caption = 'Wage Posting';
+                    Image = WageLines;
+                    ApplicationArea = all;
+                    trigger OnAction()
+                    var
+                        //ĐK      R_TS1: Report "TS_knjizenja 1";
+                        WH: Record "Wage Header";
+                        Calc: Record "Wage Calculation";
+                        FileManagement: Codeunit "File Management";
+                        filename: Text;
+                    begin
+                        IF Rec."Negative Payment" = 0 THEN BEGIN
+                            WH.RESET;
+                            WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
+                            WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
+
+                            IF NOT WH.FIND('-') THEN
+                                ERROR('Ne postoji obračun plata!')
+                            ELSE BEGIN
+
+
+                                //ĐK     CLEAR(R_TSAdd);
+                                CLEAR(FileManagement);
+                                WS.GET;
+                                PO.RESET;
+                                WH.CALCFIELDS("Addition Netto");
+                                PaymentOrderNew.RESET;
+                                PaymentOrderNew.SETFILTER("Wage Calculation Type", '%1', PaymentOrderNew."Wage Calculation Type"::Additions);
+                                PaymentOrderNew.SETFILTER(Contributon, '%1', 'DODACI');
+                                PaymentOrderNew.SETFILTER("Wage Header No.", '%1', WH."No.");
+                                IF PaymentOrderNew.FINDFIRST THEN BEGIN
+                                    PaymentOrderNew.CALCSUMS(Iznos);
+                                    filename := WS."Export Report Path" + FORMAT(WH."Addition Netto") + '~02~LD RBBH~' + FORMAT(WH."Date Of Calculation") + '.xls';
+                                    //R_TSAdd.SetParam(Rec."No.");
+                                    // R_TSAdd.SAVEASEXCEL(filename);
+                                    //     R_TSAdd.SetParam(Rec."No.");
+                                    //ĐK   R_TSAdd.SAVEASEXCEL(filename);
+                                    FileManagement.DownloadToFile(filename, filename);
+                                    //  FileManagement.DownloadToFile(filename, filename);
+                                END;
+
+                            END;
+                        END
+                        ELSE BEGIN
+                            ERROR(Txt013);
+                        END;
+                    end;
+                }
+                action("Reduction Posting")
+                {
+                    Caption = 'Reduction Posting';
+                    Image = Reject;
+                    ApplicationArea = all;
+                    trigger OnAction()
+                    var
+                        //ĐK R_TS2: Report "TS_knjizenja 2";
+                        WH: Record "Wage Header";
+                        Calc: Record "Wage Calculation";
+                        FileManagement: Codeunit "File Management";
+                        filename: Text;
+                        Newfilename: Text;
+
+                    begin
+                        IF Rec."Negative Payment" = 0 THEN BEGIN
+                            WH.RESET;
+                            WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
+                            WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
+
+                            IF NOT WH.FIND('-') THEN
+                                ERROR('Ne postoji obračun plata!')
+                            ELSE BEGIN
+
+
+                                //đk       CLEAR(R_TS2);
+                                CLEAR(FileManagement);
+                                WS.GET;
+                                WH.CALCFIELDS("Reduction UPP");
+                                PO.RESET;
+
+                                MESSAGE(FORMAT(Correct));
+                                filename := WS."Export Report Path" + FORMAT(Replacestring(FORMAT(WH."Reduction UPP"), '.', '') + '~01~OBUSTAVA LD RBBH~') + FORMAT(WH."Date Of Calculation") + '.xls';
+                                /*       R_TS2.SetParam(Rec."No.");
+                                       R_TS2.SAVEASEXCEL(filename);*/
+                                FileManagement.DownloadToFile(filename, filename);
+                                // PO.SetRange("Wage Header No.", Rec."No.");
+                                //REPORT.SAVEASEXCEL(50099, filename, PO);
+
+                            END;
+                        END
+                        ELSE BEGIN
+                            ERROR(Txt013);
+                        END;
+
+                    end;
+                }
+                action("Contribution Posting")
+                {
+                    Caption = 'Contribution Posting';
+                    Image = Relationship;
+                    ApplicationArea = all;
+
+                    trigger OnAction()
+                    var
+                        //ĐK      R_TS3: Report "TS_knjizenja 3";
+                        WH: Record "Wage Header";
+                        Calc: Record "Wage Calculation";
+                        FileManagement: Codeunit "File Management";
+                        filename: Text;
+                    begin
+                        IF Rec."Negative Payment" = 0 THEN BEGIN
+                            WH.RESET;
+                            WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
+                            WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
+
+                            IF NOT WH.FIND('-') THEN
+                                ERROR('Ne postoji obračun plata!')
+                            ELSE BEGIN
+
+
+                                //ĐK    CLEAR(R_TS3);
+                                CLEAR(FileManagement);
+                                WS.GET;
+                                PO.RESET;
+                                WH.CALCFIELDS("Contribution UPP");
+                                filename := WS."Export Report Path" + FORMAT(WH."Contribution UPP") + '~01~DOPRINOSI LD~' + FORMAT(WH."Month Of Wage") + ' ' + FORMAT(WH."Year Of Wage") + '.xls';
+                                /*R_TS3.SetParam(Rec."No.", 1);
+                                R_TS3.SAVEASEXCEL(filename);*/
+                                FileManagement.DownloadToFile(filename, filename);
+                                //PO.SetRange("Wage Header No.", Rec."No.");
+                                //PO.SETFILTER("Wage Calculation Type", '%1', PO."Wage Calculation Type"::Regular);
+                                //REPORT.SAVEASEXCEL(50100, filename, PO);
+
+
+                            END;
+                        END
+                        ELSE BEGIN
+                            ERROR(Txt013);
+                        END;
+                    end;
+                }
+                action("Contribution Posting Add")
+                {
+                    Caption = 'Contribution Posting';
+                    Image = Relationship;
+                    ApplicationArea = all;
+                    trigger OnAction()
+                    var
+                        //ĐK     R_TS3: Report "TS_knjizenja 3";
+                        WH: Record "Wage Header";
+                        Calc: Record "Wage Calculation";
+                        FileManagement: Codeunit "File Management";
+                        filename: Text;
+                    begin
+                        IF Rec."Negative Payment" = 0 THEN BEGIN
+                            WH.RESET;
+                            WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
+                            WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
+
+                            IF NOT WH.FIND('-') THEN
+                                ERROR('Ne postoji obračun plata!')
+                            ELSE BEGIN
+
+
+                                //                                CLEAR(R_TS3);
+                                CLEAR(FileManagement);
+                                WS.GET;
+                                PO.RESET;
+                                WH.CALCFIELDS("Contribution UPP Additions");
+                                filename := WS."Export Report Path" + FORMAT(WH."Contribution UPP Additions") + '~01~DOPRINOSI LD~' + FORMAT(WH."Month Of Wage") + ' ' + FORMAT(WH."Year Of Wage") + '.xls';
+                                /*     R_TS3.SetParam(Rec."No.", 2);
+                                     R_TS3.SAVEASEXCEL(filename);*/
+                                FileManagement.DownloadToFile(filename, filename);
+                                //PO.SetRange("Wage Header No.", Rec."No.");
+                                //PO.SETFILTER("Wage Calculation Type", '%1', PO."Wage Calculation Type"::Additions);
+                                //REPORT.SAVEASEXCEL(50100, filename, PO);
+
+                            END;
+                        END
+                        ELSE BEGIN
+                            ERROR(Txt013);
+                        END;
+                    end;
+                }
+
+            }
+
+
+            action("Zaključi obračun")
+            {
+                Image = Lock;
+                Promoted = true;
+                PromotedIsBig = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    IF Rec."Negative Payment" = 0 THEN BEGIN
+                        BEGIN
+                            CurrPage.SETSELECTIONFILTER(wh);
+                            REPORT.RUNMODAL(REPORT::"Lock Calculation", FALSE, FALSE, wh);
+                        END;
+                    END
+                    ELSE BEGIN
+                        ERROR(Txt013);
+                    END;
+                end;
+            }
+
+
+            group(Delete1)
             {
                 Caption = 'Delete';
                 Image = Confirm;
-                group(Delete2)
+
+                action("Otvori obračun")
                 {
-                    Caption = 'Delete';
-                    Image = Confirm;
-                    action("Otvori obračun")
-                    {
-                        Caption = 'Open calculation';
-                        Image = OpenWorksheet;
-                        Promoted = false;
-                        Visible = false;
+                    Caption = 'Open calculation';
+                    Image = OpenWorksheet;
+                    Promoted = false;
+                    Visible = false;
+                    ApplicationArea = all;
 
-                        trigger OnAction()
-                        begin
+                    trigger OnAction()
+                    begin
 
-                            IF CONFIRM(Txt002, FALSE, Rec.Description) THEN BEGIN
-                                CurrPage.SETSELECTIONFILTER(wh);
-                                REPORT.RUN(REPORT::"Reopen Calculation", FALSE, FALSE, wh);
-                            END;
-                        end;
-                    }
-                    action("Obriši obračun plate")
-                    {
-                        Caption = 'Delete wage calculation';
-                        Image = Delete;
-                        Promoted = false;
+                        IF CONFIRM(Txt002, FALSE, Rec.Description) THEN BEGIN
+                            CurrPage.SETSELECTIONFILTER(wh);
+                            REPORT.RUN(REPORT::"Reopen Calculation", FALSE, FALSE, wh);
+                        END;
+                    end;
+                }
+                action("Obriši obračun")
+                {
+                    Caption = 'Delete wage calculation';
+                    Image = Delete;
+                    Promoted = false;
+                    ApplicationArea = all;
 
-                        trigger OnAction()
-                        begin
-
+                    trigger OnAction()
+                    var
+                        GL: Record "G/L entry";
+                        Wh: Record "Wage Header";
+                        UserSet: Record "User Setup";
+                    begin
+                        IF Rec."Wage Calculation Type" = Rec."Wage Calculation Type"::Normal THEN BEGIN
                             IF CONFIRM(Txt002, FALSE, Rec.Description) THEN BEGIN
                                 IF CONFIRM(Txt012, FALSE, Rec.Description) THEN BEGIN
                                     CurrPage.SETSELECTIONFILTER(wh);
-                                    REPORT.RUN(REPORT::"Delete Calculation", FALSE, FALSE, wh);
+                                    UserSet.reset;
+                                    UserSet.setfilter("User ID", '%1', UserId);
+                                    UserSet.SetFilter("Delete Wage", '%1', true);
+                                    if not UserSet.FindFirst() then begin
+
+                                        GL.Reset();
+                                        GL.SetFilter("Document No.", '%1', 'PLATE ' + format(Rec."Payment Date"));
+                                        if GL.FindFirst() then
+                                            Error('Ne možete obrisati obračun koji je već proknjižen!');
+
+                                        REPORT.RUN(REPORT::"Delete Calculation", FALSE, FALSE, wh);
+
+                                    end
+                                    else begin
+                                        REPORT.RUN(REPORT::"Delete Calculation", FALSE, FALSE, wh);
+
+                                    end;
                                 END;
                             END;
-                        end;
-                    }
-                    action("Transfer Data")
-                    {
-                        Caption = 'Transfer Data';
-                        Image = TransferOrder;
-                        Promoted = true;
-                        PromotedIsBig = false;
-                        Visible = false;
-
-                        trigger OnAction()
-                        begin
-                            /*Response :=CONFIRM(Txt006);
-                            IF Response THEN
-                              BEGIN
-                                IF WC.FINDFIRST THEN REPEAT
-                                  BEGIN
-                                    SAP.RESET;
-                                    SAP.SETFILTER(SAP."Wage Header No.", WC."Wage Header No.");
-                                    SAP.SETFILTER(SAP."Wage Calculation No.", WC."No.");
-                                    IF SAP.ISEMPTY THEN
-                                      BEGIN
-                                        SAP."Wage Calculation No.":=WC."No.";
-                                        SAP."Wage Header No.":=WC."Wage Header No.";
-                                        SAP.JMB:=WC."Employee No.";
-                                        SAP.POREZ:=WC.Tax;
-                                        SAP.OBUSTAVE_UKUPNO:=WC."Wage Reduction";
-                                        SAP.UGOVORENI_BRUTO:=WC."Wage (Base)";
-                                        SAP.BRUTO:=WC.Brutto;
-                                        SAP.NETO_PLATA:=WC."Net Wage"- WC.Tax;
-                                        SAP.IZNOS_ISPLATA:=WC.Payment;
-                                        SAP.MINULI_RAD:=WC."Work Experience Brutto";
-                                        SAP.UKUPNO_DOPRINOSA_IZ_PLATE:=WC."Contribution From Brutto";
-                                        SAP.UKUPNO_DOPRINOSA_NA_PATU:=WC."Contribution Over Brutto";
-                                        SAP.TOPLI_OBROK:=WC."Taxable Meal";
-                                        SAP.TOPLI_OBROK_NEOP:=WC."Meal to pay";
-                                        SAP.TROSKOVI_PREVOZA:=WC."Taxable Transport";
-                                        SAP.TROSKOVI_PREVOZA_NEOP:=WC.Transport;
-                                        cpe.RESET;
-                                        cpe.SETFILTER(cpe."Wage Header No.",WC."Wage Header No.");
-                                        cpe.SETFILTER(cpe."Wage Calc No.",WC."No.");
-                                        IF cpe.FINDFIRST THEN
-                                          BEGIN
-                                            cpe.SETFILTER("Contribution Code",'DJEC-ZAST');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.DJ_ZASTITA_IZ:=cpe."Amount On Wage";
-                                             cpe.SETFILTER("Contribution Code",'D-NEZAP-IZ');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.NEZAP_IZ:=cpe."Amount From Wage";
-                                             cpe.SETFILTER("Contribution Code",'D-NEZAP-NA');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.NEZAP_NA:=cpe."Amount Over Wage";
-                                             cpe.SETFILTER("Contribution Code",'D-PIO-IZ');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.PIO_IZ:=cpe."Amount From Wage";
-                                             cpe.SETFILTER("Contribution Code",'D-PIO-NA');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.PIO_NA:=cpe."Amount Over Wage";
-                                            cpe.SETFILTER("Contribution Code",'D-ZDRAV-IZ');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.ZDR_IZ:=cpe."Amount From Wage";
-                                            cpe.SETFILTER("Contribution Code",'D-ZDRAV-NA');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.ZDR_NA:=cpe."Amount Over Wage";
-                                            cpe.SETFILTER("Contribution Code",'P-VOD');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.OPCA_VODNA_NAKNADA:=cpe."Amount On Wage";
-                                            cpe.SETFILTER("Contribution Code",'P-ELNEP');
-                                            IF cpe.FINDFIRST THEN
-                                              SAP.PPZZOPIDN:=cpe."Amount On Wage";
-                                          END;
-                                        emp.RESET;
-                                        emp.SETFILTER("No.",WC."Employee No.");
-                                        IF emp.FINDFIRST THEN
-                                          BEGIN
-                                            SAP.IME_I_PREZIME:= emp."First Name" + ' ' + emp."Last Name";
-                                          END;
-                                        SAP.UKUPNI_TROSAK:=SAP.BRUTO+SAP.UKUPNO_DOPRINOSA_NA_PATU+SAP.TOPLI_OBROK_NEOP+SAP.TROSKOVI_PREVOZA_NEOP+SAP.REGRES_NEOP+SAP.DOPRINOSI_PRIV_KOM+SAP.PPZZOPIDN+SAP.OPCA_VODNA_NAKNADA+SAP.KORISTI_NETO;
-                                        SAP.INSERT;
-                                      END;
-                                  END;
-                            
-                                UNTIL WC.NEXT=0;
-                                MESSAGE(Txt007)
-                            
-                              END;*/
-
-                        end;
-                    }
+                        END ELSE BEGIN
+                            MESSAGE('Za brisanje dodataka, koristite opciju Obriši obračun dodataka');
+                        END;
+                    end;
                 }
+                action("Obriši obračun dodataka")
+                {
+                    Caption = 'Delete wage calculation';
+                    Image = DeleteExpiredComponents;
+                    Promoted = false;
+                    ApplicationArea = all;
+                    trigger OnAction()
+                    begin
+                        IF Rec."Wage Calculation Type" = Rec."Wage Calculation Type"::"Fixed Add" THEN BEGIN
+                            IF CONFIRM(Txt002, FALSE, Rec.Description) THEN BEGIN
+                                IF CONFIRM(Txt012, FALSE, Rec.Description) THEN BEGIN
+                                    CurrPage.SETSELECTIONFILTER(wh);
+                                    //ĐK   REPORT.RUN(REPORT::"Delete Additions", FALSE, FALSE, wh);
+                                END;
+                            END;
+                        END ELSE BEGIN
+                            MESSAGE('Za brisanje dodataka, koristite opciju Obriši redovni obračun');
+                        END;
+                    end;
+                }
+
+                action("Obriši obračun privremenih ugovora")
+                {
+                    Caption = 'Delete wage calculation';
+                    Image = DeleteExpiredComponents;
+                    Promoted = false;
+                    ApplicationArea = all;
+                    trigger OnAction()
+                    begin
+                        IF Rec."Wage Calculation Type" = Rec."Wage Calculation Type"::"Fixed Add" THEN BEGIN
+                            IF CONFIRM(Txt002, FALSE, Rec.Description) THEN BEGIN
+                                IF CONFIRM(Txt012, FALSE, Rec.Description) THEN BEGIN
+                                    CurrPage.SETSELECTIONFILTER(wh);
+                                    //ĐK       REPORT.RUN(REPORT::"Delete Additions", FALSE, FALSE, wh);
+                                END;
+                            END;
+                        END ELSE BEGIN
+                            MESSAGE('Za brisanje dodataka, koristite opciju Obriši redovni obračun');
+                        END;
+                    end;
+                }
+
+
+
             }
         }
     }
@@ -926,31 +1464,26 @@ page 50017 "Wage Header Card"
 
     trigger OnInit()
     begin
-        //MESSAGE(FORMAT(BruttoSum));
         WS.GET();
     end;
 
-    trigger OnOpenPage()
-    begin
-
-        //INT1.0 start
-        UTemp.SETFILTER("User ID", '%1', USERID);
-        IF UTemp.FINDFIRST THEN
-            WageAllowed := UTemp."Wage Allowed";
-
-        IF WageAllowed = FALSE THEN
-            ERROR(error1);
-        //INT1.0 end
-    end;
-
     var
-        R_SetGLE: Report "RUC calculation";
+        Orgdijelovi: Record "ORG Dijelovi";
+        TempFile: File;
+        //  R_SetGLE: Report "Prenos nalog_knjiženja";
+        Name: Text;
+        Newstream: InStream;
         WageAm: Record "Wage Amounts";
-        Department: Record Department;
+        ToFile: Text;
+        ReturnValue: Boolean;
+        Department: Record "Department";
         EmpDefDim: Record "Employee Default Dimension";
-        OrgD: Record "Routing Personnel";
+        OrgD: Record "ORG Dijelovi";
+        PaymentOrder: Record "Payment Order";
         WA: Record "Wage Addition";
         No: Code[10];
+        PaymentOrderNew: Record "Payment Order";
+        Correct: Decimal;
         wh: Record "Wage Header";
         WLE: Record "Wage Ledger Entry";
         WC: Record "Wage Calculation";
@@ -958,6 +1491,7 @@ page 50017 "Wage Header Card"
         Txt002: Label 'Do you want to delete calculatio %1? Note that deleting calculation does not reverse posting!';
         Txt003: Label 'Do you want to tranfer calculation %1 to Gen. Journal?';
         CloseWageCalc: Codeunit "Close Wage Calculation";
+        // R_TSAdd: Report "TS_knjizenja dodaci";
         CCC: Record "Contribution Category Conn.";
         zaglavlje: Code[30];
         cpe: Record "Contribution Per Employee";
@@ -970,10 +1504,10 @@ page 50017 "Wage Header Card"
         emp: Record "Employee";
         ValueEntryNo: Integer;
         af: Codeunit "Absence Fill";
-        Municipality: Record Municipality;
+        Municipality: Record "Municipality";
         Response: Boolean;
-        Recapitulation: Record "Standard Task";
-        IntegrationTable: Record "Family Line";
+        //ĐK  Recapitulation: Record "Recapitulation";
+        // IntegrationTable: Record "Integration";
         Contribution: Record "Contribution";
         Txt006: Label 'Are you sure you want to transfer data?';
         Txt007: Label 'Data transffered.';
@@ -981,22 +1515,33 @@ page 50017 "Wage Header Card"
         "Average Wage - Chamber(triple)": Decimal;
         "For payment - Chamber": Decimal;
         SickHourPool: Integer;
-        Employee: Record Employee;
-        canton: Record Canton;
+        Employee: Record "Employee";
+        canton: Record "Canton";
         ConCat: Record "Contribution Category";
         CompanyInfo: Record "Company Information";
-        WPConnSetup: Record "Routing Comment Line";
-        lvarActiveConnection: Variant;
-        WPConnSetupOB: Record "Routing Comment Line";
-        lvarActiveConnectionOB: Variant;
-        WPConnSetupPL: Record "Routing Comment Line";
-
-        lvarActiveConnectionPL: Variant;
+        WPConnSetup: Record "Web portal connection setup";
+        /* conn: Automation;
+         comm: Automation;
+         param: Automation;
+         lvarActiveConnection: Variant;*/
+        WPConnSetupOB: Record "Web portal connection setup";
+        /*connOB: Automation;
+        commOB: Automation;
+        paramOB: Automation;
+        lvarActiveConnectionOB: Variant;*/
+        WPConnSetupPL: Record "Web portal connection setup";
+        /*connPL: Automation;
+        commPL: Automation;
+        paramPL: Automation;
+        lvarActiveConnectionPL: Variant;*/
         EA: Record "Employee Absence";
         COA: Record "Cause of Absence";
         WageSetup: Record "Wage Setup";
-        WPConnSetupRAS: Record "Routing Comment Line";
-        lvarActiveConnectionRAS: Variant;
+        WPConnSetupRAS: Record "Web portal connection setup";
+        /* connRAS: Automation;
+         commRAS: Automation;
+         paramRAS: Automation;
+         lvarActiveConnectionRAS: Variant;*/
         cpe9: Record "Contribution Per Employee";
         cpe2: Record "Contribution Per Employee";
         cpe3: Record "Contribution Per Employee";
@@ -1013,10 +1558,20 @@ page 50017 "Wage Header Card"
         wve2: Record "Wage Value Entry";
         AddTaxPE: Record "Contribution Per Employee";
         Txt012: Label 'Do you want to delete calculatio %1? Note that deleting calculation does not reverse posting!';
-        UTemp: Record "User Setup";
-        WageAllowed: Boolean;
-        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
-        MIPXML: XmlPort "MIP 1023";
-        GIPXML: XmlPort "GIP 1022";
+        ReportName: Text;
+        FileVar: File;
+        IStream: InStream;
+        MagicPath: Text;
+        //FileSystemObject: Automation;
+        DestinationFileName: Text;
+        Txt013: Label 'Postoje obračuni sa negativnom isplatom.';
+        PO: Record "Payment Order";
+
+    procedure Replacestring(String: Text; FindWhat: Text; ReplaceWith: Text) NewString: Text
+    begin
+        WHILE STRPOS(String, FindWhat) > 0 DO
+            String := DELSTR(String, STRPOS(String, FindWhat)) + ReplaceWith + COPYSTR(String, STRPOS(String, FindWhat) + STRLEN(FindWhat));
+        NewString := String;
+    end;
 }
 

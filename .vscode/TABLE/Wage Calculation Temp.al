@@ -1,6 +1,6 @@
 table 50021 "Wage Calculation Temp"
 {
-    // //
+    // //n
 
     Caption = 'Wage Calculation Temp';
 
@@ -168,6 +168,14 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = 'Total Ins. Premium';
         }
+        field(169; "Payment Date"; Date)
+        {
+            Caption = 'Payment Date';
+        }
+        field(170; "Contracted Work"; Boolean)
+        {
+            Caption = 'Contracted Work';
+        }
         field(171; "Wage (Base)"; Decimal)
         {
             Caption = 'Wage (Base)';
@@ -289,6 +297,10 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = 'Approved Expenditures';
         }
+        field(200; "Net Wage 2"; Decimal)
+        {
+            Caption = 'Net Wage';
+        }
         field(201; "Unpaid Absence"; Decimal)
         {
             Caption = 'Unpaid Absence';
@@ -300,6 +312,14 @@ table 50021 "Wage Calculation Temp"
         field(203; "Unpaid Absence Hours"; Decimal)
         {
             Caption = 'Unpaid Absence Hours';
+        }
+        field(204; "First Name"; Text[30])
+        {
+            Caption = 'First Name';
+        }
+        field(205; "Last Name"; Text[50])
+        {
+            Caption = 'Last Name';
         }
         field(206; "Taxable Meal"; Decimal)
         {
@@ -341,19 +361,12 @@ table 50021 "Wage Calculation Temp"
         }
         field(217; "Use Netto"; Decimal)
         {
-
-
-
             FieldClass = FlowField;
-
-
-            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE("Use" = FILTER(true), "Employee No." = FIELD("Employee No."), "Wage Header No." = FIELD("Wage Header No."), "Wage Calculation Entry No." = FIELD("No.")));
-
-
-
-
-
-
+            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Use = FILTER(true),
+                                                                         "Employee No." = FIELD("Employee No."),
+                                                                         "Wage Header No." = FIELD("Wage Header No."),
+                                                                         "Wage Calculation Entry No." = FIELD("No.")));
+            Caption = 'Use Netto';
 
         }
         field(218; Invalid; Boolean)
@@ -377,7 +390,7 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = 'Payment Date (Author Contract)';
         }
-        field(224; Status; enum "Employee Status")
+        field(224; Status; enum "Employee Status Ext")
         {
             Caption = 'Status';
 
@@ -389,45 +402,42 @@ table 50021 "Wage Calculation Temp"
         field(226; "Regres Brutto Separate"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition"."Calculated Amount Brutto" WHERE //(Regres=FILTER(true),
-                                                                                ("Employee No." = FIELD("Employee No."),
-                                                                               "Wage Header No." = FIELD("Wage Header No."),
-                                                                                "Wage Calculation Entry No." = FIELD("No.")
-                                                                               ));// Calculated=CONST(Yes)));
+            CalcFormula = Sum("Wage Addition"."Calculated Amount Brutto" WHERE(Regres = FILTER(TRUE),
+                                                                                "Employee No." = FIELD("Employee No."),
+                                                                                "Wage Header No." = FIELD("Wage Header No."),
+                                                                                "Wage Calculation Entry No." = FIELD("No."),
+                                                                                Calculated = CONST(TRUE)));
             Caption = 'Regres Brutto';
 
         }
-
-
         field(227; "Regres Netto Separate"; Decimal)
         {
             FieldClass = FlowField;
-
-            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(true),
+            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(TRUE),
                                                                          "Employee No." = FIELD("Employee No."),
                                                                          "Wage Header No." = FIELD("Wage Header No."),
                                                                          "Wage Calculation Entry No." = FIELD("No."),
-                                                                         Calculated = FILTER(true)));
+                                                                         Calculated = FILTER(TRUE)));
             Caption = 'Regres Netto';
 
         }
         field(228; "Regres Netto Tax Separate"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(true),
+            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(TRUE),
                                                                          "Employee No." = FIELD("Employee No."),
                                                                          "Wage Header No." = FIELD("Wage Header No."),
-                                                                        "Wage Calculation Entry No." = FIELD("No."),
-                                                                         Calculated = FILTER(true)));
+                                                                         "Wage Calculation Entry No." = FIELD("No."),
+                                                                         Calculated = FILTER(TRUE)));
             Caption = 'Regres Netto';
-            //FieldClass = FlowField;
+
         }
         field(229; "Regres Netto Tax"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(true),
+            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(TRUE),
                                                                          "Employee No." = FIELD("Employee No."),
-                                                                        "Wage Header No." = FIELD("Wage Header No."),
+                                                                         "Wage Header No." = FIELD("Wage Header No."),
                                                                          "Wage Calculation Entry No." = FIELD("No.")));
             Caption = 'Regres Netto';
 
@@ -435,22 +445,22 @@ table 50021 "Wage Calculation Temp"
         field(230; "Tax Base Additions"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(true),
+            CalcFormula = Sum("Wage Addition"."Calculated Amount" WHERE(Regres = FILTER(TRUE),
                                                                          "Employee No." = FIELD("Employee No."),
                                                                          "Wage Header No." = FIELD("Wage Header No."),
                                                                          "Wage Calculation Entry No." = FIELD("No."),
-                                                                         Taxable = FILTER(true)));
+                                                                         Taxable = FILTER(TRUE)));
             Caption = 'Regres Netto';
 
         }
         field(231; "Tax Additions"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition".Tax WHERE(Regres = FILTER(true),
+            CalcFormula = Sum("Wage Addition".Tax WHERE(Regres = FILTER(TRUE),
                                                          "Employee No." = FIELD("Employee No."),
                                                          "Wage Header No." = FIELD("Wage Header No."),
                                                          "Wage Calculation Entry No." = FIELD("No."),
-                                                         Taxable = FILTER(true)));
+                                                         Taxable = FILTER(TRUE)));
             Caption = 'Regres Netto';
 
         }
@@ -459,15 +469,14 @@ table 50021 "Wage Calculation Temp"
         }
         field(233; "Regres Netto With Wage"; Decimal)
         {
-            FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(true),
-                                                                    "Employee No." = FIELD("Employee No."),
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(TRUE),
+                                                                     "Employee No." = FIELD("Employee No."),
                                                                      "Wage Header No." = FIELD("Wage Header No."),
-                                                                    "Wage Calculation Entry No." = FIELD("No."),
-                                                                     Locked = FILTER(true),
-                                                                     Calculated = FILTER(false)));
+                                                                     "Wage Calculation Entry No." = FIELD("No."),
+                                                                     Locked = FILTER(TRUE),
+                                                                     Calculated = FILTER(FALSE)));
             Caption = 'Regres Netto';
-
+            FieldClass = FlowField;
         }
         field(234; "SAP 1"; Code[10])
         {
@@ -484,34 +493,19 @@ table 50021 "Wage Calculation Temp"
             FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Month of Wage" = FIELD("Month Of Wage"),
                                                                      "Year of Wage" = FIELD("Year Of Wage"),
-                                                                    "Wage Addition Type" = FILTER('TOPLI OBR')));
+                                                                     "Wage Addition Type" = FILTER('TOPLI OBR')));
 
         }
         field(238; Calculated; Boolean)
         {
             Caption = 'Calculated';
         }
-        field(239; ZZO; Decimal)
-        {
-            CalcFormula = Sum("Wage Addition".Brutto WHERE("Employee No." = FIELD("Employee No."),
-                                                            "Wage Header No." = FIELD("Wage Header No."),
-                                                            "Wage Addition Type" = FILTER('KOREKCIJE')));
-            FieldClass = FlowField;
-        }
-        field(240; "ZZO Dopr"; Decimal)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Sum("Wage Addition"."Total From" WHERE("Employee No." = FIELD("Employee No."),
-                                                                  "Wage Header No." = FIELD("Wage Header No."),
-                                                                  "Wage Addition Type" = FILTER('KOREKCIJE')));
-
-        }
         field(50295; "Department Name"; Text[100])
         {
             Caption = 'Department Name';
             Editable = false;
         }
-        field(50299; "B-1"; Code[10])
+        field(50299; "B-1"; Code[20])
         {
             Caption = 'B-1';
             Editable = false;
@@ -521,7 +515,7 @@ table 50021 "Wage Calculation Temp"
             Caption = 'B-1 Description';
             Editable = false;
         }
-        field(50301; "B-1 (with regions)"; Code[10])
+        field(50301; "B-1 (with regions)"; Code[20])
         {
             Caption = 'B-1 (with regions)';
             Editable = false;
@@ -531,7 +525,7 @@ table 50021 "Wage Calculation Temp"
             Caption = 'B-1 (with regions) Description';
             Editable = false;
         }
-        field(50303; Stream; Code[10])
+        field(50303; Stream; Code[20])
         {
             Caption = 'Stream';
             Editable = false;
@@ -597,25 +591,24 @@ table 50021 "Wage Calculation Temp"
         }
         field(50321; Incentive; Decimal)
         {
-            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
                                                                      "Wage Header No." = FIELD("Wage Header No."),
-                                                                     //  Calculated=CONST(Yes),
-                                                                     "Wage Addition Type" = FILTER('INC*')));
-
+                                                                     Calculated = CONST(TRUE),
+                                                                     Incentive = FILTER(TRUE)));
+            FieldClass = FlowField;
         }
-        field(50322; "Phisical Org Dio"; Code[20])
+        field(50322; "Phisical Org Dio"; Code[10])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup(Department.Code WHERE(Code = FIELD("Phisical Department Code")));
+            CalcFormula = Lookup(Department."ORG Dio" WHERE("Code" = FIELD("Phisical Department Code")));
             Caption = 'Org. Part';
-            // FieldClass = FlowField;
-            TableRelation = Department.Code;
+
+            TableRelation = Department."ORG Dio";
         }
-        field(50323; "Org Dio"; Code[20])
+        field(50323; "Org Dio"; Code[10])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup(Department.Code WHERE(Code = FIELD("Department Code")));
+            CalcFormula = Lookup(Department."ORG Dio" WHERE("Code" = FIELD("Department Code")));
             Caption = 'Org. Part';
 
         }
@@ -637,7 +630,7 @@ table 50021 "Wage Calculation Temp"
             FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
                                                                      "Wage Header No." = FIELD("Wage Header No."),
-                                                                    "Wage Addition Type" = FILTER('INC PRAV')));
+                                                                     "Wage Addition Type" = FILTER('INC PRAV')));
 
         }
         field(50331; "Incentive FIZ"; Decimal)
@@ -645,7 +638,7 @@ table 50021 "Wage Calculation Temp"
             FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
                                                                      "Wage Header No." = FIELD("Wage Header No."),
-                                                                    "Wage Addition Type" = FILTER('INC FIZ')));
+                                                                     "Wage Addition Type" = FILTER('INC FIZ')));
 
         }
         field(50332; "Incentive CORP"; Decimal)
@@ -675,9 +668,10 @@ table 50021 "Wage Calculation Temp"
         field(50335; "Tax Incentive"; Decimal)
         {
             FieldClass = FlowField;
+
             CalcFormula = Sum("Wage Addition".Tax WHERE("Employee No." = FIELD("Employee No."),
                                                          "Wage Header No." = FIELD("Wage Header No."),
-                                                         "Wage Addition Type" = FILTER('INC*')));
+                                                         Incentive = FILTER(TRUE)));
             Caption = 'Tax Incentive';
 
         }
@@ -686,21 +680,22 @@ table 50021 "Wage Calculation Temp"
             FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Total From" WHERE("Employee No." = FIELD("Employee No."),
                                                                   "Wage Header No." = FIELD("Wage Header No."),
-                                                                  "Wage Addition Type" = FILTER('INC*')));
+                                                                  Incentive = FILTER(TRUE)));
             Caption = 'Contribution From Incentive';
 
         }
         field(50337; "Contribution Over Incentive"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Total On" WHERE("Employee No." = FIELD("Employee No."),
                                                                 "Wage Header No." = FIELD("Wage Header No."),
-                                                               "Wage Addition Type" = FILTER('INC*')));
+                                                                Incentive = FILTER(TRUE)));
             Caption = 'Contribution Over Incentive';
-            FieldClass = FlowField;
+
         }
         field(50338; "Leaving Payment Retirement"; Decimal)
         {
-            FieldClass = Flowfield;
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
                                                                      "Wage Header No." = FIELD("Wage Header No."),
                                                                      "Wage Addition Type" = FILTER('OTPR. PENZ')));
@@ -709,60 +704,133 @@ table 50021 "Wage Calculation Temp"
         }
         field(50339; "Tax Leaving Payment Retirement"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition".Tax WHERE("Employee No." = FIELD("Employee No."),
                                                          "Wage Header No." = FIELD("Wage Header No."),
                                                          "Wage Addition Type" = FILTER('OTPR. PENZ')));
             Caption = 'Tax Leaving Payment Retirement';
-            FieldClass = FlowField;
+
         }
         field(50340; "Contribution From LPR"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Total From" WHERE("Employee No." = FIELD("Employee No."),
                                                                   "Wage Header No." = FIELD("Wage Header No."),
-                                                                 "Wage Addition Type" = FILTER('OTPR. PENZ')));
+                                                                  "Wage Addition Type" = FILTER('OTPR. PENZ')));
             Caption = 'Contribution From LPR';
-            FieldClass = FlowField;
+
         }
         field(50341; "Contribution Over LPR"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Total On" WHERE("Employee No." = FIELD("Employee No."),
                                                                 "Wage Header No." = FIELD("Wage Header No."),
-                                                               "Wage Addition Type" = FILTER('OTPR. PENZ')));
+                                                                "Wage Addition Type" = FILTER('OTPR. PENZ')));
             Caption = 'Contribution Over LPR';
-            FieldClass = FlowField;
+
         }
         field(50342; "Leaving Payment"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
                                                                      "Wage Header No." = FIELD("Wage Header No."),
-                                                                    "Wage Addition Type" = FILTER('OTPREMNINA')));
+                                                                     "Wage Addition Type" = FILTER('OTPREMNINA')));
             Caption = 'Leaving Payment';
-            FieldClass = FlowField;
+
         }
         field(50343; "Tax Leaving Payment"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition".Tax WHERE("Employee No." = FIELD("Employee No."),
                                                          "Wage Header No." = FIELD("Wage Header No."),
-                                                        "Wage Addition Type" = FILTER('OTPREMNINA')));
+                                                         "Wage Addition Type" = FILTER('OTPREMNINA')));
             Caption = 'Tax Leaving Payment';
-            FieldClass = FlowField;
+
         }
         field(50344; "Contribution From LP"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Total From" WHERE("Employee No." = FIELD("Employee No."),
                                                                   "Wage Header No." = FIELD("Wage Header No."),
-                                                                 "Wage Addition Type" = FILTER('OTPREMNINA')));
+                                                                  "Wage Addition Type" = FILTER('OTPREMNINA')));
             Caption = 'Contribution From LP';
-            FieldClass = FlowField;
+
         }
         field(50345; "Contribution Over LP"; Decimal)
         {
+            FieldClass = FlowField;
             CalcFormula = Sum("Wage Addition"."Total On" WHERE("Employee No." = FIELD("Employee No."),
                                                                 "Wage Header No." = FIELD("Wage Header No."),
-                                                               "Wage Addition Type" = FILTER('OTPREMNINA')));
+                                                                "Wage Addition Type" = FILTER('OTPREMNINA')));
             Caption = 'Contribution Over LP';
+
+        }
+        field(50346; Bonus; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     Bonus = FILTER(TRUE)));
+            Caption = 'Bonus';
             FieldClass = FlowField;
         }
+        field(50347; "Tax Bonus"; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition".Tax WHERE("Employee No." = FIELD("Employee No."),
+                                                         "Wage Header No." = FIELD("Wage Header No."),
+                                                         Bonus = FILTER(TRUE)));
+            Caption = 'Tax Bonus';
+            FieldClass = FlowField;
+        }
+        field(50348; "Contribution From Bonus"; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition"."Total From" WHERE("Employee No." = FIELD("Employee No."),
+                                                                  "Wage Header No." = FIELD("Wage Header No."),
+                                                                  Bonus = FILTER(TRUE)));
+            Caption = 'Contribution From bonus';
+            FieldClass = FlowField;
+        }
+
+        field(50349; "Contribution Over Bonus"; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition"."Total On" WHERE("Employee No." = FIELD("Employee No."),
+                                                                "Wage Header No." = FIELD("Wage Header No."),
+                                                                Bonus = FILTER(TRUE)));
+            Caption = 'Contribution Over bonus';
+            FieldClass = FlowField;
+        }
+        field(50350; OST; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     "Wage Addition Type" = FILTER('OST')));
+            Caption = 'Other';
+            FieldClass = FlowField;
+        }
+        field(50351; "Tax OST"; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition".Tax WHERE("Employee No." = FIELD("Employee No."),
+                                                         "Wage Header No." = FIELD("Wage Header No."),
+                                                         "Wage Addition Type" = FILTER('OST')));
+            Caption = 'Tax Other';
+            FieldClass = FlowField;
+        }
+        field(50352; "Contribution From OST"; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition"."Total From" WHERE("Employee No." = FIELD("Employee No."),
+                                                                  "Wage Header No." = FIELD("Wage Header No."),
+                                                                  "Wage Addition Type" = FILTER('OST')));
+            Caption = 'Contribution From other';
+            FieldClass = FlowField;
+        }
+        field(50353; "Contribution Over OST"; Decimal)
+        {
+            CalcFormula = Sum("Wage Addition"."Total On" WHERE("Employee No." = FIELD("Employee No."),
+                                                                "Wage Header No." = FIELD("Wage Header No."),
+                                                                "Wage Addition Type" = FILTER('OST')));
+            Caption = 'Contribution Over other';
+            FieldClass = FlowField;
+        }
+
         field(50354; "Total Netto by Contract"; Decimal)
         {
             Caption = 'Total Netto';
@@ -771,56 +839,104 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = ' Netto by Contract';
         }
-        field(50356; "Regres Netto With Wage Taxable"; Decimal)
+        field(50356; "Total Netto Without Use"; Decimal)
         {
-            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(true),
-                                                                    "Employee No." = FIELD("Employee No."),
-                                                                     "Wage Header No." = FIELD("Wage Header No."),
-                                                                     Locked = FILTER(true),
-                                                                     Calculated = FILTER(false),
-                                                                     Taxable = FILTER(true)));
-            Caption = 'Regres Netto';
-            FieldClass = FlowField;
         }
-        field(50357; "Regres Netto With Wage UnTax"; Decimal)
+        field(50357; "Total Netto Without Untaxable"; Decimal)
         {
-            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(true),
-                                                                    "Employee No." = FIELD("Employee No."),
-                                                                     "Wage Header No." = FIELD("Wage Header No."),
-                                                                     Locked = FILTER(true),
-                                                                     Calculated = FILTER(false),
-                                                                     Taxable = FILTER(false)));
-            Caption = 'Regres Netto';
-            FieldClass = FlowField;
         }
-        field(50358; "Regres Netto Separate UnTax"; Decimal)
+        field(50358; "Old Brutto"; Decimal)
         {
-            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(true),
-                                                                    "Employee No." = FIELD("Employee No."),
-                                                                     "Wage Header No." = FIELD("Wage Header No."),
-                                                                    "Wage Calculation Entry No." = FIELD("No."),
-                                                                     Calculated = FILTER(true),
-                                                                     Taxable = FILTER(false)));
-            Caption = 'Regres Netto';
-            FieldClass = FlowField;
+            Caption = 'Brutto';
         }
-        field(50359; "Regres Netto Separate Tax"; Decimal)
+        field(50360; "Org Entity Code"; Code[10])
         {
-            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(true),
-                                                                    "Employee No." = FIELD("Employee No."),
-                                                                     "Wage Header No." = FIELD("Wage Header No."),
-                                                                    "Wage Calculation Entry No." = FIELD("No."),
-                                                                     Calculated = FILTER(true),
-                                                                     Taxable = FILTER(true)));
-            Caption = 'Regres Netto';
-            FieldClass = FlowField;
+            Caption = 'Org Entity Code';
         }
-        field(50360; "Education Level"; Text[30])
+        field(50361; "Reduction Netto"; Decimal)
         {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE("Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     "Calculate Deduction" = FILTER(FALSE)));
+            Caption = 'Reduction Netto';
+
+        }
+        field(50362; "Planned Transport Amount"; Decimal)
+        {
+            Caption = 'Planned Transport Amount';
+        }
+        field(50363; "Contact Center"; Boolean)
+        {
+            Caption = 'Contact Center';
         }
         field(50364; "Send pay list"; Boolean)
         {
             Caption = 'Send pay list';
+        }
+        field(50365; "JIB Contributes"; Text[30])
+        {
+            Caption = 'JIB Contributes';
+        }
+        field(50366; "Regres Netto With Wage Taxable"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(TRUE),
+                                                                     "Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     Locked = FILTER(TRUE),
+                                                                     Calculated = FILTER(FALSE),
+                                                                     Taxable = FILTER(TRUE)));
+            Caption = 'Regres Netto With Wage Taxable';
+
+        }
+        field(50367; "Regres Netto With Wage UnTax"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(TRUE),
+                                                                     "Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     Locked = FILTER(TRUE),
+                                                                     Calculated = FILTER(FALSE),
+                                                                     Taxable = FILTER(FALSE)));
+            Caption = 'Regres Netto With Wage UnTax';
+
+        }
+        field(50368; "Other Netto Separate Taxable"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(FALSE),
+                                                                     "Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     Locked = FILTER(TRUE),
+                                                                     Calculated = FILTER(TRUE),
+                                                                     Taxable = FILTER(TRUE),
+                                                                     Regres = FILTER(FALSE)));
+            Caption = 'Other Netto Separate Taxable';
+
+        }
+        field(50369; "Other Netto Separat UnTax"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition"."Amount to Pay" WHERE(Regres = FILTER(FALSE),
+                                                                     "Employee No." = FIELD("Employee No."),
+                                                                     "Wage Header No." = FIELD("Wage Header No."),
+                                                                     Locked = FILTER(TRUE),
+                                                                     Calculated = FILTER(TRUE),
+                                                                     Taxable = FILTER(FALSE),
+                                                                     Regres = FILTER(FALSE)));
+            Caption = 'Other Netto Separat UnTax';
+
+        }
+        field(50370; "Regres Netto UnTax Separate"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition".Amount WHERE(Regres = FILTER(TRUE),
+                                                            "Employee No." = FIELD("Employee No."),
+                                                            "Wage Header No." = FIELD("Wage Header No."),
+                                                            Calculated = FILTER(TRUE),
+                                                            Taxable = FILTER(FALSE)));
+
         }
         field(50371; "Org Jed"; Text[250])
         {
@@ -828,7 +944,6 @@ table 50021 "Wage Calculation Temp"
         field(50372; Munif; Text[50])
         {
         }
-
         field(50390; "Iznos poreske kartice"; Decimal)
         {
 
@@ -839,6 +954,14 @@ table 50021 "Wage Calculation Temp"
         {
 
 
+        }
+        field(50392; "Position Coefficient for Wage"; Decimal)
+        {
+            Caption = 'Position Coefficient for Wage';
+        }
+        field(50393; "Wage Base"; Decimal)
+        {
+            Caption = 'Wage Base';
         }
     }
 

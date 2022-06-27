@@ -1478,7 +1478,7 @@ page 50051 "Employee Contract Ledger"
         // R: Report "Segmentation report";
         DocumentMailing: Codeunit "Document-Mailing";
         CustomReportSelection: Record "Custom Report Selection";
-        R_PayList: Report "Pay List";
+        //ĐK        R_PayList: Report "Pay List";
         FileManagement: Codeunit "File Management";
         filename: Text;
         n: Text;

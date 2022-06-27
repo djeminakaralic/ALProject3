@@ -1,7 +1,5 @@
 table 50019 "Contribution Per Employee"
 {
-    // //
-
     Caption = 'Contribution per Employee';
 
     fields
@@ -88,7 +86,10 @@ table 50019 "Contribution Per Employee"
         }
         field(206; M; Code[10])
         {
-            FieldClass = Normal;
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Employee."Municipality Code for salary" WHERE("No." = FIELD("Employee No.")));
+            Caption = 'Šifra opštine za platu';
+
         }
         field(207; Calculated; Boolean)
         {
@@ -145,11 +146,13 @@ table 50019 "Contribution Per Employee"
 
     keys
     {
-        key(Key1; "Wage Header No.", "Employee No.", "Wage Calc No.", "Contribution Code")
+        key(Key1; "Wage Header No.", "Employee No.", "Wage Calc No.", "Contribution Code", Incentive)
         {
+            SumIndexFields = "Amount From Wage", "Amount Over Wage", "Amount Over Neto", "Reported Amount From Wage";
         }
         key(Key2; "Contribution Code")
         {
+            SumIndexFields = "Amount From Wage", "Amount Over Wage", "Amount Over Neto", "Reported Amount From Wage";
         }
         key(Key3; "Wage Header No.", "Entry No.", "Contribution Code", "Employee No.")
         {
@@ -158,6 +161,9 @@ table 50019 "Contribution Per Employee"
         key(Key4; "Wage Header No.", "Entry No.", "Contribution Code", "Employee No.", Calculated)
         {
             SumIndexFields = "Amount From Wage", "Amount Over Wage", "Amount Over Neto", "Reported Amount From Wage";
+        }
+        key(Key5; "Wage Calc No.")
+        {
         }
     }
 

@@ -3,6 +3,7 @@ table 50032 "Wage Addition"
     Caption = 'Wage addition';
     DrillDownPageID = "Wage Addition";
     LookupPageID = "Wage Addition";
+    ;
 
     fields
     {
@@ -12,40 +13,69 @@ table 50032 "Wage Addition"
             TableRelation = Employee;
 
             trigger OnValidate()
-            var
-                Txt001: Label '<Ne smijete mijenjati zakljucani red>';
-                Txt002: Label '<Morate navesti tip dodatka>';
-                WA: Record "Wage Addition";
-                NextEntryNo: Integer;
-                emp: Record "Employee";
-                ConCat: Record "Contribution Category";
-                ATCCon: Record "Contribution Category Conn.";
-                ATCConRS: Record "Contribution Category Conn.";
-                AddTaxes: Record "Contribution";
-                AddTaxesRS: Record "Contribution";
-                ATPercentRS: Decimal;
-                ATPercent: Decimal;
-                EmployeeContractLedger: Record "Employee Contract Ledger";
-                SegmentationGroup: Record "Confidential Information";
-                wb: Record "Work Booklet";
             begin
                 IF emp.GET("Employee No.") THEN BEGIN
                     "First Name" := emp."First Name";
                     "Last Name" := emp."Last Name";
                     "Contribution Category Code" := emp."Contribution Category Code";
+                    "Org Entity Code" := emp."Org Entity Code";
                 END;
 
+                EmployeeContractLedger.RESET;
+                EmployeeContractLedger.SETFILTER("Employee No.", "Employee No.");
+                EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                IF EmployeeContractLedger.FINDLAST THEN BEGIN
+                    //EmployeeContractLedger.CALCFIELDS("Position Description");
+                    //EmployeeContractLedger.CALCFIELDS("Residence/Network","Department Name",Sector,"Department Category",Group);
+                    EmployeeContractLedger.CALCFIELDS("Residence/Network");
+                    //EmployeeContractLedger.CALCFIELDS("Sector Description","Department Cat. Description","Group Description");
+
+                    SegmentationGroup.RESET;
+                    SegmentationGroup.SETFILTER("Position No.", '%1', EmployeeContractLedger."Position Code");
+                    SegmentationGroup.SETFILTER("Segmentation Name", '%1', EmployeeContractLedger."Position Description");
+                    SegmentationGroup.SETFILTER(Coefficient, '<>%1', 0);
+                    SegmentationGroup.SETFILTER("Ending Date", '%1', 0D);
+                    IF SegmentationGroup.FIND('+') THEN
+                        "Management Level" := FORMAT(SegmentationGroup."Management Level");
+
+
+                    "Position Code" := EmployeeContractLedger."Position Code";
+                    "Position ID" := EmployeeContractLedger."Position ID";
+                    "Position Description" := EmployeeContractLedger."Position Description";
+                    "Department Code" := EmployeeContractLedger."Department Code";
+                    "Department Name" := EmployeeContractLedger."Department Name";
+                    "B-1" := EmployeeContractLedger.Sector;
+                    "B-1 Description" := EmployeeContractLedger."Sector Description";
+                    "B-1 (with regions)" := EmployeeContractLedger."Department Category";
+                    "B-1 (with regions) Description" := EmployeeContractLedger."Department Cat. Description";
+                    Stream := EmployeeContractLedger.Group;
+                    "Stream Description" := EmployeeContractLedger."Group Description";
+                    IF (EmployeeContractLedger."Grounds for Term. Code" <> '') AND (EmployeeContractLedger."Ending Date" <> 0D) THEN
+                        "Ending Date" := EmployeeContractLedger."Ending Date"
+                    ELSE
+                        "Ending Date" := 0D;
+                END;
                 wb.RESET;
                 wb.SETFILTER("Employee No.", "Employee No.");
                 wb.SETFILTER("Current Company", '%1', TRUE);
                 IF wb.FINDLAST THEN BEGIN
                     "Starting Date" := wb."Starting Date"
                 END;
-                IF ((((TODAY - "Starting Date") DIV 30) < 6) AND (("Wage Addition Type" = 'INC') OR ("Wage Addition Type" = 'INC FIZ')
-                   OR ("Wage Addition Type" = 'INC SFE') OR ("Wage Addition Type" = 'INC SME') OR ("Wage Addition Type" = 'INC MICRO')
-                   OR ("Wage Addition Type" = 'INC PRAV')))
-                THEN
-                    ERROR('Zaposlenik nije ostvario pravo na incentive!!');
+
+                edf.RESET;
+                edf.SETFILTER("No.", "Employee No.");
+                IF edf.FINDLAST THEN BEGIN
+                    "Global Dimension 1 Code" := edf."Dimension Value Code"
+                END;
+                /*
+                IF "Employee No."<>'' THEN BEGIN
+                 IF ((((TODAY-"Starting Date") DIV 30)<6) AND (("Wage Addition Type"='INC') OR ("Wage Addition Type"='INC FIZ')
+                   OR ("Wage Addition Type"='INC SFE') OR ("Wage Addition Type"='INC SME') OR ("Wage Addition Type"='INC MICRO')
+                   OR("Wage Addition Type"='INC PRAV')))
+                THEN ERROR('Zaposlenik nije ostvario pravo na incentive!!');
+                END;
+                */
+
             end;
         }
         field(2; "Month of Wage"; Integer)
@@ -68,17 +98,46 @@ table 50032 "Wage Addition"
                 WAT.GET("Wage Addition Type");
                 Description := WAT.Description;
                 //Amount := WAT."Default Amount";
-                VALIDATE("Amount to Pay", WAT."Default Amount");
+                IF WAT."Default Amount" <> 0 THEN
+                    VALIDATE(Amount, WAT."Default Amount");
                 VALIDATE(Taxable, WAT.Taxable);
-                VALIDATE("Use", WAT.Use);
+                VALIDATE(Use, WAT.Use);
                 VALIDATE(Regres, WAT.Regres);
                 VALIDATE(Incentive, WAT.Incentive);
+                VALIDATE(Meal, WAT.Meal);
+                VALIDATE("Calculate Deduction", WAT."Calculate Deduction");
                 VALIDATE("Use Apportionment Account", WAT."Use Apportionment Account");
+                VALIDATE("Calculated on Brutto", WAT."Calculated on Brutto");
+
+                IF ((WAT."Calculated on Brutto") AND (WAT."Calculation Type" = 0)) THEN BEGIN
+                    WAmounts.SETFILTER("Employee No.", "Employee No.");
+                    IF WAmounts.FINDLAST THEN BEGIN
+                        ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                        IF ConCat.FINDSET THEN BEGIN
+                            ConCat.CALCFIELDS("From Brutto");
+                            VALIDATE(Amount, (WAmounts."Wage Amount" * (WAT."Default Amount" / 100)) * (1 - ConCat."From Brutto" / 100));
+                        END;
+                    END;
+                END;
             end;
         }
         field(5; Amount; Decimal)
         {
             Caption = 'Amount';
+
+            trigger OnValidate()
+            begin
+                Class.RESET;
+                Class.SETCURRENTKEY("Valid From Amount");
+                Class.SETRANGE(Active, TRUE);
+                CompInfo.GET;
+                Class.SETRANGE("Entity Code", CompInfo."Entity Code");
+                Class.FINDFIRST;
+                IF Taxable THEN
+                    VALIDATE("Amount to Pay", Amount * (1 - (Class.Percentage / 100)))
+                ELSE
+                    VALIDATE("Amount to Pay", Amount);
+            end;
         }
         field(7; Description; Text[100])
         {
@@ -88,59 +147,9 @@ table 50032 "Wage Addition"
         {
             Caption = 'First Name';
         }
-        field(9; "Last Name"; Text[30])
+        field(9; "Last Name"; Text[50])
         {
             Caption = 'Last Name';
-        }
-        field(99; "Add. Taxable"; Boolean)
-        {
-            Caption = 'Add. Taxable';
-
-            trigger OnValidate()
-            var
-                Txt001: Label '<Ne smijete mijenjati zakljucani red>';
-                Txt002: Label '<Morate navesti tip dodatka>';
-                WA: Record "Wage Addition";
-                NextEntryNo: Integer;
-                emp: Record "Employee";
-                ConCat: Record "Contribution Category";
-                ATCCon: Record "Contribution Category Conn.";
-                ATCConRS: Record "Contribution Category Conn.";
-                AddTaxes: Record "Contribution";
-                AddTaxesRS: Record "Contribution";
-                ATPercentRS: Decimal;
-                ATPercent: Decimal;
-                EmployeeContractLedger: Record "Employee Contract Ledger";
-                SegmentationGroup: Record "Confidential Information";
-                wb: Record "Work Booklet";
-            begin
-                IF "Add. Taxable" = TRUE THEN BEGIN
-                    IF Rec."Contribution Category Code" <> 'FBIHRS' THEN
-                        ConCat.SETFILTER(Code, '%1', 'FBIH')
-                    ELSE
-                        ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
-                    IF ConCat.FINDSET THEN BEGIN
-                        ConCat.CALCFIELDS("From Brutto");
-                        Rec."Calculated Amount Brutto" := (Rec."Amount to Pay") / ((1 - ConCat."From Brutto" / 100));
-                        Rec.Tax := 0;
-
-                        Rec.Amount := Rec."Amount to Pay";
-                        Rec.Brutto := Rec."Calculated Amount Brutto";
-                        Rec.Taxable := TRUE;
-                    END
-                    //END
-                    ELSE BEGIN
-                        Rec.Amount := Rec."Amount to Pay";
-                    END
-                END
-                ELSE BEGIN
-                    Rec."Calculated Amount Brutto" := 0;
-                    Rec.Tax := 0;
-                    Rec.Amount := Rec."Amount to Pay";
-                    Rec.Brutto := Rec.Amount;
-                END;
-
-            end;
         }
         field(100; "Entry No."; Integer)
         {
@@ -167,34 +176,25 @@ table 50032 "Wage Addition"
             Caption = 'Taxable';
 
             trigger OnValidate()
-            var
-                Txt001: Label '<Ne smijete mijenjati zakljucani red>';
-                Txt002: Label '<Morate navesti tip dodatka>';
-                WA: Record "Wage Addition";
-                NextEntryNo: Integer;
-                emp: Record "Employee";
-                ConCat: Record "Contribution Category";
-                ATCCon: Record "Contribution Category Conn.";
-                ATCConRS: Record "Contribution Category Conn.";
-                AddTaxes: Record "Contribution";
-                AddTaxesRS: Record "Contribution";
-                ATPercentRS: Decimal;
-                ATPercent: Decimal;
-                EmployeeContractLedger: Record "Employee Contract Ledger";
-                SegmentationGroup: Record "Confidential Information";
-                wb: Record "Work Booklet";
             begin
+                Class.RESET;
+                Class.SETCURRENTKEY("Valid From Amount");
+                Class.SETRANGE(Active, TRUE);
+                CompInfo.GET;
+                Class.SETRANGE("Entity Code", CompInfo."Entity Code");
+                Class.FINDFIRST;
                 IF Taxable = TRUE THEN BEGIN
-                    IF Rec."Contribution Category Code" <> 'FBIHRS' THEN
-                        ConCat.SETFILTER(Code, '%1', 'FBIH')
-                    ELSE
-                        ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                    /*   IF Rec."Contribution Category Code"<>'FBIHRS' THEN
+                    ConCat.SETFILTER(Code,'%1','FBIH')
+                  ELSE*/
+                    ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
                     IF ConCat.FINDSET THEN BEGIN
+                        //đK  ConCat.calcfields("From Brutto");
 
-                        Rec."Calculated Amount Brutto" := (Rec."Amount to Pay") / ((1 - ConCat."From Brutto" / 100) * 0.9);
+
+                        Rec."Calculated Amount Brutto" := (Rec."Amount to Pay") / ((1 - ConCat."From Brutto" / 100) * (1 - (Class.Percentage / 100)));
                         Rec.Tax := ((1 - ConCat."From Brutto" / 100) * Rec."Calculated Amount Brutto") - Rec."Amount to Pay";
-
-                        Rec.Amount := Rec."Amount to Pay" + Rec.Tax;
+                        //Rec.Amount:=Rec."Amount to Pay"+Rec.Tax;
                         Rec.Brutto := Rec."Calculated Amount Brutto";
                     END
                     //END
@@ -209,6 +209,7 @@ table 50032 "Wage Addition"
                     Rec.Brutto := Rec.Amount;
                 END;
 
+
             end;
         }
         field(106; "Calculated Amount Brutto"; Decimal)
@@ -219,29 +220,19 @@ table 50032 "Wage Addition"
             Caption = 'Calculated Amount';
 
             trigger OnValidate()
-            var
-                Txt001: Label '<Ne smijete mijenjati zakljucani red>';
-                Txt002: Label '<Morate navesti tip dodatka>';
-                WA: Record "Wage Addition";
-                NextEntryNo: Integer;
-                emp: Record "Employee";
-                ConCat: Record "Contribution Category";
-                ATCCon: Record "Contribution Category Conn.";
-                ATCConRS: Record "Contribution Category Conn.";
-                AddTaxes: Record "Contribution";
-                AddTaxesRS: Record "Contribution";
-                ATPercentRS: Decimal;
-                ATPercent: Decimal;
-                EmployeeContractLedger: Record "Employee Contract Ledger";
-                SegmentationGroup: Record "Confidential Information";
-                wb: Record "Work Booklet";
-
             begin
-                IF ((Rec.Taxable = TRUE) OR (Rec."Add. Taxable" = TRUE)) THEN BEGIN
-                    ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                Class.RESET;
+                Class.SETCURRENTKEY("Valid From Amount");
+                Class.SETRANGE(Active, TRUE);
+                CompInfo.GET;
+                Class.SETRANGE("Entity Code", CompInfo."Entity Code");
+                Class.FINDFIRST;
+
+                IF Taxable = TRUE THEN BEGIN
+                    ConCat.SETFILTER(Code, '%1', "Contribution Category Code");
                     IF ConCat.FINDSET THEN BEGIN
                         ConCat.CALCFIELDS("From Brutto");
-                        Rec."Calculated Amount Brutto" := (Rec."Amount to Pay") / ((1 - ConCat."From Brutto" / 100));
+                        Rec."Calculated Amount Brutto" := (Rec."Amount to Pay") / ((1 - ConCat."From Brutto" / 100) * (1 - (Class.Percentage / 100)));
                         Rec.Tax := ((1 - ConCat."From Brutto" / 100) * Rec."Calculated Amount Brutto") - Rec."Amount to Pay";
                         Rec.Amount := Rec."Amount to Pay" + Rec.Tax;
                         Rec.Brutto := Rec."Calculated Amount Brutto";
@@ -305,7 +296,7 @@ table 50032 "Wage Addition"
         field(109; "Contribution Category Code"; Code[10])
         {
         }
-        field(111; "Use"; Boolean)
+        field(111; Use; Boolean)
         {
             Caption = 'Use';
         }
@@ -412,17 +403,27 @@ table 50032 "Wage Addition"
             OptionCaption = 'Active,Inactive,Unpaid,Terminated,On boarding,Practicians,Trainee';
             OptionMembers = Active,Inactive,Unpaid,Terminated,"On boarding",Practicians,Trainee;
         }
+        field(217; Paid; Boolean)
+        {
+            Caption = 'Paid';
+        }
+        field(50010; "Internal ID"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Employee."Internal ID" WHERE("No." = FIELD("Employee No.")));
+            Caption = 'Internal ID';
+
+        }
         field(50295; "Department Name"; Text[100])
         {
             Caption = 'Department Name';
             Editable = false;
             FieldClass = Normal;
         }
-        field(50299; "B-1"; Code[10])
+        field(50299; "B-1"; Code[20])
         {
             Caption = 'B-1';
             Editable = false;
-            FieldClass = Normal;
         }
         field(50300; "B-1 Description"; Text[250])
         {
@@ -430,11 +431,10 @@ table 50032 "Wage Addition"
             Editable = false;
             FieldClass = Normal;
         }
-        field(50301; "B-1 (with regions)"; Code[10])
+        field(50301; "B-1 (with regions)"; Code[20])
         {
             Caption = 'B-1 (with regions)';
             Editable = false;
-            FieldClass = Normal;
         }
         field(50302; "B-1 (with regions) Description"; Text[250])
         {
@@ -442,11 +442,10 @@ table 50032 "Wage Addition"
             Editable = false;
             FieldClass = Normal;
         }
-        field(50303; Stream; Code[10])
+        field(50303; Stream; Code[20])
         {
             Caption = 'Stream';
             Editable = false;
-            FieldClass = Normal;
         }
         field(50304; "Stream Description"; Text[250])
         {
@@ -639,8 +638,6 @@ table 50032 "Wage Addition"
             CalcFormula = Lookup("Wage Addition Type"."RAD-1 Wage Excluded" WHERE("Code" = FIELD("Wage Addition Type")));
             FieldClass = FlowField;
         }
-
-
     }
 
     keys
@@ -665,6 +662,10 @@ table 50032 "Wage Addition"
     trigger OnDelete()
     begin
         //IF xRec.Locked OR xRec.Calculated  THEN ERROR(Txt001);
+        IF WH.GET("Wage Header No.") THEN BEGIN
+            IF WH.Status = WH.Status::Closed THEN
+                ERROR('Ne možete obrisati dodatke plate koja je zaključena');
+        END;
     end;
 
     trigger OnInsert()
@@ -675,11 +676,11 @@ table 50032 "Wage Addition"
 
         NextEntryNo += 1;
         "Entry No." := NextEntryNo;
-        /* ĐK IF ((((TODAY - "Starting Date") DIV 30) < 6) AND (("Wage Addition Type" = 'INC') OR ("Wage Addition Type" = 'INC FIZ')
-           OR ("Wage Addition Type" = 'INC SFE') OR ("Wage Addition Type" = 'INC SME') OR ("Wage Addition Type" = 'INC MICRO')
-           OR ("Wage Addition Type" = 'INC PRAV')))
-        THEN
-             ERROR('Zaposlenik nije ostvario pravo na incentive!!');*/
+        /*IF ((((TODAY-"Starting Date") DIV 30)<6) AND (("Wage Addition Type"='INC') OR ("Wage Addition Type"='INC FIZ')
+          OR ("Wage Addition Type"='INC SFE') OR ("Wage Addition Type"='INC SME') OR ("Wage Addition Type"='INC MICRO')
+          OR("Wage Addition Type"='INC PRAV')))
+       THEN ERROR('Zaposlenik nije ostvario pravo na incentive!!');*/
+
     end;
 
     trigger OnModify()
@@ -694,13 +695,6 @@ table 50032 "Wage Addition"
 
     var
         Txt001: Label '<Ne smijete mijenjati zakljucani red>';
-
-        WageSetup: Record "Wage Setup";
-        Response: Boolean;
-        WAM: Record "Wage Addition";
-        WAMOld: Record "Wage Addition";
-        WAM2: Record "Wage Addition";
-        WAmounts: Record "Wage Amounts";
         Txt002: Label '<Morate navesti tip dodatka>';
         WA: Record "Wage Addition";
         NextEntryNo: Integer;
@@ -713,7 +707,19 @@ table 50032 "Wage Addition"
         ATPercentRS: Decimal;
         ATPercent: Decimal;
         EmployeeContractLedger: Record "Employee Contract Ledger";
-        SegmentationGroup: Record "Confidential Information";
+        SegmentationGroup: Record "Segmentation Data";
         wb: Record "Work Booklet";
+        WAT: Record "Wage Addition";
+        WageAdditionType: Record "Wage Addition Type";
+        Class: Record "Tax Class";
+        CompInfo: Record "Company Information";
+        WageSetup: Record "Wage Setup";
+        Response: Boolean;
+        WAM: Record "Wage Addition";
+        WAMOld: Record "Wage Addition";
+        WAM2: Record "Wage Addition";
+        WAmounts: Record "Wage Amounts";
+        edf: Record "Employee Default Dimension";
+        WH: Record "Wage Header";
 }
 

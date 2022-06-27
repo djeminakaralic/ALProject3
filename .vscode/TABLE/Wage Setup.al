@@ -565,9 +565,16 @@ table 50199 "Wage Setup"
         field(50072; "Wage Base"; Decimal)
         {
             Caption = 'Wage Base';
+            DecimalPlaces = 1 : 4;
 
             trigger OnValidate()
+            var
+                ECLUpdate: Record "Employee Contract Ledger";
+                Wagesetup: Record "Wage Setup";
+                PosM: Record "Position Menu";
+
             begin
+                wa.Reset();
                 WA.SETFILTER("Employee No.", '<>%1', '');
                 IF WA.FINDFIRST THEN
                     REPEAT
@@ -575,6 +582,28 @@ table 50199 "Wage Setup"
                             WA."Wage Amount" := WA.Coefficient * "Wage Base";
                         WA.MODIFY;
                     UNTIL WA.NEXT = 0;
+
+
+                ECLUpdate.Reset();
+                ECLUpdate.SetFilter(Active, '%1', true);
+                ECLUpdate.SetFilter("Grounds for Term. Description", '%1', '');
+                if ECLUpdate.FindSet() then
+                    repeat
+                        Wagesetup.Get();
+                        PosM.Reset();
+                        PosM.SetFilter("Org. Structure", '%1', ECLUpdate."Org. Structure");
+                        PosM.SetFilter(Description, '%1', ECLUpdate."Position Description");
+                        PosM.SetFilter(Code, '%1', ECLUpdate."Position Code");
+                        PosM.SetFilter("Department Code", '%1', ECLUpdate."Department Code");
+                        if PosM.FindFirst() then begin
+                            PosM.UpdateCoeff(PosM."Position complexity", PosM."Position Responsibility", PosM."Workplace conditions");
+                            PosM.Modify();
+                            ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Wage Base" * PosM."Position Coefficient for Wage", 0.01, '>'));
+                            ECLUpdate.Modify();
+                        end;
+
+                    until ECLUpdate.Next() = 0;
+
                 MESSAGE('Osnovice ažurirane!');
             end;
 

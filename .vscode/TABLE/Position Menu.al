@@ -616,8 +616,13 @@ table 50132 "Position Menu"
                 ecl.SetFilter("Grounds for Term. Description", '%1', '');
                 if ecl.FindSet() then
                     repeat
-                        ecl.Validate("Position Description", Rec.Description);
+                        ecl."Position complexity" := Rec."Position complexity";
+                        ecl."Position Coefficient for Wage" := Rec."Position Coefficient for Wage";
+                        ecl."Position Responsibility" := Rec."Position Responsibility";
+                        ecl."Workplace conditions" := Rec."Workplace conditions";
                         ecl.Modify();
+
+
                     until ecl.Next() = 0;
             end;
         }
@@ -640,7 +645,10 @@ table 50132 "Position Menu"
                 ecl.SetFilter("Grounds for Term. Description", '%1', '');
                 if ecl.FindSet() then
                     repeat
-                        ecl.Validate("Position Description", Rec.Description);
+                        ecl."Position complexity" := Rec."Position complexity";
+                        ecl."Position Coefficient for Wage" := Rec."Position Coefficient for Wage";
+                        ecl."Position Responsibility" := Rec."Position Responsibility";
+                        ecl."Workplace conditions" := Rec."Workplace conditions";
                         ecl.Modify();
                     until ecl.Next() = 0;
             end;
@@ -662,8 +670,12 @@ table 50132 "Position Menu"
                 ecl.SetFilter("Grounds for Term. Description", '%1', '');
                 if ecl.FindSet() then
                     repeat
-                        ecl.Validate("Position Description", Rec.Description);
+                        ecl."Position complexity" := Rec."Position complexity";
+                        ecl."Position Coefficient for Wage" := Rec."Position Coefficient for Wage";
+                        ecl."Position Responsibility" := Rec."Position Responsibility";
+                        ecl."Workplace conditions" := Rec."Workplace conditions";
                         ecl.Modify();
+
                     until ecl.Next() = 0;
             end;
         }
@@ -719,7 +731,7 @@ table 50132 "Position Menu"
     procedure UpdateCoeff(var Comp: Decimal; var Resp: decimal; var Conditi: Decimal): Decimal
     begin
 
-        exit(Comp + Comp * ((Resp + Conditi) / 100));
+        exit(round(Comp + Comp * ((Resp + Conditi) / 100), 0.01, '>'));
 
     end;
 }

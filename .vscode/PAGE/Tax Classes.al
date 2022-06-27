@@ -38,6 +38,20 @@ page 50027 "Tax Classes"
                 field(Active; Active)
                 {
                 }
+                field("Posting Group"; "Posting Group")
+                {
+
+                }
+                field("G/L Account No."; "G/L Account No.")
+                {
+
+                }
+                field("G/L Balance Account No."; "G/L Balance Account No.")
+                {
+
+                }
+
+
             }
         }
     }

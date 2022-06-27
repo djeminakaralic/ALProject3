@@ -47,9 +47,7 @@ page 50016 "Wage Setup"
                 field("Work Percentage"; "Work Percentage")
                 {
                 }
-                field(Meal; Meal)
-                {
-                }
+
                 field("Export Report Path"; "Export Report Path")
                 {
                 }
@@ -58,6 +56,60 @@ page 50016 "Wage Setup"
                     Visible = false;
                 }
             }
+
+            group(MealSetup)
+            {
+                Caption = 'Meal';
+                field("Meal Code FBIH"; "Meal Code FBIH")
+                {
+                    ApplicationArea = all;
+                }
+                field(Meal; Meal)
+                {
+                    Caption = 'Meal';
+                    ApplicationArea = all;
+                }
+                field("Meal Taxable FBiH Untaxable"; "Meal Taxable FBiH Untaxable")
+                {
+                    ApplicationArea = all;
+                }
+                field("Meal Code FBiH Taxable"; "Meal Code FBiH Taxable")
+                {
+                    ApplicationArea = all;
+                }
+                field("Meal Code BD Untaxable"; "Meal Code BD Untaxable")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Meal Code BD"; "Meal Code BD")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Meal Taxable BD"; "Meal Taxable BD")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Meal Nontaxable BD"; "Meal Nontaxable BD")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Meal Code RS"; "Meal Code RS")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+                field("Meal Total RS"; "Meal Total RS")
+                {
+                    Caption = 'Meal Total RS';
+                    ApplicationArea = all;
+                    Visible = false;
+                }
+            }
+
             group("Payment Orders")
             {
                 Caption = 'Payment Orders';

@@ -8,7 +8,7 @@ table 50042 "Payment Order"
         {
             Caption = 'Entry No.';
         }
-        field(2; SvrhaDoznake1; Text[50])
+        field(2; SvrhaDoznake1; Text[150])
         {
             Caption = 'Allocation Purpose 1';
         }
@@ -44,7 +44,7 @@ table 50042 "Payment Order"
         {
             Caption = 'Payer Account';
         }
-        field(11; RacunPrimaoca; Text[16])
+        field(11; RacunPrimaoca; Text[20])
         {
             Caption = 'Payee Account';
         }
@@ -60,7 +60,7 @@ table 50042 "Payment Order"
         {
             Caption = 'Income Type';
         }
-        field(15; Opstina; Text[4])
+        field(15; Opstina; Text[6])
         {
             Caption = 'Municipality';
         }
@@ -134,7 +134,21 @@ table 50042 "Payment Order"
             Caption = 'Wage Calculation Type';
             OptionCaption = 'Regular,Temporary Service Contracts-Residents,Temporary Service Contracts-No Residents,Author Contracts,Additions';
             OptionMembers = Regular,"Temporary Service Contracts-Residents","Temporary Service Contracts-No Residents","Author Contracts",Additions;
-
+        }
+        field(113; OrgDio; Code[10])
+        {
+            Caption = 'Org Part';
+        }
+        field(114; Loan; Boolean)
+        {
+        }
+        field(115; "Reduction Type"; Code[10])
+        {
+            Caption = 'Reduction Type';
+        }
+        field(116; "Budget Organisation"; Text[100])
+        {
+            Caption = 'Budžetska organizacija';
         }
     }
 
@@ -149,10 +163,17 @@ table 50042 "Payment Order"
     {
     }
 
+    trigger OnDelete()
+    begin
+        WH.GET("Wage Header No.");
+        IF WH.Status = WH.Status::Closed THEN
+            ERROR('Ne možete obrisati virmane plate koja je zaključena');
+    end;
+
     trigger OnInsert()
     begin
         NextEntryNo := 0;
-        PayOrder.RESET;
+        //PayOrder.RESET;
         IF PayOrder.FIND('+') THEN NextEntryNo := PayOrder."Entry No.";
         NextEntryNo += 1;
         "Entry No." := NextEntryNo;
@@ -162,17 +183,18 @@ table 50042 "Payment Order"
         Uplatio2 := UPPERCASE(CompInfo.Name);
         Uplatio3 := UPPERCASE(CompInfo."Post Code" + ' ' + CompInfo.City);
         MjestoUplate := UPPERCASE(CompInfo."Post Code" + ' ' + CompInfo.City);
-        DatumUplate := TODAY;
+        //DatumUplate := TODAY;
     end;
 
     var
         PayOrder: Record "Payment Order";
         NextEntryNo: Integer;
         CompInfo: Record "Company Information";
+        WH: Record "Wage Header";
 
     procedure PrintIt(var POrder: Record "Payment Order")
     begin
-        //ĐK   REPORT.RUNMODAL(REPORT::"Payment Order",TRUE,TRUE,POrder);
+        //ĐK    REPORT.RUNMODAL(REPORT::"TS_knjizenja 1", TRUE, TRUE, POrder);
     end;
 
     procedure InitPaymentOrder()
@@ -182,7 +204,7 @@ table 50042 "Payment Order"
         PayOrder.INIT;
     end;
 
-    procedure InsertPaymentOrderValues1(aSvrhaDoznake1: Text[50]; aSvrhaDoznake2: Text[50]; aSvrhaDoznake3: Text[50]; aPrimalac1: Text[50]; aPrimalac2: Text[50]; aPrimalac3: Text[50]; aRacunPosiljaoca: Text[16]; aRacunPrimaoca: Text[16]; aIznos: Decimal; aContribution: Text[150]; aTip: Integer; aSifra: Text[100]; vTip: Integer)
+    procedure InsertPaymentOrderValues1(aSvrhaDoznake1: Text[150]; aSvrhaDoznake2: Text[50]; aSvrhaDoznake3: Text[50]; aPrimalac1: Text[50]; aPrimalac2: Text[50]; aPrimalac3: Text[50]; aRacunPosiljaoca: Text[16]; aRacunPrimaoca: Text[16]; aIznos: Decimal; aContribution: Text[150]; aTip: Integer; aSifra: Text[100]; vTip: Integer; aOrgDio: Code[10]; aDatum: Date; aRType: Code[30]; BudgetO: text[100])
     begin
         PayOrder.SvrhaDoznake1 := aSvrhaDoznake1;
         PayOrder.SvrhaDoznake2 := aSvrhaDoznake2;
@@ -197,9 +219,13 @@ table 50042 "Payment Order"
         PayOrder.Type := aTip;
         PayOrder.Code := aSifra;
         PayOrder."Wage Calculation Type" := vTip;
+        PayOrder.OrgDio := aOrgDio;
+        PayOrder."Budget Organisation" := BudgetO;
+        PayOrder.DatumUplate := aDatum;
+        PayOrder."Reduction Type" := aRType;
     end;
 
-    procedure InsertPaymentOrderValues2(aBrojPoreznogObaveznika: Text[13]; aVrstaPrihoda: Text[6]; aOpstina: Text[3]; aPozivNaBroj: Text[10]; aPorezniPeriodOd: Date; aPorezniPeriodDo: Date; aWageHeaderNo: Code[20]; aWageHeaderEntryNo: Integer; aWagePaymentType: Integer; aContribution: Text[150]; aTip: Integer; aSifra: Text[100]; vTip: Integer)
+    procedure InsertPaymentOrderValues2(aBrojPoreznogObaveznika: Text[13]; aVrstaPrihoda: Text[6]; aOpstina: Text[6]; aPozivNaBroj: Text[10]; aPorezniPeriodOd: Date; aPorezniPeriodDo: Date; aWageHeaderNo: Code[20]; aWageHeaderEntryNo: Integer; aWagePaymentType: Integer; aContribution: Text[150]; aTip: Integer; aSifra: Text[100]; vTip: Integer; aOrgDio: Code[10]; aDatum: Date; aRType: Code[30]; BudgetO: text[100])
     begin
         PayOrder.BrojPoreznogObaveznika := aBrojPoreznogObaveznika;
         PayOrder.VrstaPrihoda := aVrstaPrihoda;
@@ -214,6 +240,10 @@ table 50042 "Payment Order"
         PayOrder.Type := aTip;
         PayOrder.Code := aSifra;
         PayOrder."Wage Calculation Type" := vTip;
+        PayOrder.OrgDio := aOrgDio;
+        PayOrder.DatumUplate := aDatum;
+        PayOrder."Reduction Type" := aRType;
+        PayOrder."Budget Organisation" := BudgetO;
     end;
 
     procedure InsertPaymentOrder(): Integer
