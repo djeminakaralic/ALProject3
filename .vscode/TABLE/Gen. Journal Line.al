@@ -166,6 +166,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         else
             Rec."No. Line" := 1;
 
+        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::"Finance Charge Memo");
+
     end;
 
 
