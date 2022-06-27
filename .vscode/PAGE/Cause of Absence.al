@@ -24,6 +24,7 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             }
             field("Calculated Sick Leave"; "Calculated Sick Leave")
             {
+                Visible = false;
 
             }
             field("Sick Leave"; "Sick Leave")
@@ -35,75 +36,32 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             {
 
             }
-            field("Work Experience Basis"; "Work Experience Basis")
-            {
-                Visible = false;
-
-            }
-            field("Added To Hour Pool"; "Added To Hour Pool")
-            {
-
-            }
-
-            field(Vacation; Vacation)
-            {
-
-            }
-            field(Holiday; Holiday)
-            { }
-
-            field("Bussiness trip"; "Bussiness trip")
-            {
-                Visible = false;
-
-            }
-            field("Insurance Basis"; "Insurance Basis")
-            {
-                Visible = false;
-
-            }
-            field("Work Abroad"; "Work Abroad")
-            {
-
-                Visible = false;
-            }
-            field("Calculation Type"; "Calculation Type")
-            {
-
-            }
+            field(Vacation; Vacation) { }
+            field("Added To Hour Pool"; "Added To Hour Pool") { }
+            field("Calculation Type"; "Calculation Type") { }
+            field("Meal Calculated"; "Meal Calculated") { }
+            field("Meal - Hours"; "Meal - Hours") { }
             field("Payment Type"; "Payment Type")
             { }
             field(Order; Order) { ApplicationArea = all; }
-            field("Meal Calculated"; "Meal Calculated")
-            {
 
-            }
-            field("Meal - Half Day Calculated"; "Meal - Half Day Calculated")
-            {
-
-            }
-
-            field("Description 2"; "Description 2")
-            {
-                Visible = false;
-
-            }
-
-            field("Posting Group"; "Posting Group")
-            {
-                ApplicationArea = all;
-
-            }
-            field("G/L Account No."; "G/L Account No.")
-            {
-                ApplicationArea = all;
+            field("Posting Group"; "Posting Group") { }
+            field("G/L Account No."; "G/L Account No.") { }
+            field("G/L Balance Account No."; "G/L Balance Account No.") { }
+            field("Sick Leave RAD -1"; "Sick Leave RAD -1") { }
+            field("Unpaid days"; "Unpaid days") { }
+            field("Add Hours"; "Add Hours") { }
+            field(Holiday; Holiday) { }
 
 
-            }
-            field("G/L Balance Account No."; "G/L Balance Account No.")
-            {
-                ApplicationArea = all;
-            }
+
+
+
+
+
+
+
+
         }
         modify("Total Absence (Base)")
         {

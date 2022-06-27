@@ -4,12 +4,14 @@ page 50275 "Tax Deduction Lists"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "Tax deduction list";
+    Caption = 'Tax Deduction Lists';
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            repeater(GroupName)
+
             {
                 field("Entity Code"; "Entity Code")
                 {

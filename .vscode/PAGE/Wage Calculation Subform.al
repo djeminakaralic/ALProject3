@@ -17,6 +17,11 @@ page 50218 "Wage Calculation Subform"
                 field("No."; "No.")
                 {
                 }
+                field("Year of Wage"; "Year of Wage")
+                {
+
+                }
+                field("Month Of Wage"; "Month Of Wage") { }
                 field("Employee No."; "Employee No.")
                 {
                     Editable = false;
@@ -42,14 +47,22 @@ page 50218 "Wage Calculation Subform"
                 {
                     Editable = false;
                 }
+                field("Wage Base"; "Wage Base")
+                {
+
+                }
+                field("Position Coefficient for Wage"; "Position Coefficient for Wage")
+                {
+
+                }
                 field("Net Wage"; "Net Wage")
                 {
-                    Caption = 'Net Wage';
+
                     Editable = false;
                 }
                 field("Tax Deductions"; "Tax Deductions")
                 {
-                    Caption = 'Tax Deductions';
+
                     Editable = false;
                 }
                 field(Tax; Tax)
@@ -62,7 +75,7 @@ page 50218 "Wage Calculation Subform"
                 }
                 field("Net Wage After Tax"; "Net Wage After Tax")
                 {
-                    Caption = 'Net Wage After Tax';
+
                     Editable = false;
                 }
                 field("Untaxable Wage"; "Untaxable Wage")
@@ -71,7 +84,7 @@ page 50218 "Wage Calculation Subform"
                 }
                 field("Final Net Wage"; "Final Net Wage")
                 {
-                    Caption = 'Final Net Wage';
+
                     Editable = false;
                 }
                 field("Wage Reduction"; "Wage Reduction")
@@ -114,6 +127,7 @@ page 50218 "Wage Calculation Subform"
                 {
                     Editable = false;
                 }
+
             }
         }
     }

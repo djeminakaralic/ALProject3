@@ -125,10 +125,7 @@ tableextension 51921 MyExtension extends "Employee Absence"
         field(50140; Status; enum "Employee Abs ")
         {
             Caption = 'Status';
-            trigger OnValidate()
-            begin
-                "Vacation from Year" := DATE2DMY("To Date", 3);
-            end;
+
 
         }
         field(50141; "Order"; Integer)

@@ -12,6 +12,7 @@ page 50032 "Wage Addition"
         {
             group("K")
             {
+                Caption = 'K';
                 field("Wage Year"; YearFilter)
                 {
                     Caption = 'Wage Year';
@@ -130,7 +131,7 @@ page 50032 "Wage Addition"
                     emp: Record "Employee";
                     ConCat: Record "Contribution Category";
                 begin
-
+                    MAI.Reset();
                     MAI.SETFILTER("Misc. Article Code", '%1', '1312');
                     MAI.SETFILTER("To Date", '%1', 0D);
                     IF MAI.FIND('-') THEN
@@ -252,7 +253,7 @@ page 50032 "Wage Addition"
                     emp: Record "Employee";
                     ConCat: Record "Contribution Category";
                 begin
-
+                    MAI.Reset();
                     MAI.SETFILTER("Misc. Article Code", '%1', '1312');
                     MAI.SETFILTER("To Date", '%1', 0D);
                     IF MAI.FIND('-') THEN

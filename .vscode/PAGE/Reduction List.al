@@ -26,6 +26,9 @@ page 50023 "Reduction List"
                 {
                     Editable = false;
                 }
+                field(Type; Type)
+                {
+                }
                 field(BankAccountCode; BankAccountCode)
                 {
                 }
@@ -41,9 +44,7 @@ page 50023 "Reduction List"
                 field("Reduction Amount"; "Reduction Amount")
                 {
                 }
-                field(Type; Type)
-                {
-                }
+
                 field("Payment Start"; "Payment Start")
                 {
                 }
@@ -52,31 +53,40 @@ page 50023 "Reduction List"
                 }
                 field(ContractNo; ContractNo)
                 {
+                    Visible = false;
                 }
                 field("No. of Installments"; "No. of Installments")
                 {
                 }
-                field("No. of Installments paid"; "No. of Installments paid")
-                {
-                }
+
                 field("Installment Amount"; "Installment Amount")
                 {
                 }
-                field("Opening balance"; "Opening balance")
-                {
-                }
+
+
                 field("Paid Amount"; "Paid Amount")
                 {
                 }
                 field(Description; Description)
                 {
+
                 }
                 field(Status; Status)
                 {
                 }
                 field("Employee Status"; "Employee Status")
                 {
+                    Visible = false;
                 }
+                field("Opening balance"; "Opening balance")
+                {
+                }
+                field("Remaining Due"; "Remaining Due")
+                {
+
+                }
+                field("No. of Installments paid"; "No. of Installments paid")
+                { }
             }
         }
     }

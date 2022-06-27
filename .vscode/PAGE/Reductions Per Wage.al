@@ -22,9 +22,7 @@ page 50024 "Reductions Per Wage"
                 field("Employee No."; "Employee No.")
                 {
                 }
-                field(Type; Type)
-                {
-                }
+
                 field(Amount; Amount)
                 {
                 }
@@ -34,7 +32,25 @@ page 50024 "Reductions Per Wage"
                 field("Date of Calculation"; "Date of Calculation")
                 {
                 }
+                field(Type; Type)
+                {
+                }
+                field("Reduction Name"; "Reduction Name")
+                {
+
+                }
+                field("Bank Account No."; "Bank Account No.")
+                { }
+                field("First Name"; "First Name")
+                {
+
+                }
+                field("Last Name"; "Last Name")
+                { }
+                field("Reduction Name 2"; "Reduction Name 2") { }
+                field("Party No."; "Party No.") { }
             }
+
         }
     }
 

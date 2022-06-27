@@ -21,6 +21,15 @@ page 50045 "Contribution Connections"
                 field("Category Code"; "Category Code")
                 {
                 }
+                field(Blocked; Blocked) { }
+                field("Average Wage"; "Average Wage") { }
+                field("Over Brutto"; "Over Brutto")
+                {
+
+                }
+                field("From Brutto"; "From Brutto")
+                { }
+
                 field("Calculated in Total Brutto"; "Calculated in Total Brutto")
                 {
                 }

@@ -36,10 +36,10 @@ page 50150 "Wage Addition Calculated"
 
                     ApplicationArea = all;
                 }
-                /*field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = all;
-                }*/
+                }
                 field(Use; Use)
                 {
                     ApplicationArea = all;
@@ -110,7 +110,7 @@ page 50150 "Wage Addition Calculated"
                 }
                 field(Tax; Tax)
                 {
-                    Caption = 'Tax';
+
                     Editable = false;
                     ApplicationArea = all;
                 }

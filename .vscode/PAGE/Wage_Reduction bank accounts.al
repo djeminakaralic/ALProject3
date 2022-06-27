@@ -27,6 +27,7 @@ page 50009 "Wage/Reduction bank accounts"
                 }
                 field(n; n)
                 {
+                    Visible = false;
                 }
             }
         }
