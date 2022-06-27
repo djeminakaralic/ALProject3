@@ -153,7 +153,7 @@ report 50095 "Svi radnici"
                 AE.SETFILTER("Employee No.", '%1', "Employee No.");
                 IF AE.FINDFIRST THEN BEGIN
                     Titula := FORMAT(AE."Education Level");
-                    Zvanje := FORMAT(AE.Title);
+                    Zvanje := FORMAT(AE."Profession Description");
                 END ELSE BEGIN
                     Titula := '';
                     Zvanje := '';
