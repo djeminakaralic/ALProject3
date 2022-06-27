@@ -112,6 +112,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     var
         GJline: Record "Gen. Journal Line";
+        CLEntry: Record "Cust. Ledger Entry";
         Customer: Record Customer;
         Text000: Label 'Today is %1';
 }
