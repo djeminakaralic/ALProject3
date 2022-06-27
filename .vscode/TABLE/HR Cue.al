@@ -111,7 +111,16 @@ table 50085 "HR Cue"
         field(50094; DateTraining; Date)
         {
             FieldClass = FlowFilter;
+            Caption = 'Date Training expiring';
         }
+
+        field(50097; DateTraining2; Date)
+        {
+            FieldClass = FlowFilter;
+            Caption = 'Date Training expired';
+
+        }
+
 
         field(50010; "Inactive - Terminated"; Integer)
         {
@@ -662,6 +671,16 @@ table 50085 "HR Cue"
 
 
         }
+
+        field(50096; "Expired Training"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Training Ledger" WHERE("End date of certificate" = field(DateTraining2)));
+            Caption = 'Trainings';
+
+
+        }
+
         field(50090; DateCatalogue; Date)
         {
             FieldClass = FlowFilter;
@@ -685,11 +704,21 @@ table 50085 "HR Cue"
         field(50093; "Certification"; Integer)
         {
             FieldClass = FlowField;
+            CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateTraining2)));
+            Caption = 'Certifikati čiji rok ističe za mjesec dana';
+
+
+        }
+
+        field(50098; "Certification Expired"; Integer)
+        {
+            FieldClass = FlowField;
             CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateCatalogue)));
             Caption = 'Certifikati čiji rok ističe za mjesec dana';
 
 
         }
+
         field(50095; "Employee Training Ledger"; Integer)
         {
             FieldClass = FlowField;

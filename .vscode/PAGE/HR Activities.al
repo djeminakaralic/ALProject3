@@ -383,6 +383,15 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
+                field("Expired Training"; "Expired Training")
+                {
+                    Image = Receipt;
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+
+                }
                 field(Certification; Certification)
                 {
                     Image = Receipt;
@@ -391,6 +400,8 @@ page 50066 "HR activities"
                     Visible = show;
                     ApplicationArea = all;
                 }
+                field("Certification Expired"; "Certification Expired")
+                { }
 
 
             }
@@ -542,7 +553,8 @@ page 50066 "HR activities"
         SETRANGE("Expirings Measures Filter", CALCDATE('<-3D>', TODAY), TODAY);
         SETRANGE(LastYearFilter, DMY2DATE(1, 1, DATE2DMY(TODAY, 3) - 1), DMY2DATE(31, 12, DATE2DMY(TODAY, 3) - 1));
         SETRANGE(ThisYearFilter, DMY2DATE(1, 1, DATE2DMY(TODAY, 3)), DMY2DATE(31, 12, DATE2DMY(TODAY, 3)));
-        SetRange(DateTraining, CalcDate('<-30D>', Today), Today);
+        SetRange(DateTraining, today, CalcDate('<+30D>', Today));
+        SetRange(DateTraining2, CalcDate('<-30D>', Today), calcdate('<-1D>', Today));
         SetRange(DateCatalogue, CalcDate('<-30D>', Today), Today);
 
 

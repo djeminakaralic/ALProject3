@@ -65,6 +65,7 @@ table 50143 "Contribution Payments Setup"
         {
             Caption = 'Refer To Number';
         }
+
         field(15; "Refer To Number RS"; Code[20])
         {
             Caption = 'Refer To Number';
