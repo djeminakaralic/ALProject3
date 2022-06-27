@@ -10,6 +10,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
+                trigger OnValidate()
+                begin
+                    Message(Text000, Format("Payment DT", 0, '<Month Text> <Day>'));
+                end;
             }
 
             field("Payment Type"; "Payment Type")
@@ -100,9 +104,13 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
     }
 
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+    end;
 
     var
         GJline: Record "Gen. Journal Line";
         Customer: Record Customer;
-
+        Text000: Label 'Today is %1';
 }

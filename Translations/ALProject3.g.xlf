@@ -34903,6 +34903,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BaseChalendarChange - NamedType Text009</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4113372704">
+          <source>Today is %1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4113372704 - Action 1337495762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Cash Diary</source>
           <note from="Developer" annotates="general" priority="2"></note>

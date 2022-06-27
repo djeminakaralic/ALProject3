@@ -97,7 +97,10 @@ report 50095 "Svi radnici"
             column(RazlogPrekida; "Grounds for Term. Description")
             {
             }
+            column(Pomocna;Pomocna){
 
+            }
+            
             trigger OnAfterGetRecord()
             begin
 
@@ -112,10 +115,21 @@ report 50095 "Svi radnici"
 
               
                 DataItem1.CALCFIELDS("Minimal Education Level");
-                
+                //Pisanje kolone Sluzba\Odjel
+                Pomocna:='';
+                if DataItem1."Department Category"<>'' then
+                   if DataItem1."Group Description"<>'' then
+                   Pomocna:= DataItem1."Department Category"+'\'+DataItem1."Group Description";
+                   
+                if DataItem1."Department Category"='' then Pomocna:= DataItem1."Group Description";
+                if DataItem1."Group Description"='' then Pomocna:=DataItem1."Department Category";
+                /*if DataItem1."Department Category"<>'' then
+                   if DataItem1."Group Description"<>'' then
+                   Pomocna:= DataItem1."Department Category"+'\'+DataItem1."Group Description";*/
+
                 VrstaUgovora := DataItem1."Engagement Type";
                 Koeficijent := DataItem1."Position Coefficient for Wage";
-
+                
                 //STRUCNA SPREMA POZICIJE
                 EL := DataItem1."Minimal Education Level";
                 P.RESET;
@@ -249,6 +263,9 @@ report 50095 "Svi radnici"
         ImeRoditelja: Text;
         NazivOrgana: Text;
         DatumRodjenja: Text;
+        Pomocna: Text;
+        Sluzba1: Text;
+        Odjel1: Text;
         Prikazi: Boolean;
 }
 

@@ -19,61 +19,61 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.0998in</Width>
+                  <Width>0.39422in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.5793in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.42479in</Width>
+                  <Width>1.00471in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.39167in</Width>
+                  <Width>0.95834in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.34231in</Width>
+                  <Width>1.04495in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.25045in</Width>
+                  <Width>0.80045in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.0998in</Width>
+                  <Width>0.53313in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.77072in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.02564in</Width>
+                  <Width>0.61731in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.30064in</Width>
+                  <Width>0.83397in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.57147in</Width>
+                  <Width>0.93814in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.62897in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.53814in</Width>
+                  <Width>1.08814in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.77649in</Width>
+                  <Width>0.77649in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.22564in</Width>
+                  <Width>0.89231in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.40897in</Width>
+                  <Width>0.8673in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.33397in</Width>
+                  <Width>0.75897in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.84167in</Width>
+                  <Width>1.625in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.275in</Width>
+                  <Width>0.775in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -102,7 +102,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Redni broj</Value>
+                                  <Value>R.br.</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -699,7 +699,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Služba/Odjel</Value>
+                                  <Value>Služba\Odjel</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -800,19 +800,6 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Stručna sprema za radno mjesto</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -844,19 +831,6 @@
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
@@ -941,19 +915,6 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Datum zasnivanja radnog odnosa</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -988,19 +949,6 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Datum prestanka radnog odnosa</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -1032,19 +980,6 @@
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
@@ -1675,7 +1610,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="Pomocna">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1693,7 +1628,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Pomocna.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1702,7 +1637,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <rd:DefaultName>Pomocna</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -2307,7 +2242,7 @@
             <Top>1.06334in</Top>
             <Left>0.45001in</Left>
             <Height>1.28334in</Height>
-            <Width>26.30614in</Width>
+            <Width>17.88742in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2318,7 +2253,7 @@
         <Height>8.46666cm</Height>
         <Style />
       </Body>
-      <Width>78.14178cm</Width>
+      <Width>47.93695cm</Width>
       <Page>
         <PageHeader>
           <Height>6.25686cm</Height>
@@ -2400,8 +2335,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.27167in</Top>
-              <Left>0.73166in</Left>
+              <Top>0.25778in</Top>
+              <Left>0.45001in</Left>
               <Height>0.23389in</Height>
               <Width>3.50833in</Width>
               <ZIndex>1</ZIndex>
@@ -2434,8 +2369,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>0.51945in</Top>
-              <Left>0.73166in</Left>
+              <Top>0.50556in</Top>
+              <Left>0.45001in</Left>
               <Height>0.25in</Height>
               <Width>3.50833in</Width>
               <ZIndex>2</ZIndex>
@@ -2512,7 +2447,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox22</rd:DefaultName>
               <Top>1.155in</Top>
-              <Left>0.73166in</Left>
+              <Left>0.45001in</Left>
               <Height>0.59778in</Height>
               <Width>3.50833in</Width>
               <ZIndex>3</ZIndex>
@@ -2532,7 +2467,7 @@
               <MIMEType>image/bmp</MIMEType>
               <Sizing>Fit</Sizing>
               <Top>0.27167in</Top>
-              <Left>14.57025in</Left>
+              <Left>13.77025in</Left>
               <Height>0.70833in</Height>
               <Width>3.32416in</Width>
               <ZIndex>4</ZIndex>
@@ -2570,7 +2505,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.47917in</Top>
-              <Left>8.78383in</Left>
+              <Left>8.65858in</Left>
               <Height>0.3in</Height>
               <Width>1.525in</Width>
               <Style>
@@ -2725,6 +2660,9 @@ End Function
         </Field>
         <Field Name="RazlogPrekida">
           <DataField>RazlogPrekida</DataField>
+        </Field>
+        <Field Name="Pomocna">
+          <DataField>Pomocna</DataField>
         </Field>
       </Fields>
       <Query>
