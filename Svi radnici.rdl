@@ -2726,6 +2726,9 @@ End Function
         <Field Name="RazlogPrekida">
           <DataField>RazlogPrekida</DataField>
         </Field>
+        <Field Name="Pomocna">
+          <DataField>Pomocna</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
