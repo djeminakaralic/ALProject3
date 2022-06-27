@@ -92,7 +92,7 @@ table 50042 "Payment Order"
         {
             Caption = 'Paid 1';
         }
-        field(104; Uplatio2; Text[30])
+        field(104; Uplatio2; Text[100])
         {
             Caption = 'Paid 2';
         }
