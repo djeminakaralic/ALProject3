@@ -19,66 +19,66 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.39422in</Width>
+                  <Width>0.40562in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.5793in</Width>
+                  <Width>0.5907in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.00471in</Width>
+                  <Width>0.85778in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.95834in</Width>
+                  <Width>0.96974in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.04495in</Width>
+                  <Width>1.05635in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.80045in</Width>
+                  <Width>0.81185in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.53313in</Width>
+                  <Width>0.54453in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.77072in</Width>
+                  <Width>1.78212in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.61731in</Width>
+                  <Width>0.62871in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.83397in</Width>
+                  <Width>0.84537in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.93814in</Width>
+                  <Width>0.94954in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.62897in</Width>
+                  <Width>1.64037in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.08814in</Width>
+                  <Width>1.09954in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.77649in</Width>
+                  <Width>0.78789in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.89231in</Width>
+                  <Width>0.90371in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.8673in</Width>
+                  <Width>0.8787in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.75897in</Width>
+                  <Width>0.77037in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.625in</Width>
+                  <Width>1.6364in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.775in</Width>
+                  <Width>0.7864in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.64167in</Height>
+                  <Height>0.68334in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1058,7 +1058,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.64167in</Height>
+                  <Height>0.68334in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2239,10 +2239,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>1.06334in</Top>
+            <Top>0.98001in</Top>
             <Left>0.45001in</Left>
-            <Height>1.28334in</Height>
-            <Width>17.88742in</Width>
+            <Height>1.36667in</Height>
+            <Width>17.94575in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2256,7 +2256,7 @@
       <Width>47.93695cm</Width>
       <Page>
         <PageHeader>
-          <Height>6.25686cm</Height>
+          <Height>6.21453cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2282,7 +2282,7 @@
                     <TextRun>
                       <Value>LISTA SVIH RADNIKA</Value>
                       <Style>
-                        <FontSize>24pt</FontSize>
+                        <FontSize>26pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2315,6 +2315,8 @@
                     <TextRun>
                       <Value>Datum i vrijeme pokretanja izvještaja: </Value>
                       <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontWeight>Bold</FontWeight>
                         <Format>g</Format>
                       </Style>
                     </TextRun>
@@ -2338,7 +2340,7 @@
               <Top>0.25778in</Top>
               <Left>0.45001in</Left>
               <Height>0.23389in</Height>
-              <Width>3.50833in</Width>
+              <Width>3.75in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2357,8 +2359,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Korisnik:</Value>
-                      <Style />
+                      <Value>Korisnik: </Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
                     </TextRun>
                     <TextRun>
                       <Value>=User!UserID</Value>
@@ -2391,7 +2395,13 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Adresa: </Value>
+                      <Value>Adresa:</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
@@ -2404,7 +2414,13 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Tel: </Value>
+                      <Value>Tel:</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
@@ -2417,7 +2433,13 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Mjesto: </Value>
+                      <Value>Mjesto:</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
                       <Style />
                     </TextRun>
                     <TextRun>
@@ -2467,7 +2489,7 @@
               <MIMEType>image/bmp</MIMEType>
               <Sizing>Fit</Sizing>
               <Top>0.27167in</Top>
-              <Left>13.77025in</Left>
+              <Left>13.02858in</Left>
               <Height>0.70833in</Height>
               <Width>3.32416in</Width>
               <ZIndex>4</ZIndex>
@@ -2497,7 +2519,9 @@
                   <TextRuns>
                     <TextRun>
                       <Value>="Stranica "&amp;Globals!OverallPageNumber</Value>
-                      <Style />
+                      <Style>
+                        <FontWeight>Normal</FontWeight>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />

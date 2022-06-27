@@ -109,9 +109,10 @@ report 50085 "Izvještaj porto blagajne"
                     ContCity := emp."Post Code" + ', ' + emp.City;
                 END;*/
 
-                GLEntry.Reset();
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
-                Message(FORMAT(GLEntry."Posting Date"));
+                /*GLEntry.Reset();
+                GLEntry.SetFilter("Posting Date", '%1', Datee);*/
+
+
             end;
 
             trigger OnPreDataItem()
@@ -128,7 +129,6 @@ report 50085 "Izvještaj porto blagajne"
             column(PTCode; DataItem22.Code)
             {
             }
-
         }
     }
 
