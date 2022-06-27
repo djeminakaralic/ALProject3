@@ -10,10 +10,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
-                trigger OnValidate()
-                begin
-                    Message(Text000, Format("Payment DT", 0, '<Month Text> <Day>'));
-                end;
+
             }
 
             field("Payment Type"; "Payment Type")
