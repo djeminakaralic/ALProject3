@@ -392,6 +392,12 @@ page 50066 "HR activities"
                     ApplicationArea = all;
 
                 }
+            }
+
+            cuegroup("Expiring Certification")
+            {
+                Caption = 'Expiring Certification';
+
                 field(Certification; Certification)
                 {
                     Image = Receipt;
@@ -402,9 +408,10 @@ page 50066 "HR activities"
                 }
                 field("Certification Expired"; "Certification Expired")
                 { }
-
-
             }
+
+
+
 
             /* cuegroup(Postings)
              {

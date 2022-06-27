@@ -210,6 +210,15 @@ page 50016 "Wage Setup"
                 field("Meal No. Series"; "Meal No. Series")
                 {
                 }
+
+                field("Wage Journal Template"; "Wage Journal Template")
+                {
+
+                }
+                field("Wage Batch Name"; "Wage Batch Name")
+                {
+
+                }
             }
         }
     }

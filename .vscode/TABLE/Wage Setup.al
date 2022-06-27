@@ -608,6 +608,18 @@ table 50199 "Wage Setup"
             end;
 
         }
+        field(50073; "Wage Journal Template"; Code[10])
+        {
+            Caption = 'Wage Journal Template';
+            TableRelation = "Gen. Journal Template"."Name" where("Type" = filter("General"));
+
+        }
+        field(50074; "Wage Batch Name"; Code[10])
+        {
+            Caption = 'Wage Batch Name';
+            TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field("Wage Journal Template"));
+
+        }
 
     }
 
