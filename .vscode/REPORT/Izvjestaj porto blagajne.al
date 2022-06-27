@@ -126,7 +126,7 @@ report 50085 "Izvještaj porto blagajne"
 
         dataitem(DataItem22; "Payment Type")
         {
-            column(PTCode; DataItem22.Description)
+            column(PTCode; DataItem22.Code)
             {
             }
         }
