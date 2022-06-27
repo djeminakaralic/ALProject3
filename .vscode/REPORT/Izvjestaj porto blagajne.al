@@ -120,7 +120,6 @@ report 50085 "Izvještaj porto blagajne"
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
