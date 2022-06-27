@@ -1184,6 +1184,9 @@ End Function
         <Field Name="Description">
           <DataField>Description</DataField>
         </Field>
+        <Field Name="PaymentMethod">
+          <DataField>PaymentMethod</DataField>
+        </Field>
         <Field Name="LineNo">
           <DataField>LineNo</DataField>
         </Field>

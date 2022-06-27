@@ -40213,6 +40213,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Septembar - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3566004263 - EnumValue 18652612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Method - EnumValue  - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 3566004263 - EnumValue 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Kartično</source>
           <note from="Developer" annotates="general" priority="2"></note>
