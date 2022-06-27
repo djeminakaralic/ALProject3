@@ -105,8 +105,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
     end;
 
-
-
     var
         GJline: Record "Gen. Journal Line";
         Customer: Record Customer;
