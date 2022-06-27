@@ -111,7 +111,7 @@ report 50085 "Izvještaj porto blagajne"
 
                 GLEntry.Reset();
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
-
+                Message(FORMAT(GLEntry."Posting Date"));
             end;
 
             trigger OnPreDataItem()
