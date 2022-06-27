@@ -349,21 +349,21 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PTCode">
+                        <Textbox Name="Ime">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Ime.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PTCode</rd:DefaultName>
+                          <rd:DefaultName>Ime</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -613,6 +613,38 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!Datee.Value</Value>
+                    <Style>
+                      <Format>g</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>11.05641cm</Top>
+            <Left>4.30953cm</Left>
+            <Height>1.56104cm</Height>
+            <Width>5.31812cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>18.57375cm</Height>
         <Style>
@@ -621,7 +653,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.16068cm</Width>
+      <Width>16.09856cm</Width>
       <Page>
         <PageFooter>
           <Height>2.54cm</Height>
@@ -787,6 +819,9 @@ End Function
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
+        </Field>
+        <Field Name="Ime">
+          <DataField>Ime</DataField>
         </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>
