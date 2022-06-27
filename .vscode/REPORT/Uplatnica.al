@@ -103,6 +103,7 @@ report 50077 Uplatnica
             column(CCity; ContCity)
             {
             }
+
             column(User; USERID)
             {
             }
@@ -119,6 +120,9 @@ report 50077 Uplatnica
             {
             }
             column(Tax_CompanyInfo; CompanyInformation."Tax No.")
+            {
+            }
+            column(City_Cust; City_Cust)
             {
             }
 

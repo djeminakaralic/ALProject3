@@ -126,6 +126,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Payment Method';
         }
+        field(50035; "City_Cust"; Text[30]) //ED
+        {
+            Caption = 'City';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -145,6 +149,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Address_Cust := Customer.Address;
                 RegistrationNo_Cust := Customer."Registration No.";
                 VATRegistrationNo_Cust := Customer."VAT Registration No.";
+                City_Cust := Customer.City;
+
             end;
         }
 
