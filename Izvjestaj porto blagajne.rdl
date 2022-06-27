@@ -617,18 +617,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.18042cm</Width>
+                  <Width>4.36634cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.18042cm</Width>
+                  <Width>4.36634cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.18042cm</Width>
+                  <Width>4.36634cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.64823cm</Height>
+                  <Height>0.56885cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -639,7 +639,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>RAČUNI</Value>
+                                  <Value>PTCode</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -723,7 +723,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.64823cm</Height>
+                  <Height>0.56885cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -837,10 +837,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>10.47433cm</Top>
-            <Left>0.76412cm</Left>
-            <Height>1.29646cm</Height>
-            <Width>12.54125cm</Width>
+            <Top>10.2362cm</Top>
+            <Left>0.49953cm</Left>
+            <Height>1.13771cm</Height>
+            <Width>13.09903cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
