@@ -378,14 +378,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="DocumentNo">
+                        <Textbox Name="AppliesToDocNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!DocumentNo.Value</Value>
+                                  <Value>=Fields!AppliesToDocNo.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -396,7 +396,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>DocumentNo</rd:DefaultName>
+                          <rd:DefaultName>AppliesToDocNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1110,7 +1110,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!City_Cust.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -1200,6 +1202,9 @@ End Function
         </Field>
         <Field Name="PostingDate">
           <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="AppliesToDocNo">
+          <DataField>AppliesToDocNo</DataField>
         </Field>
         <Field Name="PaymentDT">
           <DataField>PaymentDT</DataField>

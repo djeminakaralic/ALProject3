@@ -16,6 +16,9 @@ report 50077 Uplatnica
             column(PostingDate; DataItem21."Posting Date")
             {
             }
+            column(AppliesToDocNo; DataItem21."Applies-to Doc. No.")
+            {
+            }
             column(PaymentDT; DataItem21."Payment DT")
             {
             }
