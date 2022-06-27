@@ -48,13 +48,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-        modify("Applies-to Doc. No.")
-        {
-            trigger OnAfterValidate()
-            begin
-                Message(Rec."Applies-to Doc. No.");
-            end;
-        }
     }
 
     actions
