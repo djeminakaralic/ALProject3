@@ -18403,6 +18403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Netto - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1059656092 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order for Pay list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1059656092 - Field 3723654799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Other bonus from brutto</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27013,6 +27018,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Addition - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4258110556 - Control 1726892861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>K</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Addition - Control K - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4258110556 - Control 3730786472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Month</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27048,11 +27058,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Addition Calculated - Control Full Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1144300580 - Control 213023903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tax</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Addition Calculated - Control Tax - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 4064265885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Addition Types</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27087,26 +27092,6 @@
           <source>Employee Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Subform - Control EmployeeName - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2809483777 - Control 4113013497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Final Net Wage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Subform - Control Final Net Wage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2809483777 - Control 3019682405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Net Wage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Subform - Control Net Wage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2809483777 - Control 108658566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Net Wage After Tax</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Subform - Control Net Wage After Tax - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2809483777 - Control 884583803 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Tax Deductions</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Subform - Control Tax Deductions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3625076245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Calculation Temp Subform</source>
@@ -27392,6 +27377,11 @@
           <source>Chamber fee</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Setup - Control Chamber Fee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1954395533 - Control 4175738482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>13ta plata</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Setup - Control Codes - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1954395533 - Control 1826403361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codes</source>
@@ -36138,6 +36128,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field No Report - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 146219450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Order for Pay list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Payment Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38763,6 +38758,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment DT - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 3566004263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Payment Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Method - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Payment Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40202,6 +40202,21 @@
           <source>Septembar</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Septembar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3566004263 - EnumValue 18652612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Method - EnumValue  - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3566004263 - EnumValue 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Kartično</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Method - EnumValue Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3566004263 - EnumValue 229234099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gotovina</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Method - EnumValue Cash - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1145711811 - EnumValue 2997449368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract Renewal</source>
