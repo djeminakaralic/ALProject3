@@ -127,8 +127,6 @@ report 50077 Uplatnica
             }
 
 
-
-
             trigger OnAfterGetRecord()
             begin
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
