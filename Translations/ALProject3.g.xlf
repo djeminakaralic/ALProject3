@@ -7988,6 +7988,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Certification - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 470349803 - Field 2065042129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certifikati čiji rok ističe za mjesec dana</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Certification Expired - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 470349803 - Field 3900362726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ClosedPosting</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8079,9 +8084,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field DateFilterTraining - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 2610362360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateTraining</source>
+          <source>Date Training expiring</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field DateTraining - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470349803 - Field 3566755906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Training expired</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field DateTraining2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 230071459 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Economic Profile Last Year</source>
@@ -8132,6 +8142,11 @@
           <source>Expiring Contracts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Expired Contracts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470349803 - Field 658320105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Trainings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Expired Training - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 3912231057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expiring Contracts</source>

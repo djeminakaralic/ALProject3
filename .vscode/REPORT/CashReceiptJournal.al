@@ -10,10 +10,9 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
-                trigger OnValidate()
-                begin
-                    Message(Text000, Format("Payment DT", 0, '<Month Text> <Day>'));
-                end;
+                Editable = true;
+                AutoFormatExpression = FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
+                AutoFormatType = 1;
             }
 
             field("Payment Type"; "Payment Type")
@@ -107,6 +106,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+        "Payment DT" := System.CurrentDateTime;
     end;
 
     var
