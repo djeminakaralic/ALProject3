@@ -11,6 +11,106 @@
       <rd:DataSourceID>91a7cc15-e5fb-471f-aa55-aa3a3c2949a0</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Adresa">
+          <DataField>Adresa</DataField>
+        </Field>
+        <Field Name="Grad">
+          <DataField>Grad</DataField>
+        </Field>
+        <Field Name="Slika">
+          <DataField>Slika</DataField>
+        </Field>
+        <Field Name="Tel">
+          <DataField>Tel</DataField>
+        </Field>
+        <Field Name="Kod">
+          <DataField>Kod</DataField>
+        </Field>
+        <Field Name="OJJ">
+          <DataField>OJJ</DataField>
+        </Field>
+        <Field Name="Sluzba">
+          <DataField>Sluzba</DataField>
+        </Field>
+        <Field Name="Odjel">
+          <DataField>Odjel</DataField>
+        </Field>
+        <Field Name="NazivRadnogMjesta">
+          <DataField>NazivRadnogMjesta</DataField>
+        </Field>
+        <Field Name="KrajDatum">
+          <DataField>KrajDatum</DataField>
+        </Field>
+        <Field Name="Spol">
+          <DataField>Spol</DataField>
+        </Field>
+        <Field Name="Sektor">
+          <DataField>Sektor</DataField>
+        </Field>
+        <Field Name="Ime">
+          <DataField>Ime</DataField>
+        </Field>
+        <Field Name="Prezime">
+          <DataField>Prezime</DataField>
+        </Field>
+        <Field Name="EmploymentDate">
+          <DataField>EmploymentDate</DataField>
+        </Field>
+        <Field Name="Zvanje">
+          <DataField>Zvanje</DataField>
+        </Field>
+        <Field Name="Titula">
+          <DataField>Titula</DataField>
+        </Field>
+        <Field Name="EL">
+          <DataField>EL</DataField>
+        </Field>
+        <Field Name="Pozicija">
+          <DataField>Pozicija</DataField>
+        </Field>
+        <Field Name="StartingDate">
+          <DataField>StartingDate</DataField>
+        </Field>
+        <Field Name="VrstaUgovora">
+          <DataField>VrstaUgovora</DataField>
+        </Field>
+        <Field Name="Koeficijent">
+          <DataField>Koeficijent</DataField>
+        </Field>
+        <Field Name="KoeficijentFormat">
+          <DataField>KoeficijentFormat</DataField>
+        </Field>
+        <Field Name="Select">
+          <DataField>Select</DataField>
+        </Field>
+        <Field Name="Sifra">
+          <DataField>Sifra</DataField>
+        </Field>
+        <Field Name="ImeRoditelja">
+          <DataField>ImeRoditelja</DataField>
+        </Field>
+        <Field Name="NazivOrgana">
+          <DataField>NazivOrgana</DataField>
+        </Field>
+        <Field Name="DatumRodjenja">
+          <DataField>DatumRodjenja</DataField>
+        </Field>
+        <Field Name="RazlogPrekida">
+          <DataField>RazlogPrekida</DataField>
+        </Field>
+        <Field Name="Pomocna">
+          <DataField>Pomocna</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -2242,7 +2342,7 @@
             <Top>1.06334in</Top>
             <Left>0.45001in</Left>
             <Height>1.28334in</Height>
-            <Width>17.88743in</Width>
+            <Width>17.88742in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2253,7 +2353,7 @@
         <Height>8.46666cm</Height>
         <Style />
       </Body>
-      <Width>78.14178cm</Width>
+      <Width>47.93695cm</Width>
       <Page>
         <PageHeader>
           <Height>6.25686cm</Height>
@@ -2335,8 +2435,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.27167in</Top>
-              <Left>0.73166in</Left>
+              <Top>0.25778in</Top>
+              <Left>0.45001in</Left>
               <Height>0.23389in</Height>
               <Width>3.50833in</Width>
               <ZIndex>1</ZIndex>
@@ -2369,8 +2469,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>0.51945in</Top>
-              <Left>0.73166in</Left>
+              <Top>0.50556in</Top>
+              <Left>0.45001in</Left>
               <Height>0.25in</Height>
               <Width>3.50833in</Width>
               <ZIndex>2</ZIndex>
@@ -2447,7 +2547,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox22</rd:DefaultName>
               <Top>1.155in</Top>
-              <Left>0.73166in</Left>
+              <Left>0.45001in</Left>
               <Height>0.59778in</Height>
               <Width>3.50833in</Width>
               <ZIndex>3</ZIndex>
@@ -2467,7 +2567,7 @@
               <MIMEType>image/bmp</MIMEType>
               <Sizing>Fit</Sizing>
               <Top>0.27167in</Top>
-              <Left>14.57025in</Left>
+              <Left>13.77025in</Left>
               <Height>0.70833in</Height>
               <Width>3.32416in</Width>
               <ZIndex>4</ZIndex>
@@ -2505,7 +2605,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.47917in</Top>
-              <Left>8.78383in</Left>
+              <Left>8.65858in</Left>
               <Height>0.3in</Height>
               <Width>1.525in</Width>
               <Style>
@@ -2532,6 +2632,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -2571,104 +2677,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Adresa">
-          <DataField>Adresa</DataField>
-        </Field>
-        <Field Name="Grad">
-          <DataField>Grad</DataField>
-        </Field>
-        <Field Name="Slika">
-          <DataField>Slika</DataField>
-        </Field>
-        <Field Name="Tel">
-          <DataField>Tel</DataField>
-        </Field>
-        <Field Name="Kod">
-          <DataField>Kod</DataField>
-        </Field>
-        <Field Name="OJJ">
-          <DataField>OJJ</DataField>
-        </Field>
-        <Field Name="Sluzba">
-          <DataField>Sluzba</DataField>
-        </Field>
-        <Field Name="Odjel">
-          <DataField>Odjel</DataField>
-        </Field>
-        <Field Name="NazivRadnogMjesta">
-          <DataField>NazivRadnogMjesta</DataField>
-        </Field>
-        <Field Name="KrajDatum">
-          <DataField>KrajDatum</DataField>
-        </Field>
-        <Field Name="Spol">
-          <DataField>Spol</DataField>
-        </Field>
-        <Field Name="Sektor">
-          <DataField>Sektor</DataField>
-        </Field>
-        <Field Name="Ime">
-          <DataField>Ime</DataField>
-        </Field>
-        <Field Name="Prezime">
-          <DataField>Prezime</DataField>
-        </Field>
-        <Field Name="EmploymentDate">
-          <DataField>EmploymentDate</DataField>
-        </Field>
-        <Field Name="Zvanje">
-          <DataField>Zvanje</DataField>
-        </Field>
-        <Field Name="Titula">
-          <DataField>Titula</DataField>
-        </Field>
-        <Field Name="EL">
-          <DataField>EL</DataField>
-        </Field>
-        <Field Name="Pozicija">
-          <DataField>Pozicija</DataField>
-        </Field>
-        <Field Name="StartingDate">
-          <DataField>StartingDate</DataField>
-        </Field>
-        <Field Name="VrstaUgovora">
-          <DataField>VrstaUgovora</DataField>
-        </Field>
-        <Field Name="Koeficijent">
-          <DataField>Koeficijent</DataField>
-        </Field>
-        <Field Name="KoeficijentFormat">
-          <DataField>KoeficijentFormat</DataField>
-        </Field>
-        <Field Name="Select">
-          <DataField>Select</DataField>
-        </Field>
-        <Field Name="Sifra">
-          <DataField>Sifra</DataField>
-        </Field>
-        <Field Name="ImeRoditelja">
-          <DataField>ImeRoditelja</DataField>
-        </Field>
-        <Field Name="NazivOrgana">
-          <DataField>NazivOrgana</DataField>
-        </Field>
-        <Field Name="DatumRodjenja">
-          <DataField>DatumRodjenja</DataField>
-        </Field>
-        <Field Name="RazlogPrekida">
-          <DataField>RazlogPrekida</DataField>
-        </Field>
-        <Field Name="Pomocna">
-          <DataField>Pomocna</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
