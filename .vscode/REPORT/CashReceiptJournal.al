@@ -105,6 +105,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+        "Payment DT" := System.CurrentDateTime;
     end;
 
     var
