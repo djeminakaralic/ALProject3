@@ -43,10 +43,7 @@ report 50095 "Svi radnici"
             {
 
             }
-            column(Gender; Gender)
-            {
-
-            }
+        
             column(Sektor; "Sector Description")
             {
             }
@@ -174,7 +171,7 @@ report 50095 "Svi radnici"
 
             trigger OnPreDataItem()
             begin
-
+                Spol:='';
                 NazivOrgana := '';
                 IF Select = Select::"Otišli u zadanom intervalu" THEN
                     DataItem1.SETFILTER("Grounds for Term. Description", '<>%1', '');

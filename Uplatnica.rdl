@@ -339,7 +339,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=FORMAT(Fields!PaymentDT.Value, "dd.MM.yyyy HH:mm") &amp; " " &amp; Fields!BatchName.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>g</Format>
@@ -431,7 +431,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="=" &amp; Fields!Amound.Value</Value>
+                                  <Value>="=" &amp; Format( Fields!Amound.Value, "##.##")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>n2</Format>
@@ -467,6 +467,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -895,10 +896,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.30402cm</Width>
+                  <Width>6.7253cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.40784cm</Width>
+                  <Width>6.38474cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -996,7 +997,7 @@
             <Top>13.96174cm</Top>
             <Left>0.47838cm</Left>
             <Height>0.56885cm</Height>
-            <Width>5.71186cm</Width>
+            <Width>13.11004cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1092,38 +1093,6 @@
             <Height>0.6108cm</Height>
             <Width>1.96686cm</Width>
             <ZIndex>20</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="PaymentDT1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!PaymentDT.Value</Value>
-                    <Style>
-                      <Format>g</Format>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>PaymentDT1</rd:DefaultName>
-            <Top>7.41121cm</Top>
-            <Left>11.40637cm</Left>
-            <Height>0.6cm</Height>
-            <Width>2.18205cm</Width>
-            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
