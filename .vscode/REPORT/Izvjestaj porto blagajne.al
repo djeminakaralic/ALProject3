@@ -108,7 +108,8 @@ report 50085 "Izvještaj porto blagajne"
                     ContAddress := emp.Address;
                     ContCity := emp."Post Code" + ', ' + emp.City;
                 END;*/
-                GLEntry.Get();
+
+                GLEntry.Reset();
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
 
             end;
