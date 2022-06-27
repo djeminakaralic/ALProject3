@@ -117,6 +117,12 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
             OptionCaption = ',Regular Work,Additional,Work Performance,Other Additional';
             OptionMembers = "<","Regular Work","Additional>","Work Performance","Other Additional";
         }
+        field(50025; "Order"; Integer)
+        {
+
+            Caption = 'Order for Pay list';
+
+        }
     }
 
     var

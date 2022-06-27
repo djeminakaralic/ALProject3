@@ -3,6 +3,7 @@ page 50092 "Payroll Activities"
     Caption = 'Activities';
     PageType = CardPart;
     SourceTable = "Payroll Cue";
+    RefreshOnActivate = true;
 
     layout
     {

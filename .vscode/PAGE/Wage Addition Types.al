@@ -26,6 +26,11 @@ page 50267 "Wage Addition Types"
                 }
                 field("Payment Type"; "Payment Type")
                 { }
+                field(Order; Order)
+                {
+                    ApplicationArea = all;
+
+                }
                 field(Meal; Meal)
                 {
                     ApplicationArea = all;

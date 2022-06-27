@@ -263,13 +263,17 @@ report 50056 "Pay List Final"
                     column(CEO; CompanyInfo.CEO)
                     {
                     }
-                    column(Hours; DataItem182.Hours)
+                    column(Hours; SatiM)
                     {
                     }
                     column(COADescription; UPPERCASE(COADescription))
                     {
                     }
                     column(TipUlazaP; TipUlazaP)
+                    {
+
+                    }
+                    column(OrderV; OrderV)
                     {
 
                     }
@@ -558,6 +562,8 @@ report 50056 "Pay List Final"
                             if COA."Payment Type" = COA."Payment Type"::"Work Performance" then
                                 TipUlazaP := 2;
 
+                            OrderV := COA.Order;
+
 
                         END
                         ELSE BEGIN
@@ -572,9 +578,14 @@ report 50056 "Pay List Final"
                                 if WAT."Payment Type" = WAT."Payment Type"::"Other Additional" then
                                     TipUlazaP := 4;
 
-                                if WAT."Payment Type" = WAT."Payment Type"::"Work Performance" then
-                                    TipUlazaP := 2;
+                                if WAT."Payment Type" = WAT."Payment Type"::"Work Performance" then begin
 
+                                    TipUlazaP := 2;
+                                    if WAT."Default Amount" <> 0 then
+                                        DataItem182.Hours := WAT."Default Amount";
+
+                                end;
+                                OrderV := WAT.Order;
 
 
 
@@ -631,8 +642,10 @@ report 50056 "Pay List Final"
 
                                     END
                                     ELSE
-                                        IF ("Entry Type" = 14) THEN
+                                        IF ("Entry Type" = 14) THEN begin
                                             COADescription := 'Minuli rad';
+
+                                        end;
                                     IF ("Entry Type" = 7) THEN
                                         COADescription := 'Naknada za prevoz u novcu';
 
@@ -651,6 +664,13 @@ report 50056 "Pay List Final"
                             COADescription := 'Naknada za prevoz u novcu';
                             TipUlazaP := 4;
                         end;
+                        SatiM := DataItem182.Hours;
+                        if DataItem182."Entry Type" = 14 then
+                            SatiM := WorkExperiencePercentage;
+
+                        //TipUlazaP
+
+
 
                         if TipUlazaP = 1 then begin
                             Suma1_B += DataItem182."Cost Amount (Brutto)";
@@ -1249,6 +1269,9 @@ report 50056 "Pay List Final"
 
     var
         PaymentOrder: Record "Payment Order";
+
+        OrderV: Integer;
+        SatiM: Decimal;
         TipUlazaP: Integer;
         Suma1_S: Decimal;
         Suma1_B: Decimal;
