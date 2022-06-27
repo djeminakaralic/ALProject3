@@ -1693,7 +1693,8 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Sluzba.Value&lt;&gt;"",Fields!Sluzba.Value,"") &amp; IIF(Fields!Odjel.Value&lt;&gt;"","\"&amp;Fields!Odjel.Value,"")</Value>
+                                  <Value>=IIF(Fields!Odjel.Value&lt;&gt;"",Fields!Sluzba.Value&amp;"\"&amp;Fields!Odjel.Value,Fields!Sluzba.Value)
+=IIF(Fields!Sluzba.Value&lt;&gt;"",Fields!Sluzba.Value&amp;"\"&amp;Fields!Odjel.Value,Fields!Odjel.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
