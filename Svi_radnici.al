@@ -101,7 +101,7 @@ report 50095 "Svi radnici"
             trigger OnAfterGetRecord()
             begin
 
-                CompInfo.RESET; //Pitati djeminu da li je ova linija potrebna, posto imamo GET--svejedeno
+                CompInfo.RESET; 
                 CompInfo.GET();
                 CompInfo.CALCFIELDS(Picture);
                 NazivOrgana := CompInfo.Name;
@@ -110,13 +110,13 @@ report 50095 "Svi radnici"
                 //Prikazi:=FALSE Entry No. je polje
                 //Prikazi:=TRUE;
 
-                //DataItem1.CALCFIELDS(Gender);
-                //Spol := FORMAT(DataItem1.Gender);
+              
                 DataItem1.CALCFIELDS("Minimal Education Level");
-                //Spol := FORMAT(DataItem1.Gender);
+                
                 VrstaUgovora := DataItem1."Engagement Type";
                 Koeficijent := DataItem1."Position Coefficient for Wage";
-                //STRUCNA SPREMA POZICIJE - NA BC TO RADI
+
+                //STRUCNA SPREMA POZICIJE
                 EL := DataItem1."Minimal Education Level";
                 P.RESET;
                 P.SETFILTER("Position ID", '%1', "Employee No.");
@@ -141,8 +141,7 @@ report 50095 "Svi radnici"
                     if E.Gender=E.Gender::Male then 
                     Spol:='Muško';
 
-                //    Spol :=FORMAT(E.Gender);
-                    //Koeficijent := E."Work Experience Percentage";
+               
                     EmploymentDate := FORMAT(E."Employment Date", 0, '<day,2>.<month,2>.<year4>.'); //ovo ne koristim kao employment date
                     DatumRodjenja := FORMAT(E."Birth Date", 0, '<day,2>.<month,2>.<year4>.');
                 END ELSE BEGIN
@@ -178,7 +177,7 @@ report 50095 "Svi radnici"
 
             trigger OnPreDataItem()
             begin
-               // Spol:='';
+             
                 NazivOrgana := '';
                 IF Select = Select::"Otišli u zadanom intervalu" THEN
                     DataItem1.SETFILTER("Grounds for Term. Description", '<>%1', '');

@@ -1693,7 +1693,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Odjel.Value&lt;&gt;"",Fields!Sluzba.Value&amp;"\"&amp;Fields!Odjel.Value,Fields!Sluzba.Value)</Value>
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
