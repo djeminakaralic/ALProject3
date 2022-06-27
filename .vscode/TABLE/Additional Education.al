@@ -19,7 +19,7 @@ table 50200 "Additional Education"
         {
             Caption = 'Employee ID';
             TableRelation = Employee."Employee ID";
-            
+
         }
         field(5; "School of Graduation"; Text[250])
         {
@@ -468,10 +468,10 @@ table 50200 "Additional Education"
             AdditionalEducation.RESET;
             AdditionalEducation.SETFILTER("Employee No.", "Employee No.");
             IF AdditionalEducation.FINDFIRST THEN BEGIN
-                REPEAT
-                    AdditionalEducation.Active := FALSE;
-                    AdditionalEducation.MODIFY;
-                UNTIL AdditionalEducation.NEXT = 0;
+                                                      REPEAT
+                                                          AdditionalEducation.Active := FALSE;
+                                                          AdditionalEducation.MODIFY;
+                                                      UNTIL AdditionalEducation.NEXT = 0;
             END;
 
             Active := TRUE;
