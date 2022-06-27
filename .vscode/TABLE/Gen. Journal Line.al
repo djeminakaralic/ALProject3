@@ -158,6 +158,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     }
 
 
+
+
     trigger OnInsert()
     begin
 
@@ -165,8 +167,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Rec."No. Line" := GJLine."No. Line" + 1
         else
             Rec."No. Line" := 1;
-
-        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::"Finance Charge Memo");
 
     end;
 
