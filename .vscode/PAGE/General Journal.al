@@ -77,6 +77,14 @@ pageextension 50111 GeneralJournal extends "General Journal"
         {
             Visible = false;
         }
+        modify(Control1900919607)
+        {
+            Visible = false;
+        }
+        modify(JournalLineDetails)
+        {
+            Visible = false;
+        }
 
 
 
@@ -88,29 +96,103 @@ pageextension 50111 GeneralJournal extends "General Journal"
 
             }
         }
+
     }
+
 
     actions
     {
-        // Add changes to page actions here
-        addafter("B&ank")
+
+        addafter(PostAndPrint)
         {
-
-            action("Bank Statement")
+            action("Change Date")
             {
-                Caption = 'Import/Export Bank Statement';
-                Image = Import;
+                Caption = 'Change Date';
+                ApplicationArea = all;
+                Image = DateRange;
                 Promoted = true;
-                PromotedCategory = Category4;
+                PromotedCategory = Process;
                 PromotedIsBig = true;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                    GenJournal: Record "Gen. Journal Line";
+                    Text003: Label 'Do you want to change date in journal to current date?';
+                begin
+
+                    IF CONFIRM(Text003) THEN BEGIN
+                        GenJournal.SETFILTER("Document No.", '<>%1', '');
+                        IF GenJournal.FINDFIRST THEN
+                            REPEAT
+                                GenJournal.VALIDATE("Posting Date", TODAY);
+                                GenJournal.VALIDATE("Document Date", TODAY);
+                                GenJournal.MODIFY;
+                            UNTIL GenJournal.NEXT = 0;
+                    END;
+                    MESSAGE('Promjena je izvrsena. Osvježite stranicu da biste vidjeli nalog sa tekućim datumom');
 
 
-                RunObject = report "Read bank statement";
+                end;
 
-                //  RunObject = report "";
-            } // Add changes to 
+
+
+            }
         }
+        // Add changes to page actions here
+        modify(Dimensions)
+        {
+            Visible = false;
+        }
+        modify(Card)
+        {
+            Visible = false;
+        }
+        modify("Ledger E&ntries")
+        {
+            Visible = false;
+        }
+        modify(Approvals)
+        {
+            Visible = false;
+        }
+        modify("Renumber Document Numbers")
+        {
+            Visible = false;
+        }
+        modify("Insert Conv. LCY Rndg. Lines")
+        {
+            Visible = false;
+        }
+        modify(GetStandardJournals)
+        {
+            Visible = false;
+        }
+        modify(SaveAsStandardJournal)
+        {
+            Visible = false;
+        }
+        modify("Remove From Job Queue")
+        {
+            Visible = false;
+        }
+        modify(DeferralSchedule) { Visible = false; }
+        modify(IncomingDocument) { Visible = false; }
+        modify(SelectIncomingDoc) { Visible = false; }
+        modify(IncomingDocAttachFile) { Visible = false; }
+        modify(RemoveIncomingDoc) { Visible = false; }
+        modify("B&ank") { Visible = false; }
+        modify(Application) { Visible = false; }
+        modify("Payro&ll") { Visible = false; }
+        modify("Request Approval") { Visible = false; }
+        modify(CancelApprovalRequest) { Visible = false; }
+        modify(CreateFlow) { Visible = false; }
+        modify(Approval) { Visible = false; }
+        modify("Opening Balance") { Visible = false; }
+        modify(Page) { Visible = false; }
+        modify(Errors) { Visible = false; }
+
     }
+
 
     var
         myInt: Integer;
