@@ -10,6 +10,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
+                AutoFormatType = 1;
             }
 
             field("Payment Type"; "Payment Type")
