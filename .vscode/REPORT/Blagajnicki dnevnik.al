@@ -3,7 +3,7 @@ report 50075 "Blagajnički dnevnik"
     //ED
 
     DefaultLayout = RDLC;
-    RDLCLayout = './Blagajnički dnevnik.rdl';
+    RDLCLayout = './Blagajnicki dnevnik.rdl';
 
     dataset
     {
@@ -111,10 +111,10 @@ report 50075 "Blagajnički dnevnik"
                 BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF BALE.FIND('-') THEN
-                    REPEAT
+                        REPEAT
 
-                        PrethodniSaldo += BALE."Amount (LCY)";
-                    UNTIL BALE.NEXT = 0;
+                            PrethodniSaldo += BALE."Amount (LCY)";
+                        UNTIL BALE.NEXT = 0;
 
                 emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN
