@@ -581,8 +581,14 @@ report 50056 "Pay List Final"
                                 if WAT."Payment Type" = WAT."Payment Type"::"Work Performance" then begin
 
                                     TipUlazaP := 2;
-                                    if WAT."Default Amount" <> 0 then
+                                    if WAT."Default Amount" <> 0 then begin
                                         DataItem182.Hours := WAT."Default Amount";
+                                        DecimalPart := FORMAT(DataItem182.Hours, 0, '<Decimals,2>');
+                                        //   if (DecimalPart='00') or(DecimalPart='') then 
+                                        // DataItem182.Hours := WAT."Default Amount"
+
+
+                                    end;
 
                                 end;
                                 OrderV := WAT.Order;
@@ -1269,6 +1275,8 @@ report 50056 "Pay List Final"
 
     var
         PaymentOrder: Record "Payment Order";
+
+        DecimalPart: Text[250];
 
         OrderV: Integer;
         SatiM: Decimal;
