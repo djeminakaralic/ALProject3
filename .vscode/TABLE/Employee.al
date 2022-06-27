@@ -9,6 +9,7 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             trigger OnAfterValidate()
             begin
+                //elmira
 
 
                 CLEAR(CheckInt);
