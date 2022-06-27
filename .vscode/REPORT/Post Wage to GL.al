@@ -189,6 +189,7 @@ report 50027 "Post Wage to GL"
                         BEGIN
                             IF ("Reduction No.") <> '' THEN BEGIN
                                 Red.GET("Reduction Type");
+                                Red.CalcFields("Bal. G/L Account", "G/L Account");
                                 Red.TESTFIELD("Bal. G/L Account");
                                 Red.TESTFIELD("G/L Account");
                                 // Red.TESTFIELD("Transit  Account");

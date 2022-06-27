@@ -144,12 +144,14 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             trigger OnAfterValidate()
             begin
-                Customer.Get("Account No.");
-                "Social status" := Customer."Social status category";
-                Address_Cust := Customer.Address;
-                RegistrationNo_Cust := Customer."Registration No.";
-                VATRegistrationNo_Cust := Customer."VAT Registration No.";
-                City_Cust := Customer.City;
+                if "Account Type" = "Account Type"::Customer then begin
+                    Customer.Get("Account No.");
+                    "Social status" := Customer."Social status category";
+                    Address_Cust := Customer.Address;
+                    RegistrationNo_Cust := Customer."Registration No.";
+                    VATRegistrationNo_Cust := Customer."VAT Registration No.";
+                    City_Cust := Customer.City;
+                end;
 
             end;
         }
