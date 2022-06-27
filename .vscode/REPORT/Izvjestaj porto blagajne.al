@@ -82,6 +82,9 @@ report 50085 "Izvještaj porto blagajne"
             column(Datee; Datee)
             {
             }
+            column(Ime; glentry."Posting Date")
+            {
+            }
 
 
 
@@ -105,6 +108,8 @@ report 50085 "Izvještaj porto blagajne"
                     ContAddress := emp.Address;
                     ContCity := emp."Post Code" + ', ' + emp.City;
                 END;*/
+
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
 
             end;
 
@@ -161,6 +166,7 @@ report 50085 "Izvještaj porto blagajne"
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
+        GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
