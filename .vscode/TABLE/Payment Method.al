@@ -15,6 +15,4 @@ enum 50224 "Payment Method"
     {
         Caption = 'Kartično';
     }
-
-
 }
