@@ -41,11 +41,11 @@ report 50095 "Svi radnici"
             }
             column(Spol; Spol)
             {
-            
+
             }
             column(Gender; Gender)
             {
-              
+
             }
             column(Sektor; "Sector Description")
             {
@@ -153,7 +153,7 @@ report 50095 "Svi radnici"
                 AE.SETFILTER("Employee No.", '%1', "Employee No.");
                 IF AE.FINDFIRST THEN BEGIN
                     Titula := FORMAT(AE."Education Level");
-                    Zvanje := FORMAT(AE."Title Description");
+                    Zvanje := FORMAT(AE.Title);
                 END ELSE BEGIN
                     Titula := '';
                     Zvanje := '';
