@@ -1203,6 +1203,9 @@ End Function
         <Field Name="PostingDate">
           <DataField>PostingDate</DataField>
         </Field>
+        <Field Name="AppliesToDocNo">
+          <DataField>AppliesToDocNo</DataField>
+        </Field>
         <Field Name="PaymentDT">
           <DataField>PaymentDT</DataField>
         </Field>
