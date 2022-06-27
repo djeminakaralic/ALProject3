@@ -46,6 +46,11 @@ page 50118 "Contribution Payment Setup"
                 {
 
                 }
+                field("Refer To Number"; "Refer To Number")
+                {
+
+                }
+
                 field("Assignment Purpose1"; "Assignment Purpose1")
                 {
 
@@ -64,17 +69,17 @@ page 50118 "Contribution Payment Setup"
                 }
                 field("G/L Account No."; "G/L Account No.")
                 {
+                    Visible = false;
 
                 }
-                field("Refer To Number"; "Refer To Number")
-                {
 
-                }
                 field("Refer To Number RS"; "Refer To Number RS")
                 {
 
+                    Visible = false;
 
                 }
+
             }
         }
     }

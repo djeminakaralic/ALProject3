@@ -10,6 +10,10 @@ pageextension 50149 EmployeeList extends "Employee List"
         {
             Visible = false;
         }
+        modify("No.")
+        {
+            Visible = false;
+        }
         // Add changes to page layout here
         addafter("No.")
         {
