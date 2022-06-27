@@ -102,7 +102,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::"Finance Charge Memo");
+        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
     end;
 
 
