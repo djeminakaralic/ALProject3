@@ -100,6 +100,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
     }
 
+
     var
         GJline: Record "Gen. Journal Line";
         Customer: Record Customer;

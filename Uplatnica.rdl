@@ -654,7 +654,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>6.74065cm</Top>
+            <Top>7.36886cm</Top>
             <Left>0.47837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.60382cm</Width>
@@ -686,7 +686,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>7.41121cm</Top>
+            <Top>8.00414cm</Top>
             <Left>0.47837cm</Left>
             <Height>0.6cm</Height>
             <Width>3.57736cm</Width>
@@ -717,8 +717,8 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>4.72898cm</Top>
-            <Left>0.42016cm</Left>
-            <Height>3.28223cm</Height>
+            <Left>0.47838cm</Left>
+            <Height>3.87516cm</Height>
             <Width>10.80982cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
@@ -812,7 +812,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>6.0701cm</Top>
+            <Top>6.05361cm</Top>
             <Left>4.33599cm</Left>
             <Height>0.6cm</Height>
             <Width>6.89399cm</Width>
@@ -844,7 +844,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>6.74065cm</Top>
+            <Top>7.36886cm</Top>
             <Left>4.33599cm</Left>
             <Height>0.6cm</Height>
             <Width>6.89399cm</Width>
@@ -876,7 +876,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>7.41121cm</Top>
+            <Top>8.00414cm</Top>
             <Left>4.33599cm</Left>
             <Height>0.6cm</Height>
             <Width>6.89399cm</Width>
@@ -1102,6 +1102,36 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!City_Cust.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox18</rd:DefaultName>
+            <Top>6.72417cm</Top>
+            <Left>4.33599cm</Left>
+            <Height>0.60942cm</Height>
+            <Width>6.89399cm</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>19.89667cm</Height>
         <Style>
@@ -1110,7 +1140,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>13.92683cm</Width>
+      <Width>23.45902cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -1278,6 +1308,9 @@ End Function
         </Field>
         <Field Name="Tax_CompanyInfo">
           <DataField>Tax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_Cust">
+          <DataField>City_Cust</DataField>
         </Field>
         <Field Name="BankName">
           <DataField>BankName</DataField>
