@@ -73,6 +73,7 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             }
             field("Payment Type"; "Payment Type")
             { }
+            field(Order; Order) { ApplicationArea = all; }
             field("Meal Calculated"; "Meal Calculated")
             {
 

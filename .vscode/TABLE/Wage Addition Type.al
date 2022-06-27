@@ -189,6 +189,12 @@ table 50188 "Wage Addition Type"
         {
             Caption = 'Bruto executed';
         }
+        field(135; "Order"; Integer)
+        {
+
+            Caption = 'Order for Pay list';
+
+        }
 
     }
     keys
