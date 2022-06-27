@@ -13,6 +13,13 @@ pageextension 50020 MyExtensionComp extends "Company Information"
                 ApplicationArea = all;
                 Editable = false;
             }
+
+
+        }
+        modify(County)
+        {
+            Visible = true;
+            ApplicationArea = all;
         }
         // Add changes to page layout here
         addafter(County)
