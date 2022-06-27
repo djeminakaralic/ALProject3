@@ -38,6 +38,7 @@ page 50218 "Wage Calculation Subform"
                 field("Employee Coefficient"; "Employee Coefficient")
                 {
                     Editable = false;
+                    Visible = false;
                 }
                 field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
