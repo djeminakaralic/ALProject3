@@ -1525,7 +1525,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIF(Fields!Spol.Value="Female","Žensko","Muško")</Value>
+                                  <Value>=Fields!Spol.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

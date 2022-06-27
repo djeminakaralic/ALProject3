@@ -28,6 +28,9 @@ report 50077 Uplatnica
             column(Description; DataItem21.Description)
             {
             }
+            column(PaymentMethod; DataItem21."Payment Method")
+            {
+            }
             column(LineNo; DataItem21."Line No.")
             {
             }

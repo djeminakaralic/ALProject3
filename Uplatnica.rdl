@@ -98,13 +98,13 @@
                   <Width>1.09654cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.98001cm</Width>
+                  <Width>5.42439cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.78997cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.32205cm</Width>
+                  <Width>1.87768cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -431,7 +431,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="=" &amp; Format( Fields!Amound.Value, "##.##")</Value>
+                                  <Value>="= " &amp; FormatNumber(ABS(Fields!Amound.Value), 2)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>n2</Format>
@@ -467,7 +467,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -499,7 +498,7 @@
             <Top>9.64672cm</Top>
             <Left>0.41001cm</Left>
             <Height>1.2cm</Height>
-            <Width>13.18857cm</Width>
+            <Width>13.18858cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -1044,7 +1043,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Gotovina/kartično =" &amp; SUM(Fields!Amound.Value)</Value>
+                    <Value>=First(Fields!PaymentMethod.Value, "DataSet_Result") &amp; " = " &amp; FormatNumber(ABS(SUM(Fields!Amound.Value)), 2)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -1111,11 +1110,14 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.1385cm</Width>
+      <Width>13.92683cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2.5cm</LeftMargin>
+        <RightMargin>2.5cm</RightMargin>
+        <TopMargin>2.5cm</TopMargin>
+        <BottomMargin>2.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
@@ -1183,6 +1185,9 @@ End Function
         </Field>
         <Field Name="Description">
           <DataField>Description</DataField>
+        </Field>
+        <Field Name="PaymentMethod">
+          <DataField>PaymentMethod</DataField>
         </Field>
         <Field Name="LineNo">
           <DataField>LineNo</DataField>

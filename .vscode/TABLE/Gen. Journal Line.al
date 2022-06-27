@@ -83,10 +83,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if "Given amount" < Amount then
+                if ABS("Given amount") < ABS(Amount) then
                     Error(Text001);
                 if (Amount <> 0) then
-                    "To return" := "Given amount" - Amount;
+                    "To return" := ABS("Given amount") - ABS(Amount);
             end;
 
         }
@@ -122,14 +122,18 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Payment Type';
             TableRelation = "Payment Type";
         }
+        field(50034; "Payment Method"; enum "Payment Method") //ED
+        {
+            Caption = 'Payment Method';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
             begin
-                if ("Given amount" <> 0) AND ("Given amount" < Amount) then
+                if ("Given amount" <> 0) AND (ABS("Given amount") < ABS(Amount)) then
                     Error(Text001);
                 if ("Given amount" <> 0) then
-                    "To return" := "Given amount" - Amount;
+                    "To return" := ABS("Given amount") - ABS(Amount);
             end;
         }
         modify("Account No.")
