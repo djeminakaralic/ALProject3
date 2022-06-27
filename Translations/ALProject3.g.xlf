@@ -35763,10 +35763,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Change Country/Region Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2212959633 - Action 3057006853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
-          <source>Import/Export Bank Statement</source>
+        <trans-unit id="PageExtension 2212959633 - Action 3970350934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
+          <source>Change Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralJournal - Action Bank Statement - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralJournal - Action Change Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2212959633 - Action 3970350934 - Method 1377591017 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2212959633">
+          <source>Do you want to change date in journal to current date?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralJournal - Action Change Date - Method OnAction - NamedType Text003</note>
         </trans-unit>
         <trans-unit id="PageExtension 3752611500 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1887905131">
           <source>Print</source>
