@@ -16,6 +16,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
             }
+            field("Payment Method"; "Payment Method")
+            {
+                ApplicationArea = all;
+            }
         }
         addafter(Description)
         {
