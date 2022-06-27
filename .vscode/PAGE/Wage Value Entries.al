@@ -2,6 +2,7 @@ page 50030 "Wage Value Entries"
 {
     PageType = List;
     SourceTable = "Wage Value Entry";
+    Caption = 'Wage Value Entries';
 
 
     layout
@@ -29,6 +30,7 @@ page 50030 "Wage Value Entries"
                 field("Wage Header Entry No."; "Wage Header Entry No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Description; Description)
                 {
@@ -41,10 +43,12 @@ page 50030 "Wage Value Entries"
                 field("Wage Ledger Entry No."; "Wage Ledger Entry No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Cost Posted to G/L"; "Cost Posted to G/L")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("User ID"; "User ID")
                 {
@@ -57,10 +61,12 @@ page 50030 "Wage Value Entries"
                 field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = all;
+
                 }
                 field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Cost Amount (Actual)"; "Cost Amount (Actual)")
                 {
@@ -69,10 +75,12 @@ page 50030 "Wage Value Entries"
                 field("Journal Batch Name"; "Journal Batch Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Document Date"; "Document Date")
                 {
@@ -89,14 +97,17 @@ page 50030 "Wage Value Entries"
                 field(Status; Status)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("G/L Entry No. (Account)"; "G/L Entry No. (Account)")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("G/L Entry No. (Bal. Account)"; "G/L Entry No. (Bal. Account)")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Cost Amount (Netto)"; "Cost Amount (Netto)")
                 {

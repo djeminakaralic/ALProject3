@@ -28,14 +28,7 @@ page 50013 "Contribution Category List"
                 field("Tax Payment Percentage"; "Tax Payment Percentage")
                 {
                 }
-                field("From Brutto"; "From Brutto")
-                {
 
-                }
-                field("Over Brutto"; "Over Brutto")
-                {
-
-                }
             }
         }
     }

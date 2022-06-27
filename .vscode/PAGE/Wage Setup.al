@@ -32,6 +32,7 @@ page 50016 "Wage Setup"
                 }
                 field("Base Tax Deduction"; "Base Tax Deduction")
                 {
+                    Visible = false;
 
                 }
                 field("Base Personal Deduction"; "Base Personal Deduction")
@@ -150,6 +151,18 @@ page 50016 "Wage Setup"
                 }
                 field("Invaalid Fund %"; "Invaalid Fund %")
                 {
+                }
+            }
+            group(Codes)
+            {
+                Caption = '13ta plata';
+                field("Additional Wage Code"; "Additional Wage Code")
+                {
+
+                }
+                field("HAlf Additional Wage Code"; "HAlf Additional Wage Code")
+                {
+
                 }
             }
             group(Dates)

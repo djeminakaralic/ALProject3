@@ -26,6 +26,7 @@ page 51040 "Contribution Posting Setup"
                 }
                 field("Transit Account"; "Transit Account")
                 {
+                    Visible = false;
                 }
             }
         }

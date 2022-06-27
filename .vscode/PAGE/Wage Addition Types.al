@@ -199,10 +199,15 @@ page 50267 "Wage Addition Types"
                 {
                     ApplicationArea = all;
                 }
+                field("RAD-1 Wage Excluded"; "RAD-1 Wage Excluded")
+                {
+
+                }
                 field("Bruto (RAD)"; "Bruto (RAD)")
                 {
                     ApplicationArea = all;
                 }
+
             }
         }
     }

@@ -29,6 +29,8 @@ page 50026 "Reduction types"
                 {
                     Visible = true;
                 }
+                field("Reduction Type"; "Reduction Type")
+                { }
                 field("Posting Group"; "Posting Group")
                 {
                     ApplicationArea = all;
@@ -49,8 +51,7 @@ page 50026 "Reduction types"
                 {
                     Visible = false;
                 }
-                field("Reduction Type"; "Reduction Type")
-                { }
+
 
             }
         }
