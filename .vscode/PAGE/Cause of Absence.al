@@ -11,6 +11,7 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             }
             field(Coefficient; Coefficient)
             {
+                //Sada
 
             }
             field("Calculated Sick Leave"; "Calculated Sick Leave")
