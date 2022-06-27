@@ -122,6 +122,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Payment Type';
             TableRelation = "Payment Type";
         }
+        field(50034; "Payment Method"; enum "Payment Method") //ED
+        {
+            Caption = 'Payment Method';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()

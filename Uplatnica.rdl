@@ -431,7 +431,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>="=" &amp; Format( Fields!Amound.Value, "##.##")</Value>
+                                  <Value>="=" &amp; FormatNumber(Fields!Amound.Value, 2)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>n2</Format>

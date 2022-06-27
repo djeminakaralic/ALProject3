@@ -38768,6 +38768,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment DT - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 3566004263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Payment Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Method - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 907492870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Payment Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40207,6 +40212,16 @@
           <source>Septembar</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Month - EnumValue Septembar - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3566004263 - EnumValue 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Kartično</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Method - EnumValue Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3566004263 - EnumValue 229234099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gotovina</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Payment Method - EnumValue Cash - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1145711811 - EnumValue 2997449368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contract Renewal</source>
