@@ -206,14 +206,16 @@ report 50109 VacationDecision
                 ExeManager.Reset();
                 ExeManager.SetFilter("Subordinate Org Description", '%1', Sector);
                 ExeManager.SetFilter("ORG Shema", '%1', OrgShema.Code);
+                //ĐK  ExeManager.SetFilter("Position Description",'%1',);
                 if ExeManager.FindFirst() then begin
                     ExeDescr := StrPos(ExeManager."Position Description", ' za ');
                     Izvrsni := CopyStr(ExeManager."Position Description", ExeDescr + 4, StrLen(ExeManager."Position Description"));
-
+                    Izvrsni := 'izvršnog direktora za ' + Izvrsni;
 
                 end
                 else begin
                     Izvrsni := '';
+                    Izvrsni := 'Direktora preduzeća';
                 end;
 
                 //Izvrsni
