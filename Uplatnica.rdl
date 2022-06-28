@@ -982,11 +982,7 @@
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="Details1">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!BankName.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
+                  <Group Name="Details1" />
                   <TablixMembers>
                     <TablixMember />
                   </TablixMembers>
