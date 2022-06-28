@@ -221,6 +221,16 @@ report 50109 VacationDecision
                 else begin
                     Izvrsni := '';
                     Izvrsni := VacationSe."Vacation Decision CEO";
+                    //ako je CEO.
+                end;
+
+                //Po
+                Pos.Reset();
+                Pos.SetFilter(Description, '%1', DataItem5."Position Name");
+                Pos.SetFilter("Org. Structure", '%1', OrgShema.Code);
+                if Pos.FindFirst() then begin
+                    if Pos."Management Level" = Pos."Management Level"::CEO then
+                        Izvrsni := '';
                 end;
 
                 //Izvrsni
@@ -328,6 +338,7 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+        Pos: Record "Position Menu";
         VacationSe: Record "Vacation Setup";
         ExeManager: Record "Exe Manager";
 
