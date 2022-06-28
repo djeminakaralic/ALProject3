@@ -187,12 +187,12 @@ report 50077 Uplatnica
 
             trigger OnAfterGetRecord()
             begin
-                if "Bank Account No." <> '' then
+                /*if "Bank Account No." <> '' then
                     Counter := Counter + 1
                 else
                     Counter := 0;
 
-                Message(FORMAT(Counter));
+                Message(FORMAT(Counter));*/
             end;
         }
 
