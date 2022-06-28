@@ -13,6 +13,7 @@ table 50200 "Additional Education"
         {
             AutoIncrement = true;
             Caption = 'Entry No.';
+            //
 
         }
         field(2; "Employee ID"; Code[13])
