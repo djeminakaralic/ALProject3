@@ -50,7 +50,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br."</Value>
+                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br. " &amp; First(Fields!BatchName.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -294,7 +294,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PTCode</Value>
+                                  <Value>RAČUNI</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -304,8 +304,7 @@
                           <rd:DefaultName>Textbox4</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -324,7 +323,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>BROJ UPLATA</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -334,8 +333,7 @@
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -354,7 +352,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>IZNOS</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -364,8 +362,7 @@
                           <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -399,8 +396,7 @@
                           <rd:DefaultName>PTCode</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -429,8 +425,7 @@
                           <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -459,8 +454,7 @@
                           <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -488,14 +482,17 @@
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
+                  <Visibility>
+                    <Hidden>=Fields!PTCode.Value=""</Hidden>
+                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>6.24099cm</Top>
             <Left>0.49953cm</Left>
-            <Height>1.13771cm</Height>
-            <Width>13.09903cm</Width>
+            <Height>1.1377cm</Height>
+            <Width>13.09902cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -511,7 +508,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.14064cm</Width>
+      <Width>14.06126cm</Width>
       <Page>
         <PageFooter>
           <Height>2.54cm</Height>
@@ -680,9 +677,6 @@ End Function
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
-        </Field>
-        <Field Name="Ime">
-          <DataField>Ime</DataField>
         </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>

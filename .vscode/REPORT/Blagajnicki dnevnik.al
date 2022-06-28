@@ -108,13 +108,21 @@ report 50075 "Blagajnički dnevnik"
                     KolicinaIS := Amount;
                 END;
 
-                BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
+                /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF BALE.FIND('-') THEN
                         REPEAT
 
                             PrethodniSaldo += BALE."Amount (LCY)";
-                        UNTIL BALE.NEXT = 0;
+                        UNTIL BALE.NEXT = 0;*/
+
+                GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
+                GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
+                IF GLEntry.FIND('-') THEN
+                        REPEAT
+
+                            PrethodniSaldo += GLEntry.Amount;
+                        UNTIL GLEntry.NEXT = 0;
 
                 emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN

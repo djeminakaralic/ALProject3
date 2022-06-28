@@ -156,6 +156,8 @@ report 50109 VacationDecision
             {
 
             }
+            column(CEODa; CEODa)
+            { }
 
 
             trigger OnAfterGetRecord()
@@ -202,18 +204,38 @@ report 50109 VacationDecision
                     Position.CalcFields("Employee Name", "Employee Last Name");
                     Director := Position."Employee Name";
                 end;
+                CEODa := false;
+
 
                 ExeManager.Reset();
                 ExeManager.SetFilter("Subordinate Org Description", '%1', Sector);
                 ExeManager.SetFilter("ORG Shema", '%1', OrgShema.Code);
-                if ExeManager.FindFirst() then begin
-                    ExeDescr := StrPos(ExeManager."Position Description", ' za ');
-                    Izvrsni := CopyStr(ExeManager."Position Description", ExeDescr + 4, StrLen(ExeManager."Position Description"));
 
+                VacationSe.Get();
+
+                //ĐK  ExeManager.SetFilter("Position Description",'%1',);
+                if ExeManager.FindFirst() then begin
+
+                    ExeDescr := StrPos(ExeManager."Position Description", VacationSe."Part of Position Description");
+                    Izvrsni := CopyStr(ExeManager."Position Description", ExeDescr + 4, StrLen(ExeManager."Position Description"));
+                    Izvrsni := VacationSe."Vacation Decision Exe" + Izvrsni;
 
                 end
                 else begin
                     Izvrsni := '';
+                    Izvrsni := VacationSe."Vacation Decision CEO";
+                    //ako je CEO.
+                end;
+
+                //Po
+                Pos.Reset();
+                Pos.SetFilter(Description, '%1', DataItem5."Position Name");
+                Pos.SetFilter("Org. Structure", '%1', OrgShema.Code);
+                if Pos.FindFirst() then begin
+                    if Pos."Management Level" = Pos."Management Level"::CEO then begin
+                        Izvrsni := '';
+                        CEODa := true;
+                    end;
                 end;
 
                 //Izvrsni
@@ -321,6 +343,9 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+        CEODa: Boolean;
+        Pos: Record "Position Menu";
+        VacationSe: Record "Vacation Setup";
         ExeManager: Record "Exe Manager";
 
         ExeDescr: Integer;

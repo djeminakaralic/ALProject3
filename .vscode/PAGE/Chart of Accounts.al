@@ -10,24 +10,20 @@ pageextension 50120 MyExtensionChart extends "Chart of Accounts"
                 ApplicationArea = All;
             }
         }
+        modify("Default Deferral Template Code")
+        {
+            Visible = false;
+        }
+        modify("Cost Type No.")
+        {
+            Visible = false;
+        }
     }
 
     actions
     {
 
-        addafter("General Journal")
-        {
 
-            action("Recurring General Journal")
-            {
-                Caption = 'Recurring General Journal';
-                Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = Page "Recurring General Journal";
-            } // Add changes to page actions here
-        }
     }
 
 

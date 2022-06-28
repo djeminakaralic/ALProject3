@@ -82,9 +82,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Datee; Datee)
             {
             }
-            column(Ime; glentry."Posting Date")
-            {
-            }
 
 
 

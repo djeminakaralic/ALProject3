@@ -605,6 +605,13 @@ page 50003 "HR Role Center"
                     Image = CalendarChanged;
                     RunObject = Page "Base Calendar Changes";
                 }
+                action("Create absence Registration")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Create Absence Registration';
+                    Image = Absence;
+                    RunObject = Page "Employee Absence";
+                }
                 action("Absence Registration")
                 {
                     ApplicationArea = all;
@@ -626,6 +633,7 @@ page 50003 "HR Role Center"
                     Caption = 'Cause of Absence Subtype';
                     Image = AbsenceCategory;
                     RunObject = Page "Cause of Absence Subtype";
+                    Visible = false;
                 }
 
 

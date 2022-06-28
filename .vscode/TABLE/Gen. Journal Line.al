@@ -76,6 +76,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50024; "Payment DT"; DateTime) //ED
         {
             DataClassification = ToBeClassified;
+
+            /*trigger OnValidate()
+            begin
+               // Rec."Payment DT" := FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
+            end;*/
         }
         field(50025; "Given amount"; Decimal)
         {
@@ -144,7 +149,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             trigger OnAfterValidate()
             begin
-                if "Account Type" = "Account Type"::Customer then begin
+                if ("Account Type" = "Account Type"::Customer) and ("Account No." <> '') then begin
                     Customer.Get("Account No.");
                     "Social status" := Customer."Social status category";
                     Address_Cust := Customer.Address;

@@ -510,7 +510,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Code.TextOnlyJustify("Prvi dio radnik će koristiti od? "+Format(Fields!StartFirstpart.value)+" godine do "+Format(Fields!EndFirstpart.value)+" godine?("+format(Fields!FirstPart.value)+" radna dana), s tim da se javi na posao;"+FORMAT(Fields!DanJavljanjanaposaoT.Value)+" godine, dok će drugi dio?("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen od strane izvršnog direktora za "+Fields!Izvrsni.value+"." + "&lt;br&gt; Radnik je ranije iskoristio "+format(Fields!Used_Days.value)+" dan/a godišnjeg odmora.", new System.Drawing.Font("Arial",10), false,640),"dio?(","dio &lt;b&gt;("),"od?","od&lt;b&gt;"),"dana)","dana)&lt;/b&gt;"),"posao","posao"),"godine,","godine,&lt;/b&gt;"),"dana)","dana)"),",","&lt;b&gt;,&lt;/b&gt;"),"godine?(","&lt;/b&gt; &lt;b&gt;godine ("),";"," &lt;b&gt;")</Value>
+                                      <Value>=REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Code.TextOnlyJustify("Prvi dio radnik će koristiti od? "+Format(Fields!StartFirstpart.value)+" godine do "+Format(Fields!EndFirstpart.value)+" godine?("+format(Fields!FirstPart.value)+" radna dana), s tim da se javi na posao;"+FORMAT(Fields!DanJavljanjanaposaoT.Value)+" godine, dok će drugi dio?("+FORMAT(Fields!DrugiDioDana.Value)+" radnih dana) koristiti u terminu koji će biti naknadno određen"+Fields!Izvrsni.value+"." + "&lt;br&gt; Radnik je ranije iskoristio "+format(Fields!Used_Days.value)+" dan/a godišnjeg odmora.", new System.Drawing.Font("Arial",10), false,640),"dio?(","dio &lt;b&gt;("),"od?","od&lt;b&gt;"),"dana)","dana)&lt;/b&gt;"),"posao","posao"),"godine,","godine,&lt;/b&gt;"),"dana)","dana)"),",","&lt;b&gt;,&lt;/b&gt;"),"godine?(","&lt;/b&gt; &lt;b&gt;godine ("),";"," &lt;b&gt;")</Value>
                                       <MarkupType>HTML</MarkupType>
                                       <Style>
                                         <FontStyle>Normal</FontStyle>
@@ -1187,7 +1187,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>15.63262cm</Height>
+        <Height>15.63263cm</Height>
         <Style />
       </Body>
       <Width>16.47431cm</Width>
@@ -1641,6 +1641,9 @@ End Sub
         </Field>
         <Field Name="Izvrsni">
           <DataField>Izvrsni</DataField>
+        </Field>
+        <Field Name="CEODa">
+          <DataField>CEODa</DataField>
         </Field>
       </Fields>
       <Query>

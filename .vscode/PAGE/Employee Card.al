@@ -593,7 +593,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             group(Communication)
             {
                 Caption = 'Communication';
-                //ĐK      Visible = Show;
+                Visible = Show;
                 group(Phone1)
                 {
                     Caption = 'Home Number Group';
@@ -2149,7 +2149,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 Lookup = true;
                 DrillDown = true;
+                Visible = false;
                 trigger OnLookup(var Text: Text): Boolean
+
 
 
                 var
@@ -2215,6 +2217,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             field(StatusExt; StatusExt)
             {
                 ApplicationArea = all;
+            }
+            field("Temporary Contract Type"; "Temporary Contract Type")
+            {
+
+            }
+            field("External employer Status"; "External employer Status")
+            {
+
             }
 
             /*field("External employer Status"; "External employer Status")
@@ -2451,6 +2461,27 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedgerPage.RUN;
                         END;
                         CurrPage.UPDATE;
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        myInt: Integer;
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END
+                        ELSE BEGIN
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END;
+                        CurrPage.UPDATE;
+
                     end;
                 }
                 /*field(DepartmentName; EmployeeContractLedger."Department Name")
@@ -3514,6 +3545,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         modify(Attachments)
         {
             Promoted = false;
+            Visible = false;
         }
         modify(PayEmployee)
         {
