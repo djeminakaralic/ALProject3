@@ -3,7 +3,7 @@ report 50077 Uplatnica
     //ED
     DefaultLayout = RDLC;
     PreviewMode = PrintLayout;
-    RDLCLayout = './Uplatnica.rdl';
+    //RDLCLayout = './Uplatnica.rdl';
 
 
     dataset
