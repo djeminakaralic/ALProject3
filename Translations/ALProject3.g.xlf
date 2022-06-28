@@ -17403,6 +17403,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Setup - Field Paid Candelmas Quantity - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3755061210 - Field 3726888571 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Part of Position Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Setup - Field Part of Position Description - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3755061210 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17427,6 +17432,16 @@
           <source>Vacation Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Setup - Field Vacation Code Last Year - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755061210 - Field 456692660 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vacation Decision Exe</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Setup - Field Vacation Decision CEO - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3755061210 - Field 3505094787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vacation Decision Exe</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Setup - Field Vacation Decision Exe - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3755061210 - Field 2460215794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vacation Descision Date</source>

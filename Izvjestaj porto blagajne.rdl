@@ -50,7 +50,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br." &amp; First(Fields!BatchName.Value, "DataSet_Result")</Value>
+                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br. " &amp; First(Fields!BatchName.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -294,7 +294,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PTCode</Value>
+                                  <Value>Računi</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
