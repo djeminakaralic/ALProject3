@@ -2149,7 +2149,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 Lookup = true;
                 DrillDown = true;
+                Visible = false;
                 trigger OnLookup(var Text: Text): Boolean
+
 
 
                 var
@@ -3411,10 +3413,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
         movebefore("Wage Type"; "Emplymt. Contract Code")
 
-        modify("Employee User Name")
-        {
-            Visible = false;
-        }
+
         addafter("Country/Region Code")
         {
             field("Municipality Code"; Rec."Municipality Code")
