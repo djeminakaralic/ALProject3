@@ -7989,7 +7989,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Certification - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 2065042129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certifikati čiji rok ističe za mjesec dana</source>
+          <source>Certifikati čiji rok je istekao u toku mjesec dana</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Certification Expired - Property Caption</note>
         </trans-unit>
@@ -22033,10 +22033,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Wage Base - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 1736917249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Wage Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Wage Batch Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1954395533 - Field 1902118109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Calendar Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Wage Calendar Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2992713327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Wage Journal Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Wage Journal Template - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1954395533 - Field 2098609254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Water Fee RS</source>
@@ -24923,6 +24933,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Employees3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 66106115 - Control 3970685754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiring Certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR activities - Control Expiring Certification - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 66106115 - Control 2693792586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Expiring Training</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27117,16 +27132,6 @@
           <source>You do not have permission to access this report. Please contact your system administrator.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - NamedType error1</note>
-        </trans-unit>
-        <trans-unit id="Page 3625076245 - Control 1263003989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Last Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - Control LName - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3625076245 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - Control Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1554128033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Header Card</source>
@@ -35807,11 +35812,6 @@
           <source>Trainings setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension HumanResourcesSetup_ext - Control Trainings setup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1878282963 - Action 3301928242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3105459369">
-          <source>Recurring General Journal</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension MyExtensionChart - Action Recurring General Journal - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4197198462 - Action 3180535661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Order Confirmation Cr. Memo</source>

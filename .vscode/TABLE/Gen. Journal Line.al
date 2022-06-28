@@ -76,6 +76,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50024; "Payment DT"; DateTime) //ED
         {
             DataClassification = ToBeClassified;
+
+            /*trigger OnValidate()
+            begin
+               // Rec."Payment DT" := FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
+            end;*/
         }
         field(50025; "Given amount"; Decimal)
         {
