@@ -183,6 +183,7 @@ report 50077 Uplatnica
             column(BankNo; DataItem22."No.")
             {
             }
+            column(Counter; Counter) { }
 
             trigger OnAfterGetRecord()
             begin
