@@ -987,7 +987,7 @@
                     <TablixMember />
                   </TablixMembers>
                   <Visibility>
-                    <Hidden>=IIF(Fields!Counter.Value = 4,False,True)</Hidden>
+                    <Hidden>=Fields!Counter.Value &lt; 4</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>

@@ -514,7 +514,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.14064cm</Width>
+      <Width>14.06126cm</Width>
       <Page>
         <PageFooter>
           <Height>2.54cm</Height>
@@ -683,9 +683,6 @@ End Function
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
-        </Field>
-        <Field Name="Ime">
-          <DataField>Ime</DataField>
         </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>
