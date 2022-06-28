@@ -233,7 +233,7 @@ report 50109 VacationDecision
                 Pos.SetFilter("Org. Structure", '%1', OrgShema.Code);
                 if Pos.FindFirst() then begin
                     if Pos."Management Level" = Pos."Management Level"::CEO then begin
-                        Izvrsni := ' od strane Direktora preduzeća';
+                        Izvrsni := '';
                         CEODa := true;
                     end;
                 end;
