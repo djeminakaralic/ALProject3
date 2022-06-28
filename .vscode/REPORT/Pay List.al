@@ -378,7 +378,7 @@ report 50030 "Pay List"
                         //SPNPL01.02 END
                         IF Absence.FIND('-') THEN
                             REPEAT
-                                Found := FALSE;
+                                    Found := FALSE;
                                 IF AbCount > 0 THEN
                                     FOR I := 1 TO AbCount DO
                                         IF CodeArray[I] = Absence."Cause of Absence Code" THEN BEGIN
@@ -831,10 +831,10 @@ report 50030 "Pay List"
                     CPE.SETFILTER("Employee No.", EmployeeFilter);
                     CPE.SETFILTER("Wage Calculation Entry No.", TempCalc."No.");
                     IF CPE.FINDFIRST THEN BEGIN
-                        REPEAT
-                            IF CPE."Contribution Code" <> 'DJEC-ZAST' THEN
-                                ContrRS += CPE."Reported Amount From Wage";
-                        UNTIL CPE.NEXT = 0
+                                              REPEAT
+                                                  IF CPE."Contribution Code" <> 'DJEC-ZAST' THEN
+                                                      ContrRS += CPE."Reported Amount From Wage";
+                                              UNTIL CPE.NEXT = 0
                     END;
 
                     IF NOT TempCalc.FIND('-') THEN CurrReport.SKIP;
@@ -897,64 +897,64 @@ report 50030 "Pay List"
                         Calc.SETFILTER("Employee No.", EmployeeFilter);
                     IF Calc.FIND('-') THEN
                         REPEAT
-                            IF TempCalc.GET(Calc."No.") THEN BEGIN
-                                //TempCalc."Tax Deductions":= TempCalc."Tax Deductions" + Calc."Tax Deductions";
-                                TempCalc."No." := Calc."No.";
-                                TempCalc."Work Experience Brutto" := TempCalc."Work Experience Brutto" + Calc."Work Experience Brutto";
-                                TempCalc.Brutto := TempCalc.Brutto + Calc.Brutto;
-                                TempCalc."Contribution From Brutto" := TempCalc."Contribution From Brutto" + Calc."Contribution From Brutto";
-                                TempCalc."Contribution Over Brutto" := TempCalc."Contribution Over Brutto" + Calc."Contribution Over Brutto";
-                                TempCalc."Net Wage" := TempCalc."Net Wage" + Calc."Net Wage";
-                                TempCalc."Untaxable Wage" := TempCalc."Untaxable Wage" + Calc."Untaxable Wage";
-                                TempCalc."Tax Basis" := TempCalc."Tax Basis" + Calc."Tax Basis";
-                                TempCalc.Tax := TempCalc.Tax + Calc.Tax;
-                                TempCalc."Contribution Per City" := TempCalc."Contribution Per City" + Calc."Contribution Per City";
-                                TempCalc."Final Net Wage" := TempCalc."Final Net Wage" + Calc."Final Net Wage";
-                                TempCalc."Meal to pay" := TempCalc."Meal to pay" + Calc."Meal to pay";
-                                TempCalc.Transport := TempCalc.Transport + Calc.Transport;
-                                TempCalc."Wage Reduction" := TempCalc."Wage Reduction" + Calc."Wage Reduction";
-                                TempCalc.Payment := TempCalc.Payment + Calc.Payment;
-                                TempCalc."Sick Leave-Company" := TempCalc."Sick Leave-Company" + Calc."Sick Leave-Company";
-                                TempCalc."Sick Leave-Fund" := TempCalc."Sick Leave-Fund" + Calc."Sick Leave-Fund";
-                                TempCalc."Insurance Premium" := TempCalc."Insurance Premium" + Calc."Insurance Premium";
-                                TempCalc."Wage Addition" := TempCalc."Wage Addition" + Calc."Wage Addition";
-                                TempCalc."Experience Total" += Calc."Experience Total";
-                                TempCalc."Sick Fund Total" += Calc."Sick Fund Total";
-                                TempCalc."Indirect Wage Addition Amount" += Calc."Indirect Wage Addition Amount";
-                                TempCalc."Tax Deductions" += Calc."Tax Deductions";
-                                TempCalc."Net Wage After Tax" += Calc."Net Wage After Tax";
-                                IF Calc."Wage (Base)" <> 0 THEN
-                                    TempCalc."Wage (Base)" := TempCalc."Wage (Base)" + Calc."Wage (Base)";
-                                TempCalc.MODIFY;
-                            END
-                            ELSE BEGIN
-                                TempCalc.INIT;
+                                IF TempCalc.GET(Calc."No.") THEN BEGIN
+                                    //TempCalc."Tax Deductions":= TempCalc."Tax Deductions" + Calc."Tax Deductions";
+                                    TempCalc."No." := Calc."No.";
+                                    TempCalc."Work Experience Brutto" := TempCalc."Work Experience Brutto" + Calc."Work Experience Brutto";
+                                    TempCalc.Brutto := TempCalc.Brutto + Calc.Brutto;
+                                    TempCalc."Contribution From Brutto" := TempCalc."Contribution From Brutto" + Calc."Contribution From Brutto";
+                                    TempCalc."Contribution Over Brutto" := TempCalc."Contribution Over Brutto" + Calc."Contribution Over Brutto";
+                                    TempCalc."Net Wage" := TempCalc."Net Wage" + Calc."Net Wage";
+                                    TempCalc."Untaxable Wage" := TempCalc."Untaxable Wage" + Calc."Untaxable Wage";
+                                    TempCalc."Tax Basis" := TempCalc."Tax Basis" + Calc."Tax Basis";
+                                    TempCalc.Tax := TempCalc.Tax + Calc.Tax;
+                                    TempCalc."Contribution Per City" := TempCalc."Contribution Per City" + Calc."Contribution Per City";
+                                    TempCalc."Final Net Wage" := TempCalc."Final Net Wage" + Calc."Final Net Wage";
+                                    TempCalc."Meal to pay" := TempCalc."Meal to pay" + Calc."Meal to pay";
+                                    TempCalc.Transport := TempCalc.Transport + Calc.Transport;
+                                    TempCalc."Wage Reduction" := TempCalc."Wage Reduction" + Calc."Wage Reduction";
+                                    TempCalc.Payment := TempCalc.Payment + Calc.Payment;
+                                    TempCalc."Sick Leave-Company" := TempCalc."Sick Leave-Company" + Calc."Sick Leave-Company";
+                                    TempCalc."Sick Leave-Fund" := TempCalc."Sick Leave-Fund" + Calc."Sick Leave-Fund";
+                                    TempCalc."Insurance Premium" := TempCalc."Insurance Premium" + Calc."Insurance Premium";
+                                    TempCalc."Wage Addition" := TempCalc."Wage Addition" + Calc."Wage Addition";
+                                    TempCalc."Experience Total" += Calc."Experience Total";
+                                    TempCalc."Sick Fund Total" += Calc."Sick Fund Total";
+                                    TempCalc."Indirect Wage Addition Amount" += Calc."Indirect Wage Addition Amount";
+                                    TempCalc."Tax Deductions" += Calc."Tax Deductions";
+                                    TempCalc."Net Wage After Tax" += Calc."Net Wage After Tax";
+                                    IF Calc."Wage (Base)" <> 0 THEN
+                                        TempCalc."Wage (Base)" := TempCalc."Wage (Base)" + Calc."Wage (Base)";
+                                    TempCalc.MODIFY;
+                                END
+                                ELSE BEGIN
+                                    TempCalc.INIT;
 
-                                //        TempCalc.DELETEALL;
+                                    //        TempCalc.DELETEALL;
 
-                                TempCalc.TRANSFERFIELDS(Calc);
+                                    TempCalc.TRANSFERFIELDS(Calc);
 
-                                /*TempCalc.SETFILTER("Employee No.",'%1',Calc."Employee No.");
-                                TempCalc.SETFILTER("Entry No.",'%1',Calc."Entry No.");*/
+                                    /*TempCalc.SETFILTER("Employee No.",'%1',Calc."Employee No.");
+                                    TempCalc.SETFILTER("Entry No.",'%1',Calc."Entry No.");*/
 
-                                TempCalc.INSERT;
+                                    TempCalc.INSERT;
 
-                                //  TempCalc."No.":= Calc."Employee No.";
-                                /*      TempCalc."No.":= FORMAT(Calc."Entry No.");
-                                      TempCalc.SETFILTER("Employee No.",'%1',Calc."Employee No.");
-                                      TempCalc.SETFILTER("Entry No.",'%1',Calc."Entry No.");
-                                    */
-                                //TempCalc.SETFILTER("No.",'%1',Calc."Employee No.");
+                                    //  TempCalc."No.":= Calc."Employee No.";
+                                    /*      TempCalc."No.":= FORMAT(Calc."Entry No.");
+                                          TempCalc.SETFILTER("Employee No.",'%1',Calc."Employee No.");
+                                          TempCalc.SETFILTER("Entry No.",'%1',Calc."Entry No.");
+                                        */
+                                    //TempCalc.SETFILTER("No.",'%1',Calc."Employee No.");
 
-                                /* IF NOT TempCalc.FIND('-') THEN BEGIN
-                                    TempCalc."No.":= FORMAT(Calc."Entry No.");
-                                  // TempCalc."No.":= Calc."Employee No.";
-                                 TempCalc.INSERT;
-                                 END
-                                 ELSE BEGIN
-                                   TempCalc.MODIFY;
-                                   END;*/
-                            END;
+                                    /* IF NOT TempCalc.FIND('-') THEN BEGIN
+                                        TempCalc."No.":= FORMAT(Calc."Entry No.");
+                                      // TempCalc."No.":= Calc."Employee No.";
+                                     TempCalc.INSERT;
+                                     END
+                                     ELSE BEGIN
+                                       TempCalc.MODIFY;
+                                       END;*/
+                                END;
                         UNTIL Calc.NEXT = 0;
                     TempCalc.RESET;
                     //SETRANGE(Broj, 1, TempCalc.COUNT);
@@ -1038,9 +1038,9 @@ report 50030 "Pay List"
                     EmplDefDim.SETRANGE("No.", "No.");
                     EmplDefDim.SETRANGE("Dimension Code", 'PROJECT');
                     IF EmplDefDim.FINDFIRST THEN
-                        REPEAT
-                            DimText += EmplDefDim."Dimension Value Code" + ', ';
-                        UNTIL EmplDefDim.NEXT = 0;
+                            REPEAT
+                                DimText += EmplDefDim."Dimension Value Code" + ', ';
+                            UNTIL EmplDefDim.NEXT = 0;
                     //end;
                 END;
                 t_wageADD.SETFILTER("Employee No.", "No.");
@@ -1304,14 +1304,14 @@ report 50030 "Pay List"
             COA.RESET;
             COA.SETFILTER("Calculation Type", '%1', COA."Calculation Type"::Standard);
             COA.FIND('-');
-            REPEAT
-                AbsEmp.SETFILTER("Cause of Absence Code", '%1', COA.Code);
-                AbsEmp.CALCSUMS(Quantity);
-                IF AbsEmp.Quantity <> 0 THEN
-                    flagMonth := TRUE;
+                                REPEAT
+                                    AbsEmp.SETFILTER("Cause of Absence Code", '%1', COA.Code);
+                                    AbsEmp.CALCSUMS(Quantity);
+                                    IF AbsEmp.Quantity <> 0 THEN
+                                        flagMonth := TRUE;
 
-                mHourPool += AbsEmp.Quantity;
-            UNTIL COA.NEXT = 0;
+                                    mHourPool += AbsEmp.Quantity;
+                                UNTIL COA.NEXT = 0;
 
 
             IF flagMonth THEN BEGIN
@@ -1322,9 +1322,9 @@ report 50030 "Pay List"
                 WVE.SETFILTER("Document No.", WH."No.");
                 WVE.SETFILTER("Employee No.", EmpTemp."No.");
                 IF NOT WVE.FIND('-') THEN ERROR('Morate imati vrijednosti za prethodni mjesec WVE!');
-                REPEAT
-                    hValue += WVE."Cost Amount (Actual)";
-                UNTIL WVE.NEXT = 0;
+                                  REPEAT
+                                      hValue += WVE."Cost Amount (Actual)";
+                                  UNTIL WVE.NEXT = 0;
                 WC.SETFILTER("Wage Header No.", WH."No.");
                 WC.CALCSUMS("Experience Total");
                 IF hValue <> 0 THEN

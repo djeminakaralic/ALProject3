@@ -248,42 +248,42 @@ table 50032 "Wage Addition"
                         AddTaxes.RESET;
                         ATCCon.SETFILTER("Category Code", '%1', Rec."Contribution Category Code");
                         IF ATCCon.FINDFIRST THEN
-                            REPEAT
-                                /*   IF ((Rec."Contribution Category Code"='FBIHRS') OR (Rec."Contribution Category Code"='BDPIORS')) THEN BEGIN
-                                    IF ATCConRS.GET('RS', Rec."Contribution Category Code") THEN
-                                      ATPercentRS:= ATCConRS.Percentage/100;
-                                 END;*/
-                                ATPercent := ATCCon.Percentage / 100;
-                                IF ATCCon."Contribution Code" = 'D-PIO-IZ' THEN
-                                    "PIO From" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
+                                REPEAT
+                                    /*   IF ((Rec."Contribution Category Code"='FBIHRS') OR (Rec."Contribution Category Code"='BDPIORS')) THEN BEGIN
+                                        IF ATCConRS.GET('RS', Rec."Contribution Category Code") THEN
+                                          ATPercentRS:= ATCConRS.Percentage/100;
+                                     END;*/
+                                    ATPercent := ATCCon.Percentage / 100;
+                                    IF ATCCon."Contribution Code" = 'D-PIO-IZ' THEN
+                                        "PIO From" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'D-PIO-NA' THEN
-                                    "PIO On" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'D-PIO-NA' THEN
+                                        "PIO On" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'D-NEZAP-IZ' THEN
-                                    "Unemployment From" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'D-NEZAP-IZ' THEN
+                                        "Unemployment From" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'D-NEZAP-NA' THEN
-                                    "Unemployment On" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'D-NEZAP-NA' THEN
+                                        "Unemployment On" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'D-ZDRAV-IZ' THEN
-                                    "Health From" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'D-ZDRAV-IZ' THEN
+                                        "Health From" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'D-ZDRAV-NA' THEN
-                                    "Health On" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'D-ZDRAV-NA' THEN
+                                        "Health On" := ROUND(Rec.Brutto * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'P-VOD' THEN
-                                    "Water Fee" := ROUND(Rec."Amount to Pay" * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'P-VOD' THEN
+                                        "Water Fee" := ROUND(Rec."Amount to Pay" * ATCCon.Percentage / 100, 0.01, '=');
 
-                                IF ATCCon."Contribution Code" = 'P-ELNEP' THEN
-                                    "Disaster Fee" := ROUND(Rec."Amount to Pay" * ATCCon.Percentage / 100, 0.01, '=');
+                                    IF ATCCon."Contribution Code" = 'P-ELNEP' THEN
+                                        "Disaster Fee" := ROUND(Rec."Amount to Pay" * ATCCon.Percentage / 100, 0.01, '=');
 
-                                "Total From" := "PIO From" + "Health From" + "Unemployment From";
-                                "Total On" := "PIO On" + "Health On" + "Unemployment On";
-                                "Total Cost" := "Total From" + "Total On" + "Disaster Fee" + "Water Fee" + "Amount to Pay" + Tax;
-                            //ATAmount := ROUND(Rec.Brutto * ATPercent,0.01,'>');
-                            // ATAmountRS := ROUND(Rec.Brutto * ATPercentRS,0.01,'=');
-                            UNTIL ATCCon.NEXT = 0;
+                                    "Total From" := "PIO From" + "Health From" + "Unemployment From";
+                                    "Total On" := "PIO On" + "Health On" + "Unemployment On";
+                                    "Total Cost" := "Total From" + "Total On" + "Disaster Fee" + "Water Fee" + "Amount to Pay" + Tax;
+                                //ATAmount := ROUND(Rec.Brutto * ATPercent,0.01,'>');
+                                // ATAmountRS := ROUND(Rec.Brutto * ATPercentRS,0.01,'=');
+                                UNTIL ATCCon.NEXT = 0;
                     END
                     //END
                     ELSE BEGIN

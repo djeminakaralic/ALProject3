@@ -156,73 +156,73 @@ codeunit 50304 "Absence Fill"
 
 
         IF Employee.FINDFIRST THEN
-            REPEAT
+                REPEAT
 
-                CurrRecNo += 1;
-                Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
-                wb.SETFILTER("Employee No.", '%1', Employee."No.");
-                wb.SETFILTER("Current Company", '%1', TRUE);
-                IF Employee."Returned to Company" THEN BEGIN
-                    IF wb.FIND('-') THEN BEGIN
-                        IF (((wb."Ending Date" > StartDate))) then begin //ĐKOR ((wb."Ending Date">010115D) AND (wb."Ending Date"<311215D)))) THEN BEGIN
+                    CurrRecNo += 1;
+                    Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
+                    wb.SETFILTER("Employee No.", '%1', Employee."No.");
+                    wb.SETFILTER("Current Company", '%1', TRUE);
+                    IF Employee."Returned to Company" THEN BEGIN
+                        IF wb.FIND('-') THEN BEGIN
+                            IF (((wb."Ending Date" > StartDate))) then begin //ĐKOR ((wb."Ending Date">010115D) AND (wb."Ending Date"<311215D)))) THEN BEGIN
+                                IF (wb."Starting Date" >= StartDate) THEN
+                                    FromDateFilter := wb."Starting Date"
+                                ELSE
+                                    FromDateFilter := StartDate;
+                            END;
+                            //  MESSAGE(Employee."No.");
+                            //MESSAGE(FORMAT(FromDateFilter));
+                        END
+
+                    END;
+
+                    IF NOT Employee."Returned to Company" THEN BEGIN
+                        IF wb.FIND('+') THEN BEGIN
                             IF (wb."Starting Date" >= StartDate) THEN
                                 FromDateFilter := wb."Starting Date"
                             ELSE
                                 FromDateFilter := StartDate;
                         END;
-                        //  MESSAGE(Employee."No.");
-                        //MESSAGE(FORMAT(FromDateFilter));
-                    END
-
-                END;
-
-                IF NOT Employee."Returned to Company" THEN BEGIN
-                    IF wb.FIND('+') THEN BEGIN
-                        IF (wb."Starting Date" >= StartDate) THEN
-                            FromDateFilter := wb."Starting Date"
-                        ELSE
-                            FromDateFilter := StartDate;
                     END;
-                END;
-                wb2.SETFILTER("Employee No.", '%1', Employee."No.");
-                wb2.SETFILTER("Current Company", '%1', TRUE);
-                IF wb2.FIND('+') THEN BEGIN
-                    IF (wb2."Ending Date" <= EndDate) THEN
-                        ToDateFilter := wb2."Ending Date"
-                    ELSE
-                        ToDateFilter := EndDate;
-                END;
+                    wb2.SETFILTER("Employee No.", '%1', Employee."No.");
+                    wb2.SETFILTER("Current Company", '%1', TRUE);
+                    IF wb2.FIND('+') THEN BEGIN
+                        IF (wb2."Ending Date" <= EndDate) THEN
+                            ToDateFilter := wb2."Ending Date"
+                        ELSE
+                            ToDateFilter := EndDate;
+                    END;
 
 
 
-                AbsenceTemp.RESET;
-                AbsenceTemp.SETRANGE("From Date", FromDateFilter, ToDateFilter);
-                IF AbsenceTemp.FINDFIRST THEN
-                    REPEAT
-                        AbsenceEmp.RESET;
-                        AbsenceEmp.SETFILTER("Employee No.", Employee."No.");
-                        AbsenceEmp.SETRANGE("From Date", AbsenceTemp."From Date");
-                        InsertDay := TRUE;
-                        IF AbsenceEmp.FINDFIRST THEN
+                    AbsenceTemp.RESET;
+                    AbsenceTemp.SETRANGE("From Date", FromDateFilter, ToDateFilter);
+                    IF AbsenceTemp.FINDFIRST THEN
                             REPEAT
-                                Cause.GET(AbsenceEmp."Cause of Absence Code");
-                                InsertDay := InsertDay AND Cause."Added To Hour Pool"; //boolean +
-                            UNTIL AbsenceEmp.NEXT = 0;
-                        IF InsertDay THEN BEGIN
-                            AbsenceEmp.TRANSFERFIELDS(AbsenceTemp);
-                            AbsenceEmp."Entry No." := LastEntry;
-                            AbsenceEmp."Employee No." := Employee."No.";
+                                AbsenceEmp.RESET;
+                                AbsenceEmp.SETFILTER("Employee No.", Employee."No.");
+                                AbsenceEmp.SETRANGE("From Date", AbsenceTemp."From Date");
+                                InsertDay := TRUE;
+                                IF AbsenceEmp.FINDFIRST THEN
+                                    REPEAT
+                                            Cause.GET(AbsenceEmp."Cause of Absence Code");
+                                        InsertDay := InsertDay AND Cause."Added To Hour Pool"; //boolean +
+                                    UNTIL AbsenceEmp.NEXT = 0;
+                                IF InsertDay THEN BEGIN
+                                    AbsenceEmp.TRANSFERFIELDS(AbsenceTemp);
+                                    AbsenceEmp."Entry No." := LastEntry;
+                                    AbsenceEmp."Employee No." := Employee."No.";
 
-                            AbsenceEmp."Statistics Group Code" := Employee."Statistics Group Code";
+                                    AbsenceEmp."Statistics Group Code" := Employee."Statistics Group Code";
 
-                            IF HoursInDay <> 0 THEN
-                                AbsenceEmp.Quantity := HoursInDay;
+                                    IF HoursInDay <> 0 THEN
+                                        AbsenceEmp.Quantity := HoursInDay;
 
-                            AbsenceEmp.INSERT;
-                            LastEntry := LastEntry + 1;
-                        END;
-                    UNTIL AbsenceTemp.NEXT = 0;
-            UNTIL Employee.NEXT = 0
+                                    AbsenceEmp.INSERT;
+                                    LastEntry := LastEntry + 1;
+                                END;
+                            UNTIL AbsenceTemp.NEXT = 0;
+                UNTIL Employee.NEXT = 0
         ELSE BEGIN
             Window.CLOSE;
             MESSAGE(Txt002);
@@ -389,54 +389,54 @@ codeunit 50304 "Absence Fill"
 
         Employee.SetFilter("For Calculation", '%1', true); //filter na samo aktivne zaposlene
         if Employee.FindFirst() then
-            repeat //ova petlja uzima jednog po jednog zaposlenog 
-                AbsenceEmp.Reset();
-                AbsenceEmp.SetFilter(AbsenceEmp."Employee No.", '%1', Employee."No."); //trazim ovog zaposlenog u registraciji izostanaka
-                AbsenceEmp.SetFilter("From Date", '%1', HolidayDate); //trazim odsustvo na ovaj datum
-                if AbsenceEmp.FindFirst() then begin //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
-                                                     //za bolovanje je sick leave = true, a za službeni put je business trip = true
-                                                     //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
-                    CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
-                    if NOT (CauseOfAbsence."Bussiness trip")
-                    then
-                        if NOT (CauseOfAbsence."Sick Leave") then begin //izostanak se treba modify na praznik
+                repeat //ova petlja uzima jednog po jednog zaposlenog 
+                    AbsenceEmp.Reset();
+                    AbsenceEmp.SetFilter(AbsenceEmp."Employee No.", '%1', Employee."No."); //trazim ovog zaposlenog u registraciji izostanaka
+                    AbsenceEmp.SetFilter("From Date", '%1', HolidayDate); //trazim odsustvo na ovaj datum
+                    if AbsenceEmp.FindFirst() then begin //već postoji odsustvo na ovaj datum, moram provjeriti koji je uzrok
+                                                         //za bolovanje je sick leave = true, a za službeni put je business trip = true
+                                                         //za jedno od ovo dvoje ne radim insert, za ostala odsustva radim update
+                        CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                        if NOT (CauseOfAbsence."Bussiness trip")
+                        then
+                            if NOT (CauseOfAbsence."Sick Leave") then begin //izostanak se treba modify na praznik
+                                AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                                AbsenceEmp.Description := Description;
+                                AbsenceEmp.Modify();
+                            end;
+                    end
+                    else begin
+                        AbsenceEmp.RESET;
+                        IF AbsenceEmp.FIND('+') THEN
+                            LastEntry := AbsenceEmp."Entry No."
+                        ELSE
+                            LastEntry := 0;
+                        LastEntry := LastEntry + 1;
+                        AbsenceEmp.Init();
+                        AbsenceEmp."Entry No." := LastEntry;
+                        AbsenceEmp."Employee No." := Employee."No.";
+                        AbsenceEmp."From Date" := HolidayDate;
+                        AbsenceEmp."To Date" := HolidayDate;
+                        IF InsertAnnual THEN BEGIN
+                            WageSetup.Get();
                             AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
                             AbsenceEmp.Description := Description;
-                            AbsenceEmp.Modify();
-                        end;
-                end
-                else begin
-                    AbsenceEmp.RESET;
-                    IF AbsenceEmp.FIND('+') THEN
-                        LastEntry := AbsenceEmp."Entry No."
-                    ELSE
-                        LastEntry := 0;
-                    LastEntry := LastEntry + 1;
-                    AbsenceEmp.Init();
-                    AbsenceEmp."Entry No." := LastEntry;
-                    AbsenceEmp."Employee No." := Employee."No.";
-                    AbsenceEmp."From Date" := HolidayDate;
-                    AbsenceEmp."To Date" := HolidayDate;
-                    IF InsertAnnual THEN BEGIN
-                        WageSetup.Get();
-                        AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
-                        AbsenceEmp.Description := Description;
-                        AbsenceEmp."RS Code" := RSWorkday;
-                    END
-                    ELSE BEGIN
-                        WageSetup.Get();
-                        AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
-                        AbsenceEmp.Description := Description;
-                        AbsenceEmp."RS Code" := RSHoliday;
-                    END;
+                            AbsenceEmp."RS Code" := RSWorkday;
+                        END
+                        ELSE BEGIN
+                            WageSetup.Get();
+                            AbsenceEmp."Cause of Absence Code" := HolidayCauseOfAbsence;
+                            AbsenceEmp.Description := Description;
+                            AbsenceEmp."RS Code" := RSHoliday;
+                        END;
 
-                    AbsenceEmp.Quantity := Employee."Hours In Day";
+                        AbsenceEmp.Quantity := Employee."Hours In Day";
 
-                    AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
-                    AbsenceEmp.Insert();
+                        AbsenceEmp."Unit of Measure Code" := WageSetup."Hour Unit of Measure";
+                        AbsenceEmp.Insert();
 
-                end;
-            until Employee.Next() = 0;
+                    end;
+                until Employee.Next() = 0;
     end;
     //ED 01 END
 
@@ -573,12 +573,12 @@ codeunit 50304 "Absence Fill"
 
             IF AbsenceTemp.FINDFIRST THEN
                 REPEAT
-                    CASE AbsenceTemp."Unit of Measure Code" OF
-                        WageSetup."Hour Unit of Measure":
-                            DailyHours := DailyHours + AbsenceTemp.Quantity;
-                        WageSetup."Day Unit of Measure":
-                            DailyHours := DailyHours + WageSetup."Hours in Day";
-                    END;
+                        CASE AbsenceTemp."Unit of Measure Code" OF
+                            WageSetup."Hour Unit of Measure":
+                                DailyHours := DailyHours + AbsenceTemp.Quantity;
+                            WageSetup."Day Unit of Measure":
+                                DailyHours := DailyHours + WageSetup."Hours in Day";
+                        END;
                     CauseTemp.GET(AbsenceTemp."Cause of Absence Code");
                     MarkIt := (Absence."Cause of Absence Code" = AbsenceTemp."Cause of Absence Code") OR (DailyHours > 24);
                     //OR ((NOT(CauseTemp."Added To Hour Pool")) AND (NOT(Cause."Added To Hour Pool"))) ;
@@ -653,7 +653,7 @@ codeunit 50304 "Absence Fill"
                                 TransNo := '0000000000';
                             IF Employee.FINDFIRST THEN
                                 REPEAT
-                                    WageType.GET(Employee."Wage Type");
+                                        WageType.GET(Employee."Wage Type");
 
                                     TransportAmount := Employee."Transport Amount";
                                     IF TransportAmount = 0 THEN
@@ -756,7 +756,7 @@ codeunit 50304 "Absence Fill"
                                 MealNo := '0000000000';
                             IF Employee.FINDFIRST THEN
                                 REPEAT
-                                    WageType.GET(Employee."Wage Type");
+                                        WageType.GET(Employee."Wage Type");
                                     MealCoeff := Employee."Hours In Day" / 8;
 
                                     MealBasis := WageSetup.Meal * MealCoeff;
@@ -774,17 +774,17 @@ codeunit 50304 "Absence Fill"
                                     COA.RESET;
                                     COA.SETRANGE("Meal Calculated", TRUE);
                                     IF COA.FINDFIRST THEN
-                                        REPEAT
-                                            Absences.SETFILTER("Cause of Absence Code", '%1', COA."Code");
-                                            Absences.SETFILTER(Quantity, '>0');
-                                            IF Absences.FINDFIRST THEN
-                                                REPEAT
-                                                    IF NOT WorkDays[DATE2DMY(Absences."From Date", 1)] THEN BEGIN
-                                                        WorkDays[DATE2DMY(Absences."From Date", 1)] := TRUE;
-                                                        WorkDaysNo += 1;
-                                                    END;
-                                                UNTIL Absences.NEXT = 0;
-                                        UNTIL COA.NEXT = 0;
+                                            REPEAT
+                                                Absences.SETFILTER("Cause of Absence Code", '%1', COA."Code");
+                                                Absences.SETFILTER(Quantity, '>0');
+                                                IF Absences.FINDFIRST THEN
+                                                    REPEAT
+                                                            IF NOT WorkDays[DATE2DMY(Absences."From Date", 1)] THEN BEGIN
+                                                                WorkDays[DATE2DMY(Absences."From Date", 1)] := TRUE;
+                                                                WorkDaysNo += 1;
+                                                            END;
+                                                    UNTIL Absences.NEXT = 0;
+                                            UNTIL COA.NEXT = 0;
 
                                     //Half day meal:
                                     WorkDaysHalfDayNo := 0;
@@ -792,15 +792,15 @@ codeunit 50304 "Absence Fill"
                                     COA.SETRANGE("Meal - Half Day Calculated", TRUE);
                                     IF COA.FINDFIRST THEN
                                         REPEAT
-                                            Absences.SETFILTER("Cause of Absence Code", '%1', COA.Code);
+                                                Absences.SETFILTER("Cause of Absence Code", '%1', COA.Code);
                                             Absences.SETFILTER(Quantity, '>0');
                                             IF Absences.FINDFIRST THEN
-                                                REPEAT
-                                                    IF NOT WorkDays[DATE2DMY(Absences."From Date", 1)] THEN BEGIN
-                                                        WorkDays[DATE2DMY(Absences."From Date", 1)] := TRUE;
-                                                        WorkDaysHalfDayNo += 1;
-                                                    END;
-                                                UNTIL Absences.NEXT = 0;
+                                                    REPEAT
+                                                        IF NOT WorkDays[DATE2DMY(Absences."From Date", 1)] THEN BEGIN
+                                                            WorkDays[DATE2DMY(Absences."From Date", 1)] := TRUE;
+                                                            WorkDaysHalfDayNo += 1;
+                                                        END;
+                                                    UNTIL Absences.NEXT = 0;
                                         UNTIL COA.NEXT = 0;
 
                                     /*IF WorkDaysNo<>0 THEN BEGIN
@@ -869,9 +869,9 @@ codeunit 50304 "Absence Fill"
         AbsenceEmp.SETRANGE("Cause of Absence Code", WorkType);
         HoursByType := 0;
         IF AbsenceEmp.FINDFIRST THEN
-            REPEAT
-                HoursByType := HoursByType + AbsenceEmp.Quantity;
-            UNTIL AbsenceEmp.NEXT = 0;
+                REPEAT
+                    HoursByType := HoursByType + AbsenceEmp.Quantity;
+                UNTIL AbsenceEmp.NEXT = 0;
     end;
 
     procedure CheckPeriodForEntries(Absence: Record "Employee Absence"; "Filter": Text[300])
@@ -915,19 +915,19 @@ codeunit 50304 "Absence Fill"
             AbsenceTemp.SETFILTER("Entry No.", '<>%1&<>0', Absence."Entry No.");
             AbsenceTemp.SETCURRENTKEY("Employee No.", "From Date");
             IF AbsenceTemp.FINDFIRST THEN
-                REPEAT
-                    CASE AbsenceTemp."Unit of Measure Code" OF
-                        WageSetup."Hour Unit of Measure":
-                            DailyHours := DailyHours + AbsenceTemp.Quantity;
-                        WageSetup."Day Unit of Measure":
-                            DailyHours := DailyHours + WageSetup."Hours in Day";
-                    END;
-                    CauseTemp.GET(AbsenceTemp."Cause of Absence Code");
-                    MarkIt := (Absence."Cause of Absence Code" = AbsenceTemp."Cause of Absence Code") OR (DailyHours > 24);
-                    //OR ((NOT(CauseTemp."Added To Hour Pool")) AND (NOT(Cause."Added To Hour Pool"))) ;
-                    IF MarkIt THEN
-                        MarkConflict(AbsenceTemp, Absence, ConflictArray);
-                UNTIL AbsenceTemp.NEXT = 0;
+                    REPEAT
+                        CASE AbsenceTemp."Unit of Measure Code" OF
+                            WageSetup."Hour Unit of Measure":
+                                DailyHours := DailyHours + AbsenceTemp.Quantity;
+                            WageSetup."Day Unit of Measure":
+                                DailyHours := DailyHours + WageSetup."Hours in Day";
+                        END;
+                        CauseTemp.GET(AbsenceTemp."Cause of Absence Code");
+                        MarkIt := (Absence."Cause of Absence Code" = AbsenceTemp."Cause of Absence Code") OR (DailyHours > 24);
+                        //OR ((NOT(CauseTemp."Added To Hour Pool")) AND (NOT(Cause."Added To Hour Pool"))) ;
+                        IF MarkIt THEN
+                            MarkConflict(AbsenceTemp, Absence, ConflictArray);
+                    UNTIL AbsenceTemp.NEXT = 0;
             TargetDate := CALCDATE('+1D', TargetDate);
         END;
 
