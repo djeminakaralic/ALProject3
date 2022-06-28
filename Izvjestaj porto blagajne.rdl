@@ -488,14 +488,17 @@
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
+                  <Visibility>
+                    <Hidden>=Fields!PTCode.Value=""</Hidden>
+                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>6.24099cm</Top>
             <Left>0.49953cm</Left>
-            <Height>1.13771cm</Height>
-            <Width>13.09903cm</Width>
+            <Height>1.1377cm</Height>
+            <Width>13.09902cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>

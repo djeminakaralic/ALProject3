@@ -1142,7 +1142,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>23.45902cm</Width>
+      <Width>14.11923cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -1322,6 +1322,9 @@ End Function
         </Field>
         <Field Name="BankAccNo">
           <DataField>BankAccNo</DataField>
+        </Field>
+        <Field Name="Counter">
+          <DataField>Counter</DataField>
         </Field>
       </Fields>
       <Query>
