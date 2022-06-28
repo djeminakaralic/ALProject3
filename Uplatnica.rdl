@@ -982,7 +982,11 @@
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="Details1" />
+                  <Group Name="Details1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!BankName.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
                   <TablixMembers>
                     <TablixMember />
                   </TablixMembers>
@@ -1142,7 +1146,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>23.45902cm</Width>
+      <Width>14.11923cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

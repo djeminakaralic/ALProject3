@@ -132,6 +132,7 @@ report 50077 Uplatnica
 
             trigger OnAfterGetRecord()
             begin
+
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
                 
                 IF Cont.FIND('-') THEN BEGIN
@@ -179,6 +180,17 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
+
+            trigger OnAfterGetRecord()
+            begin
+                if "Bank Account No." <> '' then
+                    Counter := Counter + 1
+                else
+                    Counter := 1;
+
+                Message(FORMAT(Counter));
+
+            end;
         }
 
     }
@@ -208,6 +220,7 @@ report 50077 Uplatnica
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         Cont: Record Contact;
+        Counter: Integer;
         ContName: Text[100];
         ContAddress: Text[100];
         ContCity: Text[100];
