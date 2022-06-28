@@ -156,6 +156,8 @@ report 50109 VacationDecision
             {
 
             }
+            column(CEODa; CEODa)
+            { }
 
 
             trigger OnAfterGetRecord()
@@ -202,6 +204,7 @@ report 50109 VacationDecision
                     Position.CalcFields("Employee Name", "Employee Last Name");
                     Director := Position."Employee Name";
                 end;
+                CEODa := false;
 
 
                 ExeManager.Reset();
@@ -229,8 +232,10 @@ report 50109 VacationDecision
                 Pos.SetFilter(Description, '%1', DataItem5."Position Name");
                 Pos.SetFilter("Org. Structure", '%1', OrgShema.Code);
                 if Pos.FindFirst() then begin
-                    if Pos."Management Level" = Pos."Management Level"::CEO then
-                        Izvrsni := '';
+                    if Pos."Management Level" = Pos."Management Level"::CEO then begin
+                        Izvrsni := ' od strane Direktora preduzeća';
+                        CEODa := true;
+                    end;
                 end;
 
                 //Izvrsni
@@ -338,6 +343,7 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+        CEODa: Boolean;
         Pos: Record "Position Menu";
         VacationSe: Record "Vacation Setup";
         ExeManager: Record "Exe Manager";
