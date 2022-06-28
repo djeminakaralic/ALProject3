@@ -10,7 +10,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
-                Editable = true;
+
+
+
+
 
                 // FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
 
@@ -47,6 +50,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         modify("Applied (Yes/No)")
         {
             Visible = false;
+        }
+        modify("Posting Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                //"Posting Date" := FORMAT(rec."Posting Date", 0, '<Day,2>.<Month,2>.<Year4>.<Closing>');
+
+            end;
         }
     }
 
