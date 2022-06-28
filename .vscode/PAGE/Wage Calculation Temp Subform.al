@@ -23,12 +23,12 @@ page 50044 "Wage Calculation Temp Subform"
                 }
                 field(Name; Name)
                 {
-                    Caption = 'Name';
+
                     Editable = false;
                 }
                 field(LName; LName)
                 {
-                    Caption = 'Last Name';
+
                     Editable = false;
                 }
                 field("Employee Coefficient"; "Employee Coefficient")

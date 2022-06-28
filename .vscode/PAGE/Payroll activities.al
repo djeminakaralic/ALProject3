@@ -57,7 +57,7 @@ page 50092 "Payroll Activities"
                     trigger OnDrillDown()
                     begin
                         WageCalc.SETFILTER(Payment, '<%1', 0);
-                        PAGE.RUNMODAL(50018, WageCalc);
+                        PAGE.RUNMODAL(50218, WageCalc);
                     end;
                 }
                 field(Additions; Additions)

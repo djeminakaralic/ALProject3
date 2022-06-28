@@ -14,5 +14,7 @@ pageextension 50138 ChartOFAccountG_L extends "Chart of Accounts (G/L)"
                 ApplicationArea = All;
             }
         }
+
+
     }
 }

@@ -11,31 +11,31 @@ report 50027 "Post Wage to GL"
             trigger OnAfterGetRecord()
             begin
                 //SETFILTER("Wage Calculation Type",'<>%1','');
-
+                WageSetupGET.get();
                 IF ("Wage Calculation Type" = 0) THEN BEGIN
-                    TemplateName := 'OPŠTE';
-                    BatchName := 'OPŠTE';
+                    TemplateName := WageSetupGET."Wage Journal Template";
+                    BatchName := WageSetupGET."Wage Batch Name";
                 END;
 
                 IF "Wage Calculation Type" = 0 THEN BEGIN
-                    TemplateName := 'OPŠTE';
-                    BatchName := 'OPŠTE';
+                    TemplateName := WageSetupGET."Wage Journal Template";
+                    BatchName := WageSetupGET."Wage Batch Name";
                 END;
 
 
                 IF (("Wage Calculation Type" = 1)) THEN BEGIN
-                    TemplateName := 'OPŠTE';
-                    BatchName := 'OPŠTE';
+                    TemplateName := WageSetupGET."Wage Journal Template";
+                    BatchName := WageSetupGET."Wage Batch Name";
                 END;
 
                 IF "Wage Calculation Type" = 2 THEN BEGIN
-                    TemplateName := 'OPŠTE';
-                    BatchName := 'OPŠTE';
+                    TemplateName := WageSetupGET."Wage Journal Template";
+                    BatchName := WageSetupGET."Wage Batch Name";
                 END;
 
                 IF "Wage Calculation Type" = 3 THEN BEGIN
-                    TemplateName := 'OPŠTE';
-                    BatchName := 'OPŠTE';
+                    TemplateName := WageSetupGET."Wage Journal Template";
+                    BatchName := WageSetupGET."Wage Batch Name";
                 END;
 
                 GenJnlTemplate.GET(TemplateName);
@@ -266,29 +266,30 @@ report 50027 "Post Wage to GL"
                 External := "Global Dimension 1 Code";
                 InsertLine := FALSE;
                 IsClass3 := FALSE;
+                WageSetupGET.Get();
 
                 GenJnlLine.RESET;
                 IF "Wage Calculation Type" = 0 THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
                 IF ("Wage Calculation Type" = 1) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
                 IF ("Wage Calculation Type" = 2) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
                 IF ("Wage Calculation Type" = 3) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
@@ -325,25 +326,27 @@ report 50027 "Post Wage to GL"
                 ELSE BEGIN
                     GenJnlLine.RESET;
                     GenJnlLine.INIT;
+                    WageSetupGET.Get();
                     IF "Wage Posting Group" = 'FBIH' THEN BEGIN
-                        GenJnlLine.VALIDATE("Journal Template Name", 'OPŠTE');
-                        GenJnlLine.VALIDATE("Journal Batch Name", 'OPŠTE');
+                        GenJnlLine.VALIDATE("Journal Template Name", WageSetupGET."Wage Journal Template");
+                        GenJnlLine.VALIDATE("Journal Batch Name", WageSetupGET."Wage Batch Name");
+
 
                     END;
 
                     IF (("Wage Calculation Type" = 1)) THEN BEGIN
-                        GenJnlLine.VALIDATE("Journal Template Name", 'OPŠTE');
-                        GenJnlLine.VALIDATE("Journal Batch Name", 'OPŠTE');
+                        GenJnlLine.VALIDATE("Journal Template Name", WageSetupGET."Wage Journal Template");
+                        GenJnlLine.VALIDATE("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     END;
 
                     IF ("Wage Calculation Type" = 2) THEN BEGIN
-                        GenJnlLine.VALIDATE("Journal Template Name", 'OPŠTE');
-                        GenJnlLine.VALIDATE("Journal Batch Name", 'OPŠTE');
+                        GenJnlLine.VALIDATE("Journal Template Name", WageSetupGET."Wage Journal Template");
+                        GenJnlLine.VALIDATE("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     END;
 
                     IF ("Wage Calculation Type" = 3) THEN BEGIN
-                        GenJnlLine.VALIDATE("Journal Template Name", 'OPŠTE');
-                        GenJnlLine.VALIDATE("Journal Batch Name", 'OPŠTE');
+                        GenJnlLine.VALIDATE("Journal Template Name", WageSetupGET."Wage Journal Template");
+                        GenJnlLine.VALIDATE("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     END;
 
                     GenJnlLine.VALIDATE("Source Code", GenJnlTemplate."Source Code");
@@ -392,28 +395,29 @@ report 50027 "Post Wage to GL"
                 IsClass3 := FALSE;
 
                 GenJnlLine.RESET;
+                WageSetupGET.Get();
 
                 IF ("Wage Calculation Type" = 0) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
                 IF (("Wage Calculation Type" = 1)) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
                 IF ("Wage Calculation Type" = 2) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
                 IF ("Wage Calculation Type" = 3) THEN BEGIN
-                    GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-                    GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+                    GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+                    GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
                     GenJnlLine.SETFILTER("Document No.", DocNo);
                 END;
 
@@ -673,14 +677,17 @@ report 50027 "Post Wage to GL"
 
     trigger OnPreReport()
     begin
-        GenJnlLine.SETFILTER("Journal Template Name", 'OPŠTE');
-        GenJnlLine.SETFILTER("Journal Batch Name", 'OPŠTE');
+        WageSetupGET.Get();
+        GenJnlLine.SETFILTER("Journal Template Name", WageSetupGET."Wage Journal Template");
+        GenJnlLine.SETFILTER("Journal Batch Name", WageSetupGET."Wage Batch Name");
         //GenJnlLine.SETFILTER("Document No.",DocNo);
         IF GenJnlLine.FINDSET THEN GenJnlLine.DELETEALL;
     end;
 
     var
         WAT: Record "Wage Addition Type";
+
+        WageSetupGET: Record "Wage Setup";
         GenJournalPage: Page "General Journal";
         PostSetup: Record "Wage Posting Groups";
         AddTaxPostSetup: Record "Contribution Posting Setup";

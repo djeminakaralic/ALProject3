@@ -593,7 +593,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             group(Communication)
             {
                 Caption = 'Communication';
-                //ĐK      Visible = Show;
+                Visible = Show;
                 group(Phone1)
                 {
                     Caption = 'Home Number Group';
@@ -2216,6 +2216,14 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 ApplicationArea = all;
             }
+            field("Temporary Contract Type"; "Temporary Contract Type")
+            {
+
+            }
+            field("External employer Status"; "External employer Status")
+            {
+
+            }
 
             /*field("External employer Status"; "External employer Status")
             {
@@ -3514,6 +3522,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         modify(Attachments)
         {
             Promoted = false;
+            Visible = false;
         }
         modify(PayEmployee)
         {

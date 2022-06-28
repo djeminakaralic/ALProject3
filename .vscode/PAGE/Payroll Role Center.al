@@ -405,6 +405,7 @@ page 50094 "Payroll Role Center"
                     Caption = 'General Journal';
                     Image = PostBatch;
                     RunObject = Page "General Journal";
+
                 }
 
             }

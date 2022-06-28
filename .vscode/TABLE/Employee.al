@@ -3286,7 +3286,7 @@ tableextension 50071 EmployeeExtension extends Employee
             "Wage Posting Group" := CompanyInfo."Entity Code";
 
             Meal := TRUE;
-            "Bank No." := 'RBBH';
+            //ĐK  "Bank No." := 'RBBH';
             "Tax Deduction" := TRUE;
             VALIDATE("Benefit Coefficient", 1);
             "Send PayList" := TRUE;
