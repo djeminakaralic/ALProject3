@@ -1323,8 +1323,8 @@ End Function
         <Field Name="BankAccNo">
           <DataField>BankAccNo</DataField>
         </Field>
-        <Field Name="Counter">
-          <DataField>Counter</DataField>
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
         </Field>
       </Fields>
       <Query>

@@ -180,7 +180,7 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
-            column(Counter; Counter)
+            column(BankNo; DataItem22."No.")
             {
             }
 
