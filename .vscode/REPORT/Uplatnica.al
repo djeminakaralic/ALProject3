@@ -184,7 +184,8 @@ report 50077 Uplatnica
             {
             }
 
-            /*trigger OnAfterGetRecord()
+
+            trigger OnAfterGetRecord()
             begin
                 if "Bank Account No." <> '' then
                     Counter := Counter + 1
@@ -192,7 +193,7 @@ report 50077 Uplatnica
                     Counter := 0;
 
                 Message(FORMAT(Counter));
-            end;*/
+            end;
         }
 
     }

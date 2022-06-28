@@ -987,7 +987,7 @@
                     <TablixMember />
                   </TablixMembers>
                   <Visibility>
-                    <Hidden>=Fields!BankAccNo.Value=""</Hidden>
+                    <Hidden>=IIF(Fields!Counter.Value = 4,False,True)</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
