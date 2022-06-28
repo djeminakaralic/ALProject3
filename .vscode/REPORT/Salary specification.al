@@ -131,7 +131,7 @@ report 50040 "Salary specification"
                     t_UserPer.SETFILTER("User ID", USERID);
                     t_UserPer.FINDFIRST;
                     IF t_UserPer."Language ID" = 1050 THEN
-                        EndDate := CALCDATE('TM', Date)
+                        EndDate := CALCDATE('SM', Date)
                     ELSE
                         EndDate := CALCDATE('CM', Date);
                     StartDate := Date;
