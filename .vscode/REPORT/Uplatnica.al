@@ -180,16 +180,18 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
+            column(Counter; Counter)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
                 if "Bank Account No." <> '' then
                     Counter := Counter + 1
                 else
-                    Counter := 1;
+                    Counter := 0;
 
                 Message(FORMAT(Counter));
-
             end;
         }
 

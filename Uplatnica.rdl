@@ -1327,6 +1327,9 @@ End Function
         <Field Name="BankAccNo">
           <DataField>BankAccNo</DataField>
         </Field>
+        <Field Name="Counter">
+          <DataField>Counter</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
