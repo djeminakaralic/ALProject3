@@ -58,9 +58,20 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Position Description"; "Position Description") { }
             field("Rad u smjenama"; "Rad u smjenama") { }
             field("Engagement Type"; "Engagement Type") { }
-            field("Manager 1"; EmployeeContractLedger."Manager 1") { }
-            field(Manager1PositionCode; EmployeeContractLedger."Manager 1 Position Code") { }
-            field("Manager 1 position code"; EmployeeContractLedger."Manager 1 Position ID") { }
+            field("Manager 1"; EmployeeContractLedger."Manager 1")
+            {
+                Caption = 'Manager 1';
+            }
+            field(Manager1PositionCode; EmployeeContractLedger."Manager 1 Position Code")
+            {
+
+                Caption = 'Manager 1 Position Code';
+            }
+            field("Manager 1 position code"; EmployeeContractLedger."Manager 1 Position ID")
+            {
+                Caption = 'Manager 1 Position ID';
+                Visible = false;
+            }
             field(Manager1; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
             {
                 Caption = 'Ime i prezime prvog nadređenog';
@@ -68,8 +79,8 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             }
-            field("Manager 2"; EmployeeContractLedger."Manager 2") { }
-            field(Manager2PositionCode; EmployeeContractLedger."Manager 2 Position Code") { }
+            field("Manager 2"; EmployeeContractLedger."Manager 2") { Caption = 'Manager 2'; }
+            field(Manager2PositionCode; EmployeeContractLedger."Manager 2 Position Code") { Caption = 'Manager 2 Position Code'; }
 
             field(Manager2; EmployeeContractLedger."Manager 2 Last Name" + ' ' + EmployeeContractLedger."Manager 2 First Name")
             {
@@ -97,17 +108,17 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             field("Starting Date"; "Starting Date") { }
             field("Ending Date"; "Ending Date") { }
-            field("Contract type"; "Contract type") { }
-            field("Employement type"; EmployeeContractLedger."Engagement Type") { }
-            field("First employment"; EmployeeContractLedger."First Time Employed") { }
-            field("Termination"; EmployeeContractLedger."Manner of Term. Code") { }
-            field("Termination name"; EmployeeContractLedger."Manner of Term. Description") { }
-            field("Grounds for termination"; EmployeeContractLedger."Grounds for Term. Code") { }
-            field("Grounds for term name"; EmployeeContractLedger."Grounds for Term. Description") { }
+            field("Contract type"; "Contract type") { Caption = 'Contract Type'; }
+            field("Employement type"; EmployeeContractLedger."Engagement Type") { Caption = 'Enagement Type'; }
+            field("First employment"; EmployeeContractLedger."First Time Employed") { Caption = 'First Employment'; }
+            field("Termination"; EmployeeContractLedger."Manner of Term. Code") { Caption = 'Termination'; }
+            field("Termination name"; EmployeeContractLedger."Manner of Term. Description") { Caption = 'Termination Name'; }
+            field("Grounds for termination"; EmployeeContractLedger."Grounds for Term. Code") { Caption = 'Grounds for termination Code'; }
+            field("Grounds for term name"; EmployeeContractLedger."Grounds for Term. Description") { Caption = 'Grounds for term name'; }
             // field("Contract Termination Date"; "Contract Termination Date") { }
             field("Education Level"; "Education Level") { }
             field("Major of Graduation"; "Major of Graduation") { }
-            field("Title Code"; "Title Code") { }
+            field("Title Code"; "Title Code") { Caption = 'Title Code'; }
             field(Title; Title) { }
 
             field(Voocation; Voocation) { }
@@ -267,7 +278,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
             field("Bank Account Code"; "Bank Account Code") { }
-            field("Bank Account No."; "Bank Account No.") { }
+            field("Bank Account No."; "Bank Account No.") { Caption = 'Bank Account No.'; }
             field("Bank No."; "Bank No.") { }
             field("Refer To Number"; "Refer To Number") { }
             field("Hours In Day"; "Hours In Day") { }
@@ -315,10 +326,10 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             field("Municipality Code for salary"; "Municipality Code for salary") { }
-            field("Mobile Phone No. for Company"; "Mobile Phone No. for Company") { }
+            field("Mobile Phone No. for Company"; "Mobile Phone No. for Company") { Caption = 'Mobile Phone No. for company'; }
 
             //field("Phone No."; "Phone No.") { }
-            field("Phone No.Company"; "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company") { }
+            field("Phone No.Company"; "Country/Region Code Company M" + ' ' + "Dial Code Company Mobile" + ' ' + "Mobile Phone No. for Company") { Caption = 'Phone No. for company'; }
             field("Company E-Mail"; "Company E-Mail") { }
             field("Father Name"; "Father Name") { }
             field("Mother Maiden Name"; "Mother Maiden Name") { }
@@ -338,7 +349,7 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Blood Type"; "Blood Type") { }
 
 
-            field("Citizenship 2"; "Citizenship 2") { }
+            field("Citizenship 2"; "Citizenship 2") { Caption = 'Citizenship2'; }
             field("Additional Passport No."; "Additional Passport No.") { }
 
             field("Residence Permit"; "Residence Permit") { }

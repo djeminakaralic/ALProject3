@@ -50,7 +50,7 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             field("G/L Balance Account No."; "G/L Balance Account No.") { }
             field("Sick Leave RAD -1"; "Sick Leave RAD -1") { }
             field("Unpaid days"; "Unpaid days") { }
-            field("Add Hours"; "Add Hours") { }
+            field("Add Hours"; "Add Hours") { Visible = false; }
             field(Holiday; Holiday) { }
 
 
