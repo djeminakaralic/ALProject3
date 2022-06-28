@@ -2149,7 +2149,9 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 ApplicationArea = all;
                 Lookup = true;
                 DrillDown = true;
+                Visible = false;
                 trigger OnLookup(var Text: Text): Boolean
+
 
 
                 var
@@ -2459,6 +2461,27 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             EmployeeContractLedgerPage.RUN;
                         END;
                         CurrPage.UPDATE;
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        myInt: Integer;
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END
+                        ELSE BEGIN
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END;
+                        CurrPage.UPDATE;
+
                     end;
                 }
                 /*field(DepartmentName; EmployeeContractLedger."Department Name")
