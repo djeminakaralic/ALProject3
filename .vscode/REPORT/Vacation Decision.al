@@ -203,19 +203,24 @@ report 50109 VacationDecision
                     Director := Position."Employee Name";
                 end;
 
+
                 ExeManager.Reset();
                 ExeManager.SetFilter("Subordinate Org Description", '%1', Sector);
                 ExeManager.SetFilter("ORG Shema", '%1', OrgShema.Code);
+
+                VacationSe.Get();
+
                 //ĐK  ExeManager.SetFilter("Position Description",'%1',);
                 if ExeManager.FindFirst() then begin
-                    ExeDescr := StrPos(ExeManager."Position Description", ' za ');
+
+                    ExeDescr := StrPos(ExeManager."Position Description", VacationSe."Part of Position Description");
                     Izvrsni := CopyStr(ExeManager."Position Description", ExeDescr + 4, StrLen(ExeManager."Position Description"));
-                    Izvrsni := 'izvršnog direktora za ' + Izvrsni;
+                    Izvrsni := VacationSe."Vacation Decision Exe" + Izvrsni;
 
                 end
                 else begin
                     Izvrsni := '';
-                    Izvrsni := 'Direktora preduzeća';
+                    Izvrsni := VacationSe."Vacation Decision CEO";
                 end;
 
                 //Izvrsni
@@ -323,6 +328,7 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+        VacationSe: Record "Vacation Setup";
         ExeManager: Record "Exe Manager";
 
         ExeDescr: Integer;

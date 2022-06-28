@@ -91,6 +91,18 @@ table 50184 "Vacation Setup"
         {
             Caption = 'Base (Days) entity BD ';
         }
+        field(50009; "Vacation Decision Exe"; Text[250])
+        {
+            Caption = 'Vacation Decision Exe';
+        }
+        field(50010; "Vacation Decision CEO"; Text[250])
+        {
+            Caption = 'Vacation Decision Exe';
+        }
+        field(50011; "Part of Position Description"; Text[250])
+        {
+            Caption = 'Part of Position Description';
+        }
     }
 
     keys
