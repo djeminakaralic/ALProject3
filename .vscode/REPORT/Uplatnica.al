@@ -106,7 +106,6 @@ report 50077 Uplatnica
             column(CCity; ContCity)
             {
             }
-
             column(User; USERID)
             {
             }
@@ -180,9 +179,7 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
-            column(BankNo; DataItem22."No.")
-            {
-            }
+            column(Counter; Counter) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -190,6 +187,8 @@ report 50077 Uplatnica
                     Counter := Counter + 1
                 else
                     Counter := 0;
+
+                //komentar
 
                 //Message(FORMAT(Counter));
             end;
