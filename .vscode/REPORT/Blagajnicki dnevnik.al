@@ -2,6 +2,7 @@ report 50075 "Blagajnički dnevnik"
 {
     //ED
 
+
     DefaultLayout = RDLC;
     RDLCLayout = './Blagajnicki dnevnik.rdl';
 
@@ -12,19 +13,19 @@ report 50075 "Blagajnički dnevnik"
             //DataItemTableView = WHERE(Bal. Account No.=FILTER(BKM));
             RequestFilterFields = "Posting Date";
 
-            column(PostingDate; GLEntry."Posting Date")
+            column(PostingDate; DataItem22."Posting Date")
             {
             }
-            column(DocumentNo; GLEntry."Document No.")
+            column(DocumentNo; DataItem22."Document No.")
             {
             }
-            column(Amound; GLEntry.Amount)
+            column(Amound; DataItem22.Amount)
             {
             }
-            column(Description; GLEntry.Description)
+            column(Description; DataItem22.Description)
             {
             }
-            column(Ext; glentry."External Document No.")
+            column(Ext; DataItem22."External Document No.")
             {
             }
             column(Datum; Datum)
@@ -94,7 +95,7 @@ report 50075 "Blagajnički dnevnik"
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'PRIMITAK' THEN BEGIN
+                IF "Journal Batch Name" = 'PRIMITAK' THEN BEGIN //czk 1 uplata
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
                     Kolicina := Amount;
@@ -116,13 +117,19 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
+
+
+
                 GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                         REPEAT
-
+                            Kolicina := GLEntry.Amount;
+                            KolicinaIS := GLEntry.Amount;
                             PrethodniSaldo += GLEntry.Amount;
                         UNTIL GLEntry.NEXT = 0;
+
+
 
                 emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN
