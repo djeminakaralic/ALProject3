@@ -16,7 +16,7 @@ report 50075 "Blagajnički dnevnik"
             column(PostingDate; DataItem22."Posting Date")
             {
             }
-            column(EntryNo; DataItem22."Entry No.")
+            column(GLNo; DataItem22."Entry No.")
             {
             }
             column(DocumentNo; DataItem22."Document No.")
