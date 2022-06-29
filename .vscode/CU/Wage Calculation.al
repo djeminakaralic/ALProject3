@@ -177,8 +177,7 @@ codeunit 50002 "Wage Calculation"
 
                                     TransportAndMeal(EmplDefDim."Amount Distribution Coeff.");
                                     AddNettoAdditions(EmplDefDim."Amount Distribution Coeff.");
-                                    CalcTemp."Net Wage After Tax" := ROUND((CalcTemp."Final Net Wage" - CalcTemp.Transport - CalcTemp."Meal to pay"
-                                    - CalcTemp."Wage Addition"), 0.05, '=');
+                                    CalcTemp."Net Wage After Tax" := ROUND((CalcTemp."Final Net Wage" - CalcTemp."Wage Addition"), 0.05, '=');
                                     CalcTemp."Untaxable Wage" := CalcTemp.Transport + CalcTemp."Meal to pay" + CalcTemp."Wage Addition";
                                     CalcTemp.MODIFY;
 
@@ -1621,6 +1620,7 @@ codeunit 50002 "Wage Calculation"
                 UntaxableWage += TransLineTemp.Amount + MealLineTemp.Amount;
                 NettoAmount += CalcTemp."Indirect Wage Addition Amount";
                 TaxBasis += CalcTemp."Indirect Wage Addition Amount";
+
             END;
         END
         ELSE

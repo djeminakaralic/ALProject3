@@ -69,8 +69,7 @@ report 50138 "Izvjestaj starosna spolna"
             column(Gender_Employee; Gender)
             {
                 IncludeCaption = true;
-                OptionCaption = ',Female,Male';
-                OptionMembers = "<",Female,"Male>";
+
             }
             column(Muski; SumMus)
             {
