@@ -21488,6 +21488,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Aproved Expenditures - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2298784508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Average coefficient statute</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Average coefficient statute - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2446303254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Average Salary FBIH</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Average Salary FBIH - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1954395533 - Field 2708261527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Average Yearly Hour Pool</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36192,6 +36202,11 @@
           <source>Business trip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Bussiness trip - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 3505761862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Calculate Experience</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Calculate Experience - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 1010396995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Calculated Sick Leave</source>
