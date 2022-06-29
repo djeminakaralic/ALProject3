@@ -13,6 +13,14 @@ table 50199 "Wage Setup"
         {
             Caption = 'Average Yearly Hour Pool';
         }
+        field(2; "Average Salary FBIH"; Decimal)
+        {
+            Caption = 'Average Salary FBIH';
+        }
+        field(3; "Average coefficient statute"; Decimal)
+        {
+            Caption = 'Average coefficient statute';
+        }
         field(20; "Work Experience Basis"; Decimal)
         {
             Caption = 'Work Experience Basis';

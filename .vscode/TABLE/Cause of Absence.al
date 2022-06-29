@@ -123,6 +123,11 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
             Caption = 'Order for Pay list';
 
         }
+        field(50026; "Calculate Experience"; Boolean)
+        {
+            Caption = 'Calculate Experience';
+
+        }
     }
 
     var

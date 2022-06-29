@@ -2,7 +2,7 @@ page 50150 "Wage Addition Calculated"
 {
     Caption = 'Wage Addition';
     Editable = false;
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "Wage Addition";
 
     layout
