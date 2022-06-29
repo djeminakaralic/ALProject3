@@ -120,8 +120,8 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
-                Kolicina := GLEntry.Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
-                KolicinaIS := GLEntry.Amount;
+                Kolicina := Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
+                KolicinaIS := Amount;
 
 
                 //GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
