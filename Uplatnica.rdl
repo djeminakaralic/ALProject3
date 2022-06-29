@@ -1432,6 +1432,12 @@ End Function
         <Field Name="BankAccNo">
           <DataField>BankAccNo</DataField>
         </Field>
+<<<<<<< HEAD
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
+        </Field>
+=======
+>>>>>>> e1a05e4d5c38bf3810febd5d3b4633fa57570d7b
         <Field Name="Counter">
           <DataField>Counter</DataField>
         </Field>
