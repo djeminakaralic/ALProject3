@@ -11,535 +11,6 @@
       <rd:DataSourceID>268be0c1-83c7-4f5d-8a16-d1d243fee973</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="Address">
-          <DataField>Address</DataField>
-        </Field>
-        <Field Name="PostCode">
-          <DataField>PostCode</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="IDYear">
-          <DataField>IDYear</DataField>
-        </Field>
-        <Field Name="EmployeeID">
-          <DataField>EmployeeID</DataField>
-        </Field>
-        <Field Name="LastName">
-          <DataField>LastName</DataField>
-        </Field>
-        <Field Name="FirstName">
-          <DataField>FirstName</DataField>
-        </Field>
-        <Field Name="No">
-          <DataField>No</DataField>
-        </Field>
-        <Field Name="WageBase">
-          <DataField>WageBase</DataField>
-        </Field>
-        <Field Name="WageBaseFormat">
-          <DataField>WageBaseFormat</DataField>
-        </Field>
-        <Field Name="FinalNetWage">
-          <DataField>FinalNetWage</DataField>
-        </Field>
-        <Field Name="FinalNetWageFormat">
-          <DataField>FinalNetWageFormat</DataField>
-        </Field>
-        <Field Name="WageReduction">
-          <DataField>WageReduction</DataField>
-        </Field>
-        <Field Name="WageReductionFormat">
-          <DataField>WageReductionFormat</DataField>
-        </Field>
-        <Field Name="Payment">
-          <DataField>Payment</DataField>
-        </Field>
-        <Field Name="PaymentFormat">
-          <DataField>PaymentFormat</DataField>
-        </Field>
-        <Field Name="PreostaleUplateNetWage">
-          <DataField>PreostaleUplateNetWage</DataField>
-        </Field>
-        <Field Name="PreostaleUplateNetWageFormat">
-          <DataField>PreostaleUplateNetWageFormat</DataField>
-        </Field>
-        <Field Name="PreostaleUplateNetWageAT">
-          <DataField>PreostaleUplateNetWageAT</DataField>
-        </Field>
-        <Field Name="PreostaleUplateNetWageATFormat">
-          <DataField>PreostaleUplateNetWageATFormat</DataField>
-        </Field>
-        <Field Name="TaxLineIndirectWageAdditionAmount">
-          <DataField>TaxLineIndirectWageAdditionAmount</DataField>
-        </Field>
-        <Field Name="TaxLineIndirectWageAdditionAmountFormat">
-          <DataField>TaxLineIndirectWageAdditionAmountFormat</DataField>
-        </Field>
-        <Field Name="TaxDeductions">
-          <DataField>TaxDeductions</DataField>
-        </Field>
-        <Field Name="TaxDeductionsFormat">
-          <DataField>TaxDeductionsFormat</DataField>
-        </Field>
-        <Field Name="tax">
-          <DataField>tax</DataField>
-        </Field>
-        <Field Name="taxFormat">
-          <DataField>taxFormat</DataField>
-        </Field>
-        <Field Name="Brutto">
-          <DataField>Brutto</DataField>
-        </Field>
-        <Field Name="BruttoFormat">
-          <DataField>BruttoFormat</DataField>
-        </Field>
-        <Field Name="WType">
-          <DataField>WType</DataField>
-        </Field>
-        <Field Name="ContributionFromBruto">
-          <DataField>ContributionFromBruto</DataField>
-        </Field>
-        <Field Name="ContributionFromBrutoFormat">
-          <DataField>ContributionFromBrutoFormat</DataField>
-        </Field>
-        <Field Name="ContributionOverBruto">
-          <DataField>ContributionOverBruto</DataField>
-        </Field>
-        <Field Name="ContributionOverBrutoFormat">
-          <DataField>ContributionOverBrutoFormat</DataField>
-        </Field>
-        <Field Name="UntaxableWage">
-          <DataField>UntaxableWage</DataField>
-        </Field>
-        <Field Name="UntaxableWageFormat">
-          <DataField>UntaxableWageFormat</DataField>
-        </Field>
-        <Field Name="Add">
-          <DataField>Add</DataField>
-        </Field>
-        <Field Name="AddFormat">
-          <DataField>AddFormat</DataField>
-        </Field>
-        <Field Name="Transport">
-          <DataField>Transport</DataField>
-        </Field>
-        <Field Name="TransportFormat">
-          <DataField>TransportFormat</DataField>
-        </Field>
-        <Field Name="SatiMealToPay">
-          <DataField>SatiMealToPay</DataField>
-        </Field>
-        <Field Name="SatiMealToPayFormat">
-          <DataField>SatiMealToPayFormat</DataField>
-        </Field>
-        <Field Name="AmountOverWage">
-          <DataField>AmountOverWage</DataField>
-        </Field>
-        <Field Name="AmountOverWageFormat">
-          <DataField>AmountOverWageFormat</DataField>
-        </Field>
-        <Field Name="HourPool">
-          <DataField>HourPool</DataField>
-        </Field>
-        <Field Name="HourPoolFormat">
-          <DataField>HourPoolFormat</DataField>
-        </Field>
-        <Field Name="Sektor">
-          <DataField>Sektor</DataField>
-        </Field>
-        <Field Name="Odjel">
-          <DataField>Odjel</DataField>
-        </Field>
-        <Field Name="Grupa">
-          <DataField>Grupa</DataField>
-        </Field>
-        <Field Name="Tim">
-          <DataField>Tim</DataField>
-        </Field>
-        <Field Name="Deduction">
-          <DataField>Deduction</DataField>
-        </Field>
-        <Field Name="DeductionFormat">
-          <DataField>DeductionFormat</DataField>
-        </Field>
-        <Field Name="WHO">
-          <DataField>WHO</DataField>
-        </Field>
-        <Field Name="WageType">
-          <DataField>WageType</DataField>
-        </Field>
-        <Field Name="PDate">
-          <DataField>PDate</DataField>
-        </Field>
-        <Field Name="CDate">
-          <DataField>CDate</DataField>
-        </Field>
-        <Field Name="RDate">
-          <DataField>RDate</DataField>
-        </Field>
-        <Field Name="Kredit">
-          <DataField>Kredit</DataField>
-        </Field>
-        <Field Name="KreditFormat">
-          <DataField>KreditFormat</DataField>
-        </Field>
-        <Field Name="TD">
-          <DataField>TD</DataField>
-        </Field>
-        <Field Name="TDFormat">
-          <DataField>TDFormat</DataField>
-        </Field>
-        <Field Name="AdditionalTax">
-          <DataField>AdditionalTax</DataField>
-        </Field>
-        <Field Name="AdditionalTaxFormat">
-          <DataField>AdditionalTaxFormat</DataField>
-        </Field>
-        <Field Name="ContributionRS">
-          <DataField>ContributionRS</DataField>
-        </Field>
-        <Field Name="ContributionRSFormat">
-          <DataField>ContributionRSFormat</DataField>
-        </Field>
-        <Field Name="TaxRS">
-          <DataField>TaxRS</DataField>
-        </Field>
-        <Field Name="TaxRSFormat">
-          <DataField>TaxRSFormat</DataField>
-        </Field>
-        <Field Name="RegresBrutto">
-          <DataField>RegresBrutto</DataField>
-        </Field>
-        <Field Name="RegresBruttoFormat">
-          <DataField>RegresBruttoFormat</DataField>
-        </Field>
-        <Field Name="RegresNetto">
-          <DataField>RegresNetto</DataField>
-        </Field>
-        <Field Name="RegresNettoFormat">
-          <DataField>RegresNettoFormat</DataField>
-        </Field>
-        <Field Name="OrgDio">
-          <DataField>OrgDio</DataField>
-        </Field>
-        <Field Name="NazivOrgDijela">
-          <DataField>NazivOrgDijela</DataField>
-        </Field>
-        <Field Name="OrgJedinica">
-          <DataField>OrgJedinica</DataField>
-        </Field>
-        <Field Name="NazivOrgJedinice">
-          <DataField>NazivOrgJedinice</DataField>
-        </Field>
-        <Field Name="JMB">
-          <DataField>JMB</DataField>
-        </Field>
-        <Field Name="Gender">
-          <DataField>Gender</DataField>
-        </Field>
-        <Field Name="EmploymentDate">
-          <DataField>EmploymentDate</DataField>
-        </Field>
-        <Field Name="TerminationDate">
-          <DataField>TerminationDate</DataField>
-        </Field>
-        <Field Name="IDOJ">
-          <DataField>IDOJ</DataField>
-        </Field>
-        <Field Name="B1">
-          <DataField>B1</DataField>
-        </Field>
-        <Field Name="B1R">
-          <DataField>B1R</DataField>
-        </Field>
-        <Field Name="Str">
-          <DataField>Str</DataField>
-        </Field>
-        <Field Name="PositioCode">
-          <DataField>PositioCode</DataField>
-        </Field>
-        <Field Name="PositionDescription">
-          <DataField>PositionDescription</DataField>
-        </Field>
-        <Field Name="NivoRukovodstva">
-          <DataField>NivoRukovodstva</DataField>
-        </Field>
-        <Field Name="CubeFTE">
-          <DataField>CubeFTE</DataField>
-        </Field>
-        <Field Name="CostType">
-          <DataField>CostType</DataField>
-        </Field>
-        <Field Name="Type">
-          <DataField>Type</DataField>
-        </Field>
-        <Field Name="CubeCodeName">
-          <DataField>CubeCodeName</DataField>
-        </Field>
-        <Field Name="CubeHC">
-          <DataField>CubeHC</DataField>
-        </Field>
-        <Field Name="KoefOlaksice">
-          <DataField>KoefOlaksice</DataField>
-        </Field>
-        <Field Name="KoefOlaksiceFormat">
-          <DataField>KoefOlaksiceFormat</DataField>
-        </Field>
-        <Field Name="BaseDeduct">
-          <DataField>BaseDeduct</DataField>
-        </Field>
-        <Field Name="BaseDeductFormat">
-          <DataField>BaseDeductFormat</DataField>
-        </Field>
-        <Field Name="sumPIO">
-          <DataField>sumPIO</DataField>
-        </Field>
-        <Field Name="sumPIOFormat">
-          <DataField>sumPIOFormat</DataField>
-        </Field>
-        <Field Name="sumZDR">
-          <DataField>sumZDR</DataField>
-        </Field>
-        <Field Name="sumZDRFormat">
-          <DataField>sumZDRFormat</DataField>
-        </Field>
-        <Field Name="sumNZ">
-          <DataField>sumNZ</DataField>
-        </Field>
-        <Field Name="sumNZFormat">
-          <DataField>sumNZFormat</DataField>
-        </Field>
-        <Field Name="Djecija">
-          <DataField>Djecija</DataField>
-        </Field>
-        <Field Name="DjecijaFormat">
-          <DataField>DjecijaFormat</DataField>
-        </Field>
-        <Field Name="RVI">
-          <DataField>RVI</DataField>
-        </Field>
-        <Field Name="RVIFormat">
-          <DataField>RVIFormat</DataField>
-        </Field>
-        <Field Name="Komora">
-          <DataField>Komora</DataField>
-        </Field>
-        <Field Name="KomoraFormat">
-          <DataField>KomoraFormat</DataField>
-        </Field>
-        <Field Name="sumNZna">
-          <DataField>sumNZna</DataField>
-        </Field>
-        <Field Name="sumNZnaFormat">
-          <DataField>sumNZnaFormat</DataField>
-        </Field>
-        <Field Name="sumZDRna">
-          <DataField>sumZDRna</DataField>
-        </Field>
-        <Field Name="sumZDRnaFormat">
-          <DataField>sumZDRnaFormat</DataField>
-        </Field>
-        <Field Name="sumPIOna">
-          <DataField>sumPIOna</DataField>
-        </Field>
-        <Field Name="sumPIOnaFormat">
-          <DataField>sumPIOnaFormat</DataField>
-        </Field>
-        <Field Name="SMECORE">
-          <DataField>SMECORE</DataField>
-        </Field>
-        <Field Name="SMECOREFormat">
-          <DataField>SMECOREFormat</DataField>
-        </Field>
-        <Field Name="PROJFIN">
-          <DataField>PROJFIN</DataField>
-        </Field>
-        <Field Name="PROJFINFormat">
-          <DataField>PROJFINFormat</DataField>
-        </Field>
-        <Field Name="PUFIN">
-          <DataField>PUFIN</DataField>
-        </Field>
-        <Field Name="PUFINFormat">
-          <DataField>PUFINFormat</DataField>
-        </Field>
-        <Field Name="GM">
-          <DataField>GM</DataField>
-        </Field>
-        <Field Name="GMFormat">
-          <DataField>GMFormat</DataField>
-        </Field>
-        <Field Name="OVER">
-          <DataField>OVER</DataField>
-        </Field>
-        <Field Name="OVERFormat">
-          <DataField>OVERFormat</DataField>
-        </Field>
-        <Field Name="AFLUENT">
-          <DataField>AFLUENT</DataField>
-        </Field>
-        <Field Name="AFLUENTFormat">
-          <DataField>AFLUENTFormat</DataField>
-        </Field>
-        <Field Name="ALM">
-          <DataField>ALM</DataField>
-        </Field>
-        <Field Name="ALMFormat">
-          <DataField>ALMFormat</DataField>
-        </Field>
-        <Field Name="SERVICE">
-          <DataField>SERVICE</DataField>
-        </Field>
-        <Field Name="SERVICEFormat">
-          <DataField>SERVICEFormat</DataField>
-        </Field>
-        <Field Name="BO">
-          <DataField>BO</DataField>
-        </Field>
-        <Field Name="BOFormat">
-          <DataField>BOFormat</DataField>
-        </Field>
-        <Field Name="HCC">
-          <DataField>HCC</DataField>
-        </Field>
-        <Field Name="HCCFormat">
-          <DataField>HCCFormat</DataField>
-        </Field>
-        <Field Name="HCP">
-          <DataField>HCP</DataField>
-        </Field>
-        <Field Name="HCPFormat">
-          <DataField>HCPFormat</DataField>
-        </Field>
-        <Field Name="MICRO">
-          <DataField>MICRO</DataField>
-        </Field>
-        <Field Name="MICROFormat">
-          <DataField>MICROFormat</DataField>
-        </Field>
-        <Field Name="PRIVATE">
-          <DataField>PRIVATE</DataField>
-        </Field>
-        <Field Name="PRIVATEFormat">
-          <DataField>PRIVATEFormat</DataField>
-        </Field>
-        <Field Name="vod">
-          <DataField>vod</DataField>
-        </Field>
-        <Field Name="vodFormat">
-          <DataField>vodFormat</DataField>
-        </Field>
-        <Field Name="elnep">
-          <DataField>elnep</DataField>
-        </Field>
-        <Field Name="elnepFormat">
-          <DataField>elnepFormat</DataField>
-        </Field>
-        <Field Name="TaxBasis">
-          <DataField>TaxBasis</DataField>
-        </Field>
-        <Field Name="TaxBasisFormat">
-          <DataField>TaxBasisFormat</DataField>
-        </Field>
-        <Field Name="TotalCubeName">
-          <DataField>TotalCubeName</DataField>
-        </Field>
-        <Field Name="WEP">
-          <DataField>WEP</DataField>
-        </Field>
-        <Field Name="WEPFormat">
-          <DataField>WEPFormat</DataField>
-        </Field>
-        <Field Name="WePNetto">
-          <DataField>WePNetto</DataField>
-        </Field>
-        <Field Name="WePNettoFormat">
-          <DataField>WePNettoFormat</DataField>
-        </Field>
-        <Field Name="Use">
-          <DataField>Use</DataField>
-        </Field>
-        <Field Name="UseFormat">
-          <DataField>UseFormat</DataField>
-        </Field>
-        <Field Name="DepartmentType">
-          <DataField>DepartmentType</DataField>
-        </Field>
-        <Field Name="DateFrom">
-          <DataField>DateFrom</DataField>
-        </Field>
-        <Field Name="DateTo">
-          <DataField>DateTo</DataField>
-        </Field>
-        <Field Name="regres">
-          <DataField>regres</DataField>
-        </Field>
-        <Field Name="regresFormat">
-          <DataField>regresFormat</DataField>
-        </Field>
-        <Field Name="regresneop">
-          <DataField>regresneop</DataField>
-        </Field>
-        <Field Name="regresneopFormat">
-          <DataField>regresneopFormat</DataField>
-        </Field>
-        <Field Name="topli">
-          <DataField>topli</DataField>
-        </Field>
-        <Field Name="topliFormat">
-          <DataField>topliFormat</DataField>
-        </Field>
-        <Field Name="toplineop">
-          <DataField>toplineop</DataField>
-        </Field>
-        <Field Name="toplineopFormat">
-          <DataField>toplineopFormat</DataField>
-        </Field>
-        <Field Name="prevoz">
-          <DataField>prevoz</DataField>
-        </Field>
-        <Field Name="prevozFormat">
-          <DataField>prevozFormat</DataField>
-        </Field>
-        <Field Name="prevozneop">
-          <DataField>prevozneop</DataField>
-        </Field>
-        <Field Name="prevozneopFormat">
-          <DataField>prevozneopFormat</DataField>
-        </Field>
-        <Field Name="ukupno">
-          <DataField>ukupno</DataField>
-        </Field>
-        <Field Name="ukupnoFormat">
-          <DataField>ukupnoFormat</DataField>
-        </Field>
-        <Field Name="Incentive">
-          <DataField>Incentive</DataField>
-        </Field>
-        <Field Name="IncentiveFormat">
-          <DataField>IncentiveFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -9209,12 +8680,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -9269,4 +8734,533 @@ RMwtXbVOhdjhIM5YF7pNCsK17xUUkGXy1zB0R71BYxxDA1ZqoBPKoaNApjF73mLQhm+Rrbv2p+HekXOK
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="CompanyName">
+          <DataField>CompanyName</DataField>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+        </Field>
+        <Field Name="PostCode">
+          <DataField>PostCode</DataField>
+        </Field>
+        <Field Name="City">
+          <DataField>City</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="IDYear">
+          <DataField>IDYear</DataField>
+        </Field>
+        <Field Name="EmployeeID">
+          <DataField>EmployeeID</DataField>
+        </Field>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
+        </Field>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
+        </Field>
+        <Field Name="No">
+          <DataField>No</DataField>
+        </Field>
+        <Field Name="WageBase">
+          <DataField>WageBase</DataField>
+        </Field>
+        <Field Name="WageBaseFormat">
+          <DataField>WageBaseFormat</DataField>
+        </Field>
+        <Field Name="FinalNetWage">
+          <DataField>FinalNetWage</DataField>
+        </Field>
+        <Field Name="FinalNetWageFormat">
+          <DataField>FinalNetWageFormat</DataField>
+        </Field>
+        <Field Name="WageReduction">
+          <DataField>WageReduction</DataField>
+        </Field>
+        <Field Name="WageReductionFormat">
+          <DataField>WageReductionFormat</DataField>
+        </Field>
+        <Field Name="Payment">
+          <DataField>Payment</DataField>
+        </Field>
+        <Field Name="PaymentFormat">
+          <DataField>PaymentFormat</DataField>
+        </Field>
+        <Field Name="PreostaleUplateNetWage">
+          <DataField>PreostaleUplateNetWage</DataField>
+        </Field>
+        <Field Name="PreostaleUplateNetWageFormat">
+          <DataField>PreostaleUplateNetWageFormat</DataField>
+        </Field>
+        <Field Name="PreostaleUplateNetWageAT">
+          <DataField>PreostaleUplateNetWageAT</DataField>
+        </Field>
+        <Field Name="PreostaleUplateNetWageATFormat">
+          <DataField>PreostaleUplateNetWageATFormat</DataField>
+        </Field>
+        <Field Name="TaxLineIndirectWageAdditionAmount">
+          <DataField>TaxLineIndirectWageAdditionAmount</DataField>
+        </Field>
+        <Field Name="TaxLineIndirectWageAdditionAmountFormat">
+          <DataField>TaxLineIndirectWageAdditionAmountFormat</DataField>
+        </Field>
+        <Field Name="TaxDeductions">
+          <DataField>TaxDeductions</DataField>
+        </Field>
+        <Field Name="TaxDeductionsFormat">
+          <DataField>TaxDeductionsFormat</DataField>
+        </Field>
+        <Field Name="tax">
+          <DataField>tax</DataField>
+        </Field>
+        <Field Name="taxFormat">
+          <DataField>taxFormat</DataField>
+        </Field>
+        <Field Name="Brutto">
+          <DataField>Brutto</DataField>
+        </Field>
+        <Field Name="BruttoFormat">
+          <DataField>BruttoFormat</DataField>
+        </Field>
+        <Field Name="WType">
+          <DataField>WType</DataField>
+        </Field>
+        <Field Name="ContributionFromBruto">
+          <DataField>ContributionFromBruto</DataField>
+        </Field>
+        <Field Name="ContributionFromBrutoFormat">
+          <DataField>ContributionFromBrutoFormat</DataField>
+        </Field>
+        <Field Name="ContributionOverBruto">
+          <DataField>ContributionOverBruto</DataField>
+        </Field>
+        <Field Name="ContributionOverBrutoFormat">
+          <DataField>ContributionOverBrutoFormat</DataField>
+        </Field>
+        <Field Name="UntaxableWage">
+          <DataField>UntaxableWage</DataField>
+        </Field>
+        <Field Name="UntaxableWageFormat">
+          <DataField>UntaxableWageFormat</DataField>
+        </Field>
+        <Field Name="Add">
+          <DataField>Add</DataField>
+        </Field>
+        <Field Name="AddFormat">
+          <DataField>AddFormat</DataField>
+        </Field>
+        <Field Name="Transport">
+          <DataField>Transport</DataField>
+        </Field>
+        <Field Name="TransportFormat">
+          <DataField>TransportFormat</DataField>
+        </Field>
+        <Field Name="SatiMealToPay">
+          <DataField>SatiMealToPay</DataField>
+        </Field>
+        <Field Name="SatiMealToPayFormat">
+          <DataField>SatiMealToPayFormat</DataField>
+        </Field>
+        <Field Name="AmountOverWage">
+          <DataField>AmountOverWage</DataField>
+        </Field>
+        <Field Name="AmountOverWageFormat">
+          <DataField>AmountOverWageFormat</DataField>
+        </Field>
+        <Field Name="HourPool">
+          <DataField>HourPool</DataField>
+        </Field>
+        <Field Name="HourPoolFormat">
+          <DataField>HourPoolFormat</DataField>
+        </Field>
+        <Field Name="Sektor">
+          <DataField>Sektor</DataField>
+        </Field>
+        <Field Name="Odjel">
+          <DataField>Odjel</DataField>
+        </Field>
+        <Field Name="Grupa">
+          <DataField>Grupa</DataField>
+        </Field>
+        <Field Name="Tim">
+          <DataField>Tim</DataField>
+        </Field>
+        <Field Name="Deduction">
+          <DataField>Deduction</DataField>
+        </Field>
+        <Field Name="DeductionFormat">
+          <DataField>DeductionFormat</DataField>
+        </Field>
+        <Field Name="WHO">
+          <DataField>WHO</DataField>
+        </Field>
+        <Field Name="WageType">
+          <DataField>WageType</DataField>
+        </Field>
+        <Field Name="PDate">
+          <DataField>PDate</DataField>
+        </Field>
+        <Field Name="CDate">
+          <DataField>CDate</DataField>
+        </Field>
+        <Field Name="RDate">
+          <DataField>RDate</DataField>
+        </Field>
+        <Field Name="Kredit">
+          <DataField>Kredit</DataField>
+        </Field>
+        <Field Name="KreditFormat">
+          <DataField>KreditFormat</DataField>
+        </Field>
+        <Field Name="TD">
+          <DataField>TD</DataField>
+        </Field>
+        <Field Name="TDFormat">
+          <DataField>TDFormat</DataField>
+        </Field>
+        <Field Name="AdditionalTax">
+          <DataField>AdditionalTax</DataField>
+        </Field>
+        <Field Name="AdditionalTaxFormat">
+          <DataField>AdditionalTaxFormat</DataField>
+        </Field>
+        <Field Name="ContributionRS">
+          <DataField>ContributionRS</DataField>
+        </Field>
+        <Field Name="ContributionRSFormat">
+          <DataField>ContributionRSFormat</DataField>
+        </Field>
+        <Field Name="TaxRS">
+          <DataField>TaxRS</DataField>
+        </Field>
+        <Field Name="TaxRSFormat">
+          <DataField>TaxRSFormat</DataField>
+        </Field>
+        <Field Name="RegresBrutto">
+          <DataField>RegresBrutto</DataField>
+        </Field>
+        <Field Name="RegresBruttoFormat">
+          <DataField>RegresBruttoFormat</DataField>
+        </Field>
+        <Field Name="RegresNetto">
+          <DataField>RegresNetto</DataField>
+        </Field>
+        <Field Name="RegresNettoFormat">
+          <DataField>RegresNettoFormat</DataField>
+        </Field>
+        <Field Name="OrgDio">
+          <DataField>OrgDio</DataField>
+        </Field>
+        <Field Name="NazivOrgDijela">
+          <DataField>NazivOrgDijela</DataField>
+        </Field>
+        <Field Name="OrgJedinica">
+          <DataField>OrgJedinica</DataField>
+        </Field>
+        <Field Name="NazivOrgJedinice">
+          <DataField>NazivOrgJedinice</DataField>
+        </Field>
+        <Field Name="JMB">
+          <DataField>JMB</DataField>
+        </Field>
+        <Field Name="Gender">
+          <DataField>Gender</DataField>
+        </Field>
+        <Field Name="EmploymentDate">
+          <DataField>EmploymentDate</DataField>
+        </Field>
+        <Field Name="TerminationDate">
+          <DataField>TerminationDate</DataField>
+        </Field>
+        <Field Name="IDOJ">
+          <DataField>IDOJ</DataField>
+        </Field>
+        <Field Name="B1">
+          <DataField>B1</DataField>
+        </Field>
+        <Field Name="B1R">
+          <DataField>B1R</DataField>
+        </Field>
+        <Field Name="Str">
+          <DataField>Str</DataField>
+        </Field>
+        <Field Name="PositioCode">
+          <DataField>PositioCode</DataField>
+        </Field>
+        <Field Name="PositionDescription">
+          <DataField>PositionDescription</DataField>
+        </Field>
+        <Field Name="NivoRukovodstva">
+          <DataField>NivoRukovodstva</DataField>
+        </Field>
+        <Field Name="CubeFTE">
+          <DataField>CubeFTE</DataField>
+        </Field>
+        <Field Name="CostType">
+          <DataField>CostType</DataField>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+        </Field>
+        <Field Name="CubeCodeName">
+          <DataField>CubeCodeName</DataField>
+        </Field>
+        <Field Name="CubeHC">
+          <DataField>CubeHC</DataField>
+        </Field>
+        <Field Name="KoefOlaksice">
+          <DataField>KoefOlaksice</DataField>
+        </Field>
+        <Field Name="KoefOlaksiceFormat">
+          <DataField>KoefOlaksiceFormat</DataField>
+        </Field>
+        <Field Name="BaseDeduct">
+          <DataField>BaseDeduct</DataField>
+        </Field>
+        <Field Name="BaseDeductFormat">
+          <DataField>BaseDeductFormat</DataField>
+        </Field>
+        <Field Name="sumPIO">
+          <DataField>sumPIO</DataField>
+        </Field>
+        <Field Name="sumPIOFormat">
+          <DataField>sumPIOFormat</DataField>
+        </Field>
+        <Field Name="sumZDR">
+          <DataField>sumZDR</DataField>
+        </Field>
+        <Field Name="sumZDRFormat">
+          <DataField>sumZDRFormat</DataField>
+        </Field>
+        <Field Name="sumNZ">
+          <DataField>sumNZ</DataField>
+        </Field>
+        <Field Name="sumNZFormat">
+          <DataField>sumNZFormat</DataField>
+        </Field>
+        <Field Name="Djecija">
+          <DataField>Djecija</DataField>
+        </Field>
+        <Field Name="DjecijaFormat">
+          <DataField>DjecijaFormat</DataField>
+        </Field>
+        <Field Name="RVI">
+          <DataField>RVI</DataField>
+        </Field>
+        <Field Name="RVIFormat">
+          <DataField>RVIFormat</DataField>
+        </Field>
+        <Field Name="Komora">
+          <DataField>Komora</DataField>
+        </Field>
+        <Field Name="KomoraFormat">
+          <DataField>KomoraFormat</DataField>
+        </Field>
+        <Field Name="sumNZna">
+          <DataField>sumNZna</DataField>
+        </Field>
+        <Field Name="sumNZnaFormat">
+          <DataField>sumNZnaFormat</DataField>
+        </Field>
+        <Field Name="sumZDRna">
+          <DataField>sumZDRna</DataField>
+        </Field>
+        <Field Name="sumZDRnaFormat">
+          <DataField>sumZDRnaFormat</DataField>
+        </Field>
+        <Field Name="sumPIOna">
+          <DataField>sumPIOna</DataField>
+        </Field>
+        <Field Name="sumPIOnaFormat">
+          <DataField>sumPIOnaFormat</DataField>
+        </Field>
+        <Field Name="SMECORE">
+          <DataField>SMECORE</DataField>
+        </Field>
+        <Field Name="SMECOREFormat">
+          <DataField>SMECOREFormat</DataField>
+        </Field>
+        <Field Name="PROJFIN">
+          <DataField>PROJFIN</DataField>
+        </Field>
+        <Field Name="PROJFINFormat">
+          <DataField>PROJFINFormat</DataField>
+        </Field>
+        <Field Name="PUFIN">
+          <DataField>PUFIN</DataField>
+        </Field>
+        <Field Name="PUFINFormat">
+          <DataField>PUFINFormat</DataField>
+        </Field>
+        <Field Name="GM">
+          <DataField>GM</DataField>
+        </Field>
+        <Field Name="GMFormat">
+          <DataField>GMFormat</DataField>
+        </Field>
+        <Field Name="OVER">
+          <DataField>OVER</DataField>
+        </Field>
+        <Field Name="OVERFormat">
+          <DataField>OVERFormat</DataField>
+        </Field>
+        <Field Name="AFLUENT">
+          <DataField>AFLUENT</DataField>
+        </Field>
+        <Field Name="AFLUENTFormat">
+          <DataField>AFLUENTFormat</DataField>
+        </Field>
+        <Field Name="ALM">
+          <DataField>ALM</DataField>
+        </Field>
+        <Field Name="ALMFormat">
+          <DataField>ALMFormat</DataField>
+        </Field>
+        <Field Name="SERVICE">
+          <DataField>SERVICE</DataField>
+        </Field>
+        <Field Name="SERVICEFormat">
+          <DataField>SERVICEFormat</DataField>
+        </Field>
+        <Field Name="BO">
+          <DataField>BO</DataField>
+        </Field>
+        <Field Name="BOFormat">
+          <DataField>BOFormat</DataField>
+        </Field>
+        <Field Name="HCC">
+          <DataField>HCC</DataField>
+        </Field>
+        <Field Name="HCCFormat">
+          <DataField>HCCFormat</DataField>
+        </Field>
+        <Field Name="HCP">
+          <DataField>HCP</DataField>
+        </Field>
+        <Field Name="HCPFormat">
+          <DataField>HCPFormat</DataField>
+        </Field>
+        <Field Name="MICRO">
+          <DataField>MICRO</DataField>
+        </Field>
+        <Field Name="MICROFormat">
+          <DataField>MICROFormat</DataField>
+        </Field>
+        <Field Name="PRIVATE">
+          <DataField>PRIVATE</DataField>
+        </Field>
+        <Field Name="PRIVATEFormat">
+          <DataField>PRIVATEFormat</DataField>
+        </Field>
+        <Field Name="vod">
+          <DataField>vod</DataField>
+        </Field>
+        <Field Name="vodFormat">
+          <DataField>vodFormat</DataField>
+        </Field>
+        <Field Name="elnep">
+          <DataField>elnep</DataField>
+        </Field>
+        <Field Name="elnepFormat">
+          <DataField>elnepFormat</DataField>
+        </Field>
+        <Field Name="TaxBasis">
+          <DataField>TaxBasis</DataField>
+        </Field>
+        <Field Name="TaxBasisFormat">
+          <DataField>TaxBasisFormat</DataField>
+        </Field>
+        <Field Name="TotalCubeName">
+          <DataField>TotalCubeName</DataField>
+        </Field>
+        <Field Name="WEP">
+          <DataField>WEP</DataField>
+        </Field>
+        <Field Name="WEPFormat">
+          <DataField>WEPFormat</DataField>
+        </Field>
+        <Field Name="WePNetto">
+          <DataField>WePNetto</DataField>
+        </Field>
+        <Field Name="WePNettoFormat">
+          <DataField>WePNettoFormat</DataField>
+        </Field>
+        <Field Name="Use">
+          <DataField>Use</DataField>
+        </Field>
+        <Field Name="UseFormat">
+          <DataField>UseFormat</DataField>
+        </Field>
+        <Field Name="DepartmentType">
+          <DataField>DepartmentType</DataField>
+        </Field>
+        <Field Name="DateFrom">
+          <DataField>DateFrom</DataField>
+        </Field>
+        <Field Name="DateTo">
+          <DataField>DateTo</DataField>
+        </Field>
+        <Field Name="regres">
+          <DataField>regres</DataField>
+        </Field>
+        <Field Name="regresFormat">
+          <DataField>regresFormat</DataField>
+        </Field>
+        <Field Name="regresneop">
+          <DataField>regresneop</DataField>
+        </Field>
+        <Field Name="regresneopFormat">
+          <DataField>regresneopFormat</DataField>
+        </Field>
+        <Field Name="topli">
+          <DataField>topli</DataField>
+        </Field>
+        <Field Name="topliFormat">
+          <DataField>topliFormat</DataField>
+        </Field>
+        <Field Name="toplineop">
+          <DataField>toplineop</DataField>
+        </Field>
+        <Field Name="toplineopFormat">
+          <DataField>toplineopFormat</DataField>
+        </Field>
+        <Field Name="prevoz">
+          <DataField>prevoz</DataField>
+        </Field>
+        <Field Name="prevozFormat">
+          <DataField>prevozFormat</DataField>
+        </Field>
+        <Field Name="prevozneop">
+          <DataField>prevozneop</DataField>
+        </Field>
+        <Field Name="prevozneopFormat">
+          <DataField>prevozneopFormat</DataField>
+        </Field>
+        <Field Name="ukupno">
+          <DataField>ukupno</DataField>
+        </Field>
+        <Field Name="ukupnoFormat">
+          <DataField>ukupnoFormat</DataField>
+        </Field>
+        <Field Name="Incentive">
+          <DataField>Incentive</DataField>
+        </Field>
+        <Field Name="IncentiveFormat">
+          <DataField>IncentiveFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
