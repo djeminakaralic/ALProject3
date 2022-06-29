@@ -16,6 +16,9 @@ report 50075 "Blagajnički dnevnik"
             column(PostingDate; DataItem22."Posting Date")
             {
             }
+            column(JBName; DataItem22."Journal Batch Name")
+            {
+            }
             column(GLNo; DataItem22."Entry No.")
             {
             }
@@ -95,6 +98,7 @@ report 50075 "Blagajnički dnevnik"
             {
             }
 
+
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
@@ -120,17 +124,18 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
+                Kolicina := Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
+                KolicinaIS := Amount;
 
 
+                //GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
-                    REPEAT
-                            Kolicina := GLEntry.Amount;
-                        KolicinaIS := GLEntry.Amount;
-                        PrethodniSaldo += GLEntry.Amount;
-                    UNTIL GLEntry.NEXT = 0;
+                        //IF GLEntry.FindFirst() THEN
+                        REPEAT
+                            PrethodniSaldo += GLEntry.Amount;
+                        UNTIL GLEntry.NEXT = 0;
 
 
 
@@ -145,6 +150,8 @@ report 50075 "Blagajnički dnevnik"
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
+
+
 
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
@@ -178,6 +185,7 @@ report 50075 "Blagajnički dnevnik"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
+        Test: Integer;
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         PostingDatefilter: Text[100];

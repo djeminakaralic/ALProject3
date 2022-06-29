@@ -27163,6 +27163,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - NamedType error1</note>
         </trans-unit>
+        <trans-unit id="Page 3625076245 - Control 1263003989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - Control LName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3625076245 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - Control Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1554128033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Header Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -28837,11 +28847,6 @@
           <source>Izvjestaj starosna spolna</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosna spolna - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 3697989730 - ReportColumn 1560247518 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Female,Male</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosna spolna - ReportColumn Gender_Employee - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Report 3697989730 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Izaberi izvještaj</source>
