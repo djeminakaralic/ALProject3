@@ -10,7 +10,7 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            //DataItemTableView = WHERE(Bal. Account No.=FILTER("BANK-10"));
+            //DataItemTableView = WHERE(Bal. Account No.=FILTER(BKM));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
