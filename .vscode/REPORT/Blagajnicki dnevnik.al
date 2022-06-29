@@ -16,6 +16,10 @@ report 50075 "Blagajnički dnevnik"
             column(PostingDate; DataItem22."Posting Date")
             {
             }
+            column(JBName; DataItem22."Journal Batch Name")
+            {
+
+            }
             column(GLNo; DataItem22."Entry No.")
             {
             }
@@ -95,6 +99,7 @@ report 50075 "Blagajnički dnevnik"
             {
             }
 
+
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
@@ -128,10 +133,10 @@ report 50075 "Blagajnički dnevnik"
 
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
-                    //IF GLEntry.FindFirst() THEN
-                    REPEAT
+                        //IF GLEntry.FindFirst() THEN
+                        REPEAT
                             PrethodniSaldo += GLEntry.Amount;
-                    UNTIL GLEntry.NEXT = 0;
+                        UNTIL GLEntry.NEXT = 0;
 
 
 
