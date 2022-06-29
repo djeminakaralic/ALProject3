@@ -641,6 +641,7 @@ page 50094 "Payroll Role Center"
                     Caption = 'MIP - 1023 Brčko distrikt';
                     Image = "Report";
                     Promoted = false;
+                    Visible = false;
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Report "MIP - 1023 Brčko distrikt";
@@ -650,6 +651,7 @@ page 50094 "Payroll Role Center"
                     ApplicationArea = all;
                     Caption = 'MIP - 1023 BDPIOFBIH';
                     Image = "Report";
+                    Visible = false;
                     RunObject = Report "MIP - 1023 BDPIOFBIH";
                 }
                 action("GIP - 1022")
@@ -662,6 +664,7 @@ page 50094 "Payroll Role Center"
                     //PromotedIsBig = false;""
                     RunObject = Report "GIP-1022 ";
                     Visible = false;
+
                 }
                 action("GIP - 1022 Cumulative")
                 {
@@ -672,6 +675,7 @@ page 50094 "Payroll Role Center"
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Report "GIP-1022 Cumulative ";
+                    Visible = false;
                 }
                 action("GIP - 1022 Brčko")
                 {
@@ -682,6 +686,7 @@ page 50094 "Payroll Role Center"
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Report "GIP-1022 Brcko";
+                    Visible = false;
                 }
                 action("GIP-1022 New")
                 {
@@ -734,6 +739,7 @@ page 50094 "Payroll Role Center"
                     Caption = 'Obrazac 1002-OL Brcko';
                     Image = "Report";
                     RunObject = Report "Obrazac 1002-OL Brcko";
+                    Visible = false;
                 }
                 action("OLP-1021")
                 {
@@ -752,6 +758,7 @@ page 50094 "Payroll Role Center"
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
                     RunObject = Report "Obrazac DL-2";
+                    Visible = false;
                 }
 
                 action("Obrazac 2001-A")
@@ -760,6 +767,7 @@ page 50094 "Payroll Role Center"
                     Caption = 'Obrazac 2001-A';
                     Image = "Report";
                     RunObject = Report "Obrazac 2001-A";
+                    Visible = false;
                 }
                 action("Obrazac 2001-A Brcko")
                 {

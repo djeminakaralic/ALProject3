@@ -1,7 +1,7 @@
 report 50070 "Rad-1"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Rad-1.rdlc';
+    RDLCLayout = './Rad-1.rdl';
 
     dataset
     {
