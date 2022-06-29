@@ -93,15 +93,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 RunObject = Report "Isplatnica";
             }*/
 
-            action("Cash Diary")
-            {
-                Caption = 'Cash Diary';
-                Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = Report "Blagajnički dnevnik";
-            }
 
             action("Izvještaj porto blagajne")
             {

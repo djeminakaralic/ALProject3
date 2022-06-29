@@ -127,7 +127,7 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', 'BANK-10');
+                GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                         REPEAT
