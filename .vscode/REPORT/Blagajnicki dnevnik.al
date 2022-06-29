@@ -120,19 +120,19 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
-
+                Kolicina := GLEntry.Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
+                KolicinaIS := GLEntry.Amount;
 
 
                 //GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
 
-                GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
+                GLEntry.SETFILTER("Posting Date", '<=%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     //IF GLEntry.FindFirst() THEN
                     REPEAT
-                            Kolicina := GLEntry.Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
-                        KolicinaIS := GLEntry.Amount;
 
-                        PrethodniSaldo += GLEntry.Amount;
+
+                            PrethodniSaldo += GLEntry.Amount;
                         Test := GLEntry."Entry No.";
                     UNTIL GLEntry.NEXT = 0;
 
