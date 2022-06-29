@@ -16,6 +16,9 @@ report 50075 "Blagajnički dnevnik"
             column(PostingDate; DataItem22."Posting Date")
             {
             }
+            column(EntryNo; DataItem22."Entry No.")
+            {
+            }
             column(DocumentNo; DataItem22."Document No.")
             {
             }
@@ -123,11 +126,11 @@ report 50075 "Blagajnički dnevnik"
                 GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
-                        REPEAT
+                    REPEAT
                             Kolicina := GLEntry.Amount;
-                            KolicinaIS := GLEntry.Amount;
-                            PrethodniSaldo += GLEntry.Amount;
-                        UNTIL GLEntry.NEXT = 0;
+                        KolicinaIS := GLEntry.Amount;
+                        PrethodniSaldo += GLEntry.Amount;
+                    UNTIL GLEntry.NEXT = 0;
 
 
 
