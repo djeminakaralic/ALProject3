@@ -123,13 +123,17 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
+                //GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
+
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
-                IF GLEntry.FIND('-') THEN
+                //IF GLEntry.FIND('-') THEN
+                IF GLEntry.FindFirst() THEN
                     REPEAT
-                            Kolicina := GLEntry.Amount;
+                            Kolicina := GLEntry.Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
                         KolicinaIS := GLEntry.Amount;
+
                         PrethodniSaldo += GLEntry.Amount;
+                        Test := GLEntry."Entry No.";
                     UNTIL GLEntry.NEXT = 0;
 
 
@@ -178,6 +182,7 @@ report 50075 "Blagajnički dnevnik"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
+        Test: Integer;
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         PostingDatefilter: Text[100];
