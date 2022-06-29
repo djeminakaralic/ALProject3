@@ -1,7 +1,7 @@
 report 50074 "Reduction per Banks"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Reduction per Banks.rdl';
+    RDLCLayout = './Reduction per Banks.rdlc';
     Caption = 'Reduction per Banks';
     UseSystemPrinter = true;
 
