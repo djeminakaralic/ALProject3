@@ -1,7 +1,7 @@
 report 50058 "Payment List"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Payment List.rdlc';
+    RDLCLayout = './Payment List.rdl';
     Caption = 'Payment List';
 
     dataset
