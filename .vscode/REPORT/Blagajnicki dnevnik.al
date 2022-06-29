@@ -10,7 +10,7 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            //DataItemTableView = WHERE("Bal. Account No." = FILTER(BKM));
+            DataItemTableView = WHERE("Bal. Account No." = FILTER('BANK-10'));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
@@ -102,7 +102,7 @@ report 50075 "Blagajnički dnevnik"
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN //czk 1 uplata
+                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
                     Kolicina := Amount;
