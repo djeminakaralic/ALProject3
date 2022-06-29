@@ -133,7 +133,7 @@ report 50075 "Blagajnički dnevnik"
 
 
                             PrethodniSaldo += GLEntry.Amount;
-                        Test := GLEntry."Entry No.";
+
                     UNTIL GLEntry.NEXT = 0;
 
 
