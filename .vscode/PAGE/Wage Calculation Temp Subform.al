@@ -9,7 +9,7 @@ page 50044 "Wage Calculation Temp Subform"
     // //View Wage Calculation Temp before closing the calculation
 
     Caption = 'Wage Calculation Temp Subform';
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "Wage Calculation Temp";
 
     layout

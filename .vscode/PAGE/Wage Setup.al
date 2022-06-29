@@ -26,6 +26,10 @@ page 50016 "Wage Setup"
                 field("Wage Base"; "Wage Base")
                 {
                 }
+                field("Average Salary FBIH"; "Average Salary FBIH")
+                { }
+                field("Average coefficient statute"; "Average coefficient statute")
+                { }
                 field("Work Experience Basis"; "Work Experience Basis")
                 {
                     Visible = false;

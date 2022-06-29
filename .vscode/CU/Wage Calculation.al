@@ -220,8 +220,11 @@ codeunit 50002 "Wage Calculation"
                                     //  CalcTemp."Net Wage Netto 2":=NetWageNetto2;
                                     CalcTemp.MODIFY;
                                     CalcTemp."Employee Coefficient" := CalcTemp."Net Wage Netto 2" / CalcTemp."Hour Pool";
+                                    CalcTemp."Individual Hour Pool" := CalcTemp."Hour Pool";
                                     CalcTemp.MODIFY;
-                                    WageFromHoursNetto2(EmpCoefficient, EmplDefDim."Amount Distribution Coeff.");
+                                    WageFromHours(CalcTemp."Net Wage After Tax", CalcTemp."Employee Coefficient", EmplDefDim."Amount Distribution Coeff.");
+                                    CalcTemp."Wage (Base)" := CalcTemp."Employee Coefficient" * CalcTemp."Hour Pool";
+                                    CalcTemp.MODIFY;
 
 
 
@@ -1310,7 +1313,8 @@ codeunit 50002 "Wage Calculation"
                     AbsenceEmpCOACT.SETFILTER("Old Wage Base", '%1', FALSE);
                     AbsenceEmpCOACT.SETFILTER("Cause of Absence Code", '%1', COACT.Code);
                     AbsenceEmpCOACT.CALCSUMS(Quantity);
-                    CalcTemp."Individual Hour Pool" += AbsenceEmpCOACT.Quantity;
+                    //ĐK VB     CalcTemp."Individual Hour Pool" += AbsenceEmpCOACT.Quantity;
+                    CalcTemp."Individual Hour Pool" := CalcTemp."Hour Pool";
                 UNTIL COACT.NEXT = 0;
             CalcTemp.MODIFY;
         END;
@@ -1358,8 +1362,11 @@ codeunit 50002 "Wage Calculation"
                         END;
                         SickFund += NettoAmountT;
                         NettoAmount += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        //ĐK VB   ExperienceBase += NettoAmountT;
+                        IF COA."Calculate Experience" THEN
+                            ExperienceBase += NettoAmountT;
                     END;
+
                     // IF CalcTemp."Employee No."='1' THEN MESSAGE(COA.Code);
                     IF NOT (COA."Sick Leave" OR COA."Sick Leave Paid By Company" OR COA."Added To Hour Pool") THEN BEGIN
                         NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
@@ -1370,14 +1377,17 @@ codeunit 50002 "Wage Calculation"
                         // MESSAGE((FORMAT(AmtDistrCoeff)));
 
                         NettoAmount += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        IF COA."Calculate Experience" THEN
+                            ExperienceBase += NettoAmountT;
 
                     END;
+
+
 
                     IF COA."Added To Hour Pool" THEN BEGIN
                         NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
                         NettoAmount += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        //ĐK VB  ExperienceBase += NettoAmountT;
 
                     END;
                 END;

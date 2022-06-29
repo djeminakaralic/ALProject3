@@ -37,7 +37,7 @@ page 50141 "Wage Amounts"
                 }
                 field("Net Amount 2"; "Net Amount 2")
                 {
-                    Visible = false;
+
                     ApplicationArea = all;
                 }
                 field("First Name"; "First Name")
