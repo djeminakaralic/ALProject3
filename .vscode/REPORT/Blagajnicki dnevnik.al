@@ -126,8 +126,8 @@ report 50075 "Blagajnički dnevnik"
                 //GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
 
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
-                //IF GLEntry.FIND('-') THEN
-                IF GLEntry.FindFirst() THEN
+                IF GLEntry.FIND('-') THEN
+                    //IF GLEntry.FindFirst() THEN
                     REPEAT
                             Kolicina := GLEntry.Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
                         KolicinaIS := GLEntry.Amount;
@@ -149,6 +149,8 @@ report 50075 "Blagajnički dnevnik"
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
+
+
 
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
