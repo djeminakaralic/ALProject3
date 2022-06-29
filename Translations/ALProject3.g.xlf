@@ -34948,6 +34948,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension AlternativeAddress - Control Current Address - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3552131165 - Action 1337495762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
+          <source>Cash Diary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Cash Diary - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1418896891 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1418896891">
           <source>Do you want to set paid holiday for all employees?</source>
           <note from="Developer" annotates="general" priority="2"></note>
