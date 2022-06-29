@@ -102,14 +102,14 @@ report 50075 "Blagajnički dnevnik"
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'PRIMITAK' THEN BEGIN //czk 1 uplata
+                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN //czk 1 uplata
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
                     Kolicina := Amount;
                 END;
 
 
-                IF "Journal Batch Name" = 'IZDATAK' THEN BEGIN
+                IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
                     Kolicina := 0;
