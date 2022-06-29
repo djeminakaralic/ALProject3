@@ -131,7 +131,6 @@ report 50075 "Blagajnički dnevnik"
                 GLEntry.SETFILTER("Bal. Account No.", '%1', 'BANK-10');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
-                        //IF GLEntry.FindFirst() THEN
                         REPEAT
                             PrethodniSaldo += GLEntry.Amount;
                         UNTIL GLEntry.NEXT = 0;
