@@ -128,8 +128,7 @@ report 50075 "Blagajnički dnevnik"
                 KolicinaIS := Amount;
 
 
-                //GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
-
+                GLEntry.SETFILTER("Bal. Account No.", '%1', 'BANK-10');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                         //IF GLEntry.FindFirst() THEN
