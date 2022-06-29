@@ -566,7 +566,7 @@ page 50094 "Payroll Role Center"
                     Promoted = false;
                     //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
                     //PromotedIsBig = false;
-                    RunObject = Report "Summary per Employee";
+                    RunObject = Report "Summarry Per Employee";
                 }
                 action("Summary per Payment Type")
                 {

@@ -1508,6 +1508,15 @@ RMwtXbVOhdjhIM5YF7pNCsK17xUUkGXy1zB0R71BYxxDA1ZqoBPKoaNApjF73mLQhm+Rrbv2p+HekXOK
         <Field Name="Name">
           <DataField>Name</DataField>
         </Field>
+        <Field Name="PaymentType">
+          <DataField>PaymentType</DataField>
+        </Field>
+        <Field Name="PaymentAmount">
+          <DataField>PaymentAmount</DataField>
+        </Field>
+        <Field Name="PaymentAmountFormat">
+          <DataField>PaymentAmountFormat</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
