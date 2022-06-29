@@ -10,7 +10,7 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            //DataItemTableView = WHERE(Bal. Account No.=FILTER(BKM));
+            DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
@@ -102,14 +102,14 @@ report 50075 "Blagajnički dnevnik"
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'PRIMITAK' THEN BEGIN //czk 1 uplata
+                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
                     Kolicina := Amount;
                 END;
 
 
-                IF "Journal Batch Name" = 'IZDATAK' THEN BEGIN
+                IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
                     Kolicina := 0;
@@ -124,8 +124,7 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
-                Kolicina := Amount; //ovo dvoje srediti u zavisnosti je li uplata ili isplata!!
-                KolicinaIS := Amount;
+
 
 
                 GLEntry.SETFILTER("Bal. Account No.", '%1', 'BANK-10');
