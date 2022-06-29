@@ -124,7 +124,8 @@ report 50075 "Blagajnički dnevnik"
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                         REPEAT
-
+                            Kolicina := GLEntry.Amount;
+                            KolicinaIS := GLEntry.Amount;
                             PrethodniSaldo += GLEntry.Amount;
                         UNTIL GLEntry.NEXT = 0;
 
