@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -1173,8 +1173,11 @@ RMwtXbVOhdjhIM5YF7pNCsK17xUUkGXy1zB0R71BYxxDA1ZqoBPKoaNApjF73mLQhm+Rrbv2p+HekXOK
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
-        <Field Name="EmployeeNo">
-          <DataField>EmployeeNo</DataField>
+        <Field Name="No_Employee">
+          <DataField>No_Employee</DataField>
+        </Field>
+        <Field Name="PaymentType">
+          <DataField>PaymentType</DataField>
         </Field>
         <Field Name="Amount">
           <DataField>Amount</DataField>
@@ -1182,56 +1185,92 @@ RMwtXbVOhdjhIM5YF7pNCsK17xUUkGXy1zB0R71BYxxDA1ZqoBPKoaNApjF73mLQhm+Rrbv2p+HekXOK
         <Field Name="AmountFormat">
           <DataField>AmountFormat</DataField>
         </Field>
-        <Field Name="DateofCalculation">
-          <DataField>DateofCalculation</DataField>
+        <Field Name="BruttoAmount">
+          <DataField>BruttoAmount</DataField>
         </Field>
-        <Field Name="WHo">
-          <DataField>WHo</DataField>
-        </Field>
-        <Field Name="Rbr">
-          <DataField>Rbr</DataField>
-        </Field>
-        <Field Name="CompanyName">
-          <DataField>CompanyName</DataField>
-        </Field>
-        <Field Name="Address">
-          <DataField>Address</DataField>
-        </Field>
-        <Field Name="PostCode">
-          <DataField>PostCode</DataField>
-        </Field>
-        <Field Name="City">
-          <DataField>City</DataField>
-        </Field>
-        <Field Name="Picture">
-          <DataField>Picture</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="RDate">
-          <DataField>RDate</DataField>
-        </Field>
-        <Field Name="Bank">
-          <DataField>Bank</DataField>
-        </Field>
-        <Field Name="InstallmentNo">
-          <DataField>InstallmentNo</DataField>
-        </Field>
-        <Field Name="No">
-          <DataField>No</DataField>
-        </Field>
-        <Field Name="Status">
-          <DataField>Status</DataField>
-        </Field>
-        <Field Name="PaidAmount">
-          <DataField>PaidAmount</DataField>
-        </Field>
-        <Field Name="PaidAmountFormat">
-          <DataField>PaidAmountFormat</DataField>
+        <Field Name="BruttoAmountFormat">
+          <DataField>BruttoAmountFormat</DataField>
         </Field>
         <Field Name="Name">
           <DataField>Name</DataField>
+        </Field>
+        <Field Name="CEO">
+          <DataField>CEO</DataField>
+        </Field>
+        <Field Name="Hours">
+          <DataField>Hours</DataField>
+        </Field>
+        <Field Name="HoursFormat">
+          <DataField>HoursFormat</DataField>
+        </Field>
+        <Field Name="COADescription">
+          <DataField>COADescription</DataField>
+        </Field>
+        <Field Name="StartDate">
+          <DataField>StartDate</DataField>
+        </Field>
+        <Field Name="EndDate">
+          <DataField>EndDate</DataField>
+        </Field>
+        <Field Name="COAType">
+          <DataField>COAType</DataField>
+        </Field>
+        <Field Name="ContributionFrom">
+          <DataField>ContributionFrom</DataField>
+        </Field>
+        <Field Name="ContributionOver">
+          <DataField>ContributionOver</DataField>
+        </Field>
+        <Field Name="ReductionType">
+          <DataField>ReductionType</DataField>
+        </Field>
+        <Field Name="Reduction">
+          <DataField>Reduction</DataField>
+        </Field>
+        <Field Name="Contribution">
+          <DataField>Contribution</DataField>
+        </Field>
+        <Field Name="ATFrom">
+          <DataField>ATFrom</DataField>
+        </Field>
+        <Field Name="ATFromNetto">
+          <DataField>ATFromNetto</DataField>
+        </Field>
+        <Field Name="Basis">
+          <DataField>Basis</DataField>
+        </Field>
+        <Field Name="BasisFormat">
+          <DataField>BasisFormat</DataField>
+        </Field>
+        <Field Name="PaymentTotal">
+          <DataField>PaymentTotal</DataField>
+        </Field>
+        <Field Name="PaymentTotalFormat">
+          <DataField>PaymentTotalFormat</DataField>
+        </Field>
+        <Field Name="ReductiionTotal">
+          <DataField>ReductiionTotal</DataField>
+        </Field>
+        <Field Name="ReductiionTotalFormat">
+          <DataField>ReductiionTotalFormat</DataField>
+        </Field>
+        <Field Name="ContributionFromTotal">
+          <DataField>ContributionFromTotal</DataField>
+        </Field>
+        <Field Name="ContributionFromTotalFormat">
+          <DataField>ContributionFromTotalFormat</DataField>
+        </Field>
+        <Field Name="ContributionOverTotal">
+          <DataField>ContributionOverTotal</DataField>
+        </Field>
+        <Field Name="ContributionOverTotalFormat">
+          <DataField>ContributionOverTotalFormat</DataField>
+        </Field>
+        <Field Name="BruttoTotal">
+          <DataField>BruttoTotal</DataField>
+        </Field>
+        <Field Name="BruttoTotalFormat">
+          <DataField>BruttoTotalFormat</DataField>
         </Field>
       </Fields>
       <Query>
