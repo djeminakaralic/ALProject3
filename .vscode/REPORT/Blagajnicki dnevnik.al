@@ -18,7 +18,6 @@ report 50075 "Blagajnički dnevnik"
             }
             column(JBName; DataItem22."Journal Batch Name")
             {
-
             }
             column(GLNo; DataItem22."Entry No.")
             {
