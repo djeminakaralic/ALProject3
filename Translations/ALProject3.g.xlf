@@ -34473,10 +34473,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report StatusExt update - NamedType TEXT</note>
         </trans-unit>
-        <trans-unit id="Report 3725376363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 1583812653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Summary per Employee</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Summary per Employee - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Summarry Per Employee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2551729866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Summary per Payment Amounts</source>
@@ -34877,6 +34877,11 @@
           <source>Employee Card is updated.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Work experience in Company - NamedType Text0001</note>
+        </trans-unit>
+        <trans-unit id="Query 3201223187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Orders Summarry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query Payment Orders Summarry - Property Caption</note>
         </trans-unit>
         <trans-unit id="XmlPort 3957032978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee No import</source>
