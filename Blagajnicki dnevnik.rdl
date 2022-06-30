@@ -683,7 +683,7 @@
             <Top>7.89981cm</Top>
             <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -717,7 +717,7 @@
             <Top>6.36115cm</Top>
             <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -751,7 +751,7 @@
             <Top>6.95409cm</Top>
             <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -785,9 +785,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>7.89981cm</Top>
-            <Left>14.43074cm</Left>
+            <Left>12.74051cm</Left>
             <Height>0.59294cm</Height>
-            <Width>2.22949cm</Width>
+            <Width>1.65496cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -819,10 +819,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>6.95409cm</Top>
-            <Left>14.43074cm</Left>
+            <Top>7.01105cm</Top>
+            <Left>12.74051cm</Left>
             <Height>0.53598cm</Height>
-            <Width>2.22949cm</Width>
+            <Width>1.65495cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -896,9 +896,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>7.89981cm</Top>
-            <Left>12.38295cm</Left>
+            <Left>10.90593cm</Left>
             <Height>0.59294cm</Height>
-            <Width>2.04779cm</Width>
+            <Width>1.83458cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -930,10 +930,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>6.4453cm</Top>
-            <Left>12.38295cm</Left>
-            <Height>0.50879cm</Height>
-            <Width>2.04779cm</Width>
+            <Top>6.36115cm</Top>
+            <Left>10.90593cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.83458cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -968,7 +968,7 @@
             <Top>8.49275cm</Top>
             <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -1014,9 +1014,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>8.49275cm</Top>
-            <Left>12.38295cm</Left>
-            <Height>0.48711cm</Height>
-            <Width>2.04779cm</Width>
+            <Left>10.90593cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.83458cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -1050,9 +1050,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>8.49275cm</Top>
-            <Left>14.46602cm</Left>
-            <Height>0.48711cm</Height>
-            <Width>2.16246cm</Width>
+            <Left>12.74051cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.65495cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -1084,10 +1084,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>6.4453cm</Top>
-            <Left>14.43074cm</Left>
-            <Height>0.50879cm</Height>
-            <Width>2.22949cm</Width>
+            <Top>6.36115cm</Top>
+            <Left>12.74051cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.65495cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -1119,10 +1119,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>6.95409cm</Top>
-            <Left>12.38295cm</Left>
+            <Top>7.01105cm</Top>
+            <Left>10.90593cm</Left>
             <Height>0.53598cm</Height>
-            <Width>2.04779cm</Width>
+            <Width>1.83458cm</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -1157,7 +1157,7 @@
             <Top>9.40319cm</Top>
             <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1191,9 +1191,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>9.40319cm</Top>
-            <Left>11.00538cm</Left>
+            <Left>10.90593cm</Left>
             <Height>0.59294cm</Height>
-            <Width>3.46064cm</Width>
+            <Width>1.83458cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1263,9 +1263,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>9.40319cm</Top>
-            <Left>14.46602cm</Left>
+            <Left>12.74051cm</Left>
             <Height>0.59294cm</Height>
-            <Width>2.16246cm</Width>
+            <Width>1.65496cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1610,11 +1610,52 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>13.25279cm</Height>
+        <Height>13.1205cm</Height>
         <Style />
       </Body>
       <Width>17.50235cm</Width>
       <Page>
+        <PageFooter>
+          <Height>2.54cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="PageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Stranica " &amp; Globals!PageNumber</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>PageNumber</rd:DefaultName>
+              <Top>1.19029cm</Top>
+              <Left>6.86247cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
