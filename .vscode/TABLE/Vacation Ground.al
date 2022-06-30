@@ -655,6 +655,12 @@ table 50015 "Vacation Ground 2"
             Caption = 'Document No.';
 
         }
+        field(40; "Max Days"; Decimal)
+        {
+            FieldClass = FlowField;
+            Caption = 'Max Days';
+            CalcFormula = Max(OpRisk.Quantity WHERE("Employee No." = FIELD("Employee No.")));
+        }
 
 
 
