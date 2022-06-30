@@ -36003,6 +36003,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension HumanResourcesSetup_ext - Control Trainings setup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Change 1267408499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Podaci o kupcu</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Change Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Change 422618514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Ime i prezime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Change AccountName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2612190612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Adresa</source>
           <note from="Developer" annotates="general" priority="2"></note>

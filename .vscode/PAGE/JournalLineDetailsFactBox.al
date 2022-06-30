@@ -2,6 +2,14 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 {
     layout
     {
+        modify(Account)
+        {
+            Caption = 'Podaci o kupcu';
+        }
+        modify(AccountName)
+        {
+            Caption = 'Ime i prezime';
+        }
         modify(PostingGroup)
         {
             Visible = false;
