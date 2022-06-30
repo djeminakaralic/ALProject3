@@ -93,7 +93,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 RunObject = Report "Isplatnica";
             }*/
 
-
             action("Izvještaj porto blagajne")
             {
                 Caption = 'Izvještaj porto blagajne';
