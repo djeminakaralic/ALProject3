@@ -2,6 +2,14 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 {
     layout
     {
+        modify(PostingGroup)
+        {
+            Visible = false;
+        }
+        modify(GenPostingSetup)
+        {
+            Visible = false;
+        }
         // Add changes to page layout here
         /*addafter("VAT Registration No.")
         {
