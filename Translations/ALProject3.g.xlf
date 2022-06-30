@@ -36039,7 +36039,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Phone_Cust - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 1915851633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
-          <source>Grad</source>
+          <source>Knjižna grupa</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Posting Group - Property Caption</note>
         </trans-unit>

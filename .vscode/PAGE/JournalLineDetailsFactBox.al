@@ -55,7 +55,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
             }
             field("Posting Group"; "Posting Group")
             {
-                Caption = 'Grad';
+                Caption = 'Knjižna grupa';
                 ApplicationArea = All;
             }
         }
