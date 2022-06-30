@@ -28,16 +28,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
         }
         addafter(AccountName)
         {
-            field(Address_Cust; Address_Cust)
-            {
-                Caption = 'Adresa';
-                ApplicationArea = All;
-            }
-            field(City_Cust; City_Cust)
-            {
-                Caption = 'Grad';
-                ApplicationArea = All;
-            }
             field(Phone_Cust; Phone_Cust)
             {
                 Caption = 'Kućni telefonski broj';
@@ -48,6 +38,23 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Broj mobilnog telefona';
                 ApplicationArea = All;
             }
+            field(Email_Cust; Email_Cust)
+            {
+                Caption = 'E-mail';
+                ApplicationArea = All;
+            }
+
+            field(Address_Cust; Address_Cust)
+            {
+                Caption = 'Adresa';
+                ApplicationArea = All;
+            }
+            field(City_Cust; City_Cust)
+            {
+                Caption = 'Grad';
+                ApplicationArea = All;
+            }
+
         }
     }
 

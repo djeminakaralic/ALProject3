@@ -136,6 +136,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Mobile Phone';
         }
+        field(50038; Email_Cust; Text[80]) //ED
+        {
+            Caption = 'E-mail';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -159,6 +163,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     City_Cust := Customer.City;
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
+                    Email_Cust := Customer."E-Mail";
                 end;
             end;
         }
