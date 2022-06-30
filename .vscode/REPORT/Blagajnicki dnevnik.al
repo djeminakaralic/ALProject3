@@ -105,6 +105,7 @@ report 50075 "Blagajnički dnevnik"
                 IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
+                    BrdokumentaIS := ''; //ED
                     Kolicina := Amount;
                 END;
 
@@ -112,6 +113,7 @@ report 50075 "Blagajnički dnevnik"
                 IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
+                    Brdokumenta := ''; //ED
                     Kolicina := 0;
                     KolicinaIS := Amount;
                 END;
