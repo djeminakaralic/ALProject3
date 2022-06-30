@@ -43,7 +43,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'E-mail';
                 ApplicationArea = All;
             }
-
             field(Address_Cust; Address_Cust)
             {
                 Caption = 'Adresa';
@@ -54,7 +53,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Grad';
                 ApplicationArea = All;
             }
-
         }
     }
 
