@@ -1,8 +1,6 @@
 report 50075 "Blagajnički dnevnik"
 {
     //ED
-
-
     DefaultLayout = RDLC;
     RDLCLayout = './Blagajnicki dnevnik.rdl';
 

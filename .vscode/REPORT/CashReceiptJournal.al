@@ -34,7 +34,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
             }
+
         }
+        movebefore(Amount; "Applies-to Doc. Type")
+        moveafter("Applies-to Doc. Type"; "Applies-to Doc. No.")
+
 
         addafter("Amount (LCY)")
         {
@@ -50,14 +54,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         modify("Applied (Yes/No)")
         {
             Visible = false;
-        }
-        modify("Posting Date")
-        {
-            trigger OnAfterValidate()
-            begin
-                //"Posting Date" := FORMAT(rec."Posting Date", 0, '<Day,2>.<Month,2>.<Year4>.');
-
-            end;
         }
     }
 

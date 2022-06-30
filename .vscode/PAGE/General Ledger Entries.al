@@ -9,6 +9,11 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
             {
                 ApplicationArea = All;
             }
+            field("Payment Type Code"; "Payment Type Code")
+            {
+                ApplicationArea = All;
+            }
+
         }
     }
 
