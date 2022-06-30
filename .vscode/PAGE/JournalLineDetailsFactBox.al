@@ -10,21 +10,20 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
         {
             Visible = false;
         }
-        /*modify(BalAccountName)
+        modify(VATPostingSetup)
         {
             Visible = false;
         }
-        modify(BalGenPostingSetup)
-        {
-            Visible = false;
-        }
-        modify(BalVATPostingSetup)
-        {
-            Visible = false;
-        }*/
         modify(BalAccount)
         {
             Visible = false;
+        }
+        addafter(AccountName)
+        {
+            field("Posting Group"; "Posting Group")
+            {
+
+            }
         }
         // Add changes to page layout here
         /*addafter("VAT Registration No.")
