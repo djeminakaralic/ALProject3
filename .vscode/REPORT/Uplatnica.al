@@ -196,7 +196,6 @@ report 50077 Uplatnica
                     if Name = 'UniCredit Bank' then
                         Message('Pronasao');
                 end
-
                 else
                     Counter := 0;
             end;
