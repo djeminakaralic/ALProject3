@@ -10,7 +10,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
         {
             Visible = false;
         }
-        modify(BalAccountName)
+        /*modify(BalAccountName)
         {
             Visible = false;
         }
@@ -19,6 +19,10 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
             Visible = false;
         }
         modify(BalVATPostingSetup)
+        {
+            Visible = false;
+        }*/
+        modify(BalAccount)
         {
             Visible = false;
         }
