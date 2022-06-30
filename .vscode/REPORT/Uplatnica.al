@@ -179,13 +179,13 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
-            column(BankIBAN; DataItem22.IBAN)
-            {
-            }
-            column(BankSWIFT; DataItem22."SWIFT Code")
-            {
-            }
             column(Counter; Counter)
+            {
+            }
+            column(BankSWIFT; BankSWIFT)
+            {
+            }
+            column(BankIBAN; BankIBAN)
             {
             }
 
@@ -224,6 +224,8 @@ report 50077 Uplatnica
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
+        BankSWIFT: Code[20];
+        BankIBAN: Code[50];
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
