@@ -26,7 +26,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
         {
             Visible = false;
         }
-        //modify()
         addafter(AccountName)
         {
             field(Address_Cust; Address_Cust)
