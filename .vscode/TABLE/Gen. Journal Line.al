@@ -101,7 +101,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50028; "Social status"; enum "Social Status")
         {
-            //TableRelation = Customer."Social status category";
             Caption = 'Social status category';
         }
         field(50030; "Address_Cust"; Text[100])
