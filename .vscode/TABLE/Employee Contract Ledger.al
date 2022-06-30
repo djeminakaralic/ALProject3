@@ -633,6 +633,15 @@ table 50071 "Employee Contract Ledger"
                                             EmployeeContractLedgerPrevious.NEXT(-1);
                                             IF EmployeeContractLedgerPrevious.Brutto <> Brutto THEN BEGIN
                                                 WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                                EGet.Get(EmployeeContractLedger."Employee No.");
+                                                WT.Reset();
+                                                WT.SetFilter(Code, '%1', EGet."Wage Type");
+                                                if WT.FindFirst() then begin
+                                                    if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
+                                                        WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                                end;
+
+
                                                 WageAmounts.VALIDATE("Application Date", Rec."Starting Date");
                                             END;
                                         END;
@@ -658,6 +667,13 @@ table 50071 "Employee Contract Ledger"
                                             EmployeeContractLedgerPrevious.NEXT(-1);
                                             IF EmployeeContractLedgerPrevious.Brutto <> Brutto THEN BEGIN
                                                 WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                                EGet.Get(EmployeeContractLedger."Employee No.");
+                                                WT.Reset();
+                                                WT.SetFilter(Code, '%1', EGet."Wage Type");
+                                                if WT.FindFirst() then begin
+                                                    if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
+                                                        WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                                end;
                                                 WageAmounts.VALIDATE("Application Date", EmployeeContractLedger."Starting Date");
                                             END;
                                         END;
@@ -1888,6 +1904,33 @@ table 50071 "Employee Contract Ledger"
                     END;
                 END;
                 //END;
+
+                IF (("Reason for Change".AsInteger() = 1)) or ("Reason for Change".AsInteger() = 2) THEN BEGIN
+                    WorkBook.Reset();
+                    WorkBook.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    WorkBook.SETFILTER("Contract Ledger Entry No.", '%1', "No.");
+                    IF NOT WorkBook.FINDFIRST THEN BEGIN
+                        WorkBook.INIT;
+                        IF WorkBook2.FINDLAST THEN
+                            WorkBook."Contract No." := WorkBook2."Contract No." + 1;
+                        WorkBook."Employee No." := "Employee No.";
+                        WorkBook."Starting Date" := "Starting Date";
+                        WorkBook."Ending Date" := TODAY;
+                        WorkBook.VALIDATE("Current Company", TRUE);
+                        Wagesetup.GET;
+                        EmpOrg.RESET;
+                        EmpOrg.SETFILTER("No.", '%1', Rec."Employee No.");
+                        IF EmpOrg.FINDFIRST THEN
+                            WorkBook.Coefficient := EmpOrg."Hours In Day" / Wagesetup."Hours in Day";
+                        WorkBook."Contract Ledger Entry No." := "No.";
+
+                        WorkBook.INSERT;
+                        WorkBook.VALIDATE("Validate Work Experience", TRUE);
+                        WorkBook.MODIFY(TRUE);
+                        //nk 2709 External END;
+                    END;
+                end;
+
                 IF ("Reason for Change".AsInteger() = 3) OR ("Reason for Change".AsInteger() = 7) OR ("Reason for Change".AsInteger() = 8) OR ("Reason for Change".AsInteger() = 9) OR ("Reason for Change".AsInteger() = 10)
              OR ("Reason for Change".AsInteger() = 12) OR ("Reason for Change".AsInteger() = 4) OR ("Reason for Change".AsInteger() = 11) OR ("Reason for Change".AsInteger() = 15) OR ("Reason for Change".AsInteger() = 16)
              THEN BEGIN
@@ -3337,6 +3380,13 @@ table 50071 "Employee Contract Ledger"
                                         EmployeeContractLedgerPrevious.SETCURRENTKEY("Employee No.", "Starting Date");
                                         EmployeeContractLedgerPrevious.NEXT(-1);
                                         WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                        EGet.Get(EmployeeContractLedger."Employee No.");
+                                        WT.Reset();
+                                        WT.SetFilter(Code, '%1', EGet."Wage Type");
+                                        if WT.FindFirst() then begin
+                                            if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
+                                                WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                        end;
                                         WageAmounts.VALIDATE("Application Date", Rec."Starting Date");
                                     END;
                                 END;
@@ -3360,6 +3410,13 @@ table 50071 "Employee Contract Ledger"
                                         EmployeeContractLedgerPrevious.SETCURRENTKEY("Employee No.", "Starting Date");
                                         EmployeeContractLedgerPrevious.NEXT(-1);
                                         WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                        EGet.Get(EmployeeContractLedger."Employee No.");
+                                        WT.Reset();
+                                        WT.SetFilter(Code, '%1', EGet."Wage Type");
+                                        if WT.FindFirst() then begin
+                                            if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
+                                                WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                        end;
                                         WageAmounts.VALIDATE("Application Date", EmployeeContractLedger."Starting Date");
                                     END;
                                 END;
@@ -6412,6 +6469,7 @@ table 50071 "Employee Contract Ledger"
         WPConnSetup: Record "Web portal connection setup";
 
         lvarActiveConnection: Variant;
+        WT: Record "Wage Type";
         Text002: Label 'Personalni broj ne smije biti prazan!';
         WDV: Record "Work Duties Violation";
         WDVM: Record "Work Duties Violation";
@@ -6525,6 +6583,8 @@ table 50071 "Employee Contract Ledger"
         EmployeeContractLedgerPrevious: Record "Employee Contract Ledger";
         ReportName: Text;
         FileVar: File;
+
+        EGet: Record Employee;
         IStream: InStream;
         MagicPath: Text;
 

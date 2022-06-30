@@ -5,7 +5,7 @@ report 50071 "Rad-1G"
 
     dataset
     {
-        dataitem(SF1; integer)
+        dataitem(SF1; Integer)
         {
             MaxIteration = 1;
             column(UkupnoFeb; output[1] [1])
@@ -30,6 +30,9 @@ report 50071 "Rad-1G"
             {
             }
             column(ZeneMart; output[4] [2])
+            {
+            }
+            column(ReportDate; FORMAT(TODAY, 0, '<Day,2>.<Month,2>.<Year4>.'))
             {
             }
             column(NazivKomp; CompInfo.Name)
@@ -148,7 +151,7 @@ report 50071 "Rad-1G"
                 End2 := Fill.GetMonthRange(Month, Year, FALSE);
             end;
         }
-        dataitem(SF2; integer)
+        dataitem(SF2; Integer)
         {
             MaxIteration = 1;
             column(Neodr; output[5] [1])
@@ -175,7 +178,7 @@ report 50071 "Rad-1G"
                 f2;
             end;
         }
-        dataitem(SF3; integer)
+        dataitem(SF3; Integer)
         {
             MaxIteration = 1;
             column(PunoRadnoVr; output[8] [1])
@@ -191,7 +194,7 @@ report 50071 "Rad-1G"
             {
             }
         }
-        dataitem(SF7; integer)
+        dataitem(SF7; Integer)
         {
             MaxIteration = 1;
             column(VSS; output[10] [1])
@@ -255,7 +258,7 @@ report 50071 "Rad-1G"
             {
             }
         }
-        dataitem(SF7a; integer)
+        dataitem(SF7a; Integer)
         {
             MaxIteration = 1;
             column(Do18; output[20] [1])
@@ -325,7 +328,7 @@ report 50071 "Rad-1G"
             {
             }
         }
-        dataitem(SF8; integer)
+        dataitem(SF8; Integer)
         {
             MaxIteration = 1;
             column(ManjeOd160; output[31] [1])
@@ -371,7 +374,7 @@ report 50071 "Rad-1G"
             {
             }
         }
-        dataitem(SF8a; integer)
+        dataitem(SF8a; Integer)
         {
             MaxIteration = 1;
             column(ZapZenePreth; output[45] [3])
@@ -529,6 +532,10 @@ report 50071 "Rad-1G"
                     {
                         Caption = 'UpdateOrg';
                     }
+                    field(UpdateMonth; UpdateMonth)
+                    {
+                        Caption = 'Update Month';
+                    }
                 }
             }
         }
@@ -587,6 +594,7 @@ report 50071 "Rad-1G"
                 EmployeeContractLedger.MODIFY;
 
             UNTIL EmployeeContractLedger.NEXT = 0;
+
         EmployeeReal.RESET;
         EmployeeReal.SETFILTER(Header, '%1', TRUE);
         IF EmployeeReal.FINDSET THEN
@@ -604,6 +612,7 @@ report 50071 "Rad-1G"
                 EmployeeContractLedger.SETFILTER("Employee No.", '%1', EmployeeReal."No.");
                 EmployeeContractLedger.SETFILTER("Starting Date", '<=%1', DMY2DATE(31, 12, Year - 1));
                 EmployeeContractLedger.SETFILTER("Ending Date", '>=%1|%2', DMY2DATE(1, 1, Year - 1), 0D);
+                EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 IF Municipality <> '' THEN
                     EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
                 IF OrgJed <> '' THEN BEGIN
@@ -628,8 +637,7 @@ report 50071 "Rad-1G"
 
         IF UpdateOrg = TRUE THEN BEGIN
             WC.RESET;
-            /*WC.SETFILTER("Org Jed",'%1','');
-            WC.SETFILTER(Munif,'%1','');*/
+            WC.SETFILTER("Year of Wage", '%1|%2', Year, Year - 1);
             IF WC.FINDSET THEN
                 REPEAT
 
@@ -639,9 +647,11 @@ report 50071 "Rad-1G"
                     CloseDate := Fill.GetMonthRange(WC."Month Of Wage", WC."Year of Wage", FALSE);
 
                     FirstDatee := Fill.GetMonthRange(WC."Month Of Wage", WC."Year of Wage", TRUE);
+                    ECL.SETFILTER("Show Record", '%1', TRUE);
                     ECL.SETFILTER("Starting Date", '<=%1', CloseDate);
                     ECL.SETFILTER("Ending Date", '>=%1|%2', FirstDatee, 0D);
                     ECL.SETCURRENTKEY("Starting Date");
+                    ECL.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                     ECL.ASCENDING;
                     IF ECL.FINDLAST THEN BEGIN
                         ECL.CALCFIELDS("Org Municipality of ag");
@@ -650,12 +660,53 @@ report 50071 "Rad-1G"
                         ELSE
                             WC."Org Jed" := ECL."Org Unit Name";
                         WC.Munif := ECL."Org Municipality of ag";
-                        WC.MODIFY;
+
                     END;
 
+                    AdditionalEducation.RESET;
+                    AdditionalEducation.SETFILTER("Employee No.", '%1', WC."Employee No.");
+                    AdditionalEducation.SETFILTER("To Date", '<=%1', WC."Date Of Calculation");
+                    AdditionalEducation.SETCURRENTKEY("To Date");
+                    AdditionalEducation.ASCENDING;
+                    IF AdditionalEducation.FINDLAST THEN
+                        WC."Education Level" := AdditionalEducation."Education Level";
+
+
+                    E.GET(WC."Employee No.");
+
+                    WC.MODIFY;
+                    COMMIT;
                 UNTIL WC.NEXT = 0;
+
         END;
 
+        IF UpdateMonth = TRUE THEN BEGIN
+
+            WC.RESET;
+            WC.SETFILTER("Year of Wage", '%1|%2', Year, Year - 1);
+            IF Municipality <> '' THEN
+                WC.SETFILTER(Munif, '%1', Municipality);
+            IF OrgJed <> '' THEN
+                WC.SETFILTER("Org Jed", '%1', OrgJed);
+
+            IF WC.FINDSET THEN
+                REPEAT
+                    E.GET(WC."Employee No.");
+
+                    WC.Gender := E.Gender;
+                    WCNum.RESET;
+                    WCNum.SETFILTER("Employee No.", '%1', WC."Employee No.");
+                    WCNum.SETFILTER("Year of Wage", '%1', Year - 1);
+                    IF Municipality <> '' THEN
+                        WCNum.SETFILTER(Munif, '%1', Municipality);
+                    IF OrgJed <> '' THEN
+                        WCNum.SETFILTER("Org Jed", '%1', OrgJed);
+                    IF WCNum.FINDFIRST THEN
+                        WC."Number Of Month" := WCNum.COUNT;
+
+                    WC.MODIFY;
+                UNTIL WC.NEXT = 0;
+        END;
     end;
 
     var
@@ -675,13 +726,18 @@ report 50071 "Rad-1G"
         WH: Record "Wage Header";
         End2: Date;
         Start2: Date;
+        UpdateMonth: Boolean;
         EmployeeReal: Record "Employee";
         UpdateOrg: Boolean;
+        WCNum: Record "Wage Calculation";
         Fill: Codeunit "Absence Fill";
         WC: Record "Wage Calculation";
+        NumberrCount: array[12] of Integer;
         Telefon: Text;
+        DecValue: Decimal;
         emaill: Text;
         FirstDatee: Date;
+        ETempManje: Record "Employee" temporary;
         Dateof: Date;
         i: Integer;
         j: Integer;
@@ -699,10 +755,10 @@ report 50071 "Rad-1G"
         CompInfo: Record "Company Information";
         Kanton: Text;
         Opcina: Text;
-        CompCounty: Record "Canton";
+        CompCounty: Record Canton;
         Wveeee: Record "Wage Value Entry";
-        CompCanton: Record "Canton";
-        CompMunicipality: Record "Municipality";
+        CompCanton: Record Canton;
+        CompMunicipality: Record Municipality;
         sumaTemp1: Decimal;
         sumaTemp2: Decimal;
         Position: Record "Position";
@@ -760,13 +816,12 @@ report 50071 "Rad-1G"
         //LastDateOfMonth 31.5.2019
         //FirstDateOfMonth 1.5.2019
 
+
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Starting Date", '<=%1', DayBeforeFirstDate);
         EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', DayBeforeFirstDate);
-        IF EmployeeContractLedger."Org Municipality of ag" <> '' THEN
-            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality)
-        ELSE
-            EmployeeContractLedger.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         IF OrgJed <> '' THEN BEGIN
             Org.RESET;
             Org.SETFILTER(Description, '%1', OrgJed);
@@ -776,11 +831,10 @@ report 50071 "Rad-1G"
                     EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
                 ELSE
                     EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
-                /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                  EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
                 //######################## 1
@@ -844,8 +898,8 @@ report 50071 "Rad-1G"
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '>%1', 0D, DayBeforeFirstDate);
         ETemp.SETFILTER("Employment Date", '<%1', DayBeforeFirstDate);
-
-        ETemp.SETFILTER("Org Municipality", Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         ETemp.SETFILTER(Status, '%1|%2|%3', 0, 1, 2);
@@ -888,7 +942,8 @@ report 50071 "Rad-1G"
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Starting Date", '<=%1 & >%2', LastDateOfMonth, DayBeforeFirstDate);
         EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', FirstDateOfMonth);
-        EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
 
         IF OrgJed <> '' THEN BEGIN
             Org.RESET;
@@ -904,6 +959,7 @@ report 50071 "Rad-1G"
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
                 EmployeeContractLedger.CALCFIELDS("Org Municipality of ag");
@@ -912,7 +968,7 @@ report 50071 "Rad-1G"
                 ECL2.SETFILTER("Starting Date", '<=%1', LastDateOfMonth);
                 ECL2.SETFILTER("Report Ending Date", '>=%1', FirstDateOfMonth);
                 ECL2.SETCURRENTKEY("Starting Date");
-                IF OrgJed = '' THEN
+                IF Municipality <> '' THEN
                     ECL2.SETFILTER("Org Municipality of ag", '<>%1', Municipality);
                 ECL2.SETFILTER("Employee No.", '%1', EmployeeContractLedger."Employee No.");
 
@@ -925,11 +981,10 @@ report 50071 "Rad-1G"
                             ECL2.SETFILTER("Org Unit Name", '<>%1', OrgJed)
                         ELSE
                             ECL2.SETFILTER("GF of work Description", '<>%1', OrgJed);
-                        /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                          EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
                     END;
                 END;
                 ECL2.SETFILTER("Show Record", '%1', TRUE);
+                ECL2.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 ECL2.ASCENDING;
                 IF ECL2.FINDFIRST THEN BEGIN
                     IF ECL2."Starting Date" < EmployeeContractLedger."Starting Date" THEN BEGIN
@@ -972,10 +1027,13 @@ report 50071 "Rad-1G"
         //########################
         NemajuUg := 0;
         NemajuUgZene := 0;
+
+
         ETemp.RESET;
         // ETemp.SETFILTER("Termination Date",'%1',0D,CALCDATE('<+1D>',Start2));
         ETemp.SETFILTER("Employment Date", '%1', CALCDATE('<+1D>', FirstDateOfMonth));
-        ETemp.SETFILTER("Org Municipality", Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         IF ETemp.FINDFIRST THEN BEGIN
@@ -985,7 +1043,8 @@ report 50071 "Rad-1G"
         END;
         ETemp.RESET;
         ETemp.SETFILTER("Employment Date", '%1', CALCDATE('<+1D>', FirstDateOfMonth));
-        ETemp.SETFILTER("Org Municipality", Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", Municipality);
         ETemp.SETFILTER(Gender, '%1', ETemp.Gender::Female);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
@@ -996,7 +1055,8 @@ report 50071 "Rad-1G"
 
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Starting Date", '>=%1 & <=%2', FirstDateOfMonth, LastDateOfMonth);
-        EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         EmployeeContractLedger.SETFILTER("Reason for Change", '%1', EmployeeContractLedger."Reason for Change"::"New Contract");
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
 
@@ -1009,10 +1069,9 @@ report 50071 "Rad-1G"
                     EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
                 ELSE
                     EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
-                /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                  EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
         END;
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
 
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
@@ -1051,7 +1110,8 @@ report 50071 "Rad-1G"
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Starting Date", '<=%1', LastDateOfMonth);
         EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', FirstDateOfMonth);
-        EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
         IF OrgJed <> '' THEN BEGIN
             Org.RESET;
@@ -1063,14 +1123,13 @@ report 50071 "Rad-1G"
                     EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
                 ELSE
                     EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
-                /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                  EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
         END;
 
-        //MESSAGE(FORMAT(EmployeeContractLedger.COUNT));
 
         //DA PRONADE BILO KOJI KOJI JE O79 NPR
+
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
                 EmployeeContractLedger.CALCFIELDS("Org Municipality of ag");
@@ -1078,7 +1137,8 @@ report 50071 "Rad-1G"
                 ECL2.SETFILTER("Starting Date", '<=%1', LastDateOfMonth);
                 ECL2.SETFILTER("Report Ending Date", '>=%1', FirstDateOfMonth);
                 ECL2.SETCURRENTKEY("Starting Date");
-                ECL2.SETFILTER("Org Municipality of ag", '<>%1', Municipality);
+                IF Municipality <> '' THEN
+                    ECL2.SETFILTER("Org Municipality of ag", '<>%1', Municipality);
                 ECL2.SETFILTER("Employee No.", '%1', EmployeeContractLedger."Employee No.");
                 ECL2.SETFILTER("Show Record", '%1', TRUE);
                 IF OrgJed <> '' THEN BEGIN
@@ -1098,6 +1158,7 @@ report 50071 "Rad-1G"
 
 
                 ECL2.ASCENDING;
+                ECL2.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 IF ECL2.FINDFIRST THEN BEGIN
                     IF EmployeeContractLedger."Starting Date" < ECL2."Starting Date" THEN BEGIN
                         ECL2.CALCFIELDS("Org Municipality of ag");
@@ -1136,54 +1197,22 @@ report 50071 "Rad-1G"
         //######################## 3
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', FirstDateOfMonth));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         IF ETemp.FINDFIRST THEN BEGIN
             output[3] [1] := ETemp.COUNT;
-            //ETemp.SETRANGE(Gender, ETemp.Gender::Female);
-            //output[3][2] := ETemp.COUNT;
 
         END;
 
-
-        /*Sumaaa:=0;
-        SumaaaaaaZene:=0;
-        EmployeeContractLedger.RESET;
-        //SP
-        //EmployeeContractLedger.SETFILTER("Starting Date",'<=%1',End2);
-        //EmployeeContractLedger.SETFILTER("Report Ending Date",'>=%1',Start2);
-       EmployeeContractLedger.SETFILTER("Report Ending Date",'%1',CALCDATE('<-1D>',FirstDateOfMonth));
-       EmployeeContractLedger.CALCFIELDS("Org Municipality of ag");
-       EmployeeContractLedger.SETFILTER("Org Municipality of ag",'%1',Municipality);
-       //EmployeeContractLedger.CALCFIELDS("Org Municipality");
-       //EmployeeContractLedger.SETFILTER("Org Municipality",'<>%1','');
-        EmployeeContractLedger.SETFILTER("Show Record",'%1',TRUE);
-         IF OrgJed <> '' THEN BEGIN
-           Org.RESET;
-           Org.SETFILTER(Description, '%1', OrgJed);
-           Org.SETFILTER(Active, '%1', TRUE);
-           IF Org.FINDFIRST THEN BEGIN
-
-         IF Org."Branch Agency"=Org."Branch Agency"::Agency THEN
-             ECL2.SETFILTER("Org Unit Name", '%1', OrgJed)
-             ELSE
-              ECL2.SETFILTER("GF of work Description", '%1', OrgJed);
-              ECL2.CALCFIELDS("Org Municipality");
-              ECL2.SETFILTER("Org Municipality",'<>%1','');
-
-           {IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-             EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);}
-           END;
-             END;*/
-
-        //MESSAGE(FORMAT(EmployeeContractLedger.COUNT));
 
         Sumaaa := 0;
         SumaaaaaaZene := 0;
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Report Ending Date", '%1..%2', CALCDATE('<-1D>', FirstDateOfMonth), LastDateOfMonth);
-        EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         EmployeeContractLedger.SETFILTER("Grounds for Term. Description", '%1', '');
         IF OrgJed <> '' THEN BEGIN
             Org.RESET;
@@ -1197,6 +1226,7 @@ report 50071 "Rad-1G"
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
 
 
         //DA PRONADE BILO KOJI KOJI JE O79 NPR
@@ -1216,7 +1246,7 @@ report 50071 "Rad-1G"
                 END;
                 ECL2.RESET;
                 ECL2.SETFILTER("Starting Date", '%1..%2', FirstDateOfMonth, LastDateOfMonth);
-                IF OrgJed = '' THEN
+                IF Municipality <> '' THEN
                     ECL2.SETFILTER("Org Municipality of ag", '<>%1', Municipality);
                 ECL2.SETFILTER("Employee No.", '%1', EmployeeContractLedger."Employee No.");
                 ECL2.SETFILTER("Show Record", '%1', TRUE);
@@ -1238,6 +1268,7 @@ report 50071 "Rad-1G"
                 //MESSAGE(FORMAT(Sumaaa));
                 //Sumaaa:=0;
                 ECL2.ASCENDING;
+                ECL2.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 IF ECL2.FINDFIRST THEN BEGIN
                     Empppp.RESET;
                     Empppp.SETFILTER("No.", '%1', EmployeeContractLedger."Employee No.");
@@ -1257,7 +1288,8 @@ report 50071 "Rad-1G"
         //######################## 3
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', FirstDateOfMonth));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         ETemp.SETFILTER(Gender, '%1', ETemp.Gender::Female);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
@@ -1270,7 +1302,8 @@ report 50071 "Rad-1G"
         Neaktivnizene := 0;
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Ending Date", '<%1 & >=%2', LastDateOfMonth, CALCDATE('<-1D>', FirstDateOfMonth));
-        EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
         EmployeeContractLedger.SETFILTER("Grounds for Term. Description", '<>%1', '');
         IF OrgJed <> '' THEN BEGIN
@@ -1287,6 +1320,7 @@ report 50071 "Rad-1G"
                   EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
         END;
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
 
 
         //DA PRONADE BILO KOJI KOJI JE O79 NPR
@@ -1321,6 +1355,7 @@ report 50071 "Rad-1G"
     var
         ETemp: Record "Employee" temporary;
     begin
+        ETemp.DELETEALL;
         FOR i := 1 TO 30 DO
             FOR j := 1 TO 2 DO
                 output[i] [j] := 0;
@@ -1336,7 +1371,8 @@ report 50071 "Rad-1G"
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Starting Date", '<=%1', LastDateOfMonth);
         EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', LastDateOfMonth);
-        EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         IF OrgJed <> '' THEN BEGIN
             Org.RESET;
             Org.SETFILTER(Description, '%1', OrgJed);
@@ -1346,11 +1382,10 @@ report 50071 "Rad-1G"
                     EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
                 ELSE
                     EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
-                /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                  EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
                 //######################## 1
@@ -1382,8 +1417,8 @@ report 50071 "Rad-1G"
                         ETemp.Age := ROUND((LastDateOfMonth - E."Birth Date") / 365.2425, 1, '<');
                         AdditionalEducation.RESET;
                         AdditionalEducation.SETFILTER("Employee No.", '%1', WC."Employee No.");
-                        AdditionalEducation.SETFILTER("From Date", '<=%1', LastDateOfMonth);
-                        AdditionalEducation.SETCURRENTKEY("From Date");
+                        AdditionalEducation.SETFILTER("To Date", '<=%1', LastDateOfMonth);
+                        AdditionalEducation.SETCURRENTKEY("To Date");
                         AdditionalEducation.ASCENDING;
                         IF AdditionalEducation.FINDLAST THEN
                             ETemp."Education Level" := AdditionalEducation."Education Level";
@@ -1424,8 +1459,8 @@ report 50071 "Rad-1G"
                         ETemp."E-Mail" := OrgJed;
                         AdditionalEducation.RESET;
                         AdditionalEducation.SETFILTER("Employee No.", '%1', WC."Employee No.");
-                        AdditionalEducation.SETFILTER("From Date", '<=%1', LastDateOfMonth);
-                        AdditionalEducation.SETCURRENTKEY("From Date");
+                        AdditionalEducation.SETFILTER("To Date", '<=%1', LastDateOfMonth);
+                        AdditionalEducation.SETCURRENTKEY("To Date");
                         AdditionalEducation.ASCENDING;
                         IF AdditionalEducation.FINDLAST THEN
                             ETemp."Education Level" := AdditionalEducation."Education Level";
@@ -1451,87 +1486,113 @@ report 50071 "Rad-1G"
                     END;
                 END;
 
+
             UNTIL EmployeeContractLedger.NEXT = 0;
 
-        /* ETemp.RESET;
-         ETemp.SETFILTER("Termination Date",'%1',CALCDATE('<+1D>',DayBeforeFirstDate));
-         ETemp.SETFILTER("Org Municipality",'%1',Municipality);
-         IF OrgJed<>'' THEN
-         ETemp.SETFILTER("E-Mail",'%1',OrgJed);
-         IF OrgJed<>'' THEN
-         ETemp.SETFILTER("E-Mail",'%1',OrgJed);
-         ETemp.SETFILTER(Address,'%1|%2','NEODREĐENO','NEODREĐENO PROBNI');
-         IF ETemp.FINDFIRST THEN BEGIN
-        output[5][1] := ETemp.COUNT;
-        ETemp.SETRANGE(Gender, ETemp.Gender::Female);
-        output[5][2] := ETemp.COUNT;
-        END;
+        /*ĐK
+         EmployeeContractLedger.RESET;
+        EmployeeContractLedger.SETFILTER("Report Ending Date",'%1..%2',FirstDateOfMonth,LastDateOfMonth);
+        IF Municipality<>'' THEN
+        EmployeeContractLedger.SETFILTER("Org Municipality of ag",'%1',Municipality);
+         EmployeeContractLedger.SETFILTER("Grounds for Term. Description",'<>%1','');
+        IF OrgJed <> '' THEN BEGIN
+            Org.RESET;
+            Org.SETFILTER(Description, '%1', OrgJed);
+            Org.SETFILTER(Active, '%1', TRUE);
+            IF Org.FINDFIRST THEN BEGIN
+            IF Org."Branch Agency"=Org."Branch Agency"::Agency THEN
+              EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+            IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
+              EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+            END;
+             END;
+         EmployeeContractLedger.SETFILTER("Show Record",'%1',TRUE);
+          EmployeeContractLedger.SETFILTER("Engagement Type",'<>%1','EXTERNI ANGAZMAN');
         
-         ETemp.RESET;
-         ETemp.SETFILTER("Termination Date",'%1',CALCDATE('<+1D>',DayBeforeFirstDate));
-         ETemp.SETFILTER("Org Municipality",'%1',Municipality);
-         IF OrgJed<>'' THEN
-         ETemp.SETFILTER("E-Mail",'%1',OrgJed);
-         ETemp.SETFILTER(Address,'%1|%2','ODREĐENO','ODREĐENO PROBNI');
-         IF ETemp.FINDFIRST THEN BEGIN
-        output[6][1] := ETemp.COUNT;
-        ETemp.SETRANGE(Gender, ETemp.Gender::Female);
-        output[6][2] := ETemp.COUNT;
-        END;*/
-
-
-        IF ETemp.FIND('-') THEN
-            REPEAT
-
-                //*** vrsta radnog odnosa ***
-                ECL.RESET;
-                ECL.SETFILTER("Employee No.", '%1', ETemp."No.");
-                ECL.SETFILTER("Starting Date", '<=%1', DayBeforeFirstDate);
-                ECL.SETFILTER("Report Ending Date", '>=%1', DayBeforeFirstDate);
-                IF ECL."Org Municipality of ag" <> '' THEN
-                    ECL.SETFILTER("Org Municipality of ag", '%1', Municipality)
-                ELSE
-                    ECL.SETFILTER("Org Municipality", '%1', Municipality);
-                IF OrgJed <> '' THEN BEGIN
-                    Org.RESET;
-                    Org.SETFILTER(Description, '%1', OrgJed);
-                    Org.SETFILTER(Active, '%1', TRUE);
-                    IF Org.FINDFIRST THEN BEGIN
-                        IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                            ECL.SETFILTER("Org Unit Name", '%1', OrgJed)
-                        ELSE
-                            ECL.SETFILTER("GF of work Description", '%1', OrgJed);
-                        /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                          EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
-                    END;
-                END;
-
-                IF ECL.FINDLAST THEN BEGIN
-
-                    EGT.SETFILTER(Description, '%1', ECL."Engagement Type");
-                    IF EGT.FINDFIRST THEN BEGIN
-                        IF (EGT.Code = '1') OR (EGT.Code = '2') THEN BEGIN
-                            output[5] [1] := output[5] [1] + 1;
-                            IF ETemp.Gender = ETemp.Gender::Female THEN
-                                output[5] [2] := output[5] [2] + 1;
-                        END;
-
-                        IF (EGT.Code = '4') OR (EGT.Code = '5') THEN BEGIN
-                            output[6] [1] := output[6] [1] + 1;
-                            IF ETemp.Gender = ETemp.Gender::Female THEN
-                                output[6] [2] := output[6] [2] + 1;
-                        END;
-
-                    END;
-
-                END;
-
-            UNTIL ETemp.NEXT = 0;
+        
+        //DA PRONADE BILO KOJI KOJI JE O79 NPR
+        IF EmployeeContractLedger.FINDSET THEN REPEAT
+        
+        //otisli
+        
+         ETemp.INIT;
+          ETemp."No." :=EmployeeContractLedger."Employee No.";
+          i := 0;
+          ETemp."First Name" := FORMAT(i);
+          ETemp."Termination Date" :=CALCDATE('<+1D>', DayBeforeFirstDate);
+          ETemp."Employment Date" := CALCDATE('<-1D>', DayBeforeFirstDate);
+          ETemp.Gender := E.Gender;
+          ETemp."Hours In Day":=E."Hours In Day";
+          ETemp."Org Municipality":=Municipality;
+          ETemp.Age:=ROUND((LastDateOfMonth-E."Birth Date")/365.2425,1,'<');
+          ETemp."E-Mail":=OrgJed;
+           AdditionalEducation.RESET;
+          AdditionalEducation.SETFILTER("Employee No.",'%1',EmployeeContractLedger."Employee No.");
+          AdditionalEducation.SETFILTER("From Date",'<=%1',LastDateOfMonth);
+          AdditionalEducation.SETCURRENTKEY("From Date");
+          AdditionalEducation.ASCENDING;
+          IF AdditionalEducation.FINDLAST THEN
+            ETemp."Education Level":=AdditionalEducation."Education Level";
+        
+          ETemp.Address:=EmployeeContractLedger."Engagement Type";
+           IF EmployeeContractLedger.Prentice= TRUE THEN
+          ETemp."Professional Examination Date":=EmployeeContractLedger."Testing Period Starting Date"
+        
+          ELSE
+          ETemp."Professional Examination Date":=0D;
+            IF EmployeeContractLedger.Prentice= TRUE THEN
+          ETemp."Probation Period End":=EmployeeContractLedger."Testing Period Ending Date"
+        
+          ELSE
+          ETemp."Probation Period End":=0D;
+        
+        
+          IF ETemp.INSERT THEN
+            ETemp.MODIFY
+          ELSE
+          ETemp.MODIFY;
+        
+        
+        
+        
+        UNTIL EmployeeContractLedger.NEXT=0;ĐK */
 
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF OrgJed <> '' THEN
+            ETemp.SETFILTER("E-Mail", '%1', OrgJed);
+        IF ETemp.FINDSET THEN
+            REPEAT
+
+                EGT.RESET;
+
+                EGT.SETFILTER(Description, '%1', ETemp.Address);
+                IF EGT.FINDFIRST THEN BEGIN
+                    IF (EGT.Code = '1') OR (EGT.Code = '2') THEN BEGIN
+                        output[5] [1] := output[5] [1] + 1;
+                        IF ETemp.Gender = ETemp.Gender::Female THEN
+                            output[5] [2] := output[5] [2] + 1;
+
+                    END;
+
+                    IF (EGT.Code = '4') OR (EGT.Code = '5') THEN BEGIN
+                        output[6] [1] := output[6] [1] + 1;
+                        IF ETemp.Gender = ETemp.Gender::Female THEN
+                            output[6] [2] := output[6] [2] + 1;
+                    END;
+
+                END;
+
+
+            UNTIL ETemp.NEXT = 0;
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         ETemp.SETFILTER("Professional Examination Date", '<>%1', 0D);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
@@ -1545,7 +1606,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         ETemp.SETFILTER("Hours In Day", '%1', 8);
@@ -1557,7 +1619,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         ETemp.SETFILTER("Hours In Day", '<%1 & >%2', 8, 0);
@@ -1569,7 +1632,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
 
@@ -1606,7 +1670,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
 
@@ -1652,7 +1717,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         IF ETemp.FIND('-') THEN
@@ -1694,15 +1760,19 @@ report 50071 "Rad-1G"
                 END;
                 BrojPlacenih := ROUND(sumaTemp5 + SumaKorekcija - Neplaceni, 1, '=');
                 ETemp."Years of Experience" := BrojPlacenih;
-                /* ETemp."Tax Deduction Amount":=WC."Net Wage After Tax"- (WC."Meal to pay")-
-                -(WC.Tax*WC."Meal to pay"/WC."Net Wage");*/
                 Wveeee.RESET;
                 Wveeee.SETFILTER("Employee No.", '%1', WC."Employee No.");
                 Wveeee.SETFILTER("Document No.", '%1', WC."Wage Header No.");
                 Wveeee.SETFILTER("Entry Type", '%1|%2|%3', Wveeee."Entry Type"::"Net Wage", Wveeee."Entry Type"::"Work Experience", Wveeee."Entry Type"::Taxable);
+                Wveeee.SETFILTER("RAD-1 Wage Excluded", '%1', FALSE);
                 IF Wveeee.FINDFIRST THEN BEGIN
                     Wveeee.CALCSUMS("Cost Amount (Actual)");
-                    ETemp."Tax Deduction Amount" := Wveeee."Cost Amount (Actual)";
+                    DecValue := ((Wveeee."Cost Amount (Actual)" MOD 1 * 100) DIV 1);
+
+                    IF DecValue < 50 THEN
+                        ETemp."Tax Deduction Amount" := ROUND(Wveeee."Cost Amount (Actual)", 1, '<')
+                    ELSE
+                        ETemp."Tax Deduction Amount" := ROUND(Wveeee."Cost Amount (Actual)", 1, '>');
                 END
 
                 ELSE BEGIN
@@ -1718,10 +1788,8 @@ report 50071 "Rad-1G"
 
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Report Ending Date", '%1..%2', FirstDateOfMonth, CALCDATE('<-1D>', LastDateOfMonth));
-        IF EmployeeContractLedger."Org Municipality of ag" <> '' THEN
-            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality)
-        ELSE
-            EmployeeContractLedger.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         IF OrgJed <> '' THEN BEGIN
             Org.RESET;
             Org.SETFILTER(Description, '%1', OrgJed);
@@ -1731,12 +1799,10 @@ report 50071 "Rad-1G"
                     EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
                 ELSE
                     EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
-                /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
-                  EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
-        //EmployeeContractLedger.SETFILTER("Grounds for Term. Code",'<>%1','');
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
 
@@ -1780,20 +1846,48 @@ report 50071 "Rad-1G"
 
                 BrojPlacenihManje := ROUND(Nerade + KorekcijaNerade - NeplaceniNeRade, 1, '=');
 
-
                 //output[31][1]
-                IF BrojPlacenihManje < 160 THEN
-                    output[31] [1] := output[31] [1] + 1;
+                IF BrojPlacenihManje < 160 THEN BEGIN
+                    ETempManje.RESET;
+                    ETempManje.SETFILTER("No.", '%1', EmployeeContractLedger."Employee No.");
+                    IF NOT ETempManje.FINDFIRST THEN BEGIN
+                        ETempManje.INIT;
+                        ETempManje."No." := EmployeeContractLedger."Employee No.";
+                        ETempManje.INSERT;
+                        output[31] [1] := output[31] [1] + 1;
+                    END;
+                END;
+
+
+            //output[31][1]
+
 
             UNTIL EmployeeContractLedger.NEXT = 0;
 
 
+        ETempManje.DELETEALL;
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Years of Experience", '>%1 & <%2', 0, 160);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETempManje.RESET;
+                ETempManje.SETFILTER("No.", '%1', ETemp."No.");
+                IF NOT ETempManje.FINDFIRST THEN BEGIN
+                    ETempManje.INIT;
+                    ETempManje.TRANSFERFIELDS(ETemp);
+                    ETempManje.INSERT;
+                    output[31] [1] := output[31] [1] + 1;
+
+                END;
+            UNTIL ETemp.NEXT = 0;
 
 
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         ETemp.SETFILTER("Years of Experience", '>%1', 160);
@@ -1829,7 +1923,8 @@ report 50071 "Rad-1G"
         END;
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         ETemp.SETFILTER("Years of Experience", '<>%1', 0);
@@ -1841,16 +1936,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
-        IF OrgJed <> '' THEN
-            ETemp.SETFILTER("E-Mail", '%1', OrgJed);
-        ETemp.SETFILTER("Years of Experience", '<%1 & >%2', 160, 0);
-        IF ETemp.FINDFIRST THEN
-            output[31] [1] := ETemp.COUNT;
-
-        ETemp.RESET;
-        ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         ETemp.SETFILTER("Years of Experience", '>%1', 200);
@@ -1858,69 +1945,7 @@ report 50071 "Rad-1G"
             output[44] [1] := ETemp.COUNT;
 
 
-
-
-        //GODIŠNJI BRUTO
-        /*
-        E.RESET;
-        BrojLjudi:=0;
-        //žene muškarci brutoo
-         j:=0;
-        
-        
-        ETemp.RESET;
-          ETemp.SETFILTER("Termination Date",'%1',CALCDATE('<+1D>',DayBeforeFirstDate));
-          ETemp.SETFILTER("Org Municipality",'%1',Municipality);
-         IF OrgJed<>'' THEN
-         ETemp.SETFILTER("E-Mail",'%1',OrgJed);
-         IF ETemp.FINDSET THEN REPEAT
-          SumaBrutto:=0;
-         SumaNetto:=0;
-        WC.RESET;
-        WC.SETFILTER("Wage Calculation Type",'%1',WC."Wage Calculation Type"::Regular);
-        WC.SETFILTER("Employee No.",'%1',ETemp."No.");
-        IF WC.FINDSET THEN REPEAT
-        SumaBrutto:=SumaBrutto+WC.Brutto;
-        SumaNetto:=SumaNetto+WC."Net Wage After Tax";
-        
-         UNTIL WC.NEXT=0;
-         ETemp."Transport Amount":=SumaBrutto;
-         ETemp."Work Experience Percentage":=SumaNetto;
-         ETemp.MODIFY;
-          UNTIL ETemp.NEXT=0;
-        
-        
-        
-        
-        
-           FOR Brojacx := 1 TO 9 DO BEGIN
-            FOR Brojacy:=1 TO 4 DO BEGIN
-              CASE Brojacx OF
-                1: ETemp.SETRANGE(Gender, ETemp.Gender::Female);
-                2: ETemp.SETRANGE(Gender, ETemp.Gender::Male);
-                3: ETemp.SETFILTER("Education Level", '%1|%2|%3|%4',7,8,9,10);
-                4: ETemp.SETRANGE("Education Level", 6);
-                5: ETemp.SETRANGE("Education Level", 4);
-                6: ETemp.SETRANGE("Education Level", 3);
-                7: ETemp.SETRANGE("Education Level", 5);
-                8: ETemp.SETRANGE("Education Level", 15);
-                9: ETemp.SETRANGE("Education Level", 2);
-                10: ETemp.SETRANGE("Education Level", 1);
-              END;
-              IF Brojacy=1 THEN
-                output[Brojacx+44][Brojacy] := SumaBrutto;
-                IF Brojacy=2 THEN
-                output[Brojacx+44][Brojacy] := SumaNetto;
-                IF Brojacy=3 THEN
-                output[Brojacx+44][Brojacy] := BrojLjudi;
-                  IF Brojacy=4 THEN
-                output[Brojacx+44][Brojacy] := SumaNetto/BrojLjudi;
-        END;
-          END;
-        UNTIL ETemp.NEXT=0;
-        
-        */
-        f8a;
+        f8aNew;
 
     end;
 
@@ -1982,7 +2007,8 @@ report 50071 "Rad-1G"
                 EmployeeContractLedger.RESET;
                 EmployeeContractLedger.SETFILTER("Starting Date", '<=%1', DMY2DATE(31, 12, Year - 1));
                 EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', DMY2DATE(1, 1, Year - 1));
-                EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+                IF Municipality <> '' THEN
+                    EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
                 IF OrgJed <> '' THEN BEGIN
                     Org.RESET;
                     Org.SETFILTER(Description, '%1', OrgJed);
@@ -1996,6 +2022,7 @@ report 50071 "Rad-1G"
                 END;
                 EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
                 EmployeeContractLedger.SETFILTER("Employee No.", '%1', EmployeeReal."No.");
+                EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 IF EmployeeContractLedger.FINDFIRST THEN BEGIN
                     //######################## 1
                     WH.RESET;
@@ -2010,7 +2037,6 @@ report 50071 "Rad-1G"
                             WC.RESET;
                             WC.SETRANGE("Wage Header No.", WH."No.");
                             WC.SETRANGE("Wage Calculation Type", WC."Wage Calculation Type"::Regular);
-                            // WC.SETRANGE("Department Municipality",Municipality);
                             WC.SETFILTER("Employee No.", '%1', EmployeeContractLedger."Employee No.");
 
                             IF WC.FIND('-') THEN BEGIN
@@ -2028,8 +2054,8 @@ report 50071 "Rad-1G"
                                 ETemp.Age := ROUND((LastDateOfMonth - E."Birth Date") / 365.2425, 1, '<');
                                 AdditionalEducation.RESET;
                                 AdditionalEducation.SETFILTER("Employee No.", '%1', WC."Employee No.");
-                                AdditionalEducation.SETFILTER("From Date", '<=%1', LastDateOfMonth);
-                                AdditionalEducation.SETCURRENTKEY("From Date");
+                                AdditionalEducation.SETFILTER("To Date", '<=%1', LastDateOfMonth);
+                                AdditionalEducation.SETCURRENTKEY("To Date");
                                 AdditionalEducation.ASCENDING;
                                 IF AdditionalEducation.FINDLAST THEN
                                     ETemp."Education Level" := AdditionalEducation."Education Level";
@@ -2043,8 +2069,10 @@ report 50071 "Rad-1G"
                                 Wveeee.SETFILTER("Year of Wage", '%1', WC."Year of Wage");
                                 Wveeee.SETFILTER("Employee No.", '%1', WC."Employee No.");
                                 Wveeee.SETFILTER("RAD-1 Wage Excluded", '%1', FALSE);
-                                Wveeee.SETFILTER("ECL Org", '%1', OrgJed);
-                                Wveeee.SETFILTER("ECL Mun", '%1', Municipality);
+                                IF OrgJed <> '' THEN
+                                    Wveeee.SETFILTER("ECL Org", '%1', OrgJed);
+                                IF Municipality <> '' THEN
+                                    Wveeee.SETFILTER("ECL Mun", '%1', Municipality);
                                 Wveeee.SETFILTER("Entry Type", '%1|%2|%3', Wveeee."Entry Type"::"Net Wage", Wveeee."Entry Type"::Taxable, Wveeee."Entry Type"::"Work Experience");
 
                                 IF Wveeee.FINDFIRST THEN BEGIN
@@ -2057,8 +2085,10 @@ report 50071 "Rad-1G"
                                 WCNew.RESET;
                                 WCNew.SETFILTER("Year of Wage", '%1', WC."Year of Wage");
                                 WCNew.SETFILTER("Employee No.", '%1', WC."Employee No.");
-                                WCNew.SETFILTER(Munif, '%1', Municipality);
-                                WCNew.SETFILTER("Org Jed", '%1', OrgJed);
+                                IF Municipality <> '' THEN
+                                    WCNew.SETFILTER(Munif, '%1', Municipality);
+                                IF OrgJed <> '' THEN
+                                    WCNew.SETFILTER("Org Jed", '%1', OrgJed);
                                 IF WCNew.FINDFIRST THEN
                                     ETemp."Additional Tax" := WCNew.COUNT;
 
@@ -2091,6 +2121,7 @@ report 50071 "Rad-1G"
 
                                         ETemp.INIT;
                                         ETemp."No." := EmployeeContractLedger."Employee No.";
+                                        E.GET(EmployeeContractLedger."Employee No.");
                                         i := 0;
                                         ETemp."First Name" := FORMAT(i);
                                         ETemp."Termination Date" := CALCDATE('<+1D>', DayBeforeFirstDate);
@@ -2104,8 +2135,8 @@ report 50071 "Rad-1G"
                                         ETemp."E-Mail" := OrgJed;
                                         AdditionalEducation.RESET;
                                         AdditionalEducation.SETFILTER("Employee No.", '%1', EmployeeContractLedger."Employee No.");
-                                        AdditionalEducation.SETFILTER("From Date", '<=%1', LastDateOfMonth);
-                                        AdditionalEducation.SETCURRENTKEY("From Date");
+                                        AdditionalEducation.SETFILTER("To Date", '<=%1', LastDateOfMonth);
+                                        AdditionalEducation.SETCURRENTKEY("To Date");
                                         AdditionalEducation.ASCENDING;
                                         IF AdditionalEducation.FINDLAST THEN
                                             ETemp."Education Level" := AdditionalEducation."Education Level";
@@ -2115,8 +2146,10 @@ report 50071 "Rad-1G"
                                         Wveeee.SETFILTER("Year of Wage", '%1', WC."Year of Wage");
                                         Wveeee.SETFILTER("Employee No.", '%1', WC."Employee No.");
                                         Wveeee.SETFILTER("RAD-1 Wage Excluded", '%1', FALSE);
-                                        Wveeee.SETFILTER("ECL Org", '%1', OrgJed);
-                                        Wveeee.SETFILTER("ECL Mun", '%1', Municipality);
+                                        IF OrgJed <> '' THEN
+                                            Wveeee.SETFILTER("ECL Org", '%1', OrgJed);
+                                        IF Municipality <> '' THEN
+                                            Wveeee.SETFILTER("ECL Mun", '%1', Municipality);
                                         Wveeee.SETFILTER("Entry Type", '%1|%2|%3', Wveeee."Entry Type"::"Net Wage", Wveeee."Entry Type"::Taxable, Wveeee."Entry Type"::"Work Experience");
                                         IF Wveeee.FINDFIRST THEN BEGIN
                                             Wveeee.CALCSUMS("Cost Amount (Brutto)");
@@ -2130,8 +2163,10 @@ report 50071 "Rad-1G"
                                         WCNew.RESET;
                                         WCNew.SETFILTER("Year of Wage", '%1', WC."Year of Wage");
                                         WCNew.SETFILTER("Employee No.", '%1', WC."Employee No.");
-                                        WCNew.SETFILTER("Org Jed", '%1', OrgJed);
-                                        WCNew.SETFILTER(Munif, '%1', Municipality);
+                                        IF OrgJed <> '' THEN
+                                            WCNew.SETFILTER("Org Jed", '%1', OrgJed);
+                                        IF Municipality <> '' THEN
+                                            WCNew.SETFILTER(Munif, '%1', Municipality);
                                         IF WCNew.FINDFIRST THEN
                                             ETemp."Additional Tax" := WCNew.COUNT;
                                         IF ETemp.INSERT THEN
@@ -2156,8 +2191,10 @@ report 50071 "Rad-1G"
                 WCNew.RESET;
                 WCNew.SETFILTER("Year of Wage", '%1', Year - 1);
                 WCNew.SETFILTER("Employee No.", '%1', ETemp."No.");
-                WCNew.SETFILTER(Munif, '%1', Municipality);
-                WCNew.SETFILTER("Org Jed", '%1', OrgJed);
+                IF Municipality <> '' THEN
+                    WCNew.SETFILTER(Munif, '%1', Municipality);
+                IF OrgJed <> '' THEN
+                    WCNew.SETFILTER("Org Jed", '%1', OrgJed);
                 IF WCNew.FINDFIRST THEN BEGIN
                     ETemp."Additional Tax" := WCNew.COUNT;
                     ETemp.MODIFY;
@@ -2171,7 +2208,8 @@ report 50071 "Rad-1G"
 
         ETemp.RESET;
         ETemp.SETFILTER("Termination Date", '%1', CALCDATE('<+1D>', DayBeforeFirstDate));
-        ETemp.SETFILTER("Org Municipality", '%1', Municipality);
+        IF Municipality <> '' THEN
+            ETemp.SETFILTER("Org Municipality", '%1', Municipality);
         IF OrgJed <> '' THEN
             ETemp.SETFILTER("E-Mail", '%1', OrgJed);
         IF ETemp.FINDFIRST THEN BEGIN
@@ -2234,6 +2272,352 @@ report 50071 "Rad-1G"
             END;
         END;
         //END;
+    end;
+
+    procedure f8aNew()
+    var
+        ETemp: Record "Employee" temporary;
+        ETemp2: Record "Employee" temporary;
+        ETemp3: Record "Employee" temporary;
+        ETemp4: Record "Employee" temporary;
+        ETemp5: Record "Employee" temporary;
+        ETemp6: Record "Employee" temporary;
+        ETemp7: Record "Employee" temporary;
+        ETemp8: Record "Employee" temporary;
+        ETemp9: Record "Employee" temporary;
+        ETempRem: Record "Employee" temporary;
+    begin
+        ETemp.DELETEALL;
+        EmployeeReal.RESET;
+        EmployeeReal.SETFILTER(Header, '%1', TRUE);
+        IF EmployeeReal.FINDSET THEN
+            REPEAT
+                ETemp.INIT;
+                ETemp."No." := EmployeeReal."No.";
+                WC.RESET;
+                WC.SETFILTER("Employee No.", '%1', EmployeeReal."No.");
+                WC.SETFILTER("Number Of Month", '<>%1', 0);
+                WC.SETFILTER("Year of Wage", '%1', Year - 1);
+                WC.SETCURRENTKEY("Month Of Wage");
+                WC.ASCENDING;
+                IF WC.FINDLAST THEN
+                    ETemp."Tax Deduction Amount" := (WC."Number Of Month") / 12
+                ELSE
+                    ETemp."Tax Deduction Amount" := 0;
+
+
+                ETemp.Gender := WC.Gender;
+                ETemp."Education Level" := WC."Education Level";
+
+                Wveeee.RESET;
+                Wveeee.SETFILTER("Employee No.", '%1', EmployeeReal."No.");
+                Wveeee.SETFILTER("Year of Wage", '%1', Year - 1);
+                Wveeee.SETFILTER("Entry Type", '%1|%2|%3|%4', Wveeee."Entry Type"::"Net Wage", Wveeee."Entry Type"::"Work Experience", Wveeee."Entry Type"::Taxable, Wveeee."Entry Type"::Untaxable);
+                Wveeee.SETFILTER("RAD-1 Wage Excluded", '%1', FALSE);
+                IF Municipality <> '' THEN
+                    Wveeee.SETFILTER("ECL Mun", '%1', Municipality);
+                IF OrgJed <> '' THEN
+                    Wveeee.SETFILTER("ECL Org", '%1', OrgJed);
+                IF Wveeee.FINDFIRST THEN BEGIN
+                    Wveeee.CALCSUMS("Cost Amount (Actual)", "Cost Amount (Brutto)", "Cost Amount (Netto)");
+                    ETemp."Work Experience Percentage" := Wveeee."Cost Amount (Actual)";
+                    ETemp."Transport Amount" := Wveeee."Cost Amount (Brutto)";
+                END
+                ELSE BEGIN
+
+                    ETemp."Work Experience Percentage" := 0;
+
+                    ETemp."Transport Amount" := 0;
+                END;
+
+
+                ETemp.INSERT;
+            UNTIL EmployeeReal.NEXT = 0;
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER(Gender, '%1', ETemp.Gender::Female);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[45] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER(Gender, '%1', ETemp.Gender::Male);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[46] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1|%2|%3', 6, 7, 8);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[48] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+        Value1 := 0;
+        Value2 := 0;
+
+        //ide kroz svaki mjesec ko je radio u prethodnoj godini
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+
+        WC.SETFILTER(Gender, '%1', WC.Gender::Female);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER(Gender, '%1', ETemp.Gender::Female);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[45] [1] := ETemp."Transport Amount";
+                output[45] [2] := ETemp."Work Experience Percentage";
+
+            END;
+
+        END;
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+
+        WC.SETFILTER(Gender, '%1', WC.Gender::Male);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER(Gender, '%1', ETemp.Gender::Male);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[46] [1] := ETemp."Transport Amount";
+                output[46] [2] := ETemp."Work Experience Percentage";
+
+            END;
+
+        END;
+        //VSS
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1|%2|%3', 6, 7, 8);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1|%2|%3', 6, 7, 8);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[48] [1] := ETemp."Transport Amount";
+                output[48] [2] := ETemp."Work Experience Percentage";
+
+            END;
+
+
+        END;
+
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 5);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 5);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[49] [1] := ETemp."Transport Amount";
+                output[49] [2] := ETemp."Work Experience Percentage";
+
+            END;
+
+        END;
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 5);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[49] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 2);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 2);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[50] [1] := ETemp."Transport Amount";
+                output[50] [2] := ETemp."Work Experience Percentage";
+
+            END;
+
+        END;
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 2);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[50] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 1);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 1);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[51] [1] := ETemp."Transport Amount";
+                output[51] [2] := ETemp."Work Experience Percentage";
+
+            END;
+        END;
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 1);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[51] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 4);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 4);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[52] [1] := ETemp."Transport Amount";
+                output[52] [2] := ETemp."Work Experience Percentage";
+
+            END;
+        END;
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 4);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[52] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 3);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 3);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[53] [1] := ETemp."Transport Amount";
+                output[53] [2] := ETemp."Work Experience Percentage";
+
+            END;
+        END;
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 3);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[53] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 9);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 9);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[50] [4] := ETemp."Transport Amount";
+                output[54] [2] := ETemp."Work Experience Percentage";
+
+            END;
+        END;
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 9);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[54] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
+
+
+        WC.RESET;
+        WC.SETFILTER("Year of Wage", '%1', Year - 1);
+        IF OrgJed <> '' THEN
+            WC.SETFILTER("Org Jed", '%1', OrgJed);
+        IF Municipality <> '' THEN
+            WC.SETFILTER(Munif, '%1', Municipality);
+        WC.SETFILTER("Education Level", '%1', 10);
+        IF WC.FINDFIRST THEN BEGIN
+            ETemp.RESET;
+            ETemp.SETFILTER("Education Level", '%1', 10);
+            IF ETemp.FINDFIRST THEN BEGIN
+                ETemp.CALCSUMS("Transport Amount", "Work Experience Percentage");
+                output[55] [1] := ETemp."Transport Amount";
+                output[55] [2] := ETemp."Work Experience Percentage";
+
+            END;
+        END;
+
+
+
+        ETemp.RESET;
+        ETemp.SETFILTER("Education Level", '%1', 10);
+        IF ETemp.FINDSET THEN
+            REPEAT
+                ETemp.CALCSUMS("Tax Deduction Amount");
+                output[55] [3] := ETemp."Tax Deduction Amount";
+            UNTIL ETemp.NEXT = 0;
     end;
 }
 

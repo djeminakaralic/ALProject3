@@ -2,6 +2,7 @@ report 50070 "Rad-1"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Rad-1.rdl';
+    PreviewMode = PrintLayout;
 
     dataset
     {
@@ -214,6 +215,9 @@ report 50070 "Rad-1"
             {
             }
             column(NetoIsplata; output[6] [1] - output[6] [2] - output[6] [3])
+            {
+            }
+            column(NetoPros; NetoPros)
             {
             }
             column(BrojZaposlenih; output[6] [5])
@@ -661,6 +665,10 @@ report 50070 "Rad-1"
                         Caption = 'OrgDescription';
                         TableRelation = "ORG Dijelovi".Description;
                     }
+                    field(UpdateOrg; UpdateOrg)
+                    {
+                        Caption = 'Ažuriraj podatke u platama';
+                    }
                 }
             }
         }
@@ -693,6 +701,39 @@ report 50070 "Rad-1"
         FirstDateOfMonth := DMY2DATE(1, Month, Year);
         LastDateOfMonth := CALCDATE('-1D', CALCDATE('+1M', FirstDateOfMonth));
         DayBeforeFirstDate := CALCDATE('-1D', FirstDateOfMonth);
+
+        IF UpdateOrg = TRUE THEN BEGIN
+            COMMIT;
+            WCU.Reset();
+            WCU.SetFilter("Month Of Wage", '%1', Month);
+            WCU.SetFilter("Year of Wage", '%1', Year);
+            if WCU.FindSet() then
+                repeat
+                    //ĐK  Prazno.RUN;
+                    ECLUpdate.Reset();
+                    ECLUpdate.SetFilter("Employee No.", '<=%1', WCU."Employee No.");
+                    ECLUpdate.SetFilter("Starting Date", '<=%1', WCU."Payment Date");
+                    ECLUpdate.SetCurrentKey("Starting Date");
+                    ECLUpdate.Ascending;
+                    if ECLUpdate.FindLast() then begin
+                        WCU.Munif := ECLUpdate."Org Municipality of ag";
+                        WCU."Org Jed" := ECLUpdate."Org Unit Name";
+                        ADDSchool.Reset();
+                        ADDSchool.SetFilter("Employee No.", '%1', WCU."Employee No.");
+                        ADDSchool.SetFilter("From Date", '<=%1', WCU."Payment Date");
+                        ADDSchool.SetCurrentKey("From Date");
+                        ADDSchool.Ascending;
+                        if ADDSchool.FindLast() then
+                            WCU."Education Level" := ADDSchool."Education Level";
+                        EUpdate.get(WCu."Employee No.");
+                        WCU.Gender := EUpdate.Gender;
+                        WCU.Modify();
+
+
+                    end;
+                until WCU.Next() = 0;
+            COMMIT;
+        END;
         // MESSAGE(FORMAT(FirstDateOfMonth)+' ' +FORMAT(LastDateOfMonth)+' '+FORMAT(DayBeforeFirstDate));
         CASE Month OF
 
@@ -764,6 +805,10 @@ report 50070 "Rad-1"
 
     var
         WACont: Record "Wage Addition";
+        ECLUpdate: Record "Employee Contract Ledger";
+        ADDSchool: Record "Additional Education";
+        EUpdate: Record Employee;
+        WCU: Record "Wage Calculation";
         ConCat: Record "Contribution Category";
         WVEAdditions: Record "Wage Value Entry";
         Month: Integer;
@@ -774,17 +819,25 @@ report 50070 "Rad-1"
         Sumica: Decimal;
         OrgJed: Text[50];
         NemajuUg: Decimal;
+        //ĐK   Prazno: Report "65564";
         Neaktivni: Decimal;
         WageContact: Record "Wage Calculation";
         Neaktivnizene: Decimal;
+        UpdateOrg: Boolean;
         NemajuUgZene: Decimal;
         emaill: Text;
+        WageVTopli: Record "Wage Value Entry";
         DodatniCause: Record "Cause of Absence";
         OrgJeddd: Text;
         DodatniSiht: Decimal;
+        suma8topli: Decimal;
+        suma9topli: Decimal;
+        NetoPros: Decimal;
         NemaOp: Boolean;
         NaknadeOporezive: Decimal;
         Naknadeljudi: Integer;
+        WageAddTopli: Record "Wage Addition Type";
+        SumaKorekcijeToplog: Decimal;
         DodatniSatiSihtarice: Record "Employee Absence";
         BrojPlacenih: Integer;
         Year: Integer;
@@ -844,7 +897,7 @@ report 50070 "Rad-1"
         Kanton: Text;
         Opcina: Text;
         CompCanton: Record "Canton";
-        CompMunicipality: Record "Municipality";
+        CompMunicipality: Record Municipality;
         sumaTemp1: Decimal;
         sumaTemp2: Decimal;
         outputdecimal: array[30, 10] of Decimal;
@@ -900,7 +953,7 @@ report 50070 "Rad-1"
 
     procedure f1()
     var
-        ETemp: Record "Employee" temporary;
+        ETemp: Record "employee" temporary;
         ETemp2: Record "Employee";
         ETemp3: Record "Employee";
         ETemp4: Record "Employee";
@@ -934,6 +987,7 @@ report 50070 "Rad-1"
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
                 EmployeeContractLedger.CALCFIELDS("Org Municipality of ag");
@@ -1053,6 +1107,7 @@ report 50070 "Rad-1"
         EmployeeContractLedger.SETFILTER("Starting Date", '<=%1 & >%2', End2, DayBeforeFirstDate);
         EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', Start2);
         EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF OrgJeddd <> '' THEN BEGIN
             Org.RESET;
             Org.SETFILTER(Description, '%1', OrgJeddd);
@@ -1066,6 +1121,7 @@ report 50070 "Rad-1"
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
 
+
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
                 EmployeeContractLedger.CALCFIELDS("Org Municipality of ag");
@@ -1074,6 +1130,7 @@ report 50070 "Rad-1"
                 ECL2.SETFILTER("Starting Date", '<=%1', End2);
                 ECL2.SETFILTER("Report Ending Date", '>=%1', CALCDATE('<-1D>', Start2));
                 ECL2.SETCURRENTKEY("Starting Date");
+                ECL2.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 IF OrgJeddd = '' THEN
                     ECL2.SETFILTER("Org Municipality of ag", '<>%1', Municipality);
 
@@ -1160,6 +1217,7 @@ report 50070 "Rad-1"
         EmployeeContractLedger.SETFILTER("Starting Date", '>=%1 & <=%2', CALCDATE('<-1D>', FirstDateOfMonth), LastDateOfMonth);
         EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
         EmployeeContractLedger.SETFILTER("Reason for Change", '%1', EmployeeContractLedger."Reason for Change"::"New Contract");
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
         IF OrgJeddd <> '' THEN BEGIN
             Org.RESET;
@@ -1211,6 +1269,7 @@ report 50070 "Rad-1"
         EmployeeContractLedger.SETFILTER("Starting Date", '<=%1', End2);
         EmployeeContractLedger.SETFILTER("Report Ending Date", '>=%1', Start2);
         EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         IF OrgJeddd <> '' THEN BEGIN
             Org.RESET;
             Org.SETFILTER(Description, '%1', OrgJeddd);
@@ -1315,6 +1374,7 @@ report 50070 "Rad-1"
         END;
 
 
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
         //DA PRONADE BILO KOJI KOJI JE O79 NPR
         IF EmployeeContractLedger.FINDSET THEN
@@ -1392,6 +1452,7 @@ report 50070 "Rad-1"
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
         EmployeeContractLedger.SETFILTER("Grounds for Term. Description", '<>%1', '');
+        EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
         //DA PRONADE BILO KOJI KOJI JE O79 NPR
         IF EmployeeContractLedger.FINDSET THEN
             REPEAT
@@ -1592,6 +1653,8 @@ report 50070 "Rad-1"
             Oduzmi := 0;
             OduzmiPorez := 0;
 
+
+
             ETemp.RESET;
             ETemp.SETFILTER("Termination Date", '>%2', 0D, DayBeforeFirstDate);
             ETemp.SETFILTER("Org Municipality", Municipality);
@@ -1602,23 +1665,6 @@ report 50070 "Rad-1"
                     IF WC.FIND('-') THEN
                         REPEAT
                             IF WC."Employee No." = ETemp."No." THEN BEGIN
-
-
-                                /*nkWVEAdditions.RESET;
-                                 WVEAdditions.SETFILTER("Employee No.",'%1', WC."Employee No.");
-                                 WVEAdditions.SETFILTER("Wage Calculation Type",'%1', WVEAdditions."Wage Calculation Type"::Additions);
-                                 WVEAdditions.SETFILTER("Document No.",'%1', WC."Wage Header No.");
-                                 WVEAdditions.SETFILTER("Entry Type",'%1|%2',WVEAdditions."Entry Type"::"Net Wage",WVEAdditions."Entry Type"::Taxable);
-                                 IF WVEAdditions.FINDFIRST THEN BEGIN
-                                   WVEAdditions.CALCSUMS("Cost Amount (Brutto)");
-                                   WVEAdditions.CALCSUMS("Cost Amount (Actual)");
-
-
-                                   DodatnoBruto:=DodatnoBruto+WVEAdditions."Cost Amount (Brutto)";
-                                   DodatnoNeto:=DodatnoNeto+WVEAdditions."Cost Amount (Netto)";
-                                  { DodatnoDoprinos:=DodatnoDoprinos+WageAddition."Total From";
-                                   DodatnoDohodak:=DodatnoDohodak+WageAddition.Tax;}
-                                   END;*/
 
                                 WVEAdditions.RESET;
                                 WVEAdditions.SETFILTER("Employee No.", '%1', WC."Employee No.");
@@ -1658,7 +1704,7 @@ report 50070 "Rad-1"
                                     IF WACont.FINDFIRST THEN
                                         WACont.CALCSUMS(Brutto);
 
-                                    sumaTemp2 := sumaTemp2 + (ROUND(WC."Contribution From Brutto", 0.001, '>') - ((ConCat."From Brutto" / 100) * ROUND(WACont.Brutto, 0.001, '>')));
+                                    sumaTemp2 := sumaTemp2 + (ROUND(WC."Contribution From Brutto", 0.00001, '>') - ((ConCat."From Brutto" / 100) * ROUND(WACont.Brutto, 0.00001, '>')));
                                 END;
 
                                 WVEAdditions.RESET;
@@ -1837,8 +1883,7 @@ report 50070 "Rad-1"
 
             DodatnoBruto := DodatnoBruto + WVEAdditions."Cost Amount (Brutto)";
             DodatnoNeto := DodatnoNeto + WVEAdditions."Cost Amount (Netto)";
-            /* DodatnoDoprinos:=DodatnoDoprinos+WageAddition."Total From";
-             DodatnoDohodak:=DodatnoDohodak+WageAddition.Tax;*/
+
         END;
 
 
@@ -1855,13 +1900,17 @@ report 50070 "Rad-1"
         output[6] [4] := ROUND(sumaTemp4 + DodatnoNeto, 1, '=');
         output[6] [5] := ETemp.COUNT;
         IF ETemp.COUNT <> 0 THEN
-            outputdecimal[1] [1] := ROUND((sumaTemp1 + DodatnoBruto - Oduzmi) / ETemp.COUNT, 0.01, '=')
+            outputdecimal[1] [1] := ROUND((sumaTemp1 + DodatnoBruto - Oduzmi) / ETemp.COUNT, 0.0001, '=')
         ELSE
             outputdecimal[1] [1] := 0;
 
+        IF ETemp.COUNT <> 0 THEN
+            NetoPros := ROUND((output[6] [1] - output[6] [2] - output[6] [3]) / ETemp.COUNT, 0.0001, '=')
+        ELSE
+            NetoPros := 0;
 
 
-
+        //bruto prosjecni
 
         outputdecimal[1] [2] := sumaTemp5;
         //SumaKorekcija:=SumaKorekcija+sumaTemp5;
@@ -2095,6 +2144,7 @@ report 50070 "Rad-1"
         E.RESET;
         WH.RESET;
         sumaTemp7 := 0;
+        SumaKorekcijeToplog := 0;
         sumaTemp8 := 0;
         sumaTemp9 := 0;
         Sumica := 0;
@@ -2221,8 +2271,7 @@ report 50070 "Rad-1"
                         REPEAT
 
 
-                            sumaTemp7 := sumaTemp7 + ROUND(WageV."Cost Amount (Netto)", 0.01, '>');
-
+                            sumaTemp7 := sumaTemp7 + ROUND(WageV."Cost Amount (Netto)", 0.0001, '>');
 
                             Testttt.RESET;
                             Testttt.SETFILTER("Employee No.", '%1', WageV."Employee No.");
@@ -2243,14 +2292,39 @@ report 50070 "Rad-1"
 
                         //output[5][2]+=1;
                         UNTIL WageV.NEXT = 0;
+
+                    WageAddTopli.RESET;
+                    WageAddTopli.SETFILTER("Meal add RAD", '%1', TRUE);
+                    IF WageAddTopli.FINDSET THEN
+                        REPEAT
+
+                            WageVTopli.RESET;
+                            WageVTopli.SETFILTER("Employee No.", '%1', ETemp."No.");
+                            WageVTopli.SETFILTER("Document No.", '%1', WH."No.");
+                            WageVTopli.SETFILTER("Cost Amount (Brutto)", '%1', 0);
+                            WageVTopli.SETFILTER(Description, '%1', WageAddTopli.Code);
+                            IF WageVTopli.FINDFIRST THEN BEGIN
+
+                                WageVTopli.CALCSUMS("Cost Amount (Netto)");
+                                SumaKorekcijeToplog := SumaKorekcijeToplog + ROUND(WageVTopli."Cost Amount (Netto)", 0.0001, '>');
+
+                            END;
+
+                        UNTIL WageAddTopli.NEXT = 0;
+
+
                 UNTIL ETemp.NEXT = 0;
-            output[5] [1] := ROUND(sumaTemp7, 1, '=');
+
+
+            output[5] [1] := ROUND(sumaTemp7 + SumaKorekcijeToplog, 1, '=');
 
 
 
             //oporezivi
             sumaaa8 := 0;
             sumaaa9 := 0;
+            suma8topli := 0;
+            suma9topli := 0;
             // topli obrok
             ETemp.RESET;
             ETemp.SETFILTER("Termination Date", '>%2', 0D, DayBeforeFirstDate);
@@ -2270,31 +2344,47 @@ report 50070 "Rad-1"
                         REPEAT
 
 
-                            sumaaa8 := sumaaa8 + ROUND(WageV."Cost Amount (Netto)", 0.01, '>');
-                            Sumica := Sumica + ROUND(WageV."Cost Amount (Brutto)", 0.01, '>');
+                            sumaaa8 := sumaaa8 + ROUND(WageV."Cost Amount (Netto)", 0.0001, '>');
+                            Sumica := Sumica + ROUND(WageV."Cost Amount (Brutto)", 0.0001, '>');
                             output[5] [8] += 1;
                             Testttt.RESET;
                             Testttt.SETFILTER("Employee No.", '%1', WageV."Employee No.");
                             IF NOT Testttt.FINDFIRST THEN BEGIN
                                 Testttt.INIT;
-                                /*Testttt2.RESET;
-                                Testttt2.SETCURRENTKEY("Entry No.");
-                                IF Testttt2.FINDLAST THEN
-                                   Testttt."Entry No.":=Testttt2."Entry No."+1
-                                  ELSE
-                                  Testttt."Entry No.":=1;*/
+
                                 IF EVALUATE(iNTV, WageV."Employee No.") THEN
                                     Testttt."Entry No." := iNTV;
                                 Testttt."Employee No." := WageV."Employee No.";
                                 Testttt.INSERT;
                             END;
 
-                        //output[5][2]+=1;
-
                         UNTIL WageV.NEXT = 0;
+
+                    WageAddTopli.RESET;
+                    WageAddTopli.SETFILTER("Meal add RAD", '%1', TRUE);
+                    IF WageAddTopli.FINDSET THEN
+                        REPEAT
+
+                            WageVTopli.RESET;
+                            WageVTopli.SETFILTER("Employee No.", '%1', ETemp."No.");
+                            WageVTopli.SETFILTER("Document No.", '%1', WH."No.");
+                            WageVTopli.SETFILTER("Cost Amount (Brutto)", '<>%1', 0);
+                            WageVTopli.SETFILTER(Description, '%1', WageAddTopli.Code);
+                            IF WageVTopli.FINDFIRST THEN BEGIN
+
+                                WageVTopli.CALCSUMS("Cost Amount (Netto)", "Cost Amount (Brutto)");
+                                suma8topli := suma8topli + ROUND(WageVTopli."Cost Amount (Netto)", 0.0001, '>');
+                                suma9topli := suma9topli + ROUND(WageVTopli."Cost Amount (Brutto)", 0.0001, '>');
+
+                            END;
+
+                        UNTIL WageAddTopli.NEXT = 0;
+
+
                 UNTIL ETemp.NEXT = 0;
-            output[5] [9] := ROUND(sumaaa8, 1, '=');
-            output[5] [10] := ROUND(Sumica, 1, '=');
+
+            output[5] [9] := ROUND(sumaaa8 + suma8topli, 1, '=');
+            output[5] [10] := ROUND(Sumica + suma9topli, 1, '=');
             //oporezivi
 
 
@@ -2326,7 +2416,7 @@ report 50070 "Rad-1"
                     IF WC.FIND('-') THEN
                         REPEAT
                             IF WC."Employee No." = ETemp."No." THEN BEGIN
-                                sumaTemp8 := sumaTemp8 + ROUND(WC.Transport, 0.01, '>');
+                                sumaTemp8 := sumaTemp8 + ROUND(WC.Transport, 0.0001, '>');
                                 output[5] [4] += 1;
                             END;
                         UNTIL WC.NEXT = 0;
@@ -2357,7 +2447,7 @@ report 50070 "Rad-1"
 
             /*END;
             UNTIL WageType.NEXT=0;*/
-
+            Testttt.DELETEALL;
 
             WC.RESET;
             WC.SETRANGE("Wage Header No.", WH."No.");
@@ -2374,7 +2464,21 @@ report 50070 "Rad-1"
                             IF WC."Employee No." = ETemp."No." THEN BEGIN
                                 WC.CALCFIELDS("Regres Netto With Wage UnTax", "Regres Netto UnTax Separate");
 
-                                sumaTemp9 := sumaTemp9 + ROUND(WC."Regres Netto With Wage UnTax" + WC."Regres Netto UnTax Separate", 0.001, '>');
+                                sumaTemp9 := sumaTemp9 + ROUND(WC."Regres Netto With Wage UnTax" + WC."Regres Netto UnTax Separate", 0.00001, '>');
+                                IF (WC."Regres Netto With Wage UnTax" + WC."Regres Netto UnTax Separate") <> 0 THEN BEGIN
+                                    Testttt.RESET;
+                                    Testttt.SETFILTER("Employee No.", '%1', WC."Employee No.");
+                                    IF NOT Testttt.FINDFIRST THEN BEGIN
+                                        Testttt.INIT;
+
+                                        IF EVALUATE(iNTV, WC."Employee No.") THEN
+                                            Testttt."Entry No." := iNTV;
+                                        Testttt."Employee No." := WC."Employee No.";
+                                        Testttt.INSERT;
+                                    END;
+                                END;
+
+
                                 output[5] [6] += 1;
                             END;
                         UNTIL WC.NEXT = 0;
@@ -2400,8 +2504,8 @@ report 50070 "Rad-1"
                         IF WC."Employee No." = ETemp."No." THEN BEGIN
                             IF NemaOp = FALSE THEN
                                 output[5] [6] += 0;
-                            WC.CALCFIELDS("Regres Netto Tax Separate", "Regres Netto With Wage Taxable");
-                            sumaTemp10 := sumaTemp10 + ROUND(WC."Regres Netto Tax Separate" + WC."Regres Netto With Wage Taxable", 0.01, '>');
+                            WC.CALCFIELDS("Regres Netto Tax Separate", "Regres Netto With Wage Taxable", "Regres Netto With Wage Tax RAD");
+                            sumaTemp10 := sumaTemp10 + ROUND(WC."Regres Netto Tax Separate" + WC."Regres Netto With Wage Tax RAD", 0.0001, '>');
                             output[5] [6] += 1;
                             output[6] [6] += 1;
                         END;
@@ -2424,14 +2528,38 @@ report 50070 "Rad-1"
                     REPEAT
                         IF WC."Employee No." = ETemp."No." THEN BEGIN
                             WC.CALCFIELDS("Regres Brutto");
-                            sumaTemp11 := sumaTemp11 + ROUND(WC."Regres Brutto", 0.01, '>');
-                            IF ROUND(WC."Regres Brutto", 0.01, '>') > 0.01 THEN
-                                output[6] [8] += 1;
+                            sumaTemp11 := sumaTemp11 + ROUND(WC."Regres Brutto", 0.0001, '>');
+                            //ĐK     IF ROUND(WC."Regres Brutto",0.0001, '>') > 0.0001 THEN
+
+                            IF WC."Regres Brutto" <> 0 THEN BEGIN
+                                Testttt.RESET;
+                                Testttt.SETFILTER("Employee No.", '%1', WC."Employee No.");
+                                IF NOT Testttt.FINDFIRST THEN BEGIN
+                                    Testttt.INIT;
+
+                                    IF EVALUATE(iNTV, WC."Employee No.") THEN
+                                        Testttt."Entry No." := iNTV;
+                                    Testttt."Employee No." := WC."Employee No.";
+                                    Testttt.INSERT;
+                                END;
+
+
+
+                            END;
                         END;
                     UNTIL WC.NEXT = 0;
             UNTIL ETemp.NEXT = 0;
 
         output[6] [9] := ROUND(sumaTemp11, 1, '=');
+
+
+        Testttt.RESET;
+        IF Testttt.FINDFIRST THEN
+            output[6] [8] := Testttt.COUNT
+        ELSE
+            output[6] [8] := 0;
+
+
 
 
         Naknadeljudi := 0;
@@ -2459,20 +2587,15 @@ report 50070 "Rad-1"
                         WageV.SETFILTER(Description, '%1', WA.Code);
                         IF WageV.FINDSET THEN
                             REPEAT
-                                Naknade := Naknade + ROUND(WageV."Cost Amount (Netto)", 0.01, '>');
-                                IF ROUND(WageV."Cost Amount (Netto)", 0.01, '>') > 0.01 THEN
+                                Naknade := Naknade + ROUND(WageV."Cost Amount (Netto)", 0.0001, '>');
+                                IF ROUND(WageV."Cost Amount (Netto)", 0.0001, '>') > 0.0001 THEN
                                     Naknadeljudi2 := Naknadeljudi2 + 1;
 
                                 Testttt.RESET;
                                 Testttt.SETFILTER("Employee No.", '%1', WageV."Employee No.");
                                 IF NOT Testttt.FINDFIRST THEN BEGIN
                                     Testttt.INIT;
-                                    /*Testttt2.RESET;
-                                    Testttt2.SETCURRENTKEY("Entry No.");
-                                    IF Testttt2.FINDLAST THEN
-                                       Testttt."Entry No.":=Testttt2."Entry No."+1
-                                    ELSE
-                                      Testttt."Entry No.":=1;*/
+
                                     IF EVALUATE(iNTV, WageV."Employee No.") THEN
                                         Testttt."Entry No." := iNTV;
                                     Testttt."Employee No." := WageV."Employee No.";
@@ -2481,7 +2604,7 @@ report 50070 "Rad-1"
                             UNTIL WageV.NEXT = 0;
 
 
-                    /* IF ROUND(WageV."Cost Amount (Actual)",0.01, '>') > 0.01 THEN
+                    /* IF ROUND(WageV."Cost Amount (Actual)",0.0001, '>') > 0.0001 THEN
                    Naknadeljudi:=Naknadeljudi+1;*/
                     UNTIL ETemp.NEXT = 0;
             UNTIL WA.NEXT = 0;
@@ -2518,9 +2641,9 @@ report 50070 "Rad-1"
                         IF WageV.FINDSET THEN
                             REPEAT
 
-                                //IF ROUND(WageV."Cost Amount (Actual)",0.01, '>') > 0.01 THEN
+                                //IF ROUND(WageV."Cost Amount (Actual)",0.0001, '>') > 0.0001 THEN
                                 // Naknadeljudi2:=Naknadeljudi2+1;
-                                NaknadeOporezive := NaknadeOporezive + ROUND(WageV."Cost Amount (Netto)", 0.01, '>');
+                                NaknadeOporezive := NaknadeOporezive + ROUND(WageV."Cost Amount (Netto)", 0.0001, '>');
 
                                 Testttt.RESET;
                                 Testttt.SETFILTER("Employee No.", '%1', WageV."Employee No.");
@@ -2577,7 +2700,7 @@ report 50070 "Rad-1"
                         // WageV.SETFILTER("RAD-1 Wage Other",'%1',TRUE);
                         IF WageV.FINDSET THEN
                             REPEAT
-                                NaknadeBruto := NaknadeBruto + ROUND(WageV."Cost Amount (Brutto)", 0.01, '>');
+                                NaknadeBruto := NaknadeBruto + ROUND(WageV."Cost Amount (Brutto)", 0.0001, '>');
 
                             UNTIL WageV.NEXT = 0;
 
@@ -2612,7 +2735,7 @@ report 50070 "Rad-1"
                         WageV.SETFILTER(Description, '%1', WA.Code);
                         IF WageV.FINDSET THEN
                             REPEAT
-                                OstaleNaknade := OstaleNaknade + ROUND(WageV."Cost Amount (Brutto)", 0.01, '>');
+                                OstaleNaknade := OstaleNaknade + ROUND(WageV."Cost Amount (Brutto)", 0.0001, '>');
                             UNTIL WageV.NEXT = 0;
 
                     UNTIL ETemp.NEXT = 0;

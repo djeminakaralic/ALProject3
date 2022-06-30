@@ -1628,7 +1628,12 @@ codeunit 50004 "Close Wage Calculation"
                             IF (AmountForPayment - ReductionsAmount) > 0 THEN BEGIN
                                 //Payment Order
                                 InitPaymentOrder;
-                                SvrhaDoznake1 := 'Neto na račun';
+
+                                //Ovdje dodati broj partije
+                                if Emp."Party No." <> '' then
+                                    SvrhaDoznake1 := emp."Party No."
+                                else
+                                    SvrhaDoznake1 := 'Neto na račun';
                                 //SvrhaDoznake1 :=Emp."No.";
                                 SvrhaDoznake2 := FORMAT(WHeader."Month Of Wage") + '.' + FORMAT(WHeader."Year Of Wage") + '.';
                                 IF Single THEN

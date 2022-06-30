@@ -16,10 +16,69 @@ table 50199 "Wage Setup"
         field(2; "Average Salary FBIH"; Decimal)
         {
             Caption = 'Average Salary FBIH';
+
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                ECLUpdate: Record "Employee Contract Ledger";
+                eUpdate: Record Employee;
+                Wagesetup: Record "Wage Setup";
+                PosM: Record "Position Menu";
+                WT: Record "Wage Type";
+            begin
+                WT.Reset();
+                WT.SetFilter("Wage Calculation Type", '%1', WT."Wage Calculation Type"::Netto2);
+                if WT.FindFirst() then begin
+
+                    eUpdate.Reset();
+                    eUpdate.SetFilter("For Calculation", '%1', true);
+                    eUpdate.SetFilter("Wage Type", '%1', WT.Code);
+                    if eUpdate.FindSet() then
+                        repeat
+
+                            ECLUpdate.Reset();
+                            ECLUpdate.SetFilter("Employee No.", '%1', eUpdate."No.");
+                            if ECLUpdate.FindSet() then
+                                repeat
+                                    Wagesetup.Get();
+
+                                    PosM.Reset();
+                                    PosM.SetFilter("Org. Structure", '%1', ECLUpdate."Org. Structure");
+                                    PosM.SetFilter(Description, '%1', ECLUpdate."Position Description");
+                                    PosM.SetFilter(Code, '%1', ECLUpdate."Position Code");
+                                    PosM.SetFilter("Department Code", '%1', ECLUpdate."Department Code");
+                                    PosM.SetFilter("Position Coefficient for Wage", '<>%1', 0);
+                                    if PosM.FindFirst() then begin
+                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * PosM."Position Coefficient for Wage", 0.01, '>'));
+
+                                    end
+                                    else begin
+
+
+                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute", 0.01, '>'));
+                                        ECLUpdate.Modify();
+
+                                    end;
+
+                                until ECLUpdate.Next() = 0;
+                        until eUpdate.Next() = 0;
+
+                    MESSAGE('Osnovice ažurirane!');
+                end;
+
+            end;
+
+
         }
         field(3; "Average coefficient statute"; Decimal)
         {
             Caption = 'Average coefficient statute';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                Validate("Average Salary FBIH", Rec."Average Salary FBIH");
+            end;
         }
         field(20; "Work Experience Basis"; Decimal)
         {

@@ -352,7 +352,7 @@ report 50053 "Summarry Per Employee"
                 IF employee.GET("Employee No.") THEN BEGIN
                     FirstName := employee."First Name";
                     LastName := employee."Last Name";
-                    Gender := FORMAT(employee.Gender);
+                    Gender := employee.Gender;
                 END;
                 EmployeeContractLedger.RESET;
                 EmployeeContractLedger.SETFILTER("Employee No.", '%1', employee."No.");

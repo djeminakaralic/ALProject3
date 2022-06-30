@@ -195,6 +195,10 @@ table 50188 "Wage Addition Type"
             Caption = 'Order for Pay list';
 
         }
+        field(136; "Meal add RAD"; Boolean)
+        {
+            Caption = 'Topli obrok - RAD';
+        }
 
     }
     keys

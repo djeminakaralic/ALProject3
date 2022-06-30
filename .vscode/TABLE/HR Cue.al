@@ -704,7 +704,7 @@ table 50085 "HR Cue"
         field(50093; "Certification"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateTraining2)));
+            CalcFormula = Count("Employee Qualification" where("Expiration Date" = field(DateTraining)));
             Caption = 'Certifikati čiji rok ističe za mjesec dana';
 
 

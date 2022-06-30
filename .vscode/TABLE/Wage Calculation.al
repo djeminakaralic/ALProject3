@@ -1019,6 +1019,25 @@ table 50018 "Wage Calculation"
         {
             Caption = 'Wage Base';
         }
+        field(50375; "Regres Netto With Wage Tax RAD"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Wage Addition".Amount WHERE(Regres = FILTER(true), "Employee No." = FIELD("Employee No."),
+            "Wage Header No." = FIELD("Wage Header No."), Locked = FILTER(true), Calculated = FILTER(false), Taxable = FILTER(true)));
+
+        }
+        field(50376; "Education Level"; Enum School)
+        {
+
+        }
+        field(5377; "Gender"; enum "Employee Gender")
+        {
+
+        }
+        field(50378; "Number Of Month"; Integer)
+        {
+
+        }
 
 
     }

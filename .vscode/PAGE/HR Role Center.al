@@ -62,6 +62,16 @@ page 50003 "HR Role Center"
                     RunObject = Page "Company Information";
                     ApplicationArea = all;
                 }
+                //"ECL Update"
+
+                action("ECL Update")
+                {
+                    Caption = 'ECL Update';
+                    Image = CompanyInformation;
+                    RunObject = xmlport "ECL Update";
+                    ApplicationArea = all;
+                }
+
                 action(Countries)
                 {
                     Caption = 'Countries';

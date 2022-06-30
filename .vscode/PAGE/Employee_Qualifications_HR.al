@@ -24,6 +24,7 @@ page 50213 Employee_Qualifications_HR
                 field("Line No."; "Line No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                 }
 

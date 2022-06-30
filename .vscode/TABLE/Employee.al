@@ -854,6 +854,11 @@ tableextension 50071 EmployeeExtension extends Employee
 
             end;
         }
+        field(110; "Party No."; Code[20])
+        {
+            Caption = 'Party No.';
+        }
+
 
         field(50122; "Contracted Work"; Boolean)
         {

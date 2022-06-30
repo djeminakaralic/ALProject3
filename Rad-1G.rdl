@@ -12445,6 +12445,9 @@ OUfeWVzOkXcWl3PkncXlHHlncTlH3llczpF31hbg/wPvLUIGToNyhQAAAABJRU5ErkJggg==</ImageD
         <Field Name="ZeneMartFormat">
           <DataField>ZeneMartFormat</DataField>
         </Field>
+        <Field Name="ReportDate">
+          <DataField>ReportDate</DataField>
+        </Field>
         <Field Name="NazivKomp">
           <DataField>NazivKomp</DataField>
         </Field>
