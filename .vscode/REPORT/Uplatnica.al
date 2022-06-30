@@ -191,8 +191,12 @@ report 50077 Uplatnica
 
             trigger OnAfterGetRecord()
             begin
-                if "Bank Account No." <> '' then
-                    Counter := Counter + 1
+                if "Bank Account No." <> '' then begin
+                    Counter := Counter + 1;
+                    if Name = 'UniCredit Bank' then
+                        Message('Pronasao');
+                end
+
                 else
                     Counter := 0;
             end;
