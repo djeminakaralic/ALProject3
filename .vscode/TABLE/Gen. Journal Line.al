@@ -160,15 +160,9 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                 end;
-
             end;
         }
-
-
     }
-
-
-
 
     trigger OnInsert()
     begin
@@ -186,5 +180,4 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
         Text001: Label 'Given amount cannot be less than amount.';
-
 }
