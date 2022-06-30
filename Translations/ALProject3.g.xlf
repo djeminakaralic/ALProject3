@@ -26953,6 +26953,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Training Time Entries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3024256473 - Action 791684153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Training Time Entries - Action Employee Training Ledger - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2019009885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Trainings Types</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26972,6 +26977,11 @@
           <source>Katalog treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Trainings Catalogue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2202478900 - Action 3024256473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Training Time Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trainings Catalogue - Action Training Time Entries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3222644369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TS_Posting Group</source>
