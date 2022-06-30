@@ -55,16 +55,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-        modify("Posting Date")
-        {
-            trigger OnAfterValidate()
-            begin
-                //"Posting Date" := FORMAT(rec."Posting Date", 0, '<Day,2>.<Month,2>.<Year4>.');
-
-            end;
-        }
-
-
     }
 
     actions
