@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Id":50170,"Kind":16,"Name":"CashReceiptJournal","PackagePath":"/src/.vscode/REPORT/CashReceiptJournal.al"}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50106,"Kind":17,"Name":"GLEntryExtends","PackagePath":"/src/.vscode/TABLE/GLEntryExtends.al"},{"Id":50170,"Kind":16,"Name":"CashReceiptJournal","PackagePath":"/src/.vscode/REPORT/CashReceiptJournal.al"}],"Removed":[]}
