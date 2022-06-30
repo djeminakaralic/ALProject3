@@ -1,7 +1,7 @@
 report 50025 DL1
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './DL1.rdlc';
+    RDLCLayout = './DL1.rdl';
 
     dataset
     {

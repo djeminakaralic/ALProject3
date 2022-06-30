@@ -1,7 +1,7 @@
 report 50033 "GIP-1022 New"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './GIP-1022 New.rdlc';
+    RDLCLayout = './GIP-1022 New.rdl';
 
     dataset
     {
