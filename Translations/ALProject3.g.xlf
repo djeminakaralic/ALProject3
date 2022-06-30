@@ -16993,6 +16993,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Manager contract - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 3717671877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max Days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Max Days - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 3755995277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Millitary</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35998,6 +36003,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension HumanResourcesSetup_ext - Control Trainings setup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Change 1267408499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Podaci o kupcu</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Change Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Change 422618514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Ime i prezime</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Change AccountName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 2612190612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Adresa</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Address_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 23630027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Grad</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control City_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 2391333830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>E-mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Email_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Broj mobilnog telefona</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control MobilePhone_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 1120277830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Kućni telefonski broj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Phone_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 1915851633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Knjižna grupa</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Posting Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4197198462 - Action 3180535661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Order Confirmation Cr. Memo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38643,6 +38688,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Department Category - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3318887637 - Field 299022368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Description2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3318887637 - Field 541292345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
           <source>Employee Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38943,6 +38993,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Due Date 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2391333830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>E-mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Email_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 475006745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Given amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38952,6 +39007,11 @@
           <source>Group Member</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Group Member - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Mobile Phone</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field MobilePhone_Cust - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3894230411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Redni broj uplate</source>
@@ -38987,6 +39047,11 @@
           <source>Payment Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Payment Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 1120277830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Phone</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Phone_Cust - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 1132033293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Postponed VAT</source>
@@ -39027,6 +39092,11 @@
           <source>Employee No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntryExtends - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2774207422 - Field 4179371985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Payment Type Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntryExtends - Field Payment Type Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2774207422 - Field 3126877759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Vendor Order No.</source>
