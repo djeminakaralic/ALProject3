@@ -500,6 +500,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                     Image = Ledger;
                     ApplicationArea = all;
+                    Visible=false;
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
