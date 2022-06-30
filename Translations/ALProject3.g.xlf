@@ -16993,6 +16993,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Manager contract - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2891291690 - Field 3717671877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max Days</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vacation Ground 2 - Field Max Days - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2891291690 - Field 3755995277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Millitary</source>
           <note from="Developer" annotates="general" priority="2"></note>

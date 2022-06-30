@@ -59,6 +59,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
             end;
         }
+        //moveafter("Social status"; "Applies-to Doc. Type");
+
     }
 
     actions
