@@ -36023,6 +36023,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control City_Cust - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Broj mobilnog telefona</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control MobilePhone_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 1120277830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Kućni telefonski broj</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38982,6 +38987,11 @@
           <source>Group Member</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Group Member - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Mobile Phone</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field MobilePhone_Cust - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3894230411 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Redni broj uplate</source>

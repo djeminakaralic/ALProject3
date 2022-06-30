@@ -43,6 +43,11 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Kućni telefonski broj';
                 ApplicationArea = All;
             }
+            field(MobilePhone_Cust; MobilePhone_Cust)
+            {
+                Caption = 'Broj mobilnog telefona';
+                ApplicationArea = All;
+            }
         }
     }
 
