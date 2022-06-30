@@ -53,6 +53,11 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Grad';
                 ApplicationArea = All;
             }
+            field("Posting Group"; "Posting Group")
+            {
+                Caption = 'Grad';
+                ApplicationArea = All;
+            }
         }
     }
 
