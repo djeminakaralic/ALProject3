@@ -13,6 +13,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
 
             ApplicationArea = all;
+            Visible = false;
         }
 
 
@@ -1622,6 +1623,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Work Experience Percentage"; Rec."Work Experience Percentage")
                     {
                         ApplicationArea = all;
+                        Editable = false;
                     }
                     field("Send PayList"; "Send PayList")
                     {
@@ -1650,6 +1652,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                         //ĐK  TableRelation = "Wage/Reduction Bank Accounts"."No.";
                         Visible = false;
+                    }
+                    field("Party No."; "Party No.")
+                    {
+
                     }
                     field("Refer To Number"; Rec."Refer To Number")
                     {
@@ -1706,6 +1712,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Wage Type"; "Wage Type")
                     {
                         ApplicationArea = all;
+
                     }
 
                     field("Operator No."; "Operator No.")
@@ -1747,10 +1754,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Iznos poreske kartice"; "Iznos poreske kartice")
                     {
                         ApplicationArea = all;
+                        Visible = false;
                     }
                     field("Iznos ličnog odbitka"; "Iznos ličnog odbitka")
                     {
                         ApplicationArea = all;
+                        Visible = false;
                     }
                 }
                 group(Posting)

@@ -39,6 +39,8 @@ table 50200 "Additional Education"
 
 
             trigger OnValidate()
+            var
+                ECLA: Record "Employee Contract Ledger";
             begin
                 Employee.RESET;
                 Employee.SETFILTER("No.", "Employee No.");
@@ -56,6 +58,24 @@ table 50200 "Additional Education"
                     Rec.INSERT(TRUE);
 
                 EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
+                if "From Date" <> 0D then begin
+                    ECLA.Reset();
+                    ECLA.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    //ĐK   ECLA.SetFilter("Starting Date",'<=%1',"From Date");
+                    if ("To Date" <> 0D) and ("From Date" <> 0D) then
+                        ECLA.SetFilter("Starting Date", '%1..%2', "From Date", "To Date");
+                    if ("To Date" = 0D) then
+                        ECLA.SetFilter("Starting Date", '>=%1', "From Date");
+                    //ECLA.SetFilter("Employee Education Level",'%1',employe);
+                    ECLA.SetCurrentKey("Starting Date");
+                    ECLA.Ascending;
+                    if ECLA.FindSet() then
+                        repeat
+                            ECLA."Employee Education Level" := Rec."Education Level";
+                            ECLA.Modify();
+
+                        until ECLA.Next() = 0;
+                end;
 
             end;
         }
@@ -241,6 +261,7 @@ table 50200 "Additional Education"
                     END;*/
 
                 EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
+                Validate("Education Level", Rec."Education Level");
 
             end;
         }
@@ -256,6 +277,7 @@ table 50200 "Additional Education"
                   IF "To Date"<"From Date" THEN
                       ERROR(Text002);
                     END;*/
+                Validate("Education Level", Rec."Education Level");
 
             end;
         }
@@ -469,10 +491,10 @@ table 50200 "Additional Education"
             AdditionalEducation.RESET;
             AdditionalEducation.SETFILTER("Employee No.", "Employee No.");
             IF AdditionalEducation.FINDFIRST THEN BEGIN
-                                                      REPEAT
-                                                          AdditionalEducation.Active := FALSE;
-                                                          AdditionalEducation.MODIFY;
-                                                      UNTIL AdditionalEducation.NEXT = 0;
+                REPEAT
+                    AdditionalEducation.Active := FALSE;
+                    AdditionalEducation.MODIFY;
+                UNTIL AdditionalEducation.NEXT = 0;
             END;
 
             Active := TRUE;

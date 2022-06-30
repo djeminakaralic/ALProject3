@@ -165,9 +165,25 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
 
 
     }
+    trigger OnInsert()
+    var
+        myInt: Integer;
+    begin
+        EMployeeQ.Reset();
+        EMployeeQ.SetFilter("Line No.", '<>%1', 0);
+        EMployeeQ.SetCurrentKey("Line No.");
+        EMployeeQ.Ascending;
+        if EMployeeQ.FindLast() then
+            Rec."Line No." += EMployeeQ."Line No." + 1
+        else
+            Rec."Line No." := 1;
+
+
+    end;
 
     var
         myInt: Integer;
+        EMployeeQ: Record "Employee Qualification";
         Text000: Label 'You cannot delete employee qualification information if there are comments associated with it.';
         Qualification: Record "Qualification";
         Employee: Record "Employee";

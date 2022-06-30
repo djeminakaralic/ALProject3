@@ -5434,6 +5434,12 @@ fCQ0hW0u+j754DtxAFGITH18n83RPK06nFAqTnZIbZW2p0lYaPZmFnrHxbt4WCd/VgcvYNdFpPe8qFyE
         <Field Name="NetoIsplata">
           <DataField>NetoIsplata</DataField>
         </Field>
+        <Field Name="NetoPros">
+          <DataField>NetoPros</DataField>
+        </Field>
+        <Field Name="NetoProsFormat">
+          <DataField>NetoProsFormat</DataField>
+        </Field>
         <Field Name="BrojZaposlenih">
           <DataField>BrojZaposlenih</DataField>
         </Field>
