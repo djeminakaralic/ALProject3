@@ -36003,6 +36003,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension HumanResourcesSetup_ext - Control Trainings setup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 2612190612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Adresa</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Address_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 23630027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Grad</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control City_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 1120277830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Kućni telefonski broj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Phone_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4197198462 - Action 3180535661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Order Confirmation Cr. Memo</source>
           <note from="Developer" annotates="general" priority="2"></note>

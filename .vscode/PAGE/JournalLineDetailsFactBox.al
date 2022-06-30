@@ -23,14 +23,17 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
         {
             field(Address_Cust; Address_Cust)
             {
+                Caption = 'Adresa';
                 ApplicationArea = All;
             }
             field(City_Cust; City_Cust)
             {
+                Caption = 'Grad';
                 ApplicationArea = All;
             }
             field(Phone_Cust; Phone_Cust)
             {
+                Caption = 'Kućni telefonski broj';
                 ApplicationArea = All;
             }
         }
