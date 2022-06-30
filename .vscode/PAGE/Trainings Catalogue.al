@@ -58,6 +58,36 @@ page 50058 "Trainings Catalogue"
         }
 
 
+
+
+    }
+    actions
+    {
+        area(processing)
+        {
+            action("Training Time Entries")
+            {
+                Caption = 'Training Time Entries';
+                ApplicationArea = all;
+                Image = Hierarchy;
+                PromotedIsBig = true;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    TTE: Record "Training Time Entry";
+                    TTEPage: Page "Training Time Entries";
+                begin
+                    TTE.Reset();
+                    TTE.SetFilter(Code2, '%1', Rec.Code);
+                    TTEPage.SetTableView(TTE);
+                    TTEPage.Run();
+
+                end;
+
+            }
+        }
     }
     var
         Trainingtype: Record "Training Type";

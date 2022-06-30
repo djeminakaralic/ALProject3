@@ -76,11 +76,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50024; "Payment DT"; DateTime) //ED
         {
             DataClassification = ToBeClassified;
-
-            /*trigger OnValidate()
-            begin
-               // Rec."Payment DT" := FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
-            end;*/
         }
         field(50025; "Given amount"; Decimal)
         {
@@ -103,11 +98,9 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50027; "No. Line"; Integer)
         {
             Caption = 'Redni broj uplate';
-
         }
         field(50028; "Social status"; enum "Social Status")
         {
-            //TableRelation = Customer."Social status category";
             Caption = 'Social status category';
         }
         field(50030; "Address_Cust"; Text[100])
@@ -135,6 +128,18 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'City';
         }
+        field(50036; Phone_Cust; Text[30]) //ED
+        {
+            Caption = 'Phone';
+        }
+        field(50037; MobilePhone_Cust; Text[30]) //ED
+        {
+            Caption = 'Mobile Phone';
+        }
+        field(50038; Email_Cust; Text[80]) //ED
+        {
+            Caption = 'E-mail';
+        }
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -156,16 +161,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     RegistrationNo_Cust := Customer."Registration No.";
                     VATRegistrationNo_Cust := Customer."VAT Registration No.";
                     City_Cust := Customer.City;
+                    Phone_Cust := Customer."Phone No.";
+                    MobilePhone_Cust := Customer."Mobile Phone No.";
+                    Email_Cust := Customer."E-Mail";
                 end;
-
             end;
         }
-
-
     }
-
-
-
 
     trigger OnInsert()
     begin
@@ -183,5 +185,4 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
         Text001: Label 'Given amount cannot be less than amount.';
-
 }

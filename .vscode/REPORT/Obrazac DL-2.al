@@ -1,7 +1,7 @@
 report 50047 "Obrazac DL-2"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Obrazac DL-2.rdlc';
+    RDLCLayout = './Obrazac DL-2.rdl';
 
     dataset
     {

@@ -19,19 +19,25 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.69884cm</Width>
+                  <Width>1.04987cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.49269cm</Width>
+                  <Width>1.50473cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.87041cm</Width>
+                  <Width>1.66738cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.08307cm</Width>
+                  <Width>6.36292cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.19419cm</Width>
+                  <Width>1.83458cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.65496cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.19421cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -40,7 +46,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox3">
+                        <Textbox Name="Textbox2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -49,27 +55,21 @@
                                 <TextRun>
                                   <Value>R. br.</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                            </BottomBorder>
                             <LeftBorder>
                               <Style>None</Style>
                             </LeftBorder>
@@ -87,36 +87,30 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox9">
+                        <Textbox Name="Textbox7">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Dokument</Value>
+                                  <Value>Temeljnica</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                            </BottomBorder>
                             <LeftBorder>
                               <Style>None</Style>
                             </LeftBorder>
@@ -130,40 +124,36 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox4">
+                        <Textbox Name="Textbox8">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>OPIS</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                            </BottomBorder>
                             <LeftBorder>
                               <Style>None</Style>
                             </LeftBorder>
@@ -190,7 +180,7 @@
                                 <TextRun>
                                   <Value>ULAZ</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -237,7 +227,7 @@
                                 <TextRun>
                                   <Value>IZLAZ</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -273,11 +263,101 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Broj računa</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=RowNumber(Nothing)</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Brdokumenta">
@@ -287,9 +367,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!DocumentNo.Value</Value>
+                                  <Value>=Fields!Brdokumenta.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -323,23 +403,23 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Ext">
+                        <Textbox Name="BrdokumentaIS">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Ext.Value</Value>
+                                  <Value>=Fields!BrdokumentaIS.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Ext</rd:DefaultName>
+                          <rd:DefaultName>BrdokumentaIS</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -366,25 +446,23 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox6">
+                        <Textbox Name="Description">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!EmmployeeName.Value)</Value>
+                                  <Value>=Fields!Description.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <rd:DefaultName>Description</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -420,7 +498,7 @@
                                 <TextRun>
                                   <Value>=abs(Fields!Kolicina.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
@@ -466,7 +544,7 @@
                                 <TextRun>
                                   <Value>=abs(Fields!KolicinaIS.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
@@ -477,6 +555,51 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>KolicinaIS</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DocumentNo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>DocumentNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -512,6 +635,8 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -525,10 +650,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>6.27606cm</Top>
+            <Top>4.67816cm</Top>
             <Left>0.32103cm</Left>
             <Height>1.14708cm</Height>
-            <Width>16.3392cm</Width>
+            <Width>16.26865cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -544,7 +669,7 @@
                   <TextRun>
                     <Value>UKUPNO:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -555,10 +680,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.00224cm</Top>
-            <Left>6.04718cm</Left>
+            <Top>7.89981cm</Top>
+            <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -579,7 +704,7 @@
                   <TextRun>
                     <Value>Ukupni primitak:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -589,10 +714,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>7.81636cm</Top>
-            <Left>6.05071cm</Left>
+            <Top>6.36115cm</Top>
+            <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -613,7 +738,7 @@
                   <TextRun>
                     <Value>Odbija se izdatak:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -623,10 +748,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>8.4093cm</Top>
-            <Left>6.04718cm</Left>
+            <Top>6.95409cm</Top>
+            <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -647,7 +772,7 @@
                   <TextRun>
                     <Value>=IIF(Sum(Fields!KolicinaIS.Value)&gt;abs(Sum(Fields!Kolicina.Value)),Sum(Fields!KolicinaIS.Value)-abs(Sum(Fields!Kolicina.Value)),0)</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -659,10 +784,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.00224cm</Top>
-            <Left>14.43074cm</Left>
+            <Top>7.89981cm</Top>
+            <Left>12.74051cm</Left>
             <Height>0.59294cm</Height>
-            <Width>2.19068cm</Width>
+            <Width>1.65496cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -683,7 +808,7 @@
                   <TextRun>
                     <Value>=abs(Sum(Fields!KolicinaIS.Value))</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -694,10 +819,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>8.4093cm</Top>
-            <Left>14.43074cm</Left>
-            <Height>0.59294cm</Height>
-            <Width>2.19421cm</Width>
+            <Top>7.01105cm</Top>
+            <Left>12.74051cm</Left>
+            <Height>0.53598cm</Height>
+            <Width>1.65495cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -716,7 +841,7 @@
             <Sizing>FitProportional</Sizing>
             <Top>0.55155cm</Top>
             <Left>0.32103cm</Left>
-            <Height>1.09362cm</Height>
+            <Height>1.86972cm</Height>
             <Width>10.64554cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
@@ -726,8 +851,8 @@
             </Style>
           </Image>
           <Line Name="Line2">
-            <Top>7.78108cm</Top>
-            <Left>6.04718cm</Left>
+            <Top>6.22004cm</Top>
+            <Left>6.05424cm</Left>
             <Height>0cm</Height>
             <Width>10.57424cm</Width>
             <ZIndex>7</ZIndex>
@@ -738,8 +863,8 @@
             </Style>
           </Line>
           <Line Name="Line3">
-            <Top>9.00224cm</Top>
-            <Left>6.05424cm</Left>
+            <Top>7.72342cm</Top>
+            <Left>6.08599cm</Left>
             <Height>0cm</Height>
             <Width>10.57424cm</Width>
             <ZIndex>8</ZIndex>
@@ -758,7 +883,7 @@
                   <TextRun>
                     <Value>=IIF(abs(Sum(Fields!Kolicina.Value))&gt;Sum(Fields!KolicinaIS.Value),abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value),0)</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -770,10 +895,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>8.96697cm</Top>
-            <Left>12.34767cm</Left>
+            <Top>7.89981cm</Top>
+            <Left>10.90593cm</Left>
             <Height>0.59294cm</Height>
-            <Width>1.97724cm</Width>
+            <Width>1.83458cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -794,7 +919,7 @@
                   <TextRun>
                     <Value>=abs(Sum(Fields!Kolicina.Value))</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -805,10 +930,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>7.85164cm</Top>
-            <Left>12.34767cm</Left>
-            <Height>0.47351cm</Height>
-            <Width>2.01251cm</Width>
+            <Top>6.36115cm</Top>
+            <Left>10.90593cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.83458cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -829,7 +954,7 @@
                   <TextRun>
                     <Value>PRETHODNI SALDO:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -840,10 +965,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.59518cm</Top>
-            <Left>6.05424cm</Left>
+            <Top>8.49275cm</Top>
+            <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -856,8 +981,8 @@
             </Style>
           </Textbox>
           <Line Name="Line4">
-            <Top>10.18812cm</Top>
-            <Left>6.08599cm</Left>
+            <Top>9.26208cm</Top>
+            <Left>6.04718cm</Left>
             <Height>0cm</Height>
             <Width>10.57424cm</Width>
             <ZIndex>12</ZIndex>
@@ -876,7 +1001,7 @@
                   <TextRun>
                     <Value>=IIF((Fields!PrethodniSaldo.Value)&gt;0 , Fields!PrethodniSaldo.Value , 0)</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -888,10 +1013,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.63046cm</Top>
-            <Left>12.34767cm</Left>
-            <Height>0.48711cm</Height>
-            <Width>2.01251cm</Width>
+            <Top>8.49275cm</Top>
+            <Left>10.90593cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.83458cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -912,7 +1037,7 @@
                   <TextRun>
                     <Value>=IIF((Fields!PrethodniSaldo.Value)&lt;0 , Fields!PrethodniSaldo.Value, 0)</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -924,10 +1049,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>9.63046cm</Top>
-            <Left>14.43074cm</Left>
-            <Height>0.52238cm</Height>
-            <Width>2.19068cm</Width>
+            <Top>8.49275cm</Top>
+            <Left>12.74051cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.65495cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -948,7 +1073,7 @@
                   <TextRun>
                     <Value>=0</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -959,10 +1084,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>7.85164cm</Top>
-            <Left>14.43074cm</Left>
-            <Height>0.47351cm</Height>
-            <Width>2.1942cm</Width>
+            <Top>6.36115cm</Top>
+            <Left>12.74051cm</Left>
+            <Height>0.59294cm</Height>
+            <Width>1.65495cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -983,7 +1108,7 @@
                   <TextRun>
                     <Value>=0</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <Format>n2</Format>
                     </Style>
                   </TextRun>
@@ -994,10 +1119,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>8.39571cm</Top>
-            <Left>12.34767cm</Left>
+            <Top>7.01105cm</Top>
+            <Left>10.90593cm</Left>
             <Height>0.53598cm</Height>
-            <Width>2.01251cm</Width>
+            <Width>1.83458cm</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -1018,7 +1143,7 @@
                   <TextRun>
                     <Value>STANJE BLAGAJNE:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1029,10 +1154,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>10.36451cm</Top>
-            <Left>6.04718cm</Left>
+            <Top>9.40319cm</Top>
+            <Left>6.08599cm</Left>
             <Height>0.59294cm</Height>
-            <Width>4.91939cm</Width>
+            <Width>4.81994cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1053,7 +1178,7 @@
                   <TextRun>
                     <Value>=IIF((Fields!PrethodniSaldo.Value+abs(Sum(Fields!Kolicina.Value)+Sum(Fields!KolicinaIS.Value)))&gt;0, (Fields!PrethodniSaldo.Value+(abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value))), 0)</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -1065,10 +1190,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>10.36451cm</Top>
-            <Left>10.96657cm</Left>
+            <Top>9.40319cm</Top>
+            <Left>10.90593cm</Left>
             <Height>0.59294cm</Height>
-            <Width>3.42889cm</Width>
+            <Width>1.83458cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1125,7 +1250,7 @@
                   <TextRun>
                     <Value>=IIF((Fields!PrethodniSaldo.Value+abs(Sum(Fields!Kolicina.Value)+Sum(Fields!KolicinaIS.Value)))&lt;0, (Fields!PrethodniSaldo.Value+(abs(Sum(Fields!Kolicina.Value))-Sum(Fields!KolicinaIS.Value))), 0)</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>n2</Format>
                     </Style>
@@ -1137,10 +1262,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
-            <Top>10.36451cm</Top>
-            <Left>14.43074cm</Left>
+            <Top>9.40319cm</Top>
+            <Left>12.74051cm</Left>
             <Height>0.59294cm</Height>
-            <Width>2.19068cm</Width>
+            <Width>1.65496cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1180,7 +1305,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>14.74014cm</Top>
+            <Top>10.72814cm</Top>
             <Left>0.32103cm</Left>
             <Height>0.89104cm</Height>
             <Width>4.84367cm</Width>
@@ -1223,8 +1348,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>14.74014cm</Top>
-            <Left>11.45898cm</Left>
+            <Top>10.72814cm</Top>
+            <Left>11.49779cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>22</ZIndex>
@@ -1266,8 +1391,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>14.74014cm</Top>
-            <Left>5.81119cm</Left>
+            <Top>11.79557cm</Top>
+            <Left>5.80413cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>23</ZIndex>
@@ -1309,7 +1434,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>13.50983cm</Top>
+            <Top>11.79557cm</Top>
             <Left>0.32103cm</Left>
             <Height>0.89104cm</Height>
             <Width>4.84367cm</Width>
@@ -1352,8 +1477,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>13.50983cm</Top>
-            <Left>5.81119cm</Left>
+            <Top>10.72814cm</Top>
+            <Left>5.80413cm</Left>
             <Height>0.89104cm</Height>
             <Width>5.16244cm</Width>
             <ZIndex>25</ZIndex>
@@ -1397,7 +1522,7 @@
             <rd:DefaultName>Textbox20</rd:DefaultName>
             <Top>3.37378cm</Top>
             <Left>1.47317cm</Left>
-            <Height>1.60424cm</Height>
+            <Height>1.12799cm</Height>
             <Width>3.67771cm</Width>
             <ZIndex>26</ZIndex>
             <Style>
@@ -1417,7 +1542,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="od:" + FORMAT(Fields!PostingDate.Value, "dd.MM.yyyy")</Value>
+                    <Value>="od: " + FORMAT(Fields!PostingDate.Value, "dd.MM.yyyy")</Value>
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -1452,6 +1577,15 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
                     <Value>Strana:</Value>
                     <Style />
                   </TextRun>
@@ -1460,10 +1594,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>5.59717cm</Top>
-            <Left>14.46604cm</Left>
-            <Height>0.53778cm</Height>
-            <Width>2.16244cm</Width>
+            <Top>3.37378cm</Top>
+            <Left>14.35667cm</Left>
+            <Height>1.12799cm</Height>
+            <Width>2.23301cm</Width>
             <ZIndex>28</ZIndex>
             <Style>
               <Border>
@@ -1476,11 +1610,52 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>16.05737cm</Height>
+        <Height>13.1205cm</Height>
         <Style />
       </Body>
-      <Width>17.49129cm</Width>
+      <Width>17.50235cm</Width>
       <Page>
+        <PageFooter>
+          <Height>2.54cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="PageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Stranica " &amp; Globals!PageNumber</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>PageNumber</rd:DefaultName>
+              <Top>1.19029cm</Top>
+              <Left>6.86247cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -1534,6 +1709,12 @@ End Function
       <Fields>
         <Field Name="PostingDate">
           <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="JBName">
+          <DataField>JBName</DataField>
+        </Field>
+        <Field Name="GLNo">
+          <DataField>GLNo</DataField>
         </Field>
         <Field Name="DocumentNo">
           <DataField>DocumentNo</DataField>

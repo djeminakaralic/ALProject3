@@ -19,6 +19,7 @@ pageextension 50068 HumanResourcesSetup_ext extends "Human Resources Setup"
             field("Operator Nos."; "Operator Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Personal Documents Nos."; "Personal Documents Nos.")
             {
@@ -57,22 +58,27 @@ pageextension 50068 HumanResourcesSetup_ext extends "Human Resources Setup"
             field("B-1 Nos."; "B-1 Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("B-1 (with regions) Nos."; "B-1 (with regions) Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Stream Nos."; "Stream Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Title Nos"; "Title Nos")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Profession Nos"; "Profession Nos")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Probation Expire Days"; "Probation Expire Days")
             {
@@ -102,30 +108,37 @@ pageextension 50068 HumanResourcesSetup_ext extends "Human Resources Setup"
             field("Objective Header Nos."; "Objective Header Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Objective Line Nos."; "Objective Line Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Objective Type Nos."; "Objective Type Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Competency Nos."; "Competency Nos.")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Fixed Amount Brutto"; "Fixed Amount Brutto")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Variable Amount Brutto Less"; "Variable Amount Brutto Less")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
             field("Variable Amount Brutto Greater"; "Variable Amount Brutto Greater")
             {
                 ApplicationArea = all;
+                Visible = false;
             }
 
 
@@ -181,6 +194,7 @@ pageextension 50068 HumanResourcesSetup_ext extends "Human Resources Setup"
             group("Hourlyrate managers")
             {
                 Caption = 'Hourlyrate managers';
+                Visible = false;
                 field("Administrator 1"; "Administrator 1")
                 {
                     ApplicationArea = all;
@@ -221,6 +235,7 @@ pageextension 50068 HumanResourcesSetup_ext extends "Human Resources Setup"
             group("Trainings setup")
             {
                 Caption = 'Trainings setup';
+                Visible = false;
                 field("Training Administrator"; "Training Administrator")
                 {
                     ApplicationArea = all;
@@ -236,6 +251,7 @@ pageextension 50068 HumanResourcesSetup_ext extends "Human Resources Setup"
             }
             ///  }
         }
+
 
     }
 

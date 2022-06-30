@@ -66,7 +66,6 @@ page 50028 "Wage Wizard Step 5"
                     begin
                         WCTemp.RESET;
                         WCTemp.SETFILTER(Payment, '<%1', 0);
-                        //ĐK WageCalc.copyfilters(WCTemp);
                         WCPage.SETTABLEVIEW(WCTemp);
                         WCPage.RUN;
                         CurrPage.UPDATE;

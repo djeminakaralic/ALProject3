@@ -1,7 +1,7 @@
 report 50089 "Summary per Payment Type"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Summary per Payment Type.rdlc';
+    RDLCLayout = './Summary per Payment Type.rdl';
 
     dataset
     {

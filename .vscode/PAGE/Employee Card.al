@@ -13,6 +13,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         {
 
             ApplicationArea = all;
+            Visible = false;
         }
 
 
@@ -1622,6 +1623,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Work Experience Percentage"; Rec."Work Experience Percentage")
                     {
                         ApplicationArea = all;
+                        Editable = false;
                     }
                     field("Send PayList"; "Send PayList")
                     {
@@ -1650,6 +1652,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
                         //ĐK  TableRelation = "Wage/Reduction Bank Accounts"."No.";
                         Visible = false;
+                    }
+                    field("Party No."; "Party No.")
+                    {
+
                     }
                     field("Refer To Number"; Rec."Refer To Number")
                     {
@@ -1706,6 +1712,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Wage Type"; "Wage Type")
                     {
                         ApplicationArea = all;
+
                     }
 
                     field("Operator No."; "Operator No.")
@@ -1747,10 +1754,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Iznos poreske kartice"; "Iznos poreske kartice")
                     {
                         ApplicationArea = all;
+                        Visible = false;
                     }
                     field("Iznos ličnog odbitka"; "Iznos ličnog odbitka")
                     {
                         ApplicationArea = all;
+                        Visible = false;
                     }
                 }
                 group(Posting)
@@ -3919,7 +3928,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 Caption = 'Rješenja';
                 Image = Report;
-                RunObject = report VacationDecision;
+                //ĐK   RunObject = report VacationDecision;
                 ApplicationArea = all;
                 //RunPageLink = "Employee No." = field("Employee No.");
 
@@ -3927,11 +3936,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 trigger OnAction()
                 begin
-                    Vacation.SetFilter("Employee No.", xRec."No.");
-                    if Vacation.FindFirst() then begin
-                        VacationDecisionR.SETTABLEVIEW(Vacation);
-                        VacationDecisionR.RUN;
-                    end;
+                    Vacation.Reset();
+                    Vacation.SetFilter("Employee No.", Rec."No.");
+
+                    VacationDecisionR.SETTABLEVIEW(Vacation);
+                    VacationDecisionR.RUN;
+
 
                 end;
 

@@ -18428,6 +18428,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Meal - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1059656092 - Field 2714635173 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Topli obrok - RAD</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Meal add RAD - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1059656092 - Field 3945451840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calculated Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18793,6 +18798,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Earnings Deduction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 3192774016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Education Level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Education Level - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1022113639 - Field 1635278281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Coefficient</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18832,6 +18842,11 @@
           <source>First Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field First Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 2303302321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gender</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Gender - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1022113639 - Field 130325605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Coefficient</source>
@@ -19048,6 +19063,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 2612373982 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number Of Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Number Of Month - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1022113639 - Field 1301016495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brutto</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19202,6 +19222,11 @@
           <source>Regres Netto</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Regres Netto With Wage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 1481277304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Regres Netto With Wage Tax RAD</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Regres Netto With Wage Tax RAD - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1022113639 - Field 4050716555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Regres Netto With Wage Taxable</source>
@@ -21487,6 +21512,16 @@
           <source>Aproved Expenditures</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Aproved Expenditures - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2298784508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Average coefficient statute</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Average coefficient statute - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2446303254 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Average Salary FBIH</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Average Salary FBIH - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1954395533 - Field 2708261527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Average Yearly Hour Pool</source>
@@ -25223,6 +25258,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action Documents - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2066736455 - Action 1408043109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ECL Update</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page HR Role Center - Action ECL Update - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2066736455 - Action 643899375 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entities</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26913,6 +26953,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Training Time Entries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3024256473 - Action 791684153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Training Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Training Time Entries - Action Employee Training Ledger - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2019009885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Trainings Types</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26932,6 +26977,11 @@
           <source>Katalog treninga</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Trainings Catalogue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2202478900 - Action 3024256473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Training Time Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Trainings Catalogue - Action Training Time Entries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3222644369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TS_Posting Group</source>
@@ -27152,6 +27202,16 @@
           <source>You do not have permission to access this report. Please contact your system administrator.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - NamedType error1</note>
+        </trans-unit>
+        <trans-unit id="Page 3625076245 - Control 1263003989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - Control LName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3625076245 - Control 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Calculation Temp Subform - Control Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1554128033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Header Card</source>
@@ -28827,11 +28887,6 @@
           <source>Izvjestaj starosna spolna</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosna spolna - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 3697989730 - ReportColumn 1560247518 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>,Female,Male</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj starosna spolna - ReportColumn Gender_Employee - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Report 3697989730 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Izaberi izvještaj</source>
@@ -32838,6 +32893,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Rad-1 - Control OrgJeddd - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1401030749 - Control 3355990861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ažuriraj podatke u platama</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Rad-1 - Control UpdateOrg - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 1401030749 - Control 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Year</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32867,6 +32927,11 @@
           <source>Org Jed</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Rad-1G - Control OrgJed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4267916352 - Control 2169562395 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Rad-1G - Control UpdateMonth - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 4267916352 - Control 3355990861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>UpdateOrg</source>
@@ -34458,10 +34523,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report StatusExt update - NamedType TEXT</note>
         </trans-unit>
-        <trans-unit id="Report 3725376363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 1583812653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Summary per Employee</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Summary per Employee - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Summarry Per Employee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2551729866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Summary per Payment Amounts</source>
@@ -34863,6 +34928,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Work experience in Company - NamedType Text0001</note>
         </trans-unit>
+        <trans-unit id="Query 3201223187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Orders Summarry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query Payment Orders Summarry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 1408043109 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ECL Update</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort ECL Update - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 1408043109 - NamedType 1821279055" size-unit="char" translate="yes" xml:space="preserve">
+          <source>It's done</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort ECL Update - NamedType Text</note>
+        </trans-unit>
         <trans-unit id="XmlPort 3957032978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee No import</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34933,6 +35013,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension AlternativeAddress - Control Current Address - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3552131165 - Action 1337495762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
+          <source>Cash Diary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Cash Diary - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1418896891 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1418896891">
           <source>Do you want to set paid holiday for all employees?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34947,11 +35032,6 @@
           <source>Today is %1</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - NamedType Text000</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4113372704 - Action 1337495762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
-          <source>Cash Diary</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Cash Diary - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 4113372704 - Action 1991143175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Izvještaj porto blagajne</source>
@@ -36192,6 +36272,11 @@
           <source>Business trip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Bussiness trip - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 3505761862 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Calculate Experience</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Calculate Experience - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 1010396995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Calculated Sick Leave</source>
@@ -37982,6 +38067,11 @@
           <source>Org. jed PU</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Org. jed PU - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 3762261203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Party No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Party No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 36154713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Passport No.</source>

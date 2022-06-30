@@ -11,16 +11,16 @@ report 50055 "Summary per Payment Orders"
             DataItemTableView = WHERE(Contributon = FILTER(<> ''),
                                       Iznos = FILTER(<> 0));
             RequestFilterFields = "Wage Header No.";
-            column(Type; Type)
+            column(Type; DataItem1.Type)
             {
             }
-            column("Code"; Code)
+            column("Code"; DataItem1.Code)
             {
             }
-            column(Contribution; Contributon)
+            column(Contribution; DataItem1.Contributon)
             {
             }
-            column(Amount; Iznos)
+            column(Amount; DataItem1.Iznos)
             {
             }
             column(CompanyName; CompInfo.Name)
@@ -38,7 +38,7 @@ report 50055 "Summary per Payment Orders"
             column(Picture; CompInfo.Picture)
             {
             }
-            column(WageCalculationType_PaymentOrder; "Wage Calculation Type")
+            column(WageCalculationType_PaymentOrder; DataItem1."Wage Calculation Type")
             {
             }
             column(User; USERID)
@@ -48,6 +48,12 @@ report 50055 "Summary per Payment Orders"
             {
             }
             column(Name; Name)
+            {
+            }
+            column(PaymentType; PaymentType)
+            {
+            }
+            column(PaymentAmount; PaymentAmount)
             {
             }
 
@@ -71,6 +77,56 @@ report 50055 "Summary per Payment Orders"
                         Name := Mun.Name;
                 END;
                 CompInfo.CALCFIELDS(Picture);
+
+
+                IF PaymentSummarry.READ THEN BEGIN
+
+                    PaymentType := FORMAT(PaymentSummarry.Wage_Payment_Type);
+                    PaymentAmount := PaymentSummarry.Sum_Iznos;
+
+
+                END
+                ELSE BEGIN
+
+                    CLEAR(PaymentType);
+                    CLEAR(PaymentAmount);
+                END;
+            end;
+
+            trigger OnPostDataItem()
+            begin
+                PaymentSummarry.CLOSE;
+            end;
+
+            trigger OnPreDataItem()
+            begin
+                WCTypeFilter := GETFILTER("Wage Calculation Type");
+                IF
+                  WCTypeFilter = 'Redovni' THEN
+                    WCTypeFilterOption := 0;
+                IF
+                  WCTypeFilter = 'Ugovor o djelu-rezidenti' THEN
+                    WCTypeFilterOption := 1;
+                IF
+                  WCTypeFilter = 'Ugovor o djelu-nerezidenti' THEN
+                    WCTypeFilterOption := 2;
+                IF
+                  WCTypeFilter = 'Autorski ugovor' THEN
+                    WCTypeFilterOption := 3;
+                IF
+                  WCTypeFilter = 'Dodaci' THEN
+                    WCTypeFilterOption := 4;
+                PaymentSummarry.SETFILTER(Wage_Calculation_Type, '%1', WCTypeFilterOption);
+                //PaymentSummarry.SETFILTER(DatumUplate,'%1',DatumUplate);
+                WHeaderFilter := GETFILTER("Wage Header No.");
+                PDateFilter := GETFILTER(DatumUplate);
+                // PaymentSummarry.SETFILTER(Wage_Header_No,'%1','000000001');
+                PaymentSummarry.SETFILTER(Wage_Header_No, '%1', WHeaderFilter);
+                EVALUATE(PDateFilterDate, PDateFilter);
+                IF PDateFilterDate <> 0D THEN
+                    PaymentSummarry.SETFILTER(DatumUplate, '%1', PDateFilterDate);
+
+                PaymentSummarry.OPEN;
             end;
         }
     }
@@ -94,9 +150,17 @@ report 50055 "Summary per Payment Orders"
     var
         CompInfo: Record "Company Information";
         RDate: Date;
-        Mun: Record Municipality;
-        Canton: Record Canton;
+        Mun: Record "Municipality";
+        Canton: Record "Canton";
         Name: Text[150];
-        t_Entity: Record Entity;
+        t_Entity: Record "Entity";
+        PaymentType: Text[100];
+        PaymentAmount: Decimal;
+        PaymentSummarry: Query "Payment Orders Summarry";
+        WHeaderFilter: Text[30];
+        PDateFilter: Text[30];
+        PDateFilterDate: Date;
+        WCTypeFilter: Text[100];
+        WCTypeFilterOption: Option;
 }
 

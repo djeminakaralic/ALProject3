@@ -1,8 +1,6 @@
 report 50075 "Blagajnički dnevnik"
 {
     //ED
-
-
     DefaultLayout = RDLC;
     RDLCLayout = './Blagajnicki dnevnik.rdl';
 
@@ -10,10 +8,16 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            //DataItemTableView = WHERE(Bal. Account No.=FILTER(BKM));
+            DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
+            {
+            }
+            column(JBName; DataItem22."Journal Batch Name")
+            {
+            }
+            column(GLNo; DataItem22."Entry No.")
             {
             }
             column(DocumentNo; DataItem22."Document No.")
@@ -92,19 +96,22 @@ report 50075 "Blagajnički dnevnik"
             {
             }
 
+
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'PRIMITAK' THEN BEGIN //czk 1 uplata
+                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
+                    BrdokumentaIS := ''; //ED
                     Kolicina := Amount;
                 END;
 
 
-                IF "Journal Batch Name" = 'IZDATAK' THEN BEGIN
+                IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
+                    Brdokumenta := ''; //ED
                     Kolicina := 0;
                     KolicinaIS := Amount;
                 END;
@@ -120,11 +127,10 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', 'BKM');
+                GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                         REPEAT
-
                             PrethodniSaldo += GLEntry.Amount;
                         UNTIL GLEntry.NEXT = 0;
 
@@ -141,6 +147,8 @@ report 50075 "Blagajnički dnevnik"
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
+
+
 
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
@@ -174,6 +182,7 @@ report 50075 "Blagajnički dnevnik"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
+        Test: Integer;
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         PostingDatefilter: Text[100];

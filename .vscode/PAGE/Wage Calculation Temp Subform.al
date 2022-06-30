@@ -9,7 +9,7 @@ page 50044 "Wage Calculation Temp Subform"
     // //View Wage Calculation Temp before closing the calculation
 
     Caption = 'Wage Calculation Temp Subform';
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "Wage Calculation Temp";
 
     layout
@@ -25,42 +25,36 @@ page 50044 "Wage Calculation Temp Subform"
                 {
 
                     Editable = false;
+                    Caption = 'First Name';
                 }
                 field(LName; LName)
                 {
 
                     Editable = false;
+                    Caption = 'Last Name';
                 }
-                field("Employee Coefficient"; "Employee Coefficient")
-                {
-                }
+
                 field(Brutto; Brutto)
                 {
                 }
                 field("Hour Pool"; "Hour Pool")
                 {
                 }
-                field("Net Wage"; "Net Wage")
-                {
-                }
+
                 field("Tax Deductions"; "Tax Deductions")
                 {
                 }
                 field(Tax; Tax)
                 {
                 }
-                field("Indirect Wage Addition Amount"; "Indirect Wage Addition Amount")
-                {
-                }
+
                 field("Net Wage After Tax"; "Net Wage After Tax")
                 {
                 }
                 field("Untaxable Wage"; "Untaxable Wage")
                 {
                 }
-                field("Final Net Wage"; "Final Net Wage")
-                {
-                }
+
                 field("Wage Reduction"; "Wage Reduction")
                 {
                 }
@@ -73,33 +67,15 @@ page 50044 "Wage Calculation Temp Subform"
                 field("Meal to pay"; "Meal to pay")
                 {
                 }
-                field("Sick Leave-Company"; "Sick Leave-Company")
-                {
-                }
-                field("Sick Leave-Fund"; "Sick Leave-Fund")
-                {
-                }
-                field("Entity Code"; "Entity Code")
-                {
-                }
-                field("Work Experience Percentage"; "Work Experience Percentage")
-                {
-                }
-                field("Sick Fund Total"; "Sick Fund Total")
-                {
-                }
-                field("Wage Type"; "Wage Type")
-                {
-                }
+
+
                 field("Contribution Over Brutto"; "Contribution Over Brutto")
                 {
                 }
                 field("Contribution From Brutto"; "Contribution From Brutto")
                 {
                 }
-                field("Wage Addition"; "Wage Addition")
-                {
-                }
+
             }
         }
     }
@@ -139,4 +115,3 @@ page 50044 "Wage Calculation Temp Subform"
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
 }
-
