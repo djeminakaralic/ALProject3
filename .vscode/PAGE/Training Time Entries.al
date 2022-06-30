@@ -86,6 +86,34 @@ page 50067 "Training Time Entries"
 
 
     }
+    actions
+    {
+        area(processing)
+        {
+            action("Employee Training Ledger")
+            {
+                Caption = 'Employee Training Ledger';
+                ApplicationArea = all;
+                Image = Hierarchy;
+                PromotedIsBig = true;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    TTE: Record "Employee Training Ledger";
+                    TTEPage: Page "Employee Trainings Ledger";
+                begin
+                    TTE.Reset();
+                    TTE.SetFilter(Code2Entry, '%1', Rec.Code2);
+                    TTEPage.SetTableView(TTE);
+                    TTEPage.Run();
+
+                end;
+
+            }
+        }
+    }
 }
 
 

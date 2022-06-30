@@ -778,6 +778,7 @@ report 50003 "Vacation statistics"
                 field(EmployeeStatus; EmployeeStatus)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Caption = 'Employee Status';
                     Description = 'Active,Inactive,Unpaid,Terminated,On boarding,Practicians,Trainee,Student,Agency,Temporary Contract,Student Service,Volonteer,External employee';
                     OptionCaption = 'Active,Inactive,Unpaid,Terminated,On boarding,Practicians,Trainee,Student,Agency,Temporary Contract,Student Service,Volonteer,External employee';
@@ -785,6 +786,7 @@ report 50003 "Vacation statistics"
                 field(SectorValue2; SectorValue2)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Caption = 'Sector Value';
                     //OptionCaption = 'SectorValue';
                     TableRelation = Sector.Description;
@@ -792,6 +794,7 @@ report 50003 "Vacation statistics"
                 field(OdjelValue; OdjelValue)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Caption = 'Odjel Value';
                     //   OptionCaption = 'Odjel Value';
                     TableRelation = "Department Category".Description;
@@ -799,6 +802,7 @@ report 50003 "Vacation statistics"
                 field(GrupaValue; GrupaValue)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Caption = 'Grupa Value';
                     //  OptionCaption = 'Grupa Value';
                     TableRelation = Group.Description;
@@ -806,6 +810,7 @@ report 50003 "Vacation statistics"
                 field(TimValue; TimValue)
                 {
                     Caption = 'Tim';
+                    Visible = false;
                     ApplicationArea = all;
                     //   OptionCaption = 'TimValue';
                     TableRelation = Team.Name;
