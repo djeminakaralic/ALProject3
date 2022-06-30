@@ -1977,6 +1977,12 @@ Ac8USv0BjYvkXbjFOl5FLtpSN1TG/UERxjaakprJgU1XYGqGxxjqORdpqTJ21Hnf1oEAbApQ2aTatKFG
         <Field Name="BankAccNo">
           <DataField>BankAccNo</DataField>
         </Field>
+        <Field Name="BankIBAN">
+          <DataField>BankIBAN</DataField>
+        </Field>
+        <Field Name="BankSWIFT">
+          <DataField>BankSWIFT</DataField>
+        </Field>
         <Field Name="Counter">
           <DataField>Counter</DataField>
         </Field>

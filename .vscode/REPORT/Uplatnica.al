@@ -179,7 +179,15 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
-            column(Counter; Counter) { }
+            column(BankIBAN; DataItem22.IBAN)
+            {
+            }
+            column(BankSWIFT; DataItem22."SWIFT Code")
+            {
+            }
+            column(Counter; Counter)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -187,10 +195,6 @@ report 50077 Uplatnica
                     Counter := Counter + 1
                 else
                     Counter := 0;
-
-                //komentar
-
-                //Message(FORMAT(Counter));
             end;
         }
 
