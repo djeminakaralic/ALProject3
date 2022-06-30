@@ -160,6 +160,10 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
             Caption = 'Evidence of certification';
 
         }
+        field(50010; "Description2"; Text[300])
+        {
+            Caption = 'Description 2';
+        }
 
 
 
