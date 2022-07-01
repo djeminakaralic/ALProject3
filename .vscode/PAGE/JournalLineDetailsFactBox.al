@@ -65,33 +65,5 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 ApplicationArea = All;
             }
         }
-        /*addafter(Account)
-        {
-            group(Test)
-            {
-                Caption = 'Account';
-                field(ImeKupca; AccName)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Account Name';
-                    Editable = false;
-                    //Enabled = AccountEnabled;
-                    ToolTip = 'Specifies the account name that the entry on the journal line will be posted to.';
-
-                    trigger OnDrillDown()
-                    begin
-                        Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
-                    end;
-                }
-            }
-        }*/
     }
-
-    actions
-    {
-
-    }
-
-    var
-
 }
