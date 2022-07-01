@@ -196,6 +196,8 @@ report 50077 Uplatnica
                     if Name = 'UniCredit Bank' then begin
                         BankSWIFT := "SWIFT Code";
                         BankIBAN := IBAN;
+                        Message(BankSWIFT);
+                        Message(BankIBAN);
                     end;
                 end
                 else
