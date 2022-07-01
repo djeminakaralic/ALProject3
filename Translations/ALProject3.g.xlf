@@ -35373,11 +35373,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Profession Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2112275570 - Control 329424276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
-          <source>Title</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeCard - Control Title - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2112275570 - Control 1623821627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 866835530">
           <source>Vocation Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38477,6 +38472,11 @@
           <source>Title</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Title Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 3998321090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Naziv zvanja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Title Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 2043579856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Total Brought Days</source>
