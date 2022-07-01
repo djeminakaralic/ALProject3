@@ -140,6 +140,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'E-mail';
         }
+        field(50039; Balance_Cust; Decimal) //ED
+        {
+            Caption = 'Balance';
+        }
+
         modify(Amount)
         {
             trigger OnAfterValidate()
@@ -164,6 +169,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
+                    Balance_Cust := Customer."Balance (LCY)";
+                    Message(FORMAT(Balance_Cust));
                 end;
             end;
         }

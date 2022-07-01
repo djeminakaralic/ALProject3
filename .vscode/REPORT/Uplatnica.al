@@ -193,19 +193,19 @@ report 50077 Uplatnica
             begin
                 if "Bank Account No." <> '' then begin
                     Counter := Counter + 1;
-                    if Name = 'UniCredit Bank' then
-                        Message('Pronasao');
+                    if Name = 'UniCredit Bank' then begin
+                        BankSWIFT := "SWIFT Code";
+                        BankIBAN := IBAN;
+                    end;
                 end
                 else
                     Counter := 0;
             end;
         }
-
     }
 
     requestpage
     {
-
         layout
         {
         }
