@@ -160,7 +160,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             begin
                 if ("Account Type" = "Account Type"::Customer) and ("Account No." <> '') then begin
-                    Customer.Get("Account No.");
+                    Customer.SetFilter("No.", '%1', "Account No.");
+                    //Customer.Get("Account No.");
                     "Social status" := Customer."Social status category";
                     Address_Cust := Customer.Address;
                     RegistrationNo_Cust := Customer."Registration No.";
