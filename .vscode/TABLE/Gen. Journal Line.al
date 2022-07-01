@@ -188,7 +188,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                                                                                  "Initial Entry Global Dim. 1" = FIELD("Global Dimension 1 Filter"),
                                                                                  "Initial Entry Global Dim. 2" = FIELD("Global Dimension 2 Filter"),
                                                                                  "Currency Code" = FIELD("Currency Filter")));*/
-                    Message(FORMAT(Customer."Balance (LCY)"));
+
                 end;
             end;
         }

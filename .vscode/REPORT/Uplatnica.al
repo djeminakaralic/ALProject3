@@ -191,7 +191,6 @@ report 50077 Uplatnica
                         BankIBAN := IBAN;
 
                     end;
-                    Message(Format(Name) + Format(Counter));
                 end
                 else
                     Counter := 0;
