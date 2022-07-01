@@ -186,6 +186,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         else
             Rec."No. Line" := 1;
 
+
     end;
 
 
