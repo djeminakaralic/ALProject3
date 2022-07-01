@@ -1,13 +1,13 @@
 report 50112 "Uslov za penziju"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Uslov za penziju.rdlc';
+    RDLCLayout = './Uslov za penziju.rdl';
 
     dataset
     {
         dataitem(DataItem17; Employee)
         {
-            RequestFilterFields = "No.", "Department Code", "First Name", "Last Name", "Retirement Condition", "Retirement Date", "Department Name", Pager;
+            //ĐK RequestFilterFields = "No.", "Department Code", "First Name", "Last Name", "Retirement Condition", "Retirement Date", "Department Name", Pager;
             //RequestFilterFields = "No.", "Sifra UOJ", "First Name", "Last Name", "Retirement Condition", "Retirement Date", "Level of Graduation", "Org. jed PU", Pager;
             column(Pager_Employee; Pager)
             {
@@ -72,11 +72,17 @@ report 50112 "Uslov za penziju"
             column(Godina4; Godina4)
             {
             }
+            column(ReportDate; ReportDate)
+            {
+
+            }
+            column(ReportDate2; ReportDate2)
+            { }
 
             trigger OnAfterGetRecord()
             begin
                 brojac := brojac + 1;
-                EmployeeRec.CALCFIELDS("Department code", "Department Name", "Education Level");
+                // EmployeeRec.CALCFIELDS("Department code", "Department Name", "Education Level");
                 //EmployeeRec.CALCFIELDS("Naziv Org. jed PU", "Org. jed PU", "Tip RM", "Sifra UOJ", "Employee Type");
                 /*
                 IF "Retirement Date" <> 0D THEN
@@ -99,15 +105,15 @@ report 50112 "Uslov za penziju"
 
             trigger OnPreDataItem()
             begin
-                Godina1 := DATE2DMY(TODAY, 3);
-                Godina2 := DATE2DMY(TODAY, 3) + 1;
-                Godina3 := DATE2DMY(TODAY, 3) + 2;
-                Godina4 := DATE2DMY(TODAY, 3) + 3;
+                Godina1 := DATE2DMY(ReportDate, 3);
+                Godina2 := DATE2DMY(ReportDate, 3) + 1;
+                Godina3 := DATE2DMY(ReportDate, 3) + 2;
+                Godina4 := DATE2DMY(ReportDate2, 3) + 3;
 
                 SETFILTER(Status, '%1', 0);
-                FirstDate := DMY2DATE(1, Mjesec, Godina);
-                LastDate := CALCDATE('+1<M>-1<D>', FirstDate);
-                SETRANGE("Retirement Date", FirstDate, LastDate);
+                /*   FirstDate := DMY2DATE(1, Mjesec, ReportDate);
+                   LastDate := DMY2Date(31, 12, ReportDate2);*/
+                SETRANGE("Retirement Date", ReportDate, ReportDate2);
 
                 IF (StarPenz = TRUE) //AND StazPenz=FALSE)
                  THEN
@@ -130,10 +136,20 @@ report 50112 "Uslov za penziju"
                 field(Mjesec; Mjesec)
                 {
                     Caption = 'Mjesec';
+                    Visible = false;
                 }
                 field(Godina; Godina)
                 {
                     Caption = 'Godina';
+                    Visible = false;
+                }
+                field(ReportDate; ReportDate)
+                {
+                    Caption = 'Izvještajni datum od';
+                }
+                field(ReportDate2; ReportDate2)
+                {
+                    Caption = 'Izvještajni datum do';
                 }
                 field("Na osn. godina starosti"; StarPenz)
                 {
@@ -166,12 +182,16 @@ report 50112 "Uslov za penziju"
     begin
         R_WorkExperience.RUN;
         R_BroughtExperience.RUN;
+        Commit();
         REPORT.RUN(50222);
         brojac := 0;
+        Commit();
     end;
 
     var
         Godina1: Integer;
+        ReportDate: Date;
+        ReportDate2: Date;
         Godina2: Integer;
         Godina3: Integer;
         Starost: Integer;

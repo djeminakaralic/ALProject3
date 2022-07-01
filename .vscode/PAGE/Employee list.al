@@ -500,7 +500,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                     Image = Ledger;
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
@@ -524,7 +524,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                 }
                 action("Izvjestaj za trening")
                 {
-                    Caption = 'Izvjestaj za trening';
+                    Caption = 'Izvještaj za trening';
 
                     Image = Ledger;
                     ApplicationArea = all;
@@ -545,6 +545,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = report "Evidencija preraspoređeni";
+                    Visible = false;
 
 
                 }
@@ -570,6 +571,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = report "Uslovi za odlazak u penziju";
+                    Visible = false;
 
 
                 }

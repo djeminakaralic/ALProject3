@@ -11,7 +11,7 @@ table 50200 "Additional Education"
     {
         field(1; "Entry No."; Integer)
         {
-            AutoIncrement = true;
+            //   AutoIncrement = true;
             Caption = 'Entry No.';
             //
 
@@ -30,7 +30,7 @@ table 50200 "Additional Education"
             trigger OnValidate()
             begin
 
-                EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
+                //ĐK     EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
             end;
         }
         field(6; "Education Level"; Enum School)
@@ -54,30 +54,34 @@ table 50200 "Additional Education"
                     Employee.Profession := Profession;
                     Employee.MODIFY;
                 END;
-                IF "Education Level" <> "Education Level"::Empty THEN
-                    Rec.INSERT(TRUE);
+                /*đK IF "Education Level" <> "Education Level"::Empty THEN
+                     Rec.INSERT(TRUE);*
+ /
+               //ĐK  EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
 
-                EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
-                if "From Date" <> 0D then begin
-                    ECLA.Reset();
-                    ECLA.SetFilter("Employee No.", '%1', Rec."Employee No.");
-                    //ĐK   ECLA.SetFilter("Starting Date",'<=%1',"From Date");
-                    if ("To Date" <> 0D) and ("From Date" <> 0D) then
-                        ECLA.SetFilter("Starting Date", '%1..%2', "From Date", "To Date");
-                    if ("To Date" = 0D) then
-                        ECLA.SetFilter("Starting Date", '>=%1', "From Date");
-                    //ECLA.SetFilter("Employee Education Level",'%1',employe);
-                    ECLA.SetCurrentKey("Starting Date");
-                    ECLA.Ascending;
-                    if ECLA.FindSet() then
-                        repeat
-                            ECLA."Employee Education Level" := Rec."Education Level";
-                            ECLA.Modify();
+                 //ĐK proba
+                 /*
+                 if "From Date" <> 0D then begin
+                     ECLA.Reset();
+                     ECLA.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                     //ĐK   ECLA.SetFilter("Starting Date",'<=%1',"From Date");
+                     if ("To Date" <> 0D) and ("From Date" <> 0D) then
+                         ECLA.SetFilter("Starting Date", '%1..%2', "From Date", "To Date");
+                     if ("To Date" = 0D) then
+                         ECLA.SetFilter("Starting Date", '>=%1', "From Date");
+                     //ECLA.SetFilter("Employee Education Level",'%1',employe);
+                     ECLA.SetCurrentKey("Starting Date");
+                     ECLA.Ascending;
+                     if ECLA.FindSet() then
+                         repeat
+                             ECLA."Employee Education Level" := Rec."Education Level";
+                             ECLA.Modify();
 
-                        until ECLA.Next() = 0;
-                end;
+                         until ECLA.Next() = 0;
+                 end;*/
 
             end;
+
         }
         field(9; Major; Text[100])
         {
@@ -91,7 +95,7 @@ table 50200 "Additional Education"
                     "Profession Description" := Majors."Profession Description";
                 END;
 
-                EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
+                //  EmployeeResUpdate.AdditionalEducation2(xRec, Rec);
             end;
         }
         field(10; Finished; Boolean)
@@ -399,7 +403,7 @@ table 50200 "Additional Education"
 
     keys
     {
-        key(Key1; "Entry No.", "Employee No.")
+        key(Key1; "Entry No.", "Employee No.", "Education Level", "From Date")
         {
         }
     }
@@ -452,6 +456,8 @@ table 50200 "Additional Education"
     end;
 
     trigger OnInsert()
+    var
+        OnI: Record "Additional Education";
     begin
         UserPersonalization.RESET;
         UserPersonalization.SETFILTER("User ID", '%1', USERID);
@@ -475,6 +481,17 @@ table 50200 "Additional Education"
             "First Name 2" := T_Employee."First Name";
             "Last Name 2" := T_Employee."Last Name";
         END;*/
+        /*đK  if Rec."Entry No." = 0 then begin
+              OnI.Reset();
+              OnI.SetFilter("Entry No.", '<>%1', 0);
+              OnI.SetCurrentKey("Entry No.");
+              OnI.Ascending;
+              if OnI.FindLast() then
+                  "Entry No." := OnI."Entry No." + 1
+              else
+                  "Entry No." := 1;
+
+          end;*/
 
         Employee.RESET;
         Employee.SETFILTER("No.", "Employee No.");
