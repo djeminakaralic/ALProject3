@@ -5,18 +5,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         // Add changes to page layout here
 
+
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
-
-
-
-
-
-                // FORMAT("Payment DT", 0, '<Day,2>.<Month,2>.<Year4>.');
-
             }
 
             field("Payment Type"; "Payment Type")
@@ -28,16 +22,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
         }
-        addafter(Description)
-        {
-            field("Social status"; "Social status")
-            {
-                ApplicationArea = all;
-            }
-
-        }
-        movebefore(Amount; "Applies-to Doc. Type")
-        moveafter("Applies-to Doc. Type"; "Applies-to Doc. No.")
+        movebefore(Amount; "Applies-to Doc. No.")
 
 
         addafter("Amount (LCY)")

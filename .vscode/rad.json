@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Id":50106,"Kind":17,"Name":"GLEntryExtends","PackagePath":"/src/.vscode/TABLE/GLEntryExtends.al"},{"Id":50114,"Kind":17,"Name":"Gen_JournalLineExtends","PackagePath":"/src/.vscode/TABLE/Gen.%20Journal%20Line.al"}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50170,"Kind":16,"Name":"CashReceiptJournal","PackagePath":"/src/.vscode/REPORT/CashReceiptJournal.al"}],"Removed":[{"Id":0,"Kind":13,"Name":"","PackagePath":"/src/.vscode/REPORT/CashReceiptJournal.al"}]}
