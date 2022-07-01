@@ -169,7 +169,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
-                    Balance_Cust := Customer."Balance (LCY)";
+                    /*Balance_Cust := Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("No."),
+                                                                                 "Initial Entry Global Dim. 1" = FIELD("Global Dimension 1 Filter"),
+                                                                                 "Initial Entry Global Dim. 2" = FIELD("Global Dimension 2 Filter"),
+                                                                                 "Currency Code" = FIELD("Currency Filter")));*/
                     Message(FORMAT(Balance_Cust));
                 end;
             end;
