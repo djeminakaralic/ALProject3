@@ -6,6 +6,7 @@ page 50012 "Contribution List"
     UsageCategory = Administration;
     ApplicationArea = All;
 
+
     layout
     {
         area(content)
