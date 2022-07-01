@@ -3928,7 +3928,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 Caption = 'Rješenja';
                 Image = Report;
-                RunObject = report VacationDecision;
+                //ĐK   RunObject = report VacationDecision;
                 ApplicationArea = all;
                 //RunPageLink = "Employee No." = field("Employee No.");
 
@@ -3936,11 +3936,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 trigger OnAction()
                 begin
-                    Vacation.SetFilter("Employee No.", xRec."No.");
-                    if Vacation.FindFirst() then begin
-                        VacationDecisionR.SETTABLEVIEW(Vacation);
-                        VacationDecisionR.RUN;
-                    end;
+                    Vacation.Reset();
+                    Vacation.SetFilter("Employee No.", Rec."No.");
+
+                    VacationDecisionR.SETTABLEVIEW(Vacation);
+                    VacationDecisionR.RUN;
+
 
                 end;
 

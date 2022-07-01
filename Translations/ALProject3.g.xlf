@@ -38688,6 +38688,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Department Category - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3318887637 - Field 299022368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeQualification - Field Description2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3318887637 - Field 541292345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2723222125">
           <source>Employee Name</source>
           <note from="Developer" annotates="general" priority="2"></note>

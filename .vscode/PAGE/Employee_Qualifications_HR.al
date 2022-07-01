@@ -63,7 +63,7 @@ page 50213 Employee_Qualifications_HR
                     ApplicationArea = all;
                     Visible = visibleQualification;
                 }
-                field(Description; Description)
+                field(Description2; Description2)
                 {
                     ApplicationArea = all;
                     Visible = visibleQualification;
