@@ -1507,56 +1507,23 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.52523cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.79564cm</Width>
+                  <Width>3.78441cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.44335cm</Height>
+                  <Height>0.47863cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="BankAccNo3">
+                        <Textbox Name="Textbox21">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BankAccNo.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>BankAccNo3</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="BankSWIFT">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!BankSWIFT.Value</Value>
+                                  <Value>="BIC: " &amp; First(Fields!BankSWIFT.Value, "DataSet_Result")</Value>
                                   <Style>
                                     <FontSize>5pt</FontSize>
                                   </Style>
@@ -1565,31 +1532,12 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>BankSWIFT</rd:DefaultName>
+                          <rd:DefaultName>Textbox21</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1604,11 +1552,6 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember>
-                  <Visibility>
-                    <Hidden>true</Hidden>
-                  </Visibility>
-                </TablixMember>
                 <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
@@ -1617,17 +1560,16 @@
                 <TablixMember>
                   <Group Name="Details5" />
                   <Visibility>
-                    <Hidden>=(Fields!BankAccNo.Value="")
- Or (Fields!Counter.Value&lt;&gt;3)</Hidden>
+                    <Hidden>==(Fields!BankAccNo.Value="")
+ Or (Fields!Counter.Value&lt;&gt;10)</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet_Result</DataSetName>
             <Top>17.05601cm</Top>
-            <Left>7.19426cm</Left>
-            <Height>0.44335cm</Height>
-            <Width>6.32087cm</Width>
+            <Left>9.71949cm</Left>
+            <Height>0.47863cm</Height>
+            <Width>3.78441cm</Width>
             <ZIndex>27</ZIndex>
             <Style>
               <Border>
@@ -1643,7 +1585,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>16.0039cm</Width>
+      <Width>15.77481cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
