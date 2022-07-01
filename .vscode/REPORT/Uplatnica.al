@@ -179,20 +179,23 @@ report 50077 Uplatnica
             column(BankAccNo; DataItem22."Bank Account No.")
             {
             }
-            column(BankIBAN; DataItem22.IBAN)
-            {
-            }
-            column(BankSWIFT; DataItem22."SWIFT Code")
-            {
-            }
             column(Counter; Counter)
+            {
+            }
+            column(BankSWIFT; BankSWIFT)
+            {
+            }
+            column(BankIBAN; BankIBAN)
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                if "Bank Account No." <> '' then
-                    Counter := Counter + 1
+                if "Bank Account No." <> '' then begin
+                    Counter := Counter + 1;
+                    if Name = 'UniCredit Bank' then
+                        Message('Pronasao');
+                end
                 else
                     Counter := 0;
             end;
@@ -220,6 +223,8 @@ report 50077 Uplatnica
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
+        BankSWIFT: Code[20];
+        BankIBAN: Code[50];
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
