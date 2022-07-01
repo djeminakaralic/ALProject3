@@ -5,6 +5,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         // Add changes to page layout here
 
+
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
