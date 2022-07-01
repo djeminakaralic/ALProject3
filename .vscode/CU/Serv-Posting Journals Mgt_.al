@@ -928,7 +928,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
         ServiceLinePostingDate := PostingDate;
     end;
 
-    [IntegrationEvent(false, false)]
+    [Integration(false, false)]
     local procedure OnAfterPostCustomerEntry(var GenJournalLine: Record "Gen. Journal Line"; ServiceHeader: Record "Service Header")
     begin
     end;

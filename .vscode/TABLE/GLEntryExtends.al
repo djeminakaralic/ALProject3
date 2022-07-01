@@ -33,6 +33,7 @@ tableextension 50106 GLEntryExtends extends "G/L Entry"
 
 
 
+
     var
         myInt: Integer;
 }

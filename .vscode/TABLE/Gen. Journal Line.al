@@ -167,28 +167,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     RegistrationNo_Cust := Customer."Registration No.";
                     VATRegistrationNo_Cust := Customer."VAT Registration No.";
                     City_Cust := Customer.City;
+                    Balance_Cust := Customer."Balance Due";
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
 
-                    /*DetailedCustLedgEntry.Reset();
-                    DetailedCustLedgEntry.SetFilter("Customer No.", '%1', Customer."No.");
-                    DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 1", '%1', Customer."Global Dimension 1 Filter");
-                    DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 2", '%1', Customer."Global Dimension 2 Filter");
-                    DetailedCustLedgEntry.SetFilter("Currency Code", '%1', Customer."Currency Filter");
-                    Balance_Cust := 0;
-                    if DetailedCustLedgEntry.Find('-') then
-                        repeat
-                            Balance_Cust := Balance_Cust + DetailedCustLedgEntry."Amount (LCY)";
-
-                        until DetailedCustLedgEntry.Next() = 0;
-
-                    //Balance_Cust := SUM(DetailedCustLedgEntry."Amount (LCY)");
-
-                    /*Balance_Cust := Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("No."),
-                                                                                 "Initial Entry Global Dim. 1" = FIELD("Global Dimension 1 Filter"),
-                                                                                 "Initial Entry Global Dim. 2" = FIELD("Global Dimension 2 Filter"),
-                                                                                 "Currency Code" = FIELD("Currency Filter")));*/
 
                 end;
             end;
