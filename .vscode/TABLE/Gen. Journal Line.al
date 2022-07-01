@@ -171,6 +171,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
+                    Message(FORMAT(Customer."Balance (LCY)"));
 
 
                 end;
