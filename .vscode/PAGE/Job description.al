@@ -26,14 +26,17 @@ page 50075 "Job description"
                 field("Req. qualifications and skills"; "Req. qualifications and skills")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(Manager; Manager)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Manager Name"; "Manager Name")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Job position Code"; "Job position Code")
                 {

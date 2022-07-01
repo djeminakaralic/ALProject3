@@ -1210,10 +1210,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                             CurrPage.UPDATE;
                         end;
                     }
-                    field(Title; Title)
+                    field("Title Description"; "Title Description")
                     {
                         ApplicationArea = all;
-                        Caption = 'Title';
+
                         Editable = false;
                         Importance = Promoted;
 

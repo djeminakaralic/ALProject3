@@ -67,6 +67,11 @@ page 50147 "Education History"
                     Visible = IsVisible;
                     ApplicationArea = all;
                 }
+                field("From Date"; "From Date")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
                 field("To Date"; "To Date")
                 {
                     ApplicationArea = all;

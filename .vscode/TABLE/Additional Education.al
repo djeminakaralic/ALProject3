@@ -42,18 +42,50 @@ table 50200 "Additional Education"
             var
                 ECLA: Record "Employee Contract Ledger";
             begin
-                Employee.RESET;
-                Employee.SETFILTER("No.", "Employee No.");
-                IF Employee.FINDFIRST THEN BEGIN
-                    Employee."Education Level" := "Education Level";
-                    Employee."School of Graduation" := "School of Graduation";
-                    Employee."Major of Graduation" := Major;
-                    Employee."Title Code" := Title;
-                    Employee.Title := "Title Description";
-                    Employee.Vocation := Vocation;
-                    Employee.Profession := Profession;
-                    Employee.MODIFY;
-                END;
+
+                if Rec.Active = true then begin
+                    Employee.RESET;
+                    Employee.SETFILTER("No.", "Employee No.");
+                    IF Employee.FINDFIRST THEN BEGIN
+                        Employee."Education Level" := "Education Level";
+                        Employee."School of Graduation" := "School of Graduation";
+                        Employee."Major of Graduation" := Major;
+                        Employee."Title Code" := Title;
+                        Employee."Title Description" := "Title Description";
+                        Employee.Vocation := Vocation;
+                        Employee.Profession := Profession;
+                        Employee.MODIFY;
+                    END;
+                end;
+
+                if "To Date" <> 0D then begin
+
+                    ECLA.Reset();
+                    ECLA.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    //ĐK   ECLA.SetFilter("Starting Date",'<=%1',"From Date");
+                    if ("To Date" <> 0D) and ("From Date" <> 0D) then
+                        ECLA.SetFilter("Starting Date", '%1..%2', "From Date", "To Date");
+                    if ("To Date" <> 0D) then
+                        ECLA.SetFilter("Starting Date", '>=%1', "To Date");
+                    AEE.Reset();
+                    AEE.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                    AEE.SetFilter("To Date", '>%1', Rec."To Date");
+                    AEE.SetCurrentKey("To Date");
+                    AEE.Ascending;
+                    if AEE.FindFirst() then
+                        ECLA.SetFilter("Ending Date", '<=%1 & <>%2', AEE."To Date", 0D);
+
+
+                    //ECLA.SetFilter("Employee Education Level",'%1',employe);
+                    ECLA.SetCurrentKey("Starting Date");
+                    ECLA.Ascending;
+                    if ECLA.FindSet() then
+                        repeat
+                            ECLA."Employee Education Level" := Rec."Education Level";
+                            ECLA.Modify();
+
+                        until ECLA.Next() = 0;
+                end;
                 /*đK IF "Education Level" <> "Education Level"::Empty THEN
                      Rec.INSERT(TRUE);*
  /
@@ -61,24 +93,7 @@ table 50200 "Additional Education"
 
                  //ĐK proba
                  /*
-                 if "From Date" <> 0D then begin
-                     ECLA.Reset();
-                     ECLA.SetFilter("Employee No.", '%1', Rec."Employee No.");
-                     //ĐK   ECLA.SetFilter("Starting Date",'<=%1',"From Date");
-                     if ("To Date" <> 0D) and ("From Date" <> 0D) then
-                         ECLA.SetFilter("Starting Date", '%1..%2', "From Date", "To Date");
-                     if ("To Date" = 0D) then
-                         ECLA.SetFilter("Starting Date", '>=%1', "From Date");
-                     //ECLA.SetFilter("Employee Education Level",'%1',employe);
-                     ECLA.SetCurrentKey("Starting Date");
-                     ECLA.Ascending;
-                     if ECLA.FindSet() then
-                         repeat
-                             ECLA."Employee Education Level" := Rec."Education Level";
-                             ECLA.Modify();
-
-                         until ECLA.Next() = 0;
-                 end;*/
+                 */
 
             end;
 
@@ -115,7 +130,7 @@ table 50200 "Additional Education"
                         Emp2.Vocation := Vocation;
                         Emp2.Profession := Profession;
                         Emp2."Title Code" := Title;
-                        Emp2.Title := "Title Description";
+                        Emp2."Title Description" := "Title Description";
                         Emp2.MODIFY;
                     END;
                 END;
@@ -413,6 +428,8 @@ table 50200 "Additional Education"
     }
 
     trigger OnDelete()
+    var
+        AdditionalD: Record "Additional Education";
     begin
         UserPersonalization.RESET;
         UserPersonalization.SETFILTER("User ID", '%1', USERID);
@@ -429,18 +446,32 @@ table 50200 "Additional Education"
         END;
 
         IF Active = TRUE THEN BEGIN
-            Employee.RESET;
-            Employee.SETFILTER("No.", "Employee No.");
-            IF Employee.FINDFIRST THEN BEGIN
-                Employee."Education Level" := Employee."Education Level"::Empty;
-                Employee."School of Graduation" := '';
-                Employee."Major of Graduation" := '';
-                Employee."Title Code" := '';
-                Employee.Title := '';
-                Employee.Vocation := '';
-                Employee.Profession := '';
-                Employee.MODIFY;
-            END;
+            AdditionalD.Reset();
+            AdditionalD.SetFilter("Employee No.", '%1', Rec."Employee No.");
+            AdditionalD.SetFilter("To Date", '<>%1', Rec."To Date");
+            AdditionalD.SetFilter("Education Level", '<>%1', Rec."Education Level");
+            AdditionalD.SetFilter("Title Description", '<>%1', Rec."Title Description");
+            AdditionalD.SetCurrentKey("To Date");
+            if AdditionalD.FindLast() then begin
+                AdditionalD.Validate(Active, true);
+
+            end
+            else begin
+
+
+                Employee.RESET;
+                Employee.SETFILTER("No.", "Employee No.");
+                IF Employee.FINDFIRST THEN BEGIN
+                    Employee."Education Level" := Employee."Education Level"::Empty;
+                    Employee."School of Graduation" := '';
+                    Employee."Major of Graduation" := '';
+                    Employee."Title Code" := '';
+                    Employee."Title Description" := '';
+                    Employee.Vocation := '';
+                    Employee.Profession := '';
+                    Employee.MODIFY;
+                END;
+            end;
         END;
         PersonalTrack.RESET;
         PersonalTrack.SETFILTER("Employee No.", '%1', "Employee No.");
@@ -492,30 +523,39 @@ table 50200 "Additional Education"
                   "Entry No." := 1;
 
           end;*/
+        AdditionalEducation.RESET;
+        AdditionalEducation.SETFILTER("Employee No.", "Employee No.");
+        AdditionalEducation.SetFilter("To Date", '>%1', "To Date");
+        if AdditionalEducation.FindFirst() then begin
 
-        Employee.RESET;
-        Employee.SETFILTER("No.", "Employee No.");
-        IF Employee.FINDFIRST THEN BEGIN
-            Employee."Education Level" := "Education Level";
-            Employee."School of Graduation" := "School of Graduation";
-            Employee."Major of Graduation" := Major;
-            Employee."Title Code" := Title;
-            Employee.Title := "Title Description";
-            Employee.Vocation := Vocation;
-            Employee.Profession := Profession;
-            Employee.MODIFY;
+        end
+        else begin
 
-            AdditionalEducation.RESET;
-            AdditionalEducation.SETFILTER("Employee No.", "Employee No.");
-            IF AdditionalEducation.FINDFIRST THEN BEGIN
-                REPEAT
-                    AdditionalEducation.Active := FALSE;
-                    AdditionalEducation.MODIFY;
-                UNTIL AdditionalEducation.NEXT = 0;
+
+            Employee.RESET;
+            Employee.SETFILTER("No.", "Employee No.");
+            IF Employee.FINDFIRST THEN BEGIN
+                Employee."Education Level" := "Education Level";
+                Employee."School of Graduation" := "School of Graduation";
+                Employee."Major of Graduation" := Major;
+                Employee."Title Code" := Title;
+                Employee."Title Description" := "Title Description";
+                Employee.Vocation := Vocation;
+                Employee.Profession := Profession;
+                Employee.MODIFY;
+
+                AdditionalEducation.RESET;
+                AdditionalEducation.SETFILTER("Employee No.", "Employee No.");
+                IF AdditionalEducation.FINDFIRST THEN BEGIN
+                    REPEAT
+                        AdditionalEducation.Active := FALSE;
+                        AdditionalEducation.MODIFY;
+                    UNTIL AdditionalEducation.NEXT = 0;
+                END;
+
+                Active := TRUE;
             END;
-
-            Active := TRUE;
-        END;
+        end;
         "Insert Date" := TODAY;
 
     end;
@@ -545,7 +585,7 @@ table 50200 "Additional Education"
                 Employee."School of Graduation" := "School of Graduation";
                 Employee."Major of Graduation" := Major;
                 Employee."Title Code" := Title;
-                Employee.Title := "Title Description";
+                Employee."Title Description" := "Title Description";
                 Employee.Vocation := Vocation;
                 Employee.Profession := Profession;
                 Employee.MODIFY;
@@ -622,7 +662,7 @@ table 50200 "Additional Education"
                 Employee."School of Graduation" := "School of Graduation";
                 Employee."Major of Graduation" := Major;
                 Employee."Title Code" := Title;
-                Employee.Title := "Title Description";
+                Employee."Title Description" := "Title Description";
                 Employee.Vocation := Vocation;
                 Employee.Profession := Profession;
                 Employee.MODIFY;
@@ -632,6 +672,7 @@ table 50200 "Additional Education"
 
     var
         T_Employee: Record "Employee";
+        AEE: Record "Additional Education";
         Emp: Record "Employee";
         AddEdu: Record "Points per Experience Years";
         AddEdu2: Record "Points per Experience Years";
