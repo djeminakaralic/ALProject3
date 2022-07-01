@@ -190,6 +190,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     end;
 
 
+
     var
         myInt: Integer;
         Customer: Record Customer;
