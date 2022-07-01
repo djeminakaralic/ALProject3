@@ -169,6 +169,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
+                    DetailedCustLedgEntry.Reset();
+                    DetailedCustLedgEntry.SetFilter("Customer No.", '%1', Customer."No.");
+                    DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 1", '%1', Customer."Global Dimension 1 Filter");
+                    DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 2", '%1', Customer."Global Dimension 2 Filter");
+                    DetailedCustLedgEntry.SetFilter("Currency Code", '%1', Customer."Currency Filter");
+                    //Balance_Cust := SUM(DetailedCustLedgEntry."Amount (LCY)");
+
                     /*Balance_Cust := Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("No."),
                                                                                  "Initial Entry Global Dim. 1" = FIELD("Global Dimension 1 Filter"),
                                                                                  "Initial Entry Global Dim. 2" = FIELD("Global Dimension 2 Filter"),
@@ -195,4 +202,5 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
         Text001: Label 'Given amount cannot be less than amount.';
+        DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
 }
