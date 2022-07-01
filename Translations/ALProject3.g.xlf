@@ -34558,11 +34558,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 1897769306 - ReportColumn 2019904683 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  </source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - ReportColumn EL - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Report 1897769306 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Izaberi izvještaj</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34842,6 +34837,16 @@
           <source>Na osn. staža</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Control Na osn. staža - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3445183201 - Control 497847406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izvještajni datum od</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Control ReportDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3445183201 - Control 1298392100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izvještajni datum do</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Uslov za penziju - Control ReportDate2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 231299999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Uslovi za odlazak u penziju</source>
@@ -35824,7 +35829,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvjestaj starosne strukture - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 2830548180 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
-          <source>Izvjestaj za trening</source>
+          <source>Izvještaj za trening</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Izvjestaj za trening - Property Caption</note>
         </trans-unit>
@@ -39707,6 +39712,11 @@
           <source>VAT Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purch_Cr_Memo_HederExtends - Field VAT Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2251411675 - Field 47657272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2251411675">
+          <source>Description 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Qualification - Field Description 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 362373870 - Field 3223984305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 667993488">
           <source>Akuzativ</source>

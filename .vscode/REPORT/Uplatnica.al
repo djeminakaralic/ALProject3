@@ -205,7 +205,6 @@ report 50077 Uplatnica
 
     requestpage
     {
-
         layout
         {
         }
