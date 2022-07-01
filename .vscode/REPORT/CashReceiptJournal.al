@@ -22,14 +22,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
         }
-        addafter(Description)
-        {
-            field("Social status"; "Social status")
-            {
-                ApplicationArea = all;
-            }
-
-        }
         movebefore(Amount; "Applies-to Doc. No.")
 
         addafter("Amount (LCY)")
