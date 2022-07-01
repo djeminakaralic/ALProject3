@@ -158,19 +158,12 @@ report 50077 Uplatnica
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-                //Location.SETFILTER(Code,"Location Code");
-                //IF Location.FINDFIRST THEN
-                //City:=Location.City;
-
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
 
-
             end;
         }
-
-
         dataitem(DataItem22; "Bank Account")
         {
             column(BankName; DataItem22.Name)
@@ -196,8 +189,6 @@ report 50077 Uplatnica
                     if Name = 'UniCredit Bank' then begin
                         BankSWIFT := "SWIFT Code";
                         BankIBAN := IBAN;
-                        Message(BankSWIFT);
-                        Message(BankIBAN);
                     end;
                 end
                 else
