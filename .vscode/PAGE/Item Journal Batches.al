@@ -8,6 +8,7 @@ pageextension 50130 ItemJournalBatches extends "Item Journal Batches"
             field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
             {
                 ApplicationArea = All;
+                //nermina
             }
         }
     }
