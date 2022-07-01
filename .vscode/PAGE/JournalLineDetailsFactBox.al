@@ -5,7 +5,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 
         modify(Account)
         {
-            Caption = 'Ime i prezime', Locked = true;
+            Caption = 'Kupac';
         }
         /*        <trans-unit id="Page 3897649796 - Control 1267408499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Account</source>
