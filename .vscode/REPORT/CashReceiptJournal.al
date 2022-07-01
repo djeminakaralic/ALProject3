@@ -24,6 +24,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
         movebefore(Amount; "Applies-to Doc. No.")
 
+
         addafter("Amount (LCY)")
         {
             field("Given amount"; "Given amount")
