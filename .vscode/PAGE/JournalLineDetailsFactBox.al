@@ -2,12 +2,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 {
     layout
     {
-
-        /*modify(Account)
-        {
-            Caption = 'Kupac';
-        }*/
-
         modify(PostingGroup)
         {
             Visible = false;
@@ -63,8 +57,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Saldo';
                 ApplicationArea = All;
             }
-
-
         }
     }
 }
