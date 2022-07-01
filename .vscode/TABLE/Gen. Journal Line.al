@@ -169,7 +169,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
-                    DetailedCustLedgEntry.Reset();
+
+                    /*DetailedCustLedgEntry.Reset();
                     DetailedCustLedgEntry.SetFilter("Customer No.", '%1', Customer."No.");
                     DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 1", '%1', Customer."Global Dimension 1 Filter");
                     DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 2", '%1', Customer."Global Dimension 2 Filter");
@@ -187,7 +188,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                                                                                  "Initial Entry Global Dim. 1" = FIELD("Global Dimension 1 Filter"),
                                                                                  "Initial Entry Global Dim. 2" = FIELD("Global Dimension 2 Filter"),
                                                                                  "Currency Code" = FIELD("Currency Filter")));*/
-                    Message(FORMAT(Balance_Cust));
+                    Message(FORMAT(Customer."Balance (LCY)"));
                 end;
             end;
         }
