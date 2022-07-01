@@ -174,6 +174,12 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 1", '%1', Customer."Global Dimension 1 Filter");
                     DetailedCustLedgEntry.SetFilter("Initial Entry Global Dim. 2", '%1', Customer."Global Dimension 2 Filter");
                     DetailedCustLedgEntry.SetFilter("Currency Code", '%1', Customer."Currency Filter");
+                    Balance_Cust := 0;
+                    /*if DetailedCustLedgEntry.FindFirst() then begin
+                        Balance_Cust := Balance_Cust + DetailedCustLedgEntry."Amount (LCY)";
+                    end
+                    until DetailedCustLedgEntry.Next()=0;
+
                     //Balance_Cust := SUM(DetailedCustLedgEntry."Amount (LCY)");
 
                     /*Balance_Cust := Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("No."),
