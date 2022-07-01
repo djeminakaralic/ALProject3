@@ -37,9 +37,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
 
         }
-        movebefore(Amount; "Applies-to Doc. Type")
-        moveafter("Applies-to Doc. Type"; "Applies-to Doc. No.")
-
+        movebefore(Amount; "Applies-to Doc. No.")
 
         addafter("Amount (LCY)")
         {
