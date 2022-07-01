@@ -272,7 +272,7 @@ page 50049 Positions
 
     actions
     {
-        area(creation)
+        area(processing)
         {
             action("Job description")
             {

@@ -1543,6 +1543,11 @@ tableextension 50071 EmployeeExtension extends Employee
             Caption = 'Title';
             Editable = false;
         }
+        field(50210; "Title Description"; Text[120])
+        {
+            Caption = 'Naziv zvanja';
+
+        }
         field(503564; "External employer Status"; Option)
         {
             Caption = 'External employer Status';

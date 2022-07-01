@@ -4325,7 +4325,7 @@ table 50071 "Employee Contract Ledger"
                             "Position Responsibility" := PositonMenuTemp."Position Responsibility";
                             "Position complexity" := PositonMenuTemp."Position complexity";
                             Wagesetup.Get();
-                            Validate(Brutto, Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage");
+                            Validate(Brutto, Wagesetup."Wage Base" * PositonMenuTemp."Position Coefficient for Wage");
                             "Workplace conditions" := PositonMenuTemp."Workplace conditions";
 
 
