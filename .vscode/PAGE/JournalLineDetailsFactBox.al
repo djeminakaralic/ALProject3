@@ -2,14 +2,17 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 {
     layout
     {
+
         modify(Account)
         {
-            Caption = 'Podaci o kupcu';
+            Caption = 'Ime i prezime', Locked = true;
         }
-        modify(AccountName)
-        {
-            Caption = 'Ime i prezime';
-        }
+        /*        <trans-unit id="Page 3897649796 - Control 1267408499 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account</source>
+          <target>Račun</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Journal Line Details FactBox - Control Account - Property Caption</note>
+        </trans-unit>*/
 
         modify(PostingGroup)
         {
