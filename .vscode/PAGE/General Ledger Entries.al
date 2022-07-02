@@ -37,6 +37,7 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
         {
 
 
+
             action("Incoming Document")
             {
 

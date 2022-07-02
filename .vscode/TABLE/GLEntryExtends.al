@@ -23,12 +23,16 @@ tableextension 50106 GLEntryExtends extends "G/L Entry"
         }
         field(50003; "Payment Type Code"; Code[10])
         {
-            Caption = 'Payment Type Code';
+            Caption = 'Vrsta uplate';
             NotBlank = true;
         }
 
 
+
     }
+
+
+
 
     var
         myInt: Integer;

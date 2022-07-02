@@ -10,7 +10,7 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
         {
             trigger OnAfterValidate()
             begin
-                if "To Date" <= "From Date" then begin
+                if "To Date" < "From Date" then begin
                     Error('Datum kraja ne može biti manji od datuma početka.');
                 end;
             end;
@@ -23,6 +23,22 @@ tableextension 50067 EmployeeQualification extends "Employee Qualification"
                     Error('Datum isteka certifikata ne može biti manji od datuma početka važenja certifikata.');
                 end;
             end;
+        }
+        modify("Qualification Code")
+        {
+            trigger OnAfterValidate()
+            var
+                Qualif: Record Qualification;
+            begin
+                Qualif.Reset();
+                Qualif.SetFilter(Code, '%1', Rec."Qualification Code");
+                if Qualif.FindFirst() then
+                    Description2 := Qualif."Description 2"
+                else
+                    Description2 := '';
+
+            end;
+
         }
         // Add changes to table fields here
         field(50000; Active; Boolean)

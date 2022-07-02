@@ -67,7 +67,7 @@ report 50054 "Izvjestaj za trening"
             column(QualificationCode_EmployeeQualification; "Qualification Code")
             {
             }
-            column(Description_EmployeeQualification; Description)
+            column(Description_EmployeeQualification; "Description2")
             {
             }
 
@@ -100,7 +100,12 @@ report 50054 "Izvjestaj za trening"
                 EmployeeContractLedger.RESET;
                 EmployeeContractLedger.SETFILTER("Employee No.", '%1', "Employee No.");
                 EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
-                IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+                if DataItem1."To Date" <> 0D then
+                    EmployeeContractLedger.SetFilter("Ending Date", '<=%1|%2', DataItem1."To Date", 0D);
+                EmployeeContractLedger.SetCurrentKey("Starting Date");
+
+                EmployeeContractLedger.Ascending;
+                IF EmployeeContractLedger.FindLast() THEN BEGIN
                     DepartmentCode := EmployeeContractLedger."Department Code";
                 END;
 
@@ -140,8 +145,7 @@ report 50054 "Izvjestaj za trening"
 
             trigger OnPreDataItem()
             begin
-                SETFILTER(Status, '%1', Status::Active);
-                DataItem1.CALCFIELDS(Status);
+
 
                 SETFILTER("Qualification Code", '<>%1', '');
 

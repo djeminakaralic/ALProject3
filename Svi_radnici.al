@@ -8,7 +8,8 @@ report 50095 "Svi radnici"
     {
         dataitem(DataItem1; "Employee Contract Ledger")
         {
-            RequestFilterFields = "Starting Date";
+            RequestFilterFields = "Starting Date", "Reason for Change";
+
             column(Adresa; CompInfo.Address)
             {
             }
@@ -43,7 +44,9 @@ report 50095 "Svi radnici"
             {
 
             }
-        
+            column(Show; Show)
+            { }
+
             column(Sektor; "Sector Description")
             {
             }
@@ -64,8 +67,6 @@ report 50095 "Svi radnici"
             }
             column(EL; EL)
             {
-                OptionCaption = ' ,I Stepen četri razreda osnovne,II Stepen - osnovna škola,III Stepen - SSS srednja škola,IV Stepen - SSS srednja škola,V Stepen - VKV - SSS srednja škola,VI Stepen - VS viša škola,VII Stepen - VSS visoka stručna sprema,VII-1 Stepen - Specijalista,VII-2 Stepen - Magistratura,VIII Stepen - Doktorat  ';
-                OptionMembers = " ","I Stepen četri razreda osnovne","II Stepen - osnovna škola","III Stepen - SSS srednja škola","IV Stepen - SSS srednja škola","V Stepen - VKV - SSS srednja škola","VI Stepen - VS viša škola","VII Stepen - VSS visoka stručna sprema","VII-1 Stepen - Specijalista","VII-2 Stepen - Magistratura","VIII Stepen - Doktorat  ";
             }
             column(Pozicija; Pozicija)
             {
@@ -97,14 +98,36 @@ report 50095 "Svi radnici"
             column(RazlogPrekida; "Grounds for Term. Description")
             {
             }
-            column(Pomocna;Pomocna){
+            column(Pomocna; Pomocna)
+            {
 
             }
-            
+
             trigger OnAfterGetRecord()
             begin
+                Show := true;
+                if (Select = Select::"Spisak po spolu") or (Select = Select::"Spisak svih radnika") or (Select = Select::"Po stvarnoj stručnoj spremi")
+               then begin
+                    EClShow.Reset();
+                    EClShow.SetFilter("Employee No.", '%1', DataItem1."Employee No.");
+                    EClShow.CopyFilters(DataItem1);
+                    if DataItem1.GetFilter("Starting Date") = '' then begin
+                        EClShow.SetFilter(Active, '%1', true);
+                    end;
+                    EClShow.SetCurrentKey("Starting Date");
+                    EClShow.Ascending;
+                    if EClShow.FindLast() then begin
+                        BrStavke := EClShow."No.";
 
-                CompInfo.RESET; 
+                    end;
+
+                end;
+                if BrStavke <> 0 then begin
+                    if BrStavke <> DataItem1."No." then
+                        Show := false;
+
+                end;
+                CompInfo.RESET;
                 CompInfo.GET();
                 CompInfo.CALCFIELDS(Picture);
                 NazivOrgana := CompInfo.Name;
@@ -113,33 +136,55 @@ report 50095 "Svi radnici"
                 //Prikazi:=FALSE Entry No. je polje
                 //Prikazi:=TRUE;
 
-              
+
                 DataItem1.CALCFIELDS("Minimal Education Level");
+
+                //lookup(Position."Minimal Education Level" WHERE(Code = FIELD("Position Code")));
+                Pozicija := '';
+
+                PosM.Reset();
+                PosM.SetFilter("Position Name", '%1', DataItem1."Position Description");
+                PosM.SetFilter("Position Code", '%1', DataItem1."Position Code");
+                PosM.SetFilter("Org Shema", '%1', DataItem1."Org. Structure");
+                if PosM.FindSet() then
+                    repeat
+                        Pozicija += format(PosM."Minimal Education Level") + '/;';
+                    until PosM.Next() = 0;
+                if StrLen(Pozicija) > 1 then
+                    Pozicija := CopyStr(Pozicija, 1, StrLen(Pozicija) - 1);
+
+                //
                 //Pisanje kolone Sluzba\Odjel
-                Pomocna:='';
-                if DataItem1."Department Category"<>'' then
-                   if DataItem1."Group Description"<>'' then
-                   Pomocna:= DataItem1."Department Category"+'\'+DataItem1."Group Description";
-                   
-                if DataItem1."Department Category"='' then Pomocna:= DataItem1."Group Description";
-                if DataItem1."Group Description"='' then Pomocna:=DataItem1."Department Category";
+                /*     Pomocna := '';
+                     if DataItem1."Department Category" <> '' then
+                         if DataItem1."Group Description" <> '' then
+                             Pomocna := DataItem1."Department Category" + '\' + DataItem1."Group Description";
+
+                     if DataItem1."Department Category" = '' then Pomocna := DataItem1."Group Description";
+                     if DataItem1."Group Description" = '' then Pomocna := DataItem1."Department Category";*/
+                Pomocna := '';
+
+                if DataItem1."Department Cat. Description" <> '' then
+                    Pomocna := DataItem1."Department Cat. Description";
+                if DataItem1."Group Description" <> '' then
+                    Pomocna := Pomocna + '\' + DataItem1."Group Description";
                 /*if DataItem1."Department Category"<>'' then
                    if DataItem1."Group Description"<>'' then
                    Pomocna:= DataItem1."Department Category"+'\'+DataItem1."Group Description";*/
 
                 VrstaUgovora := DataItem1."Engagement Type";
                 Koeficijent := DataItem1."Position Coefficient for Wage";
-                
+
                 //STRUCNA SPREMA POZICIJE
                 EL := DataItem1."Minimal Education Level";
-                P.RESET;
-                P.SETFILTER("Position ID", '%1', "Employee No.");
-                IF P.FINDFIRST THEN BEGIN
+                /*  P.RESET;
+                  P.SETFILTER("Position ID", '%1', "Employee No.");
+                  IF P.FINDFIRST THEN BEGIN
 
-                    Pozicija := FORMAT(P."Minimal Education Level");
-                END ELSE BEGIN
-                    Pozicija := '';
-                END;
+                      Pozicija := FORMAT(P."Minimal Education Level");
+                  END ELSE BEGIN
+                      Pozicija := '';
+                  END;*/
                 //UZIMANJE IMENA I PREZIMENA RADNIKA, te imena jednog roditelja
                 E.RESET;
                 E.SETFILTER("No.", '%1', "Employee No.");
@@ -148,14 +193,14 @@ report 50095 "Svi radnici"
                     Ime := E."First Name";
                     Prezime := E."Last Name";
                     ImeRoditelja := E."Father Name";
-                    Spol:='';
-                    if E.Gender=E.Gender::Female then 
-                    Spol:='Žensko';
+                    Spol := '';
+                    if E.Gender = E.Gender::Female then
+                        Spol := 'Žensko';
 
-                    if E.Gender=E.Gender::Male then 
-                    Spol:='Muško';
+                    if E.Gender = E.Gender::Male then
+                        Spol := 'Muško';
 
-               
+
                     EmploymentDate := FORMAT(E."Employment Date", 0, '<day,2>.<month,2>.<year4>.'); //ovo ne koristim kao employment date
                     DatumRodjenja := FORMAT(E."Birth Date", 0, '<day,2>.<month,2>.<year4>.');
                 END ELSE BEGIN
@@ -168,9 +213,13 @@ report 50095 "Svi radnici"
                 // TITULA I ZVANJE RADNIKA
                 AE.RESET;
                 AE.SETFILTER("Employee No.", '%1', "Employee No.");
-                IF AE.FINDFIRST THEN BEGIN
+
+                AE.SetFilter("From Date", '<=%1', DataItem1."Starting Date");
+                AE.SetCurrentKey("From Date");
+                AE.Ascending;
+                IF AE.FindLast() THEN BEGIN
                     Titula := FORMAT(AE."Education Level");
-                    Zvanje := FORMAT(AE."Profession Description");
+                    Zvanje := FORMAT(AE."Title Description");
                 END ELSE BEGIN
                     Titula := '';
                     Zvanje := '';
@@ -191,7 +240,7 @@ report 50095 "Svi radnici"
 
             trigger OnPreDataItem()
             begin
-             
+
                 NazivOrgana := '';
                 IF Select = Select::"Otišli u zadanom intervalu" THEN
                     DataItem1.SETFILTER("Grounds for Term. Description", '<>%1', '');
@@ -235,10 +284,14 @@ report 50095 "Svi radnici"
 
     var
         CompInfo: Record "Company Information";
+        EClShow: Record "Employee Contract Ledger";
+        BrStavke: Integer;
+        Show: Boolean;
         ECL: Record "Employee Contract Ledger";
         EndingDate: Text;
         EmploymentDate: Text;
         E: Record "Employee";
+        EH: Page "Education History";
         Titula: Text;
         AE: Record "Additional Education";
         Zvanje: Text;
@@ -256,6 +309,7 @@ report 50095 "Svi radnici"
         Ime: Text;
         Prezime: Text;
         P: Record "Position";
+        PosM: Record "Position Minimal Education";
         Pozicija: Text;
         WB: Record "Work booklet";
         StartingDate: Text;

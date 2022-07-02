@@ -117,9 +117,11 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Grounds for term name"; EmployeeContractLedger."Grounds for Term. Description") { Caption = 'Grounds for term name'; }
             // field("Contract Termination Date"; "Contract Termination Date") { }
             field("Education Level"; "Education Level") { }
+
+
             field("Major of Graduation"; "Major of Graduation") { }
             field("Title Code"; "Title Code") { Caption = 'Title Code'; }
-            field(Title; Title) { }
+            field("Title Description"; "Title Description") { }
 
             field(Voocation; Voocation) { }
             field("Vocation Description"; "Vocation Description") { }
@@ -500,7 +502,7 @@ pageextension 50149 EmployeeList extends "Employee List"
 
                     Image = Ledger;
                     ApplicationArea = all;
-                    Visible=false;
+                    Visible = false;
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
@@ -524,7 +526,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                 }
                 action("Izvjestaj za trening")
                 {
-                    Caption = 'Izvjestaj za trening';
+                    Caption = 'Izvještaj za trening';
 
                     Image = Ledger;
                     ApplicationArea = all;
@@ -545,6 +547,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = report "Evidencija preraspoređeni";
+                    Visible = false;
 
 
                 }
@@ -570,6 +573,7 @@ pageextension 50149 EmployeeList extends "Employee List"
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = report "Uslovi za odlazak u penziju";
+                    Visible = false;
 
 
                 }

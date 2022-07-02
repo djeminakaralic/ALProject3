@@ -34,46 +34,46 @@
                   <Width>1.05635in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.81185in</Width>
+                  <Width>1.02018in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.54453in</Width>
+                  <Width>0.82786in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.78212in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.62871in</Width>
+                  <Width>1.09538in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.84537in</Width>
+                  <Width>2.58704in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.94954in</Width>
+                  <Width>3.33287in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.64037in</Width>
+                  <Width>2.74037in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.09954in</Width>
+                  <Width>2.24332in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.78789in</Width>
+                  <Width>2.13789in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90371in</Width>
+                  <Width>1.4555in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.8787in</Width>
+                  <Width>1.16204in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.77037in</Width>
+                  <Width>1.14537in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.6364in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.7864in</Width>
+                  <Width>0.86973in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -518,6 +518,19 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
                                   <Value>Naziv organa/uprave institucije u kojem je lice zaposleno</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
@@ -585,7 +598,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>OJ</Value>
+                                  <Value>Org. jedinica</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1058,7 +1071,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.68334in</Height>
+                  <Height>0.76667in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1642,26 +1655,6 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2235,14 +2228,17 @@
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
+                  <Visibility>
+                    <Hidden>=IIF(Fields!Show.value=true,false,true)</Hidden>
+                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.98001in</Top>
             <Left>0.45001in</Left>
-            <Height>1.36667in</Height>
-            <Width>17.94575in</Width>
+            <Height>1.45001in</Height>
+            <Width>27.91626in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2253,7 +2249,7 @@
         <Height>8.46666cm</Height>
         <Style />
       </Body>
-      <Width>47.93695cm</Width>
+      <Width>74.12466cm</Width>
       <Page>
         <PageHeader>
           <Height>6.21453cm</Height>
@@ -2630,6 +2626,9 @@ End Function
         </Field>
         <Field Name="Spol">
           <DataField>Spol</DataField>
+        </Field>
+        <Field Name="Show">
+          <DataField>Show</DataField>
         </Field>
         <Field Name="Sektor">
           <DataField>Sektor</DataField>

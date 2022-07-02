@@ -2,14 +2,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 {
     layout
     {
-        modify(Account)
-        {
-            Caption = 'Podaci o kupcu';
-        }
-        modify(AccountName)
-        {
-            Caption = 'Ime i prezime';
-        }
         modify(PostingGroup)
         {
             Visible = false;
@@ -26,6 +18,8 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
         {
             Visible = false;
         }
+
+
         addafter(AccountName)
         {
             field(Phone_Cust; Phone_Cust)
@@ -58,13 +52,11 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Knjižna grupa';
                 ApplicationArea = All;
             }
+            field(Balance_Cust; Balance_Cust)
+            {
+                Caption = 'Saldo';
+                ApplicationArea = All;
+            }
         }
     }
-
-    actions
-    {
-
-    }
-
-    var
 }
