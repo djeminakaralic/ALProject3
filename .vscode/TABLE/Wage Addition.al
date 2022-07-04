@@ -638,6 +638,7 @@ table 50032 "Wage Addition"
             CalcFormula = Lookup("Wage Addition Type"."RAD-1 Wage Excluded" WHERE("Code" = FIELD("Wage Addition Type")));
             FieldClass = FlowField;
         }
+
     }
 
     keys
