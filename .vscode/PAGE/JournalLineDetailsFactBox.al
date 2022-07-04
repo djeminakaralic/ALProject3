@@ -82,28 +82,35 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
                 end;
             }
-            //field()
-
-            /*field(Balance_Cust; Balance_Cust)
+            field(Balance_Cust; Balance_Cust)
             {
+                Caption = 'Saldo';
                 ApplicationArea = Basic, Suite;
-                ToolTip = 'Specifies the payment amount that the customer owes for completed sales. This value is also known as the customer''s balance.';
 
                 trigger OnDrillDown()
                 var
                     DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
                     CustLedgEntry: Record "Cust. Ledger Entry";
                 begin
+                    DtldCustLedgEntry.Reset();
                     DtldCustLedgEntry.SetRange("Customer No.", "Account No.");
-                    CopyFilter(CustomerTable."Global Dimension 1 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 1");
+                    DtldCustLedgEntry.SetFilter("Initial Entry Global Dim. 1", '%1', GlobalDimension1Filter);
+                    DtldCustLedgEntry.SetFilter("Initial Entry Global Dim. 2", '%1', GlobalDimension2Filter);
+                    DtldCustLedgEntry.SetFilter("Currency Code", '%1', CurrencyFilter);
+
+
+
+                    /*CopyFilter(CustomerTable."Global Dimension 1 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 1");
                     CopyFilter(CustomerTable."Global Dimension 2 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 2");
-                    CopyFilter("Currency Filter", DtldCustLedgEntry."Currency Code");
+                    CopyFilter("Currency Filter", DtldCustLedgEntry."Currency Code");*/
                     CustLedgEntry.DrillDownOnEntries(DtldCustLedgEntry);
                 end;
-            }*/
+            }
+            field(Avans_Cust; Avans_Cust)
+            {
+                Caption = 'Avans';
+                ApplicationArea = Basic, Suite;
+            }
         }
     }
-
-    var
-        CustomerTable: Record Customer;
 }

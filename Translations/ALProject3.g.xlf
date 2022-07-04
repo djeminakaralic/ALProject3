@@ -36013,6 +36013,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Address_Cust - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 567629439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Avans</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Avans_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 3892876756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Saldo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Balance_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 23630027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Grad</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38968,6 +38978,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Address_Cust - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 567629439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Avans</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Avans_Cust - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3892876756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Balance</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -38988,6 +39003,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Compensation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 3708573225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Currency Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field CurrencyFilter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 2531330654 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Due Date 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39007,6 +39027,16 @@
           <source>Given amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Given amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 1630212574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Global Dimension 1 filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field GlobalDimension1Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2215900627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Global Dimension 2 filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field GlobalDimension2Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 68211241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Group Member</source>
