@@ -35033,6 +35033,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Cash Diary - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3552131165 - Action 1991143175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
+          <source>Izvještaj porto blagajne</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Izvještaj porto blagajne - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1418896891 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1418896891">
           <source>Do you want to set paid holiday for all employees?</source>
           <note from="Developer" annotates="general" priority="2"></note>
