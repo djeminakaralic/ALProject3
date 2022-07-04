@@ -94,6 +94,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
                     CustLedgEntry: Record "Cust. Ledger Entry";
                 begin
+                    DtldCustLedgEntry.Reset();
                     DtldCustLedgEntry.SetRange("Customer No.", "Account No.");
                     DtldCustLedgEntry.SetFilter("Initial Entry Global Dim. 1", '%1', GlobalDimension1Filter);
                     DtldCustLedgEntry.SetFilter("Initial Entry Global Dim. 2", '%1', GlobalDimension2Filter);
