@@ -160,17 +160,20 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             begin
                 if ("Account Type" = "Account Type"::Customer) and ("Account No." <> '') then begin
+
                     Customer.Get("Account No.");
                     "Social status" := Customer."Social status category";
                     Address_Cust := Customer.Address;
                     RegistrationNo_Cust := Customer."Registration No.";
                     VATRegistrationNo_Cust := Customer."VAT Registration No.";
                     City_Cust := Customer.City;
+                    Balance_Cust := Customer."Balance Due";
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
-                    Balance_Cust := Customer."Balance (LCY)";
-                    Message(FORMAT(Balance_Cust));
+                    Message(FORMAT(Customer."Balance (LCY)"));
+
+
                 end;
             end;
         }
@@ -184,7 +187,9 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         else
             Rec."No. Line" := 1;
 
+
     end;
+
 
 
     var
@@ -192,4 +197,5 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
         Text001: Label 'Given amount cannot be less than amount.';
+        DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
 }

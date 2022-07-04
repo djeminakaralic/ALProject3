@@ -131,25 +131,6 @@ report 50077 Uplatnica
 
             trigger OnAfterGetRecord()
             begin
-
-                /*Cont.SETFILTER("No.",'%1',"Contact Link");
-                
-                IF Cont.FIND('-') THEN BEGIN
-                
-                ContName:=Cont.Name;
-                ContAddress:=Cont.Address;
-                ContCity:=Cont."Post Code"+', '+Cont.City;
-                END;     */
-
-                /*emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
-
-                IF emp.FIND('-') THEN BEGIN
-
-                    ContName := emp."First Name" + emp."Last Name";
-                    ContAddress := emp.Address;
-                    ContCity := emp."Post Code" + ', ' + emp.City;
-                END;*/
-
             end;
 
             trigger OnPreDataItem()
@@ -158,19 +139,12 @@ report 50077 Uplatnica
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-                //Location.SETFILTER(Code,"Location Code");
-                //IF Location.FINDFIRST THEN
-                //City:=Location.City;
-
                 CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
                     Country := CountryRegion.Name;
 
-
             end;
         }
-
-
         dataitem(DataItem22; "Bank Account")
         {
             column(BankName; DataItem22.Name)
@@ -196,12 +170,14 @@ report 50077 Uplatnica
                     if Name = 'UniCredit Bank' then begin
                         BankSWIFT := "SWIFT Code";
                         BankIBAN := IBAN;
+
                     end;
                 end
                 else
                     Counter := 0;
             end;
         }
+
     }
 
     requestpage
@@ -220,6 +196,7 @@ report 50077 Uplatnica
     }
 
     var
+        BankAccTemp: Record "Bank Account" temporary;
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
