@@ -52,11 +52,11 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Knjižna grupa';
                 ApplicationArea = All;
             }
-            field(Balance_Cust; Balance_Cust)
+            /*field(Balance_Cust; Balance_Cust)
             {
                 Caption = 'Saldo';
                 ApplicationArea = All;
-            }
+            }*/
         }
     }
 }
