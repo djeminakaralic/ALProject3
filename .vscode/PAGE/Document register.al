@@ -9,6 +9,7 @@ table 50254 "Document Register"
         field(1; ID; Integer)
         {
             AutoIncrement = true;
+            //ĐK
             Caption = 'ID';
         }
         field(2; "Agreement Code"; Code[30])
