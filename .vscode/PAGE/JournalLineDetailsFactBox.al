@@ -72,6 +72,16 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
                 end;
             }
+            field("Social status"; "Social status")
+            {
+                Caption = 'Kategorija socijalnih slučajeva';
+                ApplicationArea = All;
+
+                trigger OnDrillDown()
+                begin
+                    Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
+                end;
+            }
 
             /*field(Balance_Cust; Balance_Cust)
             {
