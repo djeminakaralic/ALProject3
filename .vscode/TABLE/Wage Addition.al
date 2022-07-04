@@ -138,6 +138,7 @@ table 50032 "Wage Addition"
                 Class.FINDFIRST;
                 //dodati ovdje
                 WT.Get(Rec."Wage Addition Type");
+                EmpW.Get("Employee No.");
                 if WT."Work experience base" = true then
                     Amount := Amount * EmpW."Work Experience Percentage";
 
