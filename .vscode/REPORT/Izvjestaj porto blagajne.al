@@ -154,7 +154,6 @@ report 50085 "Izvještaj porto blagajne"
                     repeat
                         PaymentAmount += GLEntry.Amount;
                     until GLEntry.Next() = 0;
-
             end;
         }
     }
