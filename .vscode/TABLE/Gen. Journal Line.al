@@ -159,6 +159,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Currency Filter';
             NotBlank = true;
         }
+        field(50043; Avans_Cust; Decimal) //ED
+        {
+            Caption = 'Avans';
+        }
 
 
         modify(Amount)

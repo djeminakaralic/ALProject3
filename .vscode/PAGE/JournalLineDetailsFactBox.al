@@ -82,8 +82,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
                 end;
             }
-
-
             field(Balance_Cust; Balance_Cust)
             {
                 Caption = 'Saldo';
@@ -107,6 +105,11 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     CopyFilter("Currency Filter", DtldCustLedgEntry."Currency Code");*/
                     CustLedgEntry.DrillDownOnEntries(DtldCustLedgEntry);
                 end;
+            }
+            field(Avans_Cust; Avans_Cust)
+            {
+                Caption = 'Avans';
+                ApplicationArea = Basic, Suite;
             }
         }
     }
