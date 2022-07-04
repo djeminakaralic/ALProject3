@@ -194,12 +194,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Balance_Cust := 5.67;
 
 
-                    //GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
-
-                    //glob Customer."Global Dimension 1 Filter"
-                    Message(FORMAT(Customer."Balance (LCY)"));
-
-
                 end;
             end;
         }
