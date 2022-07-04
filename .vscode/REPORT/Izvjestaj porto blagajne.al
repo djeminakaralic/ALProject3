@@ -137,18 +137,24 @@ report 50085 "Izvještaj porto blagajne"
             {
             }
 
-
-
             trigger OnAfterGetRecord()
             begin
                 GLEntry.Reset();
                 //za svaku vrstu uplate koju uzimam u PT code stavljam filtere
-                //naziv serije naloga knjižnja, datum, vrsta uplate 
+                //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
                 //GLEntry.SetFilter("Journal Batch Name", '%1', );
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+                GLEntry.SetFilter("Document Type", '%1', 1);
                 PaymentCounter := GLEntry.Count;
+
+                //PaymentAmount := 0:
+                /*IF GLEntry.FindFirst() then begin
+                    repeat
+                        PaymentAmount += GLEntry.Amount;
+                    until GLEntry.Next() = 0;
+                end;*/
             end;
         }
     }
