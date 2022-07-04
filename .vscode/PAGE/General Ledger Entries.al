@@ -13,7 +13,6 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
             {
                 ApplicationArea = All;
             }
-
         }
     }
 
@@ -31,7 +30,7 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
                 RunObject = report "Print of journal entries";
 
                 //  RunObject = report "";
-            } // Add changes to page actions here
+            }
         }
         addafter("DocsWithoutIC")
         {
