@@ -217,10 +217,12 @@ page 50016 "Wage Setup"
 
                 field("Wage Journal Template"; "Wage Journal Template")
                 {
+                    Visible = false;
 
                 }
                 field("Wage Batch Name"; "Wage Batch Name")
                 {
+                    Visible = false;
 
                 }
             }

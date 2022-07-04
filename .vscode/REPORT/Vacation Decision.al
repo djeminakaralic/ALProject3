@@ -280,9 +280,19 @@ report 50109 VacationDecision
 
 
 
+            trigger OnPreDataItem()
+            var
+                myInt: Integer;
+            begin
+                SetFilter("Starting Date of I part", '<>%1', 0D);
+                SetFilter("Ending Date of I part", '<>%1', 0D);
 
+
+            end;
 
         }
+
+
     }
 
     requestpage

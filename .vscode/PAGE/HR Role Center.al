@@ -70,8 +70,8 @@ page 50003 "HR Role Center"
                     Image = CompanyInformation;
                     RunObject = xmlport "ECL Update";
                     ApplicationArea = all;
-Visible=false;
-                    
+                    Visible = true;
+
                 }
 
                 action(Countries)

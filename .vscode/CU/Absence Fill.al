@@ -289,7 +289,7 @@ codeunit 50304 "Absence Fill"
     end;
 
     //ED 01 START
-    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
+    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10]; "Hours": Decimal)
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -396,8 +396,10 @@ codeunit 50304 "Absence Fill"
                         Description := Cause.Description;
                         "RS Code" := RSHoliday;
                     END;
-
-                    Quantity := Employee."Hours In Day";
+                    if Hours = 0 then
+                        Quantity := Employee."Hours In Day"
+                    else
+                        Quantity := Hours;
 
                     "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
                     INSERT;
