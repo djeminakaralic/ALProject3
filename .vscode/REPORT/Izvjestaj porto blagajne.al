@@ -150,11 +150,11 @@ report 50085 "Izvještaj porto blagajne"
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
-                /*IF GLEntry.FindFirst() then begin
+                IF GLEntry.FindFirst() then
                     repeat
                         PaymentAmount += GLEntry.Amount;
                     until GLEntry.Next() = 0;
-                end;*/
+
             end;
         }
     }
