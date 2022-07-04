@@ -36028,10 +36028,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control City_Cust - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 2744557225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Tužbe</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Complaint - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2391333830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>E-mail</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Email_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2673391988 - Control 3604861746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Kamate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Interest - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Broj mobilnog telefona</source>
@@ -39003,6 +39013,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Compensation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 2744557225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Complaint</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Complaint - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3708573225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Currency Filter</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39042,6 +39057,11 @@
           <source>Group Member</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Group Member - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 3604861746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Interst</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Interest - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Mobile Phone</source>

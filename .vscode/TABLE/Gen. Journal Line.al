@@ -171,6 +171,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Avans';
         }
+        field(50044; "Complaint"; Boolean) //ED
+        {
+            Caption = 'Complaint';
+            Editable = false;
+        }
+        field(50045; "Interest"; Boolean) //ED
+        {
+            Caption = 'Interst';
+            Editable = false;
+        }
 
 
         modify(Amount)

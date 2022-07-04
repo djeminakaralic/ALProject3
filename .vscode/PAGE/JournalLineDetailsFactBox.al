@@ -85,7 +85,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
             field(Balance_Cust; Balance_Cust)
             {
                 Caption = 'Saldo';
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
 
                 trigger OnDrillDown()
                 var
@@ -109,7 +109,41 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
             field(Avans_Cust; Avans_Cust)
             {
                 Caption = 'Avans';
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
+            }
+            field(Complaint; Complaint)
+            {
+                Caption = 'Tužbe';
+                ApplicationArea = All;
+
+
+
+                /*FILTERI SA KARTONA RADNIKA - RESIDENCE PERMIT
+                trigger OnDrillDown()
+                begin
+                    PersonalDocuments.RESET;
+                    PersonalDocuments.SETFILTER("Employee No.", "No.");
+                    PersonalDocuments.SETFILTER(Switch, 'Residence Permit');
+                    PersonalDocuments.SETFILTER(Active, '%1', TRUE);
+                    IF PersonalDocuments.FINDFIRST THEN BEGIN
+                        PersonalDocumentsPage.SETTABLEVIEW(PersonalDocuments);
+                        PersonalDocumentsPage.RUN;
+                    END
+                    ELSE BEGIN
+                        PersonalDocuments.RESET;
+                        PersonalDocuments.SETFILTER("Employee No.", "No.");
+                        PersonalDocuments.SETFILTER(Switch, 'Residence Permit');
+                        PersonalDocumentsPage.SETTABLEVIEW(PersonalDocuments);
+                        PersonalDocumentsPage.RUN;
+                    END;
+                    CurrPage.UPDATE;
+                end;*/
+
+            }
+            field(Interest; Interest)
+            {
+                Caption = 'Kamate';
+                ApplicationArea = All;
             }
         }
     }
