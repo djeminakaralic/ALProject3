@@ -55,6 +55,8 @@ page 50267 "Wage Addition Types"
                 {
                     ApplicationArea = all;
                 }
+                field("Work experience base"; "Work experience base")
+                { ApplicationArea = all; }
                 field("Default Amount"; "Default Amount")
                 {
                     ApplicationArea = all;
