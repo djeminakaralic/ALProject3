@@ -116,8 +116,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Tužbe';
                 ApplicationArea = All;
 
-
-
                 /*FILTERI SA KARTONA RADNIKA - RESIDENCE PERMIT
                 trigger OnDrillDown()
                 begin
