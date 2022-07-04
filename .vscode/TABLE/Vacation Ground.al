@@ -482,91 +482,94 @@ table 50015 "Vacation Ground 2"
             trigger OnValidate()
             begin
 
-                "First Part" := (AbsenceFill.GetHourPoolForVacation("Starting Date of I part", "Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
+                if "Ending Date of I part" <> 0D then begin
+
+                    "First Part" := (AbsenceFill.GetHourPoolForVacation("Starting Date of I part", "Ending Date of I part", EmployeeRec."Hours In Day")) / 8;
 
 
-                /*WPConnSetup.FINDFIRST();
-                
-                
-                CREATE(conn, TRUE, TRUE);
-                
-                conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
-                          +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
-                
-                CREATE(comm,TRUE, TRUE);
-                
-                lvarActiveConnection := conn;
-                comm.ActiveConnection := lvarActiveConnection;
-                
-                comm.CommandText := 'dbo.Vacation_Requests_Insert';
-                comm.CommandType := 4;
-                comm.CommandTimeout := 0;
-                
-                
-                param:=comm.CreateParameter('@emp', 200, 1, 30, "Employee No.");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@CreationDate', 7, 1, 0, TODAY);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@h_from', 7, 1, 0, "Starting Date of I part");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@h_to', 7, 1, 0, "Ending Date of I part");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@status', 3, 1, 0, 1);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@type', 200, 1, 30, 'DEC');
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@year',3, 1, 0, Year);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@duration', 3, 1, 0,"Ending Date of I part"-"Starting Date of I part");
-                comm.Parameters.Append(param);
-                
-                comm.Execute;
-                conn.Close;
-                CLEAR(conn);
-                CLEAR(comm);
-                ĐK*/
+                    /*WPConnSetup.FINDFIRST();
 
 
-                /*
-                
-                WPConnSetup.FINDFIRST();
-                CREATE(conn, TRUE, TRUE);
-                
-                conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
-                          +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
-                
-                CREATE(comm,TRUE, TRUE);
-                
-                lvarActiveConnection := conn;
-                comm.ActiveConnection := lvarActiveConnection;
-                
-                comm.CommandText := 'dbo.Vacation_Requests_Update';
-                comm.CommandType := 4;
-                comm.CommandTimeout := 0;
-                
-                
-                param:=comm.CreateParameter('@emp', 200, 1, 30, "Employee No.");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@CreationDate', 7, 1, 0, TODAY);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@h_from', 7, 1, 0, "Starting Date of I part");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@h_to', 7, 1, 0, "Ending Date of I part");
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@status', 3, 1, 0, 1);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@type', 200, 1, 30, 'DEC');
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@year',3, 1, 0, Year);
-                comm.Parameters.Append(param);
-                param:=comm.CreateParameter('@duration', 3, 1, 0,"Ending Date of I part"-"Starting Date of I part");
-                comm.Parameters.Append(param);
-                
-                comm.Execute;
-                conn.Close;
-                CLEAR(conn);
-                CLEAR(comm);
-                */
+                    CREATE(conn, TRUE, TRUE);
+
+                    conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
+                              +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
+
+                    CREATE(comm,TRUE, TRUE);
+
+                    lvarActiveConnection := conn;
+                    comm.ActiveConnection := lvarActiveConnection;
+
+                    comm.CommandText := 'dbo.Vacation_Requests_Insert';
+                    comm.CommandType := 4;
+                    comm.CommandTimeout := 0;
+
+
+                    param:=comm.CreateParameter('@emp', 200, 1, 30, "Employee No.");
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@CreationDate', 7, 1, 0, TODAY);
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@h_from', 7, 1, 0, "Starting Date of I part");
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@h_to', 7, 1, 0, "Ending Date of I part");
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@status', 3, 1, 0, 1);
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@type', 200, 1, 30, 'DEC');
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@year',3, 1, 0, Year);
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@duration', 3, 1, 0,"Ending Date of I part"-"Starting Date of I part");
+                    comm.Parameters.Append(param);
+
+                    comm.Execute;
+                    conn.Close;
+                    CLEAR(conn);
+                    CLEAR(comm);
+                    ĐK*/
+
+
+                    /*
+
+                    WPConnSetup.FINDFIRST();
+                    CREATE(conn, TRUE, TRUE);
+
+                    conn.Open('PROVIDER='+WPConnSetup.Provider+';SERVER='+WPConnSetup.Server+';DATABASE='+WPConnSetup.Database+';UID='+WPConnSetup.UID
+                              +';PWD='+WPConnSetup.Password+';AllowNtlm='+FORMAT(WPConnSetup.AllowNtlm));
+
+                    CREATE(comm,TRUE, TRUE);
+
+                    lvarActiveConnection := conn;
+                    comm.ActiveConnection := lvarActiveConnection;
+
+                    comm.CommandText := 'dbo.Vacation_Requests_Update';
+                    comm.CommandType := 4;
+                    comm.CommandTimeout := 0;
+
+
+                    param:=comm.CreateParameter('@emp', 200, 1, 30, "Employee No.");
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@CreationDate', 7, 1, 0, TODAY);
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@h_from', 7, 1, 0, "Starting Date of I part");
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@h_to', 7, 1, 0, "Ending Date of I part");
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@status', 3, 1, 0, 1);
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@type', 200, 1, 30, 'DEC');
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@year',3, 1, 0, Year);
+                    comm.Parameters.Append(param);
+                    param:=comm.CreateParameter('@duration', 3, 1, 0,"Ending Date of I part"-"Starting Date of I part");
+                    comm.Parameters.Append(param);
+
+                    comm.Execute;
+                    conn.Close;
+                    CLEAR(conn);
+                    CLEAR(comm);
+                    */
+                end;
 
             end;
         }

@@ -39,8 +39,9 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             field(Vacation; Vacation) { }
             field("Added To Hour Pool"; "Added To Hour Pool") { }
             field("Calculation Type"; "Calculation Type") { }
+            field("Calculate Experience"; "Calculate Experience") { }
             field("Meal Calculated"; "Meal Calculated") { }
-            field("Meal - Hours"; "Meal - Hours") { }
+            field("Meal - Hours"; "Meal - Hours") { Visible = false; }
             field("Payment Type"; "Payment Type")
             { }
             field(Order; Order) { ApplicationArea = all; }
