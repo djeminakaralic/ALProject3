@@ -143,6 +143,14 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50039; Balance_Cust; Decimal) //ED
         {
             Caption = 'Balance';
+            AutoFormatType = 1;
+            CalcFormula = Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("Account No."),
+                                                                                 "Initial Entry Global Dim. 1" = FIELD(GlobalDimension1Filter),
+                                                                                 "Initial Entry Global Dim. 2" = FIELD(GlobalDimension2Filter),
+                                                                                 "Currency Code" = FIELD(CurrencyFilter)));
+
+            Editable = false;
+            FieldClass = FlowField;
         }
         field(50040; "GlobalDimension1Filter"; Code[20]) //ED
         {
