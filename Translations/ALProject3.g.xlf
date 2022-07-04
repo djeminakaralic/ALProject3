@@ -36028,11 +36028,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Phone_Cust - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2673391988 - Control 1915851633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
-          <source>Knjižna grupa</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Posting Group - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 4197198462 - Action 3180535661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2716593954">
           <source>Order Confirmation Cr. Memo</source>
           <note from="Developer" annotates="general" priority="2"></note>

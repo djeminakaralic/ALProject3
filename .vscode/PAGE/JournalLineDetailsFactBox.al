@@ -72,16 +72,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
                 end;
             }
-            field("Posting Group"; "Posting Group")
-            {
-                Caption = 'Knjižna grupa';
-                ApplicationArea = All;
 
-                trigger OnDrillDown()
-                begin
-                    Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
-                end;
-            }
             /*field(Balance_Cust; Balance_Cust)
             {
                 Caption = 'Saldo';
