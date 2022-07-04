@@ -87,7 +87,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                 Caption = 'Saldo';
                 ApplicationArea = Basic, Suite;
 
-                trigger OnDrillDown()
+                /*trigger OnDrillDown()
                 var
                     DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
                     CustLedgEntry: Record "Cust. Ledger Entry";
@@ -103,8 +103,8 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     /*CopyFilter(CustomerTable."Global Dimension 1 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 1");
                     CopyFilter(CustomerTable."Global Dimension 2 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 2");
                     CopyFilter("Currency Filter", DtldCustLedgEntry."Currency Code");*/
-                    CustLedgEntry.DrillDownOnEntries(DtldCustLedgEntry);
-                end;
+                /*CustLedgEntry.DrillDownOnEntries(DtldCustLedgEntry);
+            end;*/
             }
             field(Avans_Cust; Avans_Cust)
             {

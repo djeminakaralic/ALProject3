@@ -162,7 +162,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Global Dimension 2 filter';
             NotBlank = true;
         }
-        field(50042; "CurrencyFilter"; Code[10])
+        field(50042; "CurrencyFilter"; Code[10]) //ED
         {
             Caption = 'Currency Filter';
             NotBlank = true;
