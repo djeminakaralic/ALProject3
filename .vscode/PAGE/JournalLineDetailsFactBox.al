@@ -83,13 +83,16 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     DtldCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
                     CustLedgEntry: Record "Cust. Ledger Entry";
                 begin
-                    DtldCustLedgEntry.SetRange("Customer No.", "No.");
-                    CopyFilter("Global Dimension 1 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 1");
-                    CopyFilter("Global Dimension 2 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 2");
+                    DtldCustLedgEntry.SetRange("Customer No.", "Account No.");
+                    CopyFilter(CustomerTable."Global Dimension 1 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 1");
+                    CopyFilter(CustomerTable."Global Dimension 2 Filter", DtldCustLedgEntry."Initial Entry Global Dim. 2");
                     CopyFilter("Currency Filter", DtldCustLedgEntry."Currency Code");
                     CustLedgEntry.DrillDownOnEntries(DtldCustLedgEntry);
                 end;
             }*/
         }
     }
+
+    var
+        CustomerTable: Record Customer;
 }
