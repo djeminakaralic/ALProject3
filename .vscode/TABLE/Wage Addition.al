@@ -140,7 +140,7 @@ table 50032 "Wage Addition"
                 WT.Get(Rec."Wage Addition Type");
                 EmpW.Get("Employee No.");
                 if WT."Work experience base" = true then
-                    Amount := Amount * EmpW."Work Experience Percentage";
+                    Amount := Amount * EmpW."Years of Experience";
 
                 IF Taxable THEN
                     VALIDATE("Amount to Pay", Amount * (1 - (Class.Percentage / 100)))
