@@ -18528,6 +18528,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Wage Increase/Decrease - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1059656092 - Field 744430454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Wage addition based on Work Experience</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Work experience base - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2968177813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
