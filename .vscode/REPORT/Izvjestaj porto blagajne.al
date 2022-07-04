@@ -127,6 +127,14 @@ report 50085 "Izvještaj porto blagajne"
             column(PTCode; DataItem22.Code)
             {
             }
+
+            trigger OnAfterGetRecord()
+            begin
+                GLEntry.Reset();
+                //za svaku vrstu uplate koju uzimam u PT code stavljam filtere
+                //naziv serije naloga knjižnja, datum, vrsta uplate 
+                //GLEntry.SetFilter("Payment Type Code", '%1', PTCode);
+            end;
         }
     }
 
