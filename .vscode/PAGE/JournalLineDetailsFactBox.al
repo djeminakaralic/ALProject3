@@ -86,8 +86,8 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 
             field(Balance_Cust; Balance_Cust)
             {
+                Caption = 'Saldo';
                 ApplicationArea = Basic, Suite;
-                ToolTip = 'Specifies the payment amount that the customer owes for completed sales. This value is also known as the customer''s balance.';
 
                 trigger OnDrillDown()
                 var

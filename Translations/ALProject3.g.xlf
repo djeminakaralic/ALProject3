@@ -36013,10 +36013,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Address_Cust - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2673391988 - Control 3892876756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
-          <source>Specifies the payment amount that the customer owes for completed sales. This value is also known as the customer's balance.</source>
+        <trans-unit id="PageExtension 2673391988 - Control 3892876756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
+          <source>Saldo</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Balance_Cust - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Balance_Cust - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 23630027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Grad</source>
