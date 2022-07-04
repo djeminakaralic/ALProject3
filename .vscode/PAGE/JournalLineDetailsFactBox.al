@@ -82,6 +82,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
                 end;
             }
+            //field()
 
             /*field(Balance_Cust; Balance_Cust)
             {
