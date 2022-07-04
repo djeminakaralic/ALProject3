@@ -86,6 +86,7 @@ report 50085 "Izvještaj porto blagajne"
 
 
 
+
             trigger OnAfterGetRecord()
             begin
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
@@ -128,12 +129,26 @@ report 50085 "Izvještaj porto blagajne"
             {
             }
 
+            column(PaymentCounter; PaymentCounter)
+            {
+            }
+
+            column(PaymentAmount; PaymentAmount)
+            {
+            }
+
+
+
             trigger OnAfterGetRecord()
             begin
                 GLEntry.Reset();
                 //za svaku vrstu uplate koju uzimam u PT code stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate 
-                //GLEntry.SetFilter("Payment Type Code", '%1', PTCode);
+
+                //GLEntry.SetFilter("Journal Batch Name", '%1', );
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
+                GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+                PaymentCounter := GLEntry.Count;
             end;
         }
     }
@@ -180,5 +195,7 @@ report 50085 "Izvještaj porto blagajne"
         emp: Record Employee;
         Cust: Record Customer;
         Datee: Date;
+        PaymentCounter: Integer;
+        PaymentAmount: Decimal;
 }
 
