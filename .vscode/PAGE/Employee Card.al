@@ -735,20 +735,23 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 }
 
 
+                field("Related Person to be informed"; "Related Person to be informed")
+                {
+                    //ĐK  Caption = 'Related Person to be informed';
+                    ApplicationArea = all;
+                }
+                field("Relationship with Related Per."; "Relationship with Related Per.")
+                {
+                    ApplicationArea = all;
+                }
+
+
 
 
                 group(Emergency)
                 {
                     Caption = 'Emergency';
-                    field("Related Person to be informed"; "Related Person to be informed")
-                    {
-                        //ĐK  Caption = 'Related Person to be informed';
-                        ApplicationArea = all;
-                    }
-                    field("Relationship with Related Per."; "Relationship with Related Per.")
-                    {
-                        ApplicationArea = all;
-                    }
+
                     grid("Tel. No. Of Related Person")
                     {
                         Caption = 'Tel. No. Of Related Person';
@@ -1691,10 +1694,12 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                     field("Municipality Code for salary"; "Municipality Code for salary")
                     {
                         ApplicationArea = all;
+                        Editable = false;
                     }
                     field("Org Entity Code"; "Org Entity Code")
                     {
                         ApplicationArea = all;
+                        Editable = false;
                     }
 
                     field("For Calculation"; Rec."For Calculation")
@@ -2147,6 +2152,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             field("Employee ID"; Rec."Employee ID")
             {
                 Caption = 'Employee ID';
+                ShowMandatory = true;
                 ApplicationArea = all;
             }
 

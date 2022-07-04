@@ -362,9 +362,10 @@ page 50020 "Wage Wizard Step 1"
                             repeat
                                 EmployeeAbsence.SetFilter("Employee No.", '%1', EmployeeUpdateREd."No."); //trazim odsustvo za jednog zaposlenog
                                 EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate); //filter na unesene datume u request page-u
+                                EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                                 if NOT EmployeeAbsence.FindFirst() then begin //u tabeli nema nijednog odsustva za ovog zaposlenog
                                     WageSetup.Get();
-                                    AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, EmployeeUpdateREd, WageSetup."Workday Code");
+                                    AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, EmployeeUpdateREd, WageSetup."Workday Code", EmployeeUpdateREd."Hours In Day");
                                 end
                                 else begin //pronađeno je barem 1 odsustvo
 
@@ -377,9 +378,10 @@ page 50020 "Wage Wizard Step 1"
                                         EmployeeAbsence.Reset();
                                         EmployeeAbsence.SetFilter("Employee No.", '%1', EmployeeUpdateREd."No.");
                                         EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start"); //jedan dan
+                                        EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                                         if NOT EmployeeAbsence.FindFirst() then begin //nije pronadjeno odustvo na ovaj dan
                                             WageSetup.Get();
-                                            AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", EmployeeUpdateREd, WageSetup."Workday Code");
+                                            AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", EmployeeUpdateREd, WageSetup."Workday Code", EmployeeUpdateREd."Hours In Day");
                                         end;
                                     until Datum.NEXT = 0; //sljedeći datum
                                 end;

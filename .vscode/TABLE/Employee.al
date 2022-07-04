@@ -832,7 +832,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50113; "Bank Account Code"; Code[20])
         {
             Caption = 'Bank Account Code';
-            TableRelation = "Wage/Reduction Bank Accounts"."No.";
+            TableRelation = "Wage/Reduction Bank Accounts"."No." where("Bank Code" = Field("Bank No."));
             trigger OnValidate()
             var
                 myInt: Integer;

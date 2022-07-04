@@ -31,7 +31,7 @@ table 50199 "Wage Setup"
                 if WT.FindFirst() then begin
 
                     eUpdate.Reset();
-                    eUpdate.SetFilter("For Calculation", '%1', true);
+                    eUpdate.SetFilter(StatusExt, '%1', eUpdate.StatusExt::Active);
                     eUpdate.SetFilter("Wage Type", '%1', WT.Code);
                     if eUpdate.FindSet() then
                         repeat
@@ -55,7 +55,7 @@ table 50199 "Wage Setup"
                                     else begin
 
 
-                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute", 0.01, '>'));
+                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * 3, 0.01, '>'));
                                         ECLUpdate.Modify();
 
                                     end;
@@ -73,6 +73,7 @@ table 50199 "Wage Setup"
         field(3; "Average coefficient statute"; Decimal)
         {
             Caption = 'Average coefficient statute';
+            DecimalPlaces = 1 : 3;
             trigger OnValidate()
             var
                 myInt: Integer;
@@ -256,6 +257,13 @@ table 50199 "Wage Setup"
         {
             Caption = 'Base Personal Deduction';
             TableRelation = "Tax deduction list".Amount where(Active = filter(true), "Entity Code" = filter('FBIH'));
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                "Base Tax Deduction" := "Base Personal Deduction";
+
+            end;
         }
         field(200; "Tax Payment Model"; Code[2])
         {

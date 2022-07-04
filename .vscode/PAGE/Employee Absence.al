@@ -48,12 +48,13 @@ page 51129 "Employee Absence"
                     trigger OnValidate()
                     begin
                         CauseOfAbsence.Get("Cause of Absence Code");
-                        if CauseOfAbsence."Added To Hour Pool" then
-                            EditableHours := true
-                        else begin
-                            EditableHours := false;
-                            Hours := 0;
-                        end;
+                        /*   if CauseOfAbsence."Added To Hour Pool" then
+                               EditableHours := true
+                           else begin
+                               EditableHours := false;
+                               Hours := 0;
+                           end;*/
+                        EditableHours := true;
                         /*WageSetup.Get();
                         if Rec."Cause of Absence Code"= WageSetup."Overtime Code" then
                             EditableHours := true;*/

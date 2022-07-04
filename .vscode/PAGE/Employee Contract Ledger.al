@@ -152,11 +152,13 @@ page 50051 "Employee Contract Ledger"
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Department Name"; "Department Name")
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
 
                 field("Org Dio"; "Org Dio")
@@ -184,6 +186,7 @@ page 50051 "Employee Contract Ledger"
                 field("Phisical Department Desc"; "Phisical Department Desc")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
 
 
@@ -191,29 +194,35 @@ page 50051 "Employee Contract Ledger"
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field(Canton; Canton)
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Org Municipality"; "Org Municipality")
                 {
 
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Org Municipality of ag"; "Org Municipality of ag")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Municipality Name"; "Municipality Name")
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Department Address"; "Department Address")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
 
                 field("<Position Description>"; "Position Description")

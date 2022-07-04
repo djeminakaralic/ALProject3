@@ -26,9 +26,10 @@ report 50117 "Fill The Whole Month"
                     repeat
                         EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No."); //trazim odsustvo za jednog zaposlenog
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate); //filter na unesene datume u request page-u
+                        EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                         if NOT EmployeeAbsence.FindFirst() then begin //u tabeli nema nijednog odsustva za ovog zaposlenog
                             WageSetup.Get();
-                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, WageSetup."Workday Code");
+                            AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, Employee, WageSetup."Workday Code", Employee."Hours In Day");
                         end
                         else begin //pronađeno je barem 1 odsustvo
 
@@ -41,9 +42,10 @@ report 50117 "Fill The Whole Month"
                                 EmployeeAbsence.Reset();
                                 EmployeeAbsence.SetFilter("Employee No.", '%1', Employee."No.");
                                 EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start"); //jedan dan
+                                EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                                 if NOT EmployeeAbsence.FindFirst() then begin //nije pronadjeno odustvo na ovaj dan
                                     WageSetup.Get();
-                                    AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", Employee, WageSetup."Workday Code");
+                                    AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", Employee, WageSetup."Workday Code", Employee."Hours In Day");
                                 end;
                             until Datum.NEXT = 0; //sljedeći datum
                         end;
