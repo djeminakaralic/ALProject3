@@ -144,6 +144,22 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Balance';
         }
+        field(50040; "GlobalDimension1Filter"; Code[20]) //ED
+        {
+            Caption = 'Global Dimension 1 filter';
+            NotBlank = true;
+        }
+        field(50041; "GlobalDimension2Filter"; Code[20]) //ED
+        {
+            Caption = 'Global Dimension 2 filter';
+            NotBlank = true;
+        }
+        field(50042; "CurrencyFilter"; Code[10])
+        {
+            Caption = 'Currency Filter';
+            NotBlank = true;
+        }
+
 
         modify(Amount)
         {
@@ -172,6 +188,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
                     "Social status" := Customer."Social status category";
+                    GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
+                    GlobalDimension2Filter := Customer."Global Dimension 2 Filter";
+                    CurrencyFilter := Customer."Currency Filter";
+                    Balance_Cust := 5.67;
+
+
+                    //GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
+
+                    //glob Customer."Global Dimension 1 Filter"
                     Message(FORMAT(Customer."Balance (LCY)"));
 
 
