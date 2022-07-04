@@ -3,9 +3,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     //ED
     layout
     {
-        // Add changes to page layout here
-
-
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
@@ -42,6 +39,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         modify("Applied (Yes/No)")
         {
             Visible = false;
+        }
+        modify(Description)
+        {
+            Editable = false;
         }
     }
 
