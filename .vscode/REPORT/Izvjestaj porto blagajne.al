@@ -139,6 +139,7 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnAfterGetRecord()
             begin
+                Message(FORMAT(GLEntry."Journal Batch Name"));
                 GLEntry.Reset();
                 //za svaku vrstu uplate koju uzimam u PT code stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
