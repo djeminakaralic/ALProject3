@@ -83,6 +83,16 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedIsBig = true;
                 RunObject = Report "Izvještaj porto blagajne";
             }
+
+            action("Zapisnik o primopredaji UniCredit")
+            {
+                Caption = 'Zapisnik o primopredaji UniCredit';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Zapisnik o primopredaji";
+            }
         }
     }
 
