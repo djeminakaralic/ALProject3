@@ -47,7 +47,5 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
 
     var
-        myInt: Integer;
-        IncomingDocument: Record "Incoming Document";
         GLEntry: Record "G/L Entry";
 }
