@@ -36173,6 +36173,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control Note 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3732224266 - Action 736117566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
+          <source>Export Test</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Test - Action Export Test - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3732224266 - Action 4058871253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 219593816">
           <source>Import Test</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -27,6 +27,8 @@ codeunit 50139 GenJNLLine
         VATEntry2: Record "VAT Entry";
 
     begin
+        myInt := GLEntry.GetLastEntryNo();
+        GLEntry.Get(myInt);
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
 
         GLEntry."Test Event" := 'Elmira test knjizenje'; //izbrisati
