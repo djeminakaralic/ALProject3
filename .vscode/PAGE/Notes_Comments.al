@@ -15,6 +15,7 @@ page 50084 "Notes/Comments"
                 field("No."; "No.")
                 {
                     ApplicationArea = all;
+                    //ĐK
                 }
                 field("Note No."; "Note No.")
                 {

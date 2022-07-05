@@ -37,6 +37,21 @@ pageextension 50148 "Test" extends "Document Attachment Details"
 
 
                 end;
+
+            }
+
+            action("Export Test")
+            {
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                    FilePath: Text;
+                    InFileStream: InStream;
+                begin
+                    DownloadFile();
+
+
+                end;
             }
         }
 
@@ -54,7 +69,23 @@ pageextension 50148 "Test" extends "Document Attachment Details"
         Validate("File Name", FileManagement.GetFileNameWithoutExtension(FileName));
         rec.Content.CreateOutStream(OStream);
         CopyStream(OStream, DocumentInStream);
-        Insert(true);
+        Insert(false);
 
     end;
+
+    procedure DownloadFile()
+    var
+        IStream: InStream;
+        ExportFileName: Text;
+    begin
+
+        ExportFileName := Rec."File Name" + '.' + Rec."File Extension";
+        Rec.CalcFields(Content);
+        if not Content.HasValue then
+            exit;
+        Rec.Content.CreateInStream(IStream);
+        DownloadFromStream(IStream, '', '', '', ExportFileName);
+
+    end;
+
 }
