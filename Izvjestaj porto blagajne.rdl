@@ -215,7 +215,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=SUM(Fields!PaymentCounter.Value)</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -245,7 +245,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=FormatNumber(ABS(SUM(Fields!PaymentAmount.Value)), 2)</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
