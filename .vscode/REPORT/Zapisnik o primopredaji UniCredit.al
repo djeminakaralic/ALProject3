@@ -3,7 +3,7 @@ report 50097 "Zapisnik o primopredaji"
     //ED
     DefaultLayout = RDLC;
     PreviewMode = Normal;
-    RDLCLayout = './Izvjestaj porto blagajne.rdl';
+    RDLCLayout = './Zapisnik o primopredaji UniCredit.rdl';
 
 
     dataset
