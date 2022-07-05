@@ -10,7 +10,7 @@ report 50085 "Izvještaj porto blagajne"
     {
         dataitem(DataItem21; "Gen. Journal Line")
         {
-            column(BatchName; DataItem21."Journal Batch Name")
+            /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
             {
             }
             column(PostingDate; DataItem21."Posting Date")
@@ -22,9 +22,9 @@ report 50085 "Izvještaj porto blagajne"
             column(AccountNo; DataItem21."Account No.")
             {
             }
-            column(PM; DataItem21."Payment Method Code")
+            column(PM; DataItem21."Payment Method Code") 
             {
-            }
+            }*/
             column(Adress_CompanyInfo; CompanyInformation.Address)
             {
             }
@@ -82,10 +82,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Datee; Datee)
             {
             }
-
-
-
-
 
             trigger OnAfterGetRecord()
             begin
