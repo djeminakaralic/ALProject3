@@ -50,7 +50,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br. " &amp; Fields!BatchName.Value</Value>
+                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br. "</Value>
                     <Style>
                       <FontFamily>Arial Black</FontFamily>
                       <FontSize>12pt</FontSize>
