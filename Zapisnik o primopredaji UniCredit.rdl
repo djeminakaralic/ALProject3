@@ -11,6 +11,25 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -45,8 +64,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>6.80572cm</Top>
-            <Left>0.52777cm</Left>
+            <Top>5.45273cm</Top>
+            <Left>0.49953cm</Left>
             <Height>0.66146cm</Height>
             <Width>4.4087cm</Width>
             <ZIndex>1</ZIndex>
@@ -77,8 +96,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.2512cm</Top>
-            <Left>4.88706cm</Left>
+            <Top>2.73579cm</Top>
+            <Left>4.93647cm</Left>
             <Height>0.6cm</Height>
             <Width>4.35928cm</Width>
             <ZIndex>2</ZIndex>
@@ -107,8 +126,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>3.2512cm</Top>
-            <Left>0.49953cm</Left>
+            <Top>2.73579cm</Top>
+            <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
             <Width>4.38753cm</Width>
             <ZIndex>3</ZIndex>
@@ -137,8 +156,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>6.80572cm</Top>
-            <Left>9.24634cm</Left>
+            <Top>5.45273cm</Top>
+            <Left>9.23221cm</Left>
             <Height>0.66146cm</Height>
             <Width>4.3381cm</Width>
             <ZIndex>4</ZIndex>
@@ -167,8 +186,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>7.46717cm</Top>
-            <Left>0.52777cm</Left>
+            <Top>6.11419cm</Top>
+            <Left>0.49953cm</Left>
             <Height>0.6cm</Height>
             <Width>8.71857cm</Width>
             <ZIndex>5</ZIndex>
@@ -512,7 +531,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>4.41537cm</Top>
+            <Top>3.51218cm</Top>
             <Left>0.49953cm</Left>
             <Height>1.76416cm</Height>
             <Width>13.09902cm</Width>
@@ -544,6 +563,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -583,23 +608,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
