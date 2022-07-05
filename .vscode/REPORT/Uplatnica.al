@@ -172,9 +172,15 @@ report 50077 Uplatnica
                         BankIBAN := IBAN;
 
                     end;
+                    /*if Counter = 9 then
+                        repeat
+                            Counter := Counter + 1;
+                        until counter = 12;*/
                 end
                 else
                     Counter := 0;
+
+
             end;
         }
 

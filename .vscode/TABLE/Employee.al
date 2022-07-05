@@ -3334,7 +3334,7 @@ tableextension 50071 EmployeeExtension extends Employee
         ECL.SETFILTER(Active, '%1', TRUE);
         IF ECL.FINDFIRST THEN BEGIN
 
-            EmployeeResUpdate.EmployeeChange(xRec, Rec);
+            //ĐK       EmployeeResUpdate.EmployeeChange(xRec, Rec);
         END;
 
 

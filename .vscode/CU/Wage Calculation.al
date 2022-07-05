@@ -1398,7 +1398,6 @@ codeunit 50002 "Wage Calculation"
         CalcTemp."Net Wage (Calculated Base)" := NettoAmount;
         CalcTemp."Work Experience (Base)" := ExperienceBase;
         NettoAmount += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-
         //ĐK  CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
 
         CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);

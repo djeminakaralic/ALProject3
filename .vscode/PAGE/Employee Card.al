@@ -389,6 +389,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         trigger OnDrillDown()
                         var
                             UserSetup: Record "User Setup";
+                            t: Record "Document Attachment";
                         begin
                             UserSetup.Reset();
                             UserSetup.SetFilter("User ID", '%1', USERID);

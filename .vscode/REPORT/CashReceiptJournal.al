@@ -3,16 +3,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     //ED
     layout
     {
-        // Add changes to page layout here
-
-
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
             }
-
             field("Payment Type"; "Payment Type")
             {
                 ApplicationArea = all;
@@ -22,10 +18,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
         }
+
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
         moveafter("Bal. VAT Amount"; "Document Type")
-
+        moveafter("Credit Amount"; "Account Type")
 
         addafter("Amount (LCY)")
         {
@@ -42,13 +39,16 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
+        modify(Description)
+        {
+            Editable = false;
+        }
     }
 
     actions
     {
         addafter(Card)
         {
-
             action("Payment Slip")
             {
                 Caption = 'Payment Slip';
@@ -62,8 +62,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     CurrPage.SETSELECTIONFILTER(GJline);
                     Report.RunModal(50077, true, false, GJline);
                 end;
-
-                //RunObject = Report "Uplatnica";
             }
 
             /*action("Payroll")
@@ -85,12 +83,24 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedIsBig = true;
                 RunObject = Report "Izvještaj porto blagajne";
             }
+
+            action("Zapisnik o primopredaji UniCredit")
+            {
+                Caption = 'Zapisnik o primopredaji UniCredit';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Zapisnik o primopredaji";
+            }
         }
     }
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+        Validate(Rec."Document Type", "Document Type"::Payment);
+        Validate(Rec."Account Type", "Account Type"::Customer);
         "Payment DT" := System.CurrentDateTime;
     end;
 

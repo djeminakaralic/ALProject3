@@ -115,7 +115,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "Payment Type"; Code[10])
+        field(50033; "Payment Type"; Code[10]) //ED
         {
             Caption = 'Payment Type';
             TableRelation = "Payment Type";
@@ -143,7 +143,45 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50039; Balance_Cust; Decimal) //ED
         {
             Caption = 'Balance';
+            AutoFormatType = 1;
+            CalcFormula = Sum("Detailed Cust. Ledg. Entry"."Amount (LCY)" WHERE("Customer No." = FIELD("Account No."),
+                                                                                 "Initial Entry Global Dim. 1" = FIELD(GlobalDimension1Filter),
+                                                                                 "Initial Entry Global Dim. 2" = FIELD(GlobalDimension2Filter),
+                                                                                 "Currency Code" = FIELD(CurrencyFilter)));
+
+            Editable = false;
+            FieldClass = FlowField;
         }
+        field(50040; "GlobalDimension1Filter"; Code[20]) //ED
+        {
+            Caption = 'Global Dimension 1 filter';
+            NotBlank = true;
+        }
+        field(50041; "GlobalDimension2Filter"; Code[20]) //ED
+        {
+            Caption = 'Global Dimension 2 filter';
+            NotBlank = true;
+        }
+        field(50042; "CurrencyFilter"; Code[10]) //ED
+        {
+            Caption = 'Currency Filter';
+            NotBlank = true;
+        }
+        field(50043; Avans_Cust; Decimal) //ED
+        {
+            Caption = 'Avans';
+        }
+        field(50044; "Complaint"; Boolean) //ED
+        {
+            Caption = 'Complaint';
+            Editable = false;
+        }
+        field(50045; "Interest"; Boolean) //ED
+        {
+            Caption = 'Interst';
+            Editable = false;
+        }
+
 
         modify(Amount)
         {
@@ -171,7 +209,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Phone_Cust := Customer."Phone No.";
                     MobilePhone_Cust := Customer."Mobile Phone No.";
                     Email_Cust := Customer."E-Mail";
-                    Message(FORMAT(Customer."Balance (LCY)"));
+                    "Social status" := Customer."Social status category";
+                    GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
+                    GlobalDimension2Filter := Customer."Global Dimension 2 Filter";
+                    CurrencyFilter := Customer."Currency Filter";
+                    Balance_Cust := 5.67;
 
 
                 end;

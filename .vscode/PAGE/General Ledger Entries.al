@@ -9,11 +9,18 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
             {
                 ApplicationArea = All;
             }
+            field("Journal Batch Name"; "Journal Batch Name")
+            {
+                ApplicationArea = All;
+            }
+            field("Test Event"; "Test Event")
+            { //izbrisati
+                ApplicationArea = All;
+            }
             field("Payment Type Code"; "Payment Type Code")
             {
                 ApplicationArea = All;
             }
-
         }
     }
 
@@ -31,7 +38,7 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
                 RunObject = report "Print of journal entries";
 
                 //  RunObject = report "";
-            } // Add changes to page actions here
+            }
         }
         addafter("DocsWithoutIC")
         {

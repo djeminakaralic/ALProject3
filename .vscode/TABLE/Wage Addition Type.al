@@ -204,7 +204,6 @@ table 50188 "Wage Addition Type"
             Caption = 'Wage addition based on Work Experience';
         }
 
-
     }
     keys
     {

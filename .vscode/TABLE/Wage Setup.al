@@ -280,6 +280,7 @@ table 50199 "Wage Setup"
         field(301; Meal; Decimal)
         {
             Caption = 'Meal';
+            DecimalPlaces = 0 : 3;
         }
         field(302; "Coefficient Netto to Brutto"; Decimal)
         {
@@ -558,6 +559,7 @@ table 50199 "Wage Setup"
         }
         field(50054; "Meal Taxable FBiH Untaxable"; Decimal)
         {
+            DecimalPlaces = 0 : 3;
             Caption = 'Meal Taxable FBiH';
         }
         field(50055; "Meal Code FBIH"; Code[10])

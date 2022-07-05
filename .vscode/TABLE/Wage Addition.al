@@ -126,6 +126,9 @@ table 50032 "Wage Addition"
             Caption = 'Amount';
 
             trigger OnValidate()
+            var
+                WT: Record "Wage Addition Type";
+                EmpW: Record Employee;
             begin
                 Class.RESET;
                 Class.SETCURRENTKEY("Valid From Amount");
@@ -133,6 +136,12 @@ table 50032 "Wage Addition"
                 CompInfo.GET;
                 Class.SETRANGE("Entity Code", CompInfo."Entity Code");
                 Class.FINDFIRST;
+                //dodati ovdje
+                WT.Get(Rec."Wage Addition Type");
+                EmpW.Get("Employee No.");
+                if WT."Work experience base" = true then
+                    Amount := Amount * EmpW."Years of Experience";
+
                 IF Taxable THEN
                     VALIDATE("Amount to Pay", Amount * (1 - (Class.Percentage / 100)))
                 ELSE
@@ -638,6 +647,7 @@ table 50032 "Wage Addition"
             CalcFormula = Lookup("Wage Addition Type"."RAD-1 Wage Excluded" WHERE("Code" = FIELD("Wage Addition Type")));
             FieldClass = FlowField;
         }
+
     }
 
     keys

@@ -22,18 +22,20 @@ codeunit 50139 GenJNLLine
     procedure OnAfterCopyGLEntryFromGenJnlLine(GLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line")
     //(GenJnlLine: Record "Gen. Journal Line"; VATEntry: Record "VAT Entry"; GLEntryNo: Integer; var NextEntryNo: Integer)
 
-
-
     var
         myInt: Integer;
         VATEntry2: Record "VAT Entry";
 
     begin
+        myInt := GLEntry.GetLastEntryNo();
+        GLEntry.Get(myInt);
+        GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
+        GLEntry.Modify();
 
-
-        //    GLEntry.vat:= GenJournalLine."VAT Date";
+        //GLEntry.vat:= GenJournalLine."VAT Date";
 
     end;
+
 
     [EventSubscriber(ObjectType::Table, 254, 'OnAfterCopyFromGenJnlLine', '', true, true)]
     procedure Testiram(VATEntry: Record "VAT Entry"; GenJournalLine: Record "Gen. Journal Line")
