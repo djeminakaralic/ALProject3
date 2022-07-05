@@ -8,6 +8,7 @@ codeunit 50997 "Serv-Posting Journals Mgt.2"
 
     var
         ServiceHeader: Record "Service Header";
+        GLEntry: Record "G/L Entry";
         Currency: Record "Currency";
         CurrExchRate: Record "Currency Exchange Rate";
         SalesSetup: Record "Sales & Receivables Setup";
