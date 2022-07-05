@@ -15,6 +15,32 @@ pageextension 50148 "Test" extends "Document Attachment Details"
                 end;
             }
         }
+        addafter(Name)
+        {
+            field("File Name"; "File Name")
+            {
+                ApplicationArea = all;
+                DrillDown = true;
+                trigger OnDrillDown()
+                var
+                    myInt: Integer;
+                    FilePath: Text;
+                    InFileStream: InStream;
+                begin
+                    if Rec."File Name" <> '' then begin
+                        DownloadFile();
+                    end
+                    else begin
+
+
+                        if UploadIntoStream('Select File..', '', '', FilePath, InFileStream) then
+                            UploadFile(InFileStream, FilePath);
+                    end;
+
+                end;
+            }
+        }
+
     }
 
     actions
