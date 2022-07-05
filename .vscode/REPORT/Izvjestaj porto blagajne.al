@@ -107,10 +107,6 @@ report 50085 "Izvještaj porto blagajne"
                     ContCity := emp."Post Code" + ', ' + emp.City;
                 END;*/
 
-                /*GLEntry.Reset();
-                GLEntry.SetFilter("Posting Date", '%1', Datee);*/
-
-
 
             end;
 
@@ -139,7 +135,6 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnAfterGetRecord()
             begin
-                Message(FORMAT(GLEntry."Journal Batch Name"));
                 GLEntry.Reset();
                 //za svaku vrstu uplate koju uzimam u PT code stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
