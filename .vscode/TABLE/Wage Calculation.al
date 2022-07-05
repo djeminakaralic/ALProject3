@@ -1040,6 +1040,7 @@ table 50018 "Wage Calculation"
         }
 
 
+
     }
 
     keys

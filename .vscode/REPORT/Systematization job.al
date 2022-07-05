@@ -1064,7 +1064,7 @@ report 50091 "Systematization job"
         OrgShema1: Record "ORG Shema";
         OrgShema2: Record "ORG Shema";
         Employeebenef: Record "Employee Benefits";
-        Misc2: Record "Misc. Article Information";
+        Misc2: Record "Misc. article information new";
         IzUgovora: Record "Employee Contract Ledger";
         ECLOrgR: Record "Employee Contract Ledger";
         SectorTemp: Record "Sector temporary";
@@ -1072,7 +1072,7 @@ report 50091 "Systematization job"
         Radnaknjizica: Record "Work Booklet";
         Radnaknjizica2: Record "Work Booklet";
         TokUgovora: Record "Contract Phase t";
-        MiscArticleInformation: Record "Misc. Article Information";
+        MiscArticleInformation: Record "Misc. article information new";
         TokUgovora2: Record "Contract Phase t";
         DepCatOrginal: Record "Department Category";
         DepCatTemp: Record "Department Category temporary";
@@ -1119,8 +1119,8 @@ report 50091 "Systematization job"
         BenefitsOrginal1: Record "Position Benefits";
         ECLOrg1: Record "Employee Contract Ledger";
         PositionBenef: Record "Position Benefits";
-        MAIS: Record "Misc. Article Information";
-        MAI1: Record "Misc. Article Information";
+        MAIS: Record "Misc. article information new";
+        MAI1: Record "Misc. article information new";
         EmployeeContractLedger2: Record "Employee Contract Ledger";
         DepartmentCodeForpos: Code[30];
         ORGDijelovi: Record "ORG Dijelovi";

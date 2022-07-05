@@ -27,10 +27,12 @@ page 50033 "Points per Experience Years"
                 field(LowerLimit; LowerLimit)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(UpperLimit; UpperLimit)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field(UpperLimit2; UpperLimit2)
                 {

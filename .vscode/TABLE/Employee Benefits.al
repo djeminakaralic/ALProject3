@@ -4,8 +4,8 @@ table 50058 "Employee Benefits"
 
     Caption = 'Misc. Article Information';
     DataCaptionFields = "Employee No.";
-    DrillDownPageID = 5219;
-    LookupPageID = 5219;
+    DrillDownPageID = 50100;
+    LookupPageID = 50100;
 
     fields
     {
@@ -98,7 +98,7 @@ table 50058 "Employee Benefits"
 
     trigger OnInsert()
     var
-        MiscArticleInfo: Record "Misc. Article Information";
+        MiscArticleInfo: Record "Misc. article information new";
     begin
         MiscArticleInfo.SETCURRENTKEY("Line No.");
         IF MiscArticleInfo.FINDLAST THEN

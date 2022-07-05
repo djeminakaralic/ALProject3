@@ -409,9 +409,9 @@ report 50006 "Azuriraj troskovni centar"
         Dimensiontem: Record "Dimension temporary";
         Dims: Record "Dimension temporary";
         DimensionValueTable: Record "Dimension Value";
-        mAI: Record "Misc. Article Information";
+        mAI: Record "Misc. article information new";
         OrgShema: Record "ORG Shema";
-        Misc: Record "Misc. Article Information";
+        Misc: Record "Misc. article information new";
         Empty: Record "Employee";
 
     /* trigger SQLCommand::StatementCompleted(sender: Variant; e: DotNet StatementCompletedEventArgs)

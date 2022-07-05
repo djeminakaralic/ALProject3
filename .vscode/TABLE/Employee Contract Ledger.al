@@ -2391,8 +2391,8 @@ table 50071 "Employee Contract Ledger"
         field(32; "Way of Employment"; Option)
         {
             Caption = 'Way of Employment';
-            OptionCaption = ' ,Employment Office,Longer Redundancy,From Employment,Court Ruling,Dekra';
-            OptionMembers = " ","Employment Office","Longer Redundancy","From Employment","Court Ruling",Dekra;
+            OptionCaption = ' ,Employment Office,Longer Redundancy,From Employment,Court Ruling';
+            OptionMembers = " ","Employment Office","Longer Redundancy","From Employment","Court Ruling";
         }
         field(33; Prentice; Boolean)
         {
@@ -5703,11 +5703,12 @@ table 50071 "Employee Contract Ledger"
         field(50381; "Employee Benefits"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Misc. Article Information" WHERE("Employee No." = FIELD("Employee No."),
+            CalcFormula = Count("Misc. Article Information new" WHERE("Employee No." = FIELD("Employee No."),
                                                                    "Emp. Contract Ledg. Entry No." = FIELD("No."),
                                                                    "Org Shema" = FIELD("Org. Structure")));
             Caption = 'Employee Benefits';
             Editable = false;
+
 
         }
         field(50382; "Internal ID"; Integer)
@@ -6144,6 +6145,8 @@ table 50071 "Employee Contract Ledger"
     end;
 
     trigger OnInsert()
+    var
+        HR: Record "Human Resources Setup";
     begin
         IF "Employee No." <> '' THEN BEGIN
             Employee.RESET;
@@ -6153,7 +6156,11 @@ table 50071 "Employee Contract Ledger"
             //ĐK   "Minimal Education Level" := Employee."Education Level";
             "Operator No." := Employee."New Number";
             "Internal ID" := Employee."Internal ID";
+            HR.Get();
+            if HR."Default Org Jed" <> '' then
+                Rec.Validate("Org Unit Name", HR."Default Org Jed");
         END;
+
         IF "Employee No." = '' THEN ERROR(Text002);
         EmployeeContractLedger1.RESET;
         EmployeeContractLedger1.SETFILTER("Employee No.", "Employee No.");
@@ -6450,7 +6457,7 @@ table 50071 "Employee Contract Ledger"
         NoSeriesMgt: Codeunit "NoSeriesManagement";
         position: Record "Position";
         "Position Benef": Record "Position Benefits";
-        MAI: Record "Misc. Article Information";
+        MAI: Record "Misc. article information new";
         Text000: Label 'Start Date must have value.';
         Text001: Label 'End Date must not be before Start date.';
         IDMonth: Integer;
@@ -6601,7 +6608,7 @@ table 50071 "Employee Contract Ledger"
         Uprava: Text;
         SectorT: Record "Sector";
         PositionCEO: Record "Position";
-        MAI2: Record "Misc. Article Information";
+        MAI2: Record "Misc. article information new";
 
         Department1: Record "Department";
         Duplicate: Integer;

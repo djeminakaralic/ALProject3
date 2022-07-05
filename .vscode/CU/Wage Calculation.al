@@ -1392,10 +1392,16 @@ codeunit 50002 "Wage Calculation"
                 END;
             UNTIL COA.NEXT = 0;
 
+
+        ExperienceBase := (CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage") * (1 - AddTaxesPercentage / 100);
+
         CalcTemp."Net Wage (Calculated Base)" := NettoAmount;
         CalcTemp."Work Experience (Base)" := ExperienceBase;
         NettoAmount += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-        CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+
+        //ĐK  CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+
+        CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
 
 
         /*
@@ -1628,9 +1634,13 @@ codeunit 50002 "Wage Calculation"
 
         CalcTemp."Wage Addition" += WageAddition;
         CalcTemp."Net Wage" += NettoAmount;
+        ExperienceBase := CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage" * (1 - AddTaxesPercentage / 100);
         CalcTemp."Work Experience (Base)" += ExperienceBase;
         CalcTemp."Net Wage (Calculated Base)" += ExperienceBase;
-        CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        //ĐK CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+        ;
+
         IF Header."Wage Calculation Type" = Header."Wage Calculation Type"::Normal THEN
             CalcTemp."Untaxable Wage" += UntaxableWage * Coeff;
         CalcTemp."Tax Basis" += TaxBasis;
@@ -2041,7 +2051,10 @@ codeunit 50002 "Wage Calculation"
         IF NettoAmount <> 0 THEN BEGIN
             CalcTemp."Employee Coefficient" := CalcTemp."Net Wage Netto 2" / NettoAmount;
             CalcTemp."Wage (Base)" := CalcTemp."Employee Coefficient" * CalcTemp."Hour Pool";
-            CalcTemp."Experience Total" := CalcTemp."Wage (Base)" * Employee."Work Experience Percentage" / 100;
+            //ĐK     CalcTemp."Experience Total" := CalcTemp."Wage (Base)" * Employee."Work Experience Percentage" / 100;
+            CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+            ;
+
         END;
         CalcTemp.MODIFY;
     end;
@@ -2178,9 +2191,12 @@ codeunit 50002 "Wage Calculation"
             UNTIL COA.NEXT = 0;
 
         CalcTemp."Net Wage (Calculated Base)" := NettoAmount;
+        ExperienceBase := CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage" * (1 - AddTaxesPercentage / 100);
         CalcTemp."Work Experience (Base)" := ExperienceBase;
         NettoAmount += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-        CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        //ĐK CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+
 
         /*
         IF CalcTemp."Department Code"<>'D.2.3.' THEN
@@ -3165,4 +3181,3 @@ codeunit 50002 "Wage Calculation"
         EntriesExist := TRUE;
     end;
 }
-
