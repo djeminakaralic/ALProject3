@@ -1,12 +1,5 @@
 codeunit 50141 GenJNLPostLine2
 {
-
-
-
-
-
-
-
     EventSubscriberInstance = StaticAutomatic;
     [EventSubscriber(ObjectType::Codeunit, 12, 'OnAfterInsertVAT', '', true, true)]
     procedure OnAfterInsertVAT(GenJournalLine: Record "Gen. Journal Line"; VATEntry: Record "VAT Entry"; UnrealizedVAT: Boolean; AddCurrencyCode: Code[10]; VATPostingSetup: Record "VAT Posting Setup")
