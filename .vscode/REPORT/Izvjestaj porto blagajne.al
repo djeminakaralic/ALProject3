@@ -120,11 +120,9 @@ report 50085 "Izvještaj porto blagajne"
             column(PTCode; DataItem22.Code)
             {
             }
-
             column(PaymentCounter; PaymentCounter)
             {
             }
-
             column(PaymentAmount; PaymentAmount)
             {
             }
