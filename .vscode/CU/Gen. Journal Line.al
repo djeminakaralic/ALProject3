@@ -27,9 +27,9 @@ codeunit 50139 GenJNLLine
         VATEntry2: Record "VAT Entry";
 
     begin
-        GLEntry."Payment Type Code" := GenJournalLine."Payment Type"; //ED
+        GLEntry."Payment Type Code" := GenJournalLine."Payment Type"; 
 
-        //    GLEntry.vat:= GenJournalLine."VAT Date";
+           // GLEntry.vat:= GenJournalLine."VAT Date";
 
     end;
 

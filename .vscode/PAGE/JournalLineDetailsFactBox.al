@@ -22,6 +22,16 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
 
         addafter(AccountName)
         {
+            field("Social status"; "Social status")
+            {
+                Caption = 'Kategorija socijalnih slučajeva';
+                ApplicationArea = All;
+
+                trigger OnDrillDown()
+                begin
+                    Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
+                end;
+            }
             field(Phone_Cust; Phone_Cust)
             {
                 Caption = 'Kućni telefonski broj';
@@ -65,16 +75,6 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
             field(City_Cust; City_Cust)
             {
                 Caption = 'Grad';
-                ApplicationArea = All;
-
-                trigger OnDrillDown()
-                begin
-                    Codeunit.Run(Codeunit::"Gen. Jnl.-Show Card", Rec);
-                end;
-            }
-            field("Social status"; "Social status")
-            {
-                Caption = 'Kategorija socijalnih slučajeva';
                 ApplicationArea = All;
 
                 trigger OnDrillDown()
