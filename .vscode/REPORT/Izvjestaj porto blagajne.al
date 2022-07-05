@@ -8,7 +8,7 @@ report 50085 "Izvještaj porto blagajne"
 
     dataset
     {
-        dataitem(DataItem21; "Gen. Journal Line")
+        dataitem(DataItem21; "G/L Entry")
         {
             /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
             {
@@ -130,7 +130,7 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnAfterGetRecord()
             begin
                 GLEntry.Reset();
-                //za svaku vrstu uplate koju uzimam u PT code stavljam filtere
+                //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
                 //GLEntry.SetFilter("Journal Batch Name", '%1', );
