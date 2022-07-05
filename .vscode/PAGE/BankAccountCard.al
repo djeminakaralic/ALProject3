@@ -14,46 +14,22 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
     actions
     {
-
-        /*addafter("Value Entries")
-        {
-
-            action("Print")
-            {
-                Caption = 'Print';
-                Image = ValueLedger;
-
-                RunObject = report "Print of journal entries";
-
-                //  RunObject = report "";
-            } // Add changes to page actions here
-        }
-        
-        addafter("DocsWithoutIC")
-        {
-
-
-            action("Incoming Document")
-            {
-
-                Caption = 'Incoming Document';
-                Image = Document;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                RunObject = report "Print of journal entries";
-
-                trigger OnAction()
-                var
-                    IncomingDocument: Record "Incoming Document";
-                begin
-                    //ĐK   IncomingDocument.HyperlinkToDocument("Document No.", "Posting Date");
-                end;
-                //  RunObject = report "";
-            } // Add changes to page actions here
-        }*/
         addafter(List)
         {
+            action("Izvještaj porto blagajne")
+            {
+                Caption = 'Izvještaj porto blagajne';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Izvještaj porto blagajne";
+
+                trigger OnAction()
+                begin
+                    GLEntry.SetFilter("Journal Batch Name", '%1', "No.");
+                end;
+            }
 
             action("Cash Diary")
             {
@@ -73,5 +49,5 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
     var
         myInt: Integer;
         IncomingDocument: Record "Incoming Document";
-
+        GLEntry: Record "G/L Entry";
 }

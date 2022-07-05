@@ -8,9 +8,9 @@ report 50085 "Izvještaj porto blagajne"
 
     dataset
     {
-        dataitem(DataItem21; "Gen. Journal Line")
+        dataitem(DataItem21; "G/L Entry")
         {
-            column(BatchName; DataItem21."Journal Batch Name")
+            /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
             {
             }
             column(PostingDate; DataItem21."Posting Date")
@@ -22,9 +22,9 @@ report 50085 "Izvještaj porto blagajne"
             column(AccountNo; DataItem21."Account No.")
             {
             }
-            column(PM; DataItem21."Payment Method Code")
+            column(PM; DataItem21."Payment Method Code") 
             {
-            }
+            }*/
             column(Adress_CompanyInfo; CompanyInformation.Address)
             {
             }
@@ -83,9 +83,6 @@ report 50085 "Izvještaj porto blagajne"
             {
             }
 
-
-
-
             trigger OnAfterGetRecord()
             begin
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
@@ -106,10 +103,6 @@ report 50085 "Izvještaj porto blagajne"
                     ContCity := emp."Post Code" + ', ' + emp.City;
                 END;*/
 
-                /*GLEntry.Reset();
-                GLEntry.SetFilter("Posting Date", '%1', Datee);*/
-
-
 
             end;
 
@@ -127,6 +120,31 @@ report 50085 "Izvještaj porto blagajne"
             column(PTCode; DataItem22.Code)
             {
             }
+            column(PaymentCounter; PaymentCounter)
+            {
+            }
+            column(PaymentAmount; PaymentAmount)
+            {
+            }
+
+            trigger OnAfterGetRecord()
+            begin
+                GLEntry.Reset();
+                //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
+                //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
+
+                //GLEntry.SetFilter("Journal Batch Name", '%1', );
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
+                GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+                GLEntry.SetFilter("Document Type", '%1', 1);
+                PaymentCounter := GLEntry.Count;
+
+                PaymentAmount := 0;
+                IF GLEntry.FindFirst() then
+                    repeat
+                        PaymentAmount += GLEntry.Amount;
+                    until GLEntry.Next() = 0;
+            end;
         }
     }
 
@@ -172,5 +190,7 @@ report 50085 "Izvještaj porto blagajne"
         emp: Record Employee;
         Cust: Record Customer;
         Datee: Date;
+        PaymentCounter: Integer;
+        PaymentAmount: Decimal;
 }
 

@@ -115,7 +115,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "Payment Type"; Code[10])
+        field(50033; "Payment Type"; Code[10]) //ED
         {
             Caption = 'Payment Type';
             TableRelation = "Payment Type";
@@ -162,7 +162,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Global Dimension 2 filter';
             NotBlank = true;
         }
-        field(50042; "CurrencyFilter"; Code[10])
+        field(50042; "CurrencyFilter"; Code[10]) //ED
         {
             Caption = 'Currency Filter';
             NotBlank = true;
@@ -170,6 +170,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50043; Avans_Cust; Decimal) //ED
         {
             Caption = 'Avans';
+        }
+        field(50044; "Complaint"; Boolean) //ED
+        {
+            Caption = 'Complaint';
+            Editable = false;
+        }
+        field(50045; "Interest"; Boolean) //ED
+        {
+            Caption = 'Interst';
+            Editable = false;
         }
 
 
