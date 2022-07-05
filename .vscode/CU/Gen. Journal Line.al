@@ -31,7 +31,7 @@ codeunit 50139 GenJNLLine
 
         GLEntry."Test Event" := 'Elmira test knjizenje'; //izbrisati
 
-        //////G G GLEntry.vat:= GenJournalLine."VAT Date";
+        //GLEntry.vat:= GenJournalLine."VAT Date";
 
     end;
 
