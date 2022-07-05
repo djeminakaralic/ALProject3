@@ -30,8 +30,6 @@ codeunit 50139 GenJNLLine
         myInt := GLEntry.GetLastEntryNo();
         GLEntry.Get(myInt);
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
-
-        GLEntry."Test Event" := 'Elmira test knjizenje'; //izbrisati
         GLEntry.Modify();
 
         //GLEntry.vat:= GenJournalLine."VAT Date";
