@@ -84,7 +84,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 RunObject = Report "Izvještaj porto blagajne";
             }
 
-            action("Zapisnik o primopredaji")
+            action("Zapisnik o primopredaji UniCredit")
             {
                 Caption = 'Zapisnik o primopredaji UniCredit';
                 Image = Journal;

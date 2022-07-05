@@ -25,58 +25,11 @@ report 50097 "Zapisnik o primopredaji"
             column(PM; DataItem21."Payment Method Code") 
             {
             }*/
-            column(Adress_CompanyInfo; CompanyInformation.Address)
-            {
-            }
-            column(City_CompanyInfo; CompanyInformation.City)
-            {
-            }
-            column(Name; CompanyInformation.Name)
-            {
-            }
-            column(Phone1_CompanyInfo; CompanyInformation."Phone No.")
-            {
-            }
-            column(Phone2_CompanyInfo; CompanyInformation."Phone No. 2")
-            {
-            }
-            column(Fax_CompanyInfo; CompanyInformation."Fax No.")
-            {
-            }
-            column(Email_CompanyInfo; CompanyInformation."E-Mail")
-            {
-            }
-            column(RegistrationNo_CompanyInfo; CompanyInformation."Registration No.")
-            {
-            }
-            column(Postcode_CompanyInfo; CompanyInformation."Post Code")
-            {
-            }
-            column(VATRegistrationNo_CompanyInfo; CompanyInformation."VAT Registration No.")
-            {
-            }
-            column(GiroNo_CompanyInfo; CompanyInformation."Giro No.")
-            {
-            }
+
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
             }
             column(User; USERID)
-            {
-            }
-            column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
-            {
-            }
-            column(MBS; CompanyInformation.MBS)
-            {
-            }
-            column(MunicipalityName; CompanyInformation."Municipality Name")
-            {
-            }
-            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
-            {
-            }
-            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
             column(Datee; Datee)
@@ -85,24 +38,6 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnAfterGetRecord()
             begin
-                /*Cont.SETFILTER("No.",'%1',"Contact Link");
-                
-                IF Cont.FIND('-') THEN BEGIN
-                
-                ContName:=Cont.Name;
-                ContAddress:=Cont.Address;
-                ContCity:=Cont."Post Code"+', '+Cont.City;
-                END;     */
-
-                /*emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
-
-                IF emp.FIND('-') THEN BEGIN
-
-                    ContName := emp."First Name" + emp."Last Name";
-                    ContAddress := emp.Address;
-                    ContCity := emp."Post Code" + ', ' + emp.City;
-                END;*/
-
 
             end;
 
@@ -115,7 +50,7 @@ report 50097 "Zapisnik o primopredaji"
             end;
         }
 
-        dataitem(DataItem22; "Payment Type")
+        /*dataitem(DataItem22; "Payment Type")
         {
             column(PTCode; DataItem22.Code)
             {
@@ -145,7 +80,7 @@ report 50097 "Zapisnik o primopredaji"
                         PaymentAmount += GLEntry.Amount;
                     until GLEntry.Next() = 0;
             end;
-        }
+        }*/
     }
 
     requestpage
@@ -156,10 +91,10 @@ report 50097 "Zapisnik o primopredaji"
             {
                 group("Date")
                 {
-                    Caption = 'Datum izvještaja';
+                    Caption = 'Datum zapisnika';
                     field(Datee; Datee)
                     {
-                        Caption = 'Datum izvještaja: ';
+                        Caption = 'Datum zapisnika: ';
                     }
                 }
             }
