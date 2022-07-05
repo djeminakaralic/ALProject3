@@ -142,7 +142,7 @@ report 50085 "Izvještaj porto blagajne"
                 PaymentAmount := 0;
                 IF GLEntry.FindFirst() then
                     repeat
-                        PaymentAmount += GLEntry.Amount;
+                        PaymentAmount += ABS(GLEntry.Amount);
                     until GLEntry.Next() = 0;
             end;
         }

@@ -1366,7 +1366,7 @@
                   <Group Name="Details3" />
                   <Visibility>
                     <Hidden>=(Fields!BankAccNo.Value="")
- Or (Fields!Counter.Value&lt;&gt;9)</Hidden>
+ Or (Fields!Counter.Value&lt;9)</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
