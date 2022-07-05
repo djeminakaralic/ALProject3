@@ -29,10 +29,11 @@ codeunit 50139 GenJNLLine
     begin
         //GLEntry."Payment Type Code" := GenJournalLine."Payment Type"; 
 
-        GLEntry."Test Event" := 'Elmira test knjizenje';
-        
+        GLEntry."Test Event" := 'Elmira test knjizenje'; //izbrisati
 
-           // GLEntry.vat:= GenJournalLine."VAT Date";
+        //ED
+
+        // //   GLEntry.vat:= GenJournalLine."VAT Date";
 
     end;
 
