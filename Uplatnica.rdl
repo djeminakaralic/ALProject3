@@ -16,10 +16,10 @@
       <Body>
         <ReportItems>
           <Line Name="Line1">
-            <Top>3.41877cm</Top>
+            <Top>3.38349cm</Top>
             <Left>0.54462cm</Left>
             <Height>0cm</Height>
-            <Width>13.18857cm</Width>
+            <Width>19.17301cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -33,9 +33,9 @@
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>0.6544cm</Top>
-            <Left>0.54462cm</Left>
+            <Left>0.46611cm</Left>
             <Height>1.905cm</Height>
-            <Width>11.24252cm</Width>
+            <Width>19.17301cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -45,7 +45,7 @@
           </Image>
           <Line Name="Line7">
             <Top>5.90142in</Top>
-            <Left>3.83209in</Left>
+            <Left>6.2151in</Left>
             <Height>0in</Height>
             <Width>1.51684in</Width>
             <ZIndex>2</ZIndex>
@@ -59,16 +59,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.07691cm</Width>
+                  <Width>2.59011cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.84306cm</Width>
+                  <Width>7.35626cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.34217cm</Width>
+                  <Width>5.85537cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.85805cm</Width>
+                  <Width>3.37125cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -600,7 +600,7 @@
             <Top>11.29714cm</Top>
             <Left>0.46611cm</Left>
             <Height>1.8cm</Height>
-            <Width>13.12019cm</Width>
+            <Width>19.17299cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -647,8 +647,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>14.9896cm</Top>
-            <Left>9.7917cm</Left>
+            <Top>14.98961cm</Top>
+            <Left>15.84455cm</Left>
             <Height>0.6cm</Height>
             <Width>3.79457cm</Width>
             <ZIndex>4</ZIndex>
@@ -970,9 +970,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>13.27353cm</Top>
-            <Left>9.89296cm</Left>
+            <Left>14.51706cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.69331cm</Width>
+            <Width>5.12206cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -1017,7 +1017,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
             <Top>13.27353cm</Top>
-            <Left>7.762cm</Left>
+            <Left>12.3861cm</Left>
             <Height>0.6cm</Height>
             <Width>2.13096cm</Width>
             <ZIndex>15</ZIndex>
@@ -1088,10 +1088,10 @@
             <Value>Screenshot_12</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
-            <Top>1.15711cm</Top>
-            <Left>9.81205cm</Left>
-            <Height>1.40229cm</Height>
-            <Width>3.79457cm</Width>
+            <Top>0.91899cm</Top>
+            <Left>15.28892cm</Left>
+            <Height>1.64042cm</Height>
+            <Width>4.3502cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1115,9 +1115,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>4.73287cm</Top>
-            <Left>0.5446cm</Left>
+            <Left>0.46611cm</Left>
             <Height>4.02854cm</Height>
-            <Width>8.20477cm</Width>
+            <Width>8.28326cm</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
@@ -1167,9 +1167,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox14</rd:DefaultName>
             <Top>9.6012cm</Top>
-            <Left>0.5446cm</Left>
+            <Left>0.46611cm</Left>
             <Height>0.6cm</Height>
-            <Width>13.04171cm</Width>
+            <Width>13.1202cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -1198,10 +1198,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>20.27376cm</Top>
-            <Left>0.46613cm</Left>
+            <Top>24.34834cm</Top>
+            <Left>0.46611cm</Left>
             <Height>0.51181cm</Height>
-            <Width>13.1202cm</Width>
+            <Width>19.17299cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1217,10 +1217,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.78947cm</Width>
+                  <Width>3.08329cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.50927cm</Width>
+                  <Width>5.19997cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1238,7 +1238,7 @@
                                 <TextRun>
                                   <Value>=Fields!BankAccNo.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1269,7 +1269,7 @@
                                 <TextRun>
                                   <Value>=Fields!BankName.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1317,10 +1317,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>20.97588cm</Top>
-            <Left>0.47628cm</Left>
+            <Top>25.05046cm</Top>
+            <Left>0.46611cm</Left>
             <Height>0.41178cm</Height>
-            <Width>5.29874cm</Width>
+            <Width>8.28326cm</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -1332,10 +1332,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.74406cm</Width>
+                  <Width>2.88845cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.10078cm</Width>
+                  <Width>3.24517cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1353,7 +1353,7 @@
                                 <TextRun>
                                   <Value>=Fields!BankAccNo.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1384,7 +1384,7 @@
                                 <TextRun>
                                   <Value>=Fields!BankName.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1432,10 +1432,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>20.97588cm</Top>
-            <Left>5.68502cm</Left>
+            <Top>25.05046cm</Top>
+            <Left>8.75386cm</Left>
             <Height>0.41178cm</Height>
-            <Width>3.84484cm</Width>
+            <Width>6.13362cm</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -1447,10 +1447,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.82458cm</Width>
+                  <Width>2.97266cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.23189cm</Width>
+                  <Width>1.85749cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1468,7 +1468,7 @@
                                 <TextRun>
                                   <Value>=Fields!BankAccNo.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1499,7 +1499,7 @@
                                 <TextRun>
                                   <Value>=Fields!BankName.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1535,7 +1535,7 @@
                                 <TextRun>
                                   <Value>IBAN (DEVIZNO PLAĆANJE)</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1573,7 +1573,7 @@
                                 <TextRun>
                                   <Value>="BIC: " &amp; Fields!BankSWIFT.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1611,7 +1611,7 @@
                                 <TextRun>
                                   <Value>="IBAN: " &amp; Fields!BankIBAN.Value</Value>
                                   <Style>
-                                    <FontSize>5pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1673,10 +1673,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>20.97588cm</Top>
-            <Left>9.52984cm</Left>
+            <Top>25.05046cm</Top>
+            <Left>14.88748cm</Left>
             <Height>1.59489cm</Height>
-            <Width>4.05647cm</Width>
+            <Width>4.83015cm</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -1684,7 +1684,38 @@
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox20">
+          <Textbox Name="CompanyInfo">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + First(Fields!MunicipalityName.Value, "DataSet_Result") + " " + First(Fields!Tax_CompanyInfo.Value, "DataSet_Result") + ", "  + "Šifra djelatnosti: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result") + ", Registracija: " + First(Fields!Registration_CompanyInfo.Value, "DataSet_Result") + " MBS: " + First(Fields!MBS.Value, "DataSet_Result")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.80141cm</Top>
+            <Left>1.85538cm</Left>
+            <Height>0.58208cm</Height>
+            <Width>16.59926cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox21">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -1698,12 +1729,42 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>20.94942cm</Top>
-            <Left>0.47628cm</Left>
-            <Height>1.62135cm</Height>
-            <Width>13.11003cm</Width>
-            <ZIndex>24</ZIndex>
+            <rd:DefaultName>Textbox21</rd:DefaultName>
+            <Top>15.89126cm</Top>
+            <Left>0.54462cm</Left>
+            <Height>7.7719cm</Height>
+            <Width>19.0945cm</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox28">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox28</rd:DefaultName>
+            <Top>25.05046cm</Top>
+            <Left>0.46611cm</Left>
+            <Height>1.88593cm</Height>
+            <Width>19.25152cm</Width>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1734,85 +1795,22 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="CompanyInfo">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + First(Fields!MunicipalityName.Value, "DataSet_Result") + " " + First(Fields!Tax_CompanyInfo.Value, "DataSet_Result") + ", "  + "Šifra djelatnosti: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result") + ", Registracija: " + First(Fields!Registration_CompanyInfo.Value, "DataSet_Result") + " MBS: " + First(Fields!MBS.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>2.80141cm</Top>
-            <Left>0.5446cm</Left>
-            <Height>0.58208cm</Height>
-            <Width>13.04167cm</Width>
-            <ZIndex>25</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox21">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox21</rd:DefaultName>
-            <Top>15.89126cm</Top>
-            <Left>0.54462cm</Left>
-            <Height>3.9619cm</Height>
-            <Width>13.00637cm</Width>
-            <ZIndex>26</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
-        <Height>22.77202cm</Height>
+        <Height>27.42869cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>14.14194cm</Width>
+      <Width>21.1069cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>2.5cm</LeftMargin>
-        <RightMargin>2.5cm</RightMargin>
-        <TopMargin>2.5cm</TopMargin>
-        <BottomMargin>2.5cm</BottomMargin>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>

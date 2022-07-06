@@ -36248,11 +36248,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Address_Cust - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2673391988 - Control 567629439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
-          <source>Avans</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Avans_Cust - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 3892876756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Saldo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36263,20 +36258,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control City_Cust - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2673391988 - Control 2744557225 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
-          <source>Tužbe</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Complaint - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2391333830 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>E-mail</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Email_Cust - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2673391988 - Control 3604861746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
-          <source>Kamate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension JournalLineDetailsFactBox - Control Interest - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Broj mobilnog telefona</source>
