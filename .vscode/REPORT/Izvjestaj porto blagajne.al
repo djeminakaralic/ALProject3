@@ -112,7 +112,8 @@ report 50085 "Izvještaj porto blagajne"
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-                MESSAGE(Format(DataItem21."Journal Batch Name"));
+                PostingDatefilter := GETFILTER("Journal Batch Name");
+                MESSAGE(Format(PostingDatefilter));
 
             end;
         }
@@ -183,6 +184,7 @@ report 50085 "Izvještaj porto blagajne"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
+        PostingDatefilter: Text[100];
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         Cont: Record Contact;
