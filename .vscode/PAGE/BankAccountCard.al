@@ -40,6 +40,17 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 PromotedIsBig = true;
                 RunObject = Report "Blagajnički dnevnik";
             }
+
+
+            action("Zapisnik o primopredaji UniCredit")
+            {
+                Caption = 'Zapisnik o primopredaji UniCredit';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Zapisnik o primopredaji";
+            }
         }
 
     }
