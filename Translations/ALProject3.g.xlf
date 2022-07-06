@@ -39403,11 +39403,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntryExtends - Field Payment Type Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2774207422 - Field 3551593030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
-          <source>Elmira Test</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntryExtends - Field Test Event - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2774207422 - Field 3126877759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Vendor Order No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
