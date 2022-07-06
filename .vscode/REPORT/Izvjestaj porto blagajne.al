@@ -112,7 +112,7 @@ report 50085 "Izvještaj porto blagajne"
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-                PostingDatefilter := GETFILTER("Journal Batch Name");
+                PostingDatefilter := GETFILTER("Bal. Account No.");
                 MESSAGE(Format(PostingDatefilter));
 
             end;
