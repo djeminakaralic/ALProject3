@@ -41,7 +41,6 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 RunObject = Report "Blagajnički dnevnik";
             }
 
-
             action("Zapisnik o primopredaji UniCredit")
             {
                 Caption = 'Zapisnik o primopredaji UniCredit';
