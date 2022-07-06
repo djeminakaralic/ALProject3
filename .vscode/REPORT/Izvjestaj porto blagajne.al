@@ -85,6 +85,9 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnAfterGetRecord()
             begin
+
+                PostingDatefilter := GETFILTER("Bal. Account No.");
+                MESSAGE(Format(PostingDatefilter));
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
                 
                 IF Cont.FIND('-') THEN BEGIN
@@ -112,8 +115,8 @@ report 50085 "Izvještaj porto blagajne"
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-                PostingDatefilter := GETFILTER("Bal. Account No.");
-                MESSAGE(Format(PostingDatefilter));
+
+
 
             end;
         }

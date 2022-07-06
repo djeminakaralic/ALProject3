@@ -27,6 +27,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
                 trigger OnAction()
                 begin
+                    GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", '%1', "No.");
                 end;
             }
