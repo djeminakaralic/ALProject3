@@ -389,7 +389,7 @@ page 50032 "Wage Addition"
         HasError: Boolean;
         CalcWage: Codeunit "Wage Calculation";
         WA: Record "Wage Addition";
-        MAI: Record "Misc. Article Information";
+        MAI: Record "Misc. article information new";
         WAmount: Record "Wage Amounts";
         AbsenceFill: Codeunit "Absence Fill";
         wc: Record "Wage Calculation";

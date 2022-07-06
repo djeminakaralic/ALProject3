@@ -51,6 +51,17 @@ tableextension 50179 User_setup_ext extends "User Setup"
         {
 
         }
+        field(5004; "Last ECL No."; Integer)
+        {
+            Caption = 'Last Employee Contract Ledger No.';
+
+        }
+        field(5005; "Last Org Shema"; Code[20])
+        {
+            Caption = 'Last Org Shema';
+
+        }
+
 
 
     }
@@ -62,6 +73,7 @@ tableextension 50179 User_setup_ext extends "User Setup"
     var
         myInt: Integer;
         UserSetup: Record "User Setup";
+        p: page "Institutions/Companies";
 
     begin
 

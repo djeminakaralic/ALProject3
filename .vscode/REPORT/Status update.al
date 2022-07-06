@@ -819,8 +819,8 @@ report 50011 "StatusExt update"
         DateBefore3Years: Date;
         Dep: Record "Department";
         PositionNema: Record "Position";
-        Misc: Record "Misc. Article Information";
-        Misc2: Record "Misc. Article Information";
+        Misc: Record "Misc. article information new";
+        Misc2: Record "Misc. article information new";
         ECL5: Record "Employee Contract Ledger";
         Uggg: Record "Employee Contract Ledger";
 }

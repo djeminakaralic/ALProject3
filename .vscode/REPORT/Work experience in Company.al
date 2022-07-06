@@ -334,7 +334,7 @@ report 50116 "Work experience in Company"
 
             UNTIL WorkBooklet.NEXT = 0;
         //MESSAGE(Text0001);
-        MESSAGE('Završeno');
+        //ĐK   MESSAGE('Završeno');
         //ĐK   EmployeeCardPage.Update(true);
     end;
 

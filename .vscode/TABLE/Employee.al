@@ -515,7 +515,7 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Employee Benefits';
             FieldClass = FlowField;
-            CalcFormula = Count("Misc. Article Information" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
+            CalcFormula = Count("Misc. Article Information new" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
         }
         field(50340; "Job Violations"; Integer)
         {
@@ -784,7 +784,7 @@ tableextension 50071 EmployeeExtension extends Employee
 
             trigger OnValidate()
             var
-                MiscArticleInformation2: Record "Misc. Article Information";
+                MiscArticleInformation2: Record "Misc. article information new";
             begin
                 //HR01
                 IF "Transport Allowance" = TRUE THEN BEGIN
@@ -2205,6 +2205,8 @@ tableextension 50071 EmployeeExtension extends Employee
                     end;
 
                 end;
+
+
             end;
 
         }
@@ -3183,7 +3185,7 @@ tableextension 50071 EmployeeExtension extends Employee
         ecl: Record "Employee Contract Ledger";
         WS: record "Wage Setup";
         Text011: Label 'You cannot use Transport if you have official car.';
-        mai: Record "Misc. Article Information";
+        mai: Record "Misc. article information new";
         Text006: Label 'The employee uses car allowance.';
         Country_Region: Record "Country/Region";
         Staro: Text;

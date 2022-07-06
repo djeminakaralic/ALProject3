@@ -181,6 +181,15 @@ report 50109 VacationDecision
 
                 DanJavljanjanaposao := "Ending Date of I part";
                 DanJavljanjanaposao := CALCDATE('<+1D>', "Ending Date of I part");
+                Datum.Reset();
+                Datum.SetFilter("Period Type", '%1', Datum."Period Type"::Date);
+                Datum.SetFilter("Period Start", '%1', DanJavljanjanaposao);
+                Datum.FindFirst();
+                if Datum."Period No." = 6 then
+                    DanJavljanjanaposao := CALCDATE('<+3D>', "Ending Date of I part");
+                if Datum."Period No." = 7 then
+                    DanJavljanjanaposao := CALCDATE('<+2D>', "Ending Date of I part");
+
                 //Message(FORMAT(DanJavljanjanaposao));
 
                 StartFirstpartT := FORMAT("Starting Date of I part", 0, '<Day,2>.<Month,2>.<Year4>.');
@@ -353,6 +362,7 @@ report 50109 VacationDecision
     var
 
         Year1: Text;
+        Datum: Record date;
         CEODa: Boolean;
         Pos: Record "Position Menu";
         VacationSe: Record "Vacation Setup";

@@ -108,7 +108,8 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             field("Starting Date"; "Starting Date") { }
             field("Ending Date"; "Ending Date") { }
-            field("Contract type"; "Contract type") { Caption = 'Contract Type'; }
+            field("Contract type"; "Contract type") { Caption = 'Contract Type'; Visible = false; }
+
             field("Employement type"; EmployeeContractLedger."Engagement Type") { Caption = 'Enagement Type'; }
             field("First employment"; EmployeeContractLedger."First Time Employed") { Caption = 'First Employment'; }
             field("Termination"; EmployeeContractLedger."Manner of Term. Code") { Caption = 'Termination'; }
@@ -490,6 +491,77 @@ pageextension 50149 EmployeeList extends "Employee List"
 
 
             }
+            action("Check All For Calculation")
+            {
+                Caption = 'Check All For Calculation';
+
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    Rec.FINDFIRST;
+                    BEGIN
+                        filter := Rec.GETFILTERS;
+                        IF Rec."For Calculation" = FALSE THEN BEGIN
+                            REPEAT
+                                Rec."For Calculation" := TRUE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+                        ELSE BEGIN
+                            REPEAT
+                                Rec."For Calculation" := FALSE;
+                                Rec.MODIFY;
+
+                            UNTIL Rec.NEXT = 0
+
+
+                        END;
+                    END;
+
+                end;
+
+            }
+            action("Check All For Wage Addition")
+            {
+                Caption = 'Check All For Wage Addition';
+
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    Rec.FINDFIRST;
+                    BEGIN
+                        filter := Rec.GETFILTERS;
+                        IF Rec."Calculate Wage Addition" = FALSE THEN BEGIN
+
+                            REPEAT
+                                Rec."Calculate Wage Addition" := TRUE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+                        ELSE BEGIN
+                            REPEAT
+                                Rec."Calculate Wage Addition" := FALSE;
+                                Rec.MODIFY;
+
+                            UNTIL Rec.NEXT = 0
+
+                        END;
+                    END;
+                    // Rec.FINDFIRST;
+                end;
+
+            }
+
 
             group(Izvještaji)
             {
@@ -665,6 +737,7 @@ pageextension 50149 EmployeeList extends "Employee List"
     var
 
         R_WorkExperience: Report "Work experience in Company";
+        filter: Text;
         R_BroughtExperience: Report "Update Brought Experience";
 
 

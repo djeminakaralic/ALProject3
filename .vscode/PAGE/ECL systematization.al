@@ -507,8 +507,8 @@ table 50055 "ECL systematization"
         field(32; "Way of Employment"; Option)
         {
             Caption = 'Way of Employment';
-            OptionCaption = ' ,Employment Office,Longer Redundancy,From Employment,Court Ruling,Dekra';
-            OptionMembers = " ","Employment Office","Longer Redundancy","From Employment","Court Ruling",Dekra;
+            OptionCaption = ' ,Employment Office,Longer Redundancy,From Employment,Court Ruling';
+            OptionMembers = " ","Employment Office","Longer Redundancy","From Employment","Court Ruling";
         }
         field(33; Prentice; Boolean)
         {
@@ -2001,7 +2001,7 @@ table 50055 "ECL systematization"
         }
         field(50381; "Employee Benefits"; Integer)
         {
-            CalcFormula = Count("Misc. Article Information" WHERE("Employee No." = FIELD("Employee No.")));
+            CalcFormula = Count("Misc. article information new" WHERE("Employee No." = FIELD("Employee No.")));
             Caption = 'Employee Benefits';
             Editable = false;
             FieldClass = FlowField;
@@ -11938,7 +11938,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
         NoSeriesMgt: Codeunit NoSeriesExtented;
         position: Record "Position temporery";
         "Position Benef": Record "Position Benefits temporery";
-        MAI: Record "Misc. Article Information";
+        MAI: Record "Misc. article information new";
         IDMonth: Integer;
         TotalDays: Integer;
         WC: Record "Wage Calculation";
@@ -11952,7 +11952,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
         parent2: Code[30];
         parent3: Code[30];
         WPConnSetup: Record "Web portal connection setup";
-        MaiDelete: Record "Misc. Article Information";
+        MaiDelete: Record "Misc. article information new";
         /*conn: Automation;
         comm: Automation;
         param: Automation;*/
@@ -12144,8 +12144,8 @@ UNTIL PositionMenuOrginal.NEXT = 0;
         ECLOrgNewb: Record "Employee Contract Ledger";
         SectorTemp1: Record "Sector temporary";
         PositionBenef: Record "Position Benefits temporery";
-        MAIs: Record "Misc. Article Information";
-        MAI1: Record "Misc. Article Information";
+        MAIs: Record "Misc. article information new";
+        MAI1: Record "Misc. article information new";
         PosMne: Record "Dimension for position";
         EmployeeContract: Record "Employee Contract Ledger";
         BR: Record "Employee Contract Ledger";
