@@ -112,6 +112,8 @@ report 50085 "Izvještaj porto blagajne"
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
+                MESSAGE(Format(DataItem21."Journal Batch Name"));
+
             end;
         }
 
