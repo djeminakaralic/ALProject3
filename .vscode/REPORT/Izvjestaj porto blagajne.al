@@ -159,6 +159,7 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
 CompanyInformation.GET;
+
                 CompanyInformation.CALCFIELDS(Picture);
 
             end;
