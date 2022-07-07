@@ -87,8 +87,7 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnAfterGetRecord()
             begin
 
-                CompanyInformation.GET;
-                CompanyInformation.CALCFIELDS(Picture);
+                
 
                 //MESSAGE(Format(PostingDatefilter));
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
@@ -115,7 +114,6 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
-
 
 
             end;
@@ -160,6 +158,8 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnPreDataItem()
             begin
+CompanyInformation.GET;
+                CompanyInformation.CALCFIELDS(Picture);
 
             end;
         }
