@@ -155,7 +155,6 @@ report 50085 "Izvještaj porto blagajne"
                         PaymentAmount += ABS(GLEntry.Amount);
                     until GLEntry.Next() = 0;
 
-
             end;
 
             trigger OnPreDataItem()
