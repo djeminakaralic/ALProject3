@@ -41,9 +41,16 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 Caption = 'Cash Diary';
                 Image = Journal;
                 Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 RunObject = Report "Blagajnički dnevnik";
+
+                /*trigger OnAction()
+                begin
+                    GLEntry.Reset();
+                    GLEntry.SetFilter("Bal. Account No.", Rec."No.");
+                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.Run();
+                end;*/
             }
 
             action("Zapisnik o primopredaji UniCredit")
