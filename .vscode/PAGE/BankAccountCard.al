@@ -34,8 +34,6 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
                     IzvjestajPortoBlagajne.Run();
                 end;
-
-
             }
 
             action("Cash Diary")
