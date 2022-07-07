@@ -963,6 +963,10 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = 'Wage Base';
         }
+        field(50379; "Employee Disability"; Boolean)
+        {
+
+        }
 
     }
 

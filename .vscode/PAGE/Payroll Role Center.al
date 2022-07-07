@@ -592,6 +592,20 @@ page 50094 "Payroll Role Center"
                     Image = "Report";
                     RunObject = Report "Summary per Payment Amounts";
                 }
+                action("Summary per years")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Summary per years';
+                    Image = "Report";
+                    RunObject = Report "Summary per years";
+                }
+                action("Employee Disability")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Employee Disability';
+                    Image = "Report";
+                    RunObject = Report "Izvjestaj invalidet";
+                }
 
             }
 
