@@ -113,6 +113,7 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
                 PostingDatefilter := GETFILTER("Bal. Account No.");
+                Message(PostingDatefilter);
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
@@ -134,7 +135,7 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnAfterGetRecord()
             begin
-                if GLEntry.FindFirst() then begin
+                /*if GLEntry.FindFirst() then begin
                     //PostingDatefilter := GETFILTER(GLEntry."Bal. Account No.");
                     Message(Format(GLEntry."Bal. Account No."));
                 end;
