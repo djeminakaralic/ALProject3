@@ -103,7 +103,7 @@ report 50075 "Blagajnički dnevnik"
                 IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
-                    BrdokumentaIS := ''; //ED
+                    BrdokumentaIS := '';
                     Kolicina := Amount;
                 END;
 
@@ -111,7 +111,7 @@ report 50075 "Blagajnički dnevnik"
                 IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
-                    Brdokumenta := ''; //ED
+                    Brdokumenta := '';
                     Kolicina := 0;
                     KolicinaIS := Amount;
                 END;
@@ -130,9 +130,9 @@ report 50075 "Blagajnički dnevnik"
                 GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
-                        REPEAT
-                            PrethodniSaldo += GLEntry.Amount;
-                        UNTIL GLEntry.NEXT = 0;
+                    REPEAT
+                        PrethodniSaldo += GLEntry.Amount;
+                    UNTIL GLEntry.NEXT = 0;
 
 
 

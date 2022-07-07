@@ -81,6 +81,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
+        Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
         "Payment DT" := System.CurrentDateTime;
     end;
 
