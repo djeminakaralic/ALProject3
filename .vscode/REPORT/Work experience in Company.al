@@ -250,39 +250,83 @@ report 50116 "Work experience in Company"
                 "Days with military" := (UkupniSaVojnimDani) MOD 30;*/
                 //BH 01 end
                 IF WageSetup.GET THEN BEGIN
-                    IF "Org Entity Code" = 'FBIH' THEN BEGIN
+
+                    if "WEP with military" = true then begin
+
                         IF WageSetup."Type Of Work Percentage Calc." = 0 THEN
-                            "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage"
+                            "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage"
                         ELSE
-                            "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage";
-                    END;
+                            "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage";
 
-                    IF "Org Entity Code" = 'BD' THEN BEGIN
-                        //BD
+                        IF "Org Entity Code" = 'BD' THEN BEGIN
+                            //BD
 
-                        IF WageSetup."Type Of Work Percentage Cal BD" = 0 THEN
-                            "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage BD"
-                        ELSE
-                            "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage BD";
+                            IF WageSetup."Type Of Work Percentage Cal BD" = 0 THEN
+                                "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage BD"
+                            ELSE
+                                "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage BD";
 
-                    END;
+                        END;
+
+                        IF "Org Entity Code" = 'RS' THEN BEGIN
+                            // RS
+                            IF WageSetup."Type Of Work Percentage Cal RS" = 0 THEN
+                                "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage RS"
+                            ELSE
+                                "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage RS";
+                        END;
+                        IF "Contribution Category Code" = 'FBIHRS' THEN BEGIN
+                            IF WageSetup."Type Of Work Percentage Calc." = 0 THEN
+                                "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage"
+                            ELSE
+                                "Work Experience Percentage" := "Years with military" * WageSetup."Work Percentage";
+
+                        end
+
+                    end
 
 
-                    IF "Org Entity Code" = 'RS' THEN BEGIN
-                        // RS
-                        IF WageSetup."Type Of Work Percentage Cal RS" = 0 THEN
-                            "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage RS"
-                        ELSE
-                            "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage RS";
-                    END;
+                    else begin
 
 
-                    IF "Contribution Category Code" = 'FBIHRS' THEN BEGIN
-                        IF WageSetup."Type Of Work Percentage Calc." = 0 THEN
-                            "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage"
-                        ELSE
-                            "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage";
-                    END;
+                        IF "Org Entity Code" = 'FBIH' THEN BEGIN
+
+
+                            IF WageSetup."Type Of Work Percentage Calc." = 0 THEN
+                                "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage"
+                            ELSE
+                                "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage";
+
+                        END;
+                        IF "Org Entity Code" = 'BD' THEN BEGIN
+                            //BD
+
+                            IF WageSetup."Type Of Work Percentage Cal BD" = 0 THEN
+                                "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage BD"
+                            ELSE
+                                "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage BD";
+
+                        END;
+
+                        IF "Org Entity Code" = 'RS' THEN BEGIN
+                            // RS
+                            IF WageSetup."Type Of Work Percentage Cal RS" = 0 THEN
+                                "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage RS"
+                            ELSE
+                                "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage RS";
+                        END;
+                        IF "Contribution Category Code" = 'FBIHRS' THEN BEGIN
+                            IF WageSetup."Type Of Work Percentage Calc." = 0 THEN
+                                "Work Experience Percentage" := "Current Years Total" * WageSetup."Work Percentage"
+                            ELSE
+                                "Work Experience Percentage" := "Years of Experience" * WageSetup."Work Percentage";
+                        END;
+
+
+                    end;
+
+
+
                     MODIFY;
                 END;
                 ECL.SETFILTER("Employee No.", '%1', "No.");

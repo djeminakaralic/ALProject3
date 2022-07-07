@@ -1821,7 +1821,8 @@ table 50071 "Employee Contract Ledger"
                         DimensionValue.Name := Rec."Sector Description";
                         DimensionValue."Dimension Code" := 'TC';
                         DimensionValue."Global Dimension No." := 1;
-                        DimensionValue.Insert();
+                        if DimensionValue.Code <> '' then
+                            DimensionValue.Insert();
 
                     end
                     else begin
@@ -3249,6 +3250,8 @@ table 50071 "Employee Contract Ledger"
             Caption = 'Manager Contract';
 
             trigger OnValidate()
+            var
+                dt: Page "Dimension Values";
             begin
                 IF "Manager Contract" = FALSE THEN BEGIN
                     "Fixed Amount Brutto" := 0;
@@ -3453,7 +3456,8 @@ table 50071 "Employee Contract Ledger"
                             DV."Global Dimension No." := 1;
                             DV.Blocked := false;
                             DV.Name := Rec."Sector Description";
-                            DV.INSERT;
+                            if DV.Code <> '' then
+                                DV.INSERT;
                         END;
 
                         EDF."Dimension Value Code" := Rec."Sector Code";
@@ -3467,14 +3471,15 @@ table 50071 "Employee Contract Ledger"
                         EDF."Dimension Code" := 'TC';
                         CALCFIELDS("Phisical Org Dio");
                         DV.Reset();
-                        DV.SETFILTER(Code, '%1', Rec."Sector Code");
+                        DV.SETFILTER(Code, '%1', Rec.Sector);
                         IF NOT DV.FIND('-') THEN BEGIN
                             DV.INIT;
                             DV."Dimension Code" := 'TC';
-                            DV.Code := Rec."Sector Code";
+                            DV.Code := Rec."Sector";
                             DV.Name := Rec."Sector Description";
                             DV."Global Dimension No." := 1;
-                            DV.INSERT;
+                            if DV.Code <> '' then
+                                DV.INSERT;
                         END;
 
                         EDF."Dimension Value Code" := Rec."Sector Code";
@@ -6003,6 +6008,15 @@ table 50071 "Employee Contract Ledger"
         field(594133; "Position Coefficient for Wage"; Decimal)
         {
             Caption = 'Position Coefficient for Wage';
+            trigger Onvalidate()
+            var
+                myInt: Integer;
+            begin
+                Wagesetup.Get();
+                Validate(Brutto, ROUND(Wagesetup."Wage Base" * "Position Coefficient for Wage", 0.01, '>'));
+
+
+            end;
         }
         field(594134; "Position complexity"; Decimal)
 

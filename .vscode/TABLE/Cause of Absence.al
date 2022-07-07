@@ -127,6 +127,11 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         {
             Caption = 'Calculate Experience';
 
+
+        }
+        field(50027; "Weekend"; Boolean)
+        {
+            Caption = 'Dozvoljen unos vikendom';
         }
     }
 

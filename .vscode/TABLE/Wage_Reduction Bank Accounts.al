@@ -19,6 +19,13 @@ table 50009 "Wage/Reduction Bank Accounts"
         field(2; "No."; Code[20])
         {
             Caption = 'No.';
+            trigger onvalidate()
+            var
+                myInt: Integer;
+            begin
+                "Account No" := "No.";
+
+            end;
         }
         field(3; "Account No"; Code[20])
         {

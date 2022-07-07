@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"Added":[],"Modified":[{"Id":50170,"Kind":16,"Name":"CashReceiptJournal","PackagePath":"/src/.vscode/REPORT/CashReceiptJournal.al"}],"Removed":[]}
+=======
+﻿{"Added":[],"Modified":[{"Id":50077,"Kind":13,"Name":"Uplatnica","PackagePath":"/src/.vscode/REPORT/Uplatnica.al"},{"Id":50139,"Kind":11,"Name":"GenJNLLine","PackagePath":"/src/.vscode/CU/Gen.%20Journal%20Line.al"}],"Removed":[]}
+>>>>>>> 8e4a935ed7df6ad15846911ac0238d3d1c090b1d
