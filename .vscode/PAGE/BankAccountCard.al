@@ -23,9 +23,10 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+
                 RunObject = Report "Izvještaj porto blagajne";
 
-                
+
 
                 trigger OnAction()
                 begin
@@ -56,6 +57,10 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
         }
 
     }
+    trigger OnOpenPage()
+    begin
+        GLEntry.SetFilter("Bal. Account No.", '%1', "No.");
+    end;
 
 
 
