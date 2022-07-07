@@ -140,7 +140,7 @@ report 50085 "Izvještaj porto blagajne"
                 //GLEntry.SetFilter("Journal Batch Name", '%1', );
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-                GLEntry.SetFilter("Document Type", '%1', 1);
+                 
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
