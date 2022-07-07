@@ -18613,6 +18613,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Wage Increase/Decrease - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1059656092 - Field 1748166277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dozvoljen unos vikendom</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Addition Type - Field Weekend - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1059656092 - Field 744430454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage addition based on Work Experience</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -28058,6 +28063,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Wizard Step 5 - Control Totals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1522264836 - Control 2015970522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Privremeni obračun plate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Wizard Step 5 - Control WA - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1522264836 - Action 788258546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cancel</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -28982,6 +28992,16 @@
           <source>Isplatnica</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Isplatnica - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3864671138 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izvjestaj invalidet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj invalidet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3864671138 - Control 497847406 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj invalidet - Control ReportDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3697989730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Izvjestaj starosna spolna</source>
@@ -30567,11 +30587,6 @@
           <source>Post Wage to GL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Post Wage to GL - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 2601361272 - NamedType 4033777787" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You do not have permission to access this report. Please contact your system administrator.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Post Wage to GL - NamedType error1</note>
         </trans-unit>
         <trans-unit id="Report 2601361272 - NamedType 672599587" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Calculation has been transfered to General journal -Wages.</source>
@@ -36033,6 +36048,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Check All For Calculation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 501522804 - Action 1543954472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
+          <source>Check All For Military Work Experience</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension EmployeeList - Action Check All For Military Work Experience - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 501522804 - Action 3545643680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 272934828">
           <source>Check All For Wage Addition</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36677,6 +36697,11 @@
           <source>Vacation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Vacation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 1748166277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Dozvoljen unos vikendom</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Weekend - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 232727366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Work Abroad</source>
@@ -38818,6 +38843,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field Wellcome - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3044542669 - Field 3952609777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
+          <source>Vojni staž se obračunava u minuli rad</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension EmployeeExtension - Field WEP with military - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3044542669 - Field 1179769142 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1498446062">
           <source>Work Booklet No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39867,6 +39897,11 @@
           <source>Stream Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field Stream Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4142435239 - Field 2852335753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3164093577">
+          <source>Neplaćeno</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field Unpaid - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4142435239 - Field 3837964988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3164093577">
           <source>Vacation from Year</source>

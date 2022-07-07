@@ -19,7 +19,7 @@
             <Top>3.97052cm</Top>
             <Left>0.47837cm</Left>
             <Height>0cm</Height>
-            <Width>13.12021cm</Width>
+            <Width>14.89291cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -35,7 +35,7 @@
             <Top>0.6544cm</Top>
             <Left>0.47837cm</Left>
             <Height>1.905cm</Height>
-            <Width>10.75161cm</Width>
+            <Width>14.89291cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -52,7 +52,7 @@
                   <TextRun>
                     <Value>=First(Fields!Name.Value, "DataSet_Result") + ", " + First(Fields!Adress_CompanyInfo.Value, "DataSet_Result") + ", Tel: " + First(Fields!Phone1_CompanyInfo.Value, "DataSet_Result") + ", Fax: " + First(Fields!Fax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Identifikacioni broj: " + First(Fields!RegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", PDV broj: " + First(Fields!VATRegistrationNo_CompanyInfo.Value, "DataSet_Result") + ", Porezni broj: " + First(Fields!MunicipalityName.Value, "DataSet_Result") + " " + First(Fields!Tax_CompanyInfo.Value, "DataSet_Result") + ", " + System.Environment.NewLine + "Šifra djelatnosti: " + First(Fields!IndustrialClassification_CompanyInfo.Value, "DataSet_Result") + ", Registracija: " + First(Fields!Registration_CompanyInfo.Value, "DataSet_Result") + " MBS: " + First(Fields!MBS.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -64,7 +64,7 @@
             <Top>2.73579cm</Top>
             <Left>0.47837cm</Left>
             <Height>1.05834cm</Height>
-            <Width>13.1202cm</Width>
+            <Width>14.89291cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -85,6 +85,7 @@
                   <TextRun>
                     <Value>=FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>d. MMMM yyyy.</Format>
                     </Style>
@@ -99,7 +100,7 @@
             <Top>5.20912cm</Top>
             <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
-            <Width>13.09905cm</Width>
+            <Width>14.89292cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -119,7 +120,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>UKUPNO</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -129,7 +132,7 @@
             <Top>7.7979cm</Top>
             <Left>0.49953cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.3734cm</Width>
+            <Width>4.95725cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -149,7 +152,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=SUM(Fields!PaymentCounter.Value)</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -159,9 +164,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
             <Top>7.7979cm</Top>
-            <Left>4.87293cm</Left>
+            <Left>5.45678cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.37341cm</Width>
+            <Width>4.95725cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -181,7 +186,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=FormatNumber(ABS(SUM(Fields!PaymentAmount.Value)), 1)</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -191,9 +198,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>7.7979cm</Top>
-            <Left>9.24634cm</Left>
+            <Left>10.41403cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.35222cm</Width>
+            <Width>4.95725cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -209,13 +216,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>4.95725cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>4.95725cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>4.95725cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -232,7 +239,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>RAČUNI</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -281,7 +290,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>BROJ UPLATA</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -330,7 +341,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>IZNOS</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -386,7 +399,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!PTCode.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -435,7 +450,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!PaymentCounter.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -486,7 +503,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=FormatNumber(Fields!PaymentAmount.Value,1)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -555,7 +574,7 @@
             <Top>6.24099cm</Top>
             <Left>0.49953cm</Left>
             <Height>1.1377cm</Height>
-            <Width>13.09902cm</Width>
+            <Width>14.87175cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -591,7 +610,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>="IZVJEŠTAJ PORTO BLAGAJNE Br. "</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -601,7 +622,7 @@
             <Top>4.28308cm</Top>
             <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
-            <Width>13.09905cm</Width>
+            <Width>14.89292cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -620,18 +641,20 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>BLAGAJNIK:</Value>
-                    <Style />
+                    <Value>BLAGAJNIK</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>8.88683cm</Top>
-            <Left>0.55245cm</Left>
-            <Height>0.49417cm</Height>
-            <Width>4.32048cm</Width>
+            <Top>8.93561cm</Top>
+            <Left>0.47836cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.97842cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -651,16 +674,18 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!User.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>9.41628cm</Top>
-            <Left>0.55245cm</Left>
-            <Height>0.49417cm</Height>
+            <Top>9.53561cm</Top>
+            <Left>0.47836cm</Left>
+            <Height>0.6cm</Height>
             <Width>8.67976cm</Width>
             <ZIndex>10</ZIndex>
             <Style>
@@ -681,14 +706,12 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.01052cm</Width>
+      <Width>15.5621cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2.5cm</LeftMargin>
         <RightMargin>2.5cm</RightMargin>
-        <TopMargin>2.5cm</TopMargin>
-        <BottomMargin>2.5cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
