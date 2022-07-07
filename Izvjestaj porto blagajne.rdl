@@ -11,6 +11,85 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="IndustrialClassification_CompanyInfo">
+          <DataField>IndustrialClassification_CompanyInfo</DataField>
+        </Field>
+        <Field Name="MBS">
+          <DataField>MBS</DataField>
+        </Field>
+        <Field Name="MunicipalityName">
+          <DataField>MunicipalityName</DataField>
+        </Field>
+        <Field Name="Registration_CompanyInfo">
+          <DataField>Registration_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Tax_CompanyInfo">
+          <DataField>Tax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+        <Field Name="PTCode">
+          <DataField>PTCode</DataField>
+        </Field>
+        <Field Name="PaymentCounter">
+          <DataField>PaymentCounter</DataField>
+        </Field>
+        <Field Name="PaymentAmount">
+          <DataField>PaymentAmount</DataField>
+        </Field>
+        <Field Name="PaymentAmountFormat">
+          <DataField>PaymentAmountFormat</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -19,7 +98,7 @@
             <Top>3.97052cm</Top>
             <Left>0.47837cm</Left>
             <Height>0cm</Height>
-            <Width>14.41666cm</Width>
+            <Width>15.39562cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -35,7 +114,7 @@
             <Top>0.6544cm</Top>
             <Left>0.47837cm</Left>
             <Height>1.905cm</Height>
-            <Width>14.41666cm</Width>
+            <Width>15.39562cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -64,7 +143,7 @@
             <Top>2.73579cm</Top>
             <Left>0.47837cm</Left>
             <Height>1.05834cm</Height>
-            <Width>14.41666cm</Width>
+            <Width>15.39562cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -99,7 +178,7 @@
             <Top>5.20912cm</Top>
             <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
-            <Width>13.09905cm</Width>
+            <Width>15.39563cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -209,13 +288,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>5.12482cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>5.12482cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>5.12482cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -555,7 +634,7 @@
             <Top>6.24099cm</Top>
             <Left>0.49953cm</Left>
             <Height>1.1377cm</Height>
-            <Width>13.09902cm</Width>
+            <Width>15.37446cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -601,7 +680,7 @@
             <Top>4.28308cm</Top>
             <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
-            <Width>13.09905cm</Width>
+            <Width>15.39563cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -681,7 +760,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>15.51864cm</Width>
+      <Width>16.33885cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -692,6 +771,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -731,83 +816,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Adress_CompanyInfo">
-          <DataField>Adress_CompanyInfo</DataField>
-        </Field>
-        <Field Name="City_CompanyInfo">
-          <DataField>City_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="Phone1_CompanyInfo">
-          <DataField>Phone1_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone2_CompanyInfo">
-          <DataField>Phone2_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Fax_CompanyInfo">
-          <DataField>Fax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Email_CompanyInfo">
-          <DataField>Email_CompanyInfo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInfo">
-          <DataField>RegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Postcode_CompanyInfo">
-          <DataField>Postcode_CompanyInfo</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_CompanyInfo">
-          <DataField>VATRegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="GiroNo_CompanyInfo">
-          <DataField>GiroNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="IndustrialClassification_CompanyInfo">
-          <DataField>IndustrialClassification_CompanyInfo</DataField>
-        </Field>
-        <Field Name="MBS">
-          <DataField>MBS</DataField>
-        </Field>
-        <Field Name="MunicipalityName">
-          <DataField>MunicipalityName</DataField>
-        </Field>
-        <Field Name="Registration_CompanyInfo">
-          <DataField>Registration_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Tax_CompanyInfo">
-          <DataField>Tax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-        <Field Name="PTCode">
-          <DataField>PTCode</DataField>
-        </Field>
-        <Field Name="PaymentCounter">
-          <DataField>PaymentCounter</DataField>
-        </Field>
-        <Field Name="PaymentAmount">
-          <DataField>PaymentAmount</DataField>
-        </Field>
-        <Field Name="PaymentAmountFormat">
-          <DataField>PaymentAmountFormat</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
