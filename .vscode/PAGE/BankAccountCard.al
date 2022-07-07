@@ -30,16 +30,16 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     VacationDecisionR.SETTABLEVIEW(Vacation);
                     VacationDecisionR.RUN;*/
 
-                //RunObject = Report "Izvještaj porto blagajne";
+                RunObject = Report "Izvještaj porto blagajne";
 
-                trigger OnAction()
+                /*trigger OnAction()
                 begin
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", '%1', "No.");
                     Report.RunModal(50085, true, true, GLEntry);
-                    /*IzvjestajPortoBlagajne.settableview(GLEntry);
-                    IzvjestajPortoBlagajne.run;*/
-                end;
+                    //IzvjestajPortoBlagajne.settableview(GLEntry);
+                    //IzvjestajPortoBlagajne.run;
+                end;*/
             }
 
             action("Cash Diary")
