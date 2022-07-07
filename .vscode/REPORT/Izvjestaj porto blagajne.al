@@ -85,6 +85,9 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnAfterGetRecord()
             begin
+
+
+                //MESSAGE(Format(PostingDatefilter));
                 /*Cont.SETFILTER("No.",'%1',"Contact Link");
                 
                 IF Cont.FIND('-') THEN BEGIN
@@ -181,6 +184,7 @@ report 50085 "Izvještaj porto blagajne"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
+        PostingDatefilter: Code[10];
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         Cont: Record Contact;

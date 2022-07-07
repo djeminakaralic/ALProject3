@@ -106,7 +106,7 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     CustLedgEntry.DrillDownOnEntries(DtldCustLedgEntry);
                 end;
             }
-            field(Avans_Cust; Avans_Cust)
+            /*field(Avans_Cust; Avans_Cust)
             {
                 Caption = 'Avans';
                 ApplicationArea = All;
@@ -137,12 +137,12 @@ pageextension 50147 JournalLineDetailsFactBox extends "Journal Line Details Fact
                     CurrPage.UPDATE;
                 end;*/
 
-            }
+            /*}
             field(Interest; Interest)
             {
                 Caption = 'Kamate';
                 ApplicationArea = All;
-            }
+            }*/
         }
     }
 }

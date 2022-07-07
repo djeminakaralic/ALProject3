@@ -76,40 +76,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Blagajnik: </Value>
-                    <Style />
-                  </TextRun>
-                  <TextRun>
-                    <Value>=User!UserID</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>8.92238cm</Top>
-            <Left>0.47836cm</Left>
-            <Height>0.66146cm</Height>
-            <Width>8.76798cm</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox2">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -117,13 +83,16 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Datum izvještaja: " &amp; FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
+                    <Value>=FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
                     <Style>
+                      <FontWeight>Bold</FontWeight>
                       <Format>d. MMMM yyyy.</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
@@ -131,7 +100,7 @@
             <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
             <Width>13.09905cm</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -149,7 +118,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>UKUPNO:</Value>
+                    <Value>UKUPNO</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -161,7 +130,7 @@
             <Left>0.49953cm</Left>
             <Height>0.6cm</Height>
             <Width>4.3734cm</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -193,7 +162,7 @@
             <Left>4.87293cm</Left>
             <Height>0.6cm</Height>
             <Width>4.37341cm</Width>
-            <ZIndex>6</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -225,7 +194,7 @@
             <Left>9.24634cm</Left>
             <Height>0.6cm</Height>
             <Width>4.35222cm</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -556,7 +525,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -588,7 +556,7 @@
             <Left>0.49953cm</Left>
             <Height>1.1377cm</Height>
             <Width>13.09902cm</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -622,7 +590,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE br. "</Value>
+                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE Br. "</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -634,7 +602,67 @@
             <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
             <Width>13.09905cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>BLAGAJNIK:</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>8.88683cm</Top>
+            <Left>0.55245cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>4.32048cm</Width>
             <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!User.Value</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>9.41628cm</Top>
+            <Left>0.55245cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>8.67976cm</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
