@@ -11,109 +11,6 @@
       <rd:DataSourceID>96fa5a0d-5db4-4f8a-a5f6-d24e80bd2b3f</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Name_CompanyInformation">
-          <DataField>Name_CompanyInformation</DataField>
-        </Field>
-        <Field Name="Address_CompanyInformation">
-          <DataField>Address_CompanyInformation</DataField>
-        </Field>
-        <Field Name="City_CompanyInformation">
-          <DataField>City_CompanyInformation</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInformation">
-          <DataField>Picture_CompanyInformation</DataField>
-        </Field>
-        <Field Name="Date_CompanyInformation">
-          <DataField>Date_CompanyInformation</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInformation">
-          <DataField>RegistrationNo_CompanyInformation</DataField>
-        </Field>
-        <Field Name="InternalId_Employee">
-          <DataField>InternalId_Employee</DataField>
-        </Field>
-        <Field Name="No_Employee">
-          <DataField>No_Employee</DataField>
-        </Field>
-        <Field Name="PhoneNo_Employee">
-          <DataField>PhoneNo_Employee</DataField>
-        </Field>
-        <Field Name="AddressCIPS_Employee">
-          <DataField>AddressCIPS_Employee</DataField>
-        </Field>
-        <Field Name="CityCIPS_Employee">
-          <DataField>CityCIPS_Employee</DataField>
-        </Field>
-        <Field Name="DisabledPerson_Employee">
-          <DataField>DisabledPerson_Employee</DataField>
-        </Field>
-        <Field Name="DisabilityLevel_Employee">
-          <DataField>DisabilityLevel_Employee</DataField>
-        </Field>
-        <Field Name="FirstName_Employee">
-          <DataField>FirstName_Employee</DataField>
-        </Field>
-        <Field Name="YearsOfExperience_Employee">
-          <DataField>YearsOfExperience_Employee</DataField>
-        </Field>
-        <Field Name="EmployeeID_Employee">
-          <DataField>EmployeeID_Employee</DataField>
-        </Field>
-        <Field Name="CurrentMonthsTotal_Employee">
-          <DataField>CurrentMonthsTotal_Employee</DataField>
-        </Field>
-        <Field Name="CurrentYearsTotal_Employee">
-          <DataField>CurrentYearsTotal_Employee</DataField>
-        </Field>
-        <Field Name="CompanyMobilePhoneNo_Employee">
-          <DataField>CompanyMobilePhoneNo_Employee</DataField>
-        </Field>
-        <Field Name="CompanyEMail_Employee">
-          <DataField>CompanyEMail_Employee</DataField>
-        </Field>
-        <Field Name="LastName_Employee">
-          <DataField>LastName_Employee</DataField>
-        </Field>
-        <Field Name="EmploymentDate_Employee">
-          <DataField>EmploymentDate_Employee</DataField>
-        </Field>
-        <Field Name="TerminationDate_Employee">
-          <DataField>TerminationDate_Employee</DataField>
-        </Field>
-        <Field Name="Description_DisabilityLevel">
-          <DataField>Description_DisabilityLevel</DataField>
-        </Field>
-        <Field Name="LevelofDisability_DisabilityLevel">
-          <DataField>LevelofDisability_DisabilityLevel</DataField>
-        </Field>
-        <Field Name="Code_DisabilityLevel">
-          <DataField>Code_DisabilityLevel</DataField>
-        </Field>
-        <Field Name="EngagementType_EmployeeContractLedger">
-          <DataField>EngagementType_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="EndingDate_EmployeeContractLedger">
-          <DataField>EndingDate_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="PositionDescription_EmployeeContractLedger">
-          <DataField>PositionDescription_EmployeeContractLedger</DataField>
-        </Field>
-        <Field Name="EducationLevel_AdditionalEducation">
-          <DataField>EducationLevel_AdditionalEducation</DataField>
-        </Field>
-        <Field Name="ContractType_EmployeeContractLedger">
-          <DataField>ContractType_EmployeeContractLedger</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -2017,12 +1914,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -2062,4 +1953,125 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Name_CompanyInformation">
+          <DataField>Name_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Address_CompanyInformation">
+          <DataField>Address_CompanyInformation</DataField>
+        </Field>
+        <Field Name="City_CompanyInformation">
+          <DataField>City_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInformation">
+          <DataField>Picture_CompanyInformation</DataField>
+        </Field>
+        <Field Name="Date_CompanyInformation">
+          <DataField>Date_CompanyInformation</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInformation">
+          <DataField>RegistrationNo_CompanyInformation</DataField>
+        </Field>
+        <Field Name="InternalId_Employee">
+          <DataField>InternalId_Employee</DataField>
+        </Field>
+        <Field Name="No_Employee">
+          <DataField>No_Employee</DataField>
+        </Field>
+        <Field Name="PhoneNo_Employee">
+          <DataField>PhoneNo_Employee</DataField>
+        </Field>
+        <Field Name="AddressCIPS_Employee">
+          <DataField>AddressCIPS_Employee</DataField>
+        </Field>
+        <Field Name="CityCIPS_Employee">
+          <DataField>CityCIPS_Employee</DataField>
+        </Field>
+        <Field Name="DisabledPerson_Employee">
+          <DataField>DisabledPerson_Employee</DataField>
+        </Field>
+        <Field Name="DisabilityLevel_Employee">
+          <DataField>DisabilityLevel_Employee</DataField>
+        </Field>
+        <Field Name="BrutoV">
+          <DataField>BrutoV</DataField>
+        </Field>
+        <Field Name="BrutoVFormat">
+          <DataField>BrutoVFormat</DataField>
+        </Field>
+        <Field Name="NetoV">
+          <DataField>NetoV</DataField>
+        </Field>
+        <Field Name="NetoVFormat">
+          <DataField>NetoVFormat</DataField>
+        </Field>
+        <Field Name="DoprinosiV">
+          <DataField>DoprinosiV</DataField>
+        </Field>
+        <Field Name="DoprinosiVFormat">
+          <DataField>DoprinosiVFormat</DataField>
+        </Field>
+        <Field Name="FirstName_Employee">
+          <DataField>FirstName_Employee</DataField>
+        </Field>
+        <Field Name="YearsOfExperience_Employee">
+          <DataField>YearsOfExperience_Employee</DataField>
+        </Field>
+        <Field Name="EmployeeID_Employee">
+          <DataField>EmployeeID_Employee</DataField>
+        </Field>
+        <Field Name="CurrentMonthsTotal_Employee">
+          <DataField>CurrentMonthsTotal_Employee</DataField>
+        </Field>
+        <Field Name="CurrentYearsTotal_Employee">
+          <DataField>CurrentYearsTotal_Employee</DataField>
+        </Field>
+        <Field Name="CompanyMobilePhoneNo_Employee">
+          <DataField>CompanyMobilePhoneNo_Employee</DataField>
+        </Field>
+        <Field Name="CompanyEMail_Employee">
+          <DataField>CompanyEMail_Employee</DataField>
+        </Field>
+        <Field Name="LastName_Employee">
+          <DataField>LastName_Employee</DataField>
+        </Field>
+        <Field Name="EmploymentDate_Employee">
+          <DataField>EmploymentDate_Employee</DataField>
+        </Field>
+        <Field Name="TerminationDate_Employee">
+          <DataField>TerminationDate_Employee</DataField>
+        </Field>
+        <Field Name="Description_DisabilityLevel">
+          <DataField>Description_DisabilityLevel</DataField>
+        </Field>
+        <Field Name="LevelofDisability_DisabilityLevel">
+          <DataField>LevelofDisability_DisabilityLevel</DataField>
+        </Field>
+        <Field Name="Code_DisabilityLevel">
+          <DataField>Code_DisabilityLevel</DataField>
+        </Field>
+        <Field Name="EngagementType_EmployeeContractLedger">
+          <DataField>EngagementType_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="EndingDate_EmployeeContractLedger">
+          <DataField>EndingDate_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="PositionDescription_EmployeeContractLedger">
+          <DataField>PositionDescription_EmployeeContractLedger</DataField>
+        </Field>
+        <Field Name="EducationLevel_AdditionalEducation">
+          <DataField>EducationLevel_AdditionalEducation</DataField>
+        </Field>
+        <Field Name="ContractType_EmployeeContractLedger">
+          <DataField>ContractType_EmployeeContractLedger</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
