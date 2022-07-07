@@ -617,9 +617,10 @@ table 50132 "Position Menu"
                 if ecl.FindSet() then
                     repeat
                         ecl."Position complexity" := Rec."Position complexity";
-                        ecl."Position Coefficient for Wage" := Rec."Position Coefficient for Wage";
+                        ecl.validate("Position Coefficient for Wage", Rec."Position Coefficient for Wage");
                         ecl."Position Responsibility" := Rec."Position Responsibility";
                         ecl."Workplace conditions" := Rec."Workplace conditions";
+
                         ecl.Modify();
 
 

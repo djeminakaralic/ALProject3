@@ -1340,7 +1340,8 @@ codeunit 50002 "Wage Calculation"
 
                         NettoAmount += NettoAmountT;
                         SickCompany += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        //ĐK provjeriti   ExperienceBase += NettoAmountT;
+                        ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
                     END;
 
                     IF COA."Sick Leave" AND NOT COA."Sick Leave Paid By Company" THEN BEGIN
@@ -1363,7 +1364,9 @@ codeunit 50002 "Wage Calculation"
                         NettoAmount += NettoAmountT;
                         //ĐK VB   ExperienceBase += NettoAmountT;
                         IF COA."Calculate Experience" THEN
-                            ExperienceBase += NettoAmountT;
+
+                            //ĐK ExperienceBase += NettoAmountT;
+                            ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
                     END;
 
                     // IF CalcTemp."Employee No."='1' THEN MESSAGE(COA.Code);
@@ -1377,7 +1380,8 @@ codeunit 50002 "Wage Calculation"
 
                         NettoAmount += NettoAmountT;
                         IF COA."Calculate Experience" THEN
-                            ExperienceBase += NettoAmountT;
+                            //ĐK   ExperienceBase += NettoAmountT;
+                            ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
 
                     END;
 
@@ -1393,14 +1397,14 @@ codeunit 50002 "Wage Calculation"
             UNTIL COA.NEXT = 0;
 
 
-        ExperienceBase := (CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage") * (1 - AddTaxesPercentage / 100);
+        //NE sada probaj ExperienceBase := (CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage") * (1 - AddTaxesPercentage / 100);
 
         CalcTemp."Net Wage (Calculated Base)" := NettoAmount;
         CalcTemp."Work Experience (Base)" := ExperienceBase;
         NettoAmount += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-        //ĐK  CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
 
-        CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+        //Ne sada probaj CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
 
 
         /*
@@ -1633,11 +1637,12 @@ codeunit 50002 "Wage Calculation"
 
         CalcTemp."Wage Addition" += WageAddition;
         CalcTemp."Net Wage" += NettoAmount;
-        ExperienceBase := CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage" * (1 - AddTaxesPercentage / 100);
+        //M
+        //đK NE ExperienceBase := CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage" * (1 - AddTaxesPercentage / 100);
         CalcTemp."Work Experience (Base)" += ExperienceBase;
         CalcTemp."Net Wage (Calculated Base)" += ExperienceBase;
-        //ĐK CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-        CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+        CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        //ne sada  CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
         ;
 
         IF Header."Wage Calculation Type" = Header."Wage Calculation Type"::Normal THEN
@@ -2050,8 +2055,8 @@ codeunit 50002 "Wage Calculation"
         IF NettoAmount <> 0 THEN BEGIN
             CalcTemp."Employee Coefficient" := CalcTemp."Net Wage Netto 2" / NettoAmount;
             CalcTemp."Wage (Base)" := CalcTemp."Employee Coefficient" * CalcTemp."Hour Pool";
-            //ĐK     CalcTemp."Experience Total" := CalcTemp."Wage (Base)" * Employee."Work Experience Percentage" / 100;
-            CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+            CalcTemp."Experience Total" := CalcTemp."Wage (Base)" * Employee."Work Experience Percentage" / 100;
+            //možda   CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
             ;
 
         END;
@@ -2151,7 +2156,8 @@ codeunit 50002 "Wage Calculation"
 
                         NettoAmount += NettoAmountT;
                         SickCompany += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        //ĐK  ExperienceBase += NettoAmountT;
+                        ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
                     END;
 
                     IF COA."Sick Leave" AND NOT COA."Sick Leave Paid By Company" THEN BEGIN
@@ -2172,13 +2178,15 @@ codeunit 50002 "Wage Calculation"
                         END;
                         SickFund += NettoAmountT;
                         NettoAmount += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        //ĐK ExperienceBase += NettoAmountT;
+                        ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
                     END;
 
                     IF NOT (COA."Sick Leave" OR COA."Sick Leave Paid By Company" OR COA."Added To Hour Pool") THEN BEGIN
                         NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
                         NettoAmount += NettoAmountT;
-                        ExperienceBase += NettoAmountT;
+                        //ĐK     ExperienceBase += NettoAmountT;
+                        ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
 
                     END;
 
@@ -2190,11 +2198,11 @@ codeunit 50002 "Wage Calculation"
             UNTIL COA.NEXT = 0;
 
         CalcTemp."Net Wage (Calculated Base)" := NettoAmount;
-        ExperienceBase := CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage" * (1 - AddTaxesPercentage / 100);
+        //ne sada ExperienceBase := CalcTemp."Wage Base" * CalcTemp."Position Coefficient for Wage" * (1 - AddTaxesPercentage / 100);
         CalcTemp."Work Experience (Base)" := ExperienceBase;
         NettoAmount += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-        //ĐK CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
-        CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
+        CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
+        //ĐK ne sada   CalcTemp."Experience Total" := (CalcTemp."Wage Base" * CalcTemp."Work Experience Percentage" * CalcTemp."Position Coefficient for Wage" / 100) * (1 - AddTaxesPercentage / 100);
 
 
         /*

@@ -1645,7 +1645,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 group("Bank data")
 
                 {
+
                     Caption = 'Bank Data';
+                    field("WEP with military"; "WEP with military")
+                    {
+                        ApplicationArea
+                        = all;
+                    }
                     field("Work Experience Percentage"; Rec."Work Experience Percentage")
                     {
                         ApplicationArea = all;

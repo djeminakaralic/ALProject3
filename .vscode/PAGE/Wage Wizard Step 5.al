@@ -71,18 +71,26 @@ page 50028 "Wage Wizard Step 5"
                         CurrPage.UPDATE;
                     end;
                 }
+
+
+            }
+            group(WA)
+            {
+                Caption = 'Privremeni obračun plate';
                 part("Wage Calculation Temp Subform"; "Wage Calculation Temp Subform")
                 {
                     SubPageLink = "Wage Header No." = FIELD("No.");
                     SubPageView = WHERE(MasterLine = CONST(false));
                     Visible = wage;
                 }
+
                 part("Wage Addition Calculated"; "Wage Addition Calculated")
                 {
                     SubPageLink = "Wage Header No." = FIELD("No."),
                                    "Closing Date" = field("Closing Date");
                     Visible = Additions;
                 }
+
             }
             group(Parameters)
             {

@@ -194,7 +194,15 @@ tableextension 51921 MyExtension extends "Employee Absence"
         {
             Caption = 'Add Hours';
             FieldClass = FlowField;
-            CalcFormula = lookup("Cause of Absence"."Add Hours" where(Code = field("Cause of Absence Code")));
+            CalcFormula = lookup("Cause of Absence"."Added To Hour Pool" where(Code = field("Cause of Absence Code")));
+        }
+
+        //UnPaid Days
+        field(50152; "Unpaid"; Boolean)
+        {
+            Caption = 'Neplaćeno';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cause of Absence"."Unpaid days" where(Code = field("Cause of Absence Code")));
         }
 
 

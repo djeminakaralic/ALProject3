@@ -67,8 +67,16 @@ report 50062 "Delete Calculation"
 
                 WA.SETRANGE("Wage Header No.", WageHeader."No.");
                 WA.SETRANGE("Wage Header Entry No.", WageHeader."Entry No.");
-                IF WA.FINDFIRST THEN
-                    WA.DELETEALL;
+
+                IF WA.FindSet() then
+                    repeat
+                        WaSetup.Get();
+                        if WA."Wage Addition Type" = WaSetup."Meal Code FBIH" then
+                            WA.Delete();
+                        if WA."Wage Addition Type" = WaSetup."Meal Code FBiH Taxable" then
+                            WA.Delete();
+
+                    until WA.Next() = 0;
                 CurrRecNo += 1;
                 WH.SETFILTER("No.", WageHeader."No.");
                 //WageHeader.SETRANGE("Entry No.",WageHeader."Entry No.");
@@ -175,6 +183,7 @@ report 50062 "Delete Calculation"
 
     var
         WageHeader: Record "Wage Header";
+        WaSetup: Record "Wage Setup";
         Txt003: Label 'Calculation was succesfully deleted';
         Txt001: Label 'This calculation is not closed';
         Err01: Label 'You have to choose only one calculation!';

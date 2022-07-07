@@ -562,6 +562,42 @@ pageextension 50149 EmployeeList extends "Employee List"
 
             }
 
+            action("Check All For Military Work Experience")
+            {
+                Caption = 'Check All For Military Work Experience';
+
+                Image = Ledger;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    Rec.FINDFIRST;
+                    BEGIN
+                        filter := Rec.GETFILTERS;
+                        IF Rec."WEP with military" = FALSE THEN BEGIN
+
+                            REPEAT
+                                Rec."WEP with military" := TRUE;
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+                        ELSE BEGIN
+                            REPEAT
+                                Rec."WEP with military" := FALSE;
+                                Rec.MODIFY;
+
+                            UNTIL Rec.NEXT = 0
+
+                        END;
+                    END;
+                    // Rec.FINDFIRST;
+                end;
+
+            }
+
 
             group(Izvještaji)
             {

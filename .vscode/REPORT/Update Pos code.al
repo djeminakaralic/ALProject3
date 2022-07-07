@@ -3,6 +3,8 @@ report 50108 "Update Pos Code"
     DefaultLayout = RDLC;
     RDLCLayout = './Update Pos Code.rdlc';
     Caption = 'Update ECL';
+    UsageCategory = Lists;
+    ApplicationArea = all;
 
     dataset
     {
@@ -25,20 +27,30 @@ report 50108 "Update Pos Code"
     }
 
     trigger OnPreReport()
+    var
+        Employee: Record Employee;
+        WB: Record "Work Booklet";
     begin
         //Code,Description,Department Code,Org. Structure
-        PositionMenuTemp.RESET;
-        IF PositionMenuTemp.FINDSET THEN
-            REPEAT
-                IF PositionMenuTemp1.GET(PositionMenuTemp.Code, PositionMenuTemp.Description, PositionMenuTemp."Department Code", PositionMenuTemp."Org. Structure") THEN BEGIN
-                    OrgShema.RESET;
-                    OrgShema.SETFILTER(Status, '%1', OrgShema.Status::Preparation);
-                    IF OrgShema.FINDFIRST THEN BEGIN
-                        PositionMenuTemp1.RENAME(PositionMenuTemp.Code, PositionMenuTemp.Description, PositionMenuTemp."Department Code", OrgShema.Code)
-                    END;
-                END;
+        Employee.Reset();
+        if Employee.FindSet() then
+            repeat
 
-            UNTIL PositionMenuTemp.NEXT = 0;
+                WB.Reset();
+                WB.SetFilter("Employee No.", '%1', Employee."No.");
+                WB.SetFilter("Current Company", '%1', true);
+                WB.SetCurrentKey("Starting Date");
+                WB.Ascending;
+                if WB.FindLast() then begin
+                    Employee."Employment Date" := WB."Starting Date";
+                    Employee.Modify();
+
+                end;
+
+
+            until Employee.Next() = 0;
+
+
     end;
 
     var

@@ -3101,6 +3101,10 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = lookup("Additional Education"."Vocation Description" where("Employee No." = FIELD("No."), Active = const(true)));
         }
+        field(50378; "WEP with military"; Boolean)
+        {
+            Caption = 'Vojni staž se obračunava u minuli rad';
+        }
         /*field(503709; "Superior1 Last Name"; Text[250])
         {
             FieldClass = FlowField;
@@ -3301,6 +3305,9 @@ tableextension 50071 EmployeeExtension extends Employee
             //ĐK  "Bank No." := 'RBBH';
             "Tax Deduction" := TRUE;
             VALIDATE("Benefit Coefficient", 1);
+            "Calculate Wage Addition" := true;
+
+            "For Calculation" := true;
             "Send PayList" := TRUE;
         END;
         "Last Date Modified" := TODAY;

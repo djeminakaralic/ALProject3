@@ -219,7 +219,7 @@ table 50023 Reduction
         field(103; BankAccountCodeNo; Code[20])
         {
             Caption = 'Bank Account Code No.';
-            //ĐK    TableRelation = "Wage/Reduction Bank Accounts"."No." WHERE ("Bank Code"=FIELD(BankAccountCode));
+            TableRelation = "Wage/Reduction Bank Accounts"."No." WHERE("Bank Code" = FIELD(BankAccountCode));
 
             trigger OnValidate()
             var
