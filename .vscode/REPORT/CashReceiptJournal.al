@@ -82,6 +82,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
+        if "Journal Batch Name" = 'CZK1 UPL' then Validate(rec."Bal. Account No.", 'BANK-10');
         "Payment DT" := System.CurrentDateTime;
     end;
 
