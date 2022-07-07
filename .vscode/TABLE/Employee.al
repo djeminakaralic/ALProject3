@@ -11,7 +11,6 @@ tableextension 50071 EmployeeExtension extends Employee
             begin
                 //elmira
 
-
                 CLEAR(CheckInt);
 
                 IF "Phone No." <> '' THEN BEGIN
@@ -841,12 +840,10 @@ tableextension 50071 EmployeeExtension extends Employee
                 EmpAcc.RESET;
                 EmpAcc.SETFILTER("Bank Account Code", '%1', "Bank Account Code");
                 IF EmpAcc.FIND('-') THEN BEGIN
-                    IF "Employee with 2 JIB" = FALSE THEN BEGIN
-                        ERROR(Text015)
-                    END
-                    ELSE BEGIN
-                        "Bank Account No." := "Bank Account Code";
-                    END;
+
+
+                    "Bank Account No." := "Bank Account Code";
+
                 END
                 ELSE BEGIN
                     "Bank Account No." := "Bank Account Code";

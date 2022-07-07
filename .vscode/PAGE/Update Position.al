@@ -138,6 +138,7 @@ page 50050 "Update Position"
                 field("Position Coefficient for Wage"; "Position Coefficient for Wage")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
             }
         }
