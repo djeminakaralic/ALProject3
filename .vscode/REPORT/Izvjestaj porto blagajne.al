@@ -138,7 +138,8 @@ report 50085 "Izvještaj porto blagajne"
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
                 //GLEntry.SetFilter("Journal Batch Name", '%1', );
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
+
+                /*GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
                  
                 PaymentCounter := GLEntry.Count;
@@ -147,7 +148,9 @@ report 50085 "Izvještaj porto blagajne"
                 IF GLEntry.FindFirst() then
                     repeat
                         PaymentAmount += ABS(GLEntry.Amount);
-                    until GLEntry.Next() = 0;
+                    until GLEntry.Next() = 0;*/
+                
+                Message("Pronasao");
             end;
         }
     }

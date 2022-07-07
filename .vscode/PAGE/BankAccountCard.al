@@ -32,7 +32,6 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
-
                     IzvjestajPortoBlagajne.Run();
                 end;
             }
