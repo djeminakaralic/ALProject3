@@ -10,6 +10,7 @@ report 50085 "Izvještaj porto blagajne"
     {
         dataitem(DataItem21; "G/L Entry")
         {
+             
             /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
             {
             }

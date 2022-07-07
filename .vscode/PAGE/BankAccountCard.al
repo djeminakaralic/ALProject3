@@ -25,6 +25,8 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 PromotedIsBig = true;
                 RunObject = Report "Izvještaj porto blagajne";
 
+                
+
                 trigger OnAction()
                 begin
                     GLEntry.Reset();
