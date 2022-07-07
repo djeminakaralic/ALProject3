@@ -18,6 +18,9 @@ report 50085 "Izvještaj porto blagajne"
             column(Datee; Datee)
             {
             }
+            column(BankAccCardInt; BankAccCardInt)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin

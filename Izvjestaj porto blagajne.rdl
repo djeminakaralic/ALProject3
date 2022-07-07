@@ -704,6 +704,9 @@ End Function
         <Field Name="Datee">
           <DataField>Datee</DataField>
         </Field>
+        <Field Name="BankAccCardInt">
+          <DataField>BankAccCardInt</DataField>
+        </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>
         </Field>
