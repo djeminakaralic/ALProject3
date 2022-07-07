@@ -8,7 +8,7 @@ report 50085 "Izvještaj porto blagajne"
 
     dataset
     {
-        dataitem(DataItem21; "Company Information")
+        dataitem(DataItem21; "G/L Entry")
         {
 
             /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
@@ -26,58 +26,58 @@ report 50085 "Izvještaj porto blagajne"
             column(PM; DataItem21."Payment Method Code") 
             {
             }*/
-            column(Adress_CompanyInfo; DataItem21.Address)
+            column(Adress_CompanyInfo; CompanyInformation.Address)
             {
             }
-            column(City_CompanyInfo; DataItem21.City)
+            column(City_CompanyInfo; CompanyInformation.City)
             {
             }
-            column(Name; DataItem21.Name)
+            column(Name; CompanyInformation.Name)
             {
             }
-            column(Phone1_CompanyInfo; DataItem21."Phone No.")
+            column(Phone1_CompanyInfo; CompanyInformation."Phone No.")
             {
             }
-            column(Phone2_CompanyInfo; DataItem21."Phone No. 2")
+            column(Phone2_CompanyInfo; CompanyInformation."Phone No. 2")
             {
             }
-            column(Fax_CompanyInfo; DataItem21."Fax No.")
+            column(Fax_CompanyInfo; CompanyInformation."Fax No.")
             {
             }
-            column(Email_CompanyInfo; DataItem21."E-Mail")
+            column(Email_CompanyInfo; CompanyInformation."E-Mail")
             {
             }
-            column(RegistrationNo_CompanyInfo; DataItem21."Registration No.")
+            column(RegistrationNo_CompanyInfo; CompanyInformation."Registration No.")
             {
             }
-            column(Postcode_CompanyInfo; DataItem21."Post Code")
+            column(Postcode_CompanyInfo; CompanyInformation."Post Code")
             {
             }
-            column(VATRegistrationNo_CompanyInfo; DataItem21."VAT Registration No.")
+            column(VATRegistrationNo_CompanyInfo; CompanyInformation."VAT Registration No.")
             {
             }
-            column(GiroNo_CompanyInfo; DataItem21."Giro No.")
+            column(GiroNo_CompanyInfo; CompanyInformation."Giro No.")
             {
             }
-            column(Picture_CompanyInfo; DataItem21.Picture)
+            column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
             }
             column(User; USERID)
             {
             }
-            column(IndustrialClassification_CompanyInfo; DataItem21."Industrial Classification")
+            column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
             {
             }
-            column(MBS; DataItem21.MBS)
+            column(MBS; CompanyInformation.MBS)
             {
             }
-            column(MunicipalityName; DataItem21."Municipality Name")
+            column(MunicipalityName; CompanyInformation."Municipality Name")
             {
             }
-            column(Registration_CompanyInfo; DataItem21."Registration Text")
+            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
             {
             }
-            column(Tax_CompanyInfo; DataItem21."Tax No.")
+            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
             column(Datee; Datee)
