@@ -18908,6 +18908,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Employee Coefficient - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 3130805794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Disability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Employee Disability - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1022113639 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19807,6 +19812,11 @@
           <source>Employee Coefficient</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Employee Coefficient - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 779094299 - Field 3130805794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Disability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Employee Disability - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 779094299 - Field 1480804031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employee Name</source>
@@ -26408,6 +26418,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Summary - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1091715438 - Action 3130805794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Disability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Employee Disability - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1091715438 - Action 2899127012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26442,6 +26457,11 @@
           <source>Summary per Payment Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Summary per Payment Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1091715438 - Action 252828465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Summary per years</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Payroll Role Center - Action Summary per years - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3552574208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payrollgreeting</source>
@@ -34662,6 +34682,21 @@
           <source>Summary per Payment Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Summary per Payment Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 252828465 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Summary per years</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Summary per years - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 252828465 - Control 1685487728 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Date From</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Summary per years - Control Report Date From - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 252828465 - Control 260140987 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Date To</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Summary per years - Control ReportDateTo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1897769306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Svi radnici</source>

@@ -21,25 +21,19 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 Caption = 'Izvještaj porto blagajne';
                 Image = Journal;
                 Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+                /*PromotedCategory = Process;
+                PromotedIsBig = true;*/
+                ApplicationArea = all;
 
-                /*Vacation.Reset();
-                    Vacation.SetFilter("Employee No.", Rec."No.");
+                //RunObject = Report "Izvještaj porto blagajne";
 
-                    VacationDecisionR.SETTABLEVIEW(Vacation);
-                    VacationDecisionR.RUN;*/
-
-                RunObject = Report "Izvještaj porto blagajne";
-
-                /*trigger OnAction()
+                trigger OnAction()
                 begin
                     GLEntry.Reset();
-                    GLEntry.SetFilter("Bal. Account No.", '%1', "No.");
-                    Report.RunModal(50085, true, true, GLEntry);
-                    //IzvjestajPortoBlagajne.settableview(GLEntry);
-                    //IzvjestajPortoBlagajne.run;
-                end;*/
+                    GLEntry.SetFilter("Bal. Account No.", Rec."No.");
+                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.Run();
+                end;
             }
 
             action("Cash Diary")

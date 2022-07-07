@@ -8,9 +8,9 @@ report 50085 "Izvještaj porto blagajne"
 
     dataset
     {
-        dataitem(DataItem21; "G/L Entry")
+        dataitem(DataItem21; "Company Information")
         {
-             
+
             /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
             {
             }
@@ -26,58 +26,58 @@ report 50085 "Izvještaj porto blagajne"
             column(PM; DataItem21."Payment Method Code") 
             {
             }*/
-            column(Adress_CompanyInfo; CompanyInformation.Address)
+            column(Adress_CompanyInfo; DataItem21.Address)
             {
             }
-            column(City_CompanyInfo; CompanyInformation.City)
+            column(City_CompanyInfo; DataItem21.City)
             {
             }
-            column(Name; CompanyInformation.Name)
+            column(Name; DataItem21.Name)
             {
             }
-            column(Phone1_CompanyInfo; CompanyInformation."Phone No.")
+            column(Phone1_CompanyInfo; DataItem21."Phone No.")
             {
             }
-            column(Phone2_CompanyInfo; CompanyInformation."Phone No. 2")
+            column(Phone2_CompanyInfo; DataItem21."Phone No. 2")
             {
             }
-            column(Fax_CompanyInfo; CompanyInformation."Fax No.")
+            column(Fax_CompanyInfo; DataItem21."Fax No.")
             {
             }
-            column(Email_CompanyInfo; CompanyInformation."E-Mail")
+            column(Email_CompanyInfo; DataItem21."E-Mail")
             {
             }
-            column(RegistrationNo_CompanyInfo; CompanyInformation."Registration No.")
+            column(RegistrationNo_CompanyInfo; DataItem21."Registration No.")
             {
             }
-            column(Postcode_CompanyInfo; CompanyInformation."Post Code")
+            column(Postcode_CompanyInfo; DataItem21."Post Code")
             {
             }
-            column(VATRegistrationNo_CompanyInfo; CompanyInformation."VAT Registration No.")
+            column(VATRegistrationNo_CompanyInfo; DataItem21."VAT Registration No.")
             {
             }
-            column(GiroNo_CompanyInfo; CompanyInformation."Giro No.")
+            column(GiroNo_CompanyInfo; DataItem21."Giro No.")
             {
             }
-            column(Picture_CompanyInfo; CompanyInformation.Picture)
+            column(Picture_CompanyInfo; DataItem21.Picture)
             {
             }
             column(User; USERID)
             {
             }
-            column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
+            column(IndustrialClassification_CompanyInfo; DataItem21."Industrial Classification")
             {
             }
-            column(MBS; CompanyInformation.MBS)
+            column(MBS; DataItem21.MBS)
             {
             }
-            column(MunicipalityName; CompanyInformation."Municipality Name")
+            column(MunicipalityName; DataItem21."Municipality Name")
             {
             }
-            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
+            column(Registration_CompanyInfo; DataItem21."Registration Text")
             {
             }
-            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
+            column(Tax_CompanyInfo; DataItem21."Tax No.")
             {
             }
             column(Datee; Datee)
@@ -133,12 +133,16 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnAfterGetRecord()
             begin
-                
+                if GLEntry.FindFirst() then begin
+                    //PostingDatefilter := GETFILTER(GLEntry."Bal. Account No.");
+                    Message(Format(GLEntry."Bal. Account No."));
+                end;
                 //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
                 //GLEntry.SetFilter("Journal Batch Name", '%1', );
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
+
+                /*GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
                  
                 PaymentCounter := GLEntry.Count;
@@ -147,7 +151,14 @@ report 50085 "Izvještaj porto blagajne"
                 IF GLEntry.FindFirst() then
                     repeat
                         PaymentAmount += ABS(GLEntry.Amount);
-                    until GLEntry.Next() = 0;
+                    until GLEntry.Next() = 0;*/
+
+
+            end;
+
+            trigger OnPreDataItem()
+            begin
+
             end;
         }
     }
@@ -185,7 +196,7 @@ report 50085 "Izvještaj porto blagajne"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
-        PostingDatefilter: Code[10];
+        PostingDatefilter: Text[100];
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         Cont: Record Contact;
