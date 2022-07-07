@@ -17,9 +17,9 @@
         <ReportItems>
           <Line Name="Line1">
             <Top>3.38349cm</Top>
-            <Left>0.54462cm</Left>
+            <Left>0.46611cm</Left>
             <Height>0cm</Height>
-            <Width>18.32721cm</Width>
+            <Width>18.14115cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -35,7 +35,7 @@
             <Top>0.6544cm</Top>
             <Left>0.46611cm</Left>
             <Height>1.905cm</Height>
-            <Width>18.46393cm</Width>
+            <Width>18.14115cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -44,10 +44,10 @@
             </Style>
           </Image>
           <Line Name="Line7">
-            <Top>5.90142in</Top>
-            <Left>5.93593in</Left>
+            <Top>6.65489in</Top>
+            <Left>7.32569in</Left>
             <Height>0in</Height>
-            <Width>1.51684in</Width>
+            <Width>-1.46259in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -59,16 +59,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.39829cm</Width>
+                  <Width>2.33215cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>7.16444cm</Width>
+                  <Width>7.0983cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.66355cm</Width>
+                  <Width>5.59741cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.17943cm</Width>
+                  <Width>3.11329cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -86,7 +86,7 @@
                                 <TextRun>
                                   <Value>R. B.</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -129,7 +129,7 @@
                                 <TextRun>
                                   <Value>Datum i mjesto uplate</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -172,7 +172,7 @@
                                 <TextRun>
                                   <Value>Broj računa za utrošeni gas</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -215,7 +215,7 @@
                                 <TextRun>
                                   <Value>Iznos KM</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -258,7 +258,7 @@
                                 <TextRun>
                                   <Value>=Count(Fields!LineNo.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -301,7 +301,7 @@
                                 <TextRun>
                                   <Value>=FORMAT(Fields!PaymentDT.Value, "dd.MM.yyyy HH:mm") &amp; " " &amp; Fields!BatchName.Value &amp; " " &amp; Fields!DocumentNo.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                     <Format>g</Format>
                                   </Style>
                                 </TextRun>
@@ -344,7 +344,7 @@
                                 <TextRun>
                                   <Value>=Fields!AppliesToDocNo.Value</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -387,7 +387,7 @@
                                 <TextRun>
                                   <Value>="= " &amp; FormatNumber(ABS(Fields!Amound.Value), 2)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>11pt</FontSize>
                                     <Format>n2</Format>
                                   </Style>
                                 </TextRun>
@@ -600,7 +600,7 @@
             <Top>11.29714cm</Top>
             <Left>0.46611cm</Left>
             <Height>1.8cm</Height>
-            <Width>18.40571cm</Width>
+            <Width>18.14115cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -637,7 +637,7 @@
                   <TextRun>
                     <Value>Potpis</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -647,8 +647,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>15.02488cm</Top>
-            <Left>15.07726cm</Left>
+            <Top>16.9387cm</Top>
+            <Left>14.79085cm</Left>
             <Height>0.6cm</Height>
             <Width>3.79457cm</Width>
             <ZIndex>4</ZIndex>
@@ -959,7 +959,7 @@
                   <TextRun>
                     <Value>=First(Fields!PaymentMethod.Value, "DataSet_Result") &amp; " = " &amp; FormatNumber(ABS(SUM(Fields!Amound.Value)), 2)</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -970,9 +970,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>13.27353cm</Top>
-            <Left>13.88706cm</Left>
+            <Left>14.79085cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.98477cm</Width>
+            <Width>3.8164cm</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -1008,7 +1008,7 @@
                   <TextRun>
                     <Value>Ukupno KM:</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1017,9 +1017,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox16</rd:DefaultName>
             <Top>13.27353cm</Top>
-            <Left>11.7561cm</Left>
+            <Left>12.50114cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.13096cm</Width>
+            <Width>2.28971cm</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -1088,10 +1088,10 @@
             <Value>Screenshot_12</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
-            <Top>0.91899cm</Top>
-            <Left>14.51706cm</Left>
+            <Top>0.91898cm</Top>
+            <Left>13.44802cm</Left>
             <Height>1.64042cm</Height>
-            <Width>4.35477cm</Width>
+            <Width>5.15923cm</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -1158,7 +1158,7 @@
                   <TextRun>
                     <Value>UPLATA PO RAČUNU ZA UTROŠENI PRIRODNI GAS:</Value>
                     <Style>
-                      <FontSize>12pt</FontSize>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1198,10 +1198,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>22.85871cm</Top>
-            <Left>0.5799cm</Left>
+            <Top>22.91351cm</Top>
+            <Left>0.46611cm</Left>
             <Height>0.51181cm</Height>
-            <Width>18.29193cm</Width>
+            <Width>18.14114cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -1217,10 +1217,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.65201cm</Width>
+                  <Width>2.69663cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.19997cm</Width>
+                  <Width>5.3058cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1317,10 +1317,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>23.56083cm</Top>
-            <Left>0.5799cm</Left>
+            <Top>23.56643cm</Top>
+            <Left>0.47205cm</Left>
             <Height>0.41178cm</Height>
-            <Width>7.85198cm</Width>
+            <Width>8.00243cm</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -1332,10 +1332,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.88845cm</Width>
+                  <Width>2.78059cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.24517cm</Width>
+                  <Width>3.44361cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1432,10 +1432,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>23.56083cm</Top>
-            <Left>8.27761cm</Left>
+            <Top>23.56643cm</Top>
+            <Left>8.22672cm</Left>
             <Height>0.41178cm</Height>
-            <Width>6.13362cm</Width>
+            <Width>6.2242cm</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -1447,10 +1447,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.78789cm</Width>
+                  <Width>2.67901cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.67272cm</Width>
+                  <Width>1.76124cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1673,10 +1673,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>23.56083cm</Top>
-            <Left>14.41123cm</Left>
+            <Top>23.56643cm</Top>
+            <Left>14.14517cm</Left>
             <Height>1.59489cm</Height>
-            <Width>4.46061cm</Width>
+            <Width>4.44025cm</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -1700,10 +1700,10 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>2.80141cm</Top>
-            <Left>1.85538cm</Left>
+            <Top>2.76613cm</Top>
+            <Left>0.46611cm</Left>
             <Height>0.58208cm</Height>
-            <Width>16.59926cm</Width>
+            <Width>18.14114cm</Width>
             <ZIndex>24</ZIndex>
             <Style>
               <Border>
@@ -1730,10 +1730,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
-            <Top>15.89126cm</Top>
-            <Left>0.54462cm</Left>
-            <Height>6.68711cm</Height>
-            <Width>18.32721cm</Width>
+            <Top>17.84918cm</Top>
+            <Left>0.46611cm</Left>
+            <Height>4.88794cm</Height>
+            <Width>18.11931cm</Width>
             <ZIndex>25</ZIndex>
             <Style>
               <Border>
@@ -1745,7 +1745,7 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox28">
+          <Textbox Name="Textbox20">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -1759,11 +1759,11 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox28</rd:DefaultName>
-            <Top>23.54691cm</Top>
-            <Left>0.5217cm</Left>
-            <Height>1.88593cm</Height>
-            <Width>18.35012cm</Width>
+            <rd:DefaultName>Textbox20</rd:DefaultName>
+            <Top>23.59766cm</Top>
+            <Left>0.47205cm</Left>
+            <Height>1.82824cm</Height>
+            <Width>18.13521cm</Width>
             <ZIndex>26</ZIndex>
             <Style>
               <Border>
@@ -1796,21 +1796,19 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>25.8427cm</Height>
+        <Height>25.73687cm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>21.1069cm</Width>
+      <Width>18.89827cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>1cm</LeftMargin>
         <RightMargin>1cm</RightMargin>
-        <TopMargin>1cm</TopMargin>
-        <BottomMargin>1cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>

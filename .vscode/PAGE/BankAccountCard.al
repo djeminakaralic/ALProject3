@@ -23,13 +23,23 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+
+                /*Vacation.Reset();
+                    Vacation.SetFilter("Employee No.", Rec."No.");
+
+                    VacationDecisionR.SETTABLEVIEW(Vacation);
+                    VacationDecisionR.RUN;*/
+
                 RunObject = Report "Izvještaj porto blagajne";
 
-                trigger OnAction()
+                /*trigger OnAction()
                 begin
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", '%1', "No.");
-                end;
+                    Report.RunModal(50085, true, true, GLEntry);
+                    //IzvjestajPortoBlagajne.settableview(GLEntry);
+                    //IzvjestajPortoBlagajne.run;
+                end;*/
             }
 
             action("Cash Diary")
@@ -55,8 +65,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
     }
 
-
-
     var
         GLEntry: Record "G/L Entry";
+        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
 }
