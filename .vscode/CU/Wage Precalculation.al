@@ -640,6 +640,7 @@ codeunit 50001 "Wage Precalculation"
                         EndDate := AbsenceFill.GetMonthRange(WageHeader."Month Of Wage", WageHeader."Year Of Wage", FALSE);
 
                         WageCalcTemp."Employee No." := Employee."No.";
+                        WageCalcTemp."Employee Disability" := Employee."Disabled Person";
                         ECL.Reset();
                         ECL.SetFilter("Starting Date", '<=%1', EndDate);
                         ECL.SetFilter("Employee No.", '%1', Employee."No.");
