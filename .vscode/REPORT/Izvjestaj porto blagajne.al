@@ -112,6 +112,7 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnPreDataItem()
             begin
+                PostingDatefilter := GETFILTER("Bal. Account No.");
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
