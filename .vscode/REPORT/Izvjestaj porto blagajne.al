@@ -112,8 +112,7 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnPreDataItem()
             begin
-                PostingDatefilter := GETFILTER("Bal. Account No.");
-                Message(PostingDatefilter);
+                BankAccCardFilter := GETFILTER("Bal. Account No.");
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
@@ -138,22 +137,23 @@ report 50085 "Izvještaj porto blagajne"
                 /*if GLEntry.FindFirst() then begin
                     //PostingDatefilter := GETFILTER(GLEntry."Bal. Account No.");
                     Message(Format(GLEntry."Bal. Account No."));
-                end;
+                end;*/
+
                 //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
-                //GLEntry.SetFilter("Journal Batch Name", '%1', );
+                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
 
-                /*GLEntry.SetFilter("Posting Date", '%1', Datee);
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-                 
+
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
                 IF GLEntry.FindFirst() then
                     repeat
                         PaymentAmount += ABS(GLEntry.Amount);
-                    until GLEntry.Next() = 0;*/
+                    until GLEntry.Next() = 0;
 
 
             end;
@@ -198,7 +198,7 @@ report 50085 "Izvještaj porto blagajne"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
-        PostingDatefilter: Text[100];
+        BankAccCardFilter: Code[20];
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         Cont: Record Contact;
