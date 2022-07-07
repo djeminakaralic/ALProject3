@@ -21,13 +21,34 @@ pageextension 50148 "Test" extends "Document Attachment Details"
             {
                 ApplicationArea = all;
                 DrillDown = true;
+                trigger Onvalidate()
+                var
+                    myInt: Integer;
+                    FilePath: Text;
+                    InFileStream: InStream;
+                begin
+
+                    if Rec."File Name" <> 'Odaberite Datoteka ...' then begin
+                        DownloadFile();
+                    end
+                    else begin
+
+
+                        if UploadIntoStream('Select File..', '', '', FilePath, InFileStream) then
+                            UploadFile(InFileStream, FilePath);
+                    end;
+
+                end;
+
                 trigger OnDrillDown()
                 var
                     myInt: Integer;
                     FilePath: Text;
                     InFileStream: InStream;
                 begin
-                    if Rec."File Name" <> '' then begin
+
+
+                    if Rec."File Name" <> 'Odaberite Datoteka ...' then begin
                         DownloadFile();
                     end
                     else begin
