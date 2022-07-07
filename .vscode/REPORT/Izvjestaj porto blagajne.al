@@ -10,8 +10,6 @@ report 50085 "Izvještaj porto blagajne"
     {
         dataitem(DataItem21; "G/L Entry")
         {
-
-
             column(User; USERID)
             {
             }
@@ -21,33 +19,6 @@ report 50085 "Izvještaj porto blagajne"
             column(BankAccCardInt; BankAccCardInt)
             {
             }
-
-            trigger OnAfterGetRecord()
-            begin
-
-
-
-                //MESSAGE(Format(PostingDatefilter));
-                /*Cont.SETFILTER("No.",'%1',"Contact Link");
-                
-                IF Cont.FIND('-') THEN BEGIN
-                
-                ContName:=Cont.Name;
-                ContAddress:=Cont.Address;
-                ContCity:=Cont."Post Code"+', '+Cont.City;
-                END;     */
-
-                /*emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
-
-                IF emp.FIND('-') THEN BEGIN
-
-                    ContName := emp."First Name" + emp."Last Name";
-                    ContAddress := emp.Address;
-                    ContCity := emp."Post Code" + ', ' + emp.City;
-                END;*/
-
-
-            end;
 
             trigger OnPreDataItem()
             begin
