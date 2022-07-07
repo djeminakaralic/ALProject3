@@ -963,6 +963,7 @@ table 50021 "Wage Calculation Temp"
         {
             Caption = 'Wage Base';
         }
+
     }
 
     keys

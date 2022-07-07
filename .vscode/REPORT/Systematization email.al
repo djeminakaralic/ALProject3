@@ -18,7 +18,6 @@ report 50090 "Systematization e-mail"
                     OrgC := OrgF.Code;
                     DatumVazenjaSis := OrgF."Date From";
 
-                    //elmira test
                 END;
 
                 IF OrgF."Sent Mail Systematization" = FALSE THEN BEGIN
@@ -67,7 +66,7 @@ report 50090 "Systematization e-mail"
                             IF ECL1.FINDSET THEN
                                 REPEAT
 
-                                        CLEAR(TextMsg);
+                                    CLEAR(TextMsg);
                                     CLEAR(IStream);
                                     CLEAR(Mail);
 
@@ -197,106 +196,106 @@ report 50090 "Systematization e-mail"
                             ECL3.SETFILTER("Reason for Change", '%1|%2|%3|%4|%5|%6|%7|%8|%9|%10', 3, 7, 8, 9, 10, 12, 4, 11, 15, 16);
                             ECL3.SETFILTER("Org. Structure", '%1', OrgC);
                             IF ECL3.FINDSET THEN
-                                    REPEAT
+                                REPEAT
 
-                                        CLEAR(TextMsg);
-                                        CLEAR(IStream);
-                                        CLEAR(Mail);
-                                        OrgShemaActive.RESET;
-                                        OrgShemaActive.SETFILTER(Status, '%1', Status::Active);
-                                        IF OrgShemaActive.FINDFIRST THEN
-                                            ActiveOrg := OrgShemaActive.Code;
+                                    CLEAR(TextMsg);
+                                    CLEAR(IStream);
+                                    CLEAR(Mail);
+                                    OrgShemaActive.RESET;
+                                    OrgShemaActive.SETFILTER(Status, '%1', Status::Active);
+                                    IF OrgShemaActive.FINDFIRST THEN
+                                        ActiveOrg := OrgShemaActive.Code;
 
-                                        EMPCL1.SETFILTER("Employee No.", ECL3."Employee No.");
-                                        EMPCL1.SETFILTER("Org. Structure", '%1', ActiveOrg);
-                                        //EMPCL1.SETFILTER("Starting Date",'<=%1',WORKDATE);
-                                        EMPCL1.SETFILTER(Active, '%1', TRUE);
-                                        EMPCL1.SETCURRENTKEY("Starting Date");
-                                        EMPCL1.ASCENDING;
-                                        IF EMPCL1.FINDFIRST THEN BEGIN
+                                    EMPCL1.SETFILTER("Employee No.", ECL3."Employee No.");
+                                    EMPCL1.SETFILTER("Org. Structure", '%1', ActiveOrg);
+                                    //EMPCL1.SETFILTER("Starting Date",'<=%1',WORKDATE);
+                                    EMPCL1.SETFILTER(Active, '%1', TRUE);
+                                    EMPCL1.SETCURRENTKEY("Starting Date");
+                                    EMPCL1.ASCENDING;
+                                    IF EMPCL1.FINDFIRST THEN BEGIN
 
 
-                                            /* IF EMPCL1."No."=ECL3."No." THEN BEGIN
-                                             EMPCL1.NEXT(-1);
-                                             Found:=TRUE;*/
-                                            IF EMPCL1."Team Description" <> '' THEN BEGIN
-                                                OrgUnit := EMPCL1."Sector Description" + '/' + EMPCL1."Department Cat. Description" + '/' + EMPCL1."Group Description" + '/' + EMPCL1."Team Description";
-                                            END;
-                                            IF (EMPCL1."Group Description" <> '') AND (EMPCL1."Team Description" = '') THEN BEGIN
-
-                                                OrgUnit := EMPCL1."Sector Description" + '/' + EMPCL1."Department Cat. Description" + '/' + EMPCL1."Group Description";
-                                            END;
-                                            IF (EMPCL1."Group Description" = '') AND (EMPCL1."Team Description" = '') AND (EMPCL1."Department Cat. Description" <> '') THEN BEGIN
-                                                OrgUnit := EMPCL1."Sector Description" + '/' + EMPCL1."Department Cat. Description";
-                                            END;
-                                            IF (EMPCL1."Group Description" = '') AND (EMPCL1."Team Description" = '') AND (EMPCL1."Department Cat. Description" = '') AND (EMPCL1."Sector Description" <> '') THEN BEGIN
-                                                OrgUnit := EMPCL1."Sector Description";
-                                            END;
-                                            EMPCL1.CALCFIELDS("Manager 1 First Name", "Manager 1 Last Name");
-                                            EMPCL1.CALCFIELDS("Manager 2 First Name", "Manager 2 Last Name");
-                                            ManagerFull := EMPCL1."Manager 1 First Name" + ' ' + EMPCL1."Manager 1 Last Name";
-                                            IF EMPCL1."Manager 1 First Name" = '' THEN
-                                                ManagerFull := EMPCL1."Manager 2 First Name" + ' ' + EMPCL1."Manager 2 Last Name";
-                                            EndingDateOFPosition := EMPCL1."Ending Date";
-                                            EMPCL1.CALCFIELDS("Residence/Network");
-                                            Reg := FORMAT(EMPCL1."Regionalni Head Office");
-
+                                        /* IF EMPCL1."No."=ECL3."No." THEN BEGIN
+                                         EMPCL1.NEXT(-1);
+                                         Found:=TRUE;*/
+                                        IF EMPCL1."Team Description" <> '' THEN BEGIN
+                                            OrgUnit := EMPCL1."Sector Description" + '/' + EMPCL1."Department Cat. Description" + '/' + EMPCL1."Group Description" + '/' + EMPCL1."Team Description";
                                         END;
-                                        //  UNTIL (Found=TRUE) OR (EMPCL1.NEXT = 0);
+                                        IF (EMPCL1."Group Description" <> '') AND (EMPCL1."Team Description" = '') THEN BEGIN
 
-
+                                            OrgUnit := EMPCL1."Sector Description" + '/' + EMPCL1."Department Cat. Description" + '/' + EMPCL1."Group Description";
+                                        END;
+                                        IF (EMPCL1."Group Description" = '') AND (EMPCL1."Team Description" = '') AND (EMPCL1."Department Cat. Description" <> '') THEN BEGIN
+                                            OrgUnit := EMPCL1."Sector Description" + '/' + EMPCL1."Department Cat. Description";
+                                        END;
+                                        IF (EMPCL1."Group Description" = '') AND (EMPCL1."Team Description" = '') AND (EMPCL1."Department Cat. Description" = '') AND (EMPCL1."Sector Description" <> '') THEN BEGIN
+                                            OrgUnit := EMPCL1."Sector Description";
+                                        END;
+                                        EMPCL1.CALCFIELDS("Manager 1 First Name", "Manager 1 Last Name");
+                                        EMPCL1.CALCFIELDS("Manager 2 First Name", "Manager 2 Last Name");
+                                        ManagerFull := EMPCL1."Manager 1 First Name" + ' ' + EMPCL1."Manager 1 Last Name";
+                                        IF EMPCL1."Manager 1 First Name" = '' THEN
+                                            ManagerFull := EMPCL1."Manager 2 First Name" + ' ' + EMPCL1."Manager 2 Last Name";
+                                        EndingDateOFPosition := EMPCL1."Ending Date";
                                         EMPCL1.CALCFIELDS("Residence/Network");
-                                        "PositionPlace¸2" := EMPCL1."Position Description";
+                                        Reg := FORMAT(EMPCL1."Regionalni Head Office");
 
-                                        Emp.SETFILTER("No.", '%1', EMPCL1."Employee No.");
-                                        IF Emp.FINDFIRST THEN BEGIN
-                                            //  Emp.CALCFIELDS("Role Code");
-                                            //Emp.CALCFIELDS("Role Name");
+                                    END;
+                                    //  UNTIL (Found=TRUE) OR (EMPCL1.NEXT = 0);
 
 
+                                    EMPCL1.CALCFIELDS("Residence/Network");
+                                    "PositionPlace¸2" := EMPCL1."Position Description";
+
+                                    Emp.SETFILTER("No.", '%1', EMPCL1."Employee No.");
+                                    IF Emp.FINDFIRST THEN BEGIN
+                                        //  Emp.CALCFIELDS("Role Code");
+                                        //Emp.CALCFIELDS("Role Name");
+
+
+                                    END;
+                                    IF EMPCL1."Org Unit Name" <> '' THEN
+                                        MjestoRada := EMPCL1."Org Unit Name";
+                                    IF EMPCL1."GF of work Description" <> '' THEN
+                                        MjestoRada := EMPCL1."GF of work Description";
+
+                                    OrgShemaActive.RESET;
+                                    OrgShemaActive.SETFILTER(Status, '%1', OrgShemaActive.Status::Active);
+                                    IF OrgShemaActive.FINDFIRST THEN BEGIN
+                                        PositionMenuOrginal.RESET;
+                                        PositionMenuOrginal.SETFILTER(Code, '%1', EMPCL1."Position Code");
+                                        PositionMenuOrginal.SETFILTER(Description, '%1', EMPCL1."Position Description");
+                                        PositionMenuOrginal.SETFILTER("Org. Structure", '%1', OrgShemaActive.Code);
+                                        IF PositionMenuOrginal.FINDFIRST THEN BEGIN
+                                            RoleCode := PositionMenuOrginal.Role;
+                                            RoleName := PositionMenuOrginal."Role Name";
+                                        END
+                                        ELSE BEGIN
+                                            RoleCode := '';
+                                            RoleName := '';
                                         END;
-                                        IF EMPCL1."Org Unit Name" <> '' THEN
-                                            MjestoRada := EMPCL1."Org Unit Name";
-                                        IF EMPCL1."GF of work Description" <> '' THEN
-                                            MjestoRada := EMPCL1."GF of work Description";
+                                    END;
+                                    EmailBodyText1 += '<tr>';
+                                    EmailBodyText1 += STRSUBSTNO('<td style="border-left:solid 0px black;" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
+                                    EmailBodyText1 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', Emp."First Name" + ' ' + Emp."Last Name");
+                                    EmailBodyText1 += STRSUBSTNO('<td  width="200" style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', Emp."Employee ID");
+                                    EmailBodyText1 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', OrgUnit + '/' + "PositionPlace¸2");
+                                    EmailBodyText1 += STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', FORMAT(EndingDateOFPosition, 0, '<Day,2>.<Month,2>.<Year4>.'));
+                                    EmailBodyText1 += STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', MjestoRada + '/' + EMPCL1."Phisical Department Desc");
+                                    EmailBodyText1 += STRSUBSTNO('<td style="border-bottom:solid 1px black ;width:250px" ><span style="font-size: 10.0pt;">%1</td>', RoleCode + '-' + RoleName);
+                                    EmailBodyText1 += STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', ManagerFull);
+                                    EmailBodyText1 += '</tr>';
 
-                                        OrgShemaActive.RESET;
-                                        OrgShemaActive.SETFILTER(Status, '%1', OrgShemaActive.Status::Active);
-                                        IF OrgShemaActive.FINDFIRST THEN BEGIN
-                                            PositionMenuOrginal.RESET;
-                                            PositionMenuOrginal.SETFILTER(Code, '%1', EMPCL1."Position Code");
-                                            PositionMenuOrginal.SETFILTER(Description, '%1', EMPCL1."Position Description");
-                                            PositionMenuOrginal.SETFILTER("Org. Structure", '%1', OrgShemaActive.Code);
-                                            IF PositionMenuOrginal.FINDFIRST THEN BEGIN
-                                                RoleCode := PositionMenuOrginal.Role;
-                                                RoleName := PositionMenuOrginal."Role Name";
-                                            END
-                                            ELSE BEGIN
-                                                RoleCode := '';
-                                                RoleName := '';
-                                            END;
-                                        END;
-                                        EmailBodyText1 += '<tr>';
-                                        EmailBodyText1 += STRSUBSTNO('<td style="border-left:solid 0px black;" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-                                        EmailBodyText1 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', Emp."First Name" + ' ' + Emp."Last Name");
-                                        EmailBodyText1 += STRSUBSTNO('<td  width="200" style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', Emp."Employee ID");
-                                        EmailBodyText1 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', OrgUnit + '/' + "PositionPlace¸2");
-                                        EmailBodyText1 += STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', FORMAT(EndingDateOFPosition, 0, '<Day,2>.<Month,2>.<Year4>.'));
-                                        EmailBodyText1 += STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', MjestoRada + '/' + EMPCL1."Phisical Department Desc");
-                                        EmailBodyText1 += STRSUBSTNO('<td style="border-bottom:solid 1px black ;width:250px" ><span style="font-size: 10.0pt;">%1</td>', RoleCode + '-' + RoleName);
-                                        EmailBodyText1 += STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', ManagerFull);
-                                        EmailBodyText1 += '</tr>';
-
-                                        MailNo.RESET;
-                                        MailNo.SETFILTER("No.", '%1', ECL3."No.");
-                                        MailNo.SETFILTER("Employee No.", '%1', ECL3."Employee No.");
-                                        IF MailNo.FINDFIRST THEN BEGIN
-                                            MailNo."Sent Mail Duration" := TRUE;
-                                            MailNo.MODIFY;
-                                        END;
+                                    MailNo.RESET;
+                                    MailNo.SETFILTER("No.", '%1', ECL3."No.");
+                                    MailNo.SETFILTER("Employee No.", '%1', ECL3."Employee No.");
+                                    IF MailNo.FINDFIRST THEN BEGIN
+                                        MailNo."Sent Mail Duration" := TRUE;
+                                        MailNo.MODIFY;
+                                    END;
 
 
-                                    UNTIL ECL3.NEXT = 0;
+                                UNTIL ECL3.NEXT = 0;
                             EmailBodyText1 += '</table>';
                             HRSetup.GET;
                             Recipients.Add(HRSetup."E-mail Receiver");
@@ -342,87 +341,87 @@ report 50090 "Systematization e-mail"
                             ECL5.SETFILTER("Starting Date", '%1', DatumVazenjaSis);
                             ECL5.SETFILTER("Reason for Change", '%1|%2|%3|%4|%5|%6|%7|%8|%9|%10', 3, 7, 8, 9, 10, 12, 4, 11, 15, 16);
                             IF ECL5.FINDSET THEN
-                                    REPEAT
+                                REPEAT
 
-                                        CLEAR(TextMsg);
-                                        CLEAR(IStream);
-                                        CLEAR(Mail);
+                                    CLEAR(TextMsg);
+                                    CLEAR(IStream);
+                                    CLEAR(Mail);
 
-                                        IF ECL5."Team Description" <> '' THEN BEGIN
-                                            OrgUnit := ECL5."Sector Description" + '/' + ECL5."Department Cat. Description" + '/' + ECL5."Group Description" + '/' + ECL5."Team Description";
-                                        END;
-                                        IF (ECL5."Group Description" <> '') AND (ECL5."Team Description" = '') THEN BEGIN
-                                            OrgUnit := ECL5."Sector Description" + '/' + ECL5."Department Cat. Description" + '/' + ECL5."Group Description";
-                                        END;
-                                        IF (ECL5."Department Cat. Description" <> '') AND (ECL5."Group Description" = '') AND (ECL5."Team Description" = '') THEN BEGIN
-                                            OrgUnit := ECL5."Sector Description" + '/' + ECL5."Department Cat. Description";
-                                        END;
-                                        IF (ECL5."Sector Description" <> '') AND (ECL5."Department Cat. Description" = '') AND (ECL5."Group Description" = '') AND (ECL5."Team Description" = '') THEN BEGIN
-                                            OrgUnit := ECL5."Sector Description"
-                                        END;
-                                        IF (ECL5."Sector Description" = '') AND (ECL5."Department Cat. Description" = '') AND (ECL5."Group Description" = '') AND (ECL5."Team Description" = '') THEN BEGIN
-                                            OrgUnit := '';
-                                            WorkPlace := '';
-                                        END;
-                                        IF ECL5."Org Unit Name" <> '' THEN BEGIN
-                                            WorkPlace := ECL5."Org Unit Name";
-                                        END
-                                        ELSE BEGIN
-                                            WorkPlace := ECL5."GF of work Description";
-                                        END;
+                                    IF ECL5."Team Description" <> '' THEN BEGIN
+                                        OrgUnit := ECL5."Sector Description" + '/' + ECL5."Department Cat. Description" + '/' + ECL5."Group Description" + '/' + ECL5."Team Description";
+                                    END;
+                                    IF (ECL5."Group Description" <> '') AND (ECL5."Team Description" = '') THEN BEGIN
+                                        OrgUnit := ECL5."Sector Description" + '/' + ECL5."Department Cat. Description" + '/' + ECL5."Group Description";
+                                    END;
+                                    IF (ECL5."Department Cat. Description" <> '') AND (ECL5."Group Description" = '') AND (ECL5."Team Description" = '') THEN BEGIN
+                                        OrgUnit := ECL5."Sector Description" + '/' + ECL5."Department Cat. Description";
+                                    END;
+                                    IF (ECL5."Sector Description" <> '') AND (ECL5."Department Cat. Description" = '') AND (ECL5."Group Description" = '') AND (ECL5."Team Description" = '') THEN BEGIN
+                                        OrgUnit := ECL5."Sector Description"
+                                    END;
+                                    IF (ECL5."Sector Description" = '') AND (ECL5."Department Cat. Description" = '') AND (ECL5."Group Description" = '') AND (ECL5."Team Description" = '') THEN BEGIN
+                                        OrgUnit := '';
+                                        WorkPlace := '';
+                                    END;
+                                    IF ECL5."Org Unit Name" <> '' THEN BEGIN
+                                        WorkPlace := ECL5."Org Unit Name";
+                                    END
+                                    ELSE BEGIN
+                                        WorkPlace := ECL5."GF of work Description";
+                                    END;
 
-                                        IF ECL5."Org Unit Name" <> '' THEN
-                                            MjestoRada := ECL5."Org Unit Name";
-                                        IF ECL5."GF of work Description" <> '' THEN
-                                            MjestoRada := ECL5."GF of work Description";
+                                    IF ECL5."Org Unit Name" <> '' THEN
+                                        MjestoRada := ECL5."Org Unit Name";
+                                    IF ECL5."GF of work Description" <> '' THEN
+                                        MjestoRada := ECL5."GF of work Description";
 
-                                        StartingDate := ECL5."Starting Date";
-                                        ECL5.CALCFIELDS("Residence/Network");
-                                        ECL5.CALCFIELDS("Manager 1 First Name", "Manager 1 Last Name");
-                                        ECL5.CALCFIELDS("Manager 2 First Name", "Manager 2 Last Name");
-                                        ManagerFull := ECL5."Manager 1 First Name" + ' ' + ECL5."Manager 1 Last Name";
-                                        IF ECL5."Manager 1 First Name" = '' THEN
-                                            ManagerFull := ECL5."Manager 2 First Name" + ' ' + ECL5."Manager 2 Last Name";
-                                        Emp.SETFILTER("No.", '%1', ECL5."Employee No.");
+                                    StartingDate := ECL5."Starting Date";
+                                    ECL5.CALCFIELDS("Residence/Network");
+                                    ECL5.CALCFIELDS("Manager 1 First Name", "Manager 1 Last Name");
+                                    ECL5.CALCFIELDS("Manager 2 First Name", "Manager 2 Last Name");
+                                    ManagerFull := ECL5."Manager 1 First Name" + ' ' + ECL5."Manager 1 Last Name";
+                                    IF ECL5."Manager 1 First Name" = '' THEN
+                                        ManagerFull := ECL5."Manager 2 First Name" + ' ' + ECL5."Manager 2 Last Name";
+                                    Emp.SETFILTER("No.", '%1', ECL5."Employee No.");
 
-                                        IF Emp.FINDFIRST THEN BEGIN
+                                    IF Emp.FINDFIRST THEN BEGIN
 
-                                        END;
+                                    END;
 
-                                        PositionMenuOrginal.RESET;
-                                        PositionMenuOrginal.SETFILTER(Code, '%1', ECL5."Position Code");
-                                        PositionMenuOrginal.SETFILTER(Description, '%1', ECL5."Position Description");
-                                        PositionMenuOrginal.SETFILTER("Org. Structure", '%1', OrgF.Code);
-                                        IF PositionMenuOrginal.FINDFIRST THEN BEGIN
-                                            RoleCode := PositionMenuOrginal.Role;
-                                            RoleName := PositionMenuOrginal."Role Name";
-                                        END
-                                        ELSE BEGIN
+                                    PositionMenuOrginal.RESET;
+                                    PositionMenuOrginal.SETFILTER(Code, '%1', ECL5."Position Code");
+                                    PositionMenuOrginal.SETFILTER(Description, '%1', ECL5."Position Description");
+                                    PositionMenuOrginal.SETFILTER("Org. Structure", '%1', OrgF.Code);
+                                    IF PositionMenuOrginal.FINDFIRST THEN BEGIN
+                                        RoleCode := PositionMenuOrginal.Role;
+                                        RoleName := PositionMenuOrginal."Role Name";
+                                    END
+                                    ELSE BEGIN
 
-                                            RoleCode := '';
-                                            RoleName := '';
-                                        END;
+                                        RoleCode := '';
+                                        RoleName := '';
+                                    END;
 
-                                        //EmailBodyText2+= '<tr><span style="font-size: 10.0pt;">';
-                                        EmailBodyText2 += '<tr>';
-                                        EmailBodyText2 += STRSUBSTNO('<td style="border-left:solid 0px black;;width:250px" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
-                                        EmailBodyText2 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."First Name" + ' ' + Emp."Last Name");
-                                        EmailBodyText2 += STRSUBSTNO('<td  width="200" style="border-bottom:solid 1px black ;width:250px" ><span style="font-size: 10.0pt;">%1</td>', Emp."Employee ID");
-                                        EmailBodyText2 += STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', OrgUnit + '/' + ECL5."Position Description");
-                                        EmailBodyText2 += STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', FORMAT(StartingDate, 0, '<Day,2>.<Month,2>.<Year4>.'));
-                                        EmailBodyText2 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', MjestoRada + '/' + ECL5."Phisical Department Desc");
-                                        EmailBodyText2 += STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', RoleCode + '-' + RoleName);
-                                        EmailBodyText2 += STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', ManagerFull);
-                                        EmailBodyText2 += '</tr>';
-                                        MailNo.RESET;
-                                        MailNo.SETFILTER("No.", '%1', ECL5."No.");
-                                        MailNo.SETFILTER("Employee No.", '%1', ECL5."Employee No.");
-                                        IF MailNo.FINDFIRST THEN BEGIN
-                                            MailNo."Sent Mail Change Pos" := TRUE;
-                                            MailNo.MODIFY;
-                                        END;
+                                    //EmailBodyText2+= '<tr><span style="font-size: 10.0pt;">';
+                                    EmailBodyText2 += '<tr>';
+                                    EmailBodyText2 += STRSUBSTNO('<td style="border-left:solid 0px black;;width:250px" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."Internal ID");
+                                    EmailBodyText2 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black" ><span style="font-size: 10.0pt;">%1</td>', Emp."First Name" + ' ' + Emp."Last Name");
+                                    EmailBodyText2 += STRSUBSTNO('<td  width="200" style="border-bottom:solid 1px black ;width:250px" ><span style="font-size: 10.0pt;">%1</td>', Emp."Employee ID");
+                                    EmailBodyText2 += STRSUBSTNO('<td  width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', OrgUnit + '/' + ECL5."Position Description");
+                                    EmailBodyText2 += STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', FORMAT(StartingDate, 0, '<Day,2>.<Month,2>.<Year4>.'));
+                                    EmailBodyText2 += STRSUBSTNO('<td width="250" style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', MjestoRada + '/' + ECL5."Phisical Department Desc");
+                                    EmailBodyText2 += STRSUBSTNO('<td style="border-bottom:solid 1px black;width:250px" ><span style="font-size: 10.0pt;">%1</td>', RoleCode + '-' + RoleName);
+                                    EmailBodyText2 += STRSUBSTNO('<td style="border-bottom:solid 1px black"><span style="font-size: 10.0pt;">%1</td>', ManagerFull);
+                                    EmailBodyText2 += '</tr>';
+                                    MailNo.RESET;
+                                    MailNo.SETFILTER("No.", '%1', ECL5."No.");
+                                    MailNo.SETFILTER("Employee No.", '%1', ECL5."Employee No.");
+                                    IF MailNo.FINDFIRST THEN BEGIN
+                                        MailNo."Sent Mail Change Pos" := TRUE;
+                                        MailNo.MODIFY;
+                                    END;
 
-                                    UNTIL ECL5.NEXT = 0;
+                                UNTIL ECL5.NEXT = 0;
 
                             EmailBodyText2 += '</table>';
                             // SMTPMail.CreateMessage('HR test','test.hr@raiffeisengroup.ba','infodom.test@raiffeisengroup.ba','Obavijest o početku rada na novoj poziciji',EmailBodyText2,TRUE);

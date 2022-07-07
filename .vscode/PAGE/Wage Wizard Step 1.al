@@ -37,6 +37,8 @@ page 50020 "Wage Wizard Step 1"
 
 
                         trigger OnValidate()
+                        var
+                            EndDate: Date;
                         begin
                             IF (WHeader."Month Of Wage" <> "Month Of Wage") AND (WHeader."Month Of Wage" <> 0) THEN
                                 ERROR(Txt008, WHeader."No.", WageHeader."Entry No.", WHeader."Month Of Wage", WHeader."Year Of Wage");
@@ -124,6 +126,12 @@ page 50020 "Wage Wizard Step 1"
                          Rec.MODIFY;
                          Rec."Hour Pool":=AbsenceFill.GetHourPool("Month Of Wage","Year Of Wage",WageSetup."Hours in Day");
                          Rec.MODIFY;     */
+                            EndDate := AbsenceFill.GetMonthRange("Month Of Wage", "Year Of Wage", FALSE);
+                            "Closing Date" := EndDate;
+                            "Date Of Calculation" := EndDate;
+
+                            //ĐK
+
 
                         end;
                     }
@@ -311,6 +319,7 @@ page 50020 "Wage Wizard Step 1"
                 field("Brutto Sum"; "Brutto Sum")
                 {
                     Caption = 'Brutto Sum';
+                    Visible = false;
                 }
             }
         }
@@ -335,8 +344,46 @@ page 50020 "Wage Wizard Step 1"
                     EndingDate: Date;
                     AbsFill: Codeunit "Absence Fill";
                     Datum: Record Date;
+                    EU: Record Employee;
+                    WU: Record "Work Booklet";
+                    ECLU: Record "Employee Contract Ledger";
                 begin
                     IF Rec."Wage Calculation Type" = "Wage Calculation Type"::Normal THEN BEGIN
+                        EndingDate := AbsFill.GetMonthRange(Rec."Month Of Wage", Rec."Year Of Wage", false);
+                        EU.Reset();
+                        EU.SetFilter("For Calculation", '%1', true);
+                        if EU.FindSet() then
+                            repeat
+                                WU.Reset();
+                                WU.SetFilter("Employee No.", '%1', EU."No.");
+                                WU.SetFilter("Current Company", '%1', true);
+                                WU.SetFilter("Hours change", '%1', false);
+                                WU.SetFilter("Starting Date", '<=%1', EndingDate);
+                                WU.SetCurrentKey("Starting Date");
+                                WU.Ascending;
+                                if WU.FindLast() then begin
+                                    if WU."Starting Date" <> EU."Employment Date" then
+                                        EU."Employment Date" := WU."Starting Date";
+
+                                    ECLU.Reset();
+                                    ECLU.SetFilter("Employee No.", '%1', EU."No.");
+                                    ECLU.SetFilter("Starting Date", '<=%1', EndingDate);
+                                    ECLU.SetCurrentKey("Starting Date");
+                                    ECLU.Ascending;
+                                    if ECLU.FindLast() then begin
+                                        if ECLU."Grounds for Term. Description" <> '' then
+                                            EU."Termination Date" := ECLU."Ending Date"
+                                        else
+                                            EU."Termination Date" := 0D;
+                                        EU.Modify();
+                                    end;
+
+                                end;
+
+
+                            until EU.Next() = 0;
+
+
                         Commit();
                         R_BroughtExperience.RUN;
                         R_WorkExperience.SetEndingDate(Rec."Date Of Calculation");
@@ -363,6 +410,7 @@ page 50020 "Wage Wizard Step 1"
                                 EmployeeAbsence.SetFilter("Employee No.", '%1', EmployeeUpdateREd."No."); //trazim odsustvo za jednog zaposlenog
                                 EmployeeAbsence.SetFilter("From Date", '%1..%2', StartingDate, EndingDate); //filter na unesene datume u request page-u
                                 EmployeeAbsence.SetFilter("Add Hours", '%1', false);
+                                EmployeeAbsence.SetFilter(Unpaid, '%1', false);
                                 if NOT EmployeeAbsence.FindFirst() then begin //u tabeli nema nijednog odsustva za ovog zaposlenog
                                     WageSetup.Get();
                                     AbsenceFill.EmployeeAbsence(StartingDate, EndingDate, EmployeeUpdateREd, WageSetup."Workday Code", EmployeeUpdateREd."Hours In Day");
@@ -379,6 +427,7 @@ page 50020 "Wage Wizard Step 1"
                                         EmployeeAbsence.SetFilter("Employee No.", '%1', EmployeeUpdateREd."No.");
                                         EmployeeAbsence.SetFilter("From Date", '%1', Datum."Period Start"); //jedan dan
                                         EmployeeAbsence.SetFilter("Add Hours", '%1', false);
+                                        EmployeeAbsence.SetFilter(Unpaid, '%1', false);
                                         if NOT EmployeeAbsence.FindFirst() then begin //nije pronadjeno odustvo na ovaj dan
                                             WageSetup.Get();
                                             AbsenceFill.EmployeeAbsence(Datum."Period Start", Datum."Period Start", EmployeeUpdateREd, WageSetup."Workday Code", EmployeeUpdateREd."Hours In Day");

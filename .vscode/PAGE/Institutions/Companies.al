@@ -17,6 +17,7 @@ page 50072 "Institutions/Companies"
                 field("No."; "No.")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field(Description; Description)
                 {
@@ -90,7 +91,7 @@ page 50072 "Institutions/Companies"
 
     local procedure ShowTools()
     var
-      //  RtngTool: Record "Employee Certificates";
+    //  RtngTool: Record "Employee Certificates";
     begin
     end;
 
@@ -102,7 +103,7 @@ page 50072 "Institutions/Companies"
 
     local procedure ShowQualityMeasures()
     var
-      //  RtngQltyMeasure: Record "Confidential Clerks";
+    //  RtngQltyMeasure: Record "Confidential Clerks";
     begin
     end;
 }

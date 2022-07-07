@@ -95,30 +95,49 @@ table 50032 "Wage Addition"
             var
                 WAT: Record "Wage Addition Type";
             begin
-                WAT.GET("Wage Addition Type");
-                Description := WAT.Description;
-                //Amount := WAT."Default Amount";
-                IF WAT."Default Amount" <> 0 THEN
-                    VALIDATE(Amount, WAT."Default Amount");
-                VALIDATE(Taxable, WAT.Taxable);
-                VALIDATE(Use, WAT.Use);
-                VALIDATE(Regres, WAT.Regres);
-                VALIDATE(Incentive, WAT.Incentive);
-                VALIDATE(Meal, WAT.Meal);
-                VALIDATE("Calculate Deduction", WAT."Calculate Deduction");
-                VALIDATE("Use Apportionment Account", WAT."Use Apportionment Account");
-                VALIDATE("Calculated on Brutto", WAT."Calculated on Brutto");
+                if "Wage Addition Type" <> '' then begin
+                    WAT.GET("Wage Addition Type");
+                    Description := WAT.Description;
+                    //Amount := WAT."Default Amount";
+                    IF WAT."Default Amount" <> 0 THEN
+                        VALIDATE(Amount, WAT."Default Amount");
+                    VALIDATE(Taxable, WAT.Taxable);
+                    VALIDATE(Use, WAT.Use);
+                    VALIDATE(Regres, WAT.Regres);
+                    VALIDATE(Incentive, WAT.Incentive);
+                    VALIDATE(Meal, WAT.Meal);
+                    VALIDATE("Calculate Deduction", WAT."Calculate Deduction");
+                    VALIDATE("Use Apportionment Account", WAT."Use Apportionment Account");
+                    VALIDATE("Calculated on Brutto", WAT."Calculated on Brutto");
 
-                IF ((WAT."Calculated on Brutto") AND (WAT."Calculation Type" = 0)) THEN BEGIN
-                    WAmounts.SETFILTER("Employee No.", "Employee No.");
-                    IF WAmounts.FINDLAST THEN BEGIN
-                        ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
-                        IF ConCat.FINDSET THEN BEGIN
-                            ConCat.CALCFIELDS("From Brutto");
-                            VALIDATE(Amount, (WAmounts."Wage Amount" * (WAT."Default Amount" / 100)) * (1 - ConCat."From Brutto" / 100));
+                    IF ((WAT."Calculated on Brutto") AND (WAT."Calculation Type" = 0)) THEN BEGIN
+                        WAmounts.SETFILTER("Employee No.", "Employee No.");
+                        IF WAmounts.FINDLAST THEN BEGIN
+                            ConCat.SETFILTER(Code, '%1', Rec."Contribution Category Code");
+                            IF ConCat.FINDSET THEN BEGIN
+                                ConCat.CALCFIELDS("From Brutto");
+                                VALIDATE(Amount, (WAmounts."Wage Amount" * (WAT."Default Amount" / 100)) * (1 - ConCat."From Brutto" / 100));
+                            END;
                         END;
                     END;
-                END;
+                end
+                else begin
+                    Description := '';
+                    "Amount to Pay" := 0;
+                    Amount := 0;
+                    "Calculated on Brutto" := false;
+                    Taxable := false;
+                    Use := false;
+                    Regres := false;
+                    Incentive := false;
+                    Meal := false;
+                    "Calculate Deduction" := false;
+                    "Use Apportionment Account" := false;
+
+
+
+
+                end;
             end;
         }
         field(5; Amount; Decimal)

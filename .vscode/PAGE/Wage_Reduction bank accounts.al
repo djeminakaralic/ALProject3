@@ -17,6 +17,7 @@ page 50009 "Wage/Reduction bank accounts"
                 }
                 field("Account No"; "Account No")
                 {
+                    Visible = false;
                 }
                 field("Fax No."; "Fax No.")
                 {
@@ -24,6 +25,7 @@ page 50009 "Wage/Reduction bank accounts"
                 field("No."; "No.")
                 {
                     Editable = true;
+
                 }
                 field(n; n)
                 {

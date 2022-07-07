@@ -26,15 +26,6 @@ tableextension 50106 GLEntryExtends extends "G/L Entry"
             Caption = 'Vrsta uplate';
             NotBlank = true;
         }
-
-        field(50004; "Test Event"; Text[50]) //izbrisati
-        {
-            Caption = 'Elmira Test';
-            NotBlank = true;
-        }
-
-
-
     }
 
 

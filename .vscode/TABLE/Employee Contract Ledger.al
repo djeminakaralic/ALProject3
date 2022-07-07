@@ -1821,7 +1821,8 @@ table 50071 "Employee Contract Ledger"
                         DimensionValue.Name := Rec."Sector Description";
                         DimensionValue."Dimension Code" := 'TC';
                         DimensionValue."Global Dimension No." := 1;
-                        DimensionValue.Insert();
+                        if DimensionValue.Code <> '' then
+                            DimensionValue.Insert();
 
                     end
                     else begin
@@ -2391,8 +2392,8 @@ table 50071 "Employee Contract Ledger"
         field(32; "Way of Employment"; Option)
         {
             Caption = 'Way of Employment';
-            OptionCaption = ' ,Employment Office,Longer Redundancy,From Employment,Court Ruling,Dekra';
-            OptionMembers = " ","Employment Office","Longer Redundancy","From Employment","Court Ruling",Dekra;
+            OptionCaption = ' ,Employment Office,Longer Redundancy,From Employment,Court Ruling';
+            OptionMembers = " ","Employment Office","Longer Redundancy","From Employment","Court Ruling";
         }
         field(33; Prentice; Boolean)
         {
@@ -3249,6 +3250,8 @@ table 50071 "Employee Contract Ledger"
             Caption = 'Manager Contract';
 
             trigger OnValidate()
+            var
+                dt: Page "Dimension Values";
             begin
                 IF "Manager Contract" = FALSE THEN BEGIN
                     "Fixed Amount Brutto" := 0;
@@ -3453,7 +3456,8 @@ table 50071 "Employee Contract Ledger"
                             DV."Global Dimension No." := 1;
                             DV.Blocked := false;
                             DV.Name := Rec."Sector Description";
-                            DV.INSERT;
+                            if DV.Code <> '' then
+                                DV.INSERT;
                         END;
 
                         EDF."Dimension Value Code" := Rec."Sector Code";
@@ -3467,14 +3471,15 @@ table 50071 "Employee Contract Ledger"
                         EDF."Dimension Code" := 'TC';
                         CALCFIELDS("Phisical Org Dio");
                         DV.Reset();
-                        DV.SETFILTER(Code, '%1', Rec."Sector Code");
+                        DV.SETFILTER(Code, '%1', Rec.Sector);
                         IF NOT DV.FIND('-') THEN BEGIN
                             DV.INIT;
                             DV."Dimension Code" := 'TC';
-                            DV.Code := Rec."Sector Code";
+                            DV.Code := Rec."Sector";
                             DV.Name := Rec."Sector Description";
                             DV."Global Dimension No." := 1;
-                            DV.INSERT;
+                            if DV.Code <> '' then
+                                DV.INSERT;
                         END;
 
                         EDF."Dimension Value Code" := Rec."Sector Code";
@@ -5703,11 +5708,12 @@ table 50071 "Employee Contract Ledger"
         field(50381; "Employee Benefits"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Misc. Article Information" WHERE("Employee No." = FIELD("Employee No."),
+            CalcFormula = Count("Misc. Article Information new" WHERE("Employee No." = FIELD("Employee No."),
                                                                    "Emp. Contract Ledg. Entry No." = FIELD("No."),
                                                                    "Org Shema" = FIELD("Org. Structure")));
             Caption = 'Employee Benefits';
             Editable = false;
+
 
         }
         field(50382; "Internal ID"; Integer)
@@ -6002,6 +6008,15 @@ table 50071 "Employee Contract Ledger"
         field(594133; "Position Coefficient for Wage"; Decimal)
         {
             Caption = 'Position Coefficient for Wage';
+            trigger Onvalidate()
+            var
+                myInt: Integer;
+            begin
+                Wagesetup.Get();
+                Validate(Brutto, ROUND(Wagesetup."Wage Base" * "Position Coefficient for Wage", 0.01, '>'));
+
+
+            end;
         }
         field(594134; "Position complexity"; Decimal)
 
@@ -6144,6 +6159,8 @@ table 50071 "Employee Contract Ledger"
     end;
 
     trigger OnInsert()
+    var
+        HR: Record "Human Resources Setup";
     begin
         IF "Employee No." <> '' THEN BEGIN
             Employee.RESET;
@@ -6153,7 +6170,11 @@ table 50071 "Employee Contract Ledger"
             //ĐK   "Minimal Education Level" := Employee."Education Level";
             "Operator No." := Employee."New Number";
             "Internal ID" := Employee."Internal ID";
+            HR.Get();
+            if HR."Default Org Jed" <> '' then
+                Rec.Validate("Org Unit Name", HR."Default Org Jed");
         END;
+
         IF "Employee No." = '' THEN ERROR(Text002);
         EmployeeContractLedger1.RESET;
         EmployeeContractLedger1.SETFILTER("Employee No.", "Employee No.");
@@ -6450,7 +6471,7 @@ table 50071 "Employee Contract Ledger"
         NoSeriesMgt: Codeunit "NoSeriesManagement";
         position: Record "Position";
         "Position Benef": Record "Position Benefits";
-        MAI: Record "Misc. Article Information";
+        MAI: Record "Misc. article information new";
         Text000: Label 'Start Date must have value.';
         Text001: Label 'End Date must not be before Start date.';
         IDMonth: Integer;
@@ -6601,7 +6622,7 @@ table 50071 "Employee Contract Ledger"
         Uprava: Text;
         SectorT: Record "Sector";
         PositionCEO: Record "Position";
-        MAI2: Record "Misc. Article Information";
+        MAI2: Record "Misc. article information new";
 
         Department1: Record "Department";
         Duplicate: Integer;

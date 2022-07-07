@@ -1,21 +1,9 @@
 tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 {
+    //ED
 
     fields
     {
-        /*modify("Customer Id")
-        {
-            trigger OnAfterValidate()
-
-            begin
-                Customer.Reset();
-                Customer.SetFilter("No.", '%1', "Customer Id");
-                if Customer.FindFirst() then begin
-                    "Social status" := Customer."Social status category";
-                end;
-
-            end;
-        }*/
         //    VAT Base (retro.)
         field(50000; "VAT Date"; Date)
         {
@@ -115,32 +103,32 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'VAT Registration No.';
         }
-        field(50033; "Payment Type"; Code[10]) //ED
+        field(50033; "Payment Type"; Code[10])
         {
             Caption = 'Payment Type';
             TableRelation = "Payment Type";
         }
-        field(50034; "Payment Method"; enum "Payment Method") //ED
+        field(50034; "Payment Method"; enum "Payment Method")
         {
             Caption = 'Payment Method';
         }
-        field(50035; "City_Cust"; Text[30]) //ED
+        field(50035; "City_Cust"; Text[30])
         {
             Caption = 'City';
         }
-        field(50036; Phone_Cust; Text[30]) //ED
+        field(50036; Phone_Cust; Text[30])
         {
             Caption = 'Phone';
         }
-        field(50037; MobilePhone_Cust; Text[30]) //ED
+        field(50037; MobilePhone_Cust; Text[30])
         {
             Caption = 'Mobile Phone';
         }
-        field(50038; Email_Cust; Text[80]) //ED
+        field(50038; Email_Cust; Text[80])
         {
             Caption = 'E-mail';
         }
-        field(50039; Balance_Cust; Decimal) //ED
+        field(50039; Balance_Cust; Decimal)
         {
             Caption = 'Balance';
             AutoFormatType = 1;
@@ -152,31 +140,31 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(50040; "GlobalDimension1Filter"; Code[20]) //ED
+        field(50040; "GlobalDimension1Filter"; Code[20])
         {
             Caption = 'Global Dimension 1 filter';
             NotBlank = true;
         }
-        field(50041; "GlobalDimension2Filter"; Code[20]) //ED
+        field(50041; "GlobalDimension2Filter"; Code[20])
         {
             Caption = 'Global Dimension 2 filter';
             NotBlank = true;
         }
-        field(50042; "CurrencyFilter"; Code[10]) //ED
+        field(50042; "CurrencyFilter"; Code[10])
         {
             Caption = 'Currency Filter';
             NotBlank = true;
         }
-        field(50043; Avans_Cust; Decimal) //ED
+        field(50043; Avans_Cust; Decimal)
         {
             Caption = 'Avans';
         }
-        field(50044; "Complaint"; Boolean) //ED
+        field(50044; "Complaint"; Boolean)
         {
             Caption = 'Complaint';
             Editable = false;
         }
-        field(50045; "Interest"; Boolean) //ED
+        field(50045; "Interest"; Boolean)
         {
             Caption = 'Interst';
             Editable = false;
@@ -213,8 +201,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
                     GlobalDimension2Filter := Customer."Global Dimension 2 Filter";
                     CurrencyFilter := Customer."Currency Filter";
-                    Balance_Cust := 5.67;
-
 
                 end;
             end;
@@ -228,7 +214,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Rec."No. Line" := GJLine."No. Line" + 1
         else
             Rec."No. Line" := 1;
-
 
     end;
 

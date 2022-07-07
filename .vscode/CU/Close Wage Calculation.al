@@ -840,6 +840,11 @@ codeunit 50004 "Close Wage Calculation"
     var
         TransLineStatus: Boolean;
         TransTempStatus: Boolean;
+        EndingDate: Date;
+        AbsFill: Codeunit "Absence Fill";
+        EU: Record Employee;
+        WU: Record "Work Booklet";
+        ECLU: Record "Employee Contract Ledger";
     begin
         Rec := (Header);
 
@@ -1158,15 +1163,50 @@ codeunit 50004 "Close Wage Calculation"
                     EmpT."Transport Temp" := 0;
                     EmpT.MODIFY;
                 UNTIL EmpT.NEXT = 0;
-            /*
+            Commit();
+
             R_BroughtExperience.RUN;
             R_WorkExperience.SetEndingDate(TODAY);
             R_WorkExperience.RUN;
 
+            EndingDate := AbsFill.GetMonthRange(Rec."Month Of Wage", Rec."Year Of Wage", false);
+            EU.Reset();
+            EU.SetFilter("For Calculation", '%1', true);
+            if EU.FindSet() then
+                repeat
+                    WU.Reset();
+                    WU.SetFilter("Employee No.", '%1', EU."No.");
+                    WU.SetFilter("Current Company", '%1', true);
+                    WU.SetFilter("Hours change", '%1', false);
+                    WU.SetFilter("Starting Date", '<=%1', EndingDate);
+                    WU.SetCurrentKey("Starting Date");
+                    WU.Ascending;
+                    if WU.FindLast() then begin
+                        if WU."Starting Date" <> EU."Employment Date" then
+                            EU."Employment Date" := WU."Starting Date";
+
+                        ECLU.Reset();
+                        ECLU.SetFilter("Employee No.", '%1', EU."No.");
+                        ECLU.SetFilter("Starting Date", '<=%1', EndingDate);
+                        ECLU.SetCurrentKey("Starting Date");
+                        ECLU.Ascending;
+                        if ECLU.FindLast() then begin
+                            if ECLU."Grounds for Term. Description" <> '' then
+                                EU."Termination Date" := ECLU."Ending Date"
+                            else
+                                EU."Termination Date" := 0D;
+                            EU.Modify();
+                        end;
+
+                    end;
+
+
+                until EU.Next() = 0;
+
             COMMIT;
-            TCReport.SetParam(DATE2DMY(TODAY,2),DATE2DMY(TODAY,3));
-            TCReport.RUN;
-            COMMIT;*/
+            /* TCReport.SetParam(DATE2DMY(TODAY,2),DATE2DMY(TODAY,3));
+             TCReport.RUN;
+             COMMIT;*/
 
             CauseOfAbs.RESET;
             CauseOfAbs.SETFILTER(Coefficient, '%1', 0);

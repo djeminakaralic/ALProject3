@@ -31,8 +31,65 @@ tableextension 50121 MiscExten extends "Misc. Article Information"
             Caption = 'Active';
 
         }
+        field(50005; "Employee Name"; Text[250])
+        {
+            Caption = 'Employee Name';
+
+        }
+        modify("Employee No.")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+                E: Record Employee;
+            begin
+                e.Get("Employee No.");
+                "Employee Name" := e."First Name" + ' ' + e."Last Name";
+
+            end;
+        }
+        modify("Misc. Article Code")
+        {
+
+            trigger OnBeforeValidate()
+            var
+                myInt: Integer;
+                set: Record "Sales Line";
+            begin
+                Rec.SetHideValidationDialog(true);
+
+
+
+
+
+            end;
+        }
+
     }
+
+    trigger OnInsert()
+    var
+        myInt: Integer;
+        UserSetup: Record "User Setup";
+    begin
+        //"Emp. Contract Ledg. Entry No."
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            "Emp. Contract Ledg. Entry No." := UserSetup."Last ECL No.";
+            "Org Shema" := UserSetup."Last Org Shema";
+
+        end;
+
+
+    end;
 
     var
         myInt: Integer;
+        HideValidationDialog: Boolean;
+
+    procedure SetHideValidationDialog(NewHideValidationDialog: Boolean)
+    begin
+        HideValidationDialog := NewHideValidationDialog;
+    end;
 }

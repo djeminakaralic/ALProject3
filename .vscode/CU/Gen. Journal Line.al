@@ -27,10 +27,11 @@ codeunit 50139 GenJNLLine
         VATEntry2: Record "VAT Entry";
 
     begin
-        myInt := GLEntry.GetLastEntryNo();
-        GLEntry.Get(myInt);
+
+        //myInt := GLEntry.GetLastEntryNo();
+
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
-        GLEntry.Modify();
+        //GLEntry.Modify();
 
         //GLEntry.vat:= GenJournalLine."VAT Date";
 

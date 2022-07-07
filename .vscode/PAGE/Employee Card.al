@@ -6,6 +6,21 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
     layout
     {
+        modify(Control1900383207)
+        {
+            Visible = true;
+        }
+        modify(General)
+        {
+            Visible = ShowContractType;
+        }
+        modify("No.")
+        {
+            ApplicationArea = all;
+
+        }
+
+
 
 
 
@@ -15,6 +30,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             ApplicationArea = all;
             Visible = false;
         }
+
 
 
 
@@ -999,6 +1015,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 field("Residence Permit"; "Residence Permit")
                 {
                     ApplicationArea = all;
+                    Visible = false;
+
 
                     trigger OnDrillDown()
                     begin
@@ -1023,6 +1041,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 field("Residence Permit Expiry Date"; "Residence Permit Expiry Date")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                     trigger OnDrillDown()
                     begin
@@ -1047,6 +1066,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 field("Work Permit"; "Work Permit")
                 {
                     ApplicationArea = all;
+                    Visible = false;
 
                     trigger OnDrillDown()
                     begin
@@ -1071,6 +1091,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 field("Type Of Work Permit"; "Type Of Work Permit")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                     Enabled = "Work Permit";
 
                     trigger OnDrillDown()
@@ -1097,6 +1118,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 {
 
                     ApplicationArea = all;
+                    Visible = false;
                     trigger OnDrillDown()
                     begin
                         PersonalDocuments.RESET;
@@ -1520,7 +1542,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
                 Caption = 'Employment Abroad';
                 Editable = show;
-                Visible = show;
+                Visible = false;
                 field("Employment AbroadECL";
                 EmployeeContractLedger."Employment Abroad")
                 {
@@ -1623,7 +1645,13 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 group("Bank data")
 
                 {
+
                     Caption = 'Bank Data';
+                    field("WEP with military"; "WEP with military")
+                    {
+                        ApplicationArea
+                        = all;
+                    }
                     field("Work Experience Percentage"; Rec."Work Experience Percentage")
                     {
                         ApplicationArea = all;
@@ -1672,6 +1700,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 group(General2)
                 {
                     Caption = 'General';
+
                     //The GridLayout property is only supported on controls of type Grid
 
                     field("Hours In Day"; Rec."Hours In Day")
@@ -2233,13 +2262,31 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             field(StatusExt; StatusExt)
             {
                 ApplicationArea = all;
+                trigger OnValidate()
+                var
+                    myInt: Integer;
+                begin
+                    if (StatusExt = StatusExt::"External employee") or (StatusExt = StatusExt::Practicians)
+     or (StatusExt = StatusExt::"Temporary Contract") or (StatusExt = StatusExt::Volonteer) then
+                        ShowContractType := true
+                    else
+                        ShowContractType := false;
+                    if ShowContractType = true then
+                        ShowContractType2 := false
+                    else
+                        ShowContractType2 := true;
+                    CurrPage.Update(true);
+
+                end;
             }
             field("Temporary Contract Type"; "Temporary Contract Type")
             {
+                Visible = ShowContractType;
 
             }
             field("External employer Status"; "External employer Status")
             {
+                Visible = ShowContractType;
 
             }
 
@@ -2275,6 +2322,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             group("Birth Information")
             {
                 Caption = 'Birth Information';
+
 
                 field(Age; Age)
                 {
@@ -3012,6 +3060,10 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
             }
         }
+
+
+
+
         addafter(General)
         {
             group(Administration2)
@@ -3257,6 +3309,808 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
             }
         }
+        addbefore(Administration2)
+        {
+            group(GeneralTEST)
+            {
+                Caption = 'General';
+                Visible = ShowContractType2;
+
+                field("No.2"; "No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Internal ID2"; "Internal ID")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Employee ID2"; "Employee ID")
+                {
+                    ApplicationArea = all;
+                }
+                field("First Name2"; "First Name")
+                {
+                    ApplicationArea = all;
+                }
+                field("Last Name2"; "Last Name")
+                {
+                    ApplicationArea = all;
+                }
+                field(StatusExt2; StatusExt)
+                {
+                    ApplicationArea = all;
+                }
+                field("Temporary Contract Type2"; "Temporary Contract Type")
+                {
+                    Visible = ShowContractType;
+
+                }
+                field("External employer Status2"; "External employer Status")
+                {
+                    Visible = ShowContractType;
+
+                }
+
+                field(Gender3; Gender)
+                {
+
+                }
+
+
+            }
+        }
+
+        addlast(GeneralTEST)
+        {
+            group("Birth Information2")
+            {
+                Caption = 'Birth Information';
+                field("Birth Date2"; "Birth Date")
+                {
+                    ApplicationArea = all;
+
+                }
+
+                field(Age2; Age)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+                field("Municipality Code of Birth2"; "Municipality Code of Birth")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Municipality Name of Birth2"; "Municipality Name of Birth")
+                {
+                    ApplicationArea = all;
+                }
+                field("City of Birth2"; "City of Birth")
+                {
+                    ApplicationArea = all;
+                }
+                field("Place of birth2"; "Place of birth")
+                {
+                    ApplicationArea = all;
+                }
+                field("Country/Region Code of Birth2"; "Country/Region Code of Birth")
+                {
+
+                    ApplicationArea = all;
+                }
+
+            }
+        }
+
+
+
+        addafter("Birth Information2")
+        {
+            group("Address information2")
+            {
+                Caption = 'Address information';
+
+                field("Address CIPS2"; "Address CIPS")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    trigger OnDrillDown()
+                    var
+                        AlternativeAddress: Record "Alternative Address";
+                        AlternativeAddressList: Page "Alternative Address List";
+                    begin
+                        AlternativeAddress.RESET;
+                        AlternativeAddress.SETFILTER("Employee No.", "No.");
+                        //AlternativeAddress.SETFILTER("Address Type",'CIPS');
+                        AlternativeAddress.SETFILTER(Active, '%1', TRUE);
+                        AlternativeAddressList.SETTABLEVIEW(AlternativeAddress);
+                        AlternativeAddressList.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+                field("Place Of Living2"; "Place Of Living")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    trigger OnDrillDown()
+                    var
+                        AlternativeAddress: Record "Alternative Address";
+                        AlternativeAddressList: Page "Alternative Address List";
+                    begin
+                        AlternativeAddress.RESET;
+                        AlternativeAddress.SETFILTER("Employee No.", "No.");
+                        //AlternativeAddress.SETFILTER("Address Type",'CIPS');
+                        AlternativeAddress.SETFILTER(Active, '%1', TRUE);
+                        AlternativeAddressList.SETTABLEVIEW(AlternativeAddress);
+                        AlternativeAddressList.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+                field("Municipality Code CIPS2"; "Municipality Code CIPS")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    trigger OnDrillDown()
+                    var
+                        AlternativeAddress: Record "Alternative Address";
+                        AlternativeAddressList: Page "Alternative Address List";
+                    begin
+                        AlternativeAddress.RESET;
+                        AlternativeAddress.SETFILTER("Employee No.", "No.");
+                        //AlternativeAddress.SETFILTER("Address Type",'CIPS');
+                        AlternativeAddress.SETFILTER(Active, '%1', TRUE);
+                        AlternativeAddressList.SETTABLEVIEW(AlternativeAddress);
+                        AlternativeAddressList.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+                field("Municipality Name CIPS2"; "Municipality Name CIPS")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    trigger OnDrillDown()
+                    var
+                        AlternativeAddress: Record "Alternative Address";
+                        AlternativeAddressList: Page "Alternative Address List";
+                    begin
+                        AlternativeAddress.RESET;
+                        AlternativeAddress.SETFILTER("Employee No.", "No.");
+                        //AlternativeAddress.SETFILTER("Address Type",'CIPS');
+                        AlternativeAddress.SETFILTER(Active, '%1', TRUE);
+                        AlternativeAddressList.SETTABLEVIEW(AlternativeAddress);
+                        AlternativeAddressList.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+                field("City CIPS2"; "City CIPS")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    DrillDown = true;
+                    trigger OnDrillDown()
+                    var
+                        AlternativeAddress: Record "Alternative Address";
+                        AlternativeAddressList: Page "Alternative Address List";
+                    begin
+                        AlternativeAddress.RESET;
+                        AlternativeAddress.SETFILTER("Employee No.", "No.");
+                        //AlternativeAddress.SETFILTER("Address Type",'CIPS');
+                        AlternativeAddress.SETFILTER(Active, '%1', TRUE);
+                        AlternativeAddressList.SETTABLEVIEW(AlternativeAddress);
+                        AlternativeAddressList.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+                field("Post Code CIPS2"; "Post Code CIPS")
+                {
+                    ApplicationArea = all;
+                    DrillDown = true;
+                    Editable = false;
+                    trigger OnDrillDown()
+                    var
+                        AlternativeAddress: Record "Alternative Address";
+                        AlternativeAddressList: Page "Alternative Address List";
+                    begin
+                        AlternativeAddress.RESET;
+                        AlternativeAddress.SETFILTER("Employee No.", "No.");
+                        //AlternativeAddress.SETFILTER("Address Type",'CIPS');
+                        AlternativeAddress.SETFILTER(Active, '%1', TRUE);
+                        AlternativeAddressList.SETTABLEVIEW(AlternativeAddress);
+                        AlternativeAddressList.RUN;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+            }
+        }
+        addafter("Address information2")
+        {
+            group("Position Information2")
+            {
+
+                Caption = 'Position Information';
+
+
+                field(EmployeeContractLedgerPositionCode2; EmployeeContractLedger."Position Code")
+                {
+                    Caption = 'Position Code';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(EmployeeContractLedgerPositionDescription2; EmployeeContractLedger."Position Description")
+                {
+                    Caption = 'Position Description';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END
+                        ELSE BEGIN
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END;
+                        CurrPage.UPDATE;
+                    end;
+
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        myInt: Integer;
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END
+                        ELSE BEGIN
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END;
+                        CurrPage.UPDATE;
+
+                    end;
+                }
+                /*field(DepartmentName; EmployeeContractLedger."Department Name")
+                {
+                    Caption = 'Department Name';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(SectorDescription; EmployeeContractLedger."Sector Description")
+                {
+                    Caption = 'Sector Description';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Služba; EmployeeContractLedger."Department Cat. Description")
+                {
+                    Caption = 'Služba';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Odjel; EmployeeContractLedger."Group Description")
+                {
+                    Caption = 'Odjel';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(StatusP; EmployeeContractLedger.Status)
+                {
+                    Caption = 'Status';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }*/
+                field(Smjena2; EmployeeContractLedger."Rad u smjenama")
+                {
+                    Caption = 'Rad u smjenama';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(Management1_2; EmployeeContractLedger."Manager 1 Last Name" + ' ' + EmployeeContractLedger."Manager 1 First Name")
+                {
+                    Caption = 'Superior 1';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        CurrPage.UPDATE(TRUE);
+                        SELECTLATESTVERSION;
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE(true);
+                    end;
+
+
+
+                }
+
+                field(Manager2_2; EmployeeContractLedger."Manager 2 Last Name" + ' ' + EmployeeContractLedger."Manager 2 First Name")
+                {
+                    Caption = 'Superior 2';
+                    Editable = false;
+                    Importance = Promoted;
+                    ApplicationArea = all;
+
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+
+                field(ECLManagementLevel_2; EmployeeContractLedger."Management Level")
+                {
+                    Caption = 'Management Level';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(EmployeeContractLedgerSector_2; EmployeeContractLedger.Sector)
+                {
+                    Caption = 'Sector';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLSectorDescription_2; "Sector Description")
+                {
+                    Caption = 'Sector';
+                    Editable = false;
+                    Enabled = true;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        CurrPage.Update();
+                        SelectLatestVersion();
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLDepartmentCode_2; EmployeeContractLedger."Department Code")
+                {
+                    Caption = 'Department Code';
+                    Editable = false;
+                    Visible = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLDepartmentName_2; EmployeeContractLedger."Department Name")
+                {
+                    Caption = 'Department Name';
+                    Editable = false;
+                    Enabled = true;
+                    Visible = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        IF EmployeeContractLedger.FINDFIRST THEN BEGIN
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END
+                        ELSE BEGIN
+                            EmployeeContractLedger.RESET;
+                            EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                            EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                            EmployeeContractLedgerPage.RUN;
+                        END;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLDepartmentCategory_2; EmployeeContractLedger."Department Category")
+                {
+                    Caption = 'Department Category';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLDepartmentCatDescription_2; EmployeeContractLedger."Department Cat. Description")
+                {
+                    Caption = 'B-1 (with regions) Description';
+                    Editable = false;
+                    Enabled = true;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLGroup_2; EmployeeContractLedger.Group)
+                {
+                    Caption = 'Group';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLGroupDescription_2; EmployeeContractLedger."Group Description")
+                {
+                    Caption = 'Stream Description';
+                    Editable = false;
+                    Enabled = true;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                /*
+                field(ECLTeam; EmployeeContractLedger.Team)
+                {
+                    Caption = 'Team';
+                    Editable = false;
+                    ApplicationArea = all;
+                    Visible = false;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLTeamDescription; EmployeeContractLedger."Team Description")
+                {
+                    Caption = 'Team Description';
+                    Editable = false;
+                    Enabled = true;
+                    ApplicationArea = all;
+                    Visible = false;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLManager1FirstNameLastName; EmployeeContractLedger."Manager 1 First Name" + ' ' + EmployeeContractLedger."Manager 1 Last Name")
+                {
+                    Caption = 'Manager Full Name';
+                    Editable = false;
+                    Enabled = true;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        Emp.RESET;
+                        Emp.SETFILTER("First Name", '%1', EmployeeContractLedger."Manager 1 First Name");
+                        Emp.SETFILTER("Last Name", '%1', EmployeeContractLedger."Manager 1 Last Name");
+                        EmpPage.SETTABLEVIEW(Emp);
+                        EmpPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }*/
+                field(ECLDepartmentCity_2; EmployeeContractLedger."Department City")
+                {
+                    Caption = 'Department City';
+                    Editable = false;
+                    Enabled = true;
+                    Visible = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        EmployeeContractLedger.SETFILTER(Active, '%1', TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLDepartmentAddress_2; EmployeeContractLedger."Department Address")
+                {
+                    Caption = 'Department Address';
+                    Editable = false;
+                    Enabled = true;
+                    Visible = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        EmployeeContractLedger.RESET;
+                        EmployeeContractLedger.SETFILTER("Employee No.", "No.");
+                        //EmployeeContractLedger.SETFILTER(Active,'%1',TRUE);
+                        EmployeeContractLedgerPage.SETTABLEVIEW(EmployeeContractLedger);
+                        EmployeeContractLedgerPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLOrgDio_2; EmployeeContractLedger."Org Dio")
+                {
+                    Caption = 'Org. Part';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        OrgDijelovi.RESET;
+                        OrgDijelovi.SETFILTER(Code, EmployeeContractLedger."Org Dio");
+                        OrgDijeloviPage.SETTABLEVIEW(OrgDijelovi);
+                        OrgDijeloviPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLOrgDioName_2; EmployeeContractLedger."Org Dio Name")
+                {
+                    Caption = 'Org Dio Name';
+                    Editable = false;
+                    ApplicationArea = all;
+
+                    trigger OnDrillDown()
+                    begin
+                        OrgDijelovi.RESET;
+                        OrgDijelovi.SETFILTER(Code, EmployeeContractLedger."Org Dio");
+                        OrgDijeloviPage.SETTABLEVIEW(OrgDijelovi);
+                        OrgDijeloviPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field(ECLGFradacode_2; EmployeeContractLedger."GF rada code")
+                {
+                    Caption = 'GF of work';
+                    Editable = false;
+                    ApplicationArea = all;
+                    Visible = false;
+
+                    trigger OnDrillDown()
+                    begin
+                        OrgDijelovi.RESET;
+                        OrgDijelovi.SETFILTER(Code, EmployeeContractLedger."Org Dio");
+                        OrgDijeloviPage.SETTABLEVIEW(OrgDijelovi);
+                        OrgDijeloviPage.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field("Default Dimension_2"; "Default Dimension")
+                {
+                    Editable = false;
+                    Importance = Promoted;
+                    Style = Unfavorable;
+                    StyleExpr = TRUE;
+                    ApplicationArea = all;
+                }
+                field("Default Dimension Name_2"; "Default Dimension Name")
+                {
+                    Editable = false;
+                    Importance = Promoted;
+                    MultiLine = false;
+                    Style = Unfavorable;
+                    StyleExpr = TRUE;
+                    ApplicationArea = all;
+                    Width = 250;
+                }
+                /*field("Employee Benefits"; "Employee Benefits")
+                {
+                    ApplicationArea = all;
+                }
+                /*field("Job Violations"; "Job Violations")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
+                    Visible = false;
+
+                    trigger OnDrillDown()
+                    begin
+                        WDV.RESET;
+                        WDV.SETFILTER("Employee No.", "No.");
+                        WDVPAge.SETTABLEVIEW(WDV);
+                        WDVPAge.RUN;
+                        CurrPage.UPDATE;
+                    end;
+                }
+                field("Disciplinary Measured"; "Disciplinary Measured")
+                {
+                    ApplicationArea = all;
+                }
+                field(Awards; Awards)
+                {
+                    DrillDownPageID = "Employee Award List";
+                    LookupPageID = "Employee Award List";
+                    ApplicationArea = all;
+                }*/
+                /*field(Clauses; Clauses)
+                {
+                    DrillDownPageID = Clauses;
+                    LookupPageID = Clauses;
+                    ApplicationArea = all;
+                }
+                field("Lawsuits/Labor Disputes"; "Lawsuits/Labor Disputes")
+                {
+                    DrillDownPageID = "Lawsuits/Labor Disputes List";
+                    ApplicationArea = all;
+                    LookupPageID = "Lawsuits/Labor Disputes List";
+                }*/
+
+
+
+            }
+        }
+
 
         addafter(Administration2)
         {
@@ -3880,7 +4734,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                 Caption = 'Misc. Article Information';
                 Image = Filed;
                 ApplicationArea = all;
-                RunObject = Page "Misc. Article Information";
+                RunObject = Page "Misc Article Informations";
                 RunPageLink = "Employee No." = FIELD("No.");
                 Promoted = true;
             }
@@ -3983,6 +4837,15 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             ELSE
                 show := FALSE;
         END;
+        if (StatusExt = StatusExt::"External employee") or (StatusExt = StatusExt::Practicians)
+        or (StatusExt = StatusExt::"Temporary Contract") or (StatusExt = StatusExt::Volonteer) then
+            ShowContractType := true
+        else
+            ShowContractType := false;
+        if ShowContractType = true then
+            ShowContractType2 := false
+        else
+            ShowContractType2 := true;
 
         UserPersonalisation2.RESET;
         UserPersonalisation2.SETFILTER("User ID", USERID);
@@ -4265,6 +5128,19 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        if (StatusExt = StatusExt::"External employee") or (StatusExt = StatusExt::Practicians)
+   or (StatusExt = StatusExt::"Temporary Contract") or (StatusExt = StatusExt::Volonteer) then
+            ShowContractType := true
+        else
+            ShowContractType := false;
+        if ShowContractType = true then
+            ShowContractType2 := false
+        else
+            ShowContractType2 := true;
+    end;
+
     trigger OnAfterGetRecord()
 
     begin
@@ -4281,7 +5157,20 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         END;
         CalcFields("Employee User Name");
 
+        if "No." <> '' then begin
 
+            if (StatusExt = StatusExt::"External employee") or (StatusExt = StatusExt::Practicians)
+                  or (StatusExt = StatusExt::"Temporary Contract") or (StatusExt = StatusExt::Volonteer) then
+                ShowContractType := true
+            else
+                ShowContractType := false;
+
+            if ShowContractType = true
+            then
+                ShowContractType2 := false
+            else
+                ShowContractType2 := true;
+        end;
         TerminationDate := 0D;
         IF "No." <> '' THEN BEGIN
             EmployeeContractLedger.RESET;
@@ -4520,6 +5409,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
 
     var
         myInt: Integer;
+        ShowContractType: Boolean;
+        ShowContractType2: Boolean;
 
         WOrkB: Page "Work booklet";
         StartDate: Date;

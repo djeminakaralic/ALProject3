@@ -203,6 +203,10 @@ table 50188 "Wage Addition Type"
         {
             Caption = 'Wage addition based on Work Experience';
         }
+        field(138; "Weekend"; Boolean)
+        {
+            Caption = 'Dozvoljen unos vikendom';
+        }
 
     }
     keys

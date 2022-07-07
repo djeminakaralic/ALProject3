@@ -27,7 +27,8 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
                 trigger OnAction()
                 begin
-                    GLEntry.SetFilter("Journal Batch Name", '%1', "No.");
+                    GLEntry.Reset();
+                    GLEntry.SetFilter("Bal. Account No.", '%1', "No.");
                 end;
             }
 
@@ -39,6 +40,16 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
                 RunObject = Report "Blagajnički dnevnik";
+            }
+
+            action("Zapisnik o primopredaji UniCredit")
+            {
+                Caption = 'Zapisnik o primopredaji UniCredit';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Zapisnik o primopredaji";
             }
         }
 
