@@ -51,7 +51,4 @@ enum 50032 "Apoeni Enum"
     {
         Caption = '0.05';
     }
-
-
-
 }
