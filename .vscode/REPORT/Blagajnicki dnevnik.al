@@ -108,13 +108,13 @@ report 50075 "Blagajnički dnevnik"
                 END;
 
 
-                IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
+                /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
                     Brdokumenta := '';
                     Kolicina := 0;
                     KolicinaIS := Amount;
-                END;
+                END;*/
 
                 /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
@@ -147,8 +147,6 @@ report 50075 "Blagajnički dnevnik"
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
-
-
 
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
