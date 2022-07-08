@@ -35,21 +35,21 @@ enum 50032 "Apoeni Enum"
     {
         Caption = '1';
     }
-    value(8; "0,5")
+    value(8; "0.5")
     {
-        Caption = '0,5';
+        Caption = '0.5';
     }
-    value(9; "0,2")
+    value(9; "0.2")
     {
-        Caption = '0,2';
+        Caption = '0.2';
     }
-    value(10; "0,1")
+    value(10; "0.1")
     {
-        Caption = '0,1';
+        Caption = '0.1';
     }
-    value(11; "0,05")
+    value(11; "0.05")
     {
-        Caption = '0,05';
+        Caption = '0.05';
     }
 
 
