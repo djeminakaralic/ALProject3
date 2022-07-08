@@ -632,7 +632,7 @@
             <Top>4.67816cm</Top>
             <Left>0.32103cm</Left>
             <Height>1.67417cm</Height>
-            <Width>18.05387cm</Width>
+            <Width>18.0539cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1408,7 +1408,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="DNEVNIK BLAGAJNE"</Value>
+                    <Value>="DNEVNIK BLAGAJNE" &amp; Fields!BankAccountName.Value</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
