@@ -40673,15 +40673,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntryExtends - Field Vendor Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 2347438355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 3822923715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 10 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 684500104 - EnumValue 1987769107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>100</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 100 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 4260528206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 2494642710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>20</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 20 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 684500104 - EnumValue 2964680702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source> </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 200 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 4091619183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 5 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 684500104 - EnumValue 579705151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>50</source>
