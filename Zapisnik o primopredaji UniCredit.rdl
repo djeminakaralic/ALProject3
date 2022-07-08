@@ -11,6 +11,25 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -38,7 +57,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>BLAGAJNIK</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -69,6 +90,7 @@
                   <TextRun>
                     <Value>=FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>d. MMMM yyyy.</Format>
                     </Style>
@@ -78,7 +100,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.77107cm</Top>
+            <Top>2.73579cm</Top>
             <Left>5.34095cm</Left>
             <Height>0.6cm</Height>
             <Width>4.84142cm</Width>
@@ -101,7 +123,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>DATUM</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -131,7 +155,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>UNICREDIT BANK</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -161,17 +187,19 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!User.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>6.22002cm</Top>
+            <Top>6.29058cm</Top>
             <Left>0.49953cm</Left>
             <Height>0.6cm</Height>
-            <Width>11.66074cm</Width>
+            <Width>9.68284cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -210,7 +238,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>BROJ APOENA</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -240,7 +270,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>VRSTE APOENA</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -270,7 +302,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>UKUPNO</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -519,10 +553,10 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>3.54746cm</Top>
+            <Top>3.51218cm</Top>
             <Left>0.49953cm</Left>
             <Height>1.76416cm</Height>
-            <Width>14.52427cm</Width>
+            <Width>14.52426cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -551,6 +585,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -590,23 +630,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
