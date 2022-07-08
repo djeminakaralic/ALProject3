@@ -11,6 +11,115 @@
       <rd:DataSourceID>fe656078-9e94-46f1-a6fb-06134399be65</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="PostingDate">
+          <DataField>PostingDate</DataField>
+        </Field>
+        <Field Name="JBName">
+          <DataField>JBName</DataField>
+        </Field>
+        <Field Name="GLNo">
+          <DataField>GLNo</DataField>
+        </Field>
+        <Field Name="DocumentNo">
+          <DataField>DocumentNo</DataField>
+        </Field>
+        <Field Name="Amound">
+          <DataField>Amound</DataField>
+        </Field>
+        <Field Name="AmoundFormat">
+          <DataField>AmoundFormat</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Ext">
+          <DataField>Ext</DataField>
+        </Field>
+        <Field Name="Datum">
+          <DataField>Datum</DataField>
+        </Field>
+        <Field Name="Brdokumenta">
+          <DataField>Brdokumenta</DataField>
+        </Field>
+        <Field Name="Kolicina">
+          <DataField>Kolicina</DataField>
+        </Field>
+        <Field Name="KolicinaFormat">
+          <DataField>KolicinaFormat</DataField>
+        </Field>
+        <Field Name="DatumIS">
+          <DataField>DatumIS</DataField>
+        </Field>
+        <Field Name="BrdokumentaIS">
+          <DataField>BrdokumentaIS</DataField>
+        </Field>
+        <Field Name="KolicinaIS">
+          <DataField>KolicinaIS</DataField>
+        </Field>
+        <Field Name="KolicinaISFormat">
+          <DataField>KolicinaISFormat</DataField>
+        </Field>
+        <Field Name="PostingDatefilter">
+          <DataField>PostingDatefilter</DataField>
+        </Field>
+        <Field Name="Adress_CompanyInfo">
+          <DataField>Adress_CompanyInfo</DataField>
+        </Field>
+        <Field Name="City_CompanyInfo">
+          <DataField>City_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone1_CompanyInfo">
+          <DataField>Phone1_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Phone2_CompanyInfo">
+          <DataField>Phone2_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Fax_CompanyInfo">
+          <DataField>Fax_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Email_CompanyInfo">
+          <DataField>Email_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Homepage_CompanyInfo">
+          <DataField>Homepage_CompanyInfo</DataField>
+        </Field>
+        <Field Name="RegistrationNo_CompanyInfo">
+          <DataField>RegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Postcode_CompanyInfo">
+          <DataField>Postcode_CompanyInfo</DataField>
+        </Field>
+        <Field Name="VATRegistrationNo_CompanyInfo">
+          <DataField>VATRegistrationNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="GiroNo_CompanyInfo">
+          <DataField>GiroNo_CompanyInfo</DataField>
+        </Field>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="PrethodniSaldo">
+          <DataField>PrethodniSaldo</DataField>
+        </Field>
+        <Field Name="PrethodniSaldoFormat">
+          <DataField>PrethodniSaldoFormat</DataField>
+        </Field>
+        <Field Name="EmmployeeName">
+          <DataField>EmmployeeName</DataField>
+        </Field>
+        <Field Name="BankAccountName">
+          <DataField>BankAccountName</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -128,6 +237,11 @@
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </BottomBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -694,9 +808,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox917</rd:DefaultName>
             <Top>6.49344cm</Top>
-            <Left>4.57829cm</Left>
+            <Left>4.73579cm</Left>
             <Height>0.55766cm</Height>
-            <Width>6.32764cm</Width>
+            <Width>6.17014cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1347,10 +1461,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>3.08184cm</Top>
-            <Left>1.47317cm</Left>
+            <Top>3.25823cm</Top>
+            <Left>1.0287cm</Left>
             <Height>1.12799cm</Height>
-            <Width>3.67771cm</Width>
+            <Width>7.02028cm</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -1387,9 +1501,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>3.55899cm</Top>
-            <Left>16.14517cm</Left>
+            <Left>17.03344cm</Left>
             <Height>0.94278cm</Height>
-            <Width>1.77994cm</Width>
+            <Width>1.34146cm</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -1414,14 +1528,16 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>2.49183cm</Top>
+            <Top>2.56238cm</Top>
             <Left>1.0287cm</Left>
-            <Height>0.59001cm</Height>
-            <Width>4.70958cm</Width>
+            <Height>0.66057cm</Height>
+            <Width>7.02028cm</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -1450,8 +1566,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.42127cm</Top>
-            <Left>7.21995cm</Left>
+            <Top>2.56238cm</Top>
+            <Left>10.24896cm</Left>
             <Height>0.66057cm</Height>
             <Width>0.80667cm</Width>
             <ZIndex>24</ZIndex>
@@ -1485,8 +1601,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>2.42127cm</Top>
-            <Left>8.02662cm</Left>
+            <Top>2.56238cm</Top>
+            <Left>11.05563cm</Left>
             <Height>0.66057cm</Height>
             <Width>2.87931cm</Width>
             <ZIndex>25</ZIndex>
@@ -1525,9 +1641,9 @@
           <ReportItems>
             <Line Name="Line1">
               <Top>0.17639cm</Top>
-              <Left>0.04974cm</Left>
+              <Left>0.32103cm</Left>
               <Height>0cm</Height>
-              <Width>17.87537cm</Width>
+              <Width>18.05387cm</Width>
               <Style>
                 <Border>
                   <Style>Solid</Style>
@@ -1556,7 +1672,7 @@
               <Top>0.3575cm</Top>
               <Left>10.90593cm</Left>
               <Height>0.6cm</Height>
-              <Width>7.01918cm</Width>
+              <Width>7.46897cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1616,6 +1732,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1655,113 +1777,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="PostingDate">
-          <DataField>PostingDate</DataField>
-        </Field>
-        <Field Name="JBName">
-          <DataField>JBName</DataField>
-        </Field>
-        <Field Name="GLNo">
-          <DataField>GLNo</DataField>
-        </Field>
-        <Field Name="DocumentNo">
-          <DataField>DocumentNo</DataField>
-        </Field>
-        <Field Name="Amound">
-          <DataField>Amound</DataField>
-        </Field>
-        <Field Name="AmoundFormat">
-          <DataField>AmoundFormat</DataField>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-        </Field>
-        <Field Name="Ext">
-          <DataField>Ext</DataField>
-        </Field>
-        <Field Name="Datum">
-          <DataField>Datum</DataField>
-        </Field>
-        <Field Name="Brdokumenta">
-          <DataField>Brdokumenta</DataField>
-        </Field>
-        <Field Name="Kolicina">
-          <DataField>Kolicina</DataField>
-        </Field>
-        <Field Name="KolicinaFormat">
-          <DataField>KolicinaFormat</DataField>
-        </Field>
-        <Field Name="DatumIS">
-          <DataField>DatumIS</DataField>
-        </Field>
-        <Field Name="BrdokumentaIS">
-          <DataField>BrdokumentaIS</DataField>
-        </Field>
-        <Field Name="KolicinaIS">
-          <DataField>KolicinaIS</DataField>
-        </Field>
-        <Field Name="KolicinaISFormat">
-          <DataField>KolicinaISFormat</DataField>
-        </Field>
-        <Field Name="PostingDatefilter">
-          <DataField>PostingDatefilter</DataField>
-        </Field>
-        <Field Name="Adress_CompanyInfo">
-          <DataField>Adress_CompanyInfo</DataField>
-        </Field>
-        <Field Name="City_CompanyInfo">
-          <DataField>City_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone1_CompanyInfo">
-          <DataField>Phone1_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Phone2_CompanyInfo">
-          <DataField>Phone2_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Fax_CompanyInfo">
-          <DataField>Fax_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Email_CompanyInfo">
-          <DataField>Email_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Homepage_CompanyInfo">
-          <DataField>Homepage_CompanyInfo</DataField>
-        </Field>
-        <Field Name="RegistrationNo_CompanyInfo">
-          <DataField>RegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Postcode_CompanyInfo">
-          <DataField>Postcode_CompanyInfo</DataField>
-        </Field>
-        <Field Name="VATRegistrationNo_CompanyInfo">
-          <DataField>VATRegistrationNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="GiroNo_CompanyInfo">
-          <DataField>GiroNo_CompanyInfo</DataField>
-        </Field>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="PrethodniSaldo">
-          <DataField>PrethodniSaldo</DataField>
-        </Field>
-        <Field Name="PrethodniSaldoFormat">
-          <DataField>PrethodniSaldoFormat</DataField>
-        </Field>
-        <Field Name="EmmployeeName">
-          <DataField>EmmployeeName</DataField>
-        </Field>
-        <Field Name="BankAccountName">
-          <DataField>BankAccountName</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
