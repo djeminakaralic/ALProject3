@@ -147,9 +147,8 @@ report 50075 "Blagajnički dnevnik"
             trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
-                BankAccount.SetFilter("No.", '%1', BankAccCardFilter);
-                if BankAccount.FindFirst() then
-                    BankAccountName := BankAccount.Name;
+                BankAccount.get(BankAccCardFilter);
+                BankAccountName := BankAccount.Name;
 
                 PostingDatefilter := GETFILTER("Posting Date");
 
