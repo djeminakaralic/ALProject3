@@ -1,7 +1,6 @@
-report 50100 "Summary per years"
+report 51111 "Summary per years"
 {
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+
     DefaultLayout = RDLC;
     RDLCLayout = './SummaryPerYears.rdl';
     PreviewMode = PrintLayout;
@@ -171,7 +170,7 @@ report 50100 "Summary per years"
                     WageCalc.SetFilter("Month Of Wage", '%1', myInt);
                     WageCalc.SetFilter("Year of Wage", '%1', Year);
                     WageCalc.CalcSums("Contribution From Bonus", "Contribution Over Brutto");
-                    Doprinos[myInt, 1] := WageCalc."Contribution Over Bonus" + WageCalc."Contribution From Brutto";
+                    Doprinos[myInt, 1] := WageCalc."Contribution From Brutto" + WageCalc."Contribution From Brutto";
                     WageCalc.Reset();
                     WageCalc.SetFilter("Month Of Wage", '%1', myInt);
                     WageCalc.SetFilter("Year of Wage", '%1', Year);

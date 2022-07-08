@@ -2085,8 +2085,10 @@ table 50055 "ECL systematization"
         field(50389; "Org Unit Name"; Text[100])
         {
             Caption = 'Org Unit Name';
+
             TableRelation = "ORG Dijelovi".Description WHERE("Branch Agency" = FIELD("Branch Agency"),
                                                               Code = FILTER(<> ''));
+
 
             trigger OnValidate()
             begin
