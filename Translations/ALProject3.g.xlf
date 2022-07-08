@@ -173,15 +173,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 684500104 - Field 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Apoeni - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 684500104 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Entry No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 684500104 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 684500104 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
@@ -24238,6 +24238,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Additional Responsibility - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2267677425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni Page - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 274235925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Award Category List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39307,6 +39312,11 @@
           <source>Address</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Address_Cust - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Contract Phase</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Apoeni - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 567629439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Avans</source>

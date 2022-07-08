@@ -11,13 +11,13 @@ table 51067 "Apoeni"
             AutoIncrement = true;
             Caption = 'Entry No.';
         }
-        field(2; Quantity; Integer)
+        field(2; Apoeni; Enum "Apoeni Enum")
+        {
+            Caption = 'Apoeni';
+        }
+        field(3; Quantity; Integer)
         {
             Caption = 'Quantity';
-        }
-        field(3; Name; Text[100])
-        {
-            Caption = 'Name';
         }
     }
 
