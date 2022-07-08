@@ -95,6 +95,9 @@ report 50075 "Blagajnički dnevnik"
             column(EmmployeeName; EmmployeeName)
             {
             }
+            column(BankAccountName; BankAccountName)
+            {
+            }
 
 
             trigger OnAfterGetRecord()
@@ -146,7 +149,7 @@ report 50075 "Blagajnički dnevnik"
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
                 BankAccount.SetFilter("No.", '%1', BankAccCardFilter);
                 if BankAccount.FindFirst() then
-                    BankAccountName:=BankAccount.Name;
+                    BankAccountName := BankAccount.Name;
 
                 PostingDatefilter := GETFILTER("Posting Date");
 
