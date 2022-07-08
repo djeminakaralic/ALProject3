@@ -11,6 +11,25 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Picture_CompanyInfo">
+          <DataField>Picture_CompanyInfo</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -23,7 +42,7 @@
             <Top>0.6544cm</Top>
             <Left>0.54894cm</Left>
             <Height>1.905cm</Height>
-            <Width>13.09903cm</Width>
+            <Width>14.47486cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -140,7 +159,7 @@
             <Top>5.45273cm</Top>
             <Left>9.74906cm</Left>
             <Height>0.66146cm</Height>
-            <Width>4.61328cm</Width>
+            <Width>5.27474cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -206,13 +225,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.62094cm</Width>
+                  <Width>4.84142cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.62094cm</Width>
+                  <Width>4.84142cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.62094cm</Width>
+                  <Width>4.84142cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -532,10 +551,10 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>3.51218cm</Top>
+            <Top>3.54746cm</Top>
             <Left>0.49953cm</Left>
             <Height>1.76416cm</Height>
-            <Width>13.86281cm</Width>
+            <Width>14.52427cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -551,7 +570,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.94793cm</Width>
+      <Width>15.58293cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -564,6 +583,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -603,23 +628,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Picture_CompanyInfo">
-          <DataField>Picture_CompanyInfo</DataField>
-        </Field>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
