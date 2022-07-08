@@ -42,7 +42,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 Image = Journal;
                 Promoted = true;
 
-                RunObject = Report "Blagajnički dnevnik";
+                //RunObject = Report "Blagajnički dnevnik";
 
                 trigger OnAction()
                 begin
