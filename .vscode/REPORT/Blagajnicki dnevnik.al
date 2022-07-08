@@ -8,7 +8,7 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
+            //DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
@@ -108,13 +108,13 @@ report 50075 "Blagajnički dnevnik"
                 END;
 
 
-                IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
+                /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
                     Brdokumenta := '';
                     Kolicina := 0;
                     KolicinaIS := Amount;
-                END;
+                END;*/
 
                 /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
@@ -127,7 +127,7 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
+                //GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     REPEAT
@@ -147,8 +147,6 @@ report 50075 "Blagajnički dnevnik"
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
-
-
 
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
