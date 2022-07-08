@@ -44,13 +44,13 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
                 RunObject = Report "Blagajnički dnevnik";
 
-                /*trigger OnAction()
+                trigger OnAction()
                 begin
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
                     IzvjestajPortoBlagajne.Run();
-                end;*/
+                end;
             }
 
             action("Zapisnik o primopredaji UniCredit")

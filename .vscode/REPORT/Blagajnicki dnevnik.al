@@ -8,7 +8,7 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
+            //DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
@@ -127,7 +127,7 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
+                //GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     REPEAT
