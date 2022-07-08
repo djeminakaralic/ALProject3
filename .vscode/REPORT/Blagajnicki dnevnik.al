@@ -103,12 +103,12 @@ report 50075 "Blagajnički dnevnik"
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
-                    Datum := "Posting Date";
-                    Brdokumenta := "Document No.";
-                    BrdokumentaIS := '';
-                    Kolicina := Amount;
-                END;
+                //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
+                Datum := "Posting Date";
+                Brdokumenta := "Document No.";
+                BrdokumentaIS := '';
+                Kolicina := Amount;
+                //END;
 
 
                 /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
