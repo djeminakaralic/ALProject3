@@ -21928,6 +21928,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Meal Taxable BD - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 1901871129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Meal Taxable FBiH</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Meal Taxable FBiH  - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1954395533 - Field 875717669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Meal Taxable FBiH</source>
           <note from="Developer" annotates="general" priority="2"></note>
