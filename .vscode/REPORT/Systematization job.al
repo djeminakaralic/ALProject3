@@ -3,6 +3,7 @@ report 50091 "Systematization job"
     ProcessingOnly = true;
     ShowPrintStatus = false;
     Caption = 'Systematization job';
+    UseRequestPage = false;
 
     dataset
     {
@@ -554,6 +555,9 @@ report 50091 "Systematization job"
                                                 ECLOrg."Show Record" := TRUE;
                                                 IF (ECLOrg."Position Description" <> '') AND (ECLOrg."Starting Date" <> 0D) THEN
                                                     ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
+                                                if ECLOrg."Starting Date" <> OrgShema."Date From" then begin
+                                                    ECLOrg.Validate("Starting Date", OrgShema."Date From");
+                                                end;
                                                 ECLOrg.MODIFY(FALSE);
                                             END;
 

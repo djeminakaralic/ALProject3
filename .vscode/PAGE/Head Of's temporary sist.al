@@ -6,6 +6,7 @@ page 50064 "Head Of's temporary sist"
     SourceTable = "Head Of's temporary";
     UsageCategory = Lists;
     ApplicationArea = all;
+    Editable = false;
 
     layout
     {

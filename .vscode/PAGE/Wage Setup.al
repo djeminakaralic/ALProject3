@@ -78,6 +78,10 @@ page 50016 "Wage Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Meal Taxable FBiH "; "Meal Taxable FBiH ")
+                {
+                    ApplicationArea = all;
+                }
                 field("Meal Code FBiH Taxable"; "Meal Code FBiH Taxable")
                 {
                     ApplicationArea = all;

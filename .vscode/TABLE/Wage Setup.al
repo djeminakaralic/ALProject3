@@ -697,6 +697,18 @@ table 50199 "Wage Setup"
             TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field("Wage Journal Template"));
 
         }
+        field(50075; "Meal Taxable FBiH "; Decimal)
+        {
+            DecimalPlaces = 0 : 3;
+            Caption = 'Meal Taxable FBiH';
+            trigger Onvalidate()
+            var
+                myInt: Integer;
+            begin
+                NettoFromBrutto("Meal Taxable FBiH ");
+
+            end;
+        }
 
     }
 
@@ -710,6 +722,40 @@ table 50199 "Wage Setup"
     fieldgroups
     {
     }
+    procedure NettoFromBrutto(Amount: Decimal): Decimal
+    var
+        ATPercent: Decimal;
+        AddTaxesPercentage: Decimal;
+
+
+    begin
+
+        //NettoFromBrutto
+        GetAddTaxesPercentage(AddTaxesPercentage);
+        "Meal Taxable FBiH Untaxable" := "Meal Taxable FBiH " * (1 - AddTaxesPercentage / 100);
+
+
+    end;
+
+    procedure GetAddTaxesPercentage(var Percentage: Decimal)
+    var
+        AddTaxes: Record Contribution;
+        ATCCon: Record "Contribution Category Conn.";
+    begin
+
+        Percentage := 0;
+
+        AddTaxes.RESET;
+        AddTaxes.SETFILTER(Active, '%1', TRUE);
+        AddTaxes.SETFILTER("From Brutto", '%1', TRUE);
+        IF AddTaxes.FINDFIRST THEN
+            REPEAT
+                IF ATCCon.GET('FBIH', AddTaxes.Code) THEN
+                    IF ATCCon."Calculated in Total Brutto" THEN
+                        Percentage += ATCCon.Percentage;
+            UNTIL AddTaxes.NEXT = 0;
+    end;
+
 
     var
         emp: Record "Employee";

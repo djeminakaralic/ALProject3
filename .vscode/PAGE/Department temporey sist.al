@@ -6,6 +6,7 @@ page 50131 "Department temporary sist"
     SourceTable = "Department temporary";
     UsageCategory = Lists;
     ApplicationArea = all;
+    Editable = false;
 
     layout
     {
