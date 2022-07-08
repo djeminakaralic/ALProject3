@@ -136,13 +136,18 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                emp.SETFILTER("No.", '%1', "Employee No.");
+                /*emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN
-                    EmmployeeName := emp."First Name" + ' ' + emp."Last Name";
+                    EmmployeeName := emp."First Name" + ' ' + emp."Last Name";*/
             end;
 
             trigger OnPreDataItem()
             begin
+                BankAccCardFilter := GETFILTER("Bal. Account No.");
+                BankAccount.SetFilter("No.", '%1', BankAccCardFilter);
+                if BankAccount.FindFirst() then
+                    BankAccountName:=BankAccount.Name;
+
                 PostingDatefilter := GETFILTER("Posting Date");
 
                 CompanyInformation.GET;
@@ -152,9 +157,9 @@ report 50075 "Blagajnički dnevnik"
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
 
-                CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
+                /*CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
-                    Country := CountryRegion.Name;
+                    Country := CountryRegion.Name;*/
             end;
         }
     }
@@ -184,6 +189,8 @@ report 50075 "Blagajnički dnevnik"
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         PostingDatefilter: Text[100];
+        BankAccCardFilter: Code[20];
+        BankAccountName: Text[100];
         Datum: Date;
         Brdokumenta: Text[100];
         Kolicina: Decimal;

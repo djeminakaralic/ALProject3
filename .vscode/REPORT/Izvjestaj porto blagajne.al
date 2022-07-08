@@ -82,6 +82,7 @@ report 50085 "Izvještaj porto blagajne"
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
+                
                 IF GLEntry.FindFirst() then
                     repeat
                         PaymentAmount += ABS(GLEntry.Amount);
