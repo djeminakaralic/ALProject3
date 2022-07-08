@@ -40673,6 +40673,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntryExtends - Field Vendor Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 1987769107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>100</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 100 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 2964680702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 200 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 684500104 - EnumValue 579705151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>50</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni - EnumValue 50 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 903826216 - EnumValue 1611336899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CEO</source>
           <note from="Developer" annotates="general" priority="2"></note>
