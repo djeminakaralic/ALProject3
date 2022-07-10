@@ -246,7 +246,7 @@ report 50104 "Update Brought Experience"
 
     trigger OnPostReport()
     begin
-        MESSAGE(Text0001);
+        //ĐK  MESSAGE(Text0001);
         //ĐK EmployeeCardPage.Update(true);
 
 

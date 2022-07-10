@@ -153,6 +153,7 @@ page 50222 "Position menu temp"
                 field("Position Coefficient for Wage"; "Position Coefficient for Wage")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
 
                 field("Fields for change"; "Fields for change")

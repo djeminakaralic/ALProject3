@@ -60,7 +60,7 @@ page 50051 "Employee Contract Ledger"
                 field("Wage Change"; "Wage Change")
                 {
                     BlankZero = true;
-                    ShowMandatory = true;
+
                     ApplicationArea = all;
                 }
                 field("Contract Phase"; "Contract Phase")
@@ -152,11 +152,13 @@ page 50051 "Employee Contract Ledger"
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Department Name"; "Department Name")
                 {
                     Visible = IsVisible;
                     ApplicationArea = all;
+                    Editable = false;
                 }
 
                 field("Org Dio"; "Org Dio")
@@ -177,6 +179,7 @@ page 50051 "Employee Contract Ledger"
 
                     ShowMandatory = true;
                     ApplicationArea = all;
+                    Visible = false;
 
 
                 }
@@ -184,36 +187,48 @@ page 50051 "Employee Contract Ledger"
                 field("Phisical Department Desc"; "Phisical Department Desc")
                 {
                     ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
                 }
 
 
                 field("Org Entity Code"; "Org Entity Code")
                 {
-                    Visible = IsVisible;
+
                     ApplicationArea = all;
+                    Visible = false;
+                    Editable = false;
                 }
                 field(Canton; Canton)
                 {
                     ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
                 }
                 field("Org Municipality"; "Org Municipality")
                 {
 
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Org Municipality of ag"; "Org Municipality of ag")
                 {
                     ApplicationArea = all;
+                    Visible = false;
+                    Editable = false;
                 }
                 field("Municipality Name"; "Municipality Name")
                 {
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Department Address"; "Department Address")
                 {
                     ApplicationArea = all;
+                    Visible = false;
+                    Editable = false;
                 }
 
                 field("<Position Description>"; "Position Description")
@@ -257,9 +272,10 @@ page 50051 "Employee Contract Ledger"
 
                 field("Contract Type"; "Contract Type")
                 {
-                    Visible = true;
+                    Visible = false;
                     ApplicationArea = all;
                     ShowMandatory = true;
+
 
 
                 }
@@ -268,7 +284,7 @@ page 50051 "Employee Contract Ledger"
                     Editable = false;
 
                     ApplicationArea = all;
-                    Visible = true;
+                    Visible = false;
 
 
 
@@ -283,7 +299,7 @@ page 50051 "Employee Contract Ledger"
                 }
                 field("Ending Date"; "Ending Date")
                 {
-                    ShowMandatory = true;
+
                     ApplicationArea = all;
                 }
                 field("Work Years"; "Work Years")
@@ -441,6 +457,33 @@ page 50051 "Employee Contract Ledger"
                 field("Employee Benefits"; "Employee Benefits")
                 {
                     ApplicationArea = all;
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+                    var
+                        myInt: Integer;
+                        UserSetup: Record "User Setup";
+                        Misc: Record "Misc. article information new";
+                        MiscP: Page "Misc Article Informations";
+                    begin
+                        UserSetup.Reset();
+                        UserSetup.SetFilter("User ID", '%1', UserId);
+                        if UserSetup.FindFirst() then begin
+                            UserSetup."Last ECL No." := Rec."No.";
+                            UserSetup."Last Org Shema" := Rec."Org. Structure";
+                            UserSetup.Modify();
+                        end;
+                        Misc.Reset();
+                        Misc.SetFilter("Org Shema", '%1', Rec."Org. Structure");
+                        Misc.SetFilter("Emp. Contract Ledg. Entry No.", '%1', Rec."No.");
+                        Misc.SetFilter("Employee No.", '%1', Rec."Employee No.");
+                        MiscP.SetTableView(Misc);
+                        MiscP.Run();
+                        CurrPage.Update();
+
+
+                    end;
+
                 }
                 field("Residence/Network"; "Residence/Network")
                 {
@@ -498,17 +541,17 @@ page 50051 "Employee Contract Ledger"
                 }
                 field("Employment Abroad"; "Employment Abroad")
                 {
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Employment Abroad City"; "Employment Abroad City")
                 {
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Empl.Abroad Country/Region"; "Empl.Abroad Country/Region")
                 {
-                    Visible = IsVisible;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field(Active; Active)
@@ -593,24 +636,28 @@ page 50051 "Employee Contract Ledger"
                 field("Temporary disposition"; "Temporary disposition")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
 
                 field("Additional Position"; "Additional Position")
                 {
-                    Visible = true;
+                    Visible = false;
                     ApplicationArea = all;
                 }
                 field("Additional Responsiblity"; "Additional Responsiblity")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Temporary disposition starting"; "Temporary disposition starting")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Temporary disposition ending"; "Temporary disposition ending")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 /*
                 field("Number of protocol for documen"; "Number of protocol for documen")
@@ -1556,7 +1603,7 @@ page 50051 "Employee Contract Ledger"
         Role: Record "Role";
         pOSITIONTA: Record "Position";
         pOSITIONTA1: Record "Position";
-        Misc: Record "Misc. Article Information";
+        Misc: Record "Misc. article information new";
         // RefreshOrg: Report "Org unit refresh 2";
         EmployeeDefaultDimension: Record "Employee Default Dimension";
         DimensionForPosition: Record "Dimension for position";

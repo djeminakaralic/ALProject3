@@ -817,8 +817,8 @@ page 50066 "HR activities"
         BenefitsOrginal1: Record "Position Benefits";
         ECLOrg1: Record "Employee Contract Ledger";
         PositionBenef: Record "Position Benefits";
-        MAIS: Record "Misc. Article Information";
-        MAI1: Record "Misc. Article Information";
+        MAIS: Record "Misc. article information new";
+        MAI1: Record "Misc. article information new";
         EmployeeContractLedger2: Record "Employee Contract Ledger";
         DepartmentCodeForpos: Code[30];
         ORGDijelovi: Record "Org Dijelovi";

@@ -39,8 +39,9 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             field(Vacation; Vacation) { }
             field("Added To Hour Pool"; "Added To Hour Pool") { }
             field("Calculation Type"; "Calculation Type") { }
+            field("Calculate Experience"; "Calculate Experience") { }
             field("Meal Calculated"; "Meal Calculated") { }
-            field("Meal - Hours"; "Meal - Hours") { }
+            field("Meal - Hours"; "Meal - Hours") { Visible = false; }
             field("Payment Type"; "Payment Type")
             { }
             field(Order; Order) { ApplicationArea = all; }
@@ -48,9 +49,10 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             field("Posting Group"; "Posting Group") { }
             field("G/L Account No."; "G/L Account No.") { }
             field("G/L Balance Account No."; "G/L Balance Account No.") { }
-            field("Sick Leave RAD -1"; "Sick Leave RAD -1") { }
+            field("Sick Leave RAD -1"; "Sick Leave RAD -1") { Visible = false; }
             field("Unpaid days"; "Unpaid days") { }
-            field("Add Hours"; "Add Hours") { Visible = false; }
+            field("Add Hours"; "Add Hours") { Visible = true; }
+            field(Weekend; Weekend) { ApplicationArea = all; }
             field(Holiday; Holiday) { }
 
 

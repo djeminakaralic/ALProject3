@@ -1038,6 +1038,11 @@ table 50018 "Wage Calculation"
         {
 
         }
+        field(50379; "Employee Disability"; Boolean)
+        {
+
+        }
+
 
 
     }

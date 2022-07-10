@@ -9,7 +9,7 @@ pageextension 50070 AbsenceRegistration extends "Absence Registration"
         {
             field("Vacation from Year"; "Vacation from Year")
             {
-                Visible = true;
+                Visible = false;
                 ApplicationArea = all;
 
 

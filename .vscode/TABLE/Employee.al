@@ -11,7 +11,6 @@ tableextension 50071 EmployeeExtension extends Employee
             begin
                 //elmira
 
-
                 CLEAR(CheckInt);
 
                 IF "Phone No." <> '' THEN BEGIN
@@ -515,7 +514,7 @@ tableextension 50071 EmployeeExtension extends Employee
         {
             Caption = 'Employee Benefits';
             FieldClass = FlowField;
-            CalcFormula = Count("Misc. Article Information" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
+            CalcFormula = Count("Misc. Article Information new" WHERE("Employee No." = FIELD("No."), Active = FILTER(true)));
         }
         field(50340; "Job Violations"; Integer)
         {
@@ -784,7 +783,7 @@ tableextension 50071 EmployeeExtension extends Employee
 
             trigger OnValidate()
             var
-                MiscArticleInformation2: Record "Misc. Article Information";
+                MiscArticleInformation2: Record "Misc. article information new";
             begin
                 //HR01
                 IF "Transport Allowance" = TRUE THEN BEGIN
@@ -832,7 +831,7 @@ tableextension 50071 EmployeeExtension extends Employee
         field(50113; "Bank Account Code"; Code[20])
         {
             Caption = 'Bank Account Code';
-            TableRelation = "Wage/Reduction Bank Accounts"."No.";
+            TableRelation = "Wage/Reduction Bank Accounts"."No." where("Bank Code" = Field("Bank No."));
             trigger OnValidate()
             var
                 myInt: Integer;
@@ -841,12 +840,10 @@ tableextension 50071 EmployeeExtension extends Employee
                 EmpAcc.RESET;
                 EmpAcc.SETFILTER("Bank Account Code", '%1', "Bank Account Code");
                 IF EmpAcc.FIND('-') THEN BEGIN
-                    IF "Employee with 2 JIB" = FALSE THEN BEGIN
-                        ERROR(Text015)
-                    END
-                    ELSE BEGIN
-                        "Bank Account No." := "Bank Account Code";
-                    END;
+
+
+                    "Bank Account No." := "Bank Account Code";
+
                 END
                 ELSE BEGIN
                     "Bank Account No." := "Bank Account Code";
@@ -2205,6 +2202,8 @@ tableextension 50071 EmployeeExtension extends Employee
                     end;
 
                 end;
+
+
             end;
 
         }
@@ -3099,6 +3098,10 @@ tableextension 50071 EmployeeExtension extends Employee
             FieldClass = FlowField;
             CalcFormula = lookup("Additional Education"."Vocation Description" where("Employee No." = FIELD("No."), Active = const(true)));
         }
+        field(50378; "WEP with military"; Boolean)
+        {
+            Caption = 'Vojni staž se obračunava u minuli rad';
+        }
         /*field(503709; "Superior1 Last Name"; Text[250])
         {
             FieldClass = FlowField;
@@ -3183,7 +3186,7 @@ tableextension 50071 EmployeeExtension extends Employee
         ecl: Record "Employee Contract Ledger";
         WS: record "Wage Setup";
         Text011: Label 'You cannot use Transport if you have official car.';
-        mai: Record "Misc. Article Information";
+        mai: Record "Misc. article information new";
         Text006: Label 'The employee uses car allowance.';
         Country_Region: Record "Country/Region";
         Staro: Text;
@@ -3299,6 +3302,9 @@ tableextension 50071 EmployeeExtension extends Employee
             //ĐK  "Bank No." := 'RBBH';
             "Tax Deduction" := TRUE;
             VALIDATE("Benefit Coefficient", 1);
+            "Calculate Wage Addition" := true;
+
+            "For Calculation" := true;
             "Send PayList" := TRUE;
         END;
         "Last Date Modified" := TODAY;
@@ -3332,7 +3338,7 @@ tableextension 50071 EmployeeExtension extends Employee
         ECL.SETFILTER(Active, '%1', TRUE);
         IF ECL.FINDFIRST THEN BEGIN
 
-            EmployeeResUpdate.EmployeeChange(xRec, Rec);
+            //ĐK       EmployeeResUpdate.EmployeeChange(xRec, Rec);
         END;
 
 

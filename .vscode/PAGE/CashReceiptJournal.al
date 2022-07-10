@@ -3,16 +3,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     //ED
     layout
     {
-        // Add changes to page layout here
-
-
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;
             }
-
             field("Payment Type"; "Payment Type")
             {
                 ApplicationArea = all;
@@ -22,13 +18,15 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
         }
+
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
         moveafter("Bal. VAT Amount"; "Document Type")
-
+        moveafter("Credit Amount"; "Account Type")
 
         addafter("Amount (LCY)")
         {
+            
             field("Given amount"; "Given amount")
             {
                 ApplicationArea = all;
@@ -42,13 +40,16 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
+        /*modify(Description)
+        {
+            Editable = false;
+        }*/
     }
 
     actions
     {
         addafter(Card)
         {
-
             action("Payment Slip")
             {
                 Caption = 'Payment Slip';
@@ -62,8 +63,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     CurrPage.SETSELECTIONFILTER(GJline);
                     Report.RunModal(50077, true, false, GJline);
                 end;
-
-                //RunObject = Report "Uplatnica";
             }
 
             /*action("Payroll")
@@ -75,23 +74,43 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedIsBig = true;
                 RunObject = Report "Isplatnica";
             }*/
-
-            action("Izvještaj porto blagajne")
-            {
-                Caption = 'Izvještaj porto blagajne';
-                Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = Report "Izvještaj porto blagajne";
-            }
         }
     }
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+        Validate(Rec."Document Type", "Document Type"::Payment);
+        Validate(Rec."Account Type", "Account Type"::Customer);
+        Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
+        if "Journal Batch Name" = 'CZK1 UPL' then
+            Validate(rec."Bal. Account No.", 'BANK-10')
+        else
+            if "Journal Batch Name" = 'CZK2 UPL' then
+                Validate(rec."Bal. Account No.", 'BANK-11')
+            else
+                if "Journal Batch Name" = 'CZK3 UPL' then
+                    Validate(rec."Bal. Account No.", 'BANK-12')
+                else
+                    if "Journal Batch Name" = 'CZK4 UPL' then
+                        Validate(rec."Bal. Account No.", 'BANK-13')
+                    else
+                        if "Journal Batch Name" = 'CZK5 UPL' then
+                            Validate(rec."Bal. Account No.", 'BANK-14')
+                        else
+                            if "Journal Batch Name" = 'CZK6 UPL' then
+                                Validate(rec."Bal. Account No.", 'BANK-15')
+                            else
+                                if "Journal Batch Name" = 'CZK7 UPL' then
+                                    Validate(rec."Bal. Account No.", 'BANK-16')
+                                else
+                                    if "Journal Batch Name" = 'CZK8 UPL' then
+                                        Validate(rec."Bal. Account No.", 'BANK-17')
+                                    else
+                                        if "Journal Batch Name" = 'CZK9 UPL' then Validate(rec."Bal. Account No.", 'BANK-18');
+
         "Payment DT" := System.CurrentDateTime;
+        Description := '';
     end;
 
     var

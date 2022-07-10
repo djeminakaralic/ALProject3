@@ -199,6 +199,14 @@ table 50188 "Wage Addition Type"
         {
             Caption = 'Topli obrok - RAD';
         }
+        field(137; "Work experience base"; Boolean)
+        {
+            Caption = 'Wage addition based on Work Experience';
+        }
+        field(138; "Weekend"; Boolean)
+        {
+            Caption = 'Dozvoljen unos vikendom';
+        }
 
     }
     keys

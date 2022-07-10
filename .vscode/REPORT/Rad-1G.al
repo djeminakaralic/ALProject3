@@ -149,6 +149,7 @@ report 50071 "Rad-1G"
             begin
                 Start2 := Fill.GetMonthRange(Month, Year, TRUE);
                 End2 := Fill.GetMonthRange(Month, Year, FALSE);
+
             end;
         }
         dataitem(SF2; Integer)
@@ -522,19 +523,23 @@ report 50071 "Rad-1G"
                     {
                         Caption = 'Municipality';
                         TableRelation = Municipality;
+                        Visible = false;
                     }
                     field(OrgJed; OrgJed)
                     {
                         Caption = 'Org Jed';
                         TableRelation = "ORG Dijelovi".Description WHERE(Active = FILTER(true));
+                        Visible = false;
                     }
                     field(UpdateOrg; UpdateOrg)
                     {
                         Caption = 'UpdateOrg';
+                        Visible = false;
                     }
                     field(UpdateMonth; UpdateMonth)
                     {
                         Caption = 'Update Month';
+                        Visible = false;
                     }
                 }
             }
@@ -582,6 +587,15 @@ report 50071 "Rad-1G"
                 Monthlbl := 'DECEMBAR';
 
         END;
+        OrgDijel.Reset();
+        OrgDijel.SetFilter(Active, '%1', true);
+        if OrgDijel.FindFirst() then begin
+            OrgJed := OrgDijel.Description;
+            Municipality := OrgDijel."Municipality Code of agency";
+            UpdateMonth := true;
+            UpdateOrg := true;
+
+        end;
         output[31] [1] := 0;
         EmployeeContractLedger.RESET;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
@@ -615,17 +629,9 @@ report 50071 "Rad-1G"
                 EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
                 IF Municipality <> '' THEN
                     EmployeeContractLedger.SETFILTER("Org Municipality of ag", '%1', Municipality);
-                IF OrgJed <> '' THEN BEGIN
-                    Org.RESET;
-                    Org.SETFILTER(Description, '%1', OrgJed);
-                    Org.SETFILTER(Active, '%1', TRUE);
-                    IF Org.FINDFIRST THEN BEGIN
-                        IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                            EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                        ELSE
-                            EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
-                    END;
-                END;
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
                 IF EmployeeContractLedger.FINDFIRST THEN BEGIN
 
                     EmployeeReal.Header := TRUE;
@@ -711,6 +717,7 @@ report 50071 "Rad-1G"
 
     var
         Month: Integer;
+        OrgDijel: Record "Org Dijelovi";
         Monthlbl: Text;
         EGT: Record "Engagement Type";
         Year: Integer;
@@ -827,10 +834,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Description, '%1', OrgJed);
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
@@ -950,10 +956,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Description, '%1', OrgJed);
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
                 /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
                   EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
@@ -977,10 +982,9 @@ report 50071 "Rad-1G"
                     Org.SETFILTER(Description, '%1', OrgJed);
                     Org.SETFILTER(Active, '%1', TRUE);
                     IF Org.FINDFIRST THEN BEGIN
-                        IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                            ECL2.SETFILTER("Org Unit Name", '<>%1', OrgJed)
-                        ELSE
-                            ECL2.SETFILTER("GF of work Description", '<>%1', OrgJed);
+
+                        ECL2.SETFILTER("Org Unit Name", '<>%1', OrgJed)
+
                     END;
                 END;
                 ECL2.SETFILTER("Show Record", '%1', TRUE);
@@ -1065,10 +1069,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Description, '%1', OrgJed);
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
+
             END;
         END;
         EmployeeContractLedger.SETFILTER("Engagement Type", '<>%1', 'EXTERNI ANGAZMAN');
@@ -1119,10 +1122,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
 
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
+
             END;
         END;
 
@@ -1147,10 +1149,9 @@ report 50071 "Rad-1G"
                     Org.SETFILTER(Active, '%1', TRUE);
                     IF Org.FINDFIRST THEN BEGIN
 
-                        IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                            ECL2.SETFILTER("Org Unit Name", '%1', OrgJed)
-                        ELSE
-                            ECL2.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                        ECL2.SETFILTER("Org Unit Name", '%1', OrgJed)
+
                         /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
                           EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
                     END;
@@ -1219,10 +1220,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Description, '%1', OrgJed);
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
-                IF Org."Branch Agency" = Org."Branch Agency"::Branch THEN
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
@@ -1256,10 +1256,9 @@ report 50071 "Rad-1G"
                     Org.SETFILTER(Active, '%1', TRUE);
                     IF Org.FINDFIRST THEN BEGIN
 
-                        IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                            ECL2.SETFILTER("Org Unit Name", '<>%1', OrgJed)
-                        ELSE
-                            ECL2.SETFILTER("GF of work Description", '<>%1', OrgJed);
+
+                        ECL2.SETFILTER("Org Unit Name", '<>%1', OrgJed)
+
                         /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
                           EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
                     END;
@@ -1312,10 +1311,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
 
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
                 /*IF Org."Branch Agency"=Org."Branch Agency"::Branch THEN
                   EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);*/
             END;
@@ -1378,10 +1376,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Description, '%1', OrgJed);
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
@@ -1795,10 +1792,9 @@ report 50071 "Rad-1G"
             Org.SETFILTER(Description, '%1', OrgJed);
             Org.SETFILTER(Active, '%1', TRUE);
             IF Org.FINDFIRST THEN BEGIN
-                IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                    EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                ELSE
-                    EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
             END;
         END;
         EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);
@@ -2014,10 +2010,9 @@ report 50071 "Rad-1G"
                     Org.SETFILTER(Description, '%1', OrgJed);
                     Org.SETFILTER(Active, '%1', TRUE);
                     IF Org.FINDFIRST THEN BEGIN
-                        IF Org."Branch Agency" = Org."Branch Agency"::Agency THEN
-                            EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed)
-                        ELSE
-                            EmployeeContractLedger.SETFILTER("GF of work Description", '%1', OrgJed);
+
+                        EmployeeContractLedger.SETFILTER("Org Unit Name", '%1', OrgJed);
+
                     END;
                 END;
                 EmployeeContractLedger.SETFILTER("Show Record", '%1', TRUE);

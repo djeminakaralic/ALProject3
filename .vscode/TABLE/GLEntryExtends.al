@@ -26,9 +26,6 @@ tableextension 50106 GLEntryExtends extends "G/L Entry"
             Caption = 'Vrsta uplate';
             NotBlank = true;
         }
-
-
-
     }
 
 

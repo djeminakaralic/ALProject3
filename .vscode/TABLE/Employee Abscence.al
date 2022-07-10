@@ -190,6 +190,20 @@ tableextension 51921 MyExtension extends "Employee Absence"
             Caption = 'Work Type';
             OptionMembers = " ","Vacation";
         }
+        field(50151; "Add Hours"; Boolean)
+        {
+            Caption = 'Add Hours';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cause of Absence"."Added To Hour Pool" where(Code = field("Cause of Absence Code")));
+        }
+
+        //UnPaid Days
+        field(50152; "Unpaid"; Boolean)
+        {
+            Caption = 'Neplaćeno';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cause of Absence"."Unpaid days" where(Code = field("Cause of Absence Code")));
+        }
 
 
 

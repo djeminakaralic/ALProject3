@@ -175,6 +175,7 @@ report 50077 Uplatnica
                 end
                 else
                     Counter := 0;
+
             end;
         }
 

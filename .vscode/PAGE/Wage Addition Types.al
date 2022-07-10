@@ -55,6 +55,8 @@ page 50267 "Wage Addition Types"
                 {
                     ApplicationArea = all;
                 }
+                field("Work experience base"; "Work experience base")
+                { ApplicationArea = all; }
                 field("Default Amount"; "Default Amount")
                 {
                     ApplicationArea = all;
@@ -174,18 +176,24 @@ page 50267 "Wage Addition Types"
                 field("Bonus and material right"; "Bonus and material right")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Other bonus from brutto"; "Other bonus from brutto")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Add Hours"; "Add Hours")
                 {
                     ApplicationArea = all;
+
                 }
+                field(Weekend; Weekend)
+                { }
                 field("Hours Sick Leave"; "Hours Sick Leave")
                 {
                     ApplicationArea = all;
+
                 }
                 field("Hour Pool MIP"; "Hour Pool MIP")
                 {
@@ -198,14 +206,18 @@ page 50267 "Wage Addition Types"
                 field("RAD - 1G hours"; "RAD - 1G hours")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("RAD-1 Wage Excluded"; "RAD-1 Wage Excluded")
                 {
+                    ApplicationArea = all;
+                    Visible = false;
 
                 }
                 field("Bruto (RAD)"; "Bruto (RAD)")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
 
             }

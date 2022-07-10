@@ -8,7 +8,7 @@ report 50075 "Blagajnički dnevnik"
     {
         dataitem(DataItem22; "G/L Entry")
         {
-            DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
+            //DataItemTableView = WHERE("Bal. Account No." = FILTER(2050));
             RequestFilterFields = "Posting Date";
 
             column(PostingDate; DataItem22."Posting Date")
@@ -95,26 +95,29 @@ report 50075 "Blagajnički dnevnik"
             column(EmmployeeName; EmmployeeName)
             {
             }
+            column(BankAccountName; BankAccountName)
+            {
+            }
 
 
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
-                    Datum := "Posting Date";
-                    Brdokumenta := "Document No.";
-                    BrdokumentaIS := ''; //ED
-                    Kolicina := Amount;
-                END;
+                //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
+                Datum := "Posting Date";
+                Brdokumenta := "Document No.";
+                BrdokumentaIS := '';
+                Kolicina := Amount;
+                //END;
 
 
-                IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
+                /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
                     Datum := "Posting Date";
                     BrdokumentaIS := "Document No.";
-                    Brdokumenta := ''; //ED
+                    Brdokumenta := '';
                     Kolicina := 0;
                     KolicinaIS := Amount;
-                END;
+                END;*/
 
                 /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
@@ -127,36 +130,38 @@ report 50075 "Blagajnički dnevnik"
 
 
 
-                GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
+                //GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
-                        REPEAT
-                            PrethodniSaldo += GLEntry.Amount;
-                        UNTIL GLEntry.NEXT = 0;
+                    REPEAT
+                        PrethodniSaldo += GLEntry.Amount;
+                    UNTIL GLEntry.NEXT = 0;
 
 
 
-                emp.SETFILTER("No.", '%1', "Employee No.");
+                /*emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN
-                    EmmployeeName := emp."First Name" + ' ' + emp."Last Name";
+                    EmmployeeName := emp."First Name" + ' ' + emp."Last Name";*/
             end;
 
             trigger OnPreDataItem()
             begin
+                BankAccCardFilter := GETFILTER("Bal. Account No.");
+                BankAccount.get(BankAccCardFilter);
+                BankAccountName := BankAccount.Name;
+
                 PostingDatefilter := GETFILTER("Posting Date");
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
-
-
                 //Location.SETFILTER(Code,"Location Code");
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
 
-                CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
+                /*CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
-                    Country := CountryRegion.Name;
+                    Country := CountryRegion.Name;*/
             end;
         }
     }
@@ -186,6 +191,8 @@ report 50075 "Blagajnički dnevnik"
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         PostingDatefilter: Text[100];
+        BankAccCardFilter: Code[20];
+        BankAccountName: Text[100];
         Datum: Date;
         Brdokumenta: Text[100];
         Kolicina: Decimal;

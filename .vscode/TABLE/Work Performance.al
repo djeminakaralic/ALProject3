@@ -191,37 +191,46 @@ table 50099 "Work Performance"
                     //trebam provjeriti postoji li ovaj tip dodatka
                     //kriteriji za podudaranje: procentualni tip kalkulacije, simulacija, isti iznos u %
                     WageAdditionType.Reset();
-                    WageAdditionType.SetFilter(Incentive, '%1', true);
-                    WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
+                    WageAdditionType.SetFilter("Payment Type", '%1', WageAdditionType."Payment Type"::"Work Performance");
                     WageAdditionType.SetFilter("Calculation Type", '%1', 0);
+                    WageAdditionType.SetFilter("Default Amount", '%1', Rec."Increase in basic salary(%)");
                     IF WageAdditionType.FindFirst() then begin
                         FoundType := WageAdditionType.Code;
-                        Message('Pronađeno!');
+
+
                     end
                     else begin
 
                         WageAdditionType.Reset();//Tipovi dodataka na plate
                         //ako ne postoji radim insert u tabelu wage addition type 
                         //ovdje nema entry no, samo ima code kao key 
-                        WageAdditionType.SetFilter(Incentive, '%1', true);
+                        WageAdditionType.SetFilter("Payment Type", '%1', WageAdditionType."Payment Type"::"Work Performance");
 
                         WageAdditionType.SetFilter("Calculation Type", '%1', 0);
                         Counter := WageAdditionType.Count;
-                        Counter := Counter + 1;
+                        Counter := Counter;
 
                         WageAdditionType.Init();
-                        WageAdditionType.Code := 'STIM' + FORMAT(Counter);
-                        WageAdditionType."Default Amount" := Rec."Increase in basic salary(%)"; //standardni iznos
+                        WageAdditionType.validate(Code, 'R. UCINAK' + FORMAT(Counter));
                         WageAdditionType.Description := WorkPerformance.TableCaption; //opis
+                        WageAdditionType."Calculated on Neto (Calc.)" := true;
+
                         WageAdditionType."Calculation Type" := 0; //procentualni tip kalkulacije
-                        WageAdditionType."Incentive" := true; //stimulacija
+                        WageAdditionType.validate("Default Amount", rec."Increase in basic salary(%)");
+
+                        WageAdditionType.validate("Payment Type", WageAdditionType."Payment Type"::"Work Performance"); //stimulacija
                         WageAdditionType."Taxable" := true; //obračunaj poreze
+                        WageAdditionType."Calculated on Brutto" := true;
                         WageAdditionType."Add. Taxable" := true; //obračunaj doprinose
                         WageAdditionType."Calculate Deduction" := true; //računaj kao dio neta za obustave
-                        WageAdditionType."Calculate Experience" := true; //računaj kao dio staža
+                        WageAdditionType."Calculate Experience" := false; //računaj kao dio staža
+                        WageAdditionType.Meal := false;
+                        WageAdditionType.Use := false;
+                        WageAdditionType.Regres := false;
+
                         FoundType := WageAdditionType.Code;
                         WageAdditionType.Insert();
-                        Message('Nije pronadjeno!');
+
                     end;
 
                     WageAmounts.Reset();
@@ -248,15 +257,16 @@ table 50099 "Work Performance"
                     else
                         WageAddition."Entry No." := 1;
 
-                    WageAddition."Wage Addition Type" := FoundType;
-                    WageAddition."Employee No." := Rec."Employee No.";
-                    Employee.Get(Rec."Employee No.");
-                    WageAddition."First Name" := Employee."First Name";
-                    WageAddition."Last Name" := Employee."Last Name";
+
+                    WageAddition.validate("Employee No.", Rec."Employee No.");
+                    WageAddition.validate("Wage Addition Type", FoundType);
+                    /*  Employee.Get(Rec."Employee No.");
+                      WageAddition."First Name" := Employee."First Name";
+                      WageAddition."Last Name" := Employee."Last Name";*/
                     WageAddition."Year of Wage" := Rec."Year Of Performance";
                     WageAddition."Month of Wage" := Rec."Month Of Performance";
-                    WageAddition.Description := WageAdditionType.Description;
-                    WageAddition.Amount := AmountVar;
+                    //WageAddition.Description := WageAdditionType.Description;
+                    //WageAddition.Amount := AmountVar;
 
                     WageAddition.Insert();
                 end;

@@ -289,7 +289,7 @@ codeunit 50304 "Absence Fill"
     end;
 
     //ED 01 START
-    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10])
+    procedure EmployeeAbsence(StartDate2: Date; EndDate2: Date; var Employee: Record "Employee"; CauseCode: Code[10]; "Hours": Decimal)
     var
         FromDateFilter: Date;
         ToDateFilter: Date;
@@ -306,6 +306,11 @@ codeunit 50304 "Absence Fill"
         InsertWeekly: Boolean;
         HoursInDay: Decimal;
         Holiday: Boolean;
+        AbsenceEmpUnPaid: Record "Employee Absence";
+        Neplaceno: Decimal;
+        RazlikaDani: Decimal;
+        BrojacSati: Decimal;
+        Stv: Decimal;
     begin
         AbsenceEmp.RESET;
         AbsenceEmp.LOCKTABLE;
@@ -360,10 +365,10 @@ codeunit 50304 "Absence Fill"
                         Datum.Next(); //prelazi na sljedeći datum da se ne bi dupliralo
                     end;*/
                 CauseOfAbsence.Reset();
-                CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
+                CauseOfAbsence.Get(CauseCode);
                 Holiday := CauseOfAbsence.Holiday;
 
-                CauseOfAbsence.Get(CauseCode);
+                CauseOfAbsence.Get(AbsenceEmp."Cause of Absence Code");
 
                 if Holiday then //pronadjen je praznik na jedan datum
                     if NOT (CauseOfAbsence."Sick Leave" OR CauseOfAbsence."Bussiness trip") then //novo odsustvo nije bolovanje ili sp, pa ostaje praznik
@@ -375,9 +380,11 @@ codeunit 50304 "Absence Fill"
                         Datum.Next(); //prelazi na sljedeći datum da se ne bi dupliralo
                     end;
             end;
-            AbsenceEmp.Reset();
+            //ĐKAbsenceEmp.Reset();
+            CauseOfAbsence.Reset();
+            CauseOfAbsence.Get(CauseCode);
 
-            IF InsertWeekly THEN
+            IF (InsertWeekly) or (CauseOfAbsence.Weekend = true) THEN
                 WITH AbsenceEmp DO BEGIN
                     INIT;
                     "Entry No." := LastEntry;
@@ -397,7 +404,39 @@ codeunit 50304 "Absence Fill"
                         "RS Code" := RSHoliday;
                     END;
 
-                    Quantity := Employee."Hours In Day";
+                    //ako mi npr. pošalje 77 sati
+                    if Hours = 0 then begin
+                        Quantity := Employee."Hours In Day";
+                    end
+                    else begin
+                        if Hours <= Employee."Hours In Day" then begin
+                            Quantity := Hours;
+                        end
+                        else begin
+                            //brojac od ukupno hours
+
+                            RazlikaDani := Hours - BrojacSati;
+                            if RazlikaDani > Employee."Hours In Day" then
+                                Stv := Employee."Hours In Day"
+                            else
+                                Stv := RazlikaDani;
+
+
+                            BrojacSati := BrojacSati + Stv;
+                            Quantity := Stv;
+
+                        end;
+                    end;
+
+                    //
+                    AbsenceEmpUnPaid.Reset();
+                    AbsenceEmpUnPaid.SetFilter("Employee No.", '%1', Employee."No.");
+                    AbsenceEmpUnPaid.SetFilter("From Date", '%1', Datum."Period Start");
+                    AbsenceEmpUnPaid.SetFilter(Unpaid, '%1', true);
+                    AbsenceEmpUnPaid.CalcSums(Quantity);
+                    Neplaceno := AbsenceEmpUnPaid.Quantity;
+
+                    Quantity := Quantity - Neplaceno;
 
                     "Unit of Measure Code" := WageSetup."Hour Unit of Measure";
                     INSERT;

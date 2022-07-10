@@ -3,6 +3,7 @@ report 50091 "Systematization job"
     ProcessingOnly = true;
     ShowPrintStatus = false;
     Caption = 'Systematization job';
+    UseRequestPage = false;
 
     dataset
     {
@@ -554,6 +555,9 @@ report 50091 "Systematization job"
                                                 ECLOrg."Show Record" := TRUE;
                                                 IF (ECLOrg."Position Description" <> '') AND (ECLOrg."Starting Date" <> 0D) THEN
                                                     ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
+                                                if ECLOrg."Starting Date" <> OrgShema."Date From" then begin
+                                                    ECLOrg.Validate("Starting Date", OrgShema."Date From");
+                                                end;
                                                 ECLOrg.MODIFY(FALSE);
                                             END;
 
@@ -1064,7 +1068,7 @@ report 50091 "Systematization job"
         OrgShema1: Record "ORG Shema";
         OrgShema2: Record "ORG Shema";
         Employeebenef: Record "Employee Benefits";
-        Misc2: Record "Misc. Article Information";
+        Misc2: Record "Misc. article information new";
         IzUgovora: Record "Employee Contract Ledger";
         ECLOrgR: Record "Employee Contract Ledger";
         SectorTemp: Record "Sector temporary";
@@ -1072,7 +1076,7 @@ report 50091 "Systematization job"
         Radnaknjizica: Record "Work Booklet";
         Radnaknjizica2: Record "Work Booklet";
         TokUgovora: Record "Contract Phase t";
-        MiscArticleInformation: Record "Misc. Article Information";
+        MiscArticleInformation: Record "Misc. article information new";
         TokUgovora2: Record "Contract Phase t";
         DepCatOrginal: Record "Department Category";
         DepCatTemp: Record "Department Category temporary";
@@ -1119,8 +1123,8 @@ report 50091 "Systematization job"
         BenefitsOrginal1: Record "Position Benefits";
         ECLOrg1: Record "Employee Contract Ledger";
         PositionBenef: Record "Position Benefits";
-        MAIS: Record "Misc. Article Information";
-        MAI1: Record "Misc. Article Information";
+        MAIS: Record "Misc. article information new";
+        MAI1: Record "Misc. article information new";
         EmployeeContractLedger2: Record "Employee Contract Ledger";
         DepartmentCodeForpos: Code[30];
         ORGDijelovi: Record "ORG Dijelovi";

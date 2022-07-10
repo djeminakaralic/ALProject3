@@ -8,116 +8,47 @@ report 50085 "Izvještaj porto blagajne"
 
     dataset
     {
-        dataitem(DataItem21; "Gen. Journal Line")
+        dataitem(DataItem21; "G/L Entry")
         {
-            column(BatchName; DataItem21."Journal Batch Name")
-            {
-            }
-            column(PostingDate; DataItem21."Posting Date")
-            {
-            }
-            column(Address_Customer; DataItem21.Address_Cust)
-            {
-            }
-            column(AccountNo; DataItem21."Account No.")
-            {
-            }
-            column(PM; DataItem21."Payment Method Code")
-            {
-            }
-            column(Adress_CompanyInfo; CompanyInformation.Address)
-            {
-            }
-            column(City_CompanyInfo; CompanyInformation.City)
-            {
-            }
-            column(Name; CompanyInformation.Name)
-            {
-            }
-            column(Phone1_CompanyInfo; CompanyInformation."Phone No.")
-            {
-            }
-            column(Phone2_CompanyInfo; CompanyInformation."Phone No. 2")
-            {
-            }
-            column(Fax_CompanyInfo; CompanyInformation."Fax No.")
-            {
-            }
-            column(Email_CompanyInfo; CompanyInformation."E-Mail")
-            {
-            }
-            column(RegistrationNo_CompanyInfo; CompanyInformation."Registration No.")
-            {
-            }
-            column(Postcode_CompanyInfo; CompanyInformation."Post Code")
-            {
-            }
-            column(VATRegistrationNo_CompanyInfo; CompanyInformation."VAT Registration No.")
-            {
-            }
-            column(GiroNo_CompanyInfo; CompanyInformation."Giro No.")
-            {
-            }
-            column(Picture_CompanyInfo; CompanyInformation.Picture)
-            {
-            }
             column(User; USERID)
-            {
-            }
-            column(IndustrialClassification_CompanyInfo; CompanyInformation."Industrial Classification")
-            {
-            }
-            column(MBS; CompanyInformation.MBS)
-            {
-            }
-            column(MunicipalityName; CompanyInformation."Municipality Name")
-            {
-            }
-            column(Registration_CompanyInfo; CompanyInformation."Registration Text")
-            {
-            }
-            column(Tax_CompanyInfo; CompanyInformation."Tax No.")
             {
             }
             column(Datee; Datee)
             {
             }
-
-
-
-
-            trigger OnAfterGetRecord()
-            begin
-                /*Cont.SETFILTER("No.",'%1',"Contact Link");
-                
-                IF Cont.FIND('-') THEN BEGIN
-                
-                ContName:=Cont.Name;
-                ContAddress:=Cont.Address;
-                ContCity:=Cont."Post Code"+', '+Cont.City;
-                END;     */
-
-                /*emp.SETFILTER("No.", '%1', emp."Employee No."); //ovdje je stajalo samo employee no
-
-                IF emp.FIND('-') THEN BEGIN
-
-                    ContName := emp."First Name" + emp."Last Name";
-                    ContAddress := emp.Address;
-                    ContCity := emp."Post Code" + ', ' + emp.City;
-                END;*/
-
-                /*GLEntry.Reset();
-                GLEntry.SetFilter("Posting Date", '%1', Datee);*/
-
-
-
-            end;
+            column(BankAccCardInt; BankAccCardInt)
+            {
+            }
 
             trigger OnPreDataItem()
             begin
+                BankAccCardFilter := GETFILTER("Bal. Account No.");
 
-                CompanyInformation.GET;
-                CompanyInformation.CALCFIELDS(Picture);
+                IF BankAccCardFilter = 'BANK-10' THEN
+                    BankAccCardInt := 1
+                ELSE
+                    IF BankAccCardFilter = 'BANK-11' THEN
+                        BankAccCardInt := 2
+                    ELSE
+                        IF BankAccCardFilter = 'BANK-12' THEN
+                            BankAccCardInt := 3
+                        ELSE
+                            IF BankAccCardFilter = 'BANK-13' THEN
+                                BankAccCardInt := 4
+                            ELSE
+                                IF BankAccCardFilter = 'BANK-14' THEN
+                                    BankAccCardInt := 5
+                                ELSE
+                                    IF BankAccCardFilter = 'BANK-15' THEN
+                                        BankAccCardInt := 6
+                                    ELSE
+                                        IF BankAccCardFilter = 'BANK-16' THEN
+                                            BankAccCardInt := 7
+                                        ELSE
+                                            IF BankAccCardFilter = 'BANK-17' THEN
+                                                BankAccCardInt := 8
+                                            ELSE
+                                                IF BankAccCardFilter = 'BANK-18' THEN BankAccCardInt := 9
 
             end;
         }
@@ -127,6 +58,43 @@ report 50085 "Izvještaj porto blagajne"
             column(PTCode; DataItem22.Code)
             {
             }
+            column(PaymentCounter; PaymentCounter)
+            {
+            }
+            column(PaymentAmount; PaymentAmount)
+            {
+            }
+
+            trigger OnAfterGetRecord()
+            begin
+                /*if GLEntry.FindFirst() then begin
+                    //PostingDatefilter := GETFILTER(GLEntry."Bal. Account No.");
+                    Message(Format(GLEntry."Bal. Account No."));
+                end;*/
+
+                //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
+                //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
+
+                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
+                GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+
+                PaymentCounter := GLEntry.Count;
+
+                PaymentAmount := 0;
+                
+                IF GLEntry.FindFirst() then
+                    repeat
+                        PaymentAmount += ABS(GLEntry.Amount);
+                    until GLEntry.Next() = 0;
+
+            end;
+
+            trigger OnPreDataItem()
+            begin
+
+
+            end;
         }
     }
 
@@ -163,6 +131,8 @@ report 50085 "Izvještaj porto blagajne"
         GLEntry: Record "G/L Entry";
         Country: Text[100];
         City: Text[100];
+        BankAccCardFilter: Code[20];
+        BankAccCardInt: Integer;
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         Cont: Record Contact;
@@ -172,5 +142,7 @@ report 50085 "Izvještaj porto blagajne"
         emp: Record Employee;
         Cust: Record Customer;
         Datee: Date;
+        PaymentCounter: Integer;
+        PaymentAmount: Decimal;
 }
 

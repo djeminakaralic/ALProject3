@@ -86,6 +86,7 @@ page 50144 "ECL Systematizations"
                 field("Will Be Changed Later"; "Will Be Changed Later")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Changing Position"; "Changing Position")
                 {
@@ -115,6 +116,8 @@ page 50144 "ECL Systematizations"
                 field("Org Unit Name"; "Org Unit Name")
                 {
                     Applicationarea = all;
+
+                    Visible = false;
                 }
                 field("GF of work Description"; "GF of work Description")
                 {
@@ -124,6 +127,7 @@ page 50144 "ECL Systematizations"
                 field("Phisical Department Desc"; "Phisical Department Desc")
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Regionalni Head Office"; "Regionalni Head Office")
                 {
@@ -184,12 +188,14 @@ page 50144 "ECL Systematizations"
                     Style = Unfavorable;
                     StyleExpr = TRUE;
                     Applicationarea = all;
+                    Visible = false;
                 }
                 field("Dimension  Name"; "Dimension  Name")
                 {
                     Style = Unfavorable;
                     Applicationarea = all;
                     StyleExpr = TRUE;
+                    Visible = false;
                 }
                 field("Order By Managment"; "Order By Managment")
                 {
@@ -200,6 +206,7 @@ page 50144 "ECL Systematizations"
                 field(Brutto; Brutto)
                 {
                     Applicationarea = all;
+                    Visible = false;
                 }
             }
         }

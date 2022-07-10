@@ -5,7 +5,7 @@ report 50041 "Update Data"
 
     dataset
     {
-        dataitem(DataItemName; "Employee Contract Ledger")
+        dataitem(DataItemName; "Position Menu")
         {
 
 
@@ -13,47 +13,62 @@ report 50041 "Update Data"
             var
                 myInt: Integer;
             begin
-                SetCurrentKey(Order);
-                Ascending;
-                SetFilter("Show Record", '%1', true);
+
 
             end;
 
             trigger OnAfterGetRecord()
             begin
-                if DataItemName."Employee No." = '2' then
-                    Message('');
-                /*                Brojac := Brojac + 1;
-                                OldNumber := DataItemName."No.";
 
-                                Evaluate(CodeS, format(Brojac));
+                Validate("Position complexity", DataItemName."Position complexity");
+                Modify();
+                /*   ECL.Reset();
+                   ECL.SetFilter("Position Description", '%1', DataItemName.Description);
+                   ECL.SetFilter("Position Code", '%1', DataItemName.Code);
+                   ECL.SetFilter("Department Code", '%1', DataItemName."Department Code");
+                   if ECL.FindSet() then
+                       repeat
 
-                                EmpOLD.Reset();
-                                EmpOLD.SetFilter("No.", '%1', CodeS);
-                                if EmpOLD.FindFirst() then begin
-                                    if EmpOLD2.get(EmpOLD."No.") then
-                                        EmpOLD2.Rename(EmpOLD2."No." + '_' + format(EmpOLD.Count))
+                           ecl."Position complexity" := DataItemName."Position complexity";
+                           ecl."Workplace conditions" := DataItemName."Workplace conditions";
+                           ECL."Position Responsibility" := DataItemName."Position Responsibility";
+                           ECL.validate("Position Coefficient for Wage", DataItemName."Position Coefficient for Wage");
+                           ECL.Modify();
+                       until ECL.Next() = 0;*/
 
-                                end;
+                /*  if DataItemName."Employee No." = '2' then
+                      Message('');
+                  /*                Brojac := Brojac + 1;
+                                  OldNumber := DataItemName."No.";
 
-                                if Emp.Get(DataItemName."No.") then
-                                    Emp.Rename(CodeS);
+                                  Evaluate(CodeS, format(Brojac));
+
+                                  EmpOLD.Reset();
+                                  EmpOLD.SetFilter("No.", '%1', CodeS);
+                                  if EmpOLD.FindFirst() then begin
+                                      if EmpOLD2.get(EmpOLD."No.") then
+                                          EmpOLD2.Rename(EmpOLD2."No." + '_' + format(EmpOLD.Count))
+
+                                  end;
+
+                                  if Emp.Get(DataItemName."No.") then
+                                      Emp.Rename(CodeS);
 
 
-                                Emp.Order := Brojac;
-                                Emp.Modify();
+                                  Emp.Order := Brojac;
+                                  Emp.Modify();
 
 
 
 
 
 
-                                /* DataItemName.Active := true;
-                                 DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
-                                 DataItemName.Address := '';
-                                 DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
-                                 DataItemName.Modify();
-                 */
+                                  /* DataItemName.Active := true;
+                                   DataItemName.Validate("Address CIPS", 'Zagrebačka 27');
+                                   DataItemName.Address := '';
+                                   DataItemName.Validate("Municipality Code CIPS", DataItemName."Municipality Code CIPS");
+                                   DataItemName.Modify();
+                   */
                 /*   PosM.Reset();
                    PosM.SetFilter(Description, '%1', DataItemName.Description);
                    PosM.SetFilter("Department Code", '%1', DataItemName."Department Code");
@@ -72,7 +87,7 @@ report 50041 "Update Data"
                        end;
 
                    end;
-   */
+   
                 DataItemName.Validate("Position Description", DataItemName."Position Description");
                 DataItemName.Modify();
 
@@ -146,6 +161,8 @@ report 50041 "Update Data"
                        if Brojac = 319 then
                            CurrReport.Break();
                    end;*/
+
+
             end;
         }
     }

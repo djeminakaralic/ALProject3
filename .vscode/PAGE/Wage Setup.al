@@ -78,6 +78,10 @@ page 50016 "Wage Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("Meal Taxable FBiH "; "Meal Taxable FBiH ")
+                {
+                    ApplicationArea = all;
+                }
                 field("Meal Code FBiH Taxable"; "Meal Code FBiH Taxable")
                 {
                     ApplicationArea = all;
@@ -217,10 +221,12 @@ page 50016 "Wage Setup"
 
                 field("Wage Journal Template"; "Wage Journal Template")
                 {
+                    Visible = false;
 
                 }
                 field("Wage Batch Name"; "Wage Batch Name")
                 {
+                    Visible = false;
 
                 }
             }

@@ -14,64 +14,60 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
     actions
     {
-
-        /*addafter("Value Entries")
-        {
-
-            action("Print")
-            {
-                Caption = 'Print';
-                Image = ValueLedger;
-
-                RunObject = report "Print of journal entries";
-
-                //  RunObject = report "";
-            } // Add changes to page actions here
-        }
-        
-        addafter("DocsWithoutIC")
-        {
-
-
-            action("Incoming Document")
-            {
-
-                Caption = 'Incoming Document';
-                Image = Document;
-                Promoted = true;
-                PromotedCategory = Process;
-
-                RunObject = report "Print of journal entries";
-
-                trigger OnAction()
-                var
-                    IncomingDocument: Record "Incoming Document";
-                begin
-                    //ĐK   IncomingDocument.HyperlinkToDocument("Document No.", "Posting Date");
-                end;
-                //  RunObject = report "";
-            } // Add changes to page actions here
-        }*/
         addafter(List)
         {
+            action("Izvještaj porto blagajne")
+            {
+                Caption = 'Izvještaj porto blagajne';
+                Image = Journal;
+                Promoted = true;
+                /*PromotedCategory = Process;
+                PromotedIsBig = true;*/
+                ApplicationArea = all;
+
+                //RunObject = Report "Izvještaj porto blagajne";
+
+                trigger OnAction()
+                begin
+                    GLEntry.Reset();
+                    GLEntry.SetFilter("Bal. Account No.", Rec."No.");
+                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.Run();
+                end;
+            }
 
             action("Cash Diary")
             {
                 Caption = 'Cash Diary';
                 Image = Journal;
                 Promoted = true;
+
+                //RunObject = Report "Blagajnički dnevnik";
+
+                trigger OnAction()
+                begin
+                    GLEntry.Reset();
+                    GLEntry.SetFilter("Bal. Account No.", Rec."No.");
+                    BlagajnickiDnevnik.SetTableView(GLEntry);
+                    BlagajnickiDnevnik.Run();
+                end;
+            }
+
+            action("Zapisnik o primopredaji UniCredit")
+            {
+                Caption = 'Zapisnik o primopredaji UniCredit';
+                Image = Journal;
+                Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                RunObject = Report "Blagajnički dnevnik";
+                RunObject = Report "Zapisnik o primopredaji";
             }
         }
 
     }
 
-
-
     var
-        myInt: Integer;
-        IncomingDocument: Record "Incoming Document";
-
+        GLEntry: Record "G/L Entry";
+        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
+        BlagajnickiDnevnik: Report "Blagajnički dnevnik";
 }

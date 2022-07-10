@@ -229,6 +229,11 @@ tableextension 50086 HumanResSetup extends "Human Resources Setup"
         {
             TableRelation = Employee;
         }
+        field(50358; "Default Org Jed"; Text[250])
+        {
+            TableRelation = "ORG Dijelovi".Description where(Active = const(true));
+            Caption = 'Default Org Jed';
+        }
     }
 
     var

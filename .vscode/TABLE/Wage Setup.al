@@ -31,7 +31,7 @@ table 50199 "Wage Setup"
                 if WT.FindFirst() then begin
 
                     eUpdate.Reset();
-                    eUpdate.SetFilter("For Calculation", '%1', true);
+                    eUpdate.SetFilter(StatusExt, '%1', eUpdate.StatusExt::Active);
                     eUpdate.SetFilter("Wage Type", '%1', WT.Code);
                     if eUpdate.FindSet() then
                         repeat
@@ -55,7 +55,7 @@ table 50199 "Wage Setup"
                                     else begin
 
 
-                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute", 0.01, '>'));
+                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * 3, 0.01, '>'));
                                         ECLUpdate.Modify();
 
                                     end;
@@ -73,6 +73,7 @@ table 50199 "Wage Setup"
         field(3; "Average coefficient statute"; Decimal)
         {
             Caption = 'Average coefficient statute';
+            DecimalPlaces = 1 : 3;
             trigger OnValidate()
             var
                 myInt: Integer;
@@ -256,6 +257,13 @@ table 50199 "Wage Setup"
         {
             Caption = 'Base Personal Deduction';
             TableRelation = "Tax deduction list".Amount where(Active = filter(true), "Entity Code" = filter('FBIH'));
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                "Base Tax Deduction" := "Base Personal Deduction";
+
+            end;
         }
         field(200; "Tax Payment Model"; Code[2])
         {
@@ -272,6 +280,7 @@ table 50199 "Wage Setup"
         field(301; Meal; Decimal)
         {
             Caption = 'Meal';
+            DecimalPlaces = 0 : 3;
         }
         field(302; "Coefficient Netto to Brutto"; Decimal)
         {
@@ -550,6 +559,7 @@ table 50199 "Wage Setup"
         }
         field(50054; "Meal Taxable FBiH Untaxable"; Decimal)
         {
+            DecimalPlaces = 0 : 3;
             Caption = 'Meal Taxable FBiH';
         }
         field(50055; "Meal Code FBIH"; Code[10])
@@ -687,6 +697,18 @@ table 50199 "Wage Setup"
             TableRelation = "Gen. Journal Batch".Name where("Journal Template Name" = field("Wage Journal Template"));
 
         }
+        field(50075; "Meal Taxable FBiH "; Decimal)
+        {
+            DecimalPlaces = 0 : 3;
+            Caption = 'Meal Taxable FBiH';
+            trigger Onvalidate()
+            var
+                myInt: Integer;
+            begin
+                NettoFromBrutto("Meal Taxable FBiH ");
+
+            end;
+        }
 
     }
 
@@ -700,6 +722,40 @@ table 50199 "Wage Setup"
     fieldgroups
     {
     }
+    procedure NettoFromBrutto(Amount: Decimal): Decimal
+    var
+        ATPercent: Decimal;
+        AddTaxesPercentage: Decimal;
+
+
+    begin
+
+        //NettoFromBrutto
+        GetAddTaxesPercentage(AddTaxesPercentage);
+        "Meal Taxable FBiH Untaxable" := "Meal Taxable FBiH " * (1 - AddTaxesPercentage / 100);
+
+
+    end;
+
+    procedure GetAddTaxesPercentage(var Percentage: Decimal)
+    var
+        AddTaxes: Record Contribution;
+        ATCCon: Record "Contribution Category Conn.";
+    begin
+
+        Percentage := 0;
+
+        AddTaxes.RESET;
+        AddTaxes.SETFILTER(Active, '%1', TRUE);
+        AddTaxes.SETFILTER("From Brutto", '%1', TRUE);
+        IF AddTaxes.FINDFIRST THEN
+            REPEAT
+                IF ATCCon.GET('FBIH', AddTaxes.Code) THEN
+                    IF ATCCon."Calculated in Total Brutto" THEN
+                        Percentage += ATCCon.Percentage;
+            UNTIL AddTaxes.NEXT = 0;
+    end;
+
 
     var
         emp: Record "Employee";

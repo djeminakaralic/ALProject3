@@ -33,32 +33,39 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" <> "To Date" then begin
                         EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
                         EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                        EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                         if EmployeeAbsence.FindFirst() then begin
                             /*WageSetup.Get();
                             if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
                                 Error(Text005);*/
                             CauseOfAbsence.Reset();
+                            EmployeeA.Get("Employee No.");
                             CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                            if CauseOfAbsence.Holiday = false then
+                            if (CauseOfAbsence.Holiday = false) and (EmployeeAbsence.Quantity >= EmployeeA."Hours In Day") then
                                 Error(Text005);
                         end;
                     end;
 
                     IF "From Date" = "To Date" then begin
                         EmployeeAbsence.SetFilter("From Date", '%1', Rec."From Date");
+                        EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                         if EmployeeAbsence.FindFirst() then begin
+
+                            //ĐK
                             /*WageSetup.Get();
                             if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
                                 Error(Text005);*/
                             CauseOfAbsence.Reset();
+                            EmployeeA.get(Rec."Employee No.");
                             CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                            if CauseOfAbsence.Holiday = false then
+                            if (CauseOfAbsence.Holiday = false) and (EmployeeAbsence.Quantity >= EmployeeA."Hours In Day") then
                                 Error(Text005);
                         end;
                     end;
 
                     EmployeeA.GET(Rec."Employee No.");
-                    AbsenceFIll.EmployeeAbsence("From Date", "To Date", EmployeeA, Rec."Cause of Absence Code");
+                    //Hours
+                    AbsenceFIll.EmployeeAbsence("From Date", "To Date", EmployeeA, Rec."Cause of Absence Code", Rec.Hours);
                 end;
 
                 If Rec."Approved" = false then begin

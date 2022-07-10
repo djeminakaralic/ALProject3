@@ -14,6 +14,10 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
                 "Name 2" := Emp."Last Name";
             end;
         }
+        field(500028; "No. Series"; Code[20])
+        {
+            Caption = 'Brojačana serija';
+        }
         modify("Name 2")
         {
             trigger OnAfterValidate()
@@ -747,7 +751,9 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
     trigger OnInsert()
     var
         myInt: Integer;
+        HumanResSetup: Record "Human Resources Setup";
     begin
+
         Employee.RESET;
         Employee.SETFILTER("No.", "Employee No.");
         IF Employee.FINDFIRST THEN BEGIN
@@ -799,6 +805,15 @@ tableextension 52045 AlternativeAddess_ext extends "Alternative Address"
         END;
         Active := TRUE;
         "Insert Date" := TODAY;
+
+        IF Code = '' THEN BEGIN
+            HumanResSetup.GET;
+            HumanResSetup.TESTFIELD("Alternative Address Nos.");
+            NoSeriesMgt.InitSeries(HumanResSetup."Alternative Address Nos.", xRec."No. Series", 0D, Code, "No. Series");
+        END;
+
+
+        //Code
 
     end;
 }

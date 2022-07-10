@@ -22,18 +22,30 @@ codeunit 50139 GenJNLLine
     procedure OnAfterCopyGLEntryFromGenJnlLine(GLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line")
     //(GenJnlLine: Record "Gen. Journal Line"; VATEntry: Record "VAT Entry"; GLEntryNo: Integer; var NextEntryNo: Integer)
 
-
-
     var
         myInt: Integer;
         VATEntry2: Record "VAT Entry";
 
     begin
 
-
-        //    GLEntry.vat:= GenJournalLine."VAT Date";
+        GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
 
     end;
+
+    //12
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnAfterInitGLEntry', '', true, true)]
+    local procedure OnAfterInitGLEntry(var GLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line")
+
+    begin
+        //   VATEntry."VAT Date" := GenJournalLine."VAT Date";
+        GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
+
+
+    end;
+
+    //OnAfterInitGLEntry(GLEntry, GenJnlLine);
+
 
     [EventSubscriber(ObjectType::Table, 254, 'OnAfterCopyFromGenJnlLine', '', true, true)]
     procedure Testiram(VATEntry: Record "VAT Entry"; GenJournalLine: Record "Gen. Journal Line")
