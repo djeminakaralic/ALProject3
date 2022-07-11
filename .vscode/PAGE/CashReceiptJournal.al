@@ -40,10 +40,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-        /*modify(Description)
+        modify(Description)
         {
             Editable = false;
-        }*/
+        }
     }
 
     actions
