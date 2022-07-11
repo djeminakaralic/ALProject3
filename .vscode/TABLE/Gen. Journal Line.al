@@ -174,7 +174,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             FieldClass = FlowField;
             
             //CalcFormula = sum((Apoeni.Apoeni)*(apoeni.quantity));
-            CalcFormula = sum(Apoeni.Quantity);
+            CalcFormula = sum(Apoeni.Amount);
             //CalcFormula = lookup(Apoeni."Entry No.");
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
