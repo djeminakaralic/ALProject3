@@ -105,10 +105,10 @@ page 50042 "Payment Orders"
             action("Sumarry per Payment Orders")
             {
                 Caption = 'Sumarry per Payment Orders';
-                //Đk Image = print;
+                Image = Report;
                 Promoted = true;
                 PromotedIsBig = true;
-                //ĐK   RunObject = Report 50055;
+                RunObject = Report "Summary per Payment Orders";
 
                 trigger OnAction()
                 begin
@@ -121,18 +121,22 @@ page 50042 "Payment Orders"
             {
                 Image = Report2;
                 //ĐK  RunObject = Report 50093;
+                Visible = false;
             }
             action("Ažuriraj datum uplate")
             {
                 Image = "Report";
                 Promoted = true;
                 //ĐK  RunObject = Report 50096;
+                Visible = false;
             }
             action(Print)
             {
                 Caption = 'Print';
                 Image = "Report";
-                //ĐK RunObject = Report 99003803;
+                //ĐK RunObject = Report 99003803;vi
+                Visible = false;
+
             }
         }
     }

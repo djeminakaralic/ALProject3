@@ -1861,12 +1861,12 @@ table 50055 "ECL systematization"
                 /*IF "Contract Type"<>'' THEN BEGIN
                  IF "Contract Type"='2' THEN BEGIN
                    "Testing Period":=TRUE;
-                   "Testing Period Starting Date":=TODAY;
+                   "Testing Period Starting Date":=WORKDATE;
                    END
                    ELSE
                  IF "Contract Type"='5' THEN BEGIN
                   "Testing Period":=TRUE;
-                   "Testing Period Starting Date":=TODAY;
+                   "Testing Period Starting Date":=WORKDATE;
                    END
                    ELSE BEGIN
                    "Testing Period":=FALSE;
@@ -1972,7 +1972,7 @@ table 50055 "ECL systematization"
             trigger OnValidate()
             begin
                 IF "Notification send" = TRUE THEN
-                    "Date of sending notification" := TODAY
+                    "Date of sending notification" := WORKDATE
                 ELSE
                     "Date of sending notification" := 0D;
             end;
@@ -6905,7 +6905,7 @@ table 50055 "ECL systematization"
                         ECLDate.SETFILTER("Employee No.", '%1', Rec."Employee No.");
                         ECLDate.SETFILTER("Org. Structure", '<>%1', ORGShema.Code);
                         ECLDate.SETFILTER(Active, '%1', TRUE);
-                        ECLDate.SETFILTER("Starting Date", '<=%1', TODAY);
+                        ECLDate.SETFILTER("Starting Date", '<=%1', WORKDATE);
                         ECLDate.SETCURRENTKEY("Starting Date");
                         ECLDate.ASCENDING;
                         IF ECLDate.FINDLAST THEN BEGIN
@@ -6947,7 +6947,7 @@ table 50055 "ECL systematization"
 
                 EmployeeContract.RESET;
                 EmployeeContract.SETFILTER("Employee No.", '%1', Rec."Employee No.");
-                EmployeeContract.SETFILTER("Starting Date", '>%1', TODAY);
+                EmployeeContract.SETFILTER("Starting Date", '>%1', WORKDATE);
                 IF EmployeeContract.FINDSET THEN
                     REPEAT
                         IF (EmployeeContract."Position Description" <> Rec."Position Description") OR (EmployeeContract."Org Belongs" <> Rec."Org Belongs")
@@ -6970,7 +6970,7 @@ table 50055 "ECL systematization"
                         ECL5.SETFILTER("Org. Structure", '%1', OrgShema1.Code);
                         IF ECL5.FINDSET THEN
                             REPEAT
-                                IF ECL5."Starting Date" <= TODAY THEN BEGIN
+                                IF ECL5."Starting Date" <= WORKDATE THEN BEGIN
                                     ECL5.Conflict := TRUE;
                                     ECL5.MODIFY;
                                 END;
@@ -11606,7 +11606,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                 END;
                 EmployeeContract.RESET;
                 EmployeeContract.SETFILTER("Employee No.", '%1', Rec."Employee No.");
-                EmployeeContract.SETFILTER("Starting Date", '>%1', TODAY);
+                EmployeeContract.SETFILTER("Starting Date", '>%1', WORKDATE);
                 IF EmployeeContract.FINDSET THEN
                     REPEAT
                         IF (EmployeeContract."Position Description" <> Rec."Position Description") OR (EmployeeContract."Org Belongs" <> Rec."Org Belongs")
@@ -11628,7 +11628,7 @@ UNTIL PositionMenuOrginal.NEXT = 0;
                         ECL5.SETFILTER("Org. Structure", '%1', OrgShema1.Code);
                         IF ECL5.FINDSET THEN
                             REPEAT
-                                IF ECL5."Starting Date" <= TODAY THEN BEGIN
+                                IF ECL5."Starting Date" <= WORKDATE THEN BEGIN
                                     ECL5.Conflict := TRUE;
                                     ECL5.MODIFY;
                                 END;

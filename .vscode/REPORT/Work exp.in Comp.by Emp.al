@@ -248,7 +248,7 @@ report 50115 "Work exp.in Comp.by Emp"
         IF WorkBooklet.FINDSET THEN
             REPEAT
                 IF WorkBooklet."Ending Date" = 0D THEN
-                    WorkBooklet."Ending Date" := TODAY;
+                    WorkBooklet."Ending Date" := WorkDate();
                 WorkBooklet.VALIDATE(Coefficient, WorkBooklet.Coefficient);
                 WorkBooklet.MODIFY;
 

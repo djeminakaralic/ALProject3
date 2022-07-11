@@ -344,18 +344,7 @@ report 50091 "Systematization job"
 
 
                                         ECLOrg."Org. Structure" := OrgShema.Code;
-                                        IF ECLOrg."Team Description" <> '' THEN BEGIN
-                                            TeamOrginal.RESET;
-                                            TeamOrginal.SETFILTER(Name, '%1', ECLOrg."Team Description");
-                                            TeamOrginal.SETFILTER("Org Shema", '%1', OrgShema.Code);
-                                            IF TeamOrginal.FINDFIRST THEN BEGIN
-                                                ECLOrg.VALIDATE("Team Description", ECLOrg."Team Description");
-                                                ECLOrg."Department Name" := ECLOrg."Team Description";
-                                            END
-                                            ELSE BEGIN
-                                                ECLOrg.VALIDATE("Team Description", '');
-                                            END;
-                                        END;
+
                                         IF (ECLOrg."Group Description" <> '') AND (ECLOrg."Team Description" = '') THEN BEGIN
                                             GroupOrginal.RESET;
                                             GroupOrginal.SETFILTER(Description, '%1', ECLOrg."Group Description");
@@ -557,6 +546,7 @@ report 50091 "Systematization job"
                                                     ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
                                                 if ECLOrg."Starting Date" <> OrgShema."Date From" then begin
                                                     ECLOrg.Validate("Starting Date", OrgShema."Date From");
+                                                    //    ECLOrg."Starting Date" := OrgShema."Date From";
                                                 end;
                                                 ECLOrg.MODIFY(FALSE);
                                             END;
