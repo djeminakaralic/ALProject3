@@ -129,6 +129,7 @@ report 50075 "Blagajnički dnevnik"
                         UNTIL BALE.NEXT = 0;*/
 
                 //GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
+                GLEntry.SetFilter("Bal. Account No.", BankAccCardFilter);
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     REPEAT
