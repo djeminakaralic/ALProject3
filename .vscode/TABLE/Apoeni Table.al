@@ -31,6 +31,8 @@ table 51067 "Apoeni"
 
             trigger OnValidate()
             begin
+                ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
+                Evaluate(ApoeniINT, ApoeniText);
                 if (ApoeniINT <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniINT * Rec.Quantity;
             end;
