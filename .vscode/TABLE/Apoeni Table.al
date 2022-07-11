@@ -18,7 +18,7 @@ table 51067 "Apoeni"
 
             trigger OnValidate()
             begin
-                if Rec.Apoeni > 7 then begin
+                if Rec.Apoeni < 7 then begin
                     ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
                     Evaluate(ApoeniDecimal, ApoeniText);
 
