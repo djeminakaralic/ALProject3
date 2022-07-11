@@ -20,6 +20,7 @@ table 51067 "Apoeni"
             begin
                 ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
                 Evaluate(ApoeniINT, ApoeniText);
+                Message(FORMAT(ApoeniINT));
                 //Evaluate(ApoeniINT, Format(Rec.Apoeni));
                 if (ApoeniINT <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniINT * Rec.Quantity;
