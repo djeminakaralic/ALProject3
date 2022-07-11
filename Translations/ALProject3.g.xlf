@@ -39314,7 +39314,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Address_Cust - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Contract Phase</source>
+          <source>Apoeni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Apoeni - Property Caption</note>
         </trans-unit>
@@ -39389,7 +39389,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Group Member - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3604861746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Interst</source>
+          <source>Interest</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Interest - Property Caption</note>
         </trans-unit>

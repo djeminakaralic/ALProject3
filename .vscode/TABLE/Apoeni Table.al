@@ -1,8 +1,8 @@
 table 51067 "Apoeni"
 {
     Caption = 'Apoeni';
-    DrillDownPageID = "Award Category List";
-    LookupPageID = "Award Category List";
+    DrillDownPageID = "Apoeni Page";
+    LookupPageID = "Apoeni Page";
 
     fields
     {

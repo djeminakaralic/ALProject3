@@ -166,7 +166,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50045; "Interest"; Boolean)
         {
-            Caption = 'Interst';
+            Caption = 'Interest';
             Editable = false;
         }
         field(50046; "Apoeni"; Integer)
@@ -177,7 +177,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
                                                                             Active = FILTER(true)));*/
-            Caption = 'Contract Phase';
+            Caption = 'Apoeni';
         }
 
 
