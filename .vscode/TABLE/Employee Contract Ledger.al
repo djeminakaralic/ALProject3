@@ -1408,7 +1408,11 @@ table 50071 "Employee Contract Ledger"
                  END;
                   END;
                    END; nk2709 ExternalDate*/
-                IF (("Reason for Change".AsInteger() = 1)) or ("Reason for Change".AsInteger() = 2) THEN BEGIN
+                //izbrisala razlog promjene prenos podataka
+                IF ("Reason for Change".AsInteger() = 2) THEN BEGIN
+                    //trebam dodati ovo oko sys job-a da ne radi ovaj insert
+
+
                     WorkBook.SETFILTER("Contract Ledger Entry No.", '%1', "No.");
                     IF NOT WorkBook.FINDFIRST THEN BEGIN
                         WorkBook.INIT;
@@ -1906,7 +1910,7 @@ table 50071 "Employee Contract Ledger"
                 END;
                 //END;
 
-                IF (("Reason for Change".AsInteger() = 1)) or ("Reason for Change".AsInteger() = 2) THEN BEGIN
+                IF ("Reason for Change".AsInteger() = 2) THEN BEGIN
                     WorkBook.Reset();
                     WorkBook.SetFilter("Employee No.", '%1', Rec."Employee No.");
                     WorkBook.SETFILTER("Contract Ledger Entry No.", '%1', "No.");
