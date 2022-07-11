@@ -40708,20 +40708,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.05 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2395468521 - EnumValue 583542473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 2395468521 - EnumValue 278864009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>0.1</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.1 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.10 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2395468521 - EnumValue 4240813152 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 2395468521 - EnumValue 1070876472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>0.2</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.2 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.20 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2395468521 - EnumValue 3134328941 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Enum 2395468521 - EnumValue 3501294221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>0.5</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.5 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.50 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2395468521 - EnumValue 2347438355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>1</source>
