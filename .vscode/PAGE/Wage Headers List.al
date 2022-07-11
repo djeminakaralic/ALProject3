@@ -16,6 +16,7 @@ page 50019 "Wage Headers List"
                 field("No."; "No.")
                 {
                     Editable = false;
+                    //KK
                 }
                 field(Description; Description)
                 {
