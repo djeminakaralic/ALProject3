@@ -27508,11 +27508,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Header Card - Action Reduction Posting - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1554128033 - Action 964372093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wage Posting</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Header Card - Action Wage Posting Additions - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1554128033 - Action 1073090428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -34952,6 +34947,11 @@
           <source>Start Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Timesheets - Control startDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 302953098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TS_knjizenja 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TS_knjizenja 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3411162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Brought Experience</source>

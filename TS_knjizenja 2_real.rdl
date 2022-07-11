@@ -11,100 +11,6 @@
       <rd:DataSourceID>977bbda3-9d32-4972-9d88-86beb4e73bf2</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Uplatio1">
-          <DataField>Uplatio1</DataField>
-        </Field>
-        <Field Name="Uplatio2">
-          <DataField>Uplatio2</DataField>
-        </Field>
-        <Field Name="Uplatio3">
-          <DataField>Uplatio3</DataField>
-        </Field>
-        <Field Name="SvrhaDoznake1">
-          <DataField>SvrhaDoznake1</DataField>
-        </Field>
-        <Field Name="SvrhaDoznake2">
-          <DataField>SvrhaDoznake2</DataField>
-        </Field>
-        <Field Name="SvrhaDoznake3">
-          <DataField>SvrhaDoznake3</DataField>
-        </Field>
-        <Field Name="Primalac1">
-          <DataField>Primalac1</DataField>
-        </Field>
-        <Field Name="Primalac2">
-          <DataField>Primalac2</DataField>
-        </Field>
-        <Field Name="Primalac3">
-          <DataField>Primalac3</DataField>
-        </Field>
-        <Field Name="TotalBank">
-          <DataField>TotalBank</DataField>
-        </Field>
-        <Field Name="TotalBankFormat">
-          <DataField>TotalBankFormat</DataField>
-        </Field>
-        <Field Name="MjestoUplate">
-          <DataField>MjestoUplate</DataField>
-        </Field>
-        <Field Name="RacunPosiljaoca">
-          <DataField>RacunPosiljaoca</DataField>
-        </Field>
-        <Field Name="RacunPrimaoca">
-          <DataField>RacunPrimaoca</DataField>
-        </Field>
-        <Field Name="Iznos">
-          <DataField>Iznos</DataField>
-        </Field>
-        <Field Name="IznosFormat">
-          <DataField>IznosFormat</DataField>
-        </Field>
-        <Field Name="BrojPoreznogObaveznika">
-          <DataField>BrojPoreznogObaveznika</DataField>
-        </Field>
-        <Field Name="VrstaPrihoda">
-          <DataField>VrstaPrihoda</DataField>
-        </Field>
-        <Field Name="PorezniPeriodOd">
-          <DataField>PorezniPeriodOd</DataField>
-        </Field>
-        <Field Name="PorezniPeriodDo">
-          <DataField>PorezniPeriodDo</DataField>
-        </Field>
-        <Field Name="Opstina">
-          <DataField>Opstina</DataField>
-        </Field>
-        <Field Name="PozivNaBroj">
-          <DataField>PozivNaBroj</DataField>
-        </Field>
-        <Field Name="LastName">
-          <DataField>LastName</DataField>
-        </Field>
-        <Field Name="FirstName">
-          <DataField>FirstName</DataField>
-        </Field>
-        <Field Name="EmployeeID">
-          <DataField>EmployeeID</DataField>
-        </Field>
-        <Field Name="RedniBr">
-          <DataField>RedniBr</DataField>
-        </Field>
-        <Field Name="RecutionDesc">
-          <DataField>RecutionDesc</DataField>
-        </Field>
-        <Field Name="NazivBanke">
-          <DataField>NazivBanke</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -790,12 +696,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -835,4 +735,107 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="BankAccount">
+          <DataField>BankAccount</DataField>
+        </Field>
+        <Field Name="TodayDate">
+          <DataField>TodayDate</DataField>
+        </Field>
+        <Field Name="Uplatio1">
+          <DataField>Uplatio1</DataField>
+        </Field>
+        <Field Name="Uplatio2">
+          <DataField>Uplatio2</DataField>
+        </Field>
+        <Field Name="Uplatio3">
+          <DataField>Uplatio3</DataField>
+        </Field>
+        <Field Name="SvrhaDoznake1">
+          <DataField>SvrhaDoznake1</DataField>
+        </Field>
+        <Field Name="SvrhaDoznake2">
+          <DataField>SvrhaDoznake2</DataField>
+        </Field>
+        <Field Name="SvrhaDoznake3">
+          <DataField>SvrhaDoznake3</DataField>
+        </Field>
+        <Field Name="Primalac1">
+          <DataField>Primalac1</DataField>
+        </Field>
+        <Field Name="Primalac2">
+          <DataField>Primalac2</DataField>
+        </Field>
+        <Field Name="Primalac3">
+          <DataField>Primalac3</DataField>
+        </Field>
+        <Field Name="TotalBank">
+          <DataField>TotalBank</DataField>
+        </Field>
+        <Field Name="TotalBankFormat">
+          <DataField>TotalBankFormat</DataField>
+        </Field>
+        <Field Name="Picture">
+          <DataField>Picture</DataField>
+        </Field>
+        <Field Name="MjestoUplate">
+          <DataField>MjestoUplate</DataField>
+        </Field>
+        <Field Name="RacunPosiljaoca">
+          <DataField>RacunPosiljaoca</DataField>
+        </Field>
+        <Field Name="RacunPrimaoca">
+          <DataField>RacunPrimaoca</DataField>
+        </Field>
+        <Field Name="Iznos">
+          <DataField>Iznos</DataField>
+        </Field>
+        <Field Name="IznosFormat">
+          <DataField>IznosFormat</DataField>
+        </Field>
+        <Field Name="BrojPoreznogObaveznika">
+          <DataField>BrojPoreznogObaveznika</DataField>
+        </Field>
+        <Field Name="VrstaPrihoda">
+          <DataField>VrstaPrihoda</DataField>
+        </Field>
+        <Field Name="PorezniPeriodOd">
+          <DataField>PorezniPeriodOd</DataField>
+        </Field>
+        <Field Name="PorezniPeriodDo">
+          <DataField>PorezniPeriodDo</DataField>
+        </Field>
+        <Field Name="Opstina">
+          <DataField>Opstina</DataField>
+        </Field>
+        <Field Name="PozivNaBroj">
+          <DataField>PozivNaBroj</DataField>
+        </Field>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
+        </Field>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
+        </Field>
+        <Field Name="EmployeeID">
+          <DataField>EmployeeID</DataField>
+        </Field>
+        <Field Name="RedniBr">
+          <DataField>RedniBr</DataField>
+        </Field>
+        <Field Name="RecutionDesc">
+          <DataField>RecutionDesc</DataField>
+        </Field>
+        <Field Name="NazivBanke">
+          <DataField>NazivBanke</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
