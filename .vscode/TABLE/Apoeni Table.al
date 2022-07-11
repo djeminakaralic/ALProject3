@@ -18,12 +18,26 @@ table 51067 "Apoeni"
 
             trigger OnValidate()
             begin
-                ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
-                Evaluate(ApoeniINT, ApoeniText);
-                Message(FORMAT(ApoeniINT));
+                if Rec.Apoeni > 7 then begin
+                    ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
+                    Evaluate(ApoeniDecimal, ApoeniText);
+
+                end
+                else
+                    if Rec.Apoeni = 8 then
+                        ApoeniDecimal := 0.5
+                    else
+                        if Rec.Apoeni = 9 then
+                            ApoeniDecimal := 0.2
+                        else
+                            if Rec.Apoeni = 10 then
+                                ApoeniDecimal := 0.1
+                            else
+                                if Rec.Apoeni = 11 then ApoeniDecimal := 0.05;
+                Message(FORMAT(ApoeniDecimal));
                 //Evaluate(ApoeniINT, Format(Rec.Apoeni));
-                if (ApoeniINT <> 0) AND (Rec.Quantity <> 0) then
-                    Rec.Amount := ApoeniINT * Rec.Quantity;
+                if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
+                    Rec.Amount := ApoeniDecimal * Rec.Quantity;
             end;
         }
         field(3; Quantity; Integer)
@@ -32,10 +46,9 @@ table 51067 "Apoeni"
 
             trigger OnValidate()
             begin
-                ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
-                Evaluate(ApoeniINT, ApoeniText);
-                if (ApoeniINT <> 0) AND (Rec.Quantity <> 0) then
-                    Rec.Amount := ApoeniINT * Rec.Quantity;
+
+                if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
+                    Rec.Amount := ApoeniDecimal * Rec.Quantity;
             end;
         }
         field(4; Amount; Decimal)
@@ -56,7 +69,7 @@ table 51067 "Apoeni"
     }
 
     var
-        ApoeniINT: Decimal;
+        ApoeniDecimal: Decimal;
         ApoeniText: Text[10];
 }
 
