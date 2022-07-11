@@ -166,10 +166,21 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50045; "Interest"; Boolean)
         {
-            Caption = 'Interst';
+            Caption = 'Interest';
             Editable = false;
         }
-
+        field(50046; "Apoeni"; Integer)
+        {
+            FieldClass = FlowField;
+            
+            //CalcFormula = sum((Apoeni.Apoeni)*(apoeni.quantity));
+            CalcFormula = sum(Apoeni.Amount);
+            //CalcFormula = lookup(Apoeni."Entry No.");
+            /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
+                                                                            "Contract Ledger Entry No." = FIELD("No."),
+                                                                            Active = FILTER(true)));*/
+            Caption = 'Apoeni';
+        }
 
         modify(Amount)
         {
@@ -181,6 +192,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     "To return" := ABS("Given amount") - ABS(Amount);
             end;
         }
+
         modify("Account No.")
         {
             trigger OnAfterValidate()
@@ -217,12 +229,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
     end;
 
-
-
     var
         myInt: Integer;
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
+        ApoeniTable: Record Apoeni;
         Text001: Label 'Given amount cannot be less than amount.';
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
 }

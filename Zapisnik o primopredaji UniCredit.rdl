@@ -21,9 +21,9 @@
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
             <Top>0.6544cm</Top>
-            <Left>0.49953cm</Left>
+            <Left>0.54894cm</Left>
             <Height>1.905cm</Height>
-            <Width>13.09903cm</Width>
+            <Width>14.47486cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -38,7 +38,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>BLAGAJNIK</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -48,7 +50,7 @@
             <Top>5.45273cm</Top>
             <Left>0.49953cm</Left>
             <Height>0.66146cm</Height>
-            <Width>4.4087cm</Width>
+            <Width>4.84142cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -69,6 +71,8 @@
                   <TextRun>
                     <Value>=FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                       <Format>d. MMMM yyyy.</Format>
                     </Style>
                   </TextRun>
@@ -78,9 +82,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>2.73579cm</Top>
-            <Left>4.93647cm</Left>
+            <Left>5.34095cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.35928cm</Width>
+            <Width>4.84142cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -100,7 +104,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>DATUM</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -110,7 +116,7 @@
             <Top>2.73579cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.38753cm</Width>
+            <Width>4.79201cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -130,7 +136,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>UNICREDIT BANK</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -138,9 +146,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>5.45273cm</Top>
-            <Left>9.23221cm</Left>
+            <Left>10.18237cm</Left>
             <Height>0.66146cm</Height>
-            <Width>4.3381cm</Width>
+            <Width>4.84142cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -160,17 +168,19 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Fields!User.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>6.11419cm</Top>
+            <Top>6.29058cm</Top>
             <Left>0.49953cm</Left>
             <Height>0.6cm</Height>
-            <Width>8.71857cm</Width>
+            <Width>9.68284cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -186,13 +196,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>4.84142cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>4.84142cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.36634cm</Width>
+                  <Width>4.84142cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -209,7 +219,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>BROJ APOENA</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -238,8 +250,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>VRSTA APOENA</Value>
-                                  <Style />
+                                  <Value>VRSTE APOENA</Value>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -269,7 +283,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>UKUPNO</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -307,7 +323,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -337,7 +355,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox12</rd:DefaultName>
@@ -367,7 +387,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox14</rd:DefaultName>
@@ -515,7 +537,7 @@
             <Top>3.51218cm</Top>
             <Left>0.49953cm</Left>
             <Height>1.76416cm</Height>
-            <Width>13.09902cm</Width>
+            <Width>14.52426cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -531,7 +553,7 @@
           </Border>
         </Style>
       </Body>
-      <Width>14.36585cm</Width>
+      <Width>15.58293cm</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
