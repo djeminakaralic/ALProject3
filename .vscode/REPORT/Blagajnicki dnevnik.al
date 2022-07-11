@@ -127,17 +127,12 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
-
-
-
                 //GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     REPEAT
                         PrethodniSaldo += GLEntry.Amount;
-                    UNTIL GLEntry.NEXT = 0;
-
-
+                                            UNTIL GLEntry.NEXT = 0;
 
                 /*emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN
