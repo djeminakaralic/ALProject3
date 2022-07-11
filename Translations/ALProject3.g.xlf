@@ -173,6 +173,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 684500104 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Amount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 684500104 - Field 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Apoeni</source>
           <note from="Developer" annotates="general" priority="2"></note>

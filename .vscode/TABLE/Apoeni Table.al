@@ -14,10 +14,28 @@ table 51067 "Apoeni"
         field(2; Apoeni; Enum "Apoeni Enum")
         {
             Caption = 'Apoeni';
+
+            trigger OnValidate()
+            begin
+                ApoeniText := FORMAT(Rec.Apoeni);
+                Evaluate(ApoeniINT, ApoeniText);
+                if (ApoeniINT <> 0) AND (Rec.Quantity <> 0) then
+                    Rec.Amount := ApoeniINT * Rec.Quantity;
+            end;
         }
         field(3; Quantity; Integer)
         {
             Caption = 'Quantity';
+
+            trigger OnValidate()
+            begin
+                if (ApoeniINT <> 0) AND (Rec.Quantity <> 0) then
+                    Rec.Amount := ApoeniINT * Rec.Quantity;
+            end;
+        }
+        field(4; Amount; Decimal)
+        {
+            Caption = 'Amount';
         }
     }
 
@@ -31,5 +49,9 @@ table 51067 "Apoeni"
     fieldgroups
     {
     }
+
+    var
+        ApoeniINT: Integer;
+        ApoeniText: Text[10];
 }
 
