@@ -172,6 +172,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50046; "Apoeni"; Decimal)
         {
             FieldClass = FlowField;
+            CalcFormula=sum(Apoeni.Quantity);
+            //CalcFormula = lookup(Apoeni."Entry No.");
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
                                                                             Active = FILTER(true)));*/
@@ -231,6 +233,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         myInt: Integer;
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
+        ApoeniTable: Record Apoeni;
         Text001: Label 'Given amount cannot be less than amount.';
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
 }
