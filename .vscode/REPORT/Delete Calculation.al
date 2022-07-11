@@ -16,6 +16,8 @@ report 50062 "Delete Calculation"
                 //WageHeader.SETRANGE("Last Calculation In Month", TRUE);
 
 
+
+
                 IF WageHeader.COUNT > 1 THEN ERROR(Txt001);
                 IF WageHeader.FIND('+') THEN
                     CurrRecNo := 0;
@@ -37,6 +39,11 @@ report 50062 "Delete Calculation"
                 IF TPE.FINDFIRST THEN
                     TPE.DELETEALL;
 
+                PaymentOrder.Reset();
+                PaymentOrder.SetFilter("Wage Header No.", '%1', WageHeader."No.");
+                PaymentOrder.SetFilter("Wage Calculation Type", '%1', PaymentOrder."Wage Calculation Type"::Regular);
+                if PaymentOrder.FindFirst() then
+                    PaymentOrder.DeleteAll();
                 ATPE.SETFILTER("Wage Header No.", WageHeader."No.");
                 ATPE.SETRANGE("Entry No.", WageHeader."Entry No.");
                 IF ATPE.FINDFIRST THEN
@@ -64,17 +71,29 @@ report 50062 "Delete Calculation"
                     mh.DELETEALL;
                 // ML.SETRANGE("Document No.",MH."No.");
 
-
-                WA.SETRANGE("Wage Header No.", WageHeader."No.");
-                WA.SETRANGE("Wage Header Entry No.", WageHeader."Entry No.");
+                WA.Reset();
+                //  WA.SETRANGE("Wage Header No.", WageHeader."No.");
+                WA.SetFilter("Month of Wage", '%1', WageHeader."Month Of Wage");
+                WA.SetFilter("Year of Wage", '%1', WageHeader."Year Of Wage");
+                //ĐK  WA.SETRANGE("Wage Header Entry No.", WageHeader."Entry No.");
 
                 IF WA.FindSet() then
                     repeat
                         WaSetup.Get();
-                        if WA."Wage Addition Type" = WaSetup."Meal Code FBIH" then
+                        if (WA."Wage Addition Type" = WaSetup."Meal Code FBIH") or
+                        (WA."Wage Addition Type" = WaSetup."Meal Code FBiH Taxable") then begin
                             WA.Delete();
-                        if WA."Wage Addition Type" = WaSetup."Meal Code FBiH Taxable" then
-                            WA.Delete();
+                        end
+                        else begin
+
+
+
+                            if WA.Locked = true then
+                                WA.Locked := false;
+                            if WA.Calculated = true then
+                                WA.Calculated := false;
+                            WA.Modify();
+                        end;
 
                     until WA.Next() = 0;
                 CurrRecNo += 1;
@@ -205,6 +224,7 @@ report 50062 "Delete Calculation"
         WH: Record "Wage Header";
         tpe2: Record "Tax Per Employee";
         AbsenceFill: Codeunit "Absence Fill";
+        PaymentOrder: Record "Payment Order";
         StartDate: Date;
         EndDate: Date;
         EA: Record "Employee Absence";

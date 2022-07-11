@@ -64,7 +64,7 @@ report 50116 "Work experience in Company"
                 //SETFILTER(Status,'%1|%2|%3|%4',0,1,2,3);
                 //SETFILTER(Status,'%1|%2',0,1);
                 SETFILTER(Status, '<>%1', 4);
-                IF EndingDate = 0D THEN EndingDate := TODAY;
+                IF EndingDate = 0D THEN EndingDate := WORKDATE;
 
                 wb.SETCURRENTKEY("Starting Date");
                 wb.SETFILTER("Employee No.", '%1', "No.");
@@ -372,7 +372,7 @@ report 50116 "Work experience in Company"
         IF WorkBooklet.FINDSET THEN
             REPEAT
                 IF WorkBooklet."Ending Date" = 0D THEN
-                    WorkBooklet."Ending Date" := TODAY;
+                    WorkBooklet."Ending Date" := WORKDATE;
                 WorkBooklet.VALIDATE(Coefficient, WorkBooklet.Coefficient);
                 WorkBooklet.MODIFY;
 

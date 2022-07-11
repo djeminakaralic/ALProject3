@@ -169,7 +169,7 @@ report 51111 "Summary per years"
                     WageCalc.Reset();
                     WageCalc.SetFilter("Month Of Wage", '%1', myInt);
                     WageCalc.SetFilter("Year of Wage", '%1', Year);
-                    WageCalc.CalcSums("Contribution From Bonus", "Contribution Over Brutto");
+                    WageCalc.CalcSums("Contribution From Brutto", "Contribution Over Brutto");
                     Doprinos[myInt, 1] := WageCalc."Contribution From Brutto" + WageCalc."Contribution From Brutto";
                     WageCalc.Reset();
                     WageCalc.SetFilter("Month Of Wage", '%1', myInt);
@@ -181,9 +181,25 @@ report 51111 "Summary per years"
                     WageCalc.SetFilter("Month Of Wage", '%1', myInt);
                     WageCalc.SetFilter("Year of Wage", '%1', Year);
                     WageCalc.SetFilter("Contribution Category Code", '<>%1 & <>%2', 'FBIHRS', 'BDPIORS');
-                    WageCalc.CalcSums("Net Wage After Tax", "Use Netto", "Wage Reduction");
+                    WageCalc.CalcSums("Net Wage After Tax", "Wage Reduction");
+                    WH.Reset();
+                    WH.SetFilter("Month Of Wage", '%1', myInt);
+                    WH.SetFilter("Year Of Wage", '%1', Year);
+                    if WH.FindFirst() then begin
 
-                    ProsjekNeto[myInt, 1] := WageCalc."Net Wage After Tax" - WageCalc."Use Netto" - WageCalc."Wage Reduction";
+                        WA.Reset();
+                        WA.SetFilter("Wage Header No.", '%1', WH."No.");
+                        WA.SetFilter(Use, '%1', true);
+                        WA.CalcSums("Calculated Amount");
+
+                    end
+                    else begin
+                        WA."Calculated Amount" := 0;
+
+                    end;
+
+
+                    ProsjekNeto[myInt, 1] := WageCalc."Net Wage After Tax" - WA."Calculated Amount" - WageCalc."Wage Reduction";
 
                     WageCalc.Reset();
                     WageCalc.SetFilter("Month Of Wage", '%1', myInt);
@@ -253,8 +269,9 @@ report 51111 "Summary per years"
         BrojZaposlenih: array[12, 6] of Decimal;
         PaymentDate: array[12, 1] of Date;
         BrojInvalida: array[12, 1] of Integer;
+        WA: Record "Wage Addition";
         BrutoI: array[12, 1] of Decimal;
-
+        WH: Record "Wage Header";
         ProsjekNeto: array[12, 1] of Decimal;
         Doprinos: array[12, 1] of Decimal;
         Year: Integer;

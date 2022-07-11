@@ -557,6 +557,7 @@ report 50091 "Systematization job"
                                                     ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
                                                 if ECLOrg."Starting Date" <> OrgShema."Date From" then begin
                                                     ECLOrg.Validate("Starting Date", OrgShema."Date From");
+                                                    //    ECLOrg."Starting Date" := OrgShema."Date From";
                                                 end;
                                                 ECLOrg.MODIFY(FALSE);
                                             END;

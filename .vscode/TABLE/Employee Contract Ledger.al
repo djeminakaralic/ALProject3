@@ -455,9 +455,9 @@ table 50071 "Employee Contract Ledger"
                 IF ("Grounds for Term. Code" <> '') AND ("Ending Date" = 0D) THEN
                     ERROR(Text010, "Employee No.", "Ending Date")
                 ELSE BEGIN
-                    /*IF "Ending Date"<TODAY THEN
+                    /*IF "Ending Date"<WORKDATE THEN
                       ERROR(Text011);*/
-                    IF ("Grounds for Term. Code" <> '') AND ("Ending Date" <= CALCDATE('-1D', TODAY)) THEN BEGIN
+                    IF ("Grounds for Term. Code" <> '') AND ("Ending Date" <= CALCDATE('-1D', WORKDATE)) THEN BEGIN
                         Employee1.RESET;
                         Employee1.SETFILTER("No.", "Employee No.");
                         IF Employee1.FINDFIRST THEN BEGIN
@@ -1157,7 +1157,7 @@ table 50071 "Employee Contract Ledger"
                                                 HRSetup.GET;
                                                 /*R_BroughtExperience.SetEmp("Employee No.");
                                                 R_BroughtExperience.RUN;
-                                                R_WorkExperience2.SetEmp("Employee No.",TODAY);
+                                                R_WorkExperience2.SetEmp("Employee No.",WORKDATE);
                                                 R_WorkExperience2.RUN;*/
                                                 IF ExternalDate."Engagement Type" <> HRSetup."External Description"
                                                  THEN BEGIN
@@ -1189,7 +1189,7 @@ table 50071 "Employee Contract Ledger"
 
 
 
-                                                R_WorkExperience2.SetEmp("Employee No.", TODAY);
+                                                R_WorkExperience2.SetEmp("Employee No.", WORKDATE);
                                                 R_WorkExperience2.RUN;
 
 
@@ -1250,7 +1250,7 @@ table 50071 "Employee Contract Ledger"
                                     IF EmployeeContractLedger1."Org. Structure" = ORGShema.Code THEN
                                         EmployeeContractLedger1.Status := 1;
                                 END;
-                                IF (EmployeeContractLedger1."Testing Period Successful" = EmployeeContractLedger1."Testing Period Successful"::" ") AND (EmployeeContractLedger1."Testing Period Ending Date" = CALCDATE('<-1D>', TODAY)) THEN BEGIN
+                                IF (EmployeeContractLedger1."Testing Period Successful" = EmployeeContractLedger1."Testing Period Successful"::" ") AND (EmployeeContractLedger1."Testing Period Ending Date" = CALCDATE('<-1D>', WORKDATE)) THEN BEGIN
                                     EmployeeContractLedger1."Testing Period Successful" := EmployeeContractLedger1."Testing Period Successful"::Yes;
                                 END;
                                 EmployeeContractLedger1.MODIFY;
@@ -1402,7 +1402,7 @@ table 50071 "Employee Contract Ledger"
                 wb.MODIFY(FALSE);
                 R_BroughtExperience.SetEmp("Employee No.");
                 R_BroughtExperience.RUN;
-                R_WorkExperience2.SetEmp("Employee No.",TODAY);
+                R_WorkExperience2.SetEmp("Employee No.",WORKDATE);
                 R_WorkExperience2.RUN;
                 
                  END;
@@ -1416,7 +1416,7 @@ table 50071 "Employee Contract Ledger"
                             WorkBook."Contract No." := WorkBook2."Contract No." + 1;
                         WorkBook."Employee No." := "Employee No.";
                         WorkBook."Starting Date" := "Starting Date";
-                        WorkBook."Ending Date" := TODAY;
+                        WorkBook."Ending Date" := WORKDATE;
                         WorkBook.VALIDATE("Current Company", TRUE);
                         Wagesetup.GET;
                         EmpOrg.RESET;
@@ -1916,7 +1916,7 @@ table 50071 "Employee Contract Ledger"
                             WorkBook."Contract No." := WorkBook2."Contract No." + 1;
                         WorkBook."Employee No." := "Employee No.";
                         WorkBook."Starting Date" := "Starting Date";
-                        WorkBook."Ending Date" := TODAY;
+                        WorkBook."Ending Date" := WORKDATE;
                         WorkBook.VALIDATE("Current Company", TRUE);
                         Wagesetup.GET;
                         EmpOrg.RESET;
@@ -5074,7 +5074,7 @@ table 50071 "Employee Contract Ledger"
                                     NumberOfProt := '00000000'
                                 else
                                     NumberOfProt := COPYSTR(ECLBefore."Number of protocol for documen", 1, STRLEN(ECLBefore."Number of protocol for documen") - 4);
-                                Rec."Number of protocol for documen" := INCSTR(NumberOfProt) + FORMAT(DATE2DMY(TODAY, 3));
+                                Rec."Number of protocol for documen" := INCSTR(NumberOfProt) + FORMAT(DATE2DMY(WORKDATE, 3));
                             END;
                         END;
                     END;
@@ -5694,7 +5694,7 @@ table 50071 "Employee Contract Ledger"
             trigger OnValidate()
             begin
                 IF "Notification send" = TRUE THEN
-                    "Date of sending notification" := TODAY
+                    "Date of sending notification" := WORKDATE
                 ELSE
                     "Date of sending notification" := 0D;
             end;
@@ -6112,7 +6112,7 @@ table 50071 "Employee Contract Ledger"
             WbDel.DELETE;
             R_BroughtExperience.SetEmp("Employee No.");
             R_BroughtExperience.RUN;
-            R_WorkExperience2.SetEmp("Employee No.", TODAY);
+            R_WorkExperience2.SetEmp("Employee No.", WORKDATE);
             R_WorkExperience2.RUN;
 
         END;
@@ -6149,7 +6149,7 @@ table 50071 "Employee Contract Ledger"
             END;
             PersonalTrack.RESET;
             PersonalTrack.SETFILTER("Employee No.", '%1', "Employee No.");
-            PersonalTrack.SETFILTER("Date of change", '%1', TODAY);
+            PersonalTrack.SETFILTER("Date of change", '%1', WORKDATE);
             PersonalTrack.SETFILTER("Employee Contract o.", '%1', FORMAT(Rec."No."));
             PersonalTrack.SETFILTER("Position Name", '%1', Rec."Position Description");
             PersonalTrack.SETFILTER("Starting Date Contract", '%1', Rec."Starting Date");
@@ -6182,7 +6182,7 @@ table 50071 "Employee Contract Ledger"
             REPEAT
                 // EmployeeContractLedger1.Active:=FALSE;
                 //  EmployeeContractLedger1.Status:=1;
-                IF (EmployeeContractLedger1."Testing Period Successful" = EmployeeContractLedger1."Testing Period Successful"::" ") AND (EmployeeContractLedger1."Testing Period Ending Date" = CALCDATE('<-1D>', TODAY)) THEN BEGIN
+                IF (EmployeeContractLedger1."Testing Period Successful" = EmployeeContractLedger1."Testing Period Successful"::" ") AND (EmployeeContractLedger1."Testing Period Ending Date" = CALCDATE('<-1D>', WORKDATE)) THEN BEGIN
                     EmployeeContractLedger1."Testing Period Successful" := EmployeeContractLedger1."Testing Period Successful"::Yes;
                 END;
                 EmployeeContractLedger1.MODIFY;
@@ -6302,9 +6302,9 @@ table 50071 "Employee Contract Ledger"
                 IF ((WbMod."Starting Date" <> "Starting Date") AND (xRec."Starting Date" <> Rec."Starting Date") AND
               ((Rec."Reason for Change".AsInteger() = 1) OR (Rec."Reason for Change".AsInteger() = 2))) THEN
                     WbMod."Starting Date" := "Starting Date";
-                IF ((WbMod."Ending Date" <> TODAY) AND (xRec."Ending Date" <> Rec."Ending Date")) THEN BEGIN
-                    IF (Rec."Ending Date" = 0D) OR (Rec."Ending Date" > TODAY) THEN
-                        WbMod."Ending Date" := TODAY ELSE
+                IF ((WbMod."Ending Date" <> WORKDATE) AND (xRec."Ending Date" <> Rec."Ending Date")) THEN BEGIN
+                    IF (Rec."Ending Date" = 0D) OR (Rec."Ending Date" > WORKDATE) THEN
+                        WbMod."Ending Date" := WORKDATE ELSE
                         WbMod."Ending Date" := "Ending Date";
                 END;
                 HRSetup.GET;
@@ -6321,7 +6321,7 @@ table 50071 "Employee Contract Ledger"
             ELSE
                 R_BroughtExperience.SetStatus("Employee No.", '', 'EXTERNAL');
             R_BroughtExperience.RUN;
-            R_WorkExperience2.SetEmp("Employee No.", TODAY);
+            R_WorkExperience2.SetEmp("Employee No.", WORKDATE);
             R_WorkExperience2.RUN;
         END;
 
@@ -6638,7 +6638,7 @@ table 50071 "Employee Contract Ledger"
         R_BroughtExperience: Report "Update Brought Experience";
         R_WorkExperience2: Report "Work experience in Company";
         Text010: Label 'Ending Date must not be empty!! Employee no:%1 %2';
-        Text011: Label 'Termination date must not be before today';
+        Text011: Label 'Termination date must not be before WORKDATE';
         Izmjena: Boolean;
         ECL7: Record "Employee Contract Ledger";
         NumberOfProt: Text;
