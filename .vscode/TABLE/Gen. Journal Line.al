@@ -169,7 +169,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Interest';
             Editable = false;
         }
-        field(50046; "Apoeni"; Integer)
+        field(50046; "Apoeni"; Decimal)
         {
             FieldClass = FlowField;
             
