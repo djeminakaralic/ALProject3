@@ -55,7 +55,7 @@ table 51067 "Apoeni"
     }
 
     var
-        ApoeniINT: Integer;
+        ApoeniINT: Decimal;
         ApoeniText: Text[10];
 }
 
