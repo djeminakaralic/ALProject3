@@ -133,9 +133,9 @@ report 50075 "Blagajnički dnevnik"
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     REPEAT
-                        PrethodniSaldo += GLEntry.Amount;
-                        //PrethodniSaldo += GLEntry."Debit Amount";
-                        //PrethodniSaldo += GLEntry."Credit Amount";
+                        //PrethodniSaldo += GLEntry.Amount;
+                        PrethodniSaldo -= GLEntry."Debit Amount";
+                        PrethodniSaldo += GLEntry."Credit Amount";
                     UNTIL GLEntry.NEXT = 0;
 
                 /*emp.SETFILTER("No.", '%1', "Employee No.");
