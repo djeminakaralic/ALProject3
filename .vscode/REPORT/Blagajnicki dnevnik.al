@@ -95,17 +95,20 @@ report 50075 "Blagajnički dnevnik"
             column(EmmployeeName; EmmployeeName)
             {
             }
+            column(BankAccountName; BankAccountName)
+            {
+            }
 
 
             trigger OnAfterGetRecord()
             begin
                 EmmployeeName := '';
-                IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
-                    Datum := "Posting Date";
-                    Brdokumenta := "Document No.";
-                    BrdokumentaIS := '';
-                    Kolicina := Amount;
-                END;
+                //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
+                Datum := "Posting Date";
+                Brdokumenta := "Document No.";
+                BrdokumentaIS := '';
+                Kolicina := Amount;
+                //END;
 
 
                 /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
@@ -115,6 +118,7 @@ report 50075 "Blagajnički dnevnik"
                     Kolicina := 0;
                     KolicinaIS := Amount;
                 END;*/
+                KolicinaIS := 0;
 
                 /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
@@ -124,25 +128,27 @@ report 50075 "Blagajnički dnevnik"
                             PrethodniSaldo += BALE."Amount (LCY)";
                         UNTIL BALE.NEXT = 0;*/
 
-
-
-
                 //GLEntry.SETFILTER("Bal. Account No.", '%1', '2050');
+                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SETFILTER("Posting Date", '<%1', "Posting Date");
                 IF GLEntry.FIND('-') THEN
                     REPEAT
-                        PrethodniSaldo += GLEntry.Amount;
+                        //PrethodniSaldo += GLEntry.Amount;
+                        PrethodniSaldo -= GLEntry."Debit Amount";
+                        PrethodniSaldo += GLEntry."Credit Amount";
                     UNTIL GLEntry.NEXT = 0;
 
-
-
-                emp.SETFILTER("No.", '%1', "Employee No.");
+                /*emp.SETFILTER("No.", '%1', "Employee No.");
                 IF emp.FIND('-') THEN
-                    EmmployeeName := emp."First Name" + ' ' + emp."Last Name";
+                    EmmployeeName := emp."First Name" + ' ' + emp."Last Name";*/
             end;
 
             trigger OnPreDataItem()
             begin
+                BankAccCardFilter := GETFILTER("Bal. Account No.");
+                BankAccount.get(BankAccCardFilter);
+                BankAccountName := BankAccount.Name;
+
                 PostingDatefilter := GETFILTER("Posting Date");
 
                 CompanyInformation.GET;
@@ -152,9 +158,9 @@ report 50075 "Blagajnički dnevnik"
                 //IF Location.FINDFIRST THEN
                 //City:=Location.City;
 
-                CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
+                /*CountryRegion.SETFILTER(Code, CompanyInformation."Country/Region Code");
                 IF CountryRegion.FINDFIRST THEN
-                    Country := CountryRegion.Name;
+                    Country := CountryRegion.Name;*/
             end;
         }
     }
@@ -184,6 +190,8 @@ report 50075 "Blagajnički dnevnik"
         CountryRegion: Record "Country/Region";
         Location: Record Location;
         PostingDatefilter: Text[100];
+        BankAccCardFilter: Code[20];
+        BankAccountName: Text[100];
         Datum: Date;
         Brdokumenta: Text[100];
         Kolicina: Decimal;

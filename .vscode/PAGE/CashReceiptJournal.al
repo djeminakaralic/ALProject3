@@ -26,6 +26,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Amount (LCY)")
         {
+            field(Apoeni;Apoeni)
+            {
+                ApplicationArea = all;
+            }
             field("Given amount"; "Given amount")
             {
                 ApplicationArea = all;
@@ -39,10 +43,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-        /*modify(Description)
+        modify(Description)
         {
             Editable = false;
-        }*/
+        }
     }
 
     actions
@@ -109,6 +113,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                                         if "Journal Batch Name" = 'CZK9 UPL' then Validate(rec."Bal. Account No.", 'BANK-18');
 
         "Payment DT" := System.CurrentDateTime;
+        Description := '';
     end;
 
     var

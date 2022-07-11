@@ -168,6 +168,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Additional Responsibility - Field QuerySource - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Apoeni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Quantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 243035973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attachment History</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21928,6 +21953,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Meal Taxable BD - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 1901871129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Meal Taxable FBiH</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Meal Taxable FBiH  - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1954395533 - Field 875717669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Meal Taxable FBiH</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24212,6 +24242,11 @@
           <source>Additional Responsibility</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Additional Responsibility - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2267677425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni Page - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 274235925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Award Category List</source>
@@ -27472,11 +27507,6 @@
           <source>Reduction Posting</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Header Card - Action Reduction Posting - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1554128033 - Action 964372093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wage Posting</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Wage Header Card - Action Wage Posting Additions - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1554128033 - Action 1073090428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Delete</source>
@@ -34918,6 +34948,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Timesheets - Control startDate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 302953098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TS_knjizenja 2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TS_knjizenja 2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 3411162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Brought Experience</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39283,6 +39318,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Address_Cust - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Apoeni</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Apoeni - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 567629439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Avans</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39354,7 +39394,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Group Member - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 3604861746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Interst</source>
+          <source>Interest</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Interest - Property Caption</note>
         </trans-unit>
@@ -40667,6 +40707,66 @@
           <source>,Ink,Spare parts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntryExtends - Field Vendor Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 2447697781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>0.05</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.05 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 278864009 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>0.10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 1070876472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>0.20</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.20 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 3501294221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>0.50</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 0.50 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 2347438355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>1</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 3822923715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>10</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 10 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 1987769107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>100</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 100 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 4260528206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>2</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 2494642710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>20</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 20 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 2964680702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 200 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 4091619183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>5</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 5 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 579705151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>50</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 50 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 903826216 - EnumValue 1611336899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CEO</source>
