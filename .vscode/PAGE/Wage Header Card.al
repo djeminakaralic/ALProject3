@@ -1115,56 +1115,56 @@ page 50017 "Wage Header Card"
                                END;
                            end;
                        }*/
-                action("Wage Posting Additions")
-                {
-                    Caption = 'Wage Posting';
-                    Image = WageLines;
-                    ApplicationArea = all;
-                    trigger OnAction()
-                    var
-                        //ĐK      R_TS1: Report "TS_knjizenja 1";
-                        WH: Record "Wage Header";
-                        Calc: Record "Wage Calculation";
-                        FileManagement: Codeunit "File Management";
-                        filename: Text;
-                    begin
-                        IF Rec."Negative Payment" = 0 THEN BEGIN
-                            WH.RESET;
-                            WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
-                            WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
+                /*   action("Wage Posting Additions")
+                   {
+                       Caption = 'Wage Posting';
+                       Image = WageLines;
+                       ApplicationArea = all;
+                       trigger OnAction()
+                       var
+                           //ĐK      R_TS1: Report "TS_knjizenja 1";
+                           WH: Record "Wage Header";
+                           Calc: Record "Wage Calculation";
+                           FileManagement: Codeunit "File Management";
+                           filename: Text;
+                       begin
+                           IF Rec."Negative Payment" = 0 THEN BEGIN
+                               WH.RESET;
+                               WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
+                               WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
 
-                            IF NOT WH.FIND('-') THEN
-                                ERROR('Ne postoji obračun plata!')
-                            ELSE BEGIN
+                               IF NOT WH.FIND('-') THEN
+                                   ERROR('Ne postoji obračun plata!')
+                               ELSE BEGIN
 
 
-                                //ĐK     CLEAR(R_TSAdd);
-                                CLEAR(FileManagement);
-                                WS.GET;
-                                PO.RESET;
-                                WH.CALCFIELDS("Addition Netto");
-                                PaymentOrderNew.RESET;
-                                PaymentOrderNew.SETFILTER("Wage Calculation Type", '%1', PaymentOrderNew."Wage Calculation Type"::Additions);
-                                PaymentOrderNew.SETFILTER(Contributon, '%1', 'DODACI');
-                                PaymentOrderNew.SETFILTER("Wage Header No.", '%1', WH."No.");
-                                IF PaymentOrderNew.FINDFIRST THEN BEGIN
-                                    PaymentOrderNew.CALCSUMS(Iznos);
-                                    filename := WS."Export Report Path" + FORMAT(WH."Addition Netto") + '~02~LD RBBH~' + FORMAT(WH."Date Of Calculation") + '.xls';
-                                    //R_TSAdd.SetParam(Rec."No.");
-                                    // R_TSAdd.SAVEASEXCEL(filename);
-                                    //     R_TSAdd.SetParam(Rec."No.");
-                                    //ĐK   R_TSAdd.SAVEASEXCEL(filename);
-                                    FileManagement.DownloadToFile(filename, filename);
-                                    //  FileManagement.DownloadToFile(filename, filename);
-                                END;
+                                   //ĐK     CLEAR(R_TSAdd);
+                                   CLEAR(FileManagement);
+                                   WS.GET;
+                                   PO.RESET;
+                                   WH.CALCFIELDS("Addition Netto");
+                                   PaymentOrderNew.RESET;
+                                   PaymentOrderNew.SETFILTER("Wage Calculation Type", '%1', PaymentOrderNew."Wage Calculation Type"::Additions);
+                                   PaymentOrderNew.SETFILTER(Contributon, '%1', 'DODACI');
+                                   PaymentOrderNew.SETFILTER("Wage Header No.", '%1', WH."No.");
+                                   IF PaymentOrderNew.FINDFIRST THEN BEGIN
+                                       PaymentOrderNew.CALCSUMS(Iznos);
+                                       filename := WS."Export Report Path" + FORMAT(WH."Addition Netto") + '~02~LD RBBH~' + FORMAT(WH."Date Of Calculation") + '.xls';
+                                       //R_TSAdd.SetParam(Rec."No.");
+                                       // R_TSAdd.SAVEASEXCEL(filename);
+                                       //     R_TSAdd.SetParam(Rec."No.");
+                                       //ĐK   R_TSAdd.SAVEASEXCEL(filename);
+                                       FileManagement.DownloadToFile(filename, filename);
+                                       //  FileManagement.DownloadToFile(filename, filename);
+                                   END;
 
-                            END;
-                        END
-                        ELSE BEGIN
-                            ERROR(Txt013);
-                        END;
-                    end;
-                }
+                               END;
+                           END
+                           ELSE BEGIN
+                               ERROR(Txt013);
+                           END;
+                       end;
+                   }*/
                 action("Reduction Posting")
                 {
                     Caption = 'Reduction Posting';
@@ -1172,7 +1172,7 @@ page 50017 "Wage Header Card"
                     ApplicationArea = all;
                     trigger OnAction()
                     var
-                        //ĐK R_TS2: Report "TS_knjizenja 2";
+                        R_TS2: Report "TS_knjizenja 2";
                         WH: Record "Wage Header";
                         Calc: Record "Wage Calculation";
                         FileManagement: Codeunit "File Management";
@@ -1190,14 +1190,14 @@ page 50017 "Wage Header Card"
                             ELSE BEGIN
 
 
-                                //đk       CLEAR(R_TS2);
+                                CLEAR(R_TS2);
                                 CLEAR(FileManagement);
                                 WS.GET;
-                                WH.CALCFIELDS("Reduction UPP");
+
                                 PO.RESET;
 
-                                MESSAGE(FORMAT(Correct));
-                                filename := WS."Export Report Path" + FORMAT(Replacestring(FORMAT(WH."Reduction UPP"), '.', '') + '~01~OBUSTAVA LD RBBH~') + FORMAT(WH."Date Of Calculation") + '.xls';
+
+                                filename := WS."Export Report Path" + FORMAT('PLACA I OSTALA PRIMANJA' + delchr(format(WH."Payment Date"), '.') + ' - +' + 'Naziv Banke') + '.xls';
                                 /*       R_TS2.SetParam(Rec."No.");
                                        R_TS2.SAVEASEXCEL(filename);*/
                                 FileManagement.DownloadToFile(filename, filename);
