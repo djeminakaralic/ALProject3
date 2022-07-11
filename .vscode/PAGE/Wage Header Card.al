@@ -1195,11 +1195,12 @@ page 50017 "Wage Header Card"
                                 WS.GET;
 
                                 PO.RESET;
+                                //ĐK
 
 
                                 filename := WS."Export Report Path" + FORMAT('PLACA I OSTALA PRIMANJA' + delchr(format(WH."Payment Date"), '.') + ' - +' + 'Naziv Banke') + '.xls';
-                                /*       R_TS2.SetParam(Rec."No.");
-                                       R_TS2.SAVEASEXCEL(filename);*/
+                                R_TS2.SetParam(Rec."No.");
+                                R_TS2.SAVEASEXCEL(filename);
                                 FileManagement.DownloadToFile(filename, filename);
                                 // PO.SetRange("Wage Header No.", Rec."No.");
                                 //REPORT.SAVEASEXCEL(50099, filename, PO);
