@@ -1195,6 +1195,7 @@ page 50017 "Wage Header Card"
                                 WS.GET;
 
                                 PO.RESET;
+                                //ĐK
 
 
                                 filename := WS."Export Report Path" + FORMAT('PLACA I OSTALA PRIMANJA' + delchr(format(WH."Payment Date"), '.') + ' - +' + 'Naziv Banke') + '.xls';
