@@ -1,5 +1,6 @@
 table 51067 "Apoeni"
 {
+    //ED
     Caption = 'Apoeni';
     DrillDownPageID = "Apoeni Page";
     LookupPageID = "Apoeni Page";

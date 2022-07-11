@@ -1,5 +1,6 @@
 page 51067 "Apoeni Page"
 {
+    //ED
     Caption = 'Apoeni';
     PageType = List;
     SourceTable = Apoeni;
@@ -12,16 +13,16 @@ page 51067 "Apoeni Page"
         {
             repeater(Group)
             {
-                field("Entry No.";"Entry No.")
+                field("Entry No."; "Entry No.")
                 {
                     //Visible = false;
                     ApplicationArea = all;
                 }
-                field(Apoeni;Apoeni)
+                field(Apoeni; Apoeni)
                 {
                     ApplicationArea = all;
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Quantity)
                 {
                     ApplicationArea = all;
                 }

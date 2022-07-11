@@ -1,5 +1,6 @@
 enum 50032 "Apoeni Enum"
 {
+    //ED
     Extensible = true;
     AssignmentCompatibility = true;
 
