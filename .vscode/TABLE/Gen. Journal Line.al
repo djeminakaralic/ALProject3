@@ -169,10 +169,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Interst';
             Editable = false;
         }
-        field(50046; "Apoeni"; Decimal)
+        field(50046; "Apoeni"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula=sum(Apoeni.Quantity);
+            CalcFormula = sum(Apoeni.Quantity);
             //CalcFormula = lookup(Apoeni."Entry No.");
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
