@@ -34,13 +34,14 @@ page 50016 "Wage Setup"
                 {
                     Visible = false;
                 }
-                field("Base Tax Deduction"; "Base Tax Deduction")
-                {
-                    Visible = false;
 
-                }
                 field("Base Personal Deduction"; "Base Personal Deduction")
                 {
+                    Visible = false;
+                }
+                field("Base Tax Deduction"; "Base Tax Deduction")
+                {
+
                 }
                 field("General Coefficient"; "General Coefficient")
                 {
@@ -52,6 +53,12 @@ page 50016 "Wage Setup"
                 field("Work Percentage"; "Work Percentage")
                 {
                 }
+                field("Max Work Experience"; "Max Work Experience")
+                {
+
+                }
+                field("Year of Experience - min"; "Year of Experience - min")
+                { }
 
                 field("Export Report Path"; "Export Report Path")
                 {

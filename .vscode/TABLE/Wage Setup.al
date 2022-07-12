@@ -354,18 +354,16 @@ table 50199 "Wage Setup"
         field(330; "Base Tax Deduction"; Decimal)
         {
             Caption = 'Base Tax Deduction';
-
+            TableRelation = "Tax deduction list".Amount where(Active = filter(true), "Entity Code" = filter('FBIH'));
             trigger OnValidate()
+            var
+                myInt: Integer;
             begin
-                /*"Base Tax Deduction":=Rec."Base Tax Deduction";
-                MODIFY;
-                
-                IF emp.FIND('-') THEN REPEAT
-                 //WPCalc.UpdateTaxDeduct(emp);
-                UNTIL emp.NEXT = 0;
-                */
+                "Base Personal Deduction" := "Base Tax Deduction";
 
             end;
+
+
         }
         field(335; "Coefficient Increase"; Decimal)
         {
@@ -708,6 +706,14 @@ table 50199 "Wage Setup"
                 NettoFromBrutto("Meal Taxable FBiH ");
 
             end;
+        }
+        field(50076; "Max Work Experience"; Decimal)
+        {
+            Caption = 'Max Work Experience';
+        }
+        field(50077; "Year of Experience - min"; Integer)
+        {
+            Caption = 'Year of Experience - min';
         }
 
     }
