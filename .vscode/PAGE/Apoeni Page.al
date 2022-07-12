@@ -18,11 +18,11 @@ page 51067 "Apoeni Page"
                     Visible = false;
                     ApplicationArea = all;
                 }
-                field(CurrentJnlBatchName; CurrentJnlBatchName)
+                field("Account No."; "Account No.")
                 {
                     ApplicationArea = all;
                 }
-                field("Account No."; "Account No.")
+                field("Document No."; "Document No.")
                 {
                     ApplicationArea = all;
                 }
