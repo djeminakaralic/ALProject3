@@ -27,6 +27,7 @@ page 50163 "Work booklet"
                 field("Work Booklet No."; "Work Booklet No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Serial No."; "Serial No.")
                 {

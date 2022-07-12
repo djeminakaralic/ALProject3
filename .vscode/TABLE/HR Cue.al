@@ -342,7 +342,7 @@ table 50085 "HR Cue"
         {
             FieldClass = FlowField;
             CalcFormula = Count("Employee Contract Ledger" WHERE("Starting Date" = FIELD(DateFilter9),
-                                                                  "Wage Change" = FILTER("Increase-Additional Responsibility" | "Increase-Replacement" | "Increase-Additional Work Effort" | "Increase-Promotion" | "Increase-Wage After Disciplinary Measure" | "Increase-Reconcilliation" | "Increase-Position Change" | "Increase-Check" | "Decrease-Responsibility Decrease" | "Decrease-Inadequate Performance" | "Decrease-Disciplinary Measure" | "Decrease-Rellocation" | "Decrease-Reconcilliation"),
+                                                                  "Wage Change" = FILTER("Change Position Coefficient"),
                                                                   "Show Record" = FILTER(TRUE)));
             Caption = 'Wage Change';
 
