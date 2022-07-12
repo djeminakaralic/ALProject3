@@ -1629,8 +1629,8 @@ table 50055 "ECL systematization"
         field(50346; "Wage Change"; Option)
         {
             Caption = 'Wage Change';
-            OptionCaption = '  ,Increase-Additional Responsibility,Increase-Replacement,Increase-Additional Work Effort,Increase-Promotion,Increase-Wage After Disciplinary Measure,Increase-Reconcilliation,Increase-Position Change,Increase-Check,,Decrease-Responsibility Decrease,,Decrease-Inadequate Performance,Decrease-Disciplinary Measure,Decrease-Rellocation,Decrease-Reconcilliation';
-            OptionMembers = "  ","Increase-Additional Responsibility","Increase-Replacement","Increase-Additional Work Effort","Increase-Promotion","Increase-Wage After Disciplinary Measure","Increase-Reconcilliation","Increase-Position Change","Increase-Check","Decrease-Responsibility Decrease","Decrease-Inadequate Performance","Decrease-Disciplinary Measure","Decrease-Rellocation","Decrease-Reconcilliation";
+            OptionCaption = '  ,Change Position Coefficient';
+            OptionMembers = "  ","Change Position Coefficient";
         }
         field(50347; Contract; Boolean)
         {

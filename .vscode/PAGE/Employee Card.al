@@ -4549,6 +4549,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             {
                 Caption = 'Residence Permit';
                 Image = ClosePeriod;
+                Visible = false;
                 ApplicationArea = all;
                 RunObject = Page "Personal Documents";
                 RunPageLink = "Employee No." = FIELD("No."),
@@ -4578,6 +4579,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
             action("Work Permit2")
             {
                 Caption = 'Work Permit';
+                Visible = false;
                 Image = WorkCenter;
                 RunObject = Page "Personal Documents";
                 ApplicationArea = all;
