@@ -11,7 +11,7 @@ enum 50032 "Apoeni Enum"
 
     value(1; "200")
     {
-        Caption = ' ';
+        Caption = '200';
     }
     value(2; "100")
     {
