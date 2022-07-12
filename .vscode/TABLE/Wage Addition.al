@@ -164,7 +164,7 @@ table 50032 "Wage Addition"
                     if WT."Default Amount" <> 0 then begin
 
                         if (EmpW."Years of Experience" >= WagSetup."Year of Experience - min") and (WagSetup."Year of Experience - min" <> 0) then
-                            Amount := Amount * (((WagSetup."Max Work Experience") - (EmpW."Years of Experience" * WagSetup."Work Percentage") / WT."Default Amount"))
+                            Amount := Amount * (((WagSetup."Max Work Experience") - (EmpW."Years of Experience" * WagSetup."Work Percentage")) / WT."Default Amount")
                         else
                             Amount := Amount * EmpW."Years of Experience";
                     end

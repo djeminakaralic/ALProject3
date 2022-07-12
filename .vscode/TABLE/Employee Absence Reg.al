@@ -71,6 +71,7 @@ table 50104 "Employee Absence Reg"
                 If Rec."Approved" = false then begin
                     EmployeeAbsence.SetFilter("Employee No.", "Employee No.");
                     EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                     //iz kalendara će svaki postavljeni praznik imati u šiframa izostanaka za holiday true
                     //dakle trebam ostaviti samo odsustva gdje je causeofabsence.holiday = false
                     if EmployeeAbsence.FindFirst() then
@@ -131,12 +132,18 @@ table 50104 "Employee Absence Reg"
 
                     IF "From Date" > "To Date" then
                         ERROR(Text002);
+                    EmployeeAbsence.Reset();
+                    EmployeeAbsence.SetFilter("Employee No.", '%1', "Employee No.");
+                    EmployeeAbsence.SetFilter("From Date", '%1..%2', Rec."From Date", Rec."To Date");
+                    EmployeeAbsence.SetFilter("Add Hours", '%1', false);
 
                     if EmployeeAbsence.FindFirst() then begin
                         /*WageSetup.Get();
                         if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
                             Error(Text005);*/
                         CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+
+                        // EmployeeAbsence.SetFilter("Add Hours", '%1', false);
                         if CauseOfAbsence.Holiday = false then
                             Error(Text005);
                     end;
