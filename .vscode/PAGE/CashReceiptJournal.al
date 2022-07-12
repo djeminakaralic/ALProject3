@@ -30,11 +30,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
-
-                trigger OnDrillDown()
-                begin
-                    CurrPage.Update();
-                end;
             }
             field("Given amount"; "Given amount")
             {
