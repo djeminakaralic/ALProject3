@@ -148,6 +148,7 @@ table 50032 "Wage Addition"
             var
                 WT: Record "Wage Addition Type";
                 EmpW: Record Employee;
+                WagSetup: Record "Wage Setup";
             begin
                 Class.RESET;
                 Class.SETCURRENTKEY("Valid From Amount");
@@ -158,8 +159,19 @@ table 50032 "Wage Addition"
                 //dodati ovdje
                 WT.Get(Rec."Wage Addition Type");
                 EmpW.Get("Employee No.");
-                if WT."Work experience base" = true then
-                    Amount := Amount * EmpW."Years of Experience";
+                if WT."Work experience base" = true then begin
+                    WagSetup.Get();
+                    if WagSetup."Type Of Work Percentage Calc." = WagSetup."Type Of Work Percentage Calc."::Total
+                    then begin
+                        if (EmpW."Years of Experience" >= WagSetup."Year of Experience - min") and (WageSetup."Year of Experience - min" <> 0) then
+                            Amount := Amount * (((WagSetup."Max Work Experience") - (EmpW."Years of Experience" * WageSetup."Work Percentage"))) / (Amount)
+                        else
+                            Amount := Amount * EmpW."Years of Experience";
+                    end
+                    else begin
+
+                    end;
+                end;
 
                 IF Taxable THEN
                     VALIDATE("Amount to Pay", Amount * (1 - (Class.Percentage / 100)))

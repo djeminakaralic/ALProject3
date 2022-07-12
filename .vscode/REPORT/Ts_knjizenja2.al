@@ -13,6 +13,10 @@ report 50030 "TS_knjizenja 2"
             { }
             column(TodayDate; TodayDate)
             { }
+            column(Picture; Comp.Picture)
+            {
+
+            }
             dataitem(DataItem1; "Payment Order")
             {
 
@@ -24,7 +28,9 @@ report 50030 "TS_knjizenja 2"
                 }
                 column(Uplatio3; Uplatio3)
                 {
+
                 }
+                column(JIB; JIB) { }
                 column(SvrhaDoznake1; SvrhaDoznake1)
                 {
                 }
@@ -48,10 +54,7 @@ report 50030 "TS_knjizenja 2"
 
 
                 }
-                column(Picture; Comp.Picture)
-                {
 
-                }
                 column(MjestoUplate; MjestoUplate)
                 {
                 }
@@ -103,12 +106,25 @@ report 50030 "TS_knjizenja 2"
                 {
 
                 }
+                column(Year; Year)
+                {
+
+                }
+                column(Month; Month) { }
+                column(Org; Org) { }
 
 
                 trigger OnAfterGetRecord()
                 begin
                     Comp.get();
                     Comp.CalcFields(Picture);
+                    if Employee.Get(DataItem1.SvrhaDoznake3) then
+                        JMBG := Employee."Employee ID"
+                    else
+                        JMBG := '';
+
+                    //Org
+
 
 
 
@@ -134,6 +150,38 @@ report 50030 "TS_knjizenja 2"
 
 
                     end;
+                    WH.Reset();
+                    wh.SetFilter("No.", '%1', DataItem1."Wage Header No.");
+                    WH.FindFirst();
+
+                    Year := WH."Year Of Wage";
+                    Month := WH."Month Of Wage";
+
+
+                    ECL.Reset();
+                    ECL.SetFilter("Employee No.", '%1', DataItem1.SvrhaDoznake3);
+                    ECL.SetFilter("Starting Date", '<=%1', WH."Closing Date");
+                    ECL.SetCurrentKey("Starting Date");
+                    ECL.Ascending;
+                    if ECL.FindLast() then begin
+                        Org := ECL."Department Code";
+                        OrgDijelovi.Reset();
+                        OrgDijelovi.SetFilter(Description, '%1', ECL."Org Unit Name");
+                        OrgDijelovi.SetFilter(Active, '%1', true);
+                        if OrgDijelovi.FindFirst() then
+                            JIB := OrgDijelovi."JIB Contributes"
+                        else
+                            JIB := '';
+                    end
+
+                    else begin
+                        Org := '';
+
+                        JIB := '';
+
+                    end;
+
+
 
 
                     WBTemp.Reset();
@@ -159,6 +207,8 @@ report 50030 "TS_knjizenja 2"
 
 
 
+
+
                     Employee.SETFILTER("No.", '%1', SvrhaDoznake3);
                     IF Employee.FINDFIRST THEN BEGIN
                         FirstName := Employee."First Name";
@@ -179,12 +229,14 @@ report 50030 "TS_knjizenja 2"
                 begin
                     FirstName := '';
                     TodayDate := Today;
+                    Comp.get();
+                    Comp.CalcFields(Picture);
                     LastName := '';
                     EmployeeID := '';
                     SETFILTER("Wage Header No.", '%1', Document);
 
                     // DataItemTableView = WHERE(Contributon = FILTER('Obustava'));
-                    SETFILTER(Contributon, '%1', 'Obustava');
+                    SETFILTER(Contributon, '%1', 'PLAĆA');
                     SETFILTER(RacunPrimaoca, '%1', DataItem2."Account No");
 
                 end;
@@ -215,7 +267,15 @@ report 50030 "TS_knjizenja 2"
 
     var
         i: Integer;
+        JIB: Text[30];
+        OrgDijelovi: Record "ORG Dijelovi";
+        Org: Code[20];
+        ECL: Record "Employee Contract Ledger";
+        Year: Integer;
+        Month: Integer;
+        JMBG: Code[13];
         TodayDate: Date;
+        WH: Record "Wage Header";
         a: Integer;
         NazivBanke: Text[2000];
         RecutionDesc: Text[1000];
