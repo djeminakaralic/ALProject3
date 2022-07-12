@@ -42,6 +42,10 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
+                field("G/L Entry No.";"G/L Entry No.")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
