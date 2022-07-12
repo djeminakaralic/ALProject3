@@ -169,20 +169,25 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Interest';
             Editable = false;
         }
-        field(50046; "Apoeni"; Integer)
+        field(50046; "Apoeni"; Decimal)
         {
             FieldClass = FlowField;
 
             /*CurrPage.SETSELECTIONFILTER(GJline);
                     Report.RunModal(50077, true, false, GJline);*/
-            CalcFormula = lookup(Apoeni.Quantity WHERE ("Account No."=field("Account No."), 
-                                                        CurrentJnlBatchName=field("Journal Batch Name")));
+            CalcFormula = sum(Apoeni.Amount WHERE("Account No." = field("Account No."),
+                                                        CurrentJnlBatchName = field("Journal Batch Name")));
 
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
                                                                             Active = FILTER(true)));*/
 
             Caption = 'Apoeni';
+
+            trigger OnValidate()
+            begin
+                Rec."Given amount" := Rec.Apoeni;
+            end;
         }
 
         modify(Amount)
