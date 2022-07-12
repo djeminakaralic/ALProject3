@@ -61,7 +61,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(50024; "Payment DT"; DateTime) //ED
+        field(50024; "Payment DT"; DateTime) 
         {
             DataClassification = ToBeClassified;
         }
@@ -226,11 +226,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             end;
         }
     }
-
-    trigger OnModify()
-    begin
-        Rec."Given amount" := Rec.Apoeni;
-    end;
 
     trigger OnInsert()
     begin

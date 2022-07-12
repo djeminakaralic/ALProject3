@@ -26,7 +26,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Amount (LCY)")
         {
-            field(Apoeni;Apoeni)
+            field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
             }
@@ -114,6 +114,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         "Payment DT" := System.CurrentDateTime;
         Description := '';
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        rec."Given amount" := Rec.Apoeni;
     end;
 
     var
