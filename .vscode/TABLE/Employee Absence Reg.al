@@ -27,6 +27,7 @@ table 50104 "Employee Absence Reg"
             var
                 AbsenceFIll: Codeunit "Absence Fill";
                 EmployeeA: Record Employee;
+                Preko: Record "Cause of Absence";
             begin
 
                 IF Rec."Approved" = true then begin
@@ -41,7 +42,9 @@ table 50104 "Employee Absence Reg"
                             CauseOfAbsence.Reset();
                             EmployeeA.Get("Employee No.");
                             CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                            if (CauseOfAbsence.Holiday = false) and (EmployeeAbsence.Quantity >= EmployeeA."Hours In Day") then
+                            Preko.Get(Rec."Cause of Absence Code");
+                            if (CauseOfAbsence.Holiday = false) and (EmployeeAbsence.Quantity >= EmployeeA."Hours In Day")
+                            and (Preko."Added To Hour Pool" = false) then
                                 Error(Text005);
                         end;
                     end;
@@ -58,7 +61,10 @@ table 50104 "Employee Absence Reg"
                             CauseOfAbsence.Reset();
                             EmployeeA.get(Rec."Employee No.");
                             CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                            if (CauseOfAbsence.Holiday = false) and (EmployeeAbsence.Quantity >= EmployeeA."Hours In Day") then
+                            Preko.Get(Rec."Cause of Absence Code");
+
+                            if (CauseOfAbsence.Holiday = false) and (Preko."Added To Hour Pool" = false)
+                            and (EmployeeAbsence.Quantity >= EmployeeA."Hours In Day") then
                                 Error(Text005);
                         end;
                     end;
@@ -121,7 +127,10 @@ table 50104 "Employee Absence Reg"
         field(8; "From Date"; Date)
         {
             Caption = 'From Date';
+
             trigger OnValidate()
+            var
+                Preko: Record "Cause of Absence";
             begin
                 IF Approved = true then
                     error(Text006);
@@ -142,9 +151,10 @@ table 50104 "Employee Absence Reg"
                         if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
                             Error(Text005);*/
                         CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
+                        Preko.Get(Rec."Cause of Absence Code");
 
                         // EmployeeAbsence.SetFilter("Add Hours", '%1', false);
-                        if CauseOfAbsence.Holiday = false then
+                        if (CauseOfAbsence.Holiday = false) and (Preko."Added To Hour Pool" = false) then
                             Error(Text005);
                     end;
                 END;
@@ -155,6 +165,8 @@ table 50104 "Employee Absence Reg"
         {
             Caption = 'To Date';
             trigger OnValidate()
+            var
+                Preko: Record "Cause of Absence";
             begin
                 IF Approved = true then
                     error(Text006);
@@ -174,7 +186,9 @@ table 50104 "Employee Absence Reg"
                         if not (EmployeeAbsence."Cause of Absence Code" = WageSetup."Holiday Code") then
                             Error(Text005);*/
                         CauseOfAbsence.Get(EmployeeAbsence."Cause of Absence Code");
-                        if CauseOfAbsence.Holiday = false then
+                        Preko.Get(Rec."Cause of Absence Code");
+
+                        if (CauseOfAbsence.Holiday = false) and (Preko."Added To Hour Pool" = false) then
                             Error(Text005);
                     end;
 
