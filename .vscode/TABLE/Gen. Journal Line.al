@@ -176,12 +176,12 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             /*CurrPage.SETSELECTIONFILTER(GJline);
                     Report.RunModal(50077, true, false, GJline);*/
             CalcFormula = lookup(Apoeni.Quantity WHERE ("Account No."=field("Account No."), 
-                                                        CurrentJnlBatchName=field("Journal Template Name")));
+                                                        CurrentJnlBatchName=field("Journal Batch Id")));
 
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
                                                                             Active = FILTER(true)));*/
-                                                                            
+
             Caption = 'Apoeni';
         }
 
