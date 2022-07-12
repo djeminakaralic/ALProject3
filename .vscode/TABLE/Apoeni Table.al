@@ -19,8 +19,9 @@ table 51067 "Apoeni"
             trigger OnValidate()
             begin
                 if Rec.Apoeni.AsInteger() < 7 then begin
-                    ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
-                    Evaluate(ApoeniDecimal, ApoeniText);
+                    //ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
+                    //Evaluate(ApoeniDecimal, ApoeniText);
+                    Evaluate(ApoeniDecimal, Format(Rec.Apoeni));
 
                 end
                 else
@@ -47,8 +48,9 @@ table 51067 "Apoeni"
             trigger OnValidate()
             begin
                 if Rec.Apoeni.AsInteger() < 7 then begin
-                    ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
-                    Evaluate(ApoeniDecimal, ApoeniText);
+                    //ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
+                    //Evaluate(ApoeniDecimal, ApoeniText);
+                    Evaluate(ApoeniDecimal, Format(Rec.Apoeni));
 
                 end
                 else
