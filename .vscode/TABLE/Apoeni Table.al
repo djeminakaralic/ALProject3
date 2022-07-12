@@ -51,25 +51,25 @@ table 51067 "Apoeni"
 
             trigger OnValidate()
             begin
-                Validate(Apoeni,Rec.Apoeni);
+                Validate(Apoeni, Rec.Apoeni);
 
-           /*     if Rec.Apoeni.AsInteger() < 7 then begin
-                    //ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
-                    //Evaluate(ApoeniDecimal, ApoeniText);
-                    Evaluate(ApoeniDecimal, Format(Rec.Apoeni));
+                /*     if Rec.Apoeni.AsInteger() < 7 then begin
+                         //ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
+                         //Evaluate(ApoeniDecimal, ApoeniText);
+                         Evaluate(ApoeniDecimal, Format(Rec.Apoeni));
 
-                end
-                else
-                    if Rec.Apoeni.AsInteger() = 8 then
-                        ApoeniDecimal := 0.5
-                    else
-                        if Rec.Apoeni.AsInteger() = 9 then
-                            ApoeniDecimal := 0.2
-                        else
-                            if Rec.Apoeni.AsInteger() = 10 then
-                                ApoeniDecimal := 0.1
-                            else
-                                if Rec.Apoeni.AsInteger() = 11 then ApoeniDecimal := 0.05;*/
+                     end
+                     else
+                         if Rec.Apoeni.AsInteger() = 8 then
+                             ApoeniDecimal := 0.5
+                         else
+                             if Rec.Apoeni.AsInteger() = 9 then
+                                 ApoeniDecimal := 0.2
+                             else
+                                 if Rec.Apoeni.AsInteger() = 10 then
+                                     ApoeniDecimal := 0.1
+                                 else
+                                     if Rec.Apoeni.AsInteger() = 11 then ApoeniDecimal := 0.05;*/
                 if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniDecimal * Rec.Quantity;
             end;
@@ -78,11 +78,11 @@ table 51067 "Apoeni"
         {
             Caption = 'Amount';
         }
-                field(5; "Account No."; Code[20])
+        field(5; "Account No."; Code[20])
         {
             Caption = 'Account No.';
         }
-                field(6; CurrentJnlBatchName; Code[10])
+        field(6; CurrentJnlBatchName; Code[10])
         {
             Caption = 'Current Journal Batch Name';
         }
@@ -90,7 +90,7 @@ table 51067 "Apoeni"
 
     keys
     {
-        key(Key1; "Entry No.")
+        key(Key1; "Account No.", CurrentJnlBatchName)
         {
         }
     }
