@@ -78,6 +78,14 @@ table 51067 "Apoeni"
         {
             Caption = 'Amount';
         }
+                field(5; "Account No."; Code[20])
+        {
+            Caption = 'Account No.';
+        }
+                field(6; CurrentJnlBatchName; Code[10])
+        {
+            Caption = 'Current Journal Batch Name';
+        }
     }
 
     keys

@@ -15,7 +15,15 @@ page 51067 "Apoeni Page"
             {
                 field("Entry No."; "Entry No.")
                 {
-                    //Visible = false;
+                    Visible = false;
+                    ApplicationArea = all;
+                }
+                field(CurrentJnlBatchName; CurrentJnlBatchName)
+                {
+                    ApplicationArea = all;
+                }
+                field("Account No."; "Account No.")
+                {
                     ApplicationArea = all;
                 }
                 field(Apoeni; Apoeni)
@@ -26,7 +34,7 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     ApplicationArea = all;
                 }
