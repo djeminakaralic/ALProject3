@@ -180,7 +180,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                                                 "Document No." = field("Document No.")));*/
 
             CalcFormula = sum(Apoeni.Amount where("Account No." = field("Account No."),
-                            "Journal Template Name"=field("Journal Template Name"), 
+                            "Journal Batch Name"=field("Journal Batch Name"), 
                             "Document No." = field("Document No.")));
 
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),

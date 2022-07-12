@@ -30,7 +30,7 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field("Journal Template Name";"Journal Template Name")
+                field("Journal Batch Name";"Journal Batch Name")
                 {
                     ApplicationArea = all;
                 }
