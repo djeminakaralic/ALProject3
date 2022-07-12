@@ -188,11 +188,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Apoeni - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 684500104 - Field 1891586249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bal. Account No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Bal. Account No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 684500104 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -207,6 +202,11 @@
           <source>G/L Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field G/L Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 3684440170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal Template Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Journal Template Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 684500104 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>

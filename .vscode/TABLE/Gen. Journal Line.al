@@ -175,10 +175,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             /*CurrPage.SETSELECTIONFILTER(GJline);
                     Report.RunModal(50077, true, false, GJline);*/
-            CalcFormula = sum(Apoeni.Amount WHERE ("Bal. Account No."=field("Bal. Account No."),
-                                                "Account No." = field("Account No."),                                                 
-                                                "Document No." = field("Document No.")));
+            /*CalcFormula = sum(Apoeni.Amount WHERE //("Bal. Account No."=field("Bal. Account No."),
+                                                ("Account No." = field("Account No."),                                                 
+                                                "Document No." = field("Document No.")));*/
 
+            CalcFormula = sum(Apoeni.Amount where("Journal Template Name"=field("Journal Template Name"), "Account No." = field("Account No."), "Document No." = field("Document No.")));
 
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
@@ -188,8 +189,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                "Given amount" := Apoeni;
-                //Rec."Given amount" := Rec.Apoeni;
+                Rec."Given amount" := Rec.Apoeni;
             end;
         }
 
