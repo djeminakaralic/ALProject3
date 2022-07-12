@@ -29,6 +29,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
+
+                trigger OnValidate()
+                begin
+                    rec."Given amount" := Rec.Apoeni;
+                end;
             }
             field("Given amount"; "Given amount")
             {
@@ -116,10 +121,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Description := '';
     end;
 
-    trigger OnModifyRecord(): Boolean
+    /*trigger OnModifyRecord(): Boolean
     begin
         rec."Given amount" := Rec.Apoeni;
-    end;
+    end;*/
 
     var
         GJline: Record "Gen. Journal Line";
