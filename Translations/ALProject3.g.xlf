@@ -40718,6 +40718,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntryExtends - Field Vendor Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue   - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 2395468521 - EnumValue 2447697781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>0.05</source>
           <note from="Developer" annotates="general" priority="2"></note>
