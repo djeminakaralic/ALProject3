@@ -64,9 +64,9 @@ table 51067 "Apoeni"
         {
             Caption = 'Account No.';
         }
-        field(6; "Bal. Account No."; Code[20])
+        field(6; "Journal Template Name"; Code[10])
         {
-            Caption = 'Bal. Account No.';
+            Caption = 'Journal Template Name';
         }
         field(7; "Document No."; Code[20])
         {

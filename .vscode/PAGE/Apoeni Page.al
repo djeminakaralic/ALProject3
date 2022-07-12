@@ -18,7 +18,7 @@ page 51067 "Apoeni Page"
                     Visible = false;
                     ApplicationArea = all;
                 }
-                field("Bal. Account No.";"Bal. Account No.")
+                field("Journal Template Name";"Journal Template Name")
                 {
                     ApplicationArea = all;
                 }
