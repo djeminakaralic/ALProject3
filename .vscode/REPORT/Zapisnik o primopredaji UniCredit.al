@@ -5,7 +5,6 @@ report 50097 "Zapisnik o primopredaji"
     PreviewMode = Normal;
     RDLCLayout = './Zapisnik o primopredaji UniCredit.rdl';
 
-
     dataset
     {
         dataitem(DataItem21; "G/L Entry")
@@ -45,7 +44,6 @@ report 50097 "Zapisnik o primopredaji"
             trigger OnPreDataItem()
             begin
                
-
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
