@@ -765,9 +765,6 @@ End Function
         <Field Name="Datee">
           <DataField>Datee</DataField>
         </Field>
-        <Field Name="ApoeniEnum">
-          <DataField>ApoeniEnum</DataField>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

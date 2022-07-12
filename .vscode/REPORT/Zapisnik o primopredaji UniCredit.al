@@ -35,9 +35,7 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
-            column(ApoeniEnum;ApoeniEnum)
-            {
-            }
+            
 
             trigger OnAfterGetRecord()
             begin
@@ -46,6 +44,7 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnPreDataItem()
             begin
+               
 
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
@@ -53,7 +52,7 @@ report 50097 "Zapisnik o primopredaji"
             end;
         }
 
-        /*dataitem(DataItem22; Apoeni)
+        /*dataitem(DataItem22; )
         {
             column(PTCode; DataItem22.Code)
             {
