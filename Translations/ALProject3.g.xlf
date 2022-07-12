@@ -21878,6 +21878,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Life Insurance Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 4128159693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max Work Experience</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Max Work Experience - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1954395533 - Field 2625032050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Hours for Sick Wage</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22292,6 +22297,11 @@
           <source>Workday Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Workday Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2000889713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year of Experience - min</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Year of Experience - min - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 678940528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Type</source>
