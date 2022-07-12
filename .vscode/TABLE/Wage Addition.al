@@ -161,16 +161,12 @@ table 50032 "Wage Addition"
                 EmpW.Get("Employee No.");
                 if WT."Work experience base" = true then begin
                     WagSetup.Get();
-                    if WagSetup."Type Of Work Percentage Calc." = WagSetup."Type Of Work Percentage Calc."::Total
-                    then begin
-                        if (EmpW."Years of Experience" >= WagSetup."Year of Experience - min") and (WageSetup."Year of Experience - min" <> 0) then
-                            Amount := Amount * (((WagSetup."Max Work Experience") - (EmpW."Years of Experience" * WageSetup."Work Percentage"))) / (Amount)
-                        else
-                            Amount := Amount * EmpW."Years of Experience";
-                    end
-                    else begin
 
-                    end;
+                    if (EmpW."Years of Experience" >= WagSetup."Year of Experience - min") and (WagSetup."Year of Experience - min" <> 0) then
+                        Amount := Amount * (((WagSetup."Max Work Experience") - (EmpW."Years of Experience" * WagSetup."Work Percentage"))) / (Amount)
+                    else
+                        Amount := Amount * EmpW."Years of Experience";
+
                 end;
 
                 IF Taxable THEN
