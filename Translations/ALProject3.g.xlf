@@ -5064,7 +5064,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Wage Change - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3387969064 - Field 3207334502 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>  ,Increase-Additional Responsibility,Increase-Replacement,Increase-Additional Work Effort,Increase-Promotion,Increase-Wage After Disciplinary Measure,Increase-Reconcilliation,Increase-Position Change,Increase-Check,,Decrease-Responsibility Decrease,,Decrease-Inadequate Performance,Decrease-Disciplinary Measure,Decrease-Rellocation,Decrease-Reconcilliation</source>
+          <source>  ,Change Position Coefficient</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Wage Change - Property OptionCaption</note>
         </trans-unit>
@@ -6544,7 +6544,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Wage Change - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - Field 3207334502 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>  ,Increase-Additional Responsibility,Increase-Replacement,Increase-Additional Work Effort,Increase-Promotion,Increase-Wage After Disciplinary Measure,Increase-Reconcilliation,Increase-Position Change,Increase-Check,,Decrease-Responsibility Decrease,,Decrease-Inadequate Performance,Decrease-Disciplinary Measure,Decrease-Rellocation,Decrease-Reconcilliation</source>
+          <source>  ,Change Position Coefficient</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Wage Change - Property OptionCaption</note>
         </trans-unit>

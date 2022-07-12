@@ -42,6 +42,8 @@ table 51067 "Apoeni"
 
                 if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniDecimal * Rec.Quantity;
+                
+                                
             end;
         }
         field(3; Quantity; Integer)
@@ -54,6 +56,8 @@ table 51067 "Apoeni"
 
                 if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniDecimal * Rec.Quantity;
+
+                               
             end;
         }
         field(4; Amount; Decimal)
@@ -92,5 +96,6 @@ table 51067 "Apoeni"
     var
         ApoeniDecimal: Decimal;
         ApoeniText: Text[10];
+       
 }
 
