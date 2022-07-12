@@ -72,6 +72,10 @@ table 51067 "Apoeni"
         {
             Caption = 'Document No.';
         }
+        field(8; "G/L Entry No."; Integer)
+        {
+            Caption = 'G/L Entry No.';
+        }
     }
 
     keys
