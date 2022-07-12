@@ -70,7 +70,7 @@ table 50208 "Work Booklet"
                     END;
                     //BH 01 update
                     IF "Ending Date" = 0D THEN
-                        "Ending Date" := TODAY;
+                        "Ending Date" := WORKDATE;
                     //
                     CountDays := 0;
                     CountMonths1 := 0;
@@ -206,7 +206,7 @@ table 50208 "Work Booklet"
                 //VALIDATE("Current Company","Current Company");
                 //BH 01 update start
                 IF "Ending Date" = 0D THEN
-                    "Ending Date" := TODAY;
+                    "Ending Date" := WORKDATE;
                 //
                 CountDays := 0;
                 CountMonths1 := 0;
@@ -342,7 +342,7 @@ table 50208 "Work Booklet"
                     EmployeeA.SETFILTER("No.", "Employee No.");
                     IF EmployeeA.FINDFIRST THEN BEGIN
                         IF (((EmployeeA.Status = EmployeeA.Status::Active) OR (EmployeeA."External employer Status" = EmployeeA."External employer Status"::Active)) AND ("Ending Date" = 0D)) THEN
-                            "Ending Date" := TODAY;
+                            "Ending Date" := WORKDATE;
                         Company.GET;
                         Employer := Company.Name;
                     END;
@@ -458,7 +458,7 @@ table 50208 "Work Booklet"
                             END
                             ELSE BEGIN
 
-                                IF (WorkBooklet."Ending Date" = TODAY) AND ("Ending Date" = TODAY) THEN BEGIN
+                                IF (WorkBooklet."Ending Date" = WORKDATE) AND ("Ending Date" = WORKDATE) THEN BEGIN
                                     Empl.RESET;
                                     Empl.SETFILTER("No.", '%1', "Employee No.");
                                     IF Empl.FINDFIRST THEN BEGIN
@@ -581,7 +581,7 @@ table 50208 "Work Booklet"
                 END;
                 //BH update start
                 IF "Ending Date" = 0D THEN
-                    "Ending Date" := TODAY;
+                    "Ending Date" := WORKDATE;
                 //
                 CountDays := 0;
                 CountMonths1 := 0;
@@ -726,12 +726,12 @@ table 50208 "Work Booklet"
             trigger OnValidate()
             begin
                 /*IF  Active=TRUE THEN BEGIN
-                "Ending Date":=TODAY;
+                "Ending Date":=WORKDATE;
                 Company.GET;
                 Employer:=Company.Name;
                 END*/
                 /*IF ("Current Company"=TRUE AND Active=TRUE) THEN BEGIN
-                "Ending Date":=TODAY;
+                "Ending Date":=WORKDATE;
                 Company.GET;
                 Employer:=Company.Name;
                 END
@@ -786,7 +786,7 @@ table 50208 "Work Booklet"
             begin
                 //
                 IF "Ending Date" = 0D THEN
-                    "Ending Date" := TODAY;
+                    "Ending Date" := WORKDATE;
                 //
                 CountDays := 0;
                 CountMonths1 := 0;

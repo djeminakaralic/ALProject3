@@ -77,6 +77,7 @@ page 50016 "Wage Setup"
                 field("Meal Taxable FBiH Untaxable"; "Meal Taxable FBiH Untaxable")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Meal Taxable FBiH "; "Meal Taxable FBiH ")
                 {
