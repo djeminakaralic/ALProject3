@@ -29,11 +29,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
-
-                trigger OnValidate()
-                begin
-                    rec."Given amount" := Rec.Apoeni;
-                end;
             }
             field("Given amount"; "Given amount")
             {
