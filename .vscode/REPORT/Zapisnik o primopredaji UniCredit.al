@@ -35,6 +35,9 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
+            column(ApoeniEnum;ApoeniEnum)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -50,7 +53,7 @@ report 50097 "Zapisnik o primopredaji"
             end;
         }
 
-        /*dataitem(DataItem22; "Payment Type")
+        /*dataitem(DataItem22; Apoeni)
         {
             column(PTCode; DataItem22.Code)
             {
@@ -64,21 +67,26 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnAfterGetRecord()
             begin
-                GLEntry.Reset();
-                //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
-                //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
-
-                //GLEntry.SetFilter("Journal Batch Name", '%1', );
+                
+                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-                GLEntry.SetFilter("Document Type", '%1', 1);
+
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
+                
                 IF GLEntry.FindFirst() then
                     repeat
-                        PaymentAmount += GLEntry.Amount;
+                        PaymentAmount += ABS(GLEntry.Amount);
                     until GLEntry.Next() = 0;
+
+            end;
+
+            trigger OnPreDataItem()
+            begin
+
+
             end;
         }*/
     }
@@ -111,6 +119,7 @@ report 50097 "Zapisnik o primopredaji"
 
     var
         CompanyInformation: Record "Company Information";
+        ApoeniEnum: Enum "Apoeni Enum";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
