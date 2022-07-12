@@ -53,23 +53,6 @@ table 51067 "Apoeni"
             begin
                 Validate(Apoeni, Rec.Apoeni);
 
-                /*     if Rec.Apoeni.AsInteger() < 7 then begin
-                         //ApoeniText := FORMAT(Rec.Apoeni); //probati bez ovoga   
-                         //Evaluate(ApoeniDecimal, ApoeniText);
-                         Evaluate(ApoeniDecimal, Format(Rec.Apoeni));
-
-                     end
-                     else
-                         if Rec.Apoeni.AsInteger() = 8 then
-                             ApoeniDecimal := 0.5
-                         else
-                             if Rec.Apoeni.AsInteger() = 9 then
-                                 ApoeniDecimal := 0.2
-                             else
-                                 if Rec.Apoeni.AsInteger() = 10 then
-                                     ApoeniDecimal := 0.1
-                                 else
-                                     if Rec.Apoeni.AsInteger() = 11 then ApoeniDecimal := 0.05;*/
                 if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniDecimal * Rec.Quantity;
             end;
