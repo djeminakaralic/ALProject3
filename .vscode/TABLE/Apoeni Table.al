@@ -74,9 +74,9 @@ table 51067 "Apoeni"
         }
     }
 
-    keysB
+    keys
     {
-        key(Key1; "Bal. Account No.", "Account No.", "Document No.", Apoeni)
+        key(Key1; "Account No.", "Document No.", Apoeni)
         {
         }
     }
