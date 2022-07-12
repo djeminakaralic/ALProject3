@@ -39,8 +39,7 @@ table 51067 "Apoeni"
                                 ApoeniDecimal := 0.1
                             else
                                 if Rec.Apoeni.AsInteger() = 12 then ApoeniDecimal := 0.05;
-                //Message(FORMAT(ApoeniDecimal));
-                //Evaluate(ApoeniINT, Format(Rec.Apoeni));
+
                 if (ApoeniDecimal <> 0) AND (Rec.Quantity <> 0) then
                     Rec.Amount := ApoeniDecimal * Rec.Quantity;
             end;
