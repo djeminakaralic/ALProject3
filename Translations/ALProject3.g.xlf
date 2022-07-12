@@ -173,6 +173,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 684500104 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Account No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 684500104 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -182,6 +187,11 @@
           <source>Apoeni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Apoeni - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field CurrentJnlBatchName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 684500104 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
@@ -5514,7 +5524,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - NamedType Text010</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Termination date must not be before today</source>
+          <source>Termination date must not be before WORKDATE</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - NamedType Text011</note>
         </trans-unit>
@@ -40708,6 +40718,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntryExtends - Field Vendor Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue   - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 2395468521 - EnumValue 2447697781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>0.05</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40754,7 +40769,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 20 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2395468521 - EnumValue 2964680702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source> </source>
+          <source>200</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 200 - Property Caption</note>
         </trans-unit>

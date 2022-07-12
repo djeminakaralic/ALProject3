@@ -61,7 +61,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(50024; "Payment DT"; DateTime) //ED
+        field(50024; "Payment DT"; DateTime)
         {
             DataClassification = ToBeClassified;
         }
@@ -172,14 +172,24 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50046; "Apoeni"; Decimal)
         {
             FieldClass = FlowField;
-            
-            //CalcFormula = sum((Apoeni.Apoeni)*(apoeni.quantity));
-            CalcFormula = sum(Apoeni.Amount);
-            
+
+            /*CurrPage.SETSELECTIONFILTER(GJline);
+                    Report.RunModal(50077, true, false, GJline);*/
+            CalcFormula = sum(Apoeni.Amount WHERE("Account No." = field("Account No."),
+                                                        CurrentJnlBatchName = field("Journal Batch Name")));
+
+
             /*CalcFormula = Lookup("Contract Phase t"."Contract Phase" WHERE("Employee No." = FIELD("Employee No."),
                                                                             "Contract Ledger Entry No." = FIELD("No."),
                                                                             Active = FILTER(true)));*/
+
             Caption = 'Apoeni';
+
+            trigger OnValidate()
+            begin
+                "Given amount" := Apoeni;
+                //Rec."Given amount" := Rec.Apoeni;
+            end;
         }
 
         modify(Amount)
