@@ -1,6 +1,7 @@
 pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 {
     //ED
+
     layout
     {
         addafter("Posting Date")

@@ -6,6 +6,7 @@ page 51067 "Apoeni Page"
     SourceTable = Apoeni;
     UsageCategory = Lists;
     ApplicationArea = all;
+    RefreshOnActivate = true;
 
     layout
     {
@@ -30,7 +31,7 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field("Journal Batch Name";"Journal Batch Name")
+                field("Journal Batch Name"; "Journal Batch Name")
                 {
                     ApplicationArea = all;
                 }
