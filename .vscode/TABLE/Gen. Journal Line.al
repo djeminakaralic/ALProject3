@@ -189,8 +189,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                "Given amount" := Apoeni;
-                //Rec."Given amount" := Rec.Apoeni;
+                Rec."Given amount" := Rec.Apoeni;
             end;
         }
 
