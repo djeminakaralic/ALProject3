@@ -18,18 +18,6 @@ page 51067 "Apoeni Page"
                     Visible = false;
                     ApplicationArea = all;
                 }
-                field("Journal Template Name";"Journal Template Name")
-                {
-                    ApplicationArea = all;
-                }
-                field("Account No."; "Account No.")
-                {
-                    ApplicationArea = all;
-                }
-                field("Document No."; "Document No.")
-                {
-                    ApplicationArea = all;
-                }
                 field(Apoeni; Apoeni)
                 {
                     ApplicationArea = all;
@@ -39,6 +27,18 @@ page 51067 "Apoeni Page"
                     ApplicationArea = all;
                 }
                 field(Amount; Amount)
+                {
+                    ApplicationArea = all;
+                }
+                field("Journal Batch Name";"Journal Batch Name")
+                {
+                    ApplicationArea = all;
+                }
+                field("Account No."; "Account No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Document No."; "Document No.")
                 {
                     ApplicationArea = all;
                 }
