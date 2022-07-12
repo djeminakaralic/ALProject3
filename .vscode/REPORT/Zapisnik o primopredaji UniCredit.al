@@ -9,22 +9,6 @@ report 50097 "Zapisnik o primopredaji"
     {
         dataitem(DataItem21; "G/L Entry")
         {
-            /*column(BatchName; DataItem21."Journal Batch Name  "Gen. Journal Line"
-            {
-            }
-            column(PostingDate; DataItem21."Posting Date")
-            {
-            }
-            column(Address_Customer; DataItem21.Address_Cust)
-            {
-            }
-            column(AccountNo; DataItem21."Account No.")
-            {
-            }
-            column(PM; DataItem21."Payment Method Code") 
-            {
-            }*/
-
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
             }
