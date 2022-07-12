@@ -90,7 +90,7 @@ table 51067 "Apoeni"
 
     keys
     {
-        key(Key1; "Account No.", CurrentJnlBatchName)
+        key(Key1; "Account No.", CurrentJnlBatchName, Apoeni)
         {
         }
     }
