@@ -17,8 +17,7 @@ report 50097 "Zapisnik o primopredaji"
             }
             column(Datee; Datee)
             {
-            }
-            
+            }            
 
             trigger OnAfterGetRecord()
             begin
