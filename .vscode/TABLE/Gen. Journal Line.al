@@ -175,8 +175,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             /*CurrPage.SETSELECTIONFILTER(GJline);
                     Report.RunModal(50077, true, false, GJline);*/
-            CalcFormula = sum(Apoeni.Amount WHERE //("Bal. Account No."=field("Bal. Account No."),
-                                                ("Account No." = field("Account No."),                                                 
+            CalcFormula = sum(Apoeni.Amount WHERE ("Bal. Account No."=field("Bal. Account No."),
+                                                "Account No." = field("Account No."),                                                 
                                                 "Document No." = field("Document No.")));
 
 
