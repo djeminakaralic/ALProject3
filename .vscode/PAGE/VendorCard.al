@@ -36,6 +36,18 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
+        modify("Fax No.")
+        {
+            Visible = false;
+        }
+        modify("Our Account No.")
+        {
+            Visible = false;
+        }
+        modify("Language Code")
+        {
+            Visible = false;
+        }
         /*addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
