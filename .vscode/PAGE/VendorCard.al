@@ -4,6 +4,38 @@ pageextension 50178 VendorCard extends "Vendor Card"
 
     layout
     {
+        modify("Privacy Blocked")
+        {
+            Visible = false;
+        }
+        modify("Last Date Modified")
+        {
+            Visible = false;
+        }
+        modify("Document Sending Profile")
+        {
+            Visible = false;
+        }
+        modify("Search Name")
+        {
+            Visible = false;
+        }
+        modify("IC Partner Code")
+        {
+            Visible = false;
+        }
+        modify("Purchaser Code")
+        {
+            Visible = false;
+        }
+        modify("Responsibility Center")
+        {
+            Visible = false;
+        }
+        modify("Disable Search by Name")
+        {
+            Visible = false;
+        }
         /*addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
