@@ -24,6 +24,10 @@ tableextension 50119 VendorExtented extends Vendor
         {
             Caption = 'Industrial Classification';
         }
+         field(50025; "Tax No."; Text[20])
+        {
+            Caption = 'Tax No.';
+        }
     }
 
     var

@@ -25,6 +25,14 @@ pageextension 50178 VendorCard extends "Vendor Card"
             }
         }
 
+        addafter("VAT Registration No.")
+        {
+            field("Tax No.";"Tax No.")
+            {
+                ApplicationArea = all;
+            }
+        }
+
         modify("Privacy Blocked")
         {
             Visible = false;
