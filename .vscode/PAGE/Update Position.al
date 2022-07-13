@@ -140,6 +140,10 @@ page 50050 "Update Position"
                     ApplicationArea = all;
                     Editable = false;
                 }
+                field("Position Coefficient Director"; "Position Coefficient Director")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

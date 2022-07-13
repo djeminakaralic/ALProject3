@@ -598,6 +598,7 @@ table 50132 "Position Menu"
         {
             Caption = 'Position Coefficient for Wage';
         }
+
         field(500408; "Position complexity"; Decimal)
 
         {
@@ -654,6 +655,12 @@ table 50132 "Position Menu"
                     until ecl.Next() = 0;
             end;
         }
+        field(50411; "Position Coefficient Director"; Decimal)
+        {
+            Caption = 'Position Coefficient for Wage';
+            DecimalPlaces = 1 : 3;
+        }
+
         field(50410; "Workplace conditions"; Decimal)
         {
             Caption = 'Workplace conditions';

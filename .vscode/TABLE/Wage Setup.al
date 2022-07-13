@@ -47,9 +47,9 @@ table 50199 "Wage Setup"
                                     PosM.SetFilter(Description, '%1', ECLUpdate."Position Description");
                                     PosM.SetFilter(Code, '%1', ECLUpdate."Position Code");
                                     PosM.SetFilter("Department Code", '%1', ECLUpdate."Department Code");
-                                    PosM.SetFilter("Position Coefficient for Wage", '<>%1', 0);
+                                    PosM.SetFilter("Position Coefficient Director", '<>%1', 0);
                                     if PosM.FindFirst() then begin
-                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * PosM."Position Coefficient for Wage", 0.01, '>'));
+                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * PosM."Position Coefficient Director" * 3, 0.01, '>'));
 
                                     end
                                     else begin
