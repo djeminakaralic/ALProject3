@@ -143,6 +143,7 @@ page 50050 "Update Position"
                 field("Position Coefficient Director"; "Position Coefficient Director")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
             }
         }
