@@ -51,11 +51,5 @@ page 51067 "Apoeni Page"
         }
     }
 
-    trigger OnClosePage()
-    begin
-        CurrPage.Update();
-    end;
-
-
 }
 
