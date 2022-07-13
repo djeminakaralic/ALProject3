@@ -6,8 +6,7 @@ pageextension 50178 VendorCard extends "Vendor Card"
     {
         
         addafter(Name)
-        {
-            
+        {            
             field("Vendor Class";"Vendor Class")
             {
                 ApplicationArea = all;
