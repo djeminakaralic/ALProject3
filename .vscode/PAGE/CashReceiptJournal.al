@@ -34,7 +34,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 trigger OnLookup(var Text: Text): Boolean
                 begin
                     CurrPage.Update();
-                    Rec."Given amount" := Rec.Amount;
+                    "Given amount" := Amount;
                 end;
             }
             field("Given amount"; "Given amount")
