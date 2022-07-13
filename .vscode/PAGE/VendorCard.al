@@ -4,6 +4,8 @@ pageextension 50178 VendorCard extends "Vendor Card"
 
     layout
     {
+        moveafter(Name; Blocked)
+        
         addafter(Name)
         {
             field("Vendor Class";"Vendor Class")
