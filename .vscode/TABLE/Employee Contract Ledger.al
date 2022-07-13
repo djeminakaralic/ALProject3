@@ -638,7 +638,7 @@ table 50071 "Employee Contract Ledger"
                                                 WT.SetFilter(Code, '%1', EGet."Wage Type");
                                                 if WT.FindFirst() then begin
                                                     if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                        WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                                        WageAmounts.Validate("Net Amount 2", Rec.Netto);
                                                 end;
 
 
@@ -3392,7 +3392,7 @@ table 50071 "Employee Contract Ledger"
                                         WT.SetFilter(Code, '%1', EGet."Wage Type");
                                         if WT.FindFirst() then begin
                                             if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                                WageAmounts.Validate("Net Amount 2", Rec.Netto);
                                         end;
                                         WageAmounts.VALIDATE("Application Date", Rec."Starting Date");
                                     END;

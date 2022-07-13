@@ -38,6 +38,8 @@ table 50199 "Wage Setup"
 
                             ECLUpdate.Reset();
                             ECLUpdate.SetFilter("Employee No.", '%1', eUpdate."No.");
+                            ECLUpdate.SetFilter(Active, '%1', true);
+                            ECLUpdate.SetFilter("Show Record", '%1', true);
                             if ECLUpdate.FindSet() then
                                 repeat
                                     Wagesetup.Get();
