@@ -60,6 +60,22 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
+        modify(Priority)
+        {
+            Visible = false;
+        }
+        modify("Block Payment Tolerance")
+        {
+            Visible = false;
+        }
+        modify("Partner Type")
+        {
+            Visible = false;
+        }
+        modify("Creditor No.")
+        {
+            Visible = false;
+        }
         /*addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
