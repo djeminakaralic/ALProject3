@@ -4,10 +4,10 @@ pageextension 50178 VendorCard extends "Vendor Card"
 
     layout
     {
-        moveafter(Name; Blocked)
         
         addafter(Name)
         {
+            
             field("Vendor Class";"Vendor Class")
             {
                 ApplicationArea = all;
@@ -17,6 +17,10 @@ pageextension 50178 VendorCard extends "Vendor Card"
                 ApplicationArea = all;
             }
             field("Vendor Subgroup";"Vendor Subgroup")
+            {
+                ApplicationArea = all;
+            }
+            field("Industrial Classification";"Industrial Classification")
             {
                 ApplicationArea = all;
             }
