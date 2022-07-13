@@ -204,7 +204,7 @@ table 50042 "Payment Order"
         PayOrder.INIT;
     end;
 
-    procedure InsertPaymentOrderValues1(aSvrhaDoznake1: Text[150]; aSvrhaDoznake2: Text[50]; aSvrhaDoznake3: Text[50]; aPrimalac1: Text[50]; aPrimalac2: Text[50]; aPrimalac3: Text[50]; aRacunPosiljaoca: Text[16]; aRacunPrimaoca: Text[16]; aIznos: Decimal; aContribution: Text[150]; aTip: Integer; aSifra: Text[100]; vTip: Integer; aOrgDio: Code[10]; aDatum: Date; aRType: Code[30]; BudgetO: text[100])
+    procedure InsertPaymentOrderValues1(aSvrhaDoznake1: Text[150]; aSvrhaDoznake2: Text[50]; aSvrhaDoznake3: Text[50]; aPrimalac1: Text[50]; aPrimalac2: Text[50]; aPrimalac3: Text[50]; aRacunPosiljaoca: Text[16]; aRacunPrimaoca: Text[20]; aIznos: Decimal; aContribution: Text[150]; aTip: Integer; aSifra: Text[100]; vTip: Integer; aOrgDio: Code[10]; aDatum: Date; aRType: Code[30]; BudgetO: text[100])
     begin
         PayOrder.SvrhaDoznake1 := aSvrhaDoznake1;
         PayOrder.SvrhaDoznake2 := aSvrhaDoznake2;
