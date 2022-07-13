@@ -31,7 +31,7 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field("Journal Batch Name"; "Journal Batch Name")
+                field("Bal. Account No.";"Bal. Account No.")
                 {
                     ApplicationArea = all;
                 }
