@@ -34,7 +34,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 trigger OnLookup(var Text: Text): Boolean
                 begin
                     CurrPage.Update();
-                    "Given amount" := Amount;
+                    Rec."Given amount" := Rec.Apoeni;
                 end;
             }
             field("Given amount"; "Given amount")
@@ -122,11 +122,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         "Payment DT" := System.CurrentDateTime;
         Description := '';
     end;
-
-    /*trigger OnModifyRecord(): Boolean
-    begin
-        rec."Given amount" := Rec.Apoeni;
-    end;*/
 
     var
         GJline: Record "Gen. Journal Line";

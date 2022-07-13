@@ -189,10 +189,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             Caption = 'Apoeni';
 
-            trigger OnValidate()
-            begin
-                Rec."Given amount" := Rec.Apoeni;
-            end;
         }
 
         modify(Amount)
