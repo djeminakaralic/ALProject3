@@ -6,18 +6,18 @@ pageextension 50178 VendorCard extends "Vendor Card"
     {
         addafter(Name)
         {
-            /*field("Payment DT"; "Payment DT")
+            field("Vendor Class";"Vendor Class")
             {
                 ApplicationArea = all;
             }
-            field("Payment Type"; "Payment Type")
+            field("Vendor Group";"Vendor Group")
             {
                 ApplicationArea = all;
             }
-            field("Payment Method"; "Payment Method")
+            field("Vendor Subgroup";"Vendor Subgroup")
             {
                 ApplicationArea = all;
-            }*/
+            }
         }
 
         modify("Privacy Blocked")
