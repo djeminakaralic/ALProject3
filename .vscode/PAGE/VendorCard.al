@@ -76,6 +76,22 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
+        modify("Lead Time Calculation")
+        {
+            Visible = false;
+        }
+        modify("Base Calendar Code")
+        {
+            Visible = false;
+        }
+        modify("Customized Calendar")
+        {
+            Visible = false;
+        }
+        modify("Over-Receipt Code")
+        {
+            Visible = false;
+        }
         /*addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
