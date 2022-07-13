@@ -48,6 +48,18 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
+        modify("Tax Liable")
+        {
+            Visible = false;
+        }
+        modify("Tax Area Code")
+        {
+            Visible = false;
+        }
+        modify("Prices Including VAT")
+        {
+            Visible = false;
+        }
         /*addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")

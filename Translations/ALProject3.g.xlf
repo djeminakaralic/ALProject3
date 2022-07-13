@@ -12683,6 +12683,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Org. Structure - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 1638047192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Coefficient Director - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2050451830 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Coefficient for Wage</source>
           <note from="Developer" annotates="general" priority="2"></note>
