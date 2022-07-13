@@ -20,7 +20,7 @@ tableextension 50119 VendorExtented extends Vendor
         {
             Caption = 'Vendor Subgroup';
         }
-        field(50024; "Industrial Classification"; Text[30])
+        field(50024; "Industrial Classification"; Text[8])
         {
             Caption = 'Industrial Classification';
         }
