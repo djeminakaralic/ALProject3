@@ -40708,6 +40708,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VATPostingSetupExtends - Field VAT % (retrograde) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 917838971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Industrial Classification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Industrial Classification - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2090622309 - Field 3430636682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Registration No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
