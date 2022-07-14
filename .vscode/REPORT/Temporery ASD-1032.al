@@ -56,6 +56,7 @@ report 50092 "Temporary Work Form ASD-1032"
             column(Kol12; Kol12)
             {
             }
+            column(TodayD; TodayD) { }
             column(Kol13; Kol13)
             {
             }
@@ -107,9 +108,12 @@ report 50092 "Temporary Work Form ASD-1032"
                 begin
                     Brojac := Brojac + 1;
                     UserS.Reset();
-                    UserS.SetFilter("User Name", '%1', UserId);
-                    UserS.Get();
-                    UserUnio := UserS."Full Name";
+                    UserS.SetFilter("User Name", '%1', USERID);
+                    if UserS.FindFirst() then
+                        UserUnio := UserS."Full Name"
+                    else
+                        UserUnio := '';
+                    TodayD := Today;
                     PDateText := FORMAT(TODAY);
                     Kol15 := 0;
                     Kol12 := 0;
@@ -237,6 +241,7 @@ report 50092 "Temporary Work Form ASD-1032"
         CompanyInf: Record "Company Information";
         CompanyNameT: Text[100];
         Brojac: Integer;
+        TodayD: Date;
         CompanyAdress: Text[100];
         CompanyRegNo: Text[30];
         UserUnio: Text[250];

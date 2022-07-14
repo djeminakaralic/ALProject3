@@ -11,142 +11,6 @@
       <rd:DataSourceID>7b4a69fe-b273-4111-833c-7e0b91e180fd</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="EmpNo">
-          <DataField>EmpNo</DataField>
-        </Field>
-        <Field Name="MjesecPoreza">
-          <DataField>MjesecPoreza</DataField>
-        </Field>
-        <Field Name="IDMonthText">
-          <DataField>IDMonthText</DataField>
-        </Field>
-        <Field Name="GodinaPoreza">
-          <DataField>GodinaPoreza</DataField>
-        </Field>
-        <Field Name="EmpName">
-          <DataField>EmpName</DataField>
-        </Field>
-        <Field Name="EmpMName">
-          <DataField>EmpMName</DataField>
-        </Field>
-        <Field Name="EmpLName">
-          <DataField>EmpLName</DataField>
-        </Field>
-        <Field Name="EmpID">
-          <DataField>EmpID</DataField>
-        </Field>
-        <Field Name="CompanyNAme">
-          <DataField>CompanyNAme</DataField>
-        </Field>
-        <Field Name="CompanyAdress">
-          <DataField>CompanyAdress</DataField>
-        </Field>
-        <Field Name="CompanyRegNo">
-          <DataField>CompanyRegNo</DataField>
-        </Field>
-        <Field Name="JIB">
-          <DataField>JIB</DataField>
-        </Field>
-        <Field Name="Kol10">
-          <DataField>Kol10</DataField>
-        </Field>
-        <Field Name="Kol10Format">
-          <DataField>Kol10Format</DataField>
-        </Field>
-        <Field Name="Kol11">
-          <DataField>Kol11</DataField>
-        </Field>
-        <Field Name="Kol11Format">
-          <DataField>Kol11Format</DataField>
-        </Field>
-        <Field Name="Kol12">
-          <DataField>Kol12</DataField>
-        </Field>
-        <Field Name="Kol12Format">
-          <DataField>Kol12Format</DataField>
-        </Field>
-        <Field Name="Kol13">
-          <DataField>Kol13</DataField>
-        </Field>
-        <Field Name="Kol13Format">
-          <DataField>Kol13Format</DataField>
-        </Field>
-        <Field Name="Kol14">
-          <DataField>Kol14</DataField>
-        </Field>
-        <Field Name="Kol14Format">
-          <DataField>Kol14Format</DataField>
-        </Field>
-        <Field Name="Kol15">
-          <DataField>Kol15</DataField>
-        </Field>
-        <Field Name="Kol15Format">
-          <DataField>Kol15Format</DataField>
-        </Field>
-        <Field Name="SumKol15">
-          <DataField>SumKol15</DataField>
-        </Field>
-        <Field Name="SumKol15Format">
-          <DataField>SumKol15Format</DataField>
-        </Field>
-        <Field Name="SumKol12">
-          <DataField>SumKol12</DataField>
-        </Field>
-        <Field Name="SumKol12Format">
-          <DataField>SumKol12Format</DataField>
-        </Field>
-        <Field Name="TaxBasis">
-          <DataField>TaxBasis</DataField>
-        </Field>
-        <Field Name="TaxBasisFormat">
-          <DataField>TaxBasisFormat</DataField>
-        </Field>
-        <Field Name="Tax">
-          <DataField>Tax</DataField>
-        </Field>
-        <Field Name="TaxFormat">
-          <DataField>TaxFormat</DataField>
-        </Field>
-        <Field Name="Brutto">
-          <DataField>Brutto</DataField>
-        </Field>
-        <Field Name="BruttoFormat">
-          <DataField>BruttoFormat</DataField>
-        </Field>
-        <Field Name="ContributionFromBruto">
-          <DataField>ContributionFromBruto</DataField>
-        </Field>
-        <Field Name="ContributionFromBrutoFormat">
-          <DataField>ContributionFromBrutoFormat</DataField>
-        </Field>
-        <Field Name="ApprovedExpenditures">
-          <DataField>ApprovedExpenditures</DataField>
-        </Field>
-        <Field Name="ApprovedExpendituresFormat">
-          <DataField>ApprovedExpendituresFormat</DataField>
-        </Field>
-        <Field Name="PDate">
-          <DataField>PDate</DataField>
-        </Field>
-        <Field Name="PDateText">
-          <DataField>PDateText</DataField>
-        </Field>
-        <Field Name="NetWage">
-          <DataField>NetWage</DataField>
-        </Field>
-        <Field Name="NetWageFormat">
-          <DataField>NetWageFormat</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -172,8 +36,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
-            <Top>3.39967cm</Top>
-            <Left>0.18986cm</Left>
+            <Top>4.83315cm</Top>
+            <Left>2.21201cm</Left>
             <Height>0.52062cm</Height>
             <Width>25.55721cm</Width>
             <Style>
@@ -204,8 +68,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.08758cm</Top>
-            <Left>0.60433cm</Left>
+            <Top>5.52106cm</Top>
+            <Left>2.62648cm</Left>
             <Height>0.49417cm</Height>
             <Width>7.32684cm</Width>
             <ZIndex>1</ZIndex>
@@ -237,8 +101,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.08758cm</Top>
-            <Left>8.28344cm</Left>
+            <Top>5.52106cm</Top>
+            <Left>10.30559cm</Left>
             <Height>0.49417cm</Height>
             <Width>11.97338cm</Width>
             <ZIndex>2</ZIndex>
@@ -270,8 +134,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.42869cm</Top>
-            <Left>0.60433cm</Left>
+            <Top>6.86217cm</Top>
+            <Left>2.62648cm</Left>
             <Height>0.36188cm</Height>
             <Width>1.53247cm</Width>
             <ZIndex>3</ZIndex>
@@ -303,8 +167,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.42869cm</Top>
-            <Left>8.17812cm</Left>
+            <Top>6.86217cm</Top>
+            <Left>10.20027cm</Left>
             <Height>0.46771cm</Height>
             <Width>12.0787cm</Width>
             <ZIndex>4</ZIndex>
@@ -336,8 +200,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.71848cm</Top>
-            <Left>1.05111cm</Left>
+            <Top>6.15196cm</Top>
+            <Left>3.07326cm</Left>
             <Height>0.49417cm</Height>
             <Width>6.88007cm</Width>
             <ZIndex>5</ZIndex>
@@ -369,8 +233,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.93168cm</Top>
-            <Left>0.63962cm</Left>
+            <Top>7.36516cm</Top>
+            <Left>2.66177cm</Left>
             <Height>0.42361cm</Height>
             <Width>7.221cm</Width>
             <ZIndex>6</ZIndex>
@@ -995,8 +859,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>7.29925cm</Top>
-            <Left>0.17687cm</Left>
+            <Top>8.73273cm</Top>
+            <Left>2.19902cm</Left>
             <Height>2.97271cm</Height>
             <Width>25.58321cm</Width>
             <ZIndex>7</ZIndex>
@@ -1267,8 +1131,8 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>10.27196cm</Top>
-            <Left>0.17687cm</Left>
+            <Top>11.70544cm</Top>
+            <Left>2.19902cm</Left>
             <Height>1.02333cm</Height>
             <Width>25.58321cm</Width>
             <ZIndex>8</ZIndex>
@@ -1299,8 +1163,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
-            <Top>6.63751cm</Top>
-            <Left>0.18986cm</Left>
+            <Top>8.07099cm</Top>
+            <Left>2.21201cm</Left>
             <Height>0.52062cm</Height>
             <Width>25.55721cm</Width>
             <ZIndex>9</ZIndex>
@@ -1335,8 +1199,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
-            <Top>11.73979cm</Top>
-            <Left>0.17677cm</Left>
+            <Top>13.17327cm</Top>
+            <Left>2.19892cm</Left>
             <Height>0.52062cm</Height>
             <Width>25.55046cm</Width>
             <ZIndex>10</ZIndex>
@@ -1467,15 +1331,16 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Datum prijema :</Value>
+                                  <Value>Datum prijema : </Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                                 <TextRun>
-                                  <Value>="Datum: " + DateString()</Value>
+                                  <Value>=Fields!TodayD.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
+                                    <Format>d</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1625,8 +1490,8 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>12.36624cm</Top>
-            <Left>0.1604cm</Left>
+            <Top>13.79972cm</Top>
+            <Left>2.18255cm</Left>
             <Height>3.69238cm</Height>
             <Width>25.58319cm</Width>
             <ZIndex>11</ZIndex>
@@ -1654,8 +1519,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.09778cm</Top>
-            <Left>20.50376cm</Left>
+            <Top>5.53126cm</Top>
+            <Left>22.52591cm</Left>
             <Height>0.47377cm</Height>
             <Width>4.62202cm</Width>
             <ZIndex>12</ZIndex>
@@ -1688,8 +1553,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox41</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>24.21536cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>26.23751cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>13</ZIndex>
@@ -1742,8 +1607,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox41</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>23.55309cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>25.57524cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>14</ZIndex>
@@ -1796,8 +1661,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox41</rd:DefaultName>
-            <Top>4.70525cm</Top>
-            <Left>22.45128cm</Left>
+            <Top>6.13873cm</Top>
+            <Left>24.47343cm</Left>
             <Height>0.52063cm</Height>
             <Width>1.00397cm</Width>
             <ZIndex>15</ZIndex>
@@ -1830,8 +1695,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox41</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>21.78901cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>23.81116cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>16</ZIndex>
@@ -1884,8 +1749,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox41</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>21.12674cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>23.14889cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>17</ZIndex>
@@ -1937,8 +1802,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>9.98782cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>12.00997cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>18</ZIndex>
@@ -1990,8 +1855,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>11.0532cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>13.07535cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>19</ZIndex>
@@ -2043,8 +1908,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>10.51698cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>12.53913cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>20</ZIndex>
@@ -2096,8 +1961,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>11.56825cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>13.5904cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>21</ZIndex>
@@ -2149,8 +2014,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>9.4516cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>11.47375cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>22</ZIndex>
@@ -2202,8 +2067,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>12.10447cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>14.12662cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>23</ZIndex>
@@ -2255,8 +2120,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>12.64069cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>14.66284cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>24</ZIndex>
@@ -2308,8 +2173,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>13.16985cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>15.192cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>25</ZIndex>
@@ -2361,8 +2226,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>13.67079cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>15.69294cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>26</ZIndex>
@@ -2414,8 +2279,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>14.17526cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>16.19741cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>27</ZIndex>
@@ -2467,8 +2332,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>14.6762cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>16.69835cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>28</ZIndex>
@@ -2520,8 +2385,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>15.2089cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>17.23105cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>29</ZIndex>
@@ -2573,8 +2438,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>4.73769cm</Top>
-            <Left>8.91844cm</Left>
+            <Top>6.17117cm</Top>
+            <Left>10.94059cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>30</ZIndex>
@@ -2879,8 +2744,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>0.08919cm</Top>
-            <Left>0.17759cm</Left>
+            <Top>1.52267cm</Top>
+            <Left>2.19974cm</Left>
             <Height>2.70812cm</Height>
             <Width>25.58175cm</Width>
             <ZIndex>31</ZIndex>
@@ -2891,8 +2756,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Tablix>
           <Line Name="Line1">
-            <Top>4.01982cm</Top>
-            <Left>0.17759cm</Left>
+            <Top>5.4533cm</Top>
+            <Left>2.19974cm</Left>
             <Height>0cm</Height>
             <Width>25.54165cm</Width>
             <ZIndex>32</ZIndex>
@@ -2903,8 +2768,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Line>
           <Line Name="Line2">
-            <Top>6.53168cm</Top>
-            <Left>0.17759cm</Left>
+            <Top>7.96516cm</Top>
+            <Left>2.19974cm</Left>
             <Height>0cm</Height>
             <Width>25.55721cm</Width>
             <ZIndex>33</ZIndex>
@@ -2915,8 +2780,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Line>
           <Line Name="Line3">
-            <Top>4.01982cm</Top>
-            <Left>25.7348cm</Left>
+            <Top>5.4533cm</Top>
+            <Left>27.75695cm</Left>
             <Height>2.51186cm</Height>
             <Width>0cm</Width>
             <ZIndex>34</ZIndex>
@@ -2927,8 +2792,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Line>
           <Line Name="Line4">
-            <Top>4.01982cm</Top>
-            <Left>0.17759cm</Left>
+            <Top>5.4533cm</Top>
+            <Left>2.19974cm</Left>
             <Height>2.51186cm</Height>
             <Width>0cm</Width>
             <ZIndex>35</ZIndex>
@@ -2939,8 +2804,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Line>
           <Line Name="Line5">
-            <Top>4.01982cm</Top>
-            <Left>8.00173cm</Left>
+            <Top>5.4533cm</Top>
+            <Left>10.02388cm</Left>
             <Height>2.51186cm</Height>
             <Width>0cm</Width>
             <ZIndex>36</ZIndex>
@@ -2951,8 +2816,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Line>
           <Line Name="Line6">
-            <Top>4.01982cm</Top>
-            <Left>20.43321cm</Left>
+            <Top>5.4533cm</Top>
+            <Left>22.45536cm</Left>
             <Height>2.51186cm</Height>
             <Width>0cm</Width>
             <ZIndex>37</ZIndex>
@@ -2963,8 +2828,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Line>
           <Line Name="Line7">
-            <Top>5.35377cm</Top>
-            <Left>0.18638cm</Left>
+            <Top>6.78725cm</Top>
+            <Left>2.20853cm</Left>
             <Height>0cm</Height>
             <Width>25.55721cm</Width>
             <ZIndex>38</ZIndex>
@@ -2992,8 +2857,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>9.94052cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>11.96267cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>39</ZIndex>
@@ -3045,8 +2910,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>11.0059cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>13.02805cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>40</ZIndex>
@@ -3098,8 +2963,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>10.46968cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>12.49183cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>41</ZIndex>
@@ -3151,8 +3016,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>11.52095cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>13.5431cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>42</ZIndex>
@@ -3204,8 +3069,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>9.4043cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>11.42645cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>43</ZIndex>
@@ -3257,8 +3122,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>12.05717cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>14.07932cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>44</ZIndex>
@@ -3310,8 +3175,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>12.59339cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>14.61554cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>45</ZIndex>
@@ -3363,8 +3228,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>8.87114cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>10.89329cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>46</ZIndex>
@@ -3396,8 +3261,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>13.1971cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>15.21925cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>47</ZIndex>
@@ -3449,8 +3314,8 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>5.93481cm</Top>
-            <Left>13.7298cm</Left>
+            <Top>7.36829cm</Top>
+            <Left>15.75195cm</Left>
             <Height>0.45576cm</Height>
             <Width>0.4626cm</Width>
             <ZIndex>48</ZIndex>
@@ -3485,10 +3350,10 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>16.60125cm</Height>
+        <Height>18.93143cm</Height>
         <Style />
       </Body>
-      <Width>26.19292cm</Width>
+      <Width>28.64431cm</Width>
       <Page>
         <PageHeight>21cm</PageHeight>
         <PageWidth>29.7cm</PageWidth>
@@ -3497,12 +3362,6 @@ odbora privrednih društava, upravnih odbora, stečajnih upravitelja i sudija po
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -3558,4 +3417,149 @@ ctI2u1kpXtCNAJ/WjFheyMXrVzm1bQ6vhhkJ7ptJqW3kquCHpEi8xX5haMZ+zl4oZtdH/Wlh9Of5uSdt
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="EmpNo">
+          <DataField>EmpNo</DataField>
+        </Field>
+        <Field Name="MjesecPoreza">
+          <DataField>MjesecPoreza</DataField>
+        </Field>
+        <Field Name="IDMonthText">
+          <DataField>IDMonthText</DataField>
+        </Field>
+        <Field Name="GodinaPoreza">
+          <DataField>GodinaPoreza</DataField>
+        </Field>
+        <Field Name="EmpName">
+          <DataField>EmpName</DataField>
+        </Field>
+        <Field Name="EmpMName">
+          <DataField>EmpMName</DataField>
+        </Field>
+        <Field Name="EmpLName">
+          <DataField>EmpLName</DataField>
+        </Field>
+        <Field Name="EmpID">
+          <DataField>EmpID</DataField>
+        </Field>
+        <Field Name="CompanyNAme">
+          <DataField>CompanyNAme</DataField>
+        </Field>
+        <Field Name="CompanyAdress">
+          <DataField>CompanyAdress</DataField>
+        </Field>
+        <Field Name="CompanyRegNo">
+          <DataField>CompanyRegNo</DataField>
+        </Field>
+        <Field Name="JIB">
+          <DataField>JIB</DataField>
+        </Field>
+        <Field Name="Kol10">
+          <DataField>Kol10</DataField>
+        </Field>
+        <Field Name="Kol10Format">
+          <DataField>Kol10Format</DataField>
+        </Field>
+        <Field Name="Kol11">
+          <DataField>Kol11</DataField>
+        </Field>
+        <Field Name="Kol11Format">
+          <DataField>Kol11Format</DataField>
+        </Field>
+        <Field Name="Kol12">
+          <DataField>Kol12</DataField>
+        </Field>
+        <Field Name="Kol12Format">
+          <DataField>Kol12Format</DataField>
+        </Field>
+        <Field Name="TodayD">
+          <DataField>TodayD</DataField>
+        </Field>
+        <Field Name="Kol13">
+          <DataField>Kol13</DataField>
+        </Field>
+        <Field Name="Kol13Format">
+          <DataField>Kol13Format</DataField>
+        </Field>
+        <Field Name="Kol14">
+          <DataField>Kol14</DataField>
+        </Field>
+        <Field Name="Kol14Format">
+          <DataField>Kol14Format</DataField>
+        </Field>
+        <Field Name="Kol15">
+          <DataField>Kol15</DataField>
+        </Field>
+        <Field Name="Kol15Format">
+          <DataField>Kol15Format</DataField>
+        </Field>
+        <Field Name="UserUnio">
+          <DataField>UserUnio</DataField>
+        </Field>
+        <Field Name="Brojac">
+          <DataField>Brojac</DataField>
+        </Field>
+        <Field Name="SumKol15">
+          <DataField>SumKol15</DataField>
+        </Field>
+        <Field Name="SumKol15Format">
+          <DataField>SumKol15Format</DataField>
+        </Field>
+        <Field Name="SumKol12">
+          <DataField>SumKol12</DataField>
+        </Field>
+        <Field Name="SumKol12Format">
+          <DataField>SumKol12Format</DataField>
+        </Field>
+        <Field Name="TaxBasis">
+          <DataField>TaxBasis</DataField>
+        </Field>
+        <Field Name="TaxBasisFormat">
+          <DataField>TaxBasisFormat</DataField>
+        </Field>
+        <Field Name="Tax">
+          <DataField>Tax</DataField>
+        </Field>
+        <Field Name="TaxFormat">
+          <DataField>TaxFormat</DataField>
+        </Field>
+        <Field Name="Brutto">
+          <DataField>Brutto</DataField>
+        </Field>
+        <Field Name="BruttoFormat">
+          <DataField>BruttoFormat</DataField>
+        </Field>
+        <Field Name="ContributionFromBruto">
+          <DataField>ContributionFromBruto</DataField>
+        </Field>
+        <Field Name="ContributionFromBrutoFormat">
+          <DataField>ContributionFromBrutoFormat</DataField>
+        </Field>
+        <Field Name="ApprovedExpenditures">
+          <DataField>ApprovedExpenditures</DataField>
+        </Field>
+        <Field Name="ApprovedExpendituresFormat">
+          <DataField>ApprovedExpendituresFormat</DataField>
+        </Field>
+        <Field Name="PDate">
+          <DataField>PDate</DataField>
+        </Field>
+        <Field Name="PDateText">
+          <DataField>PDateText</DataField>
+        </Field>
+        <Field Name="NetWage">
+          <DataField>NetWage</DataField>
+        </Field>
+        <Field Name="NetWageFormat">
+          <DataField>NetWageFormat</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
