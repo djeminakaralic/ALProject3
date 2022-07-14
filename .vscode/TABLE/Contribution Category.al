@@ -44,6 +44,10 @@ table 50013 "Contribution Category"
             Caption = 'From brutto';
 
         }
+        field(16; "UOD"; Boolean)
+        {
+
+        }
     }
 
     keys
