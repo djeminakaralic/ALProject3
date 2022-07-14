@@ -122,39 +122,14 @@ pageextension 50179 ItemCard extends "Item Card"
             Visible = false;
         }
 
-        /*movebefore(Amount; "Applies-to Doc. No.")
-        moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-       */
-
-        /*addafter("Amount (LCY)")
+        /*addafter("Item Category Code")
         {
-            field(Apoeni; Apoeni)
-            {
-                ApplicationArea = all;
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    CurrPage.Update();
-                    Rec."Given amount" := Rec.Apoeni;
-                end;
-            }
-            field("Given amount"; "Given amount")
+            field("Product Group Code";"Product Group Code")
             {
                 ApplicationArea = all;
             }
-            field("To return"; "To return")
-            {
-                ApplicationArea = all;
-            }
-        }
-        modify("Applied (Yes/No)")
-        {
-            Visible = false;
-        }
-        modify(Description)
-        {
-            Editable = false;
         }*/
+
     }
 
     actions
