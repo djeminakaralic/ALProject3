@@ -6,12 +6,17 @@ table 50219 "Payment Type"
 
     fields
     {
-        field(1; "Code"; Code[10])
+        field(1; "Entry No."; Integer)
+        {
+            AutoIncrement = true;
+            Caption = 'Entry No.';
+        }
+        field(2; "Code"; Code[10])
         {
             Caption = 'Code';
             NotBlank = true;
         }
-        field(2; Description; Text[300])
+        field(3; Description; Text[300])
         {
             Caption = 'Description';
         }

@@ -10583,6 +10583,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Field Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 907492870 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Payment Type - Field Entry No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2127312042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Finance Cue</source>
           <note from="Developer" annotates="general" priority="2"></note>
