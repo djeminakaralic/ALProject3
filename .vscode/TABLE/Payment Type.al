@@ -8,7 +8,6 @@ table 50219 "Payment Type"
     {
         field(1; "Entry No."; Integer)
         {
-            AutoIncrement = true;
             Caption = 'Entry No.';
         }
         field(2; "Code"; Code[10])

@@ -53,17 +53,20 @@ report 50097 "Zapisnik o primopredaji"
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"200");
+                PaymentType."Entry No." := 1;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"100");
+                PaymentType."Entry No." := 2;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"50");
+                PaymentType."Entry No." := 3;
                 PaymentType.Insert();
 
-                PaymentType.Init();
+                /*PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"20");
                 PaymentType.Insert();
 
@@ -97,7 +100,10 @@ report 50097 "Zapisnik o primopredaji"
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.05");
-                PaymentType.Insert();
+                PaymentType.Insert();*/
+
+                PaymentType.SetCurrentKey("Entry No.");
+                PaymentType.Ascending;
 
 
             end;
