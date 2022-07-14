@@ -1,7 +1,7 @@
 report 50097 "Zapisnik o primopredaji"
 {
     //ED
-    
+
     DefaultLayout = RDLC;
     PreviewMode = Normal;
     RDLCLayout = './Zapisnik o primopredaji UniCredit.rdl';
@@ -18,7 +18,7 @@ report 50097 "Zapisnik o primopredaji"
             }
             column(Datee; Datee)
             {
-            }            
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -27,49 +27,128 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnPreDataItem()
             begin
-               
+
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
             end;
         }
-
-        /*dataitem(DataItem22; )
+        dataitem(PaymentType; "Payment Type")
         {
-            column(PTCode; DataItem22.Code)
-            {
-            }
-            column(PaymentCounter; PaymentCounter)
-            {
-            }
-            column(PaymentAmount; PaymentAmount)
+            UseTemporary = true;
+
+            column(CCode; PaymentType.Code)
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                
-                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
-                GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-
-                PaymentCounter := GLEntry.Count;
-
-                PaymentAmount := 0;
-                
-                IF GLEntry.FindFirst() then
-                    repeat
-                        PaymentAmount += ABS(GLEntry.Amount);
-                    until GLEntry.Next() = 0;
 
             end;
 
             trigger OnPreDataItem()
             begin
 
+                PaymentType.DeleteAll();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"200");
+                PaymentType."Entry No." := 1;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"100");
+                PaymentType."Entry No." := 2;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"50");
+                PaymentType."Entry No." := 3;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"20");
+                PaymentType."Entry No." := 4;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"10");
+                PaymentType."Entry No." := 5;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"5");
+                PaymentType."Entry No." := 6;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"2");
+                PaymentType."Entry No." := 7;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"1");
+                PaymentType."Entry No." := 8;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.50");
+                PaymentType."Entry No." := 9;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.20");
+                PaymentType."Entry No." := 10;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.10");
+                PaymentType."Entry No." := 11;
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.05");
+                PaymentType."Entry No." := 12;
+                PaymentType.Insert();
+
+                PaymentType.SetCurrentKey("Entry No.");
+                PaymentType.Ascending;
 
             end;
-        }*/
+
+        }
+
+        /*dataitem(DataItem22; paymr)
+        {
+            column(PTCode; DataItem22.Code)
+            {
+            }
+           /* column(PaymentCounter; PaymentCounter)
+            {
+            }
+            column(PaymentAmount; PaymentAmount)
+            {
+            }*/
+
+        /*trigger OnAfterGetRecord()
+        begin
+
+            GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
+            GLEntry.SetFilter("Posting Date", '%1', Datee);
+            GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+
+            PaymentCounter := GLEntry.Count;
+
+            PaymentAmount := 0;
+
+            IF GLEntry.FindFirst() then
+                repeat
+                    PaymentAmount += ABS(GLEntry.Amount);
+                until GLEntry.Next() = 0;
+
+        end;*/
+
+
     }
 
     requestpage

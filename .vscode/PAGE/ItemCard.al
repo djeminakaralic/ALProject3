@@ -122,13 +122,7 @@ pageextension 50179 ItemCard extends "Item Card"
             Visible = false;
         }
 
-        /*addafter("Item Category Code")
-        {
-            field("Product Group Code";"Product Group Code")
-            {
-                ApplicationArea = all;
-            }
-        }*/
+
 
     }
 

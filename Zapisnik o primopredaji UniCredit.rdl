@@ -369,7 +369,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox10">
+                        <Textbox Name="CCode1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -385,7 +385,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <rd:DefaultName>CCode1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -411,14 +411,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ApoeniEnum">
+                        <Textbox Name="CCode">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!CCode.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -427,7 +427,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ApoeniEnum</rd:DefaultName>
+                          <rd:DefaultName>CCode</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -669,7 +669,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <Visibility>
-                        <Hidden>true</Hidden>
+                        <Hidden>=(Fields!CCode.Value="")</Hidden>
                       </Visibility>
                     </TablixMember>
                     <TablixMember>
@@ -764,6 +764,9 @@ End Function
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
+        </Field>
+        <Field Name="CCode">
+          <DataField>CCode</DataField>
         </Field>
       </Fields>
       <Query>
