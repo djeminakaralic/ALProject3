@@ -136,10 +136,4 @@ pageextension 50179 ItemCard extends "Item Card"
     {
     }
 
-    trigger OnNewRecord(BelowxRec: Boolean)
-    begin
-
-    end;
-
-    var
 }
