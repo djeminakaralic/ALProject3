@@ -53,51 +53,51 @@ report 50097 "Zapisnik o primopredaji"
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"200");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"100");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"50");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"20");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"10");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"5");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"2");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"1");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.50");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.20");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.10");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.05");
-                PaymentType.Insert(false, true);
+                PaymentType.Insert();
 
 
             end;
