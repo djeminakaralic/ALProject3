@@ -65,6 +65,9 @@ report 50092 "Temporary Work Form ASD-1032"
             column(Kol15; Kol15)
             {
             }
+            column(UserUnio; UserUnio)
+            { }
+            column(Brojac; Brojac) { }
             column(SumKol15; SumKol15)
             {
             }
@@ -102,6 +105,11 @@ report 50092 "Temporary Work Form ASD-1032"
 
                 trigger OnAfterGetRecord()
                 begin
+                    Brojac := Brojac + 1;
+                    UserS.Reset();
+                    UserS.SetFilter("User Name", '%1', UserId);
+                    UserS.Get();
+                    UserUnio := UserS."Full Name";
                     PDateText := FORMAT(TODAY);
                     Kol15 := 0;
                     Kol12 := 0;
@@ -154,6 +162,7 @@ report 50092 "Temporary Work Form ASD-1032"
 
                 trigger OnPreDataItem()
                 begin
+                    Brojac := 0;
                     SETRANGE("Month Of Wage", IDMonth);
                     SETRANGE("Year of Wage", IDYear);
                     IF IDMonth < 10 THEN
@@ -227,8 +236,11 @@ report 50092 "Temporary Work Form ASD-1032"
     var
         CompanyInf: Record "Company Information";
         CompanyNameT: Text[100];
+        Brojac: Integer;
         CompanyAdress: Text[100];
         CompanyRegNo: Text[30];
+        UserUnio: Text[250];
+        UserS: Record "User";
         Kol10: Decimal;
         Kol11: Decimal;
         Kol12: Decimal;
