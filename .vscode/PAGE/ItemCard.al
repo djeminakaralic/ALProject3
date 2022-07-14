@@ -4,7 +4,7 @@ pageextension 50179 ItemCard extends "Item Card"
 
     layout
     {
-        
+
         /*addafter(Name)
         {            
             field("Vendor Class";"Vendor Class")
@@ -24,7 +24,7 @@ pageextension 50179 ItemCard extends "Item Card"
                 ApplicationArea = all;
             }
         }*/
-      
+
         modify(Blocked)
         {
             Visible = false;
@@ -53,6 +53,43 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
+        modify("Shelf No.")
+        {
+            Visible = false;
+        }
+        modify("Search Description")
+        {
+            Visible = false;
+        }
+        modify("Qty. on Job Order")
+        {
+            Visible = false;
+        }
+        modify("Qty. on Assembly Order")
+        {
+            Visible = false;
+        }
+        modify("Qty. on Asm. Component")
+        {
+            Visible = false;
+        }
+        modify("Net Weight")
+        {
+            Visible = false;
+        }
+        modify("Gross Weight")
+        {
+            Visible = false;
+        }
+        modify("Unit Volume")
+        {
+            Visible = false;
+        }
+        modify("Over-Receipt Code")
+        {
+            Visible = false;
+        }
+
 
         /*movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
