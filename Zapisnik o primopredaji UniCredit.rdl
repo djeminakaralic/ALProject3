@@ -667,7 +667,11 @@
                 <TablixMember>
                   <Group Name="Details1" />
                   <TablixMembers>
-                    <TablixMember />
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=(Fields!CCode.Value="")</Hidden>
+                      </Visibility>
+                    </TablixMember>
                     <TablixMember>
                       <Visibility>
                         <Hidden>true</Hidden>
