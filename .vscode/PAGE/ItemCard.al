@@ -113,6 +113,10 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
+        modify(Replenishment_Production)
+        {
+            Caption = 'Proizvodnja';
+        }
 
 
 
