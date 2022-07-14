@@ -40,14 +40,19 @@ report 50097 "Zapisnik o primopredaji"
             column(CCode; PaymentType.Code)
             {
             }
+            column(Counter; Counter)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
-
+                Counter += 1;
             end;
 
             trigger OnPreDataItem()
             begin
+
+                Counter := 0;
 
                 PaymentType.DeleteAll();
 
@@ -118,35 +123,23 @@ report 50097 "Zapisnik o primopredaji"
 
         }
 
-        /*dataitem(DataItem22; paymr)
-        {
-            column(PTCode; DataItem22.Code)
-            {
-            }
-           /* column(PaymentCounter; PaymentCounter)
-            {
-            }
-            column(PaymentAmount; PaymentAmount)
-            {
-            }*/
-
         /*trigger OnAfterGetRecord()
-        begin
+begin
 
-            GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-            GLEntry.SetFilter("Posting Date", '%1', Datee);
-            GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+    GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
+    GLEntry.SetFilter("Posting Date", '%1', Datee);
+    GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
 
-            PaymentCounter := GLEntry.Count;
+    PaymentCounter := GLEntry.Count;
 
-            PaymentAmount := 0;
+    PaymentAmount := 0;
 
-            IF GLEntry.FindFirst() then
-                repeat
-                    PaymentAmount += ABS(GLEntry.Amount);
-                until GLEntry.Next() = 0;
+    IF GLEntry.FindFirst() then
+        repeat
+            PaymentAmount += ABS(GLEntry.Amount);
+        until GLEntry.Next() = 0;
 
-        end;*/
+end;*/
 
 
     }
@@ -183,6 +176,7 @@ report 50097 "Zapisnik o primopredaji"
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
+        Counter: Integer;
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
