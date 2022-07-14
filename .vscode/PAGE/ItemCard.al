@@ -117,6 +117,10 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Caption = 'Proizvodnja';
         }
+        modify("Purchasing Blocked")
+        {
+            Visible = false;
+        }
 
 
 
