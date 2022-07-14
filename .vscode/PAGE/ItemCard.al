@@ -89,6 +89,30 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
+        modify("Net Invoiced Qty.")
+        {
+            Visible = false;
+        }
+        modify(ForeignTrade)
+        {
+            Visible = false;
+        }
+        modify("Default Deferral Template Code")
+        {
+            Visible = false;
+        }
+        modify("Price Includes VAT")
+        {
+            Visible = false;
+        }
+        modify("Sales Blocked")
+        {
+            Visible = false;
+        }
+        modify("Include Inventory")
+        {
+            Visible = false;
+        }
 
 
 
