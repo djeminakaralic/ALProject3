@@ -91,6 +91,8 @@ pageextension 50179 ItemCard extends "Item Card"
         }
 
 
+
+
         /*movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
        */
