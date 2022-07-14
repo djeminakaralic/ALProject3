@@ -33,20 +33,87 @@ report 50097 "Zapisnik o primopredaji"
 
             end;
         }
+        dataitem(PaymentType;"Payment Type")
+        {
+            UseTemporary=true;
 
-        /*dataitem(DataItem22; )
+            column(CCode; PaymentType.Code)
+            {                
+            }
+           
+            trigger OnPreDataItem()
+            var
+                myInt: Integer;
+            begin
+
+              PaymentType.DeleteAll();
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"200");
+              PaymentType.Insert();
+               
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"100");
+              PaymentType.Insert(); 
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"50");
+              PaymentType.Insert();
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"20");
+              PaymentType.Insert();
+        
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"10");
+              PaymentType.Insert(); 
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"5");
+              PaymentType.Insert();
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"2");
+              PaymentType.Insert(); 
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"1");
+              PaymentType.Insert(); 
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"0.50");
+              PaymentType.Insert();  
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"0.20");
+              PaymentType.Insert();  
+              
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"0.10");
+              PaymentType.Insert(); 
+
+              PaymentType.Init();
+              PaymentType.Code:=Format(ApoeniEnum::"0.05");
+              PaymentType.Insert(); 
+
+                
+            end;
+
+        }
+
+        /*dataitem(DataItem22; paymr)
         {
             column(PTCode; DataItem22.Code)
             {
             }
-            column(PaymentCounter; PaymentCounter)
+           /* column(PaymentCounter; PaymentCounter)
             {
             }
             column(PaymentAmount; PaymentAmount)
             {
-            }
+            }*/
 
-            trigger OnAfterGetRecord()
+            /*trigger OnAfterGetRecord()
             begin
                 
                 GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
@@ -62,14 +129,9 @@ report 50097 "Zapisnik o primopredaji"
                         PaymentAmount += ABS(GLEntry.Amount);
                     until GLEntry.Next() = 0;
 
-            end;
+            end;*/
 
-            trigger OnPreDataItem()
-            begin
-
-
-            end;
-        }*/
+            
     }
 
     requestpage
