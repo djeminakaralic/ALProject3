@@ -111,9 +111,8 @@ report 50097 "Zapisnik o primopredaji"
                 PaymentType."Entry No." := 12;
                 PaymentType.Insert();
 
-                /*PaymentType.SetCurrentKey("Entry No.");
-                PaymentType.Ascending;*/
-
+                PaymentType.SetCurrentKey("Entry No.");
+                PaymentType.Ascending;
 
             end;
 
