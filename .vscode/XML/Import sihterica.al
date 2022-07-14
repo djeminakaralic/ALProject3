@@ -5,6 +5,7 @@ xmlport 50000 "Import sihterica"
     FieldDelimiter = 'None';
     FieldSeparator = ';';
     Format = VariableText;
+    //ĐK
     UseRequestPage = false;
 
     schema
