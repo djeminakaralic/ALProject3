@@ -40708,35 +40708,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VATPostingSetupExtends - Field VAT % (retrograde) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2090622309 - Field 917838971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
-          <source>Industrial Classification</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Industrial Classification - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 2090622309 - Field 3430636682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Registration No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Registration No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2090622309 - Field 1052507694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
-          <source>Tax No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Tax No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2090622309 - Field 1206250734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
-          <source>Vendor Class</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Vendor Class - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2090622309 - Field 3152125365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
-          <source>Vendor Group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Vendor Group - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2090622309 - Field 957373089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
-          <source>Vendor Subgroup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Vendor Subgroup - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3935333908 - Field 3835983272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
           <source>Compensation</source>

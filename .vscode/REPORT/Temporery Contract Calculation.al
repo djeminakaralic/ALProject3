@@ -1,6 +1,7 @@
 report 50093 "Temporary Contract Calculation"
 {
     ProcessingOnly = true;
+    Caption = 'Temporary Contract Calculation';
 
     dataset
     {
@@ -44,6 +45,7 @@ report 50093 "Temporary Contract Calculation"
 
                     OsnovicaZaObracunDoprinosa := EmpWage - PriznatiRashodi;
 
+
                     //bruto iznos - oke
 
                     ContributionConn.Reset();
@@ -65,7 +67,7 @@ report 50093 "Temporary Contract Calculation"
                         DoprinosZaZdravstvenoOsiguranje := 0;
 
 
-                    OsnovicaZaObracunPoreza := OsnovicaZaObracunDoprinosa - DoprinosZaZdravstvenoOsiguranje - DoprinosPIO;
+                    OsnovicaZaObracunPoreza := OsnovicaZaObracunDoprinosa - DoprinosZaZdravstvenoOsiguranje;
                     CompInfo.GET();
                     Class.RESET;
                     Class.SETCURRENTKEY("Valid From Amount");
@@ -92,7 +94,7 @@ report 50093 "Temporary Contract Calculation"
                     PorezNaDohodak := OsnovicaZaObracunPoreza * (Procenti / 100);
                     //WageAmountNet := EmpWage / 1.12208;
                     IF strpos("Contribution Category Code", 'UOD 0%') <> 0 THEN
-                        WageAmountNet := OsnovicaZaObracunDoprinosa - DoprinosZaZdravstvenoOsiguranje - DoprinosPIO - PorezNaDohodak
+                        WageAmountNet := OsnovicaZaObracunDoprinosa - DoprinosZaZdravstvenoOsiguranje - PorezNaDohodak
                     ELSE
                         WageAmountNet := EmpWage - DoprinosZaZdravstvenoOsiguranje - PorezNaDohodak;
 
@@ -233,10 +235,48 @@ report 50093 "Temporary Contract Calculation"
 
                     OsnovicaZaObracunDoprinosa := EmpWage;
                     OsnovicaZaObracunPoreza := EmpWage;
-                    PorezNaDohodak := OsnovicaZaObracunPoreza * 0.1;
+                    CompInfo.GET();
+                    Class.RESET;
+                    Class.SETCURRENTKEY("Valid From Amount");
+                    // Class.SETRANGE(Active, TRUE);
+                    Class.SETRANGE(Code, DataItem1."Contribution Category Code");
+
+                    IF Class.FINDFIRST THEN
+                        Procenti := Class.Percentage
+                    ELSE
+                        Procenti := 0;
+
+                    if Procenti = 0 then begin
+
+                        Class2.RESET;
+                        Class2.SETCURRENTKEY("Valid From Amount");
+                        Class2.SETRANGE(Active, TRUE);
+                        Class2.SETRANGE("Entity Code", 'FBIH');
+                        Class2.FINDFIRST;
+                        Procenti := Class2.Percentage;
+
+                    end;
+
+                    PorezNaDohodak := OsnovicaZaObracunPoreza * Procenti;
                     WageAmountNet := EmpWage - PorezNaDohodak;
-                    Nesrece := ((WageAmountNet) * 0.5) / 100;
-                    VodnaNaknada := ((WageAmountNet) * 0.5) / 100;
+
+                    ContributionConn.Reset();
+                    ContributionConn.SetFilter("Category Code", '%1', DataItem1."Contribution Category Code");
+                    ContributionConn.SetFilter("Contribution Code", '%1', '@*NEP*');
+                    if ContributionConn.FindFirst() then
+                        Nesrece := WageAmountNet * (ContributionConn.Percentage / 100)
+                    else
+                        Nesrece := 0;
+
+                    ContributionConn.Reset();
+                    ContributionConn.SetFilter("Category Code", '%1', DataItem1."Contribution Category Code");
+                    ContributionConn.SetFilter("Contribution Code", '%1', '@*VOD*');
+                    if ContributionConn.FindFirst() then
+                        VodnaNaknada := WageAmountNet * (ContributionConn.Percentage / 100)
+                    else
+                        VodnaNaknada := 0;
+
+                    //Đk 
 
                     WageCalc2.SETFILTER("No.", '<>%1', '');
                     IF WageCalc2.FINDLAST THEN
@@ -332,13 +372,68 @@ report 50093 "Temporary Contract Calculation"
 
                     PriznatiRashodi := EmpWage * 0.3;
                     OsnovicaZaObracunDoprinosa := EmpWage - PriznatiRashodi;
-                    DoprinosPIO := OsnovicaZaObracunDoprinosa * 0.06;
-                    DoprinosZaZdravstvenoOsiguranje := OsnovicaZaObracunDoprinosa * 0.04;
+
+                    ContributionConn.Reset();
+                    ContributionConn.SetFilter("Category Code", '%1', DataItem1."Contribution Category Code");
+                    ContributionConn.SetFilter("Contribution Code", '%1', '@*PIO*');
+                    if ContributionConn.FindFirst() then
+                        DoprinosPIO := OsnovicaZaObracunDoprinosa * (ContributionConn.Percentage / 100)
+                    else
+                        DoprinosPIO := 0;
+
+
+                    ContributionConn.Reset();
+                    ContributionConn.SetFilter("Category Code", '%1', DataItem1."Contribution Category Code");
+                    ContributionConn.SetFilter("Contribution Code", '%1', '@*ZDR*');
+                    if ContributionConn.FindFirst() then
+                        DoprinosZaZdravstvenoOsiguranje := OsnovicaZaObracunDoprinosa * (ContributionConn.Percentage / 100)
+                    else
+                        DoprinosZaZdravstvenoOsiguranje := 0;
+
                     OsnovicaZaObracunPoreza := OsnovicaZaObracunDoprinosa - DoprinosZaZdravstvenoOsiguranje;
-                    PorezNaDohodak := OsnovicaZaObracunPoreza * 0.1;
+
+
+                    CompInfo.GET();
+                    Class.RESET;
+                    Class.SETCURRENTKEY("Valid From Amount");
+                    // Class.SETRANGE(Active, TRUE);
+                    Class.SETRANGE(Code, DataItem1."Contribution Category Code");
+
+                    IF Class.FINDFIRST THEN
+                        Procenti := Class.Percentage
+                    ELSE
+                        Procenti := 0;
+
+                    if Procenti = 0 then begin
+
+                        Class2.RESET;
+                        Class2.SETCURRENTKEY("Valid From Amount");
+                        Class2.SETRANGE(Active, TRUE);
+                        Class2.SETRANGE("Entity Code", 'FBIH');
+                        Class2.FINDFIRST;
+                        Procenti := Class2.Percentage;
+
+                    end;
+                    PorezNaDohodak := OsnovicaZaObracunPoreza * Procenti;
+
                     WageAmountNet := EmpWage / 1.12208;
-                    Nesrece := ((EmpWage - DoprinosZaZdravstvenoOsiguranje - PorezNaDohodak) * 0.5) / 100;
-                    VodnaNaknada := ((EmpWage - DoprinosZaZdravstvenoOsiguranje - PorezNaDohodak) * 0.5) / 100;
+
+                    ContributionConn.Reset();
+                    ContributionConn.SetFilter("Category Code", '%1', DataItem1."Contribution Category Code");
+                    ContributionConn.SetFilter("Contribution Code", '%1', '@*NEP*');
+                    if ContributionConn.FindFirst() then
+                        Nesrece := ((EmpWage - DoprinosZaZdravstvenoOsiguranje - PorezNaDohodak)) * (ContributionConn.Percentage / 100)
+                    else
+                        Nesrece := 0;
+
+                    ContributionConn.Reset();
+                    ContributionConn.SetFilter("Category Code", '%1', DataItem1."Contribution Category Code");
+                    ContributionConn.SetFilter("Contribution Code", '%1', '@*VOD*');
+                    if ContributionConn.FindFirst() then
+                        VodnaNaknada := ((EmpWage - DoprinosZaZdravstvenoOsiguranje - PorezNaDohodak)) * (ContributionConn.Percentage / 100)
+                    else
+                        VodnaNaknada := 0;
+
                     OstaliTroskovi := DoprinosPIO + DoprinosZaZdravstvenoOsiguranje + PorezNaDohodak + Nesrece + VodnaNaknada;
                     UkupniTroskovi := WageAmountNet + OstaliTroskovi;
 
@@ -709,10 +804,19 @@ report 50093 "Temporary Contract Calculation"
     trigger OnPreReport()
     begin
         LineNo := 1000;
+        //INT1.0 start
+        UTemp.SETFILTER("User Name", '%1', USERID);
+        IF UTemp.FINDFIRST THEN
+            WageAllowed := UTemp."Wage Allowed";
+
+        IF WageAllowed = FALSE THEN
+            ERROR(error1);
     end;
 
     var
         WageH: Record "Wage Header";
+
+        WageAllowed: Boolean;
         WageSetup: Record "Wage Setup";
         WC: Record "Wage Calculation";
         WH: Record "Wage Header";
@@ -750,6 +854,7 @@ report 50093 "Temporary Contract Calculation"
         GenJournalBatch: Record "Gen. Journal Batch";
         GnJrnLines: Record "Gen. Journal Line";
         NoSerMgmt: Codeunit NoSeriesExtented;
+        UTemp: Record "User Setup";
         WageAmountNet: Decimal;
         IDMonth: Integer;
         IDYear: Integer;
@@ -760,6 +865,7 @@ report 50093 "Temporary Contract Calculation"
         WVE: Record "Wage Value Entry";
         Txt004: Label '4';
         Txt011: Label 'Calculatin for chosen period already exists!';
+        error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
         WageH2: Record "Wage Header";
         wh2: Record "Wage Header";
         EmpFilter: Text;

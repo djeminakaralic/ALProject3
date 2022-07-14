@@ -52,6 +52,7 @@ table 50104 "Employee Absence Reg"
                     IF "From Date" = "To Date" then begin
                         EmployeeAbsence.SetFilter("From Date", '%1', Rec."From Date");
                         EmployeeAbsence.SetFilter("Add Hours", '%1', false);
+                        EmployeeAbsence.SetFilter("Employee No.", '%1', Rec."Employee No.");
                         if EmployeeAbsence.FindFirst() then begin
 
                             //ĐK

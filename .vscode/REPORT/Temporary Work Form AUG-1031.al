@@ -178,7 +178,8 @@ report 50173 "Temporary Work Form AUG-1031"
 
             trigger OnPreDataItem()
             begin
-                SETFILTER("Temporary Contract Type", '%1|%2', 1, 2);
+                SETFILTER("Temporary Contract Type", '%1|%2|%3', 1, 2, 4);
+                SETFILTER("Contribution Category Code", '<>%1 & <>%2 & <>%3', 'NO', 'OR', 'SK');
                 Empfilter := GETFILTER("No.")
             end;
         }
