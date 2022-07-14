@@ -1,11 +1,11 @@
-pageextension 50178 VendorCard extends "Vendor Card"
+pageextension 50179 ItemCard extends "Item Card"
 {
     //ED
 
     layout
     {
-        
-        addafter(Name)
+
+        /*addafter(Name)
         {            
             field("Vendor Class";"Vendor Class")
             {
@@ -23,17 +23,13 @@ pageextension 50178 VendorCard extends "Vendor Card"
             {
                 ApplicationArea = all;
             }
-        }
+        }*/
 
-        addafter("VAT Registration No.")
+        modify(Blocked)
         {
-            field("Tax No.";"Tax No.")
-            {
-                ApplicationArea = all;
-            }
+            Visible = false;
         }
-
-        modify("Privacy Blocked")
+        modify(Type)
         {
             Visible = false;
         }
@@ -41,79 +37,51 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
-        modify("Document Sending Profile")
+        modify(GTIN)
         {
             Visible = false;
         }
-        modify("Search Name")
+        modify("Automatic Ext. Texts")
         {
             Visible = false;
         }
-        modify("IC Partner Code")
+        modify("Common Item No.")
         {
             Visible = false;
         }
-        modify("Purchaser Code")
+        modify("Purchasing Code")
         {
             Visible = false;
         }
-        modify("Responsibility Center")
+        modify("Shelf No.")
         {
             Visible = false;
         }
-        modify("Disable Search by Name")
+        modify("Search Description")
         {
             Visible = false;
         }
-        modify("Fax No.")
+        modify("Qty. on Job Order")
         {
             Visible = false;
         }
-        modify("Our Account No.")
+        modify("Qty. on Assembly Order")
         {
             Visible = false;
         }
-        modify("Language Code")
+        modify("Qty. on Asm. Component")
         {
             Visible = false;
         }
-        modify("Tax Liable")
+        modify("Net Weight")
         {
             Visible = false;
         }
-        modify("Tax Area Code")
+        modify("Gross Weight")
         {
             Visible = false;
         }
-        modify("Prices Including VAT")
-        {
-            Visible = false;
-        }
-        modify(Priority)
-        {
-            Visible = false;
-        }
-        modify("Block Payment Tolerance")
-        {
-            Visible = false;
-        }
-        modify("Partner Type")
-        {
-            Visible = false;
-        }
-        modify("Creditor No.")
-        {
-            Visible = false;
-        }
-        modify("Lead Time Calculation")
-        {
-            Visible = false;
-        }
-        modify("Base Calendar Code")
-        {
-            Visible = false;
-        }
-        modify("Customized Calendar")
+        modify("Unit Volume")
         {
             Visible = false;
         }
@@ -121,10 +89,33 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
-        modify(GLN)
+        modify("Net Invoiced Qty.")
         {
             Visible = false;
         }
+        modify(ForeignTrade)
+        {
+            Visible = false;
+        }
+        modify("Default Deferral Template Code")
+        {
+            Visible = false;
+        }
+        modify("Price Includes VAT")
+        {
+            Visible = false;
+        }
+        modify("Sales Blocked")
+        {
+            Visible = false;
+        }
+        modify("Include Inventory")
+        {
+            Visible = false;
+        }
+
+
+
 
         /*movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")

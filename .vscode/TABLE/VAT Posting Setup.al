@@ -8,6 +8,7 @@ tableextension 50122 VATPostingSetupExtends extends "VAT Posting Setup"
         {
 
             DataClassification = ToBeClassified;
+            //ĐK
 
         }
 
