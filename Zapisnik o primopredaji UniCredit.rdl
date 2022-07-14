@@ -674,7 +674,7 @@
                     </TablixMember>
                     <TablixMember>
                       <Visibility>
-                        <Hidden>true</Hidden>
+                        <Hidden>=(Fields!CCode.Value="") OR (Fields!Counter.Value&lt;&gt;12)</Hidden>
                       </Visibility>
                     </TablixMember>
                   </TablixMembers>

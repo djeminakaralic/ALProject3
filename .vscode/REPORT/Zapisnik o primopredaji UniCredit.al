@@ -43,11 +43,13 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnAfterGetRecord()
             begin
-
+                Counter += 1;
             end;
 
             trigger OnPreDataItem()
             begin
+
+                Counter := 0;
 
                 PaymentType.DeleteAll();
 
@@ -183,6 +185,7 @@ report 50097 "Zapisnik o primopredaji"
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
+        Counter: Integer;
         Country: Text[100];
         City: Text[100];
         CountryRegion: Record "Country/Region";
