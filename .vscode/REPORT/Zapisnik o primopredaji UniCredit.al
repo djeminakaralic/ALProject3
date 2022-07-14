@@ -1,7 +1,7 @@
 report 50097 "Zapisnik o primopredaji"
 {
     //ED
-    
+
     DefaultLayout = RDLC;
     PreviewMode = Normal;
     RDLCLayout = './Zapisnik o primopredaji UniCredit.rdl';
@@ -18,7 +18,7 @@ report 50097 "Zapisnik o primopredaji"
             }
             column(Datee; Datee)
             {
-            }            
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -27,76 +27,79 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnPreDataItem()
             begin
-               
+
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
             end;
         }
-        dataitem(PaymentType;"Payment Type")
+        dataitem(PaymentType; "Payment Type")
         {
-            UseTemporary=true;
+            UseTemporary = true;
 
             column(CCode; PaymentType.Code)
-            {                
+            {
             }
-           
+
+            trigger OnAfterGetRecord()
+            begin
+                Message(Format(PaymentType.Code));
+            end;
+
             trigger OnPreDataItem()
-            var
-                myInt: Integer;
             begin
 
-              PaymentType.DeleteAll();
+                PaymentType.DeleteAll();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"200");
-              PaymentType.Insert();
-               
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"100");
-              PaymentType.Insert(); 
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"200");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"50");
-              PaymentType.Insert();
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"100");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"20");
-              PaymentType.Insert();
-        
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"10");
-              PaymentType.Insert(); 
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"50");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"5");
-              PaymentType.Insert();
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"20");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"2");
-              PaymentType.Insert(); 
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"10");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"1");
-              PaymentType.Insert(); 
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"5");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"0.50");
-              PaymentType.Insert();  
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"2");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"0.20");
-              PaymentType.Insert();  
-              
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"0.10");
-              PaymentType.Insert(); 
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"1");
+                PaymentType.Insert();
 
-              PaymentType.Init();
-              PaymentType.Code:=Format(ApoeniEnum::"0.05");
-              PaymentType.Insert(); 
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.50");
+                PaymentType.Insert();
 
-                
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.20");
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.10");
+                PaymentType.Insert();
+
+                PaymentType.Init();
+                PaymentType.Code := Format(ApoeniEnum::"0.05");
+                PaymentType.Insert();
+
+
             end;
 
         }
@@ -113,25 +116,25 @@ report 50097 "Zapisnik o primopredaji"
             {
             }*/
 
-            /*trigger OnAfterGetRecord()
-            begin
-                
-                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
-                GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+        /*trigger OnAfterGetRecord()
+        begin
 
-                PaymentCounter := GLEntry.Count;
+            GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
+            GLEntry.SetFilter("Posting Date", '%1', Datee);
+            GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
 
-                PaymentAmount := 0;
-                
-                IF GLEntry.FindFirst() then
-                    repeat
-                        PaymentAmount += ABS(GLEntry.Amount);
-                    until GLEntry.Next() = 0;
+            PaymentCounter := GLEntry.Count;
 
-            end;*/
+            PaymentAmount := 0;
 
-            
+            IF GLEntry.FindFirst() then
+                repeat
+                    PaymentAmount += ABS(GLEntry.Amount);
+                until GLEntry.Next() = 0;
+
+        end;*/
+
+
     }
 
     requestpage
