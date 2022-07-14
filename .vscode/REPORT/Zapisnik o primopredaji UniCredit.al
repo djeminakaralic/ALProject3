@@ -66,44 +66,53 @@ report 50097 "Zapisnik o primopredaji"
                 PaymentType."Entry No." := 3;
                 PaymentType.Insert();
 
-                /*PaymentType.Init();
+                PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"20");
+                PaymentType."Entry No." := 4;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"10");
+                PaymentType."Entry No." := 5;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"5");
+                PaymentType."Entry No." := 6;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"2");
+                PaymentType."Entry No." := 7;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"1");
+                PaymentType."Entry No." := 8;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.50");
+                PaymentType."Entry No." := 9;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.20");
+                PaymentType."Entry No." := 10;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.10");
+                PaymentType."Entry No." := 11;
                 PaymentType.Insert();
 
                 PaymentType.Init();
                 PaymentType.Code := Format(ApoeniEnum::"0.05");
-                PaymentType.Insert();*/
+                PaymentType."Entry No." := 12;
+                PaymentType.Insert();
 
-                PaymentType.SetCurrentKey("Entry No.");
-                PaymentType.Ascending;
+                /*PaymentType.SetCurrentKey("Entry No.");
+                PaymentType.Ascending;*/
 
 
             end;
