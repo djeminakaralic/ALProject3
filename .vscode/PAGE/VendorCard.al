@@ -121,12 +121,14 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
-
+        modify(GLN)
+        {
+            Visible = false;
+        }
 
         /*movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-        moveafter("Bal. VAT Amount"; "Document Type")
-        moveafter("Credit Amount"; "Account Type")*/
+       */
 
         /*addafter("Amount (LCY)")
         {
