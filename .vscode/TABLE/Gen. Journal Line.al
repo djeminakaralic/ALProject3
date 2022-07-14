@@ -177,7 +177,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                                                 "Document No." = field("Document No.")));
 
             Caption = 'Apoeni';
-
         }
 
         modify(Amount)
