@@ -177,16 +177,6 @@ end;*/
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
         Counter: Integer;
-        Country: Text[100];
-        City: Text[100];
-        CountryRegion: Record "Country/Region";
-        Location: Record Location;
-        Cont: Record Contact;
-        ContName: Text[100];
-        ContAddress: Text[100];
-        ContCity: Text[100];
-        emp: Record Employee;
-        Cust: Record Customer;
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
