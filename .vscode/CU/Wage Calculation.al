@@ -654,6 +654,7 @@ codeunit 50002 "Wage Calculation"
 
     var
         Orgdijelovi: Record "ORG Dijelovi";
+        WagSetup: Record "Wage Setup";
         Position: Record "Position";
         ATTemp: Record "Contribution Per Employee";
         Desc: Text[250];
@@ -1401,6 +1402,7 @@ codeunit 50002 "Wage Calculation"
 
         CalcTemp."Net Wage (Calculated Base)" := NettoAmount;
         CalcTemp."Work Experience (Base)" := ExperienceBase;
+
         NettoAmount += ExperienceBase * (Employee."Work Experience Percentage" / 100);
         CalcTemp."Experience Total" += ExperienceBase * (Employee."Work Experience Percentage" / 100);
 

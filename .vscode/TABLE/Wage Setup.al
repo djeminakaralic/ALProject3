@@ -38,6 +38,8 @@ table 50199 "Wage Setup"
 
                             ECLUpdate.Reset();
                             ECLUpdate.SetFilter("Employee No.", '%1', eUpdate."No.");
+                            ECLUpdate.SetFilter(Active, '%1', true);
+                            ECLUpdate.SetFilter("Show Record", '%1', true);
                             if ECLUpdate.FindSet() then
                                 repeat
                                     Wagesetup.Get();
@@ -49,7 +51,7 @@ table 50199 "Wage Setup"
                                     PosM.SetFilter("Department Code", '%1', ECLUpdate."Department Code");
                                     PosM.SetFilter("Position Coefficient for Wage", '<>%1', 0);
                                     if PosM.FindFirst() then begin
-                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * PosM."Position Coefficient for Wage", 0.01, '>'));
+                                        ECLUpdate.Validate(Brutto, ROUND(Wagesetup."Average Salary FBIH" * Wagesetup."Average coefficient statute" * PosM."Position Coefficient for Wage" * 3, 0.01, '>'));
 
                                     end
                                     else begin
@@ -354,18 +356,16 @@ table 50199 "Wage Setup"
         field(330; "Base Tax Deduction"; Decimal)
         {
             Caption = 'Base Tax Deduction';
-
+            TableRelation = "Tax deduction list".Amount where(Active = filter(true), "Entity Code" = filter('FBIH'));
             trigger OnValidate()
+            var
+                myInt: Integer;
             begin
-                /*"Base Tax Deduction":=Rec."Base Tax Deduction";
-                MODIFY;
-                
-                IF emp.FIND('-') THEN REPEAT
-                 //WPCalc.UpdateTaxDeduct(emp);
-                UNTIL emp.NEXT = 0;
-                */
+                "Base Personal Deduction" := "Base Tax Deduction";
 
             end;
+
+
         }
         field(335; "Coefficient Increase"; Decimal)
         {
@@ -708,6 +708,14 @@ table 50199 "Wage Setup"
                 NettoFromBrutto("Meal Taxable FBiH ");
 
             end;
+        }
+        field(50076; "Max Work Experience"; Decimal)
+        {
+            Caption = 'Max Work Experience';
+        }
+        field(50077; "Year of Experience - min"; Integer)
+        {
+            Caption = 'Year of Experience - min';
         }
 
     }

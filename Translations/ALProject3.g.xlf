@@ -173,6 +173,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 684500104 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Account No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 684500104 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -183,10 +188,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Apoeni - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 684500104 - Field 1891586249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bal. Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Bal. Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Document No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 684500104 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 684500104 - Field 1411740825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field G/L Entry No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 684500104 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
@@ -5044,7 +5064,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Wage Change - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3387969064 - Field 3207334502 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>  ,Increase-Additional Responsibility,Increase-Replacement,Increase-Additional Work Effort,Increase-Promotion,Increase-Wage After Disciplinary Measure,Increase-Reconcilliation,Increase-Position Change,Increase-Check,,Decrease-Responsibility Decrease,,Decrease-Inadequate Performance,Decrease-Disciplinary Measure,Decrease-Rellocation,Decrease-Reconcilliation</source>
+          <source>  ,Change Position Coefficient</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ECL systematization - Field Wage Change - Property OptionCaption</note>
         </trans-unit>
@@ -5514,7 +5534,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - NamedType Text010</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - NamedType 1026443335" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Termination date must not be before today</source>
+          <source>Termination date must not be before WORKDATE</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - NamedType Text011</note>
         </trans-unit>
@@ -6524,7 +6544,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Wage Change - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4256639551 - Field 3207334502 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>  ,Increase-Additional Responsibility,Increase-Replacement,Increase-Additional Work Effort,Increase-Promotion,Increase-Wage After Disciplinary Measure,Increase-Reconcilliation,Increase-Position Change,Increase-Check,,Decrease-Responsibility Decrease,,Decrease-Inadequate Performance,Decrease-Disciplinary Measure,Decrease-Rellocation,Decrease-Reconcilliation</source>
+          <source>  ,Change Position Coefficient</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Contract Ledger - Field Wage Change - Property OptionCaption</note>
         </trans-unit>
@@ -12662,6 +12682,11 @@
           <source>Org. Structure</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Org. Structure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2050451830 - Field 1638047192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Position Coefficient for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Position Menu - Field Position Coefficient Director - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2050451830 - Field 2617951709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Coefficient for Wage</source>
@@ -21863,6 +21888,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Life Insurance Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 4128159693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Max Work Experience</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Max Work Experience - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1954395533 - Field 2625032050 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Hours for Sick Wage</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22277,6 +22307,11 @@
           <source>Workday Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Workday Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 2000889713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year of Experience - min</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Year of Experience - min - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 678940528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wage Type</source>
@@ -40673,10 +40708,35 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VATPostingSetupExtends - Field VAT % (retrograde) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 917838971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Industrial Classification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Industrial Classification - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2090622309 - Field 3430636682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Registration No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Registration No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 1052507694 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Tax No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Tax No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 1206250734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Vendor Class</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Vendor Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 3152125365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Vendor Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Vendor Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 957373089 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Vendor Subgroup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Vendor Subgroup - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3935333908 - Field 3835983272 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
           <source>Compensation</source>
@@ -40707,6 +40767,11 @@
           <source>,Ink,Spare parts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorLedgerEntryExtends - Field Vendor Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2395468521 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue   - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2395468521 - EnumValue 2447697781 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>0.05</source>
@@ -40754,7 +40819,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 20 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2395468521 - EnumValue 2964680702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source> </source>
+          <source>200</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Apoeni Enum - EnumValue 200 - Property Caption</note>
         </trans-unit>

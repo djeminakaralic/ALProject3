@@ -355,10 +355,10 @@ pageextension 50149 EmployeeList extends "Employee List"
             field("Citizenship 2"; "Citizenship 2") { Caption = 'Citizenship2'; }
             field("Additional Passport No."; "Additional Passport No.") { }
 
-            field("Residence Permit"; "Residence Permit") { }
-            field("Residence Permit Expiry Date"; "Residence Permit Expiry Date") { }
-            field("Work Permit"; "Work Permit") { }
-            field("Type Of Work Permit"; "Type Of Work Permit") { }
+            field("Residence Permit"; "Residence Permit") { Visible = false; }
+            field("Residence Permit Expiry Date"; "Residence Permit Expiry Date") { Visible = false; }
+            field("Work Permit"; "Work Permit") { Visible = false; }
+            field("Type Of Work Permit"; "Type Of Work Permit") { Visible = false; }
             field("Social Security No."; "Social Security No.") { }
             field("Work Booklet No."; "Work Booklet No.") { }
             field("Work Experience Document"; "Work Experience Document") { }

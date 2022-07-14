@@ -1,6 +1,7 @@
 pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 {
     //ED
+
     layout
     {
         addafter("Posting Date")
@@ -26,9 +27,15 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Amount (LCY)")
         {
-            field(Apoeni;Apoeni)
+            field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
+
+                trigger OnLookup(var Text: Text): Boolean
+                begin
+                    CurrPage.Update();
+                    Rec."Given amount" := Rec.Apoeni;
+                end;
             }
             field("Given amount"; "Given amount")
             {

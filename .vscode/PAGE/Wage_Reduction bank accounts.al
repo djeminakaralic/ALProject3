@@ -21,6 +21,7 @@ page 50009 "Wage/Reduction bank accounts"
                 }
                 field("Fax No."; "Fax No.")
                 {
+                    Visible=false;
                 }
                 field("No."; "No.")
                 {

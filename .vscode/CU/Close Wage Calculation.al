@@ -89,7 +89,7 @@ codeunit 50004 "Close Wage Calculation"
 
         BudgetOrg: Text[100];
         RacunPosiljaoca: Text[16];
-        RacunPrimaoca: Text[16];
+        RacunPrimaoca: Text[20];
         Iznos: Decimal;
         BrojPoreznogObaveznika: Text[14];
         VrstaPrihoda: Text[6];

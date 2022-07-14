@@ -638,7 +638,7 @@ table 50071 "Employee Contract Ledger"
                                                 WT.SetFilter(Code, '%1', EGet."Wage Type");
                                                 if WT.FindFirst() then begin
                                                     if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                        WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                                        WageAmounts.Validate("Net Amount 2", Rec.Netto);
                                                 end;
 
 
@@ -3392,7 +3392,7 @@ table 50071 "Employee Contract Ledger"
                                         WT.SetFilter(Code, '%1', EGet."Wage Type");
                                         if WT.FindFirst() then begin
                                             if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+                                                WageAmounts.Validate("Net Amount 2", Rec.Netto);
                                         end;
                                         WageAmounts.VALIDATE("Application Date", Rec."Starting Date");
                                     END;
@@ -4875,8 +4875,8 @@ table 50071 "Employee Contract Ledger"
         field(50346; "Wage Change"; Option)
         {
             Caption = 'Wage Change';
-            OptionCaption = '  ,Increase-Additional Responsibility,Increase-Replacement,Increase-Additional Work Effort,Increase-Promotion,Increase-Wage After Disciplinary Measure,Increase-Reconcilliation,Increase-Position Change,Increase-Check,,Decrease-Responsibility Decrease,,Decrease-Inadequate Performance,Decrease-Disciplinary Measure,Decrease-Rellocation,Decrease-Reconcilliation';
-            OptionMembers = "  ","Increase-Additional Responsibility","Increase-Replacement","Increase-Additional Work Effort","Increase-Promotion","Increase-Wage After Disciplinary Measure","Increase-Reconcilliation","Increase-Position Change","Increase-Check","Decrease-Responsibility Decrease","Decrease-Inadequate Performance","Decrease-Disciplinary Measure","Decrease-Rellocation","Decrease-Reconcilliation";
+            OptionCaption = '  ,Change Position Coefficient';
+            OptionMembers = "  ","Change Position Coefficient";
         }
         field(50347; Contract; Boolean)
         {
