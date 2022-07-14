@@ -58,7 +58,9 @@ report 50027 "Post Wage to GL"
 
                 IF FirstRow THEN BEGIN
                     FirstRow := FALSE;
-                    WageHeader.GET("Document No.");
+                    WageHeader.Reset();
+                    WageHeader.SetFilter("No.", '%1', "Document No.");
+                    WageHeader.FindFirst();
 
                     PostDate := "Document Date";
                 END;
