@@ -818,6 +818,19 @@ page 50094 "Payroll Role Center"
                     //PromotedIsBig = false;
                     RunObject = Report "Temporary Work Form AUG-1031";
                 }
+
+                action("Temporary Work Form ASD-1032")
+                {
+                    Caption = 'Temporary Work Form ASD-1032';
+                    ApplicationArea = all;
+                    Image = "Report";
+                    Promoted = false;
+                    //The property 'PromotedIsBig' can only be set if the property 'Promoted' is set to 'true'
+                    //PromotedIsBig = false;
+                    RunObject = Report "Temporary Work Form ASD-1032";
+                }
+
+                //
                 action("Temporary Work Form PDN-1033")
                 {
                     ApplicationArea = all;
