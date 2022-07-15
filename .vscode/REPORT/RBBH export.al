@@ -14,7 +14,7 @@ report 50102 "RBBH Export"
     {
         dataitem(DataItem2; "Wage/Reduction Bank Accounts")
         {
-            DataItemTableView = where("Bank Code" = const('RBBH|RAIFFEISEN'));
+            //ĐK DataItemTableView = where("Bank Code" = const('RBBH|RAIFFEISEN'));
             dataitem(DataItem1; "Payment Order")
             {
 
@@ -51,6 +51,13 @@ report 50102 "RBBH Export"
                 end;
             }
 
+            trigger OnPreDataItem()
+            var
+                myInt: Integer;
+            begin
+                SetFilter("Bank Code", '%1|%2', 'RBBH', 'RAIFFEISEN');
+
+            end;
         }
 
     }
