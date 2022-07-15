@@ -17,25 +17,32 @@ pageextension 50107 UserSetup extends "User Setup"
         }
         modify("Time Sheet Admin.")
         {
-            Visible=false;
+            Visible = false;
         }
         modify("Sales Resp. Ctr. Filter")
         {
-            Visible=false;
+            Visible = false;
         }
         modify("Service Resp. Ctr. Filter")
         {
-            Visible=false;
+            Visible = false;
         }
         modify("Purchase Resp. Ctr. Filter")
         {
-            Visible=false;
+            Visible = false;
         }
         modify("Salespers./Purch. Code")
         {
-            Visible=false;
+            Visible = false;
         }
-        
+        addbefore(Email)
+        {
+            field("Employee No. for Wage"; "Employee No. for Wage")
+            {
+                ApplicationArea = all;
+            }
+        }
+
     }
 
     actions
