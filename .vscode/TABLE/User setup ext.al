@@ -61,6 +61,12 @@ tableextension 50179 User_setup_ext extends "User Setup"
             Caption = 'Last Org Shema';
 
         }
+        field(5006; "Employee No. for Wage"; Code[20])
+        {
+            Caption = 'Employee No. for Wage';
+            TableRelation = Employee;
+
+        }
 
 
 

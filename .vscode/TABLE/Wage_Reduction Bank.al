@@ -20,6 +20,10 @@ table 50008 "Wage/Reduction Bank"
         {
             Caption = 'City';
         }
+        field(4; "Contact E-mail"; Text[250])
+        {
+            Caption = 'Contact E-mail';
+        }
     }
 
     keys

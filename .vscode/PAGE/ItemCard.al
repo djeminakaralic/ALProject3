@@ -113,53 +113,21 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
-
-
-
-
-        /*movebefore(Amount; "Applies-to Doc. No.")
-        moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-       */
-
-        /*addafter("Amount (LCY)")
+        modify(Replenishment_Production)
         {
-            field(Apoeni; Apoeni)
-            {
-                ApplicationArea = all;
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    CurrPage.Update();
-                    Rec."Given amount" := Rec.Apoeni;
-                end;
-            }
-            field("Given amount"; "Given amount")
-            {
-                ApplicationArea = all;
-            }
-            field("To return"; "To return")
-            {
-                ApplicationArea = all;
-            }
+            Caption = 'Proizvodnja';
         }
-        modify("Applied (Yes/No)")
+        modify("Purchasing Blocked")
         {
             Visible = false;
         }
-        modify(Description)
-        {
-            Editable = false;
-        }*/
+
+
+
     }
 
     actions
     {
     }
 
-    trigger OnNewRecord(BelowxRec: Boolean)
-    begin
-
-    end;
-
-    var
 }

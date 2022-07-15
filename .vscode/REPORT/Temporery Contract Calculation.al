@@ -805,7 +805,8 @@ report 50093 "Temporary Contract Calculation"
     begin
         LineNo := 1000;
         //INT1.0 start
-        UTemp.SETFILTER("User Name", '%1', USERID);
+        UTemp.Reset();
+        UTemp.SETFILTER("User ID", '%1', USERID);
         IF UTemp.FINDFIRST THEN
             WageAllowed := UTemp."Wage Allowed";
 

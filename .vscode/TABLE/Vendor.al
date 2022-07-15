@@ -8,15 +8,15 @@ tableextension 50119 VendorExtented extends Vendor
         {
             Caption = 'Registration No.';
         }
-        field(50021; "Vendor Class"; Text[100])
+        field(50021; "Vendor Class"; Code[50])
         {
             Caption = 'Vendor Class';
         }
-        field(50022; "Vendor Group"; Text[100])
+        field(50022; "Vendor Group"; Code[50])
         {
             Caption = 'Vendor Group';
         }
-        field(50023; "Vendor Subgroup"; Text[100])
+        field(50023; "Vendor Subgroup"; Code[50])
         {
             Caption = 'Vendor Subgroup';
         }
