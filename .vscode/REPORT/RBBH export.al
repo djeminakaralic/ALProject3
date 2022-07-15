@@ -150,8 +150,13 @@ report 50102 "RBBH Export"
                     FirstString += ' ';
                     FirstString += UpperCase(Employee."First Name")
                 end;
-                FirstString += '                         	      ';
+                BrojNula := 40 - StrLen(UpperCase(Employee."Last Name") + UpperCase(Employee."First Name"));
+                if BrojNula >= 1 then begin
+                    for K := 1 to BrojNula do begin
 
+                        FirstString += ' ';
+                    end
+                end;
 
 
 
