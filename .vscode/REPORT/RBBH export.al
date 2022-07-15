@@ -44,8 +44,8 @@ report 50102 "RBBH Export"
                     SETFILTER(Contributon, '%1', 'PLAĆA');
                     SETFILTER(RacunPrimaoca, '%1', DataItem2."Account No");
 
-                    File1.CREATE('\\DJEMINA-KARALIC\Temp\Spisak_RAIFFEISEN.txt');
-                    File1.CREATEOUTSTREAM(OutStreamObj);
+                    //     File1.CREATE('\\DJEMINA-KARALIC\Temp\Spisak_RAIFFEISEN.txt');
+                    //   File1.CREATEOUTSTREAM(OutStreamObj);
 
                 end;
             }
