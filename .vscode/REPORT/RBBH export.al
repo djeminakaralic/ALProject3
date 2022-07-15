@@ -14,6 +14,7 @@ report 50102 "RBBH Export"
     {
         dataitem(DataItem2; "Wage/Reduction Bank Accounts")
         {
+            DataItemTableView = where("Bank Code" = const('RBBH|RAIFFEISEN'));
             dataitem(DataItem1; "Payment Order")
             {
 
