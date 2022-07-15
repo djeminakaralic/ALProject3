@@ -1198,10 +1198,11 @@ page 50017 "Wage Header Card"
                                 //ĐK
 
 
-                                filename := WS."Export Report Path" + FORMAT('PLACA I OSTALA PRIMANJA' + delchr(format(WH."Payment Date"), '.') + ' - +' + 'Naziv Banke') + '.xls';
+                                //     filename := WS."Export Report Path" + FORMAT('PLACA I OSTALA PRIMANJA' + delchr(format(WH."Payment Date"), '.') + ' - +' + 'Naziv Banke') + '.xls';
                                 R_TS2.SetParam(Rec."No.");
-                                R_TS2.SAVEASEXCEL(filename);
-                                FileManagement.DownloadToFile(filename, filename);
+                                R_TS2.Run();
+                                //   R_TS2.SAVEASEXCEL(filename);
+                                //  FileManagement.DownloadToFile(filename, filename);
                                 // PO.SetRange("Wage Header No.", Rec."No.");
                                 //REPORT.SAVEASEXCEL(50099, filename, PO);
 
@@ -1215,47 +1216,21 @@ page 50017 "Wage Header Card"
                 }
                 action("Contribution Posting")
                 {
-                    Caption = 'Contribution Posting';
+                    Caption = 'Export RBBH';
                     Image = Relationship;
                     ApplicationArea = all;
 
+
                     trigger OnAction()
                     var
-                        //ĐK      R_TS3: Report "TS_knjizenja 3";
-                        WH: Record "Wage Header";
-                        Calc: Record "Wage Calculation";
-                        FileManagement: Codeunit "File Management";
-                        filename: Text;
+                        ReportExport: Report "RBBH Export";
+
                     begin
-                        IF Rec."Negative Payment" = 0 THEN BEGIN
-                            WH.RESET;
-                            WH.SETRANGE("Month Of Wage", Rec."Month Of Wage");
-                            WH.SETRANGE("Year Of Wage", Rec."Year Of Wage");
-
-                            IF NOT WH.FIND('-') THEN
-                                ERROR('Ne postoji obračun plata!')
-                            ELSE BEGIN
+                        //50102
+                        ReportExport.SetParam(Rec."No.");
+                        ReportExport.Run();
 
 
-                                //ĐK    CLEAR(R_TS3);
-                                CLEAR(FileManagement);
-                                WS.GET;
-                                PO.RESET;
-                                WH.CALCFIELDS("Contribution UPP");
-                                filename := WS."Export Report Path" + FORMAT(WH."Contribution UPP") + '~01~DOPRINOSI LD~' + FORMAT(WH."Month Of Wage") + ' ' + FORMAT(WH."Year Of Wage") + '.xls';
-                                /*R_TS3.SetParam(Rec."No.", 1);
-                                R_TS3.SAVEASEXCEL(filename);*/
-                                FileManagement.DownloadToFile(filename, filename);
-                                //PO.SetRange("Wage Header No.", Rec."No.");
-                                //PO.SETFILTER("Wage Calculation Type", '%1', PO."Wage Calculation Type"::Regular);
-                                //REPORT.SAVEASEXCEL(50100, filename, PO);
-
-
-                            END;
-                        END
-                        ELSE BEGIN
-                            ERROR(Txt013);
-                        END;
                     end;
                 }
                 action("Contribution Posting Add")
@@ -1263,6 +1238,7 @@ page 50017 "Wage Header Card"
                     Caption = 'Contribution Posting';
                     Image = Relationship;
                     ApplicationArea = all;
+                    Visible = false;
                     trigger OnAction()
                     var
                         //ĐK     R_TS3: Report "TS_knjizenja 3";

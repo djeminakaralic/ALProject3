@@ -1632,6 +1632,15 @@ codeunit 50004 "Close Wage Calculation"
                                             Additions+=WC."Untaxable Wage"- WC."Meal to pay"-WC.Transport-WC."Meal Correction"
                                             ELSE
                                             Additions+=WC."Untaxable Wage";*/
+                                            AmountForPayment := 0;
+                                            AdditionAmountForPayment := 0;
+                                            AdditionAmountForPaymentMeal := 0;
+                                            RegresAmount := 0;
+                                            WageAdditionAmount := 0;
+                                            Additions := 0;
+                                            ReductionsAmount := 0;
+                                            TaxAmount := 0;
+                                            Difference := 0;
                                             WVE.RESET;
                                             WVE.SETFILTER("Document No.", '%1', WC."Wage Header No.");
                                             WVE.SETFILTER("Employee No.", '%1', WC."Employee No.");
@@ -1663,44 +1672,46 @@ codeunit 50004 "Close Wage Calculation"
 
 
                                         UNTIL WC.NEXT = 0;
+
+
+                                    IF (AmountForPayment - ReductionsAmount) > 0 THEN BEGIN
+                                        //Payment Order
+                                        InitPaymentOrder;
+
+                                        //Ovdje dodati broj partije
+                                        if Emp."Party No." <> '' then
+                                            SvrhaDoznake1 := emp."Party No."
+                                        else
+                                            SvrhaDoznake1 := 'Neto na račun';
+                                        //SvrhaDoznake1 :=Emp."No.";
+                                        SvrhaDoznake2 := FORMAT(WHeader."Month Of Wage") + '.' + FORMAT(WHeader."Year Of Wage") + '.';
+                                        IF Single THEN
+                                            SvrhaDoznake3 := SingleEmp."Refer To Number"
+                                        ELSE
+                                            SvrhaDoznake3 := '';
+                                        //NK
+                                        SvrhaDoznake3 := Emp."No.";
+                                        //Primalac2 := UPPERCASE(RBanks.Name);
+                                        //Primalac3 := UPPERCASE(CompInfo.City);
+                                        Primalac1 := '';
+                                        Primalac2 := '';
+                                        Primalac3 := '';
+
+                                        RacunPosiljaoca := BankAccounts."Bank Account No.";
+                                        RacunPrimaoca := RBankAccounts."Account No";
+                                        //      IF WVE."Employee No."='989' THEN MESSAGE(FORMAT(AmountForPayment) +' '+FORMAT(ReductionsAmount)+' '+FORMAT(TaxAmount)) ;
+                                        Iznos := AmountForPayment - ReductionsAmount + Difference;
+                                        WHeaderNo := WHeader."No.";
+                                        WHeaderEntryNo := WHeader."Entry No.";
+                                        WPaymentType := WPaymentType::Wage;
+                                        Contribution := 'PLAĆA';
+                                        DatumUplate := WHeader."Payment Date";
+                                        MakePaymentOrder;
+                                        CurrRecNo += 1;
+                                        Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
+                                    END;
+                                //ĐK promijenila zbog virmana
                                 UNTIL Emp.NEXT = 0;
-
-                            IF (AmountForPayment - ReductionsAmount) > 0 THEN BEGIN
-                                //Payment Order
-                                InitPaymentOrder;
-
-                                //Ovdje dodati broj partije
-                                if Emp."Party No." <> '' then
-                                    SvrhaDoznake1 := emp."Party No."
-                                else
-                                    SvrhaDoznake1 := 'Neto na račun';
-                                //SvrhaDoznake1 :=Emp."No.";
-                                SvrhaDoznake2 := FORMAT(WHeader."Month Of Wage") + '.' + FORMAT(WHeader."Year Of Wage") + '.';
-                                IF Single THEN
-                                    SvrhaDoznake3 := SingleEmp."Refer To Number"
-                                ELSE
-                                    SvrhaDoznake3 := '';
-                                //NK
-                                SvrhaDoznake3 := Emp."No.";
-                                //Primalac2 := UPPERCASE(RBanks.Name);
-                                //Primalac3 := UPPERCASE(CompInfo.City);
-                                Primalac1 := '';
-                                Primalac2 := '';
-                                Primalac3 := '';
-
-                                RacunPosiljaoca := BankAccounts."Bank Account No.";
-                                RacunPrimaoca := RBankAccounts."Account No";
-                                //      IF WVE."Employee No."='989' THEN MESSAGE(FORMAT(AmountForPayment) +' '+FORMAT(ReductionsAmount)+' '+FORMAT(TaxAmount)) ;
-                                Iznos := AmountForPayment - ReductionsAmount + Difference;
-                                WHeaderNo := WHeader."No.";
-                                WHeaderEntryNo := WHeader."Entry No.";
-                                WPaymentType := WPaymentType::Wage;
-                                Contribution := 'PLAĆA';
-                                DatumUplate := WHeader."Payment Date";
-                                MakePaymentOrder;
-                                CurrRecNo += 1;
-                                Window.UPDATE(1, ROUND(CurrRecNo / TotalRecNo * 10000, 1));
-                            END;
 
 
                         UNTIL RBankAccounts.NEXT = 0;

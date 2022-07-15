@@ -18,6 +18,11 @@ page 50238 "Wage/Reduction Banks"
                 field(Name; Name)
                 {
                 }
+                field("Contact E-mail"; "Contact E-mail")
+                {
+                    Visible = Probably;
+
+                }
             }
         }
     }
@@ -35,12 +40,28 @@ page 50238 "Wage/Reduction Banks"
 
         IF WageAllowed = FALSE THEN
             ERROR(error1);
+        if USERID = 'TENEO\DJEMINA.KARALIC' then
+            Probably := true
+        else
+            Probably := false;
         //INT1.0 end
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+        myInt: Integer;
+    begin
+        if USERID = 'TENEO\DJEMINA.KARALIC' then
+            Probably := true
+        else
+            Probably := false;
+
     end;
 
     var
         UTemp: Record "User Setup";
         WageAllowed: Boolean;
         error1: Label 'You do not have permission to access this report. Please contact your system administrator.';
+        Probably: Boolean;
 }
 

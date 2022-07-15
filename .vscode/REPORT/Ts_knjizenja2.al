@@ -3,12 +3,16 @@ report 50030 "TS_knjizenja 2"
     // // NK01 01.02.2018. - Excel export
     DefaultLayout = RDLC;
     RDLCLayout = './TS_knjizenja 2_real.rdl';
+    UseRequestPage = true;
+    ProcessingOnly = false;
+    PreviewMode = PrintLayout;
 
 
     dataset
     {
         dataitem(DataItem2; "Wage/Reduction Bank Accounts")
         {
+            RequestFilterFields = "Bank Code";
             column(BankAccount; DataItem2."Account No")
             { }
             column(TodayDate; TodayDate)
@@ -17,11 +21,44 @@ report 50030 "TS_knjizenja 2"
             {
 
             }
+            column(NazivBanke; NazivBanke)
+            {
+
+            }
+            column(SlikaVisible; SlikaVisible) { }
+            column(IznosU; IznosU) { }
+            column(Naslov; Naslov) { }
+            column(VrstaUplate; VrstaUplate) { }
+            column(SvrhaDOz; SvrhaDOz) { }
+            column(Racun; Racun) { }
+            column(KontaktMail; KontaktMail) { }
+            column(Emal; Emal) { }
+            column(Tel; Tel) { }
+            column(Sektor; Sektor) { }
+            column(Sluzba; Sluzba) { }
+            column(ImeZ; ImeZ) { }
+            column(Center; Center) { }
+            column(GodinaVisible; GodinaVisible) { }
+            column(DatumSVisible; DatumSVisible) { }
+            column(MjesecVisible; MjesecVisible) { }
+            column(SifraORGVisible; SifraORGVisible) { }
+            column(JIBVisible; JIBVisible) { }
+            column(RedniBRVisible; RedniBRVisible) { }
+            column(PartijaVisible; PartijaVisible) { }
+            column(JMBVisible; JMBVisible) { }
+            column(BrojRacunaVisible; BrojRacunaVisible) { }
+            column(ImeIPrezimeVisible; ImeIPrezimeVisible) { }
+            column(IznosUpateVisible; IznosUpateVisible)
+            { }
             dataitem(DataItem1; "Payment Order")
             {
 
                 column(Uplatio1; Uplatio1)
                 {
+                }
+                column(IsplataDatum; WH."Payment Date")
+                {
+
                 }
                 column(Uplatio2; Uplatio2)
                 {
@@ -31,7 +68,7 @@ report 50030 "TS_knjizenja 2"
 
                 }
                 column(JIB; JIB) { }
-                column(SvrhaDoznake1; SvrhaDoznake1)
+                column(SvrhaDoznake1; RacunPrimaoca2)
                 {
                 }
                 column(SvrhaDoznake2; SvrhaDoznake2)
@@ -102,10 +139,7 @@ report 50030 "TS_knjizenja 2"
                 {
 
                 }
-                column(NazivBanke; NazivBanke)
-                {
 
-                }
                 column(Year; Year)
                 {
 
@@ -122,6 +156,154 @@ report 50030 "TS_knjizenja 2"
                         JMBG := Employee."Employee ID"
                     else
                         JMBG := '';
+                    WH.Reset();
+                    wh.SetFilter("No.", '%1', DataItem1."Wage Header No.");
+                    WH.FindFirst();
+                    UserS.Reset();
+                    UserS.SetFilter("User ID", '%1', USERID);
+                    if UserS.FindFirst() then begin
+                        ECL.Reset();
+                        ECL.SetFilter("Starting Date", '<=%1', WH."Payment Date");
+                        ECL.SetFilter("Employee No.", '%1', UserS."Employee No. for Wage");
+                        ECL.SetCurrentKey("Starting Date");
+                        ecl.Ascending;
+                        if ECL.FindLast() then begin
+                            Sektor := ECL."Sector Description";
+                            Sluzba := ECL."Department Cat. Description";
+                            Emal := UserS."E-Mail";
+                            Tel := UserS."Phone No.";
+
+                        end
+                        else begin
+                            Sektor := '';
+                            Sluzba := '';
+                            Emal := '';
+                            Tel := '';
+
+                        end;
+
+
+                    end
+                    else begin
+                        Sektor := '';
+                        Sluzba := '';
+                        Emal := '';
+                        Tel := '';
+
+                    end;
+
+                    //Đk
+                    if strpos(DataItem2."Bank Code", 'INTESA') <> 0 then begin
+                        GodinaVisible := False;
+                        DatumSVisible := false;
+                        MjesecVisible := false;
+                        SifraORGVisible := false;
+                        ImeZ := 'Ime i prezime';
+                        JIBVisible := false;
+                        RedniBRVisible := true;
+                        PartijaVisible := false;
+                        ImeIPrezimeVisible := true;
+                        JMBVisible := false;
+                        BrojRacunaVisible := true;
+                        Center := true;
+                        IznosUpateVisible := true;
+                        IznosU := 'Iznos uplate';
+                        SlikaVisible := true;
+                        Sektor := '';
+                        Sluzba := '';
+                        Emal := '';
+                        Tel := '';
+                        Racun := 'Broj računa';
+                        VrstaUplate := '';
+                        SvrhaDOz := '';
+                        Naslov := 'Spisak radnika za isplatu plaće i ostalih primanja na dan ' + format(WH."Payment Date") + ' godine';
+                    end;
+                    if strpos(DataItem2."Bank Code", 'SBER') <> 0 then begin
+                        GodinaVisible := False;
+                        MjesecVisible := false;
+                        SifraORGVisible := false;
+                        IznosU := 'Iznos';
+                        JIBVisible := false;
+                        RedniBRVisible := true;
+                        VrstaUplate := '';
+                        SvrhaDOz := '';
+                        DatumSVisible := false;
+                        PartijaVisible := true;
+                        ImeIPrezimeVisible := true;
+                        ImeZ := 'Ime i prezime';
+                        Racun := 'Broj računa';
+                        JMBVisible := true;
+                        BrojRacunaVisible := false;
+                        IznosUpateVisible := true;
+                        SlikaVisible := true;
+                        Sektor := '';
+                        Sluzba := '';
+                        Emal := '';
+                        Tel := '';
+                        Center := false;
+                        Naslov := 'Spisak uposlenih za isplatu  plaće i ostalih primanja na dan  ' + format(WH."Payment Date") + ' godine';
+                    end;
+
+                    if strpos(DataItem2."Bank Code", 'ASA') <> 0 then begin
+                        GodinaVisible := true;
+                        MjesecVisible := true;
+                        SifraORGVisible := true;
+                        VrstaUplate := '';
+                        SvrhaDOz := '';
+                        IznosU := 'Iznos';
+                        DatumSVisible := true;
+                        JIBVisible := false;
+                        Racun := 'TRN ASA';
+                        ImeZ := 'Ime';
+                        RedniBRVisible := false;
+                        PartijaVisible := false;
+                        ImeIPrezimeVisible := true;
+                        JMBVisible := false;
+                        BrojRacunaVisible := true;
+                        IznosUpateVisible := true;
+                        SlikaVisible := true;
+                        Center := false;
+                        Naslov := '';
+                    end;
+
+
+                    if strpos(DataItem2."Bank Code", 'NEDEF') <> 0 then begin
+                        GodinaVisible := false;
+                        MjesecVisible := false;
+                        SifraORGVisible := false;
+                        IznosU := 'Iznos u KM';
+                        DatumSVisible := false;
+                        JIBVisible := true;
+                        Racun := 'broj računa zaposlenika';
+                        ImeZ := 'Ime i prezime zaposlenika';
+                        RedniBRVisible := false;
+                        PartijaVisible := false;
+                        ImeIPrezimeVisible := true;
+                        JMBVisible := false;
+                        BrojRacunaVisible := true;
+                        IznosUpateVisible := true;
+                        SlikaVisible := false;
+                        Center := false;
+                        Naslov := '';
+                        Sektor := '';
+                        Sluzba := '';
+                        Emal := '';
+                        Tel := '';
+                        if DataItem1."Wage Calculation Type" = DataItem1."Wage Calculation Type"::Regular then
+                            VrstaUplate := 'Redovno'
+                        else
+                            VrstaUplate := Format(DataItem1."Wage Calculation Type");
+                        if DataItem1.PorezniPeriodDo = 0D then
+                            DataItem1.PorezniPeriodDo := WH."Payment Date";
+
+                        SvrhaDOz := 'Plaća za ' + format(Date2DMY(DataItem1.PorezniPeriodDo, 2)) + '/' + format(Date2DMY(DataItem1.PorezniPeriodDo, 3));
+                    end;
+
+                    //15.03.2022. godine
+                    Primalac1 := DataItem1.RacunPrimaoca;
+
+
+
 
                     //Org
 
@@ -144,15 +326,19 @@ report 50030 "TS_knjizenja 2"
                         WageBank.Reset();
                         WageBank.SetFilter(Code, '%1', WageReductionBank."Bank Code");
                         if WageBank.FindFirst() then NazivBanke := WageBank.Name;
+                        KontaktMail := WageBank."Contact E-mail";
 
 
 
 
+                    end
+                    ;
 
-                    end;
-                    WH.Reset();
-                    wh.SetFilter("No.", '%1', DataItem1."Wage Header No.");
-                    WH.FindFirst();
+
+
+                    RacunPrimaoca2 := DataItem1.SvrhaDoznake1;
+                    if RacunPrimaoca2 = 'Neto na račun' then
+                        RacunPrimaoca2 := '';
 
                     Year := WH."Year Of Wage";
                     Month := WH."Month Of Wage";
@@ -164,7 +350,7 @@ report 50030 "TS_knjizenja 2"
                     ECL.SetCurrentKey("Starting Date");
                     ECL.Ascending;
                     if ECL.FindLast() then begin
-                        Org := ECL."Department Code";
+
                         OrgDijelovi.Reset();
                         OrgDijelovi.SetFilter(Description, '%1', ECL."Org Unit Name");
                         OrgDijelovi.SetFilter(Active, '%1', true);
@@ -172,6 +358,7 @@ report 50030 "TS_knjizenja 2"
                             JIB := OrgDijelovi."JIB Contributes"
                         else
                             JIB := '';
+                        Org := OrgDijelovi.Code;
                     end
 
                     else begin
@@ -241,6 +428,12 @@ report 50030 "TS_knjizenja 2"
 
                 end;
             }
+            trigger OnPreDataItem()
+            var
+                myInt: Integer;
+            begin
+
+            end;
         }
     }
 
@@ -265,8 +458,37 @@ report 50030 "TS_knjizenja 2"
         RedniBr := 0;
     end;
 
+
     var
-        i: Integer;
+
+        //ĐK     i: Integer;
+        IznosU: Text[250];
+        SvrhaDOz: Text[250];
+        VrstaUplate: Text[250];
+
+        KontaktMail: Text[250];
+        Sektor: Text[250];
+        Sluzba: Text[250];
+        Tel: Text[250];
+        Emal: Text[250];
+        UserS: Record "User Setup";
+        DatumSVisible: Boolean;
+        GodinaVisible: Boolean;
+        ImeZ: Text[250];
+        Center: Boolean;
+        SlikaVisible: Boolean;
+        Naslov: Text[250];
+        RacunPrimaoca2: Text[250];
+        MjesecVisible: Boolean;
+        SifraORGVisible: Boolean;
+        JIBVisible: Boolean;
+        RedniBRVisible: Boolean;
+        PartijaVisible: Boolean;
+
+        ImeIPrezimeVisible: Boolean;
+        JMBVisible: Boolean;
+        BrojRacunaVisible: Boolean;
+        IznosUpateVisible: Boolean;
         JIB: Text[30];
         OrgDijelovi: Record "ORG Dijelovi";
         Org: Code[20];
@@ -294,6 +516,7 @@ report 50030 "TS_knjizenja 2"
 
         aRacunPosiljaoca: Text[250];
         aRacunPrimaoca: Text[250];
+        Racun: Text[250];
         avrstaPrihoda: Text[30];
         aOpstina: Text[30];
         aBrojPoreznogObaveznika: Text[100];

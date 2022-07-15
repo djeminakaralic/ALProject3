@@ -1,0 +1,170 @@
+report 50102 "RBBH Export"
+{
+    // //
+    //ĐK WordLayout = './Transport print.docx';
+
+    Caption = 'RBBH Export';
+
+    DefaultLayout = RDLC;
+    ProcessingOnly = true;
+    ShowPrintStatus = false;
+    UseRequestPage = false;
+
+    dataset
+    {
+        dataitem(DataItem2; "Wage/Reduction Bank Accounts")
+        {
+            dataitem(DataItem1; "Payment Order")
+            {
+
+
+                column(RacunPrimaoca; RacunPrimaoca)
+                {
+                }
+                column(MaticniBroj; MaticniBroj)
+                {
+                }
+                column(Iznos; Iznos)
+                {
+                }
+
+                trigger OnAfterGetRecord()
+                begin
+
+
+                    File1.CREATE('\\DJEMINA-KARALIC\Temp\Spisak_RAIFFEISEN.txt');
+                    File1.CREATEOUTSTREAM(OutStreamObj);
+                    Brojac := 0;
+
+                    PayMentOrder2.RESET;
+                    PayMentOrder2.CopyFilters(DataItem1);
+                    //PayMentOrder2.SETFILTER("Entry No.",'%1',"Entry No.");
+                    IF PayMentOrder2.FINDSET THEN
+                        REPEAT
+                            Brojac := Brojac + 1;
+                            if StrLen(format(Brojac)) = 0 then
+                                FirstString += '0000';
+                            if StrLen(format(Brojac)) = 1 then
+                                FirstString += '000' + format(Brojac);
+                            if StrLen(format(Brojac)) = 2 then
+                                FirstString += '00' + format(Brojac);
+                            if StrLen(format(Brojac)) = 3 then
+                                FirstString += '0' + format(Brojac);
+                            if StrLen(format(Brojac)) > 3 then
+                                FirstString += format(Brojac);
+                            FirstString += '	';
+
+                            FirstString += PayMentOrder.RacunPrimaoca;
+                            FirstString += '   	';
+                            Employee.Reset();
+                            Employee.SetFilter("No.", '%1', SvrhaDoznake3);
+                            if Employee.FindFirst() then begin
+                                FirstString += UpperCase(Employee."Last Name");
+                                FirstString += ' ';
+                                FirstString += UpperCase(Employee."First Name")
+                            end;
+                            FirstString += '                         	      ';
+
+
+
+
+                            IF EVALUATE(PayMentOrder.Iznos, FORMAT(ROUND(PayMentOrder.Iznos, 1))) THEN
+                                IntegerValue := PayMentOrder.Iznos;
+                            BrojCifaraIznos := STRLEN(FORMAT(IntegerValue));
+                            BrojNula := 4 - BrojCifaraIznos;
+                            if BrojNula > 0 then begin
+                                FOR K := 1 TO BrojNula DO BEGIN
+                                    FirstString += '0';
+                                END;
+                            end;
+
+                            FirstString += FORMAT(IntegerValue);
+                            FirstString += '.';
+                            Decimal := PayMentOrder.Iznos MOD IntegerValue;
+                            IF STRLEN(FORMAT(Decimal)) <> 2 THEN BEGIN
+                                IF STRLEN(FORMAT(Decimal)) > 2 THEN BEGIN
+                                    FirstString += COPYSTR(FORMAT(Decimal), 1, 2);
+                                END
+
+                                ELSE BEGIN
+                                    FirstString += FORMAT(Decimal);
+                                    FirstString += '0';
+                                END;
+                            END
+                            ELSE BEGIN
+                                FirstString += FORMAT(Decimal);
+
+                            END;
+
+                            OutStreamObj.WRITETEXT(FirstString);
+
+                            OutStreamObj.WRITETEXT(); // This command is to move to next line
+
+                        UNTIL PayMentOrder2.NEXT = 0;
+
+
+                    File1.CLOSE; // To end the writing and write out to the file.
+                end;
+
+                trigger OnPreDataItem()
+                var
+                    myInt: Integer;
+                begin
+                    SETFILTER("Wage Header No.", '%1', ZaglavljePlate);
+                    SETFILTER(Contributon, '%1', 'PLAĆA');
+                    SETFILTER(RacunPrimaoca, '%1', DataItem2."Account No");
+
+                end;
+            }
+
+        }
+
+    }
+
+    requestpage
+    {
+
+        layout
+        {
+        }
+
+        actions
+        {
+        }
+    }
+
+    labels
+    {
+    }
+
+    var
+        Employee: Record "Employee";
+        Brojac: Integer;
+        MaticniBroj: Code[13];
+        File1: File;
+        OutStreamObj: OutStream;
+        FirstString: Text;
+        Vrijednost: Text;
+        IznosStvarni: Text;
+        PayMentOrder: Record "Payment Order";
+        IntegerValue: Integer;
+        PayMentOrder2: Record "Payment Order";
+        ZaglavljePlate: Code[20];
+        BrojCifaraIznos: Integer;
+        K: Integer;
+        BrojNula: Integer;
+        Decimal: Integer;
+        NumberOfRecord: Integer;
+        PayMentOrder3: Record "Payment Order";
+        LastString: Text;
+        NumberZero: Integer;
+        Suma: Decimal;
+        IntegerValueSuma: Integer;
+        DecimalSuma: Integer;
+
+    procedure SetParam(BrojZaglavljaPlate: Code[20])
+    begin
+        ZaglavljePlate := BrojZaglavljaPlate;
+    end;
+}
+
