@@ -6,16 +6,16 @@ pageextension 50178 VendorCard extends "Vendor Card"
     {
         
         addafter(Name)
-        {            
-            field("Vendor Class";"Vendor Class")
+        {    
+            field("Vendor Subgroup";"Vendor Subgroup")
             {
                 ApplicationArea = all;
-            }
+            }        
             field("Vendor Group";"Vendor Group")
             {
                 ApplicationArea = all;
             }
-            field("Vendor Subgroup";"Vendor Subgroup")
+            field("Vendor Class";"Vendor Class")
             {
                 ApplicationArea = all;
             }
