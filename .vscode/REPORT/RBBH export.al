@@ -14,6 +14,7 @@ report 50102 "RBBH Export"
     {
         dataitem(DataItem2; "Wage/Reduction Bank Accounts")
         {
+            //ĐK DataItemTableView = where("Bank Code" = const('RBBH|RAIFFEISEN'));
             dataitem(DataItem1; "Payment Order")
             {
 
@@ -44,12 +45,19 @@ report 50102 "RBBH Export"
                     SETFILTER(Contributon, '%1', 'PLAĆA');
                     SETFILTER(RacunPrimaoca, '%1', DataItem2."Account No");
 
-                    File1.CREATE('\\DJEMINA-KARALIC\Temp\Spisak_RAIFFEISEN.txt');
-                    File1.CREATEOUTSTREAM(OutStreamObj);
+                    //     File1.CREATE('\\DJEMINA-KARALIC\Temp\Spisak_RAIFFEISEN.txt');
+                    //   File1.CREATEOUTSTREAM(OutStreamObj);
 
                 end;
             }
 
+            trigger OnPreDataItem()
+            var
+                myInt: Integer;
+            begin
+                SetFilter("Bank Code", '%1|%2', 'RBBH', 'RAIFFEISEN');
+
+            end;
         }
 
     }
@@ -109,15 +117,17 @@ report 50102 "RBBH Export"
         FileName: Text;
         Content_M: Text;
     begin
-        FileName := 'Spisak Raiffeisen';
+        FileName := 'Spisak Raiffeisen.txt';
         TempBlob.CreateOutStream(OutStr, TextEncoding::UTF8);
         Brojac := 0;
+
 
         PayMentOrder2.RESET;
         PayMentOrder2.CopyFilters(DataItem1);
         //PayMentOrder2.SETFILTER("Entry No.",'%1',"Entry No.");
         IF PayMentOrder2.FINDSET THEN
             REPEAT
+                FirstString := '';
                 Brojac := Brojac + 1;
                 if StrLen(format(Brojac)) = 0 then
                     FirstString += '0000';
@@ -131,22 +141,27 @@ report 50102 "RBBH Export"
                     FirstString += format(Brojac);
                 FirstString += '	';
 
-                FirstString += PayMentOrder.RacunPrimaoca;
+                FirstString += PayMentOrder2.RacunPrimaoca;
                 FirstString += '   	';
                 Employee.Reset();
-                Employee.SetFilter("No.", '%1', PayMentOrder.SvrhaDoznake3);
+                Employee.SetFilter("No.", '%1', PayMentOrder2.SvrhaDoznake3);
                 if Employee.FindFirst() then begin
                     FirstString += UpperCase(Employee."Last Name");
                     FirstString += ' ';
                     FirstString += UpperCase(Employee."First Name")
                 end;
-                FirstString += '                         	      ';
+                BrojNula := 40 - StrLen(UpperCase(Employee."Last Name") + UpperCase(Employee."First Name"));
+                if BrojNula >= 1 then begin
+                    for K := 1 to BrojNula do begin
+
+                        FirstString += ' ';
+                    end
+                end;
 
 
 
-
-                IF EVALUATE(PayMentOrder.Iznos, FORMAT(ROUND(PayMentOrder.Iznos, 1))) THEN
-                    IntegerValue := PayMentOrder.Iznos;
+                IF EVALUATE(PayMentOrder2.Iznos, FORMAT(ROUND(PayMentOrder2.Iznos, 1))) THEN
+                    IntegerValue := PayMentOrder2.Iznos;
                 BrojCifaraIznos := STRLEN(FORMAT(IntegerValue));
                 BrojNula := 4 - BrojCifaraIznos;
                 if BrojNula > 0 then begin
@@ -157,7 +172,7 @@ report 50102 "RBBH Export"
 
                 FirstString += FORMAT(IntegerValue);
                 FirstString += '.';
-                Decimal := PayMentOrder.Iznos MOD IntegerValue;
+                Decimal := PayMentOrder2.Iznos MOD IntegerValue;
                 IF STRLEN(FORMAT(Decimal)) <> 2 THEN BEGIN
                     IF STRLEN(FORMAT(Decimal)) > 2 THEN BEGIN
                         FirstString += COPYSTR(FORMAT(Decimal), 1, 2);
@@ -173,9 +188,9 @@ report 50102 "RBBH Export"
 
                 END;
 
-                OutStreamObj.WRITETEXT(FirstString);
+                OutStr.WRITETEXT(FirstString);
 
-                OutStreamObj.WRITETEXT(); // This command is to move to next line
+                OutStr.WRITETEXT(); // This command is to move to next line
 
             UNTIL PayMentOrder2.NEXT = 0;
 

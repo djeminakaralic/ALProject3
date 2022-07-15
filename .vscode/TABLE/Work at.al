@@ -10,6 +10,7 @@ table 50203 "Work at"
         {
             AutoIncrement = true;
             Caption = 'No.';
+            //Đk
         }
         field(2; "Place Of Employment"; Text[100])
         {
