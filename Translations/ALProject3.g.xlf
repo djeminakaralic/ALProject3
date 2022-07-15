@@ -22643,6 +22643,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage/Reduction Bank - Field Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1936424280 - Field 487534659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact E-mail</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage/Reduction Bank - Field Contact E-mail - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1936424280 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -27544,7 +27549,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Header Card - Action Create files1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1554128033 - Action 3440463234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contribution Posting</source>
+          <source>Export RBBH</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Wage Header Card - Action Contribution Posting - Property Caption</note>
         </trans-unit>
@@ -33157,6 +33162,11 @@
           <source>Year</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Rad-1G - Control Year - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4227190298 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>RBBH Export</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report RBBH Export - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3578353155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Read bank statement</source>
@@ -40627,6 +40637,11 @@
           <source>Employee No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension User_setup_ext - Field Employee No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2857111473 - Field 588607814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Employee No. for Wage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension User_setup_ext - Field Employee No. for Wage - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2857111473 - Field 3855790624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Final</source>
