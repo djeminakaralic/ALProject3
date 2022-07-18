@@ -152,9 +152,9 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Caption = 'Praćenje artikla';
         }
-        modify(ReorderPointParameters)
+        modify(Planning)
         {
-            Caption = 'Parametri za ponovno naručivanje';
+            Visible = false;
         }
 
 
