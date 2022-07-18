@@ -31,6 +31,10 @@ pageextension 50178 VendorCard extends "Vendor Card"
 
         addafter("VAT Registration No.")
         {
+            field("Registration No.";"Registration No.")
+            {
+                ApplicationArea = all;
+            }
             field("Tax No.";"Tax No.")
             {
                 ApplicationArea = all;
