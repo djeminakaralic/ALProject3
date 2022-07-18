@@ -121,6 +121,14 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
+        modify("Standard Cost")
+        {
+            Visible = false;
+        }
+        modify("Indirect Cost %")
+        {
+            Visible = false;
+        }
 
 
 
