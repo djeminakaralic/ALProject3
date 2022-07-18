@@ -125,6 +125,14 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
+        modify("Payment Terms Code")
+        {
+            Visible = false;
+        }
+        modify("Cash Flow Payment Terms Code")
+        {
+            Visible = false;
+        }
 
         /*movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
