@@ -133,6 +133,14 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
+        modify("Profit %")
+        {
+            Visible = false;
+        }
+        modify("Price/Profit Calculation")
+        {
+            Visible = false;
+        }
 
 
 
