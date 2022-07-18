@@ -4,26 +4,13 @@ pageextension 50179 ItemCard extends "Item Card"
 
     layout
     {
-
-        /*addafter(Name)
-        {            
-            field("Vendor Class";"Vendor Class")
+        addafter("Service Item Group")
+        {
+            field("Item Subgroup"; "Item Subgroup")
             {
                 ApplicationArea = all;
             }
-            field("Vendor Group";"Vendor Group")
-            {
-                ApplicationArea = all;
-            }
-            field("Vendor Subgroup";"Vendor Subgroup")
-            {
-                ApplicationArea = all;
-            }
-            field("Industrial Classification";"Industrial Classification")
-            {
-                ApplicationArea = all;
-            }
-        }*/
+        }
 
         modify(Blocked)
         {
@@ -165,12 +152,22 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Caption = 'Praćenje artikla';
         }
-        modify(ReorderPointParameters)
+        modify(Planning)
         {
-            Caption = 'Parametri za ponovno naručivanje';
+            Visible = false;
         }
-
-
+        modify(Replenishment_Assembly)
+        {
+            Visible = false;
+        }
+        modify(SpecialPurchPricesAndDiscountsTxt)
+        {
+            Visible = false;
+        }
+        modify(SpecialPricesAndDiscountsTxt)
+        {
+            Visible = false;
+        }
 
 
     }

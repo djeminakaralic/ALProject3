@@ -10678,6 +10678,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payroll Cue - Field Education Level Change - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2127312042 - Field 3130805794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Disability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Payroll Cue - Field Employee Disability - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2127312042 - Field 2078220752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Fund</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36423,11 +36428,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Change ItemTracking - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Change 4014377497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Parametri za ponovno naručivanje</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Change ReorderPointParameters - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2612190612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Adresa</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39872,6 +39872,11 @@
           <source>G/L Correction</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Invt_PostingBufferExtends - Field G/L Correction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3010673674 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Item Subgroup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Item Subgroup - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2140734087 - Field 68230370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1487222247">
           <source>Min. Item Profiit</source>
