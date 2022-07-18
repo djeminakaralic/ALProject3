@@ -301,6 +301,14 @@ table 50120 "Payroll Cue"
             Caption = 'Active employees without wage additions';
 
         }
+        field(50057; "Employee Disability"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count(Employee WHERE("Disabled Person" = FILTER(true),
+                                                Status = FILTER(Active)));
+            Caption = 'Employee Disability';
+
+        }
     }
 
     keys
