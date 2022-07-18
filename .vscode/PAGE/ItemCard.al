@@ -160,11 +160,11 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
-        modify(SpecialPurchPriceListTxt)
+        modify(SpecialPurchPricesAndDiscountsTxt)
         {
             Visible = false;
         }
-        modify(SpecialPurchPricesAndDiscountsTxt)
+        modify(SpecialPricesAndDiscountsTxt)
         {
             Visible = false;
         }
