@@ -9,53 +9,83 @@ enum 50210 "School"
     }
     value(1; "I stepen NK(nekvalifikovani radnik)")
     {
-        Caption = 'I stepen NK(nekvalifikovani radnik)';
+        Caption = 'I stepen  NK (nekvalificirani radnik)';
     }
 
-    value(2; "II stepen PKV(polukvalifikovan radnik)")
+    value(2; "I EQF nivo  NK (nekvalificirani radnik)")
     {
-        Caption = 'II stepen PKV(polukvalifikovan radnik)';
+        Caption = 'I EQF nivo  NK (nekvalificirani radnik)';
     }
 
-    value(3; "III stepen SSS(srednja stručna sprema)")
+    value(3; "II stepen  PKV (polukvalificirani radnik)")
     {
-        Caption = 'III stepen SSS(srednja stručna sprema)';
+        Caption = 'II stepen  PKV (polukvalificirani radnik)';
     }
-    value(4; "V stepen VKV (visokokvalifikovan radnik)")
+    value(4; "II EQF nivo  NKR (niskokvalificirani radnik)")
     {
-        Caption = 'V stepen VKV (visokokvalifikovan radnik)';
+        Caption = 'II EQF nivo  NKR (niskokvalificirani radnik)';
     }
-    value(5; "IV stepen SSS(srednja stručna sprema)")
+    value(5; "III stepen  KV (kvalificirani radnik - SSS III stepen)")
     {
-        Caption = 'IV stepen SSS(srednja stručna sprema)';
+        Caption = 'III stepen  KV (kvalificirani radnik - SSS III stepen)';
     }
-    value(6; "VI stepen VŠ tj. VŠS (viša škola tj. viša školska sprema)")
+    value(6; "III EQF nivo  KV (kvalificirani radnik - SSS III stepen)")
     {
-        Caption = 'VI stepen VŠ tj. VŠS (viša škola tj. viša školska sprema)';
+        Caption = 'III EQF nivo  KV (kvalificirani radnik - SSS III stepen)';
     }
-    value(7; "VI stepen VSS (viša stručna sprema)")
+    value(7; "IV stepen  SSS (srednja stručna sprema - SSS IV stepen)")
     {
-        Caption = 'VI stepen VSS (viša stručna sprema)';
+        Caption = 'IV stepen  SSS (srednja stručna sprema - SSS IV stepen)';
     }
-    value(8; "VII/1 stepen MR(magistar)")
+    value(8; "IV EQF nivo  SKR (opće ili specijalizirani kvalificirani radnik)")
     {
-        Caption = 'VII/1 stepen MR(magistar)';
+        Caption = 'IV EQF nivo  SKR (opće ili specijalizirani kvalificirani radnik)';
     }
-    value(9; "VII stepen BCS_MA (treći stepen visokog obrazovanja (360ECTS)")
+    value(9; "V stepen  VKV (visokokvalificiran radnik)")
     {
-        Caption = 'VII stepen BCS_MA (treći stepen visokog obrazovanja (360ECTS)';
+        Caption = 'V stepen  VKV (visokokvalificiran radnik)';
     }
-    value(10; "BCS (prvi ciklus visokog obrazovanja (180ECTS))")
+    value(10; "V EQF nivo  VKV (visokokvalificiran radnik specijaliziran za određeno zanimanje)")
     {
-        Caption = 'BCS (prvi ciklus visokog obrazovanja (180ECTS))';
+        Caption = 'V EQF nivo  VKV (visokokvalificiran radnik specijaliziran za određeno zanimanje)';
     }
-    value(11; "BCS (prvi ciklus visokog obrazovanja (240ECTS))")
+    value(11; "VI stepen  VŠS (viša stručna sprema)")
     {
-        Caption = 'BCS (prvi ciklus visokog obrazovanja (240ECTS))';
+        Caption = 'VI stepen  VŠS (viša stručna sprema)';
     }
-    value(12; "DR(treći ciklus visokog obrazovanja(480ECTS))")
+    value(12; "VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 180 ECTS)")
     {
-        Caption = 'DR(treći ciklus visokog obrazovanja(480ECTS))';
+        Caption = 'VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 180 ECTS)';
+    }
+    value(13; "VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 240 ECTS)")
+    {
+        Caption = 'VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 240 ECTS)';
+    }
+    value(14; "VII./1 stepen  VSS (visoka stručna sprema)")
+    {
+        Caption = 'VII./1 stepen  VSS (visoka stručna sprema)';
+    }
+    value(15; "VII./1 stepen  MR.spec (magistar specijalist)")
+    {
+        Caption = 'VII./1 stepen  MR.spec (magistar specijalist)';
+    }
+
+    value(16; "VII EQF nivo  MA (drugi ciklus visokog obrazovanja - 300 ECTS)")
+    {
+        Caption = 'VII EQF nivo  MA (drugi ciklus visokog obrazovanja - 300 ECTS)';
+    }
+    value(17; "VII./2 stepen  MR (magistar nauka)")
+    {
+        Caption = 'VII./2 stepen  MR (magistar nauka)';
+    }
+
+    value(18; "VIII stepen  DR (doktor nauka)")
+    {
+        Caption = 'VIII stepen  DR (doktor nauka)';
+    }
+    value(19; "VIII EQF nivo  DR.sci (treći ciklus visokog obrazovanja - 480 ECTS)")
+    {
+        Caption = 'VIII EQF nivo  DR.sci (treći ciklus visokog obrazovanja - 480 ECTS)';
     }
 
 

@@ -231,26 +231,24 @@ report 50049 "Obrazac PD3100"
                           "Education Level"::"VIII Stepen - Doktorat  ":
                               EducationLevel_pom := 'DR';
                       END;*/
-                    if "Education Level".AsInteger() = 1 then
+
+                    if "Education Level".AsInteger() in [1, 2, 3, 4] then
                         EducationLevel_pom := 'Niža';
-                    if "Education Level".AsInteger() = 2 then
+                    if "Education Level".AsInteger() in [5, 6, 7] then
                         EducationLevel_pom := 'SSS';
-                    if "Education Level".AsInteger() = 3 then
-                        EducationLevel_pom := 'KV';
-                    if "Education Level".AsInteger() = 4 then
-                        EducationLevel_pom := 'VKV';
-                    if "Education Level".AsInteger() = 5 then
-                        EducationLevel_pom := 'VŠS';
-                    if "Education Level".AsInteger() = 6 then
-                        EducationLevel_pom := 'VSS';
-                    if "Education Level".AsInteger() = 7 then
-                        EducationLevel_pom := 'MR';
                     if "Education Level".AsInteger() = 8 then
+                        EducationLevel_pom := 'KV';
+                    if "Education Level".AsInteger() in [9, 10] then
+                        EducationLevel_pom := 'VKV';
+                    if "Education Level".AsInteger() = 11 then
+                        EducationLevel_pom := 'VŠS';
+                    if "Education Level".AsInteger() in [12, 13, 14] then
+                        EducationLevel_pom := 'VSS';
+                    if "Education Level".AsInteger() in [15, 16, 17] then
+                        EducationLevel_pom := 'MR';
+                    if "Education Level".AsInteger() in [18, 19] then
                         EducationLevel_pom := 'DR';
-                    if "Education Level".AsInteger() = 9 then
-                        EducationLevel_pom := 'SSS';
-                    if "Education Level".AsInteger() = 10 then
-                        EducationLevel_pom := 'Niža';
+
                     Position.SETRANGE(Position.Code, "Position Code");
                     IF Position.FIND('-') THEN
                         PomInteger := Position."Education Level";
