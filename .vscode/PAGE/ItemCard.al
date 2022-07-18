@@ -148,7 +148,6 @@ pageextension 50179 ItemCard extends "Item Card"
 
 
 
-
     }
 
     actions
