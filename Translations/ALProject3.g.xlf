@@ -39873,6 +39873,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Invt_PostingBufferExtends - Field G/L Correction - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3010673674 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Item Subgroup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Item Subgroup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2140734087 - Field 68230370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1487222247">
           <source>Min. Item Profiit</source>
           <note from="Developer" annotates="general" priority="2"></note>
