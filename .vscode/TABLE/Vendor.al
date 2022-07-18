@@ -28,6 +28,11 @@ tableextension 50119 VendorExtented extends Vendor
         {
             Caption = 'Tax No.';
         }
+        field(50026; "Old No."; Integer)
+        {
+            Caption = 'Old No.';
+        }
+
     }
 
     var

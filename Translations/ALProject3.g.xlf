@@ -36418,10 +36418,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension HumanResourcesSetup_ext - Control Trainings setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Change 3974341208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Proizvodnja</source>
+        <trans-unit id="PageExtension 2876958691 - Change 2981724990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Praćenje artikla</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Change Replenishment_Production - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Change ItemTracking - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Change 4014377497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Parametri za ponovno naručivanje</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Change ReorderPointParameters - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2673391988 - Control 2612190612 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3897649796">
           <source>Adresa</source>
@@ -40772,6 +40777,11 @@
           <source>Industrial Classification</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Industrial Classification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2090622309 - Field 798588572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Old No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VendorExtented - Field Old No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2090622309 - Field 3430636682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Registration No.</source>

@@ -115,12 +115,61 @@ pageextension 50179 ItemCard extends "Item Card"
         }
         modify(Replenishment_Production)
         {
-            Caption = 'Proizvodnja';
+            Visible = false;
         }
         modify("Purchasing Blocked")
         {
             Visible = false;
         }
+        modify("Standard Cost")
+        {
+            Visible = false;
+        }
+        modify("Indirect Cost %")
+        {
+            Visible = false;
+        }
+        modify("Cost is Posted to G/L")
+        {
+            Visible = false;
+        }
+        modify("Profit %")
+        {
+            Visible = false;
+        }
+        modify("Price/Profit Calculation")
+        {
+            Visible = false;
+        }
+        modify("Last Counting Period Update")
+        {
+            Visible = false;
+        }
+        modify("Next Counting Start Date")
+        {
+            Visible = false;
+        }
+        modify("Next Counting End Date")
+        {
+            Visible = false;
+        }
+        modify("Identifier Code")
+        {
+            Visible = false;
+        }
+        modify("Use Cross-Docking")
+        {
+            Visible = false;
+        }
+        modify(ItemTracking)
+        {
+            Caption = 'Praćenje artikla';
+        }
+        modify(ReorderPointParameters)
+        {
+            Caption = 'Parametri za ponovno naručivanje';
+        }
+
 
 
 
