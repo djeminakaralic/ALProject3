@@ -141,10 +141,26 @@ pageextension 50179 ItemCard extends "Item Card"
         {
             Visible = false;
         }
-
-
-
-
+        modify("Last Counting Period Update")
+        {
+            Visible = false;
+        }
+        modify("Next Counting Start Date")
+        {
+            Visible = false;
+        }
+        modify("Next Counting End Date")
+        {
+            Visible = false;
+        }
+        modify("Identifier Code")
+        {
+            Visible = false;
+        }
+        modify("Use Cross-Docking")
+        {
+            Visible = false;
+        }
 
 
 
