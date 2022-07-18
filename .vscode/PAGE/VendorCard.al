@@ -19,6 +19,10 @@ pageextension 50178 VendorCard extends "Vendor Card"
             {
                 ApplicationArea = all;
             }
+            field("Old No.";"Old No.")
+            {
+                ApplicationArea = all;
+            }
             field("Industrial Classification";"Industrial Classification")
             {
                 ApplicationArea = all;
