@@ -10678,6 +10678,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Payroll Cue - Field Education Level Change - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2127312042 - Field 3130805794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee Disability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Payroll Cue - Field Employee Disability - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2127312042 - Field 2078220752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>External Fund</source>
           <note from="Developer" annotates="general" priority="2"></note>
