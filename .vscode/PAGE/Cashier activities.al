@@ -2,7 +2,7 @@ page 50110 "Cashier Activities"
 {
     Caption = 'Cashier Activities';
     PageType = CardPart;
-    SourceTable = "Payroll Cue";
+    SourceTable = "Cashier Cue";
     RefreshOnActivate = true;
 
     layout
@@ -74,8 +74,8 @@ page 50110 "Cashier Activities"
                     StyleExpr = TRUE;
                 }
             }
-           
-            
+
+
         }
     }
 
