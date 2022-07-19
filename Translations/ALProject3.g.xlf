@@ -24613,10 +24613,25 @@
           <note from="Developer" annotates="general" priority="2">{Dependency=Match,"ProfileDescription_Payroll"}</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3688002276 - Action 445643630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nalog knjiženja gotovinskih uplata</source>
+        <trans-unit id="Page 3688002276 - Action 1690647457 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Register received payments by manually applying them to the related customer, vendor, or bank ledger entries. Then, post the payments to G/L accounts and thereby close the related ledger entries.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Nalog knjiženja gotovinskih uplata - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action CashReceiptJournals - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3688002276 - Action 1690647457 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Receipt Journals</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action CashReceiptJournals - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3688002276 - Action 1693997414 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Register your sales to customers and invite them to pay according to the delivery and payment terms by sending them a sales invoice document. Posting a sales invoice registers shipment and records an open receivable entry on the customer's account, which will be closed when payment is received. To manage the shipment process, use sales orders, in which sales invoicing is integrated.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Sales Invoices - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3688002276 - Action 1693997414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Invoices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Sales Invoices - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1195895850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashiergreeting</source>
