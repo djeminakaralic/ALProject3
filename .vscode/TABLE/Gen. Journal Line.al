@@ -78,6 +78,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
                 MultipleBills := 0;
                 MultipleBillsSum:=0;
+                TotalGivenAmount:="Given amount";
                 GJLine.Reset();
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
                 GJLine.SetFilter("Posting Date", '%1', Rec."Posting Date");
@@ -86,13 +87,24 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 //MultipleBillsSum:=GJLine.CalcSums();
 
                 if MultipleBills > 1 then begin
-                    
+
                     if GJLine.FindFirst() then repeat
                         MultipleBillsSum+=abs(GJLine.Amount);
                     until GJLine.Next()=0;
 
                     if "Given amount"<MultipleBillsSum then
                         	Error(Text001);
+                    
+                    if GJLine.FindFirst() then repeat
+
+                        GJLine."Given amount":=abs(GJLine.Amount);
+                        TotalGivenAmount-=GJLine."Given amount";
+                    until GJLine.Next()=1;
+
+                    if GJLine.FindLast() then begin
+                        GJLine."Given amount":=TotalGivenAmount;
+                    end;
+
                    
                 end;
 
@@ -264,5 +276,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
         MultipleBills: Integer;
         MultipleBillsSum: Decimal;
+        TotalGivenAmount: Decimal;
 
 }
