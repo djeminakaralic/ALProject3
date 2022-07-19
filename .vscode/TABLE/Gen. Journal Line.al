@@ -86,10 +86,14 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 //MultipleBillsSum:=GJLine.CalcSums();
 
                 if MultipleBills > 1 then begin
+                    
                     if GJLine.FindFirst() then repeat
-                        MultipleBillsSum+=GJLine.Amount;
+                        MultipleBillsSum+=abs(GJLine.Amount);
                     until GJLine.Next()=0;
-                    Message(format(MultipleBillsSum));
+
+                    if "Given amount"<MultipleBillsSum then
+                        	Error(Text001);
+                   
                 end;
 
 
