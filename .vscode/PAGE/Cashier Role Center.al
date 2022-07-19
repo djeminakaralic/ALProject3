@@ -22,11 +22,9 @@ page 50107 "Cashier Role Center"
 
     actions
     {
-        area(processing)
-        {                       
-                  
-    
-            /*group("Pay Lists2")
+        /*area(processing)
+        {                   
+            group("Pay Lists2")
             {
                 Caption = 'Pay Lists';
                 Image = Statistics;
@@ -37,12 +35,8 @@ page 50107 "Cashier Role Center"
                     Image = Recalculate;
                     RunObject = Report "Pay List Final";
                 }
-                
-
-
-            }*/          
-                    
-                    }
+            }          
+        }*/
         area(reporting)
         {          
 
