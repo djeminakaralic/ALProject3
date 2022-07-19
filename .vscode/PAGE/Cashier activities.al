@@ -22,61 +22,11 @@ page 50110 "Cashier Activities"
                 {
                     ApplicationArea = all;
 
-                }
-                /*field(Calculated; Calculated)
-                {
-
-                    ApplicationArea = all;
-                }
-                field("New Employees FC"; "New Employees FC")
-                {
-                    Image = Checklist;
-                    Importance = Additional;
-                    ApplicationArea = all;
-                }
-                field("Terminated Employees"; "Terminated Employees")
-                {
-                    Image = Checklist;
-                    Importance = Additional;
-                    ApplicationArea = all;
-                }
-                field("Wage Change"; "Wage Change")
-                {
-                    ApplicationArea = all;
-                }
-                field("For Calculation Witout Meal"; "For Calculation Witout Meal")
-                {
-                    ApplicationArea = all;
-                }
-                field("Negative Payment"; "Negative Payment")
-                {
-                    ApplicationArea = all;
-                    Style = Unfavorable;
-                    StyleExpr = TRUE;
-
-                    trigger OnDrillDown()
-                    begin
-                        WageCalc.SETFILTER(Payment, '<%1', 0);
-                        PAGE.RUNMODAL(50218, WageCalc);
-                    end;
-                }
-                field(Additions; Additions)
-                {
-                    ApplicationArea = all;
-
-                }
-                field(Transfers; Transfers)
-                {
-                    ApplicationArea = all;
-                    Image = Checklist;
-                    Importance = Promoted;
-                    Style = Attention;
-                    StyleExpr = TRUE;
-                }*/
+                }                
             }
-            cuegroup(AllCu)
+            cuegroup(BankAccounts)
             {
-                Caption = 'Customers';
+                Caption = 'Bank Accounts';
                 field("Due Date Filter"; "Due Date Filter")
                 {
                     ApplicationArea = all;

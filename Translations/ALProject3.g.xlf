@@ -1113,6 +1113,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Adress Change - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 455153232 - Field 3278140039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field All Bank Accounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 455153232 - Field 2886508691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approved Incoming Documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1122,6 +1127,11 @@
           <source>Author Contracts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Author Contracts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 3857354736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Bank Accounts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 1478617252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calculated</source>
@@ -24578,15 +24588,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3329140304 - Control 884547577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customers</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control AllCu - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3329140304 - Control 2590131546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customers</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control AllCustomers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Control 4020075288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control BankAccounts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3329140304 - Control 2520932591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WorkDate</source>

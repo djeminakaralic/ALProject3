@@ -15,6 +15,18 @@ table 50128 "Cashier Cue"
             Caption = 'Customers';
 
         }
+        field(3; "All Bank Accounts"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Bank Account");
+            Caption = 'All Bank Accounts';
+        }
+        field(4; "Bank Accounts"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Bank Account" WHERE("No."= FILTER('BANK-1|BANK-2|BANK-3|BANK-4|BANK-5|BANK-6|BANK-7|BANK-8|BANK-9')));
+            Caption = 'All Bank Accounts';
+        }
 
 
 
