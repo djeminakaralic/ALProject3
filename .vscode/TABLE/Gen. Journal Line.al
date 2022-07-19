@@ -77,8 +77,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     "To return" := ABS("Given amount") - ABS(Amount);
 
                 MultipleBills := 0;
-                MultipleBillsSum:=0;
-                TotalGivenAmount:="Given amount";
+                MultipleBillsSum := 0;
+                TotalGivenAmount := "Given amount";
                 GJLine.Reset();
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
                 GJLine.SetFilter("Posting Date", '%1', Rec."Posting Date");
@@ -88,28 +88,29 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
                 if MultipleBills > 1 then begin
 
-                    if GJLine.FindFirst() then repeat
-                        MultipleBillsSum+=abs(GJLine.Amount);
-                    until GJLine.Next()=0;
+                    if GJLine.FindFirst() then
+                        repeat
+                            MultipleBillsSum += abs(GJLine.Amount);
+                        until GJLine.Next() = 0;
 
-                    if "Given amount"<MultipleBillsSum then
-                        	Error(Text001);
-                    
-                    if GJLine.FindFirst() then repeat
-                        Counter+=1;
-                        if Counter<>MultipleBills then begin 
-                        GJLine."Given amount":=abs(GJLine.Amount);
-                        TotalGivenAmount-=GJLine."Given amount";
-                        end
-                        else begin
-                            GJLine."Given amount":=TotalGivenAmount;
-                        end;
-                    until GJLine.Next()=0;
+                    if "Given amount" < MultipleBillsSum then
+                        Error(Text001);
 
-                    if GJLine.FindLast() then begin
-                        GJLine."Given amount":=TotalGivenAmount;
-                    end;
-                   
+                    if GJLine.FindFirst() then
+                        repeat
+                            Counter += 1;
+                            if Counter <> MultipleBills then begin
+                                GJLine."Given amount" := abs(GJLine.Amount);
+                                GJLine.Modify();
+                                TotalGivenAmount -= GJLine."Given amount";
+                            end
+                            else begin
+                                GJLine."Given amount" := TotalGivenAmount;
+                            end;
+                        until GJLine.Next() = 0;
+
+
+
                 end;
 
             end;
