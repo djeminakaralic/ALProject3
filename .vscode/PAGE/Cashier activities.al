@@ -74,6 +74,15 @@ page 50110 "Cashier Activities"
                     StyleExpr = TRUE;
                 }*/
             }
+            cuegroup(AllCu)
+            {
+                Caption = 'Customers';
+                field("Due Date Filter"; "Due Date Filter")
+                {
+                    ApplicationArea = all;
+
+                }
+            }
 
 
         }
