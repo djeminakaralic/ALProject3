@@ -76,13 +76,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 if (Amount <> 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
 
-                MultipleBills:=0;
+                MultipleBills := 0;
                 GJLine.Reset();
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
                 MultipleBills := GJLine.Count();
-                if MultipleBills>1 then begin
-                    //
-                    Message('Pronasao');
+                //MultipleBillsSum:=GJLine.CalcSums();
+
+                if MultipleBills > 1 then begin
+                    Message(Format(MultipleBills));
+                    //Message(Format(MultipleBillsSum));
                 end;
 
 
