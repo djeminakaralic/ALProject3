@@ -46,11 +46,7 @@ page 50107 "Cashier Role Center"
                 Caption = 'Nalog knjiženja gotovinskih uplata';
                 Image = Report;
                 RunObject = Page "Cash Receipt Journal";
-                //Cash Receipt Journal (255, Worksheet)
-            }
-           
-           
-            
+            }                    
         }
     }
 }
