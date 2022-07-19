@@ -104,18 +104,9 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     if GJLine.FindLast() then begin
                         GJLine."Given amount":=TotalGivenAmount;
                     end;
-
                    
                 end;
 
-
-
-                /*IF Rec."Given amount">=sum
-
-                if GJLine.fin
-                if GJLine.FindFirst() then repeat
-                    GJLine."Given amount":=GJLine.Amount;
-                until GJLine.*/
             end;
 
         }
