@@ -8,18 +8,16 @@ table 50128 "Cashier Cue"
         {
             Caption = 'Primary Key';
         }
-
-
-
-
-
-        field(11; "Customers - Blocked"; Integer)
+        field(2; "Customers"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count(Customer WHERE(Blocked = FILTER(<> ' ')));
-            Caption = 'Customers - Blocked';
+            CalcFormula = Count(Customer);
+            Caption = 'Customers';
 
         }
+
+
+
         field(20; "Due Date Filter"; Date)
         {
             Caption = 'Due Date Filter';

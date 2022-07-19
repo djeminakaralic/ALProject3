@@ -15,15 +15,15 @@ page 50110 "Cashier Activities"
                 Caption = 'WorkDate';
                 ApplicationArea = all;
             }
-            cuegroup(Information)
+            cuegroup(AllCustomers)
             {
-                Caption = 'Information';
-                field("For Calculation"; "For Calculation")
+                Caption = 'Customers';
+                field(Customers; Customers)
                 {
                     ApplicationArea = all;
 
                 }
-                field(Calculated; Calculated)
+                /*field(Calculated; Calculated)
                 {
 
                     ApplicationArea = all;
@@ -72,7 +72,7 @@ page 50110 "Cashier Activities"
                     Importance = Promoted;
                     Style = Attention;
                     StyleExpr = TRUE;
-                }
+                }*/
             }
 
 

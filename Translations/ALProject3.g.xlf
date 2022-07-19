@@ -1133,10 +1133,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Closed calculations - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 455153232 - Field 742361678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customers - Blocked</source>
+        <trans-unit id="Table 455153232 - Field 3606140129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customers</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Customers - Blocked - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Customers - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 3090641755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DateFilter5</source>
@@ -24578,10 +24578,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3329140304 - Control 419426744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Information</source>
+        <trans-unit id="Page 3329140304 - Control 2590131546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customers</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control Information - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control AllCustomers - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3329140304 - Control 2520932591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WorkDate</source>
