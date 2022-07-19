@@ -24358,6 +24358,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cantons - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3329140304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashier Activities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Control 419426744 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control Information - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Control 2520932591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WorkDate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control WORKDATE - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3688002276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashier</source>
           <note from="Developer" annotates="general" priority="2">{Dependency=Match,"ProfileDescription_Payroll"}</note>
