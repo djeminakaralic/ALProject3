@@ -37,7 +37,7 @@ page 50107 "Cashier Role Center"
                 }
             }          
         }*/
-        /*area(reporting)
+        area(reporting)
         {          
 
             action("Sales Invoices")
@@ -54,7 +54,7 @@ page 50107 "Cashier Role Center"
                 Image = CashReceiptJournal;
                 RunObject = Page "Cash Receipt Journal";
             }              
-        }*/
+        }
     }
 }
 
