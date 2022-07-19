@@ -83,33 +83,38 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
                 GJLine.SetFilter("Posting Date", '%1', Rec."Posting Date");
                 GJLine.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
-                MultipleBills := GJLine.Count();
-                //MultipleBillsSum:=GJLine.CalcSums();
+                MultipleBills := GJLine.Count(); //provjeravam koliko racuna je uneseno za istog kupca
 
-                if MultipleBills > 1 then begin
+                if MultipleBills > 1 then begin //ako je pronadjeno vise od 1 racuna za kupca
 
                     if GJLine.FindFirst() then
                         repeat
-                            MultipleBillsSum += abs(GJLine.Amount);
+                            MultipleBillsSum += abs(GJLine.Amount); //ukupni iznos za sve racune
                         until GJLine.Next() = 0;
 
-                    if "Given amount" < MultipleBillsSum then
+                    if "Given amount" < MultipleBillsSum then //provjera da li dati iznos pokriva sve racune
                         Error(Text001);
 
-                    if GJLine.FindFirst() then
-                        repeat
-                            Counter += 1;
-                            if Counter <> MultipleBills then begin
-                                GJLine."Given amount" := abs(GJLine.Amount);
-                                GJLine.Modify();
-                                TotalGivenAmount -= GJLine."Given amount";
-                            end
-                            else begin
-                                GJLine."Given amount" := TotalGivenAmount;
-                            end;
-                        until GJLine.Next() = 0;
+                    if GJLine.FindFirst() then //mijenjam prvi record u tabeli
+                        Rec."Given amount" := abs(Rec.Amount);
+                    Rec."To return" := 0;
 
-
+                    repeat
+                        Counter += 1;
+                        if Counter <> MultipleBills then begin
+                            //za racune prije posljednjeg je dati iznos jednak iznosu racuna, zbog toga nema kusura
+                            GJLine."Given amount" := abs(GJLine.Amount);
+                            GJLine."To return" := 0;
+                            GJLine.Modify();
+                            TotalGivenAmount -= GJLine."Given amount";
+                        end
+                        else begin //za posljednji racun trebam uzeti preostali iznos i izracunati kusur
+                            GJLine."Given amount" := TotalGivenAmount;
+                            GJLine."To return" := GJLine."Given amount" - abs(GJLine.Amount);
+                            GJLine.Modify();
+                            Message('Vrati kusur: ' + Format(GJLine."To return") + ' KM.');
+                        end;
+                    until GJLine.Next() = 0;
 
                 end;
 
