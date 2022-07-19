@@ -17,7 +17,6 @@ page 50107 "Cashier Role Center"
             {
                 ApplicationArea = all;
             }
-
         }
     }
 
