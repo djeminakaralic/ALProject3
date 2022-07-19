@@ -78,7 +78,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
                 GJLine.Reset();
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
-                if GJLine.FindFirst() then begin
+                if GJLine.FindSet() then begin
                     //MultipleBills := GJLine.Count();
                     Message('Pronasao');
                 end;
