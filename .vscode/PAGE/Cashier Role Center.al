@@ -7,7 +7,7 @@ page 50107 "Cashier Role Center"
     {
         area(rolecenter)
         {
-            part(Control139; "Payrollgreeting")
+            part(Control139; "Cashiergreeting")
             {
                 ApplicationArea = all;
                 Visible = true;

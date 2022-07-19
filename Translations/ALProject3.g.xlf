@@ -24598,6 +24598,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Nalog knjiženja gotovinskih uplata - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1195895850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashiergreeting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 3631563187" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;qualifier&gt;Naslov&lt;/qualifier&gt;&lt;payload&gt;Zdravo!&lt;/payload&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl1Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 3037051958" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;qualifier&gt;Naslov&lt;/qualifier&gt;&lt;payload&gt;Dobrodošli u centar uloga&lt;/payload&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl2Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 510323637" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;qualifier&gt;Naslov&lt;/qualifier&gt;&lt;payload&gt;Za pomoć pri korištenju obratite nam se putem c2s2 portala.&lt;/payload&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl3Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 40544816" size-unit="char" translate="yes" xml:space="preserve">
+          <source>za upravljanje blagajnom.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl4Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 1818985455" size-unit="char" translate="yes" xml:space="preserve">
+          <source>za upravljanje ljudskim resursima.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl5Txt</note>
+        </trans-unit>
         <trans-unit id="Page 2754865339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Disciplinary Measure List</source>
           <note from="Developer" annotates="general" priority="2"></note>
