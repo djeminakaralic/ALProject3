@@ -75,6 +75,22 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Error(Text001);
                 if (Amount <> 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
+
+                GJLine.Reset();
+                GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
+                if GJLine.FindFirst() then begin
+                    MultipleBills := GJLine.Count();
+
+                end;
+
+
+
+                /*IF Rec."Given amount">=sum
+
+                if GJLine.fin
+                if GJLine.FindFirst() then repeat
+                    GJLine."Given amount":=GJLine.Amount;
+                until GJLine.*/
             end;
 
         }
@@ -233,4 +249,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         ApoeniTable: Record Apoeni;
         Text001: Label 'Given amount cannot be less than amount.';
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
+        MultipleBills: Integer;
+        MultipleBillsSum: Decimal;
+
 }
