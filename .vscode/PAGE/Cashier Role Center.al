@@ -615,12 +615,13 @@ page 50107 "Cashier Role Center"
                 Image = HumanResources;
             }
 
-            action("ORG Dijelovi")
+            action("Nalog knjiženja gotovinskih uplata")
             {
                 ApplicationArea = all;
-                Caption = 'ORG Part';
+                Caption = 'Nalog knjiženja gotovinskih uplata';
                 Image = Dimensions;
-                RunObject = Page "ORG Dijelovi";
+                RunObject = Page "Cash Receipt Journal";
+                //Cash Receipt Journal (255, Worksheet)
             }
 
 

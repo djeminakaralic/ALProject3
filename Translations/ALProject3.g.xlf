@@ -24803,10 +24803,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Temporary Work Form PDN-1033 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3688002276 - Action 3155725168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ORG Part</source>
+        <trans-unit id="Page 3688002276 - Action 445643630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nalog knjiženja gotovinskih uplata</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action ORG Dijelovi - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Nalog knjiženja gotovinskih uplata - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3688002276 - Action 1922041124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Org. structure and positions</source>
