@@ -35,6 +35,10 @@ page 50110 "Cashier Activities"
                 {
                     ApplicationArea = all;
                 }
+                field(CZK; CZK)
+                {
+                    ApplicationArea = all;
+                }
             }
 
 
