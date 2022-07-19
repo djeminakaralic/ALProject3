@@ -96,10 +96,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                         	Error(Text001);
                     
                     if GJLine.FindFirst() then repeat
-
+                        Counter+=1;
+                        if Counter<>MultipleBills then begin 
                         GJLine."Given amount":=abs(GJLine.Amount);
                         TotalGivenAmount-=GJLine."Given amount";
-                    until GJLine.Next()=1;
+                        end
+                        else begin
+                            GJLine."Given amount":=TotalGivenAmount;
+                        end;
+                    until GJLine.Next()=0;
 
                     if GJLine.FindLast() then begin
                         GJLine."Given amount":=TotalGivenAmount;
@@ -266,6 +271,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         Text001: Label 'Given amount cannot be less than amount.';
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
         MultipleBills: Integer;
+        Counter: Integer;
         MultipleBillsSum: Decimal;
         TotalGivenAmount: Decimal;
 
