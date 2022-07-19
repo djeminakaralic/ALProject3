@@ -47,14 +47,12 @@ page 50107 "Cashier Role Center"
                 Image = Invoice;
                 RunObject = Page "Sales Invoice List";
             }  
-             action(CashReceiptJournals)
+             action(CashReceiptJournal)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Cash Receipt Journals';
-                Image = Journals;
-                RunObject = Page "General Journal Batches";
-                RunPageView = WHERE("Template Type" = CONST("Cash Receipts"),
-                                    Recurring = CONST(false));
+                Caption = 'Cash Receipt Journal';
+                Image = CashReceiptJournal;
+                RunObject = Page "Cash Receipt Journal";
             }              
         }
     }
