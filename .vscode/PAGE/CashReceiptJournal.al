@@ -27,7 +27,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Amount (LCY)")
         {
-            field(Apoeni; Apoeni)
+            /*field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
 
@@ -36,7 +36,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     CurrPage.Update();
                     Rec."Given amount" := Rec.Apoeni;
                 end;
-            }
+            }*/
             field("Given amount"; "Given amount")
             {
                 ApplicationArea = all;
