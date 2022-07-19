@@ -13,7 +13,7 @@ page 50107 "Cashier Role Center"
                 Visible = true;
 
             }
-            part("Payroll Activities"; "Payroll Activities")
+            part("Cashier Activities"; "Cashier Activities")
             {
                 ApplicationArea = all;
             }
