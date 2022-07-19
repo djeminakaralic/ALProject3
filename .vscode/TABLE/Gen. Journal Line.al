@@ -77,17 +77,19 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     "To return" := ABS("Given amount") - ABS(Amount);
 
                 MultipleBills := 0;
+                MultipleBillsSum:=0;
                 GJLine.Reset();
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
                 GJLine.SetFilter("Posting Date", '%1', Rec."Posting Date");
                 GJLine.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
-                GJLine.SetFilter("Applies-to Doc. No.", '<>%1', '');
                 MultipleBills := GJLine.Count();
                 //MultipleBillsSum:=GJLine.CalcSums();
 
                 if MultipleBills > 1 then begin
-                    Message(Format(MultipleBills));
-                    //Message(Format(MultipleBillsSum));
+                    if GJLine.FindFirst() then repeat
+                        MultipleBillsSum+=GJLine.Amount;
+                    until GJLine.Next()=0;
+                    Message(format(MultipleBillsSum));
                 end;
 
 
