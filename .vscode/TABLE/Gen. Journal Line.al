@@ -81,6 +81,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
                 GJLine.SetFilter("Posting Date", '%1', Rec."Posting Date");
                 GJLine.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                GJLine.SetFilter("Applies-to Doc. No.", '<>%1', '');
                 MultipleBills := GJLine.Count();
                 //MultipleBillsSum:=GJLine.CalcSums();
 
