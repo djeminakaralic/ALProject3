@@ -22,15 +22,18 @@ page 50110 "Cashier Activities"
                 {
                     ApplicationArea = all;
 
-                }                
+                }
             }
             cuegroup(BankAccounts)
             {
                 Caption = 'Bank Accounts';
-                field("Due Date Filter"; "Due Date Filter")
+                field("All Bank Accounts"; "All Bank Accounts")
                 {
                     ApplicationArea = all;
-
+                }
+                field("Bank Accounts"; "Bank Accounts")
+                {
+                    ApplicationArea = all;
                 }
             }
 
