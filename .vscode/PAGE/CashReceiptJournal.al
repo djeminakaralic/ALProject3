@@ -54,6 +54,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Editable = false;
         }
+        modify("Debit Amount")
+        {
+            Editable = false;
+        }
+        modify("Credit Amount")
+        {
+            Editable = false;
+        }
     }
 
     actions
