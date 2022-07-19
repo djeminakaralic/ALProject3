@@ -1129,7 +1129,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Author Contracts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 3857354736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All Bank Accounts</source>
+          <source>Bank Accounts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Bank Accounts - Property Caption</note>
         </trans-unit>
@@ -1147,6 +1147,11 @@
           <source>Customers</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Customers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 2081914014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Centri za kupce</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field CZK - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 3090641755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DateFilter5</source>

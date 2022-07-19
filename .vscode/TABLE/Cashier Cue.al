@@ -25,7 +25,13 @@ table 50128 "Cashier Cue"
         {
             FieldClass = FlowField;
             CalcFormula = Count("Bank Account" WHERE("No."= FILTER('BANK-1|BANK-2|BANK-3|BANK-4|BANK-5|BANK-6|BANK-7|BANK-8|BANK-9')));
-            Caption = 'All Bank Accounts';
+            Caption = 'Bank Accounts';
+        }
+        field(5; "CZK"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Bank Account" WHERE("No."= FILTER('BANK-10|BANK-11|BANK-12|BANK-13|BANK-14|BANK-15|BANK-16|BANK-17|BANK-18')));
+            Caption = 'Centri za kupce';
         }
 
 
