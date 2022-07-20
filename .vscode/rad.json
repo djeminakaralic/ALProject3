@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Id":50114,"Kind":17,"Name":"Gen_JournalLineExtends","PackagePath":"/src/.vscode/TABLE/Gen.%20Journal%20Line.al"}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":51067,"Kind":12,"Name":"Apoeni Page","PackagePath":"/src/.vscode/PAGE/Apoeni%20Page.al"},{"Id":50127,"Kind":16,"Name":"BankAccountCard","PackagePath":"/src/.vscode/PAGE/BankAccountCard.al"}],"Removed":[{"Id":0,"Kind":13,"Name":"Zapisnik o primopredaji","PackagePath":"/src/.vscode/PAGE/Apoeni%20Page.al"}]}

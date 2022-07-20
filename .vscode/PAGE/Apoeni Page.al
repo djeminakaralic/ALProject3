@@ -31,12 +31,12 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field("Bal. Account No.";"Bal. Account No.")
+                field("Bal. Account No."; "Bal. Account No.")
                 {
                     ApplicationArea = all;
                 }
-                field("Posting Date";"Posting Date")
-                                {
+                field("Posting Date"; "Posting Date")
+                {
                     ApplicationArea = all;
                 }
 
@@ -44,7 +44,32 @@ page 51067 "Apoeni Page"
 
             }
         }
+
+
     }
+
+    actions
+    {
+
+        area(navigation)
+        {
+
+            action("Zapisnik o primopredaji UniCredit")
+            {
+                Caption = 'Zapisnik o primopredaji UniCredit';
+                Image = Journal;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = Report "Zapisnik o primopredaji";
+            }
+        }
+
+    }
+
+
+
+
 
 }
 
