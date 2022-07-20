@@ -53,7 +53,6 @@ page 51067 "Apoeni Page"
 
         area(navigation)
         {
-
             action("Zapisnik o primopredaji UniCredit")
             {
                 Caption = 'Zapisnik o primopredaji UniCredit';
@@ -64,12 +63,6 @@ page 51067 "Apoeni Page"
                 RunObject = Report "Zapisnik o primopredaji";
             }
         }
-
     }
-
-
-
-
-
 }
 
