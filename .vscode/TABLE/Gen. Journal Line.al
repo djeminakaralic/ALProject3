@@ -243,15 +243,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     "To return" := ABS("Given amount") - ABS(Amount);
             end;
         }
-
-        modify("Journal Template Name")
-        {
-            trigger OnBeforeValidate()
-            begin
-                if "Journal Template Name"='CZK1 UPL' then "Cash Register":='CZK1';
-            end;
-        }
-
+        
         modify("Account No.")
         {
             trigger OnAfterValidate()
