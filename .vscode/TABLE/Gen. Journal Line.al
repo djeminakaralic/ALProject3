@@ -246,7 +246,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
         modify("Journal Template Name")
         {
-            trigger OnAfterValidate()
+            trigger OnBeforeValidate()
             begin
                 if "Journal Template Name"='CZK1 UPL' then "Cash Register":='CZK1';
             end;
