@@ -153,6 +153,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Editable = false;
         }
+        modify("Amount (LCY)")
+                {
+            Editable = false;
+        }
     }
 
     actions
