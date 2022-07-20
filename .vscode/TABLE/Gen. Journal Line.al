@@ -108,7 +108,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                             GJLine.Modify();
                             TotalGivenAmount -= GJLine."Given amount";
                         end
-                        else begin //za posljednji racun trebam uzeti preostali iznos i izracunati kusur
+                        else begin //za posljednji racun trebam u given amount staviti preostali iznos i izracunati kusur
                             GJLine."Given amount" := TotalGivenAmount;
                             GJLine."To return" := GJLine."Given amount" - abs(GJLine.Amount);
                             GJLine.Modify();
