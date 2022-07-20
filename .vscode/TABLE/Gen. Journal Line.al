@@ -81,8 +81,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             begin
                 if ABS("Given amount") < ABS(Amount) then
                     Error(Text001);
-                if (Amount <> 0) then
+                if (Amount <> 0) then begin
                     "To return" := ABS("Given amount") - ABS(Amount);
+                    Message('Vrati kusur: ' + Format("To return") + ' KM.');
+                end;
 
                 MultipleBills := 0;
                 MultipleBillsSum := 0;
@@ -117,7 +119,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                             TotalGivenAmount -= GJLine."Given amount";
                         end
                         else begin //za posljednji racun trebam u given amount staviti preostali iznos i izracunati kusur
-                            GJLine."Given amount" := TotalGivenAmount;
+                            GJLine."Given amount" := TotalGivenAmount;                            
                             GJLine."To return" := GJLine."Given amount" - abs(GJLine.Amount);
                             GJLine.Modify();
                             Message('Vrati kusur: ' + Format(GJLine."To return") + ' KM.');
