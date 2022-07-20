@@ -65,17 +65,13 @@ table 51067 "Apoeni"
         {
             Caption = 'Amount';
         }
-        field(5; "Account No."; Code[20])
-        {
-            Caption = 'Account No.';
-        }
         field(6; "Bal. Account No."; Code[20])
         {
             Caption = 'Bal. Account No.';
         }
-        field(7; "Payment Date"; Date)
+        field(7; "Posting Date"; Date)
         {
-            Caption = 'Payment Date';
+            Caption = 'Posting Date';
         }
 
 
@@ -83,7 +79,7 @@ table 51067 "Apoeni"
 
     keys
     {
-        key(Key1; "Bal. Account No.", "Payment Date", Apoeni)
+        key(Key1; "Bal. Account No.", "Posting Date", Apoeni)
         {
         }
     }

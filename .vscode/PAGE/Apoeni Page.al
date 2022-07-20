@@ -35,10 +35,11 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field("Account No."; "Account No.")
-                {
+                field("Posting Date";"Posting Date")
+                                {
                     ApplicationArea = all;
                 }
+
 
 
             }

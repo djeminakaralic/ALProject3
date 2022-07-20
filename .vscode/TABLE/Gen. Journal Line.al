@@ -226,7 +226,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
 
             FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount where("Payment Date" = field("Posting Date"),
+            CalcFormula = sum(Apoeni.Amount where("Posting Date" = field("Posting Date"),
                                                 "Bal. Account No." = field("Bal. Account No.")
                                                 ));
 

@@ -173,11 +173,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 684500104 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Account No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Account No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 684500104 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -198,10 +193,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Entry No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 684500104 - Field 3724343034 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Payment Date</source>
+        <trans-unit id="Table 684500104 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Payment Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 684500104 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
