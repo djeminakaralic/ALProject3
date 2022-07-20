@@ -5,23 +5,18 @@ page 50148 "Apoeni FactBox"
     Editable = false;
     LinksAllowed = false;
     UsageCategory = Administration;
-    SourceTable = Apoeni;
+    SourceTable = "Gen. Journal Line";
 
     layout
     {
         area(Content)
         {
-            field(PostingGroup; GJLine.Apoeni)
+            field(ApoeniTotal; GJLine.Apoeni)
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Posting Group';
+                Caption = 'Apoeni Total';
                 Editable = false;
 
-
-                trigger OnDrillDown()
-                begin
-
-                end;
             }
 
 

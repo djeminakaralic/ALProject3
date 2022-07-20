@@ -24533,10 +24533,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3027261219 - Control 2827614361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posting Group</source>
+        <trans-unit id="Page 3027261219 - Control 3809893042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni Total</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Control PostingGroup - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Control ApoeniTotal - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2267677425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Apoeni</source>
