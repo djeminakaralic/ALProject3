@@ -76,10 +76,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                                                             "Cash Register" := BankAccounts.Name;
                                                         Page.Run(Page::"Bank Account Card", BankAccounts);
                                                     end;
-
-                    //if GeneralPostingSetup.Get("Gen. Bus. Posting Group", "Gen. Prod. Posting Group") then
-                    //Page.Run(Page::"Bank Account Card", BankAccounts)
-
+                    
                 end;
             }
         }
