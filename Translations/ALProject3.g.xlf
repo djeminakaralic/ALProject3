@@ -24618,11 +24618,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action CashReceiptJournal - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3688002276 - Action 1693997414 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sales Invoices</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action Sales Invoices - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1195895850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashiergreeting</source>
           <note from="Developer" annotates="general" priority="2"></note>

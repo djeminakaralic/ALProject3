@@ -15,15 +15,7 @@ page 50110 "Cashier Activities"
                 Caption = 'WorkDate';
                 ApplicationArea = all;
             }
-            cuegroup(AllCustomers)
-            {
-                Caption = 'Customers';
-                field(Customers; Customers)
-                {
-                    ApplicationArea = all;
-
-                }
-            }
+           
             cuegroup(BankAccounts)
             {
                 Caption = 'Bank Accounts';
@@ -41,6 +33,15 @@ page 50110 "Cashier Activities"
                 }
             }
 
+             cuegroup(AllCustomers)
+            {
+                Caption = 'Customers';
+                field(Customers; Customers)
+                {
+                    ApplicationArea = all;
+
+                }
+            }
 
         }
     }

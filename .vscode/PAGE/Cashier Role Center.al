@@ -40,13 +40,7 @@ page 50107 "Cashier Role Center"
         area(reporting)
         {          
 
-            action("Sales Invoices")
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Sales Invoices';
-                Image = Invoice;
-                RunObject = Page "Sales Invoice List";
-            }  
+             
              action(CashReceiptJournal)
             {
                 ApplicationArea = Basic, Suite;
