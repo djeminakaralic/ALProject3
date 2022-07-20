@@ -18,8 +18,6 @@ page 50148 "Apoeni FactBox"
                 Editable = false;
 
             }
-
-
         }
     }
 
