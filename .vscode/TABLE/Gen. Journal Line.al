@@ -5,6 +5,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     fields
     {
         //    VAT Base (retro.)
+
+
         field(50000; "VAT Date"; Date)
         {
 
@@ -223,7 +225,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50047; "Cash Register"; Text[100])
         {
-            
+
         }
 
         modify(Amount)
