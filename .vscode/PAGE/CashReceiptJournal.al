@@ -4,6 +4,20 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
+        addafter(CurrentJnlBatchName)
+        {
+            field(Apoeni; Apoeni)
+            {
+                ApplicationArea = all;
+
+                trigger OnLookup(var Text: Text): Boolean
+                begin
+                    CurrPage.Update();
+                    Rec."Given amount" := Rec.Apoeni;
+                end;
+            }
+        }
+
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
