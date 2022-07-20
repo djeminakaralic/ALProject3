@@ -208,17 +208,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                                     else
                                         if "Journal Batch Name" = 'CZK9 UPL' then Validate(rec."Bal. Account No.", 'BANK-18');
 
-        BankAccount.Get(Rec."Bal. Account No.");
-        "Cash Register":=BankAccount.Name;
-
+        /*BankAccount.Get(Rec."Bal. Account No.");
+        "Cash Register":=BankAccount.Name;*/
 
         "Payment DT" := System.CurrentDateTime;
         Description := '';
-    end;
-
-    trigger OnOpenPage()
-    begin
-        Message(rec."Journal Template Name");
     end;
 
     var
