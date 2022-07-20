@@ -9,7 +9,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Cash Register"; "Cash Register")
             {
                 ApplicationArea = Basic, Suite;
-                Caption = 'Cash Register';
+                Caption = 'Blagajna';
                 Editable = false;
 
                 trigger OnDrillDown()
