@@ -221,6 +221,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             Caption = 'Apoeni';
         }
+        field(50047; "Cash Register"; Text[100])
+        {
+            
+        }
 
         modify(Amount)
         {

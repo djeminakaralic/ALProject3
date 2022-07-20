@@ -6,7 +6,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         addafter(CurrentJnlBatchName)
         {
-            field(Apoeni; Apoeni)
+            field("Cash Register";"Cash Register")
             {
                 ApplicationArea = all;
 
