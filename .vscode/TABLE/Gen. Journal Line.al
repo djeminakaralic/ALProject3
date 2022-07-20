@@ -5,13 +5,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     fields
     {
         //    VAT Base (retro.)
-        modify("Journal Batch Name")
-        {
-            trigger OnAfterValidate()
-            begin
-                Message('Test');
-            end;
-        }
 
         field(50000; "VAT Date"; Date)
         {

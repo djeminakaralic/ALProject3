@@ -11,82 +11,71 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = Basic, Suite;
                 Caption = 'Cash Register';
                 Editable = false;
-                //Enabled = GenPostingSetupEnabled;
-                ToolTip = 'Specifies the account name that the entry on the journal line will be posted to.';
 
                 trigger OnDrillDown()
                 var
                     BankAccounts: Record "Bank Account";
                 begin
                     if "Journal Batch Name" = 'CZK1 UPL' then begin
-                        BankAccounts.SetFilter("No.", '%1', 'BANK-01');
-                        if BankAccounts.FindFirst() then
-                            "Cash Register" := BankAccounts.Name;
+                        BankAccounts.SetFilter("No.", '%1', 'BANK-10');
+                        /*if BankAccounts.FindFirst() then
+                            "Cash Register" := BankAccounts.Name;*/
                         Page.Run(Page::"Bank Account Card", BankAccounts);
                     end
                     else
                         if "Journal Batch Name" = 'CZK2 UPL' then begin
-                            BankAccounts.SetFilter("No.", '%1', 'BANK-02');
-                            if BankAccounts.FindFirst() then
-                                "Cash Register" := BankAccounts.Name;
+                            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
                             Page.Run(Page::"Bank Account Card", BankAccounts);
                         end
                         else
                             if "Journal Batch Name" = 'CZK3 UPL' then begin
-                                BankAccounts.SetFilter("No.", '%1', 'BANK-03');
+                                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
                                 if BankAccounts.FindFirst() then
                                     "Cash Register" := BankAccounts.Name;
                                 Page.Run(Page::"Bank Account Card", BankAccounts);
                             end
                             else
                                 if "Journal Batch Name" = 'CZK4 UPL' then begin
-                                    BankAccounts.SetFilter("No.", '%1', 'BANK-04');
+                                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
                                     if BankAccounts.FindFirst() then
                                         "Cash Register" := BankAccounts.Name;
                                     Page.Run(Page::"Bank Account Card", BankAccounts);
                                 end
                                 else
-                                    if "Journal Batch Name" = 'CZK4 UPL' then begin
-                                        BankAccounts.SetFilter("No.", '%1', 'BANK-04');
+                                    if "Journal Batch Name" = 'CZK5 UPL' then begin
+                                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
                                         if BankAccounts.FindFirst() then
                                             "Cash Register" := BankAccounts.Name;
                                         Page.Run(Page::"Bank Account Card", BankAccounts);
                                     end
                                     else
-                                        if "Journal Batch Name" = 'CZK5 UPL' then begin
-                                            BankAccounts.SetFilter("No.", '%1', 'BANK-05');
+                                        if "Journal Batch Name" = 'CZK6 UPL' then begin
+                                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
                                             if BankAccounts.FindFirst() then
                                                 "Cash Register" := BankAccounts.Name;
                                             Page.Run(Page::"Bank Account Card", BankAccounts);
                                         end
                                         else
-                                            if "Journal Batch Name" = 'CZK5 UPL' then begin
-                                                BankAccounts.SetFilter("No.", '%1', 'BANK-06');
+                                            if "Journal Batch Name" = 'CZK7 UPL' then begin
+                                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
                                                 if BankAccounts.FindFirst() then
                                                     "Cash Register" := BankAccounts.Name;
                                                 Page.Run(Page::"Bank Account Card", BankAccounts);
                                             end
                                             else
-                                                if "Journal Batch Name" = 'CZK7 UPL' then begin
-                                                    BankAccounts.SetFilter("No.", '%1', 'BANK-07');
+                                                if "Journal Batch Name" = 'CZK8 UPL' then begin
+                                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
                                                     if BankAccounts.FindFirst() then
                                                         "Cash Register" := BankAccounts.Name;
                                                     Page.Run(Page::"Bank Account Card", BankAccounts);
                                                 end
                                                 else
-                                                    if "Journal Batch Name" = 'CZK8 UPL' then begin
-                                                        BankAccounts.SetFilter("No.", '%1', 'BANK-08');
+                                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
+                                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
                                                         if BankAccounts.FindFirst() then
                                                             "Cash Register" := BankAccounts.Name;
                                                         Page.Run(Page::"Bank Account Card", BankAccounts);
-                                                    end
-                                                    else
-                                                        if "Journal Batch Name" = 'CZK9 UPL' then begin
-                                                            BankAccounts.SetFilter("No.", '%1', 'BANK-09');
-                                                            if BankAccounts.FindFirst() then
-                                                                "Cash Register" := BankAccounts.Name;
-                                                            Page.Run(Page::"Bank Account Card", BankAccounts);
-                                                        end;
+                                                    end;
 
                     //if GeneralPostingSetup.Get("Gen. Bus. Posting Group", "Gen. Prod. Posting Group") then
                     //Page.Run(Page::"Bank Account Card", BankAccounts)

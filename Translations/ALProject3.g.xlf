@@ -35633,11 +35633,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payment Slip - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4113372704 - Control 1339191004 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
-          <source>Specifies the account name that the entry on the journal line will be posted to.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Control Cash Register - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 4113372704 - Control 1339191004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Cash Register</source>
           <note from="Developer" annotates="general" priority="2"></note>
