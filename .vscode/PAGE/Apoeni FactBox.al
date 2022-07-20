@@ -11,13 +11,12 @@ page 50148 "Apoeni FactBox"
     {
         area(Content)
         {
-            field(PostingGroup; Apoeni)
+            field(PostingGroup; GJLine.Apoeni)
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Posting Group';
                 Editable = false;
 
-                ToolTip = 'Specifies the account posting group that the entry on the journal line will be posted to.';
 
                 trigger OnDrillDown()
                 begin
@@ -35,6 +34,7 @@ page 50148 "Apoeni FactBox"
     end;
 
     var
+        GJLine: Record "Gen. Journal Line";
         GenJnlManagement: Codeunit GenJnlManagement;
         AccName: Text[100];
         BalAccName: Text[100];

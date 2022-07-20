@@ -24533,11 +24533,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3027261219 - Control 2827614361 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the account posting group that the entry on the journal line will be posted to.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Control PostingGroup - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 3027261219 - Control 2827614361 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
