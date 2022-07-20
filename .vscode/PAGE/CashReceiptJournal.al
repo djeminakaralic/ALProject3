@@ -145,15 +145,15 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Editable = false;
         }
+        modify("Amount (LCY)")
+        {
+            Visible = false;
+        }
         modify("Debit Amount")
         {
-            Editable = false;
+            Visible = false;
         }
         modify("Credit Amount")
-        {
-            Editable = false;
-        }
-        modify("Amount (LCY)")
         {
             Visible = false;
         }
