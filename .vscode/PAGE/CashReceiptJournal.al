@@ -218,8 +218,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     trigger OnOpenPage()
     begin
-        BankAccount.Get(Rec."Bal. Account No.");
-        "Cash Register":=BankAccount.Name;
+        Message(rec."Journal Template Name");
     end;
 
     var
