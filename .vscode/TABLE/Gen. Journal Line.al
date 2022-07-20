@@ -65,6 +65,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50024; "Payment DT"; DateTime)
         {
             DataClassification = ToBeClassified;
+
+            trigger OnValidate()
+            begin
+                DatumPomocni := DT2Date("Payment DT");
+            end;
         }
         field(50025; "Given amount"; Decimal)
         {
@@ -217,10 +222,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50046; "Apoeni"; Decimal)
         {
+
+
+
             FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount where("Account No." = field("Account No."),
-                                                "Bal. Account No." = field("Bal. Account No."),
-                                                "Document No." = field("Document No.")));
+            CalcFormula = sum(Apoeni.Amount where("Payment Date" = field("Posting Date"),
+                                                "Bal. Account No." = field("Bal. Account No.")
+                                                ));
 
             Caption = 'Apoeni';
         }
@@ -277,6 +285,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     end;
 
     var
+        DatumPomocni: Date;
         myInt: Integer;
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
