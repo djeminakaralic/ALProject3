@@ -4,6 +4,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
+        addafter(JournalLineDetails)
+        {
+
+        }
+        
         addafter(CurrentJnlBatchName)
         {
             field("Cash Register"; "Cash Register")
