@@ -11,7 +11,7 @@ page 50148 "Apoeni FactBox"
     {
         area(Content)
         {
-            field(ApoeniTotal; GJLine.Apoeni)
+            field(Apoeni;Apoeni)
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Apoeni Total';
