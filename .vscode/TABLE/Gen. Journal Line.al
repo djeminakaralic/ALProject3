@@ -5,7 +5,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     fields
     {
         //    VAT Base (retro.)
-
+        modify("Journal Batch Name")
+        {
+            trigger OnAfterValidate()
+            begin
+                Message('Test');
+            end;
+        }
 
         field(50000; "VAT Date"; Date)
         {
@@ -225,7 +231,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50047; "Cash Register"; Text[100])
         {
-
+            Caption = 'Cash Register';
         }
 
         modify(Amount)
