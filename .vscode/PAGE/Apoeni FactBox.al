@@ -13,9 +13,9 @@ page 50148 "Apoeni FactBox"
         {
             field(Apoeni;Apoeni)
             {
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = All;
                 Caption = 'Apoeni Total';
-                Editable = false;
+                
 
             }
         }
