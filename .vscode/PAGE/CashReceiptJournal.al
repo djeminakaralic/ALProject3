@@ -6,9 +6,15 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         addafter(JournalLineDetails)
         {
-
+            part(APoeniDetails; "Apoeni FactBox")
+            {
+                ApplicationArea = Basic, Suite;
+                /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
+                              "Journal Batch Name" = FIELD("Journal Batch Name"),
+                              "Line No." = FIELD("Line No.");*/
+            }
         }
-        
+
         addafter(CurrentJnlBatchName)
         {
             field("Cash Register"; "Cash Register")
@@ -81,7 +87,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                                                             "Cash Register" := BankAccounts.Name;
                                                         Page.Run(Page::"Bank Account Card", BankAccounts);
                                                     end;
-                    
+
                 end;
             }
         }
