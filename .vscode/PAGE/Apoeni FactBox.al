@@ -16,9 +16,15 @@ page 50148 "Apoeni FactBox"
                 ApplicationArea = All;
                 Caption = 'Apoeni Total';
 
-                trigger OnLookup(var Text: Text): Boolean
+                trigger OnDrillDown()
+                var
+                    Today: Date;
                 begin
-                    Message('test');
+                    Today := System.Today;
+                    ApoeniTable.Reset();
+                    //ApoeniTable.SetFilter("Posting Date", Today);
+                    ApoeniTable.SetFilter("Bal. Account No.", 'BANK-04');
+                    ApoeniPage.Run();
                 end;
 
             }
@@ -32,19 +38,11 @@ page 50148 "Apoeni FactBox"
 
     var
         GJLine: Record "Gen. Journal Line";
+        ApoeniTable: Record Apoeni;
+
+        ApoeniPage: Page "Apoeni Page";
         GenJnlManagement: Codeunit GenJnlManagement;
-        AccName: Text[100];
-        BalAccName: Text[100];
-        GenPostingSetupText: Text;
-        VATPostingSetupText: Text;
-        BalGenPostingSetupText: Text;
-        BalVATPostingSetupText: Text;
-        AccountEnabled: Boolean;
-        BalAccountEnabled: Boolean;
-        GenPostingSetupEnabled: Boolean;
-        VATPostingSetupEnabled: Boolean;
-        BalGenPostingSetupEnabled: Boolean;
-        BalVATPostingSetupEnabled: Boolean;
+
 
 
 }
