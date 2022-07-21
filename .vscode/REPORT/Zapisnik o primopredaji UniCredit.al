@@ -8,6 +8,10 @@ report 50097 "Zapisnik o primopredaji"
 
     dataset
     {
+        dataitem(DataItem20; Apoeni)
+        {
+
+        }
         dataitem(DataItem21; "G/L Entry")
         {
             column(Picture_CompanyInfo; CompanyInformation.Picture)
@@ -24,6 +28,8 @@ report 50097 "Zapisnik o primopredaji"
             begin
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
+
+                Datee := System.Today;
             end;
         }
         dataitem(PaymentType; "Payment Type")
