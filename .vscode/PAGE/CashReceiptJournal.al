@@ -140,6 +140,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
+        modify(Correction)
+        {
+            Visible = false;
+        }
 
 
     }
