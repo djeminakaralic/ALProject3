@@ -42,6 +42,12 @@ report 50097 "Zapisnik o primopredaji"
             column(Counter; Counter)
             {
             }
+            column(Counter2;Counter2)
+            {
+            }
+            column(AmountRecord;AmountRecord)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -58,9 +64,10 @@ report 50097 "Zapisnik o primopredaji"
                             FilterInt := 3
                         else
                             if PaymentType.Code = FORMAT(20) then
-                                FilterInt := 5
+                                FilterInt := 4
                             else
-                                if PaymentType.Code = FORMAT(10) then FilterInt := 1;
+                                if PaymentType.Code = FORMAT(10) then FilterInt := 5
+                            else    if PaymentType.Code = FORMAT(50) then FilterInt := 6;
 
                 DataItem20.SetFilter(Apoeni, '%1', FilterInt);
                 if DataItem20.FindFirst() then begin

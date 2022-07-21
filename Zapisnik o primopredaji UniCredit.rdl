@@ -833,6 +833,15 @@ End Function
         <Field Name="Counter">
           <DataField>Counter</DataField>
         </Field>
+        <Field Name="Counter2">
+          <DataField>Counter2</DataField>
+        </Field>
+        <Field Name="AmountRecord">
+          <DataField>AmountRecord</DataField>
+        </Field>
+        <Field Name="AmountRecordFormat">
+          <DataField>AmountRecordFormat</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
