@@ -47,9 +47,11 @@ report 50097 "Zapisnik o primopredaji"
             begin
                 Counter += 1;
 
-                DataItem21.Reset();
+                DataItem20.Reset();
+                Message(Format(PaymentType.Code));
+                DataItem20.SetFilter(Apoeni, '%1', 1);
                 //DataItem21.SetFilter(Apoeni, '%1', PaymentType.Code);
-                Counter2 := DataItem21.Count;
+                Counter2 := DataItem20.Count;
             end;
 
             trigger OnPreDataItem()
