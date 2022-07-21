@@ -8,7 +8,7 @@ report 50097 "Zapisnik o primopredaji"
 
     dataset
     {
-        dataitem(DataItem21; "G/L Entry")
+        dataitem(DataItem21; Apoeni)
         {
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
@@ -130,8 +130,11 @@ report 50097 "Zapisnik o primopredaji"
         /*trigger OnAfterGetRecord()
 begin
 
+   
+    
+    
     GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-    GLEntry.SetFilter("Posting Date", '%1', Datee);
+    
     GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
 
     PaymentCounter := GLEntry.Count;

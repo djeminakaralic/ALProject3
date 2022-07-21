@@ -66,10 +66,13 @@ page 51067 "Apoeni Page"
                 trigger OnAction()
 
                 begin
-                    GLEntry.Reset();
+                    ApoeniTable.Reset();
+                    ApoeniTable.SetFilter("Posting Date", '%1', System.Today);
+                    ZapisnikOPrimopredaji.Run();
+                    /*GLEntry.Reset();
                     //GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
-                    IzvjestajPortoBlagajne.Run();
+                    IzvjestajPortoBlagajne.Run();*/
                 end;
 
             }
@@ -80,5 +83,6 @@ page 51067 "Apoeni Page"
         GLEntry: Record "G/L Entry";
         ApoeniTable: Record Apoeni;
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
+        ZapisnikOPrimopredaji: Report "Zapisnik o primopredaji";
 }
 
