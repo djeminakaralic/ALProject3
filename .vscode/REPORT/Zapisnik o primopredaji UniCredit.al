@@ -8,7 +8,11 @@ report 50097 "Zapisnik o primopredaji"
 
     dataset
     {
-        dataitem(DataItem21; Apoeni)
+        dataitem(DataItem20; Apoeni)
+        {
+
+        }
+        dataitem(DataItem21; "G/L Entry")
         {
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
@@ -20,17 +24,12 @@ report 50097 "Zapisnik o primopredaji"
             {
             }
 
-            trigger OnAfterGetRecord()
-            begin
-
-            end;
-
             trigger OnPreDataItem()
             begin
-
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
+                Datee := System.Today;
             end;
         }
         dataitem(PaymentType; "Payment Type")
@@ -43,13 +42,63 @@ report 50097 "Zapisnik o primopredaji"
             column(Counter; Counter)
             {
             }
+            column(Counter2; Counter2)
+            {
+            }
+            column(AmountRecord; AmountRecord)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
                 Counter += 1;
 
-                DataItem21.Reset();
-                //DataItem21.SetFilter(Apoeni, '%1', CCode);
+                DataItem20.Reset();
+                if PaymentType.Code = FORMAT(200) then
+                    FilterInt := 1
+                else
+                    if PaymentType.Code = FORMAT(100) then
+                        FilterInt := 2
+                    else
+                        if PaymentType.Code = FORMAT(50) then
+                            FilterInt := 3
+                        else
+                            if PaymentType.Code = FORMAT(20) then
+                                FilterInt := 4
+                            else
+                                if PaymentType.Code = FORMAT(10) then
+                                    FilterInt := 5
+                                else
+                                    if PaymentType.Code = FORMAT(5) then
+                                        FilterInt := 6
+                                    else
+                                        if PaymentType.Code = FORMAT(2) then
+                                            FilterInt := 7
+                                        else
+                                            if PaymentType.Code = FORMAT(1) then
+                                                FilterInt := 8
+                                            else
+                                                if PaymentType.Code = FORMAT(0.5) then
+                                                    FilterInt := 9
+                                                else
+                                                    if PaymentType.Code = FORMAT(0.2) then
+                                                        FilterInt := 10
+                                                    else
+                                                        if PaymentType.Code = FORMAT(0.1) then
+                                                            FilterInt := 11
+                                                        else
+                                                            if PaymentType.Code = FORMAT(0.05) then FilterInt := 12;
+
+                DataItem20.SetFilter(Apoeni, '%1', FilterInt);
+                if DataItem20.FindFirst() then begin
+                    Counter2 := DataItem20.Quantity;
+                    AmountRecord := DataItem20.Amount;
+                end
+                else begin
+                    Counter2 := 0;
+                    AmountRecord := 0;
+                end;
+
             end;
 
             trigger OnPreDataItem()
@@ -125,7 +174,7 @@ report 50097 "Zapisnik o primopredaji"
                 Datee := System.Today;
 
             end;
-            
+
         }
 
 
@@ -189,8 +238,11 @@ report 50097 "Zapisnik o primopredaji"
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
         Counter: Integer;
+        Counter2: Integer;
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
+        FilterInt: Integer;
+        AmountRecord: Decimal;
 }
 
