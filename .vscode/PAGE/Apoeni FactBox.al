@@ -24,6 +24,7 @@ page 50148 "Apoeni FactBox"
                     ApoeniTable.Reset();
                     ApoeniTable.SetFilter("Posting Date", '%1', Today);
                     ApoeniTable.SetFilter("Bal. Account No.", '%1', 'BANK-04');
+                    ApoeniPage.SetTableView(ApoeniTable);
                     ApoeniPage.Run();
                 end;
 
