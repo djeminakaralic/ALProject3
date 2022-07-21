@@ -47,7 +47,6 @@ page 50110 "Cashier Activities"
                 field(Customers; Customers)
                 {
                     ApplicationArea = all;
-
                 }
             }
 
