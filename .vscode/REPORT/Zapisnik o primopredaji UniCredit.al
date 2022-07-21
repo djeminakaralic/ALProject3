@@ -28,6 +28,8 @@ report 50097 "Zapisnik o primopredaji"
             trigger OnPreDataItem()
             begin
 
+                Datee := "Posting Date";
+                
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
