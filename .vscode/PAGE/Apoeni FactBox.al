@@ -11,11 +11,15 @@ page 50148 "Apoeni FactBox"
     {
         area(Content)
         {
-            field(Apoeni;Apoeni)
+            field(Apoeni; Apoeni)
             {
                 ApplicationArea = All;
                 Caption = 'Apoeni Total';
-                
+
+                trigger OnLookup(var Text: Text): Boolean
+                begin
+                    Message('test');
+                end;
 
             }
         }

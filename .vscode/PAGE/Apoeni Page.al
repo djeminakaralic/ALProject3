@@ -87,7 +87,6 @@ page 51067 "Apoeni Page"
     end;
 
 
-
     var
         GLEntry: Record "G/L Entry";
         ApoeniTable: Record Apoeni;
