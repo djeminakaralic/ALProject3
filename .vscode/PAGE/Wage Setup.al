@@ -144,11 +144,17 @@ page 50016 "Wage Setup"
                 }
                 field("Canton Sick-Leave Amount"; "Canton Sick-Leave Amount")
                 {
+                    Visible = false;
 
                 }
                 field("Maximum hours for sick wage"; "Maximum hours for sick wage")
                 {
+                    Visible = false;
 
+                }
+                field("Canton Amount"; "Canton Amount")
+                {
+                    ApplicationArea = all;
                 }
 
             }

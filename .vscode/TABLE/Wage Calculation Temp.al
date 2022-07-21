@@ -967,6 +967,10 @@ table 50021 "Wage Calculation Temp"
         {
 
         }
+        field(50444; "Canton"; Boolean)
+        {
+
+        }
 
     }
 
