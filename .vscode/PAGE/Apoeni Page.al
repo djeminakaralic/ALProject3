@@ -61,13 +61,24 @@ page 51067 "Apoeni Page"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
 
-                RunObject = Report "Zapisnik o primopredaji";
-                RunPageLink
+
+                //RunObject = Report "Zapisnik o primopredaji";
+                trigger OnAction()
+
+                begin
+                    GLEntry.Reset();
+                    //GLEntry.SetFilter("Bal. Account No.", Rec."No.");
+                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.Run();
+                end;
+
             }
         }
     }
 
     var
+        GLEntry: Record "G/L Entry";
         ApoeniTable: Record Apoeni;
+        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
 }
 

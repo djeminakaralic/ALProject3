@@ -19778,6 +19778,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Calculation Type - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Table 779094299 - Field 1276457363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canton</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Canton - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 779094299 - Field 1063555308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Coeff. Difference</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21762,6 +21767,11 @@
           <source>Brutto Rate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Brutto Rate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1954395533 - Field 3562334951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canton Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Setup - Field Canton Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1954395533 - Field 135486155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Canton HourWage for Sick-Leave &gt; 42</source>
