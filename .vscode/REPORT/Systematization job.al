@@ -544,10 +544,10 @@ report 50091 "Systematization job"
                                                 ECLOrg."Show Record" := TRUE;
                                                 IF (ECLOrg."Position Description" <> '') AND (ECLOrg."Starting Date" <> 0D) THEN
                                                     ECLOrg."Reason for Change" := ECLOrg."Reason for Change"::Systematization;
-                                                if ECLOrg."Starting Date" <> OrgShema."Date From" then begin
-                                                    ECLOrg.Validate("Starting Date", OrgShema."Date From");
-                                                    //    ECLOrg."Starting Date" := OrgShema."Date From";
-                                                end;
+                                                //ĐKif ECLOrg."Starting Date" <> OrgShema."Date From" then begin
+                                                //ĐK ECLOrg.Validate("Starting Date", OrgShema."Date From");
+                                                //    ECLOrg."Starting Date" := OrgShema."Date From";
+                                                // end;
                                                 ECLOrg.MODIFY(FALSE);
                                             END;
 
