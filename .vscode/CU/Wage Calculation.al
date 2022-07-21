@@ -1924,7 +1924,8 @@ codeunit 50002 "Wage Calculation"
                         IF RedType.AmountIsPercentage THEN BEGIN
                             //ako je procenat
                             CalcTemp.CALCFIELDS("Reduction Netto");
-                            TotalWageForRed := CalcTemp."Net Wage" - CalcTemp.Tax - CalcTemp."Reduction Netto";
+
+                            TotalWageForRed := CalcTemp."Net Wage After Tax";
                             ReductionTemp.Amount := Reductions."Installment Amount" * TotalWageForRed / 100;
                             IF NOT RedType.AmountWithoutLimit THEN
                                 IF (Reductions."No. of Installments paid" + 1) = Reductions."No. of Installments" THEN
