@@ -36,9 +36,9 @@ table 50128 "Cashier Cue"
 
 
 
-        field(6; "Test"; Text[50])
+        field(6; "Cash Receipt Journal"; Text[50])
         {
-            Caption = 'Test';
+            Caption = 'Cash Receipt Journal';
         }
 
 

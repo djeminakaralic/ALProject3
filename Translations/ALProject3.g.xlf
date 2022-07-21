@@ -1128,6 +1128,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Calculated - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 455153232 - Field 1638686336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Receipt Journal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Cash Receipt Journal - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 455153232 - Field 627398412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Closed calculations</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1282,11 +1287,6 @@
           <source>Terminated Employees</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Terminated Employees - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3732224266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Test - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 50853252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfers</source>
@@ -24622,11 +24622,6 @@
           <source>Cashier</source>
           <note from="Developer" annotates="general" priority="2">{Dependency=Match,"ProfileDescription_Payroll"}</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3688002276 - Action 4113372704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cash Receipt Journal</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action CashReceiptJournal - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1195895850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashiergreeting</source>

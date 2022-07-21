@@ -16,12 +16,11 @@ page 50110 "Cashier Activities"
                 ApplicationArea = all;
             }
 
-            field(Test; Test)
+            field("Cash Receipt Journal";"Cash Receipt Journal")
             {
                 trigger OnDrillDown()
                 begin
                     Page.Run(255);
-                    //RunObject = page "Exe Manager List";
                 end;
             }
 

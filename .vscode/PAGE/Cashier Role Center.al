@@ -22,7 +22,7 @@ page 50107 "Cashier Role Center"
 
     actions
     {
-        area(reporting)
+        /*area(reporting)
         {          
              
              action(CashReceiptJournal)
@@ -32,8 +32,8 @@ page 50107 "Cashier Role Center"
                 Image = CashReceiptJournal;
                 RunObject = Page "Cash Receipt Journal";
             } 
-                         
-        }
+
+        }*/
     }
 }
 
