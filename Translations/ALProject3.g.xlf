@@ -173,11 +173,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 684500104 - Field 1622979514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Account No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Account No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 684500104 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -193,20 +188,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Bal. Account No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 684500104 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Document No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 684500104 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Entry No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 684500104 - Field 1411740825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>G/L Entry No.</source>
+        <trans-unit id="Table 684500104 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field G/L Entry No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Apoeni - Field Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 684500104 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Quantity</source>
@@ -1087,6 +1077,41 @@
           <source>For Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Canton - Field For Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashier Cue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 3278140039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field All Bank Accounts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 3857354736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Bank Accounts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 1638686336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Receipt Journal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Cash Receipt Journal - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 3606140129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Customers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 2081914014 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Centri za kupce</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field CZK - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 455153232 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Primary Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2752889383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Disciplinary Measure</source>
@@ -24298,10 +24323,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Additional Responsibility - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3027261219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni FactBox</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3027261219 - Control 684500104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apoeni Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni FactBox - Control Apoeni - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2267677425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Apoeni</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni Page - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2267677425 - Action 3301244791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Zapisnik o primopredaji UniCredit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Apoeni Page - Action Zapisnik o primopredaji UniCredit - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 274235925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Award Category List</source>
@@ -24357,6 +24397,61 @@
           <source>Cantons</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cantons - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashier Activities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Control 2590131546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control AllCustomers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Control 4020075288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control BankAccounts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3329140304 - Control 2520932591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WorkDate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Activities - Control WORKDATE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3688002276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashier</source>
+          <note from="Developer" annotates="general" priority="2">{Dependency=Match,"ProfileDescription_Payroll"}</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashiergreeting</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 3631563187" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;qualifier&gt;Naslov&lt;/qualifier&gt;&lt;payload&gt;Zdravo!&lt;/payload&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl1Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 3037051958" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;qualifier&gt;Naslov&lt;/qualifier&gt;&lt;payload&gt;Dobrodošli u centar uloga&lt;/payload&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl2Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 510323637" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;qualifier&gt;Naslov&lt;/qualifier&gt;&lt;payload&gt;Za pomoć pri korištenju obratite nam se putem c2s2 portala.&lt;/payload&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl3Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 40544816" size-unit="char" translate="yes" xml:space="preserve">
+          <source>za upravljanje blagajnom.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl4Txt</note>
+        </trans-unit>
+        <trans-unit id="Page 1195895850 - NamedType 1818985455" size-unit="char" translate="yes" xml:space="preserve">
+          <source>za upravljanje ljudskim resursima.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashiergreeting - NamedType hdl5Txt</note>
         </trans-unit>
         <trans-unit id="Page 2754865339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Disciplinary Measure List</source>
@@ -35318,11 +35413,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Izvještaj porto blagajne - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3552131165 - Action 3301244791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
-          <source>Zapisnik o primopredaji UniCredit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Zapisnik o primopredaji UniCredit - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 1418896891 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1418896891">
           <source>Do you want to set paid holiday for all employees?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35342,6 +35432,11 @@
           <source>Payment Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payment Slip - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Control 1339191004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Blagajna</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Control Cash Register - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>
@@ -39433,6 +39528,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Bin Checked - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 1339191004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Cash Register</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Cash Register - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 23630027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>City</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -41163,70 +41263,105 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum Reason for Change - EnumValue Systematization - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 2131230175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>BCS (prvi ciklus visokog obrazovanja (180ECTS))</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue BCS (prvi ciklus visokog obrazovanja (180ECTS)) - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 3584674342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>BCS (prvi ciklus visokog obrazovanja (240ECTS))</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue BCS (prvi ciklus visokog obrazovanja (240ECTS)) - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 1773197857 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DR(treći ciklus visokog obrazovanja(480ECTS))</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue DR(treći ciklus visokog obrazovanja(480ECTS)) - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Enum 244841840 - EnumValue 1365275863 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue Empty - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 1210028011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>I EQF nivo  NK (nekvalificirani radnik)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue I EQF nivo  NK (nekvalificirani radnik) - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 244841840 - EnumValue 2343169594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>I stepen NK(nekvalifikovani radnik)</source>
+          <source>I stepen  NK (nekvalificirani radnik)</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue I stepen NK(nekvalifikovani radnik) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 2425844373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>II stepen PKV(polukvalifikovan radnik)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 535601923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>II EQF nivo  NKR (niskokvalificirani radnik)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue II stepen PKV(polukvalifikovan radnik) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue II EQF nivo  NKR (niskokvalificirani radnik) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 2643362198 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>III stepen SSS(srednja stručna sprema)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 1699085364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>II stepen  PKV (polukvalificirani radnik)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue III stepen SSS(srednja stručna sprema) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue II stepen  PKV (polukvalificirani radnik) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 3678162836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>IV stepen SSS(srednja stručna sprema)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 1444059248 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>III EQF nivo  KV (kvalificirani radnik - SSS III stepen)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue IV stepen SSS(srednja stručna sprema) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue III EQF nivo  KV (kvalificirani radnik - SSS III stepen) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 3671774886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>V stepen VKV (visokokvalifikovan radnik)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 1861551259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>III stepen  KV (kvalificirani radnik - SSS III stepen)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue V stepen VKV (visokokvalifikovan radnik) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue III stepen  KV (kvalificirani radnik - SSS III stepen) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 1744587400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VI stepen VSS (viša stručna sprema)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 3294346048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IV EQF nivo  SKR (opće ili specijalizirani kvalificirani radnik)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VI stepen VSS (viša stručna sprema) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue IV EQF nivo  SKR (opće ili specijalizirani kvalificirani radnik) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 2921634972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VI stepen VŠ tj. VŠS (viša škola tj. viša školska sprema)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 3616520820 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>IV stepen  SSS (srednja stručna sprema - SSS IV stepen)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VI stepen VŠ tj. VŠS (viša škola tj. viša školska sprema) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue IV stepen  SSS (srednja stručna sprema - SSS IV stepen) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 1849897527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VII stepen BCS_MA (treći stepen visokog obrazovanja (360ECTS)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 1553349347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>V EQF nivo  VKV (visokokvalificiran radnik specijaliziran za određeno zanimanje)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII stepen BCS_MA (treći stepen visokog obrazovanja (360ECTS) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue V EQF nivo  VKV (visokokvalificiran radnik specijaliziran za određeno zanimanje) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 244841840 - EnumValue 978476819 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VII/1 stepen MR(magistar)</source>
+        <trans-unit id="Enum 244841840 - EnumValue 4120859500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>V stepen  VKV (visokokvalificiran radnik)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII/1 stepen MR(magistar) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue V stepen  VKV (visokokvalificiran radnik) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 1012521893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 180 ECTS)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 180 ECTS) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 3267725856 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 240 ECTS)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VI EQF nivo  BA (prvi ciklus visokog obrazovanja - 240 ECTS) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 2885545436 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VI stepen  VŠS (viša stručna sprema)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VI stepen  VŠS (viša stručna sprema) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 2028534793 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VII EQF nivo  MA (drugi ciklus visokog obrazovanja - 300 ECTS)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII EQF nivo  MA (drugi ciklus visokog obrazovanja - 300 ECTS) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 3908553291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VII./1 stepen  MR.spec (magistar specijalist)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII./1 stepen  MR.spec (magistar specijalist) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 2939261940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VII./1 stepen  VSS (visoka stručna sprema)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII./1 stepen  VSS (visoka stručna sprema) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 1897467504 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VII./2 stepen  MR (magistar nauka)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VII./2 stepen  MR (magistar nauka) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 716336265 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VIII EQF nivo  DR.sci (treći ciklus visokog obrazovanja - 480 ECTS)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VIII EQF nivo  DR.sci (treći ciklus visokog obrazovanja - 480 ECTS) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 244841840 - EnumValue 3567269164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VIII stepen  DR (doktor nauka)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum School - EnumValue VIII stepen  DR (doktor nauka) - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2263797059 - EnumValue 2001046965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Regular work</source>

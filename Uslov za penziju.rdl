@@ -22,7 +22,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>TABELARNI PREGLED UPOSLENIKA POREZNE UPRAVE FEDERACIJE BiH KOJI ĆE U PERIODU OD </Value>
+                    <Value>TABELARNI PREGLED UPOSLENIKA KOJI ĆE U PERIODU OD </Value>
                     <Style>
                       <FontSize>10.5pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -665,7 +665,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Naziv unutrašnje organizacione jedinice</Value>
+                                    <Value>Naziv organizacione jedinice</Value>
                                     <Style>
                                       <FontWeight>Bold</FontWeight>
                                     </Style>

@@ -65,27 +65,21 @@ table 51067 "Apoeni"
         {
             Caption = 'Amount';
         }
-        field(5; "Account No."; Code[20])
-        {
-            Caption = 'Account No.';
-        }
         field(6; "Bal. Account No."; Code[20])
         {
             Caption = 'Bal. Account No.';
         }
-        field(7; "Document No."; Code[20])
+        field(7; "Posting Date"; Date)
         {
-            Caption = 'Document No.';
+            Caption = 'Posting Date';
         }
-        field(8; "G/L Entry No."; Integer)
-        {
-            Caption = 'G/L Entry No.';
-        }
+
+
     }
 
     keys
     {
-        key(Key1; "Bal. Account No.", "Account No.", "Document No.", Apoeni)
+        key(Key1; "Bal. Account No.", "Posting Date", Apoeni)
         {
         }
     }

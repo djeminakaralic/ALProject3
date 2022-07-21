@@ -4,6 +4,80 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
+        addafter(JournalLineDetails)
+        {
+            part(APoeniFactBox; "Apoeni FactBox")
+            {
+                ApplicationArea = Basic, Suite;
+                /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
+                              "Journal Batch Name" = FIELD("Journal Batch Name"),
+                              "Line No." = FIELD("Line No.");*/
+            }
+        }
+
+        addafter(CurrentJnlBatchName)
+        {
+            field("Cash Register"; "Cash Register")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Blagajna';
+                Editable = false;
+
+                trigger OnDrillDown()
+                var
+                    BankAccounts: Record "Bank Account";
+                begin
+                    if "Journal Batch Name" = 'CZK1 UPL' then begin
+                        BankAccounts.SetFilter("No.", '%1', 'BANK-10');
+                        /*if BankAccounts.FindFirst() then
+                            "Cash Register" := BankAccounts.Name;*/
+                        Page.Run(Page::"Bank Account Card", BankAccounts);
+                    end
+                    else
+                        if "Journal Batch Name" = 'CZK2 UPL' then begin
+                            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
+                            Page.Run(Page::"Bank Account Card", BankAccounts);
+                        end
+                        else
+                            if "Journal Batch Name" = 'CZK3 UPL' then begin
+                                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
+                                Page.Run(Page::"Bank Account Card", BankAccounts);
+                            end
+                            else
+                                if "Journal Batch Name" = 'CZK4 UPL' then begin
+                                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
+                                    Page.Run(Page::"Bank Account Card", BankAccounts);
+                                end
+                                else
+                                    if "Journal Batch Name" = 'CZK5 UPL' then begin
+                                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
+                                        Page.Run(Page::"Bank Account Card", BankAccounts);
+                                    end
+                                    else
+                                        if "Journal Batch Name" = 'CZK6 UPL' then begin
+                                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
+                                            Page.Run(Page::"Bank Account Card", BankAccounts);
+                                        end
+                                        else
+                                            if "Journal Batch Name" = 'CZK7 UPL' then begin
+                                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
+                                                Page.Run(Page::"Bank Account Card", BankAccounts);
+                                            end
+                                            else
+                                                if "Journal Batch Name" = 'CZK8 UPL' then begin
+                                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
+                                                    Page.Run(Page::"Bank Account Card", BankAccounts);
+                                                end
+                                                else
+                                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
+                                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
+                                                        Page.Run(Page::"Bank Account Card", BankAccounts);
+                                                    end;
+
+                end;
+            }
+        }
+
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
@@ -27,7 +101,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Amount (LCY)")
         {
-            field(Apoeni; Apoeni)
+            /*field(Apoeni; Apoeni)
             {
                 ApplicationArea = all;
 
@@ -36,7 +110,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     CurrPage.Update();
                     Rec."Given amount" := Rec.Apoeni;
                 end;
-            }
+            }*/
             field("Given amount"; "Given amount")
             {
                 ApplicationArea = all;
@@ -54,6 +128,24 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Editable = false;
         }
+        modify("Amount (LCY)")
+        {
+            Visible = false;
+        }
+        modify("Debit Amount")
+        {
+            Visible = false;
+        }
+        modify("Credit Amount")
+        {
+            Visible = false;
+        }
+        modify(Correction)
+        {
+            Visible = false;
+        }
+
+
     }
 
     actions
@@ -95,6 +187,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
+
         else
             if "Journal Batch Name" = 'CZK2 UPL' then
                 Validate(rec."Bal. Account No.", 'BANK-11')
@@ -119,11 +212,15 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                                     else
                                         if "Journal Batch Name" = 'CZK9 UPL' then Validate(rec."Bal. Account No.", 'BANK-18');
 
+        /*BankAccount.Get(Rec."Bal. Account No.");
+        "Cash Register":=BankAccount.Name;*/
+
         "Payment DT" := System.CurrentDateTime;
         Description := '';
     end;
 
     var
+        BankAccount: Record "Bank Account";
         GJline: Record "Gen. Journal Line";
         CLEntry: Record "Cust. Ledger Entry";
         Customer: Record Customer;

@@ -5,6 +5,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     fields
     {
         //    VAT Base (retro.)
+
         field(50000; "VAT Date"; Date)
         {
 
@@ -20,6 +21,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 GLSetupRead := true;
 
                 "Postponed VAT" := ("VAT Date" <> 0D) AND ("VAT Date" <> "Posting Date") AND ReadGLSetup."Unrealized VAT";
+            end;
+        }
+        modify("Document No.")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+            begin
+                Message('Poruka da radi na validate');
+
             end;
         }
 
@@ -64,6 +75,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50024; "Payment DT"; DateTime)
         {
             DataClassification = ToBeClassified;
+
+            trigger OnValidate()
+            begin
+                DatumPomocni := DT2Date("Payment DT");
+            end;
         }
         field(50025; "Given amount"; Decimal)
         {
@@ -71,10 +87,56 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if ABS("Given amount") < ABS(Amount) then
-                    Error(Text001);
-                if (Amount <> 0) then
+                if (Amount <> 0) AND ("Given amount" > 0) then 
                     "To return" := ABS("Given amount") - ABS(Amount);
+
+                if ("Given amount">=Abs(Amount)) then
+                Message('Vrati kusur: ' + Format("To return") + ' KM.')
+                else    
+                Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
+
+                MultipleBills := 0;
+                MultipleBillsSum := 0;
+                TotalGivenAmount := "Given amount";
+                GJLine.Reset();
+                GJLine.SetFilter("Account No.", '%1', Rec."Account No.");
+                GJLine.SetFilter("Posting Date", '%1', Rec."Posting Date");
+                GJLine.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                MultipleBills := GJLine.Count(); //provjeravam koliko racuna je uneseno za istog kupca
+
+                if MultipleBills > 1 then begin //ako je pronadjeno vise od 1 racuna za kupca
+
+                    if GJLine.FindFirst() then
+                        repeat
+                            MultipleBillsSum += abs(GJLine.Amount); //ukupni iznos za sve racune
+                        until GJLine.Next() = 0;
+
+                    if "Given amount" < MultipleBillsSum then //provjera da li dati iznos pokriva sve racune
+                        Error(Text001);
+
+                    if GJLine.FindFirst() then //mijenjam prvi record u tabeli
+                        Rec."Given amount" := abs(Rec.Amount);
+                    Rec."To return" := 0;
+
+                    repeat
+                        Counter += 1;
+                        if Counter <> MultipleBills then begin
+                            //za racune prije posljednjeg je dati iznos jednak iznosu racuna, zbog toga nema kusura
+                            GJLine."Given amount" := abs(GJLine.Amount);
+                            GJLine."To return" := 0;
+                            GJLine.Modify();
+                            TotalGivenAmount -= GJLine."Given amount";
+                        end
+                        else begin //za posljednji racun trebam u given amount staviti preostali iznos i izracunati kusur
+                            GJLine."Given amount" := TotalGivenAmount;
+                            GJLine."To return" := GJLine."Given amount" - abs(GJLine.Amount);
+                            GJLine.Modify();
+                            Message('Vrati kusur: ' + Format(GJLine."To return") + ' KM.');
+                        end;
+                    until GJLine.Next() = 0;
+
+                end;
+
             end;
 
         }
@@ -172,19 +234,20 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50046; "Apoeni"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount where("Account No." = field("Account No."),
-                                                "Bal. Account No." = field("Bal. Account No."),
-                                                "Document No." = field("Document No.")));
+            CalcFormula = sum(Apoeni.Amount where("Posting Date" = field("Posting Date"),
+                                                "Bal. Account No." = field("Bal. Account No.")));
 
             Caption = 'Apoeni';
+        }
+        field(50047; "Cash Register"; Text[100])
+        {
+            Caption = 'Cash Register';
         }
 
         modify(Amount)
         {
             trigger OnAfterValidate()
             begin
-                if ("Given amount" <> 0) AND (ABS("Given amount") < ABS(Amount)) then
-                    Error(Text001);
                 if ("Given amount" <> 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
             end;
@@ -227,10 +290,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     end;
 
     var
+        DatumPomocni: Date;
         myInt: Integer;
         Customer: Record Customer;
         GJLine: Record "Gen. Journal Line";
         ApoeniTable: Record Apoeni;
         Text001: Label 'Given amount cannot be less than amount.';
         DetailedCustLedgEntry: Record "Detailed Cust. Ledg. Entry";
+        MultipleBills: Integer;
+        Counter: Integer;
+        MultipleBillsSum: Decimal;
+        TotalGivenAmount: Decimal;
+
 }
