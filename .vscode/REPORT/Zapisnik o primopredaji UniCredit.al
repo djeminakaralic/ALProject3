@@ -8,7 +8,7 @@ report 50097 "Zapisnik o primopredaji"
 
     dataset
     {
-        dataitem(DataItem21; Apoeni)
+        dataitem(DataItem21; "G/L Entry")
         {
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
@@ -19,11 +19,6 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
-
-            trigger OnAfterGetRecord()
-            begin
-
-            end;
 
             trigger OnPreDataItem()
             begin
@@ -125,7 +120,7 @@ report 50097 "Zapisnik o primopredaji"
                 Datee := System.Today;
 
             end;
-            
+
         }
 
 
