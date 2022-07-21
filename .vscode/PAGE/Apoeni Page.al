@@ -45,8 +45,10 @@ page 51067 "Apoeni Page"
             }
         }
 
-
+            
     }
+
+
 
     actions
     {
@@ -79,10 +81,17 @@ page 51067 "Apoeni Page"
         }
     }
 
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        Rec."Posting Date" := System.Today;
+    end;
+
+
+
     var
         GLEntry: Record "G/L Entry";
         ApoeniTable: Record Apoeni;
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
-        ZapisnikOPrimopredaji: Report "Zapisnik o primopredaji";
+                                    ZapisnikOPrimopredaji: Report "Zapisnik o primopredaji";
 }
 
