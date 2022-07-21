@@ -43,7 +43,8 @@ report 50097 "Zapisnik o primopredaji"
                 Counter += 1;
 
                 DataItem21.Reset();
-                //DataItem21.SetFilter(Apoeni, '%1', CCode);
+                //DataItem21.SetFilter(Apoeni, '%1', PaymentType.Code);
+                Counter2 := DataItem21.Count;
             end;
 
             trigger OnPreDataItem()
@@ -186,6 +187,7 @@ report 50097 "Zapisnik o primopredaji"
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
         Counter: Integer;
+        Counter2: Integer;
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
