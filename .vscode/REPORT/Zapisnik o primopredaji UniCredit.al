@@ -48,10 +48,30 @@ report 50097 "Zapisnik o primopredaji"
                 Counter += 1;
 
                 DataItem20.Reset();
-                Message(Format(PaymentType.Code));
-                DataItem20.SetFilter(Apoeni, '%1', 1);
-                //DataItem21.SetFilter(Apoeni, '%1', PaymentType.Code);
-                Counter2 := DataItem20.Count;
+                if PaymentType.Code = FORMAT(200) then
+                    FilterInt := 1
+                else
+                    if PaymentType.Code = FORMAT(100) then
+                        FilterInt := 2
+                    else
+                        if PaymentType.Code = FORMAT(50) then
+                            FilterInt := 3
+                        else
+                            if PaymentType.Code = FORMAT(20) then
+                                FilterInt := 5
+                            else
+                                if PaymentType.Code = FORMAT(10) then FilterInt := 1;
+
+                DataItem20.SetFilter(Apoeni, '%1', FilterInt);
+                if DataItem20.FindFirst() then begin
+                    Counter2:=DataItem20.Quantity;
+                    AmountRecord:=DataItem20.Amount;
+                end 
+                else begin
+                    Counter2:=0;
+                    AmountRecord:=0;
+                end;
+
             end;
 
             trigger OnPreDataItem()
@@ -195,5 +215,7 @@ report 50097 "Zapisnik o primopredaji"
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
+        FilterInt: Integer;
+        AmountRecord: Decimal;
 }
 
