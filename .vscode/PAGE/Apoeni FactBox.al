@@ -16,7 +16,6 @@ page 50148 "Apoeni FactBox"
                 ApplicationArea = All;
                 Caption = 'Apoeni Total';
               
-
                 trigger OnDrillDown()
                 var
                     Today: Date;
