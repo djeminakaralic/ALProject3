@@ -1083,60 +1083,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Active Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Active - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1027735151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Active Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Active Employees - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3169680945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Active employees without wage additions</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Additions - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1922361920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Adress Change</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Adress Change - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 455153232 - Field 3278140039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>All Bank Accounts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field All Bank Accounts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 2886508691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Approved Incoming Documents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Approved Incoming Documents - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 2681051664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Author Contracts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Author Contracts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 3857354736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bank Accounts</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Bank Accounts - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1478617252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Calculated</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Calculated - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 455153232 - Field 1638686336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cash Receipt Journal</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Cash Receipt Journal - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 627398412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Closed calculations</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Closed calculations - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 455153232 - Field 3606140129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customers</source>
@@ -1148,170 +1108,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field CZK - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3090641755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateFilter5</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field DateFilter5 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 708764310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateFilter6</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field DateFilter6 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 71067693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateFilter7</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field DateFilter7 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 370946264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateFilter8</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field DateFilter8 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 4028216943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateFilter9</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field DateFilter9 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 998431526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>DateFilterChange</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field DateFilterChange - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 809358940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Due Date Filter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Due Date Filter - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 186581094 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Education Level Change</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Education Level Change - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3130805794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Employee Disability</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Employee Disability - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 2078220752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>External Fund</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field External Fund - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3662773486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>For Calculation</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field For Calculation - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 2624792613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>For Calculation</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field For Calculation Witout Meal - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 988106326 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inactive Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Inactive Employees - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3070759338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Internal Fund</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Internal Fund - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1428547851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Negative Payment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Negative Payment - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 453644359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field New Employees - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 467381156 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field New Employees FC - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3992271978 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New Incoming Documents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field New Incoming Documents - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1333795427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>OCR Pending</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field OCR Pending - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 4045428665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Opened calculations</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Opened calculations - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3389357602 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Overdue Date Filter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Overdue Date Filter - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 455153232 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary Key</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Primary Key - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 539909253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Regular Contracts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Regular Contracts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3694491510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Requests Sent for Approval</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Requests Sent for Approval - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1576056359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Surname Change</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Surname Change - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 2543615961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Temporary Service Contracts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Temporary Service Contracts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 1648950053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Temporary Service Contracts-Non Residents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Temporary Service Contracts NR - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 4166192792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Terminated Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Terminated Employees - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 50853252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfers</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Transfers - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 103646039 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Travel Orders</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Travel Orders - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 903873038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Union Employees</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Union Employees - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 143592048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>User ID Filter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field User ID Filter - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 455153232 - Field 3207334502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wage Change</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Wage Change - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2752889383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Disciplinary Measure</source>
