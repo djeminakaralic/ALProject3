@@ -1242,7 +1242,9 @@ codeunit 50004 "Close Wage Calculation"
                                 WVETemp."Document No." := Rec."No.";
                                 WVETemp."Entry No." := EntryNew;
                                 WVETemp."Posting Date" := PostingDate;
-                                WVETemp.Description := Absence2."Short Code";
+
+                                //Dodati ovdje opis
+                                WVETemp.Description := CauseOfAbs."Short Code";
                                 WVETemp.Hours := Absence2.Quantity;
                                 WVETemp."Wage Posting Group" := PostingGroup;
                                 WVETemp."Document Date" := Rec."Date Of Calculation";
