@@ -63,18 +63,18 @@ page 51067 "Apoeni Page"
                 PromotedCategory = Process;
                 PromotedIsBig = true;
 
-
                 //RunObject = Report "Zapisnik o primopredaji";
+                
                 trigger OnAction()
-
+                var
+                    Today: Date;
                 begin
-                    //ApoeniTable.Reset();
-                    //ApoeniTable.SetFilter("Posting Date", '%1', System.Today);
+                    Today := System.Today;
+                    ApoeniTable.Reset();
+                    ApoeniTable.SetFilter("Posting Date", '%1', Today);
+                    ApoeniTable.SetFilter("Bal. Account No.", '%1', "Bal. Account No.");
+                    ZapisnikOPrimopredaji.SetTableView(ApoeniTable);
                     ZapisnikOPrimopredaji.Run();
-                    /*GLEntry.Reset();
-                    //GLEntry.SetFilter("Bal. Account No.", Rec."No.");
-                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
-                    IzvjestajPortoBlagajne.Run();*/
                 end;
 
             }
