@@ -35308,16 +35308,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Zapisnik o primopredaji - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 2576805334 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Datum zapisnika</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Zapisnik o primopredaji - Control Date - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 2576805334 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Datum zapisnika: </source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Zapisnik o primopredaji - Control Datee - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Query 3201223187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Payment Orders Summarry</source>
           <note from="Developer" annotates="general" priority="2"></note>
