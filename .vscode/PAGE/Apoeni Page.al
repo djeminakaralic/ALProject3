@@ -62,7 +62,7 @@ page 51067 "Apoeni Page"
                 PromotedIsBig = true;
 
                 RunObject = Report "Zapisnik o primopredaji";
-
+                RunPageLink
             }
         }
     }
