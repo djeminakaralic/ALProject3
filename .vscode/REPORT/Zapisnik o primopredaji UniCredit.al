@@ -42,10 +42,10 @@ report 50097 "Zapisnik o primopredaji"
             column(Counter; Counter)
             {
             }
-            column(Counter2;Counter2)
+            column(Counter2; Counter2)
             {
             }
-            column(AmountRecord;AmountRecord)
+            column(AmountRecord; AmountRecord)
             {
             }
 
@@ -66,17 +66,37 @@ report 50097 "Zapisnik o primopredaji"
                             if PaymentType.Code = FORMAT(20) then
                                 FilterInt := 4
                             else
-                                if PaymentType.Code = FORMAT(10) then FilterInt := 5
-                            else    if PaymentType.Code = FORMAT(50) then FilterInt := 6;
+                                if PaymentType.Code = FORMAT(10) then
+                                    FilterInt := 5
+                                else
+                                    if PaymentType.Code = FORMAT(5) then
+                                        FilterInt := 6
+                                    else
+                                        if PaymentType.Code = FORMAT(2) then
+                                            FilterInt := 7
+                                        else
+                                            if PaymentType.Code = FORMAT(1) then
+                                                FilterInt := 8
+                                            else
+                                                if PaymentType.Code = FORMAT(0.5) then
+                                                    FilterInt := 9
+                                                else
+                                                    if PaymentType.Code = FORMAT(0.2) then
+                                                        FilterInt := 10
+                                                    else
+                                                        if PaymentType.Code = FORMAT(0.1) then
+                                                            FilterInt := 11
+                                                        else
+                                                            if PaymentType.Code = FORMAT(0.05) then FilterInt := 12;
 
                 DataItem20.SetFilter(Apoeni, '%1', FilterInt);
                 if DataItem20.FindFirst() then begin
-                    Counter2:=DataItem20.Quantity;
-                    AmountRecord:=DataItem20.Amount;
-                end 
+                    Counter2 := DataItem20.Quantity;
+                    AmountRecord := DataItem20.Amount;
+                end
                 else begin
-                    Counter2:=0;
-                    AmountRecord:=0;
+                    Counter2 := 0;
+                    AmountRecord := 0;
                 end;
 
             end;
