@@ -142,6 +142,15 @@ page 50016 "Wage Setup"
                 field("Health Canton"; "Health Canton")
                 {
                 }
+                field("Canton Sick-Leave Amount"; "Canton Sick-Leave Amount")
+                {
+
+                }
+                field("Maximum hours for sick wage"; "Maximum hours for sick wage")
+                {
+
+                }
+
             }
             group("Chamber Fee")
             {
