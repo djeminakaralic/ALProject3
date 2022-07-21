@@ -23,6 +23,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "Postponed VAT" := ("VAT Date" <> 0D) AND ("VAT Date" <> "Posting Date") AND ReadGLSetup."Unrealized VAT";
             end;
         }
+        modify("Document No.")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+            begin
+                Message('Poruka da radi na validate');
+
+            end;
+        }
 
 
         field(50001; "Postponed VAT"; Boolean)
