@@ -77,9 +77,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if ABS("Given amount") < ABS(Amount) then
-                    Error(Text001);
-                if (Amount <> 0) then begin
+                if (Amount <> 0) AND ("Given amount" > 0) then begin
                     "To return" := ABS("Given amount") - ABS(Amount);
                     Message('Vrati kusur: ' + Format("To return") + ' KM.');
                 end;
@@ -237,13 +235,11 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             trigger OnAfterValidate()
             begin
-                if ("Given amount" <> 0) AND (ABS("Given amount") < ABS(Amount)) then
-                    Error(Text001);
                 if ("Given amount" <> 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
             end;
         }
-        
+
         modify("Account No.")
         {
             trigger OnAfterValidate()
