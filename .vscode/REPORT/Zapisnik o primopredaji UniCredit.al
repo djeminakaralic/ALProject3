@@ -47,6 +47,9 @@ report 50097 "Zapisnik o primopredaji"
             trigger OnAfterGetRecord()
             begin
                 Counter += 1;
+
+                DataItem21.Reset();
+                //DataItem21.SetFilter(Apoeni, '%1', CCode);
             end;
 
             trigger OnPreDataItem()
@@ -125,35 +128,37 @@ report 50097 "Zapisnik o primopredaji"
 
 
 
+
+
         }
 
-       
-
-    /*trigger OnAfterGetRecord()
-begin
-*/
-
-    /*
-   
-    
-    
-    GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-    
-    GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-
-    PaymentCounter := GLEntry.Count;
-
-    PaymentAmount := 0;
-
-    IF GLEntry.FindFirst() then
-        repeat
-            PaymentAmount += ABS(GLEntry.Amount);
-        until GLEntry.Next() = 0;
-
-*/
 
 
-}
+        /*trigger OnAfterGetRecord()
+    begin
+    */
+
+        /*
+
+
+
+        GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
+
+        GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+
+        PaymentCounter := GLEntry.Count;
+
+        PaymentAmount := 0;
+
+        IF GLEntry.FindFirst() then
+            repeat
+                PaymentAmount += ABS(GLEntry.Amount);
+            until GLEntry.Next() = 0;
+
+    */
+
+
+    }
 
     requestpage
     {
@@ -184,12 +189,12 @@ begin
     var
         CompanyInformation: Record "Company Information";
         ApoeniEnum: Enum "Apoeni Enum";
-                        GJLine: Record "Gen. Journal Line";
-                        BankAccount: Record "Bank Account";
-                        GLEntry: Record "G/L Entry";
-                        Counter: Integer;
-                        Datee: Date;
-                        PaymentCounter: Integer;
-                        PaymentAmount: Decimal;
+        GJLine: Record "Gen. Journal Line";
+        BankAccount: Record "Bank Account";
+        GLEntry: Record "G/L Entry";
+        Counter: Integer;
+        Datee: Date;
+        PaymentCounter: Integer;
+        PaymentAmount: Decimal;
 }
 
