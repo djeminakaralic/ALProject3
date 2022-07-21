@@ -8,7 +8,7 @@ report 50097 "Zapisnik o primopredaji"
 
     dataset
     {
-        dataitem(DataItem21; Apoeni)
+        dataitem(DataItem21; "G/L Entry")
         {
             column(Picture_CompanyInfo; CompanyInformation.Picture)
             {
@@ -22,9 +22,8 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnPreDataItem()
             begin
-
-
-
+                CompanyInformation.GET;
+                CompanyInformation.CALCFIELDS(Picture);
             end;
         }
         dataitem(PaymentType; "Payment Type")
@@ -49,9 +48,6 @@ report 50097 "Zapisnik o primopredaji"
 
             trigger OnPreDataItem()
             begin
-
-                CompanyInformation.GET;
-                CompanyInformation.CALCFIELDS(Picture);
 
                 Counter := 0;
 
