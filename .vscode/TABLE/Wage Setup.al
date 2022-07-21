@@ -13,6 +13,12 @@ table 50199 "Wage Setup"
         {
             Caption = 'Average Yearly Hour Pool';
         }
+
+        field(16; "Canton Amount"; Decimal)
+        {
+            Caption = 'Canton Amount';
+        }
+
         field(2; "Average Salary FBIH"; Decimal)
         {
             Caption = 'Average Salary FBIH';
