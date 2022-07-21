@@ -16,6 +16,15 @@ page 50110 "Cashier Activities"
                 ApplicationArea = all;
             }
 
+            field(Test; Test)
+            {
+                trigger OnDrillDown()
+                begin
+                    Page.Run(255);
+                    //RunObject = page "Exe Manager List";
+                end;
+            }
+
             cuegroup(BankAccounts)
             {
                 Caption = 'Bank Accounts';

@@ -1283,6 +1283,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Terminated Employees - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 455153232 - Field 3732224266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier Cue - Field Test - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 455153232 - Field 50853252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Transfers</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -24,14 +24,21 @@ table 50128 "Cashier Cue"
         field(4; "Bank Accounts"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Bank Account" WHERE("No."= FILTER('BANK-01|BANK-02|BANK-03|BANK-04|BANK-05|BANK-06|BANK-07|BANK-08|BANK-09')));
+            CalcFormula = Count("Bank Account" WHERE("No." = FILTER('BANK-01|BANK-02|BANK-03|BANK-04|BANK-05|BANK-06|BANK-07|BANK-08|BANK-09')));
             Caption = 'Bank Accounts';
         }
         field(5; "CZK"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Bank Account" WHERE("No."= FILTER('BANK-10|BANK-11|BANK-12|BANK-13|BANK-14|BANK-15|BANK-16|BANK-17|BANK-18')));
+            CalcFormula = Count("Bank Account" WHERE("No." = FILTER('BANK-10|BANK-11|BANK-12|BANK-13|BANK-14|BANK-15|BANK-16|BANK-17|BANK-18')));
             Caption = 'Centri za kupce';
+        }
+
+
+
+        field(6; "Test"; Text[50])
+        {
+            Caption = 'Test';
         }
 
 
