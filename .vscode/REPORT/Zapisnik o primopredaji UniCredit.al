@@ -127,9 +127,13 @@ report 50097 "Zapisnik o primopredaji"
 
         }
 
-        /*trigger OnAfterGetRecord()
-begin
+       
 
+    /*trigger OnAfterGetRecord()
+begin
+*/
+
+    /*
    
     
     
@@ -146,10 +150,10 @@ begin
             PaymentAmount += ABS(GLEntry.Amount);
         until GLEntry.Next() = 0;
 
-end;*/
+*/
 
 
-    }
+}
 
     requestpage
     {
@@ -180,12 +184,12 @@ end;*/
     var
         CompanyInformation: Record "Company Information";
         ApoeniEnum: Enum "Apoeni Enum";
-        GJLine: Record "Gen. Journal Line";
-        BankAccount: Record "Bank Account";
-        GLEntry: Record "G/L Entry";
-        Counter: Integer;
-        Datee: Date;
-        PaymentCounter: Integer;
-        PaymentAmount: Decimal;
+                        GJLine: Record "Gen. Journal Line";
+                        BankAccount: Record "Bank Account";
+                        GLEntry: Record "G/L Entry";
+                        Counter: Integer;
+                        Datee: Date;
+                        PaymentCounter: Integer;
+                        PaymentAmount: Decimal;
 }
 
