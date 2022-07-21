@@ -369,14 +369,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CCode1">
+                        <Textbox Name="Counter2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Counter2.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -385,7 +385,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CCode1</rd:DefaultName>
+                          <rd:DefaultName>Counter2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -453,14 +453,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox14">
+                        <Textbox Name="AmountRecord">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!AmountRecord.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -469,7 +469,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <rd:DefaultName>AmountRecord</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
