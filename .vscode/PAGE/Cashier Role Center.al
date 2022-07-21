@@ -22,24 +22,8 @@ page 50107 "Cashier Role Center"
 
     actions
     {
-        /*area(processing)
-        {                   
-            group("Pay Lists2")
-            {
-                Caption = 'Pay Lists';
-                Image = Statistics;
-                action("Pay Lists")
-                {
-                    ApplicationArea = all;
-                    Caption = 'Pay Lists';
-                    Image = Recalculate;
-                    RunObject = Report "Pay List Final";
-                }
-            }          
-        }*/
         area(reporting)
         {          
-
              
              action(CashReceiptJournal)
             {
@@ -47,7 +31,8 @@ page 50107 "Cashier Role Center"
                 Caption = 'Cash Receipt Journal';
                 Image = CashReceiptJournal;
                 RunObject = Page "Cash Receipt Journal";
-            }              
+            } 
+                         
         }
     }
 }
