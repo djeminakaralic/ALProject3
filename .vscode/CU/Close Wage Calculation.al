@@ -330,6 +330,8 @@ codeunit 50004 "Close Wage Calculation"
                                 TotalArray[AbCount] := Absence.Quantity;
                             END;
                         UNTIL Absence.NEXT = 0;
+                    Desc := COPYSTR(STRSUBSTNO(AbType."Short Code"), 1, MAXSTRLEN(Desc));
+
                     IF AbCount > 0 THEN BEGIN
                         Value := 0;
                         FOR J := 1 TO AbCount DO BEGIN
@@ -339,7 +341,6 @@ codeunit 50004 "Close Wage Calculation"
 
 
                             /****************************************Netto by Absence*******************************************************/
-                            Desc := COPYSTR(STRSUBSTNO(AbType."Short Code"), 1, MAXSTRLEN(Desc));
                             //NK    InsertValueEntry(Desc,WVE."Entry Type"::"Net Wage",CalcTemp."Net Wage After Tax",'',ValueEntriesExist,0);
                             CalcTemp.CALCFIELDS("Use Netto");
                             Class.RESET;
@@ -414,6 +415,7 @@ codeunit 50004 "Close Wage Calculation"
                                 TotalArrayOld[AbCountOld] := AbsenceOld.Quantity;
                             END;
                         UNTIL AbsenceOld.NEXT = 0;
+                    DescOld := COPYSTR(STRSUBSTNO(AbTypeOld."Short Code"), 1, MAXSTRLEN(DescOld));
                     IF AbCountOld > 0 THEN BEGIN
                         ValueOld := 0;
                         FOR JOld := 1 TO AbCountOld DO BEGIN
@@ -421,7 +423,7 @@ codeunit 50004 "Close Wage Calculation"
                             ValueOld := ValueOld + TotalArrayOld[JOld] * AbTypeOld.Coefficient;
                             QuantityOld := TotalArrayOld[JOld];
 
-                            DescOld := COPYSTR(STRSUBSTNO(AbTypeOld."Short Code"), 1, MAXSTRLEN(DescOld));
+
                             CalcTemp.CALCFIELDS("Use Netto");
                             Class.RESET;
                             Class.SETCURRENTKEY("Valid From Amount");
