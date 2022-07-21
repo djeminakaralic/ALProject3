@@ -32,11 +32,6 @@ page 50148 "Apoeni FactBox"
         }
     }
 
-    trigger OnAfterGetCurrRecord()
-    begin
-
-    end;
-
     var
         GJLine: Record "Gen. Journal Line";
         ApoeniTable: Record Apoeni;
