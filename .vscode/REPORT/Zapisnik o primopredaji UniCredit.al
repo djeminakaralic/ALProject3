@@ -152,7 +152,7 @@ end;*/
     {
         layout
         {
-            area(content)
+            /*area(content)
             {
                 group("Date")
                 {
@@ -162,7 +162,7 @@ end;*/
                         Caption = 'Datum zapisnika: ';
                     }
                 }
-            }
+            }*/
         }
 
         actions
