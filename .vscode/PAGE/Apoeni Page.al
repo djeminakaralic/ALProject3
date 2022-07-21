@@ -60,9 +60,14 @@ page 51067 "Apoeni Page"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+
                 RunObject = Report "Zapisnik o primopredaji";
+
             }
         }
     }
+
+    var
+        ApoeniTable: Record Apoeni;
 }
 
