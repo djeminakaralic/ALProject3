@@ -119,7 +119,11 @@ report 50097 "Zapisnik o primopredaji"
                 PaymentType.SetCurrentKey("Entry No.");
                 PaymentType.Ascending;
 
+                Datee := System.Today;
+
             end;
+
+
 
         }
 
