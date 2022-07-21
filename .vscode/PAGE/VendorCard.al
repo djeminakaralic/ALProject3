@@ -19,6 +19,10 @@ pageextension 50178 VendorCard extends "Vendor Card"
             {
                 ApplicationArea = all;
             }
+            field("Old No.";"Old No.")
+            {
+                ApplicationArea = all;
+            }
             field("Industrial Classification";"Industrial Classification")
             {
                 ApplicationArea = all;
@@ -27,6 +31,10 @@ pageextension 50178 VendorCard extends "Vendor Card"
 
         addafter("VAT Registration No.")
         {
+            field("Registration No.";"Registration No.")
+            {
+                ApplicationArea = all;
+            }
             field("Tax No.";"Tax No.")
             {
                 ApplicationArea = all;
@@ -125,50 +133,17 @@ pageextension 50178 VendorCard extends "Vendor Card"
         {
             Visible = false;
         }
-
-        /*movebefore(Amount; "Applies-to Doc. No.")
-        moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-       */
-
-        /*addafter("Amount (LCY)")
-        {
-            field(Apoeni; Apoeni)
-            {
-                ApplicationArea = all;
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    CurrPage.Update();
-                    Rec."Given amount" := Rec.Apoeni;
-                end;
-            }
-            field("Given amount"; "Given amount")
-            {
-                ApplicationArea = all;
-            }
-            field("To return"; "To return")
-            {
-                ApplicationArea = all;
-            }
-        }
-        modify("Applied (Yes/No)")
+        modify("Payment Terms Code")
         {
             Visible = false;
         }
-        modify(Description)
+        modify("Cash Flow Payment Terms Code")
         {
-            Editable = false;
-        }*/
+            Visible = false;
+        }
+        modify("Application Method")
+        {
+            Visible = false;
+        }
     }
-
-    actions
-    {
-    }
-
-    trigger OnNewRecord(BelowxRec: Boolean)
-    begin
-
-    end;
-
-    var
 }

@@ -113,6 +113,15 @@ page 50092 "Payroll Activities"
                     Style = AttentionAccent;
                     StyleExpr = TRUE;
                 }
+                field("Employee Disability"; "Employee Disability")
+                {
+
+                    ApplicationArea = all;
+                    Image = Library;
+                    Importance = Promoted;
+                    Style = AttentionAccent;
+                    StyleExpr = TRUE;
+                }
 
             }
             cuegroup(Contracts)
