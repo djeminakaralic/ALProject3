@@ -241,10 +241,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Cash Register';
         }
-        field(50048; BalTest; Code[20])
-        {
-            Caption = 'Bal Test';
-        }
         field(50049; "Main Cashier"; Boolean)
         {
             Caption = 'Main Cashier';
@@ -293,8 +289,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Rec."No. Line" := GJLine."No. Line" + 1
         else
             Rec."No. Line" := 1;
-
-        BalTest := Rec."Bal. Account No.";
 
     end;
 

@@ -12,7 +12,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                 SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
-                              "Line No." = FIELD("Line No.");                                              
+                              "Line No." = FIELD("Line No.");
             }
         }
 
@@ -215,7 +215,7 @@ end;
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
-        Validate(Rec.BalTest, Rec."Bal. Account No.");
+
 
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
