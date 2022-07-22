@@ -14,7 +14,8 @@ report 50097 "Zapisnik o primopredaji"
             begin
                 BalAccNoFilter := GETFILTER("Bal. Account No.");
 
-                BankAccount.Get(BalAccNoFilter);
+                BankAccount.Reset();
+                BankAccount.SetFilter("No.", '%1', BalAccNoFilter);
                 if BankAccount.FindFirst() then
                     BankAccountName := BankAccount.Name;
 
