@@ -11,85 +11,6 @@
       <rd:DataSourceID>ed071138-57d4-44c2-89a7-7c9efce1b624</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Pager_Employee">
-          <DataField>Pager_Employee</DataField>
-        </Field>
-        <Field Name="RetirementYear">
-          <DataField>RetirementYear</DataField>
-        </Field>
-        <Field Name="EducationLevel_Employee">
-          <DataField>EducationLevel_Employee</DataField>
-        </Field>
-        <Field Name="No_Employee">
-          <DataField>No_Employee</DataField>
-        </Field>
-        <Field Name="FirstName_Employee">
-          <DataField>FirstName_Employee</DataField>
-        </Field>
-        <Field Name="LastName_Employee">
-          <DataField>LastName_Employee</DataField>
-        </Field>
-        <Field Name="OrgjedPU_Employee">
-          <DataField>OrgjedPU_Employee</DataField>
-        </Field>
-        <Field Name="Year1_Employee">
-          <DataField>Year1_Employee</DataField>
-        </Field>
-        <Field Name="NazivOrgjedPU_Employee">
-          <DataField>NazivOrgjedPU_Employee</DataField>
-        </Field>
-        <Field Name="Year2_Employee">
-          <DataField>Year2_Employee</DataField>
-        </Field>
-        <Field Name="Year3_Employee">
-          <DataField>Year3_Employee</DataField>
-        </Field>
-        <Field Name="Godina">
-          <DataField>Godina</DataField>
-        </Field>
-        <Field Name="Godina2">
-          <DataField>Godina2</DataField>
-        </Field>
-        <Field Name="Godina3">
-          <DataField>Godina3</DataField>
-        </Field>
-        <Field Name="Mjesec">
-          <DataField>Mjesec</DataField>
-        </Field>
-        <Field Name="Uslov">
-          <DataField>Uslov</DataField>
-        </Field>
-        <Field Name="DatumUslova">
-          <DataField>DatumUslova</DataField>
-        </Field>
-        <Field Name="RetirementCondition_Employee">
-          <DataField>RetirementCondition_Employee</DataField>
-        </Field>
-        <Field Name="RetirementDate_Employee">
-          <DataField>RetirementDate_Employee</DataField>
-        </Field>
-        <Field Name="brojac">
-          <DataField>brojac</DataField>
-        </Field>
-        <Field Name="Godina4">
-          <DataField>Godina4</DataField>
-        </Field>
-        <Field Name="ReportDate">
-          <DataField>ReportDate</DataField>
-        </Field>
-        <Field Name="ReportDate2">
-          <DataField>ReportDate2</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -991,12 +912,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1036,4 +951,83 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Pager_Employee">
+          <DataField>Pager_Employee</DataField>
+        </Field>
+        <Field Name="RetirementYear">
+          <DataField>RetirementYear</DataField>
+        </Field>
+        <Field Name="EducationLevel_Employee">
+          <DataField>EducationLevel_Employee</DataField>
+        </Field>
+        <Field Name="No_Employee">
+          <DataField>No_Employee</DataField>
+        </Field>
+        <Field Name="FirstName_Employee">
+          <DataField>FirstName_Employee</DataField>
+        </Field>
+        <Field Name="LastName_Employee">
+          <DataField>LastName_Employee</DataField>
+        </Field>
+        <Field Name="OrgjedPU_Employee">
+          <DataField>OrgjedPU_Employee</DataField>
+        </Field>
+        <Field Name="Year1_Employee">
+          <DataField>Year1_Employee</DataField>
+        </Field>
+        <Field Name="NazivOrgjedPU_Employee">
+          <DataField>NazivOrgjedPU_Employee</DataField>
+        </Field>
+        <Field Name="Year2_Employee">
+          <DataField>Year2_Employee</DataField>
+        </Field>
+        <Field Name="Year3_Employee">
+          <DataField>Year3_Employee</DataField>
+        </Field>
+        <Field Name="Godina">
+          <DataField>Godina</DataField>
+        </Field>
+        <Field Name="Godina2">
+          <DataField>Godina2</DataField>
+        </Field>
+        <Field Name="Godina3">
+          <DataField>Godina3</DataField>
+        </Field>
+        <Field Name="Mjesec">
+          <DataField>Mjesec</DataField>
+        </Field>
+        <Field Name="Uslov">
+          <DataField>Uslov</DataField>
+        </Field>
+        <Field Name="DatumUslova">
+          <DataField>DatumUslova</DataField>
+        </Field>
+        <Field Name="RetirementCondition_Employee">
+          <DataField>RetirementCondition_Employee</DataField>
+        </Field>
+        <Field Name="RetirementDate_Employee">
+          <DataField>RetirementDate_Employee</DataField>
+        </Field>
+        <Field Name="brojac">
+          <DataField>brojac</DataField>
+        </Field>
+        <Field Name="Godina4">
+          <DataField>Godina4</DataField>
+        </Field>
+        <Field Name="ReportDate">
+          <DataField>ReportDate</DataField>
+        </Field>
+        <Field Name="ReportDate2">
+          <DataField>ReportDate2</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

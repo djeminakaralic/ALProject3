@@ -253,7 +253,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     "To return" := ABS("Given amount") - ABS(Amount);
             end;
         }
-        
+
         modify("Account No.")
         {
             trigger OnAfterValidate()
