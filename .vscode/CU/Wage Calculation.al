@@ -328,9 +328,10 @@ codeunit 50002 "Wage Calculation"
                                             AbsBruto2.Reset();
                                             AbsBruto2.CopyFilters(AbsBruto);
                                             AbsBruto2.SetFilter("Sick Leave", '%1', false);
+
                                             if AbsBruto2.FindFirst() then begin
                                                 AbsBruto2.CalcSums(Quantity);
-                                                CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity + (WageAmount / CalcTemp."Hour Pool") * AbsBruto2.Quantity;
+                                                CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity + (WageAmount / CalcTemp."Hour Pool") * (CalcTemp."Hour Pool" - AbsBruto.Quantity);
 
 
                                             end
