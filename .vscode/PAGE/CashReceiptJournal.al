@@ -193,6 +193,35 @@ end;
                         END
 
                     END;
+
+                    /*
+                    GenJnlLine.SETFILTER("Journal Template Name",'OPŠTE'); 
+ GenJnlLine.SETFILTER("Journal Batch Name",'PRE');
+          IF  GenJnlLine.FINDLAST THEN
+          LineNo:= GenJnlLine."Line No."+10000
+          ELSE
+            LineNo:= 10000;
+          GenJnlLine."Journal Template Name":='OPŠTE';
+          GenJnlLine."Journal Batch Name":='PRE';
+          GenJnlLine."Line No." :=LineNo;
+          GenJnlLine."Posting Date" := "Posting Date";
+          GenJnlLine."Document Date" := "Document Date";
+          GenJnlLine.Description := "Posting Description";
+          GenJnlLine."Document No." := "No.";
+          GenJnlLine."External Document No." := "External Document No.";
+          GenJnlLine."Account Type" :=GenJnlLine."Account Type"::Customer;
+          GenJnlLine."Account No." :="Bill-to Customer No.";
+          GenJnlLine."Currency Code" := "Currency Code";
+          CALCFIELDS("Amount Including VAT");
+          GenJnlLine.VALIDATE("Debit Amount","Amount Including VAT");
+          GenJnlLine."Gen. Posting Type" := 0;
+          GenJnlLine."Gen. Bus. Posting Group" := '';
+          GenJnlLine."Gen. Prod. Posting Group" := '';
+          GenJnlLine."VAT Bus. Posting Group" :='';
+          GenJnlLine."VAT Prod. Posting Group" := '';
+          GenJnlLine."Posting Group" := 'AVANS';
+         GenJnlLine.INSERT(TRUE);*/
+
                 end;
             }
 
