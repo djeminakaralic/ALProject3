@@ -93,6 +93,10 @@ end;
             {
                 ApplicationArea = all;
             }
+            field("Main Cashier";"Main Cashier")
+            {
+                ApplicationArea = all;
+            }
         }
 
         movebefore(Amount; "Applies-to Doc. No.")
@@ -191,7 +195,7 @@ end;
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
         Validate(Rec.BalTest, Rec."Bal. Account No.");
-        
+
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
 
