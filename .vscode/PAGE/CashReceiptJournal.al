@@ -211,10 +211,12 @@ end;
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
                     GJline."Payment DT" := System.CurrentDateTime;
-                    GJline."Main Cashier":=true;
-                    GJline."Debit Amount":=Amount;                    
+                    GJline."Main Cashier" := true;
+                    GJline."Debit Amount" := TotalAmount;
+                    GJline.Description := 'Polog pazara';
+                    GJline."Bal. Account No." := '2388';
                     GJline."Account Type" := "Account Type"::"G/L Account";
-                    GJline."Account No.":='2050';
+                    GJline."Account No." := '2050';
                     GJline.Insert();
 
                     //Message(Format(Rec."Bal. Account No."));
