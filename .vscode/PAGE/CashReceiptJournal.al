@@ -197,9 +197,14 @@ end;
 
                     GJline.Reset(); //insertujem novi red kada se vrsi prenos plata u "racunski centar"
                     GJline.Init();
-                    GJline."Posting Date":=System.Today;
-                    GJline."Payment DT":= System.CurrentDateTime;
-                    GJline."Account Type":="Account Type"::"G/L Account";
+                    GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                    if GJline.FindLast() then
+                        "Line No." := GJline."Line No." + 10000
+                    else
+                        "Line No." := 10000;
+                    GJline."Posting Date" := System.Today;
+                    GJline."Payment DT" := System.CurrentDateTime;
+                    GJline."Account Type" := "Account Type"::"G/L Account";
                     GJline.Insert();
 
                     //Message(Format(Rec."Bal. Account No."));
