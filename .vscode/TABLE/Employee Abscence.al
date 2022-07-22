@@ -211,6 +211,14 @@ tableextension 51921 MyExtension extends "Employee Absence"
             CalcFormula = lookup("Cause of Absence"."Sick Leave" where(Code = field("Cause of Absence Code")));
         }
 
+        //Weekend
+        field(50154; "Weekend"; Boolean)
+        {
+            Caption = 'Weekend';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cause of Absence"."Weekend" where(Code = field("Cause of Absence Code")));
+        }
+
 
 
 
