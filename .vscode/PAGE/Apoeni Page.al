@@ -31,28 +31,20 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                field("Bal. Account No."; "Bal. Account No.")
+                /*field("Bal. Account No."; "Bal. Account No.")
                 {
                     ApplicationArea = all;
                 }
                 field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = all;
-                }
-
-
-
+                }*/
             }
         }
-
-
     }
-
-
 
     actions
     {
-
         area(navigation)
         {
             action("Zapisnik o primopredaji UniCredit")
