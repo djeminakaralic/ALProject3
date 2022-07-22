@@ -36,8 +36,9 @@ table 50128 "Cashier Cue"
         field(6; "Cash Receipt Journal"; Text[50])
         {
             Caption = 'Cash Receipt Journal';
+            InitValue = 'test';
         }
-        
+
     }
 
     keys
