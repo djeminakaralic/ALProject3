@@ -53,7 +53,6 @@ report 50097 "Zapisnik o primopredaji"
             begin
                 Counter += 1; //ovaj counter broji koji apoen je po redu da bih mogla filtrirati tabelu apoeni
 
-                DataItem20.Reset();
                 /*if PaymentType.Code = FORMAT(200) then
                     FilterInt := 1
                 else
@@ -93,7 +92,7 @@ report 50097 "Zapisnik o primopredaji"
 
                 DataItem20.Reset();
                 DataItem20.SetFilter(Apoeni, '%1', Counter);
-                
+
                 if DataItem20.FindFirst() then begin
                     Counter2 := DataItem20.Quantity;
                     AmountRecord := DataItem20.Amount;
