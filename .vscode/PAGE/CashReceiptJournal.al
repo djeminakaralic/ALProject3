@@ -9,7 +9,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             part(ApoeniFactBox; "Apoeni FactBox")
             {
                 ApplicationArea = Basic, Suite;
-                
+
                 /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
                               "Line No." = FIELD("Line No.");*/
@@ -149,10 +149,6 @@ end;
         {
             Visible = false;
         }
-        modify(Amount)
-        {
-            Editable = false;
-        }
 
 
     }
@@ -195,7 +191,7 @@ end;
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
-                        
+
                     END;
                 end;
             }
