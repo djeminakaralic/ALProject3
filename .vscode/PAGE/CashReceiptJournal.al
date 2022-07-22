@@ -196,14 +196,16 @@ end;
                     END;
 
                     GJline.Reset(); //insertujem novi red kada se vrsi prenos plata u "racunski centar"
-                    GJline.Init();
+
                     GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                     GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
-                    //GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                    GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
                     if GJline.FindLast() then
-                        "Line No." := GJline."Line No." + 10000
+                        LineNo := GJline."Line No." + 10000
                     else
-                        "Line No." := 10000;
+                        LineNo := 10000;
+                    GJline.Init();
+                    GJline."Line No." := LineNo;
                     GJline."Journal Template Name" := Rec."Journal Template Name";
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
@@ -299,6 +301,7 @@ end;
     end;
 
     var
+        LineNo: Integer;
         BankAccount: Record "Bank Account";
         GJline: Record "Gen. Journal Line";
         CLEntry: Record "Cust. Ledger Entry";
