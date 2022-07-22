@@ -33,10 +33,9 @@ table 50128 "Cashier Cue"
             CalcFormula = Count("Bank Account" WHERE("No." = FILTER('BANK-10|BANK-11|BANK-12|BANK-13|BANK-14|BANK-15|BANK-16|BANK-17|BANK-18')));
             Caption = 'Centri za kupce';
         }
-        field(6; "Cash Receipt Journal"; Text[50])
+        field(6; "Cash Receipt Journal"; Text[100])
         {
             Caption = 'Cash Receipt Journal';
-            InitValue = 'test';
         }
 
     }

@@ -57,7 +57,7 @@ page 50110 "Cashier Activities"
 
     trigger OnOpenPage()
     begin
-        "Cash Receipt Journal" := 'test';
+        "Cash Receipt Journal" := 'Nalog knjiženja gotovinskih uplata';
     end;
 
 
