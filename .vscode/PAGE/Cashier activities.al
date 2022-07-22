@@ -21,8 +21,9 @@ page 50110 "Cashier Activities"
                 ShowCaption = false;
 
                 trigger OnDrillDown()
+
                 begin
-                    Page.Run(255);
+                    CashReceiptJournal.Run();
                 end;
             }
 
@@ -58,8 +59,11 @@ page 50110 "Cashier Activities"
     trigger OnOpenPage()
     begin
         "Cash Receipt Journal" := 'Nalog knjiženja gotovinskih uplata';
+        Message(Format("Cash Receipt Journal"));
     end;
 
+    var
+        CashReceiptJournal: Page "Cash Receipt Journal";
 
 }
 
