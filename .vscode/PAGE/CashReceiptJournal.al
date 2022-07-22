@@ -211,6 +211,8 @@ end;
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
                     GJline."Payment DT" := System.CurrentDateTime;
+                    GJline."Main Cashier":=true;
+                    GJline."Debit Amount":=Amount;
                     GJline."Account Type" := "Account Type"::"G/L Account";
                     GJline.Insert();
 
