@@ -195,6 +195,8 @@ end;
 
                     END;
 
+                    Message(Format(Rec."Bal. Account No."));
+
                     /*
                     GenJnlLine.SETFILTER("Journal Template Name",'OPŠTE'); 
  GenJnlLine.SETFILTER("Journal Batch Name",'PRE');
