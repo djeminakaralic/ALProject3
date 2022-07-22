@@ -93,6 +93,7 @@ report 50097 "Zapisnik o primopredaji"
 
                 DataItem20.Reset();
                 DataItem20.SetFilter(Apoeni, '%1', Counter);
+                
                 if DataItem20.FindFirst() then begin
                     Counter2 := DataItem20.Quantity;
                     AmountRecord := DataItem20.Amount;
