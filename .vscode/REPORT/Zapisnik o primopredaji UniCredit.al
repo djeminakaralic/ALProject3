@@ -55,6 +55,10 @@ report 50097 "Zapisnik o primopredaji"
             column(TotalAmount; TotalAmount)
             {
             }
+            column(BalAccNoFilter; BalAccNoFilter)
+            {
+
+            }
 
             trigger OnAfterGetRecord()
             begin
