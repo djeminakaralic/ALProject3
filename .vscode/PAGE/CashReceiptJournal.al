@@ -138,14 +138,6 @@ end;
         {
             Visible = false;
         }
-        modify("Debit Amount")
-        {
-            Visible = false;
-        }
-        modify("Credit Amount")
-        {
-            Visible = false;
-        }
         modify(Correction)
         {
             Visible = false;
@@ -200,15 +192,24 @@ end;
                     GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                     GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
                     GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+
+                    if GJline.FindFirst() then
+                        repeat
+                            TotalAmount += abs(GJline.Amount);
+                        until GJline.Next() = 0;
+
                     if GJline.FindLast() then
                         LineNo := GJline."Line No." + 10000
                     else
                         LineNo := 10000;
+
+
                     GJline.Init();
                     GJline."Line No." := LineNo;
                     GJline."Journal Template Name" := Rec."Journal Template Name";
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
+                    GJline.Amount := TotalAmount;
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Account Type" := "Account Type"::"G/L Account";
                     GJline.Insert();
@@ -301,6 +302,7 @@ end;
     end;
 
     var
+        TotalAmount: Decimal;
         LineNo: Integer;
         BankAccount: Record "Bank Account";
         GJline: Record "Gen. Journal Line";
