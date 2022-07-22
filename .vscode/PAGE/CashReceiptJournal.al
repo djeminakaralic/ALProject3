@@ -216,7 +216,6 @@ end;
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
-
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
 
