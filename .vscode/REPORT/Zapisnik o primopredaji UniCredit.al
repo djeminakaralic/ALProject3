@@ -10,7 +10,10 @@ report 50097 "Zapisnik o primopredaji"
     {
         dataitem(DataItem20; Apoeni)
         {
-
+            trigger OnPreDataItem()
+            begin
+                BalAccNoFilter := GETFILTER("Bal. Account No.");
+            end;
         }
         dataitem(DataItem21; "G/L Entry")
         {
@@ -45,7 +48,7 @@ report 50097 "Zapisnik o primopredaji"
             column(AmountRecord; AmountRecord)
             {
             }
-            column(TotalAmount;TotalAmount)
+            column(TotalAmount; TotalAmount)
             {
             }
 
@@ -92,11 +95,13 @@ report 50097 "Zapisnik o primopredaji"
 
                 DataItem20.Reset();
                 DataItem20.SetFilter(Apoeni, '%1', Counter);
+                DataItem20.SetFilter("Bal. Account No.", '%1', BalAccNoFilter);
+                DataItem20.SetFilter("Posting Date", '%1', Datee);
 
                 if DataItem20.FindFirst() then begin
                     Counter2 := DataItem20.Quantity;
                     AmountRecord := DataItem20.Amount;
-                    TotalAmount+=AmountRecord;
+                    TotalAmount += AmountRecord;
                 end
                 else begin
                     Counter2 := 0;
@@ -109,8 +114,8 @@ report 50097 "Zapisnik o primopredaji"
             begin
 
                 Counter := 0;
-                Counter2:=0;
-                TotalAmount:=0;
+                Counter2 := 0;
+                TotalAmount := 0;
 
                 PaymentType.DeleteAll();
 
@@ -224,5 +229,6 @@ report 50097 "Zapisnik o primopredaji"
         TotalAmount: Decimal;
         FilterInt: Integer;
         AmountRecord: Decimal;
+        BalAccNoFilter: Code[20];
 }
 
