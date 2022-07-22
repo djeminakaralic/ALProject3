@@ -71,43 +71,6 @@ report 50097 "Zapisnik o primopredaji"
             begin
                 Counter += 1; //ovaj counter broji koji apoen je po redu da bih mogla filtrirati tabelu apoeni
 
-                /*if PaymentType.Code = FORMAT(200) then
-                    FilterInt := 1
-                else
-                    if PaymentType.Code = FORMAT(100) then
-                        FilterInt := 2
-                    else
-                        if PaymentType.Code = FORMAT(50) then
-                            FilterInt := 3
-                        else
-                            if PaymentType.Code = FORMAT(20) then
-                                FilterInt := 4
-                            else
-                                if PaymentType.Code = FORMAT(10) then
-                                    FilterInt := 5
-                                else
-                                    if PaymentType.Code = FORMAT(5) then
-                                        FilterInt := 6
-                                    else
-                                        if PaymentType.Code = FORMAT(2) then
-                                            FilterInt := 7
-                                        else
-                                            if PaymentType.Code = FORMAT(1) then
-                                                FilterInt := 8
-                                            else
-                                                if PaymentType.Code = FORMAT('0.5') then
-                                                    FilterInt := 9
-                                                else
-                                                    if PaymentType.Code = FORMAT('0.2') then
-                                                        FilterInt := 10
-                                                    else
-                                                        if PaymentType.Code = FORMAT('0.1') then
-                                                            FilterInt := 11
-                                                        else
-                                                            if PaymentType.Code = FORMAT('0.05') then FilterInt := 12;*/
-
-
-
                 DataItem20.Reset();
                 DataItem20.SetFilter(Apoeni, '%1', Counter);
                 DataItem20.SetFilter("Bal. Account No.", '%1', BalAccNoFilter);
