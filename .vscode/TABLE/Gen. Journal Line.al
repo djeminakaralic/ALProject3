@@ -276,8 +276,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
                     GlobalDimension2Filter := Customer."Global Dimension 2 Filter";
                     CurrencyFilter := Customer."Currency Filter";
-                    BalTest:=Rec."Bal. Account No.";
-                    Message(BalTest);
 
                 end;
             end;
