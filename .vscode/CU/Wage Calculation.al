@@ -324,22 +324,51 @@ codeunit 50002 "Wage Calculation"
                                         AbsBruto.SetCurrentKey("From Date");
                                         AbsBruto.Ascending;
                                         if AbsBruto.FindFirst() then begin
-                                            AbsBruto.CalcSums(Quantity);
                                             AbsBruto2.Reset();
                                             AbsBruto2.CopyFilters(AbsBruto);
-                                            AbsBruto2.SetFilter("Sick Leave", '%1', false);
+                                            if AbsBruto2.findset then
+                                                repeat
+                                                    COABruto.Get(AbsBruto2."Cause of Absence Code");
+                                                    CalcTemp.Brutto += (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto2.Quantity * COABruto.Coefficient;
 
-                                            if AbsBruto2.FindFirst() then begin
-                                                AbsBruto2.CalcSums(Quantity);
-                                                CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity + (WageAmount / CalcTemp."Hour Pool") * (CalcTemp."Hour Pool" - AbsBruto.Quantity);
+                                                //+ (WageAmount / CalcTemp."Hour Pool") * (CalcTemp."Hour Pool" - AbsBruto.Quantity);
+
+                                                until AbsBruto2.Next() = 0;
+
+                                            AbsBruto2.Reset();
+                                            AbsBruto2.CopyFilters(AbsBruto);
+                                            AbsBruto2.SetFilter("Add Hours", '%1', false);
+                                            AbsBruto2.SetFilter(Weekend, '%1', false);
+                                            if AbsBruto2.findset then
+                                                repeat
+                                                    COABruto.Get(AbsBruto2."Cause of Absence Code");
+                                                    CalcTemp.Brutto += (WageAmount / CalcTemp."Hour Pool") * AbsBruto2.Quantity * COABruto.Coefficient;
+
+                                                until AbsBruto2.Next() = 0;
 
 
-                                            end
-                                            else begin
-                                                CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity;
-                                            end;
 
 
+
+                                            /*   AbsBruto.CalcSums(Quantity);
+                                               AbsBruto2.Reset();
+                                               AbsBruto2.CopyFilters(AbsBruto);
+                                               AbsBruto2.SetFilter("Sick Leave", '%1', false);
+
+                                               if AbsBruto2.FindFirst() then begin
+                                                   AbsBruto2.CalcSums(Quantity);
+
+                                                   //COA.CoefficientĐKovde
+                                                   COABruto.Get(AbsBruto)
+                                                   CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity + (WageAmount / CalcTemp."Hour Pool") * (CalcTemp."Hour Pool" - AbsBruto.Quantity);
+
+
+                                               end
+                                               else begin
+                                                   CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity;
+                                               end;
+
+   */
 
 
                                         end
@@ -718,6 +747,7 @@ codeunit 50002 "Wage Calculation"
         WWeBruto: Record "Wage Value Entry";
         AbsBruto: Record "Employee Absence";
         AbsBruto2: Record "Employee Absence";
+        COABruto: Record "Cause of Absence";
         CantonAmount: Decimal;
         WagSetup: Record "Wage Setup";
         Position: Record "Position";
