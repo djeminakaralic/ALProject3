@@ -234,21 +234,17 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50046; "Apoeni"; Decimal)
         {
             /*FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount where("Posting Date" = field("Posting Date"),
-                                                "Bal. Account No." = field("Bal. Account No.")));*/
+            CalcFormula = sum(Apoeni.Amount);*/
 
         }
         field(50047; "Cash Register"; Text[100])
         {
             Caption = 'Cash Register';
         }
-        field(50048; BalTest; Code[20])
-        {
-            Caption = 'Bal Test';
-        }
         field(50049; "Main Cashier"; Boolean)
         {
             Caption = 'Main Cashier';
+            InitValue = false;
         }
 
         modify(Amount)
@@ -293,8 +289,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Rec."No. Line" := GJLine."No. Line" + 1
         else
             Rec."No. Line" := 1;
-
-        BalTest := Rec."Bal. Account No.";
 
     end;
 

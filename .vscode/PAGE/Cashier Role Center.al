@@ -20,21 +20,21 @@ page 50107 "Cashier Role Center"
         }
     }
 
-            /*actions
-    {
-        area(reporting)
-        {          
-             
-             action(CashReceiptJournal)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Cash Receipt Journal';
-                Image = CashReceiptJournal;
-                RunObject = Page "Cash Receipt Journal";
-            } 
+    /*actions
+{
+area(reporting)
+{          
 
-        }
-    }*/
-    }
+     action(CashReceiptJournal)
+    {
+        ApplicationArea = Basic, Suite;
+        Caption = 'Cash Receipt Journal';
+        Image = CashReceiptJournal;
+        RunObject = Page "Cash Receipt Journal";
+    } 
+
+}
+}*/
+}
 
 

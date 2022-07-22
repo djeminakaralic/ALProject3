@@ -9,10 +9,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             part(ApoeniFactBox; "Apoeni FactBox")
             {
                 ApplicationArea = Basic, Suite;
-                
-                /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
+
+                SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
-                              "Line No." = FIELD("Line No.");*/
+                              "Bal. Account No." = field("Bal. Account No."),
+                              "Line No." = FIELD("Line No.");
             }
         }
 
@@ -149,10 +150,6 @@ end;
         {
             Visible = false;
         }
-        modify(Amount)
-        {
-            Editable = false;
-        }
 
 
     }
@@ -176,6 +173,69 @@ end;
                 end;
             }
 
+            action("Transfer")
+            {
+                Caption = 'Transfer';
+                Image = TransferFunds;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+
+                    Rec.FINDFIRST;
+                    BEGIN
+                        IF Rec."Main Cashier" = FALSE THEN BEGIN
+                            REPEAT
+                                Validate(Rec."Main Cashier", TRUE);
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+
+                    END;
+
+                    GJline.Reset(); //insertujem novi record kada se vrsi prenos plata u "racunski centar"
+                    GJline.Init();
+                    GJline."Posting Date":=System.Today;
+                    GJline."Payment DT":= System.CurrentDateTime;
+                    GJline."Account Type":="Account Type"::"G/L Account";
+                    GJline.Insert();
+
+                    //Message(Format(Rec."Bal. Account No."));
+
+                    /*
+                    GenJnlLine.SETFILTER("Journal Template Name",'OPŠTE'); 
+ GenJnlLine.SETFILTER("Journal Batch Name",'PRE');
+          IF  GenJnlLine.FINDLAST THEN
+          LineNo:= GenJnlLine."Line No."+10000
+          ELSE
+            LineNo:= 10000;
+          GenJnlLine."Journal Template Name":='OPŠTE';
+          GenJnlLine."Journal Batch Name":='PRE';
+          GenJnlLine."Line No." :=LineNo;
+          GenJnlLine."Posting Date" := "Posting Date";
+          GenJnlLine."Document Date" := "Document Date";
+          GenJnlLine.Description := "Posting Description";
+          GenJnlLine."Document No." := "No.";
+          GenJnlLine."External Document No." := "External Document No.";
+          GenJnlLine."Account Type" :=GenJnlLine."Account Type"::Customer;
+          GenJnlLine."Account No." :="Bill-to Customer No.";
+          GenJnlLine."Currency Code" := "Currency Code";
+          CALCFIELDS("Amount Including VAT");
+          GenJnlLine.VALIDATE("Debit Amount","Amount Including VAT");
+          GenJnlLine."Gen. Posting Type" := 0;
+          GenJnlLine."Gen. Bus. Posting Group" := '';
+          GenJnlLine."Gen. Prod. Posting Group" := '';
+          GenJnlLine."VAT Bus. Posting Group" :='';
+          GenJnlLine."VAT Prod. Posting Group" := '';
+          GenJnlLine."Posting Group" := 'AVANS';
+         GenJnlLine.INSERT(TRUE);*/
+
+                end;
+            }
+
+
             /*action("Payroll")
             {
                 Caption = 'Payroll';
@@ -194,7 +254,6 @@ end;
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
-        Validate(Rec.BalTest, Rec."Bal. Account No.");
 
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
