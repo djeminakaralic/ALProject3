@@ -339,6 +339,7 @@ codeunit 50002 "Wage Calculation"
                                             AbsBruto2.CopyFilters(AbsBruto);
                                             AbsBruto2.SetFilter("Add Hours", '%1', false);
                                             AbsBruto2.SetFilter(Weekend, '%1', false);
+                                            AbsBruto2.SetFilter("Sick Leave", '%1', false);
                                             if AbsBruto2.findset then
                                                 repeat
                                                     COABruto.Get(AbsBruto2."Cause of Absence Code");
