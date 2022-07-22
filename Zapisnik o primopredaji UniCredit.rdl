@@ -377,7 +377,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Counter2.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -419,7 +421,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!CCode.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -461,7 +465,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!AmountRecord.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -607,8 +613,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TotalAmount.Value</Value>
-                                  <Style />
+                                  <Value>=FormatNumber(Fields!TotalAmount.Value, 2)</Value>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -732,8 +740,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
-                    <Style />
+                    <Value>=Fields!BankAccountName.Value</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -850,6 +861,9 @@ End Function
         </Field>
         <Field Name="BalAccNoFilter">
           <DataField>BalAccNoFilter</DataField>
+        </Field>
+        <Field Name="BankAccountName">
+          <DataField>BankAccountName</DataField>
         </Field>
       </Fields>
       <Query>
