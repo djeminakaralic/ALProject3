@@ -42,6 +42,10 @@ report 50097 "Zapisnik o primopredaji"
             column(CCode; PaymentType.Code)
             {
             }
+            column(Counter; Counter)
+            {
+
+            }
             column(Counter2; Counter2)
             {
             }
