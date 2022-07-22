@@ -26,7 +26,7 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
-            column(BalAccNoFilter; BalAccNoFilter)
+            column(BankAccountName;BankAccountName)
             {
             }
 
@@ -59,9 +59,6 @@ report 50097 "Zapisnik o primopredaji"
             {
             }
             column(TotalAmount; TotalAmount)
-            {
-            }
-            column(BankAccountName; BankAccountName)
             {
             }
 

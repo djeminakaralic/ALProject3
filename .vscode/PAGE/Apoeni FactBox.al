@@ -14,8 +14,8 @@ page 50148 "Apoeni FactBox"
             field(Apoeni; Apoeni)
             {
                 ApplicationArea = All;
-                Caption = 'Apoeni Total';
-              
+                ShowCaption = false;
+
                 trigger OnDrillDown()
                 var
                     Today: Date;
@@ -23,7 +23,7 @@ page 50148 "Apoeni FactBox"
                     Today := System.Today;
                     ApoeniTable.Reset();
                     ApoeniTable.SetFilter("Posting Date", '%1', Today);
-                    ApoeniTable.SetFilter("Bal. Account No.", '%1', "Bal. Account No.");
+                    ApoeniTable.SetFilter("Bal. Account No.", '%1', Rec.BalTest);
                     ApoeniPage.SetTableView(ApoeniTable);
                     ApoeniPage.Run();
                 end;

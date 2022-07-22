@@ -237,7 +237,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             CalcFormula = sum(Apoeni.Amount where("Posting Date" = field("Posting Date"),
                                                 "Bal. Account No." = field("Bal. Account No.")));*/
 
-            Caption = 'Apoeni';
         }
         field(50047; "Cash Register"; Text[100])
         {
@@ -277,6 +276,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     GlobalDimension1Filter := Customer."Global Dimension 1 Filter";
                     GlobalDimension2Filter := Customer."Global Dimension 2 Filter";
                     CurrencyFilter := Customer."Currency Filter";
+                    BalTest:=Rec."Bal. Account No.";
+                    Message(BalTest);
 
                 end;
             end;
