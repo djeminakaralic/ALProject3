@@ -9,6 +9,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             part(ApoeniFactBox; "Apoeni FactBox")
             {
                 ApplicationArea = Basic, Suite;
+                SubPageLink = "Bal. Account No." = field("Bal. Account No.");
 
                 /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
@@ -93,7 +94,7 @@ end;
             {
                 ApplicationArea = all;
             }
-            field("Main Cashier";"Main Cashier")
+            field("Main Cashier"; "Main Cashier")
             {
                 ApplicationArea = all;
             }
