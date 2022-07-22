@@ -205,7 +205,6 @@ report 50097 "Zapisnik o primopredaji"
         Datee: Date;
         PaymentCounter: Integer;
         TotalAmount: Decimal;
-        FilterInt: Integer;
         AmountRecord: Decimal;
         BalAccNoFilter: Code[20];
         BankAccountName: Text[100];
