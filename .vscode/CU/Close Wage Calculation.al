@@ -357,25 +357,49 @@ codeunit 50004 "Close Wage Calculation"
                                 ConCat.CALCFIELDS("From Brutto");
 
                                 IF AbType."Short Code" <> '423' THEN BEGIN
-                                    IF ((CalcTemp.Status.AsInteger() = 3) OR (NOT (Employee."Contact Center") AND (CalcTemp."Individual Hour Pool" > CalcTemp."Hour Pool")) OR ((Employee."Employment Date" > StartDate))) THEN
-                                        InsertValueEntry(Desc, WVE."Entry Type"::"Net Wage", ROUND(ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient)
-                                        - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100))), 0.01, '=') - (CalcTemp.Tax * ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool")
-                                       * Quantity * AbType.Coefficient)
-                                        - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100))), 0.01, '=') / CalcTemp."Net Wage"), 0.01, '='), '', ValueEntriesExist, 0, Quantity,
-                                        ROUND((ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity)
-                                        - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity) * (ConCat."From Brutto" / 100)), 0.01, '=') * AbType.Coefficient), 0.01, '='),
-                                         ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient)), 0.01, '='), CalcTemp."Contribution Category Code", CalcTemp."Department Code", CalcTemp."Department Name")
-                                    ELSE
-                                        InsertValueEntry(Desc, WVE."Entry Type"::"Net Wage", ROUND(ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
-                                       - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '=') -
-                                      (CalcTemp.Tax * ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
-                                       - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '=') / CalcTemp."Net Wage")
-                                       , 0.01, '='), '', ValueEntriesExist, 0, Quantity,
-                                       ROUND(ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
-                                       - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '='), 0.01, '='),
-                                      ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)), 0.01, '='), CalcTemp."Contribution Category Code", CalcTemp."Department Code", CalcTemp."Department Name");
-                                    // -ROUND((((CalcTemp."Wage (Base)"+CalcTemp."Unpaid Absence")/CalcTemp."Individual Hour Pool")*Quantity*AbType.Coefficient)*(ConCat."From Brutto"/100),0.01,'='))/(1-ConCat."From Brutto"/100) ,0.01,'='));}
-                                    //END;
+
+                                    if AbType."Sick Leave" = true then begin
+                                        IF ((CalcTemp.Status.AsInteger() = 3) OR (NOT (Employee."Contact Center") AND (CalcTemp."Individual Hour Pool" > CalcTemp."Hour Pool")) OR ((Employee."Employment Date" > StartDate))) THEN
+                                            InsertValueEntry(Desc, WVE."Entry Type"::"Net Wage", ROUND(ROUND(((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient)
+                                            - ((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100))), 0.01, '=') - (CalcTemp.Tax * ROUND(((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool")
+                                           * Quantity * AbType.Coefficient)
+                                            - ((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100))), 0.01, '=') / CalcTemp."Sick Leave Brutto"), 0.01, '='), '', ValueEntriesExist, 0, Quantity,
+                                            ROUND((ROUND((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity)
+                                            - ((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity) * (ConCat."From Brutto" / 100)), 0.01, '=') * AbType.Coefficient), 0.01, '='),
+                                             ROUND(((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient)), 0.01, '='), CalcTemp."Contribution Category Code", CalcTemp."Department Code", CalcTemp."Department Name")
+                                        ELSE
+                                            InsertValueEntry(Desc, WVE."Entry Type"::"Net Wage", ROUND(ROUND((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
+                                           - ((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '=') -
+                                          (CalcTemp.Tax * ROUND((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
+                                           - ((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '=') / CalcTemp."Net Wage")
+                                           , 0.01, '='), '', ValueEntriesExist, 0, Quantity,
+                                           ROUND(ROUND((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
+                                           - ((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '='), 0.01, '='),
+                                          ROUND(((((CalcTemp."Sick Leave Brutto" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)), 0.01, '='), CalcTemp."Contribution Category Code", CalcTemp."Department Code", CalcTemp."Department Name");
+
+
+                                    end
+                                    else begin
+                                        IF ((CalcTemp.Status.AsInteger() = 3) OR (NOT (Employee."Contact Center") AND (CalcTemp."Individual Hour Pool" > CalcTemp."Hour Pool")) OR ((Employee."Employment Date" > StartDate))) THEN
+                                            InsertValueEntry(Desc, WVE."Entry Type"::"Net Wage", ROUND(ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient)
+                                            - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100))), 0.01, '=') - (CalcTemp.Tax * ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool")
+                                           * Quantity * AbType.Coefficient)
+                                            - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100))), 0.01, '=') / CalcTemp."Net Wage"), 0.01, '='), '', ValueEntriesExist, 0, Quantity,
+                                            ROUND((ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity)
+                                            - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity) * (ConCat."From Brutto" / 100)), 0.01, '=') * AbType.Coefficient), 0.01, '='),
+                                             ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Hour Pool") * Quantity * AbType.Coefficient)), 0.01, '='), CalcTemp."Contribution Category Code", CalcTemp."Department Code", CalcTemp."Department Name")
+                                        ELSE
+                                            InsertValueEntry(Desc, WVE."Entry Type"::"Net Wage", ROUND(ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
+                                           - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '=') -
+                                          (CalcTemp.Tax * ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
+                                           - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '=') / CalcTemp."Net Wage")
+                                           , 0.01, '='), '', ValueEntriesExist, 0, Quantity,
+                                           ROUND(ROUND((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)
+                                           - ((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient) * (ConCat."From Brutto" / 100)), 0.01, '='), 0.01, '='),
+                                          ROUND(((((CalcTemp."Wage (Base)" + CalcTemp."Unpaid Absence") / CalcTemp."Individual Hour Pool") * Quantity * AbType.Coefficient)), 0.01, '='), CalcTemp."Contribution Category Code", CalcTemp."Department Code", CalcTemp."Department Name");
+                                        // -ROUND((((CalcTemp."Wage (Base)"+CalcTemp."Unpaid Absence")/CalcTemp."Individual Hour Pool")*Quantity*AbType.Coefficient)*(ConCat."From Brutto"/100),0.01,'='))/(1-ConCat."From Brutto"/100) ,0.01,'='));}
+                                        //END;
+                                    end;
                                 END
 
                                 ELSE BEGIN

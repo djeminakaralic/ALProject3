@@ -204,6 +204,12 @@ tableextension 51921 MyExtension extends "Employee Absence"
             FieldClass = FlowField;
             CalcFormula = lookup("Cause of Absence"."Unpaid days" where(Code = field("Cause of Absence Code")));
         }
+        field(50153; "Sick Leave"; Boolean)
+        {
+            Caption = 'Sick Leave';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Cause of Absence"."Sick Leave" where(Code = field("Cause of Absence Code")));
+        }
 
 
 

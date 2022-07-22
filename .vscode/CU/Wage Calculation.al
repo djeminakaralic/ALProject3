@@ -292,8 +292,67 @@ codeunit 50002 "Wage Calculation"
 
                                         CalcTemp."Wage (Base) is Neto" := ConfData."Net Amount";
                                         CalcTemp."Date Of Calculation" := Header."Date Of Calculation";
+                                        AbsBruto.Reset();
+                                        AbsBruto.SetFilter("Employee No.", '%1', CalcTemp."Employee No.");
+                                        AbsBruto.SetFilter("Sick Leave", '%1', false);
+                                        AbsBruto.SetFilter("From Date", '<%1', StartDate);
+                                        AbsBruto.SetCurrentKey("From Date");
+                                        AbsBruto.Ascending;
+                                        if AbsBruto.FindLast() then begin
+                                            WWeBruto.Reset();
+                                            WWeBruto.SetFilter("Employee No.", '%1', CalcTemp."Employee No.");
+                                            WWeBruto.SetFilter("Entry Type", '%1|%2|%3', WWeBruto."Entry Type"::"Net Wage", WWeBruto."Entry Type"::Use, WWeBruto."Entry Type"::Taxable);
+                                            WWeBruto.SetFilter("Document No.", '%1', AbsBruto."Wage Header No.");
+                                            if WWeBruto.FindFirst() then begin
+                                                WWeBruto.CalcSums("Cost Amount (Brutto)");
+                                                CalcTemp."Sick Leave Brutto" := WWeBruto."Cost Amount (Brutto)";
+                                            end
+                                            else begin
+                                                CalcTemp."Sick Leave Brutto" := WageAmount;
+                                            end;
+                                        end
+                                        else begin
+
+                                            CalcTemp."Sick Leave Brutto" := WageAmount;
+                                        end;
                                         CalcTemp.MODIFY;
-                                        CalcTemp.Brutto := WageAmount;
+
+                                        AbsBruto.Reset();
+                                        AbsBruto.SetFilter("Employee No.", '%1', CalcTemp."Employee No.");
+                                        AbsBruto.SetFilter("Sick Leave", '%1', true);
+                                        AbsBruto.SetFilter("From Date", '%1..%2', StartDate, EndDate);
+                                        AbsBruto.SetCurrentKey("From Date");
+                                        AbsBruto.Ascending;
+                                        if AbsBruto.FindFirst() then begin
+                                            AbsBruto.CalcSums(Quantity);
+                                            AbsBruto2.Reset();
+                                            AbsBruto2.CopyFilters(AbsBruto);
+                                            AbsBruto2.SetFilter("Sick Leave", '%1', false);
+                                            if AbsBruto2.FindFirst() then begin
+                                                AbsBruto2.CalcSums(Quantity);
+                                                CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity + (WageAmount / CalcTemp."Hour Pool") * AbsBruto2.Quantity;
+
+
+                                            end
+                                            else begin
+                                                CalcTemp.Brutto := (CalcTemp."Sick Leave Brutto" / CalcTemp."Hour Pool") * AbsBruto.Quantity;
+                                            end;
+
+
+
+
+                                        end
+                                        else begin
+                                            CalcTemp.Brutto := WageAmount;
+                                            //ako nema bruto osnovicu
+                                        end;
+
+
+
+                                        //ĐK ovdje dodati polovicu od bolovanja   ;
+
+
+
                                         NettoFromBrutto;
                                         /*  IF CalcTemp."Hour Pool"=0 THEN BEGIN
                                             Employee.CALCFIELDS("Department code");
@@ -654,6 +713,10 @@ codeunit 50002 "Wage Calculation"
 
     var
         Orgdijelovi: Record "ORG Dijelovi";
+        BaseHourWageSick: Decimal;
+        WWeBruto: Record "Wage Value Entry";
+        AbsBruto: Record "Employee Absence";
+        AbsBruto2: Record "Employee Absence";
         CantonAmount: Decimal;
         WagSetup: Record "Wage Setup";
         Position: Record "Position";
@@ -1338,7 +1401,17 @@ codeunit 50002 "Wage Calculation"
 
                 IF AbsenceEmp.Quantity <> 0 THEN BEGIN
                     IF COA."Sick Leave Paid By Company" THEN BEGIN
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        if CalcTemp."Sick Leave Brutto" <> 0 then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
+
+
 
                         NettoAmount += NettoAmountT;
                         SickCompany += NettoAmountT;
@@ -1362,7 +1435,16 @@ codeunit 50002 "Wage Calculation"
                                ;
                                CalcTemp.MODIFY;
                            END;*/
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        //ĐK   NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        if (CalcTemp."Sick Leave Brutto" <> 0) then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
 
                         Class.RESET;
                         Class.SETCURRENTKEY("Valid From Amount");
@@ -1394,7 +1476,17 @@ codeunit 50002 "Wage Calculation"
 
                     // IF CalcTemp."Employee No."='1' THEN MESSAGE(COA.Code);
                     IF NOT (COA."Sick Leave" OR COA."Sick Leave Paid By Company" OR COA."Added To Hour Pool") THEN BEGIN
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        //ĐK  NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        if (CalcTemp."Sick Leave Brutto" <> 0) and (COA."Sick Leave" = true) then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
+
+
                         //bt01
                         // MESSAGE((FORMAT(AbsenceEmp.Quantity)));
                         //MESSAGE((FORMAT(COA.Coefficient)));
@@ -2062,7 +2154,16 @@ codeunit 50002 "Wage Calculation"
                                NettoAmountT := WageSetup."Canton Sick-Leave Amount" * WageSetup."Maximum hours for sick wage";
 
                           */
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        //ĐK   NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        if CalcTemp."Sick Leave Brutto" <> 0 then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
+
 
 
                         Class.RESET;
@@ -2201,7 +2302,15 @@ codeunit 50002 "Wage Calculation"
 
                 IF AbsenceEmp.Quantity <> 0 THEN BEGIN
                     IF COA."Sick Leave Paid By Company" THEN BEGIN
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        //ĐK    NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        if CalcTemp."Sick Leave Brutto" <> 0 then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
 
                         NettoAmount += NettoAmountT;
                         SickCompany += NettoAmountT;
@@ -2225,7 +2334,15 @@ codeunit 50002 "Wage Calculation"
                             ;
                             CalcTemp.MODIFY;
                         END;*/
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        //ĐK       NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        if CalcTemp."Sick Leave Brutto" <> 0 then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
 
                         Class.RESET;
                         Class.SETCURRENTKEY("Valid From Amount");
@@ -2251,7 +2368,17 @@ codeunit 50002 "Wage Calculation"
                     END;
 
                     IF NOT (COA."Sick Leave" OR COA."Sick Leave Paid By Company" OR COA."Added To Hour Pool") THEN BEGIN
-                        NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+                        //ĐK      NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        if (CalcTemp."Sick Leave Brutto" <> 0) and (COA."Sick Leave" = true) then begin
+                            BaseHourWageSick := (CalcTemp."Sick Leave Brutto" / (1 / (1 - AddTaxesPercentage / 100))) / CalcTemp."Hour Pool";
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWageSick * AmtDistrCoeff;
+                        end
+                        else begin
+                            NettoAmountT := AbsenceEmp.Quantity * COA.Coefficient * BaseHourWage * AmtDistrCoeff;
+
+                        end;
+
                         NettoAmount += NettoAmountT;
                         //ĐK     ExperienceBase += NettoAmountT;
                         ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
