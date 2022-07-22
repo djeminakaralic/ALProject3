@@ -249,6 +249,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50049; "Main Cashier"; Boolean)
         {
             Caption = 'Main Cashier';
+            InitValue = false;
         }
 
         modify(Amount)

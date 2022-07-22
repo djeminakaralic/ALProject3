@@ -176,6 +176,31 @@ end;
                 end;
             }
 
+            action("Transfer")
+            {
+                Caption = 'Transfer';
+                Image = TransferFunds;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+
+                    Rec.FINDFIRST;
+                    BEGIN
+                        IF Rec."Main Cashier" = FALSE THEN BEGIN
+                            REPEAT
+                                Validate(Rec."Main Cashier", TRUE);
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+                        
+                    END;
+                end;
+            }
+
+
             /*action("Payroll")
             {
                 Caption = 'Payroll';
