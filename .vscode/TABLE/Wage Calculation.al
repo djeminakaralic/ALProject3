@@ -1046,6 +1046,10 @@ table 50018 "Wage Calculation"
         {
 
         }
+        field(50381; "Netto Wage Base"; Decimal)
+        {
+
+        }
 
 
 
