@@ -212,8 +212,9 @@ end;
                     GJline.Amount := TotalAmount;
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Main Cashier":=true;
-                    GJline."Debit Amount":=Amount;
+                    GJline."Debit Amount":=Amount;                    
                     GJline."Account Type" := "Account Type"::"G/L Account";
+                    GJline."Account No.":='2050';
                     GJline.Insert();
 
                     //Message(Format(Rec."Bal. Account No."));
