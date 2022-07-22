@@ -87,13 +87,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if (Amount <> 0) AND ("Given amount" > 0) then 
+                if (Amount <> 0) AND ("Given amount" > 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
 
-                if ("Given amount">=Abs(Amount)) then
-                Message('Vrati kusur: ' + Format("To return") + ' KM.')
-                else    
-                Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
+                if ("Given amount" >= Abs(Amount)) then
+                    Message('Vrati kusur: ' + Format("To return") + ' KM.')
+                else
+                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
 
                 MultipleBills := 0;
                 MultipleBillsSum := 0;
@@ -243,6 +243,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Cash Register';
         }
+        field(50048; BalTest; Code[20])
+        {
+            Caption = 'Bal Test';
+        }
 
         modify(Amount)
         {
@@ -286,6 +290,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Rec."No. Line" := GJLine."No. Line" + 1
         else
             Rec."No. Line" := 1;
+
+        BalTest := Rec."Bal. Account No.";
 
     end;
 
