@@ -34,12 +34,12 @@ page 51067 "Apoeni Page"
                 field("Bal. Account No."; "Bal. Account No.")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+                    
                 }
                 field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = all;
-                    Visible = false;
+                    
                 }
             }
         }
