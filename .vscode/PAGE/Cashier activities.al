@@ -19,7 +19,7 @@ page 50110 "Cashier Activities"
             field("Cash Receipt Journal"; "Cash Receipt Journal")
             {
                 ShowCaption = false;
-      
+
                 trigger OnDrillDown()
                 begin
                     Page.Run(255);
@@ -54,6 +54,11 @@ page 50110 "Cashier Activities"
 
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        "Cash Receipt Journal" := 'test';
+    end;
 
 
 }
