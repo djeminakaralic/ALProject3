@@ -31,14 +31,16 @@ page 51067 "Apoeni Page"
                 {
                     ApplicationArea = all;
                 }
-                /*field("Bal. Account No."; "Bal. Account No.")
+                field("Bal. Account No."; "Bal. Account No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = all;
-                }*/
+                    Visible = false;
+                }
             }
         }
     }
@@ -56,7 +58,7 @@ page 51067 "Apoeni Page"
                 PromotedIsBig = true;
 
                 //RunObject = Report "Zapisnik o primopredaji";
-                
+
                 trigger OnAction()
                 var
                     Today: Date;
