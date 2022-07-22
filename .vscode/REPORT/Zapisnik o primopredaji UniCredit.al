@@ -10,7 +10,10 @@ report 50097 "Zapisnik o primopredaji"
     {
         dataitem(DataItem20; Apoeni)
         {
-
+            trigger OnPreDataItem()
+            begin
+                BalAccNoFilter := GETFILTER("Bal. Account No.");
+            end;
         }
         dataitem(DataItem21; "G/L Entry")
         {
@@ -41,6 +44,7 @@ report 50097 "Zapisnik o primopredaji"
             }
             column(Counter; Counter)
             {
+
             }
             column(Counter2; Counter2)
             {
@@ -48,13 +52,19 @@ report 50097 "Zapisnik o primopredaji"
             column(AmountRecord; AmountRecord)
             {
             }
+            column(TotalAmount; TotalAmount)
+            {
+            }
+            column(BalAccNoFilter; BalAccNoFilter)
+            {
+
+            }
 
             trigger OnAfterGetRecord()
             begin
-                Counter += 1;
+                Counter += 1; //ovaj counter broji koji apoen je po redu da bih mogla filtrirati tabelu apoeni
 
-                DataItem20.Reset();
-                if PaymentType.Code = FORMAT(200) then
+                /*if PaymentType.Code = FORMAT(200) then
                     FilterInt := 1
                 else
                     if PaymentType.Code = FORMAT(100) then
@@ -78,21 +88,28 @@ report 50097 "Zapisnik o primopredaji"
                                             if PaymentType.Code = FORMAT(1) then
                                                 FilterInt := 8
                                             else
-                                                if PaymentType.Code = FORMAT(0.5) then
+                                                if PaymentType.Code = FORMAT('0.5') then
                                                     FilterInt := 9
                                                 else
-                                                    if PaymentType.Code = FORMAT(0.2) then
+                                                    if PaymentType.Code = FORMAT('0.2') then
                                                         FilterInt := 10
                                                     else
-                                                        if PaymentType.Code = FORMAT(0.1) then
+                                                        if PaymentType.Code = FORMAT('0.1') then
                                                             FilterInt := 11
                                                         else
-                                                            if PaymentType.Code = FORMAT(0.05) then FilterInt := 12;
+                                                            if PaymentType.Code = FORMAT('0.05') then FilterInt := 12;*/
 
-                DataItem20.SetFilter(Apoeni, '%1', FilterInt);
+
+
+                DataItem20.Reset();
+                DataItem20.SetFilter(Apoeni, '%1', Counter);
+                DataItem20.SetFilter("Bal. Account No.", '%1', BalAccNoFilter);
+                DataItem20.SetFilter("Posting Date", '%1', Datee);
+
                 if DataItem20.FindFirst() then begin
                     Counter2 := DataItem20.Quantity;
                     AmountRecord := DataItem20.Amount;
+                    TotalAmount += AmountRecord;
                 end
                 else begin
                     Counter2 := 0;
@@ -105,6 +122,8 @@ report 50097 "Zapisnik o primopredaji"
             begin
 
                 Counter := 0;
+                Counter2 := 0;
+                TotalAmount := 0;
 
                 PaymentType.DeleteAll();
 
@@ -177,32 +196,6 @@ report 50097 "Zapisnik o primopredaji"
 
         }
 
-
-
-        /*trigger OnAfterGetRecord()
-    begin
-    */
-
-        /*
-
-
-
-        GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-
-        GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-
-        PaymentCounter := GLEntry.Count;
-
-        PaymentAmount := 0;
-
-        IF GLEntry.FindFirst() then
-            repeat
-                PaymentAmount += ABS(GLEntry.Amount);
-            until GLEntry.Next() = 0;
-
-    */
-
-
     }
 
     requestpage
@@ -241,8 +234,9 @@ report 50097 "Zapisnik o primopredaji"
         Counter2: Integer;
         Datee: Date;
         PaymentCounter: Integer;
-        PaymentAmount: Decimal;
+        TotalAmount: Decimal;
         FilterInt: Integer;
         AmountRecord: Decimal;
+        BalAccNoFilter: Code[20];
 }
 
