@@ -6,7 +6,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         addafter(JournalLineDetails)
         {
-            part(APoeniFactBox; "Apoeni FactBox")
+            part(ApoeniFactBox; "Apoeni FactBox")
             {
                 ApplicationArea = Basic, Suite;
 
