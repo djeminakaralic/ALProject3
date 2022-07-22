@@ -49,7 +49,6 @@ report 50097 "Zapisnik o primopredaji"
             }
             column(Counter; Counter)
             {
-
             }
             column(Counter2; Counter2)
             {
