@@ -195,7 +195,7 @@ end;
 
                     END;
 
-                    GJline.Reset(); //insertujem novi record kada se vrsi prenos plata u "racunski centar"
+                    GJline.Reset(); //insertujem novi red kada se vrsi prenos plata u "racunski centar"
                     GJline.Init();
                     GJline."Posting Date":=System.Today;
                     GJline."Payment DT":= System.CurrentDateTime;
