@@ -19468,6 +19468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Sick Fund Total - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 2079431469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sick Leave Brutto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Sick Leave Brutto - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1022113639 - Field 409138165 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sick Leave Company</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -20362,6 +20367,11 @@
           <source>Sick Fund Total</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Sick Fund Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 779094299 - Field 2079431469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sick Leave Brutto</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Sick Leave Brutto - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 779094299 - Field 409138165 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sick Leave Company</source>
@@ -40157,6 +40167,11 @@
           <source>Short Code Corrections</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field Short Code Corrections - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4142435239 - Field 3354304363 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3164093577">
+          <source>Sick Leave</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field Sick Leave - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4142435239 - Field 68521825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3164093577">
           <source>Statistics Group Code</source>
