@@ -539,44 +539,44 @@ UNTIL BenefitsTemp.NEXT = 0;
 
             //ovdje dodajem update
 
-            if OrgShema."Date From" = WorkDate() then begin
-                ECLSysInst.Reset();
-                ECLSysInst.SetFilter("Changing Position", '%1', false);
-                ECLSysInst.SetFilter("Will Be Changed Later", '%1', false);
-                if ECLSysInst.FindSet() then
-                    repeat
+            /*      if OrgShema."Date From" = calcdate('<+1D>', WorkDate()) then begin
+                      ECLSysInst.Reset();
+                      ECLSysInst.SetFilter("Changing Position", '%1', false);
+                      ECLSysInst.SetFilter("Will Be Changed Later", '%1', false);
+                      if ECLSysInst.FindSet() then
+                          repeat
 
-                        ECLUgCon.RESET;
-                        ECLUgCon.SETFILTER("Employee No.", '%1', ECLSysInst."Employee No.");
-                        ECLUgCon.SETFILTER(Active, '%1', TRUE);
-                        if ECLUgCon.FindFirst() then begin
+                              ECLUgCon.RESET;
+                              ECLUgCon.SETFILTER("Employee No.", '%1', ECLSysInst."Employee No.");
+                              ECLUgCon.SETFILTER(Active, '%1', TRUE);
+                              if ECLUgCon.FindFirst() then begin
 
-                            IF ((ECLSysInst."Sector Description" = ECLUgCon."Sector Description") AND
-                             (ECLSysInst."Department Cat. Description" = ECLUgCon."Department Cat. Description")
-                                            AND (ECLSysInst."Group Description" = ECLUgCon."Group Description")
-                                           AND (ECLSysInst."Team Description" = ECLUgCon."Team Description") AND
-                                           (ECLSysInst."Reason for Change" = ECLUgCon."Reason for Change") AND
+                                  IF ((ECLSysInst."Sector Description" = ECLUgCon."Sector Description") AND
+                                   (ECLSysInst."Department Cat. Description" = ECLUgCon."Department Cat. Description")
+                                                  AND (ECLSysInst."Group Description" = ECLUgCon."Group Description")
+                                                 AND (ECLSysInst."Team Description" = ECLUgCon."Team Description") AND
+                                                 (ECLSysInst."Reason for Change" = ECLUgCon."Reason for Change") AND
 
-                                            (ECLSysInst."Org Unit Name" = ECLUgCon."Org Unit Name")
+                                                  (ECLSysInst."Org Unit Name" = ECLUgCon."Org Unit Name")
 
-                                           AND (ECLSysInst.IS = ECLUgCon.IS)
-                                           AND (ECLSysInst."IS Date From" = ECLUgCon."IS Date From")
-                                           AND (ECLSysInst."IS Date To" = ECLUgCon."IS Date To")
-                                           AND (ECLSysInst."Position Description" = ECLUgCon."Position Description")) THEN BEGIN
-                            end
-                            else begin
-                                ECLSysInst.Validate("Changing Position", true);
-                            end;
-
-
-
-                        end;
+                                                 AND (ECLSysInst.IS = ECLUgCon.IS)
+                                                 AND (ECLSysInst."IS Date From" = ECLUgCon."IS Date From")
+                                                 AND (ECLSysInst."IS Date To" = ECLUgCon."IS Date To")
+                                                 AND (ECLSysInst."Position Description" = ECLUgCon."Position Description")) THEN BEGIN
+                                  end
+                                  else begin
+                                      ECLSysInst.Validate("Changing Position", true);
+                                  end;
 
 
 
-                    until ECLSysInst.Next() = 0;
+                              end;
 
-            end;
+
+
+                          until ECLSysInst.Next() = 0;
+
+        end;*/
         END;
 
     end;
