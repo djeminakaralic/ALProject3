@@ -172,17 +172,6 @@ report 50097 "Zapisnik o primopredaji"
     {
         layout
         {
-            /*area(content)
-            {
-                group("Date")
-                {
-                    Caption = 'Datum zapisnika';
-                    field(Datee; Datee)
-                    {
-                        Caption = 'Datum zapisnika: ';
-                    }
-                }
-            }*/
         }
 
         actions
