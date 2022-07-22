@@ -16,7 +16,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
         }
 
-        addafter(CurrentJnlBatchName)
+        /*addafter(CurrentJnlBatchName)
         {
             field("Cash Register"; "Cash Register")
             {
@@ -32,52 +32,52 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                         BankAccounts.SetFilter("No.", '%1', 'BANK-10');
                         /*if BankAccounts.FindFirst() then
                             "Cash Register" := BankAccounts.Name;*/
+        /*Page.Run(Page::"Bank Account Card", BankAccounts);
+    end
+    else
+        if "Journal Batch Name" = 'CZK2 UPL' then begin
+            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
+            Page.Run(Page::"Bank Account Card", BankAccounts);
+        end
+        else
+            if "Journal Batch Name" = 'CZK3 UPL' then begin
+                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
+                Page.Run(Page::"Bank Account Card", BankAccounts);
+            end
+            else
+                if "Journal Batch Name" = 'CZK4 UPL' then begin
+                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
+                    Page.Run(Page::"Bank Account Card", BankAccounts);
+                end
+                else
+                    if "Journal Batch Name" = 'CZK5 UPL' then begin
+                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
                         Page.Run(Page::"Bank Account Card", BankAccounts);
                     end
                     else
-                        if "Journal Batch Name" = 'CZK2 UPL' then begin
-                            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
+                        if "Journal Batch Name" = 'CZK6 UPL' then begin
+                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
                             Page.Run(Page::"Bank Account Card", BankAccounts);
                         end
                         else
-                            if "Journal Batch Name" = 'CZK3 UPL' then begin
-                                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
+                            if "Journal Batch Name" = 'CZK7 UPL' then begin
+                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
                                 Page.Run(Page::"Bank Account Card", BankAccounts);
                             end
                             else
-                                if "Journal Batch Name" = 'CZK4 UPL' then begin
-                                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
+                                if "Journal Batch Name" = 'CZK8 UPL' then begin
+                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
                                     Page.Run(Page::"Bank Account Card", BankAccounts);
                                 end
                                 else
-                                    if "Journal Batch Name" = 'CZK5 UPL' then begin
-                                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
+                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
+                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
                                         Page.Run(Page::"Bank Account Card", BankAccounts);
-                                    end
-                                    else
-                                        if "Journal Batch Name" = 'CZK6 UPL' then begin
-                                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
-                                            Page.Run(Page::"Bank Account Card", BankAccounts);
-                                        end
-                                        else
-                                            if "Journal Batch Name" = 'CZK7 UPL' then begin
-                                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
-                                                Page.Run(Page::"Bank Account Card", BankAccounts);
-                                            end
-                                            else
-                                                if "Journal Batch Name" = 'CZK8 UPL' then begin
-                                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
-                                                    Page.Run(Page::"Bank Account Card", BankAccounts);
-                                                end
-                                                else
-                                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
-                                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
-                                                        Page.Run(Page::"Bank Account Card", BankAccounts);
-                                                    end;
+                                    end;
 
-                end;
-            }
-        }
+end;
+}
+}*/
 
         addafter("Posting Date")
         {

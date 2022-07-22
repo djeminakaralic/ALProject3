@@ -742,7 +742,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!BalAccNoFilter.Value, "DataSet_Result")</Value>
+                    <Value>=Fields!BalAccNoFilter.Value</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
