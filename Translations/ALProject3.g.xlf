@@ -35443,11 +35443,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Payment Slip - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4113372704 - Control 1339191004 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
-          <source>Blagajna</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Control Cash Register - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40212,6 +40207,11 @@
           <source>Wage Header No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field Wage Header No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4142435239 - Field 1748166277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3164093577">
+          <source>Weekend</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field Weekend - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4142435239 - Field 2038713563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3164093577">
           <source>Work Type</source>
