@@ -13,7 +13,6 @@ report 50097 "Zapisnik o primopredaji"
             trigger OnPreDataItem()
             begin
                 BalAccNoFilter := GETFILTER("Bal. Account No.");
-
             end;
         }
         dataitem(DataItem21; "G/L Entry")
@@ -27,11 +26,18 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
+            column(BankAccountName;BankAccountName)
+            {
+            }
 
             trigger OnPreDataItem()
             begin
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
+
+                BankAccount.Reset();
+                BankAccount.Get(BalAccNoFilter);
+                BankAccountName:=BankAccount.Name;
 
                 Datee := System.Today;
             end;
@@ -53,12 +59,6 @@ report 50097 "Zapisnik o primopredaji"
             {
             }
             column(TotalAmount; TotalAmount)
-            {
-            }
-            column(BalAccNoFilter; BalAccNoFilter)
-            {
-            }
-            column(BankAccountName; BankAccountName)
             {
             }
 
