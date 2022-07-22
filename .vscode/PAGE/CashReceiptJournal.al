@@ -12,6 +12,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                 SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
+                              "Bal. Account No." = field("Bal. Account No."),
                               "Line No." = FIELD("Line No.");
             }
         }
