@@ -18853,6 +18853,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Brutto Transport - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 648119989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brutto Wage Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Brutto Wage Base - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1022113639 - Field 1478617252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calculated</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19252,6 +19257,11 @@
           <source> Netto by Contract</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Netto by Contract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1022113639 - Field 2968233103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Netto Wage Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation - Field Netto Wage Base - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1022113639 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
@@ -19768,6 +19778,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Brutto Transport - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 779094299 - Field 648119989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brutto Wage Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Brutto Wage Base - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 779094299 - Field 1478617252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Calculated</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -20162,6 +20177,11 @@
           <source> Netto by Contract</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Netto by Contract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 779094299 - Field 2968233103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Netto Wage Base</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Wage Calculation Temp - Field Netto Wage Base - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 779094299 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
@@ -39597,6 +39617,11 @@
           <source>Interest</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Interest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 908261736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Main Cashier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Main Cashier - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 2602591470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Mobile Phone</source>

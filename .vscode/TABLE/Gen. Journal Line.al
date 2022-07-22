@@ -246,6 +246,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Bal Test';
         }
+        field(50049; "Main Cashier"; Boolean)
+        {
+            Caption = 'Main Cashier';
+        }
 
         modify(Amount)
         {

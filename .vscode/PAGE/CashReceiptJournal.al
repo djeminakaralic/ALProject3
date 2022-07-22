@@ -9,7 +9,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             part(ApoeniFactBox; "Apoeni FactBox")
             {
                 ApplicationArea = Basic, Suite;
-
+                
                 /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
                               "Line No." = FIELD("Line No.");*/
@@ -90,6 +90,10 @@ end;
                 ApplicationArea = all;
             }
             field("Payment Method"; "Payment Method")
+            {
+                ApplicationArea = all;
+            }
+            field("Main Cashier"; "Main Cashier")
             {
                 ApplicationArea = all;
             }
@@ -191,7 +195,7 @@ end;
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
         Validate(Rec.BalTest, Rec."Bal. Account No.");
-        
+
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
 
