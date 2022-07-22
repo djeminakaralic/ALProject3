@@ -149,7 +149,8 @@ codeunit 50002 "Wage Calculation"
                                     CalcTemp."Net Wage" := WageAmount;
 
 
-                                    EmpCoefficient := CalcTemp."Net Wage" / CalcTemp."Hour Pool";
+                                    //ĐK probaj   EmpCoefficient := CalcTemp."Net Wage" / CalcTemp."Hour Pool";
+                                    EmpCoefficient := CalcTemp."Netto Wage Base" / CalcTemp."Hour Pool";
                                     CalcTemp."Employee Coefficient" := EmpCoefficient;
                                     CalcTemp.MODIFY;
 
@@ -409,11 +410,16 @@ codeunit 50002 "Wage Calculation"
                                         CalcTemp.MODIFY;
                                       END;
                                        END;*/
+
+                                        //ĐK Korekcija
                                         IF NOT Employee."Contact Center" THEN
-                                            EmpCoefficient := CalcTemp."Net Wage" / CalcTemp."Hour Pool"
+                                            EmpCoefficient := CalcTemp."Netto Wage Base" / CalcTemp."Hour Pool"
                                         ELSE
                                             //    EmpCoefficient := CalcTemp."Wage (Base)"/CalcTemp."Hour Pool";
-                                            EmpCoefficient := CalcTemp."Net Wage" / CalcTemp."Hour Pool";
+                                            EmpCoefficient := CalcTemp."Netto Wage Base" / CalcTemp."Hour Pool";
+
+
+
                                         OldEmpCoefficient := (ConfData."Old Amount" / CalcTemp."Hour Pool") * (1 - AddTaxesPercentage / 100);
 
                                         CalcTemp."Employee Coefficient" := EmpCoefficient;
@@ -543,7 +549,9 @@ codeunit 50002 "Wage Calculation"
                                 CalcTemp.MODIFY;
                                 CalcTemp.Brutto := WageAmount;
                                 NettoFromBrutto;
-                                EmpCoefficient := CalcTemp."Net Wage" / CalcTemp."Hour Pool";
+
+                                //ĐK korekcija
+                                EmpCoefficient := CalcTemp."Netto Wage Base" / CalcTemp."Hour Pool";
                                 CalcTemp."Employee Coefficient" := EmpCoefficient;
                                 CalcTemp.Paid := TRUE;
                                 CalcTemp.MODIFY;
@@ -658,7 +666,8 @@ codeunit 50002 "Wage Calculation"
                                 CalcTemp.MODIFY;
                                 CalcTemp.Brutto := WageAmount;
                                 NettoFromBrutto;
-                                EmpCoefficient := CalcTemp."Net Wage" / CalcTemp."Hour Pool";
+                                ///ĐK korekcija
+                                EmpCoefficient := CalcTemp."Netto Wage Base" / CalcTemp."Hour Pool";
                                 CalcTemp."Employee Coefficient" := EmpCoefficient;
                                 CalcTemp.MODIFY;
                                 WageFromHours(CalcTemp."Net Wage", EmpCoefficient, EmplDefDim."Amount Distribution Coeff.");
