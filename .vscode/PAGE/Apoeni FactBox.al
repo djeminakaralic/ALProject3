@@ -23,7 +23,7 @@ page 50148 "Apoeni FactBox"
                     Today := System.Today;
                     ApoeniTable.Reset();
                     ApoeniTable.SetFilter("Posting Date", '%1', Today);
-                    ApoeniTable.SetFilter("Bal. Account No.", '%1', BalTest);
+                    ApoeniTable.SetFilter("Bal. Account No.", '%1', "Bal. Account No.");
                     ApoeniPage.SetTableView(ApoeniTable);
                     ApoeniPage.Run();
                 end;
