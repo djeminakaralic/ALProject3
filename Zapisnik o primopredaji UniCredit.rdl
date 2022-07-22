@@ -830,9 +830,6 @@ End Function
         <Field Name="CCode">
           <DataField>CCode</DataField>
         </Field>
-        <Field Name="Counter">
-          <DataField>Counter</DataField>
-        </Field>
         <Field Name="Counter2">
           <DataField>Counter2</DataField>
         </Field>
@@ -841,6 +838,12 @@ End Function
         </Field>
         <Field Name="AmountRecordFormat">
           <DataField>AmountRecordFormat</DataField>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+        </Field>
+        <Field Name="TotalAmountFormat">
+          <DataField>TotalAmountFormat</DataField>
         </Field>
       </Fields>
       <Query>

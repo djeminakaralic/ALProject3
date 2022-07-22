@@ -39,19 +39,19 @@ report 50097 "Zapisnik o primopredaji"
             column(CCode; PaymentType.Code)
             {
             }
-            column(Counter; Counter)
-            {
-            }
             column(Counter2; Counter2)
             {
             }
             column(AmountRecord; AmountRecord)
             {
             }
+            column(TotalAmount;TotalAmount)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
-                Counter += 1;
+                Counter += 1; //ovaj counter broji koji apoen je po redu da bih mogla filtrirati tabelu apoeni
 
                 DataItem20.Reset();
                 /*if PaymentType.Code = FORMAT(200) then
@@ -96,7 +96,7 @@ report 50097 "Zapisnik o primopredaji"
                 if DataItem20.FindFirst() then begin
                     Counter2 := DataItem20.Quantity;
                     AmountRecord := DataItem20.Amount;
-
+                    TotalAmount+=AmountRecord;
                 end
                 else begin
                     Counter2 := 0;
@@ -109,6 +109,8 @@ report 50097 "Zapisnik o primopredaji"
             begin
 
                 Counter := 0;
+                Counter2:=0;
+                TotalAmount:=0;
 
                 PaymentType.DeleteAll();
 
@@ -181,32 +183,6 @@ report 50097 "Zapisnik o primopredaji"
 
         }
 
-
-
-        /*trigger OnAfterGetRecord()
-    begin
-    */
-
-        /*
-
-
-
-        GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-
-        GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-
-        PaymentCounter := GLEntry.Count;
-
-        PaymentAmount := 0;
-
-        IF GLEntry.FindFirst() then
-            repeat
-                PaymentAmount += ABS(GLEntry.Amount);
-            until GLEntry.Next() = 0;
-
-    */
-
-
     }
 
     requestpage
@@ -245,7 +221,7 @@ report 50097 "Zapisnik o primopredaji"
         Counter2: Integer;
         Datee: Date;
         PaymentCounter: Integer;
-        PaymentAmount: Decimal;
+        TotalAmount: Decimal;
         FilterInt: Integer;
         AmountRecord: Decimal;
 }
