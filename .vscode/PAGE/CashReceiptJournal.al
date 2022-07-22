@@ -197,7 +197,9 @@ end;
 
                     GJline.Reset(); //insertujem novi red kada se vrsi prenos plata u "racunski centar"
                     GJline.Init();
-                    GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                    GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+                    GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
+                    //GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
                     if GJline.FindLast() then
                         "Line No." := GJline."Line No." + 10000
                     else
