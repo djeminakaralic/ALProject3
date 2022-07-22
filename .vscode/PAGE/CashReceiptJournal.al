@@ -204,6 +204,8 @@ end;
                         "Line No." := GJline."Line No." + 10000
                     else
                         "Line No." := 10000;
+                    GJline."Journal Template Name" := Rec."Journal Template Name";
+                    GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Account Type" := "Account Type"::"G/L Account";
