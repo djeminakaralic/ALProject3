@@ -13,6 +13,11 @@ report 50097 "Zapisnik o primopredaji"
             trigger OnPreDataItem()
             begin
                 BalAccNoFilter := GETFILTER("Bal. Account No.");
+
+                BankAccount.Get(BalAccNoFilter);
+                if BankAccount.FindFirst() then
+                    BankAccountName := BankAccount.Name;
+
             end;
         }
         dataitem(DataItem21; "G/L Entry")
@@ -57,7 +62,9 @@ report 50097 "Zapisnik o primopredaji"
             }
             column(BalAccNoFilter; BalAccNoFilter)
             {
-
+            }
+            column(BankAccountName; BankAccountName)
+            {
             }
 
             trigger OnAfterGetRecord()
@@ -238,5 +245,6 @@ report 50097 "Zapisnik o primopredaji"
         FilterInt: Integer;
         AmountRecord: Decimal;
         BalAccNoFilter: Code[20];
+        BankAccountName: Text[100];
 }
 

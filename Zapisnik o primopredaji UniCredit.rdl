@@ -851,6 +851,9 @@ End Function
         <Field Name="BalAccNoFilter">
           <DataField>BalAccNoFilter</DataField>
         </Field>
+        <Field Name="BankAccountName">
+          <DataField>BankAccountName</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
