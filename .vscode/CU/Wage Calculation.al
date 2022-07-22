@@ -292,6 +292,7 @@ codeunit 50002 "Wage Calculation"
 
                                         CalcTemp."Wage (Base) is Neto" := ConfData."Net Amount";
                                         CalcTemp."Date Of Calculation" := Header."Date Of Calculation";
+                                        CalcTemp."Brutto Wage Base" := WageAmount;
                                         AbsBruto.Reset();
                                         AbsBruto.SetFilter("Employee No.", '%1', CalcTemp."Employee No.");
                                         AbsBruto.SetFilter("Sick Leave", '%1', false);
@@ -385,6 +386,8 @@ codeunit 50002 "Wage Calculation"
 
 
                                         NettoFromBrutto;
+                                        CalcTemp."Netto Wage Base" := CalcTemp."Brutto Wage Base" * (1 - AddTaxesPercentage / 100);
+                                        CalcTemp.MODIFY;
                                         /*  IF CalcTemp."Hour Pool"=0 THEN BEGIN
                                             Employee.CALCFIELDS("Department code");
                                          IF ((Employee."Department code"='D.2.3.') OR (Employee."Hours In Day"<8))  THEN BEGIN
@@ -1448,7 +1451,10 @@ codeunit 50002 "Wage Calculation"
                         NettoAmount += NettoAmountT;
                         SickCompany += NettoAmountT;
                         //ĐK provjeriti   ExperienceBase += NettoAmountT;
-                        ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
+
+                        //ovdje da ne ide start amount jer je to neto iznos od bruto osnovice, već od cijelog iznosa
+
+                        ExperienceBase += CalcTemp."Netto Wage Base" * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
                     END;
 
                     IF COA."Sick Leave" AND NOT COA."Sick Leave Paid By Company" THEN BEGIN
@@ -1503,7 +1509,7 @@ codeunit 50002 "Wage Calculation"
                         IF COA."Calculate Experience" THEN
 
                             //ĐK ExperienceBase += NettoAmountT;
-                            ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
+                            ExperienceBase += CalcTemp."Netto Wage Base" * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
                     END;
 
                     // IF CalcTemp."Employee No."='1' THEN MESSAGE(COA.Code);
@@ -1528,7 +1534,7 @@ codeunit 50002 "Wage Calculation"
                         NettoAmount += NettoAmountT;
                         IF COA."Calculate Experience" THEN
                             //ĐK   ExperienceBase += NettoAmountT;
-                            ExperienceBase += StartAmount * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
+                            ExperienceBase += CalcTemp."Netto Wage Base" * (AbsenceEmp.Quantity / CalcTemp."Hour Pool") * AmtDistrCoeff;
 
                     END;
 
