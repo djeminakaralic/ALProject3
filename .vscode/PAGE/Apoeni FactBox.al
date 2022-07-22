@@ -11,36 +11,30 @@ page 50148 "Apoeni FactBox"
     {
         area(Content)
         {
-            field(Apoeni;Apoeni)
+            field(Apoeni; Apoeni)
             {
                 ApplicationArea = All;
-                Caption = 'Apoeni Total';
-                
+                ShowCaption = false;
+
+                trigger OnDrillDown()
+                var
+                    Today: Date;
+                begin
+                    Today := System.Today;
+                    ApoeniTable.Reset();
+                    ApoeniTable.SetFilter("Posting Date", '%1', Today);
+                    ApoeniTable.SetFilter("Bal. Account No.", '%1', "Bal. Account No.");
+                    ApoeniPage.SetTableView(ApoeniTable);
+                    ApoeniPage.Run();
+                end;
 
             }
         }
     }
 
-    trigger OnAfterGetCurrRecord()
-    begin
-
-    end;
-
     var
         GJLine: Record "Gen. Journal Line";
+        ApoeniTable: Record Apoeni;
+        ApoeniPage: Page "Apoeni Page";
         GenJnlManagement: Codeunit GenJnlManagement;
-        AccName: Text[100];
-        BalAccName: Text[100];
-        GenPostingSetupText: Text;
-        VATPostingSetupText: Text;
-        BalGenPostingSetupText: Text;
-        BalVATPostingSetupText: Text;
-        AccountEnabled: Boolean;
-        BalAccountEnabled: Boolean;
-        GenPostingSetupEnabled: Boolean;
-        VATPostingSetupEnabled: Boolean;
-        BalGenPostingSetupEnabled: Boolean;
-        BalVATPostingSetupEnabled: Boolean;
-
-
 }

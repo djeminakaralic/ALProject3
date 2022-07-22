@@ -82,9 +82,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>2.73579cm</Top>
-            <Left>4.67949cm</Left>
+            <Left>5.8766cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.4925cm</Width>
+            <Width>4.6402cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -116,7 +116,7 @@
             <Top>2.73579cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.13055cm</Width>
+            <Width>5.32766cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -369,15 +369,17 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CCode1">
+                        <Textbox Name="Counter2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!Counter2.Value</Value>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -385,7 +387,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CCode1</rd:DefaultName>
+                          <rd:DefaultName>Counter2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -419,7 +421,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!CCode.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -453,15 +457,17 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox14">
+                        <Textbox Name="AmountRecord">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!AmountRecord.Value</Value>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -469,7 +475,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <rd:DefaultName>AmountRecord</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -600,21 +606,25 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox17">
+                        <Textbox Name="TotalAmount">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=FormatNumber(Fields!TotalAmount.Value, 2)</Value>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <rd:DefaultName>TotalAmount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -713,7 +723,7 @@
             <Top>3.51218cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.13055cm</Width>
+            <Width>5.32766cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -732,8 +742,11 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
-                    <Style />
+                    <Value>=First(Fields!BankAccountName.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -741,9 +754,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>3.51218cm</Top>
-            <Left>4.73287cm</Left>
+            <Left>5.8766cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.43912cm</Width>
+            <Width>4.6402cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -827,11 +840,29 @@ End Function
         <Field Name="Datee">
           <DataField>Datee</DataField>
         </Field>
+        <Field Name="BankAccountName">
+          <DataField>BankAccountName</DataField>
+        </Field>
         <Field Name="CCode">
           <DataField>CCode</DataField>
         </Field>
         <Field Name="Counter">
           <DataField>Counter</DataField>
+        </Field>
+        <Field Name="Counter2">
+          <DataField>Counter2</DataField>
+        </Field>
+        <Field Name="AmountRecord">
+          <DataField>AmountRecord</DataField>
+        </Field>
+        <Field Name="AmountRecordFormat">
+          <DataField>AmountRecordFormat</DataField>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+        </Field>
+        <Field Name="TotalAmountFormat">
+          <DataField>TotalAmountFormat</DataField>
         </Field>
       </Fields>
       <Query>

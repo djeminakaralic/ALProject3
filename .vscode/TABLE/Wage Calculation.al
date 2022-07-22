@@ -1042,6 +1042,18 @@ table 50018 "Wage Calculation"
         {
 
         }
+        field(50380; "Sick Leave Brutto"; Decimal)
+        {
+
+        }
+        field(50381; "Netto Wage Base"; Decimal)
+        {
+
+        }
+        field(50382; "Brutto Wage Base"; Decimal)
+        {
+
+        }
 
 
 

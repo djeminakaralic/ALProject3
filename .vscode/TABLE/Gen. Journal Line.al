@@ -87,12 +87,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if ABS("Given amount") < ABS(Amount) then
-                    Error(Text001);
-                if (Amount <> 0) then begin
+                if (Amount <> 0) AND ("Given amount" > 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
-                    Message('Vrati kusur: ' + Format("To return") + ' KM.');
-                end;
+
+                if ("Given amount" >= Abs(Amount)) then
+                    Message('Vrati kusur: ' + Format("To return") + ' KM.')
+                else
+                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
 
                 MultipleBills := 0;
                 MultipleBillsSum := 0;
@@ -232,23 +233,24 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50046; "Apoeni"; Decimal)
         {
-            FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount where("Posting Date" = field("Posting Date"),
-                                                "Bal. Account No." = field("Bal. Account No.")));
+            /*FieldClass = FlowField;
+            CalcFormula = sum(Apoeni.Amount);*/
 
-            Caption = 'Apoeni';
         }
         field(50047; "Cash Register"; Text[100])
         {
             Caption = 'Cash Register';
+        }
+        field(50049; "Main Cashier"; Boolean)
+        {
+            Caption = 'Main Cashier';
+            InitValue = false;
         }
 
         modify(Amount)
         {
             trigger OnAfterValidate()
             begin
-                if ("Given amount" <> 0) AND (ABS("Given amount") < ABS(Amount)) then
-                    Error(Text001);
                 if ("Given amount" <> 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
             end;

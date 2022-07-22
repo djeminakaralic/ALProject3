@@ -34,23 +34,19 @@ page 51067 "Apoeni Page"
                 field("Bal. Account No."; "Bal. Account No.")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
-
-
-
             }
         }
-
-
     }
 
     actions
     {
-
         area(navigation)
         {
             action("Zapisnik o primopredaji UniCredit")
@@ -60,9 +56,29 @@ page 51067 "Apoeni Page"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                RunObject = Report "Zapisnik o primopredaji";
+
+                //RunObject = Report "Zapisnik o primopredaji";
+
+                trigger OnAction()
+                var
+                    Today: Date;
+                begin
+                    Today := System.Today;
+                    ApoeniTable.Reset();
+                    ApoeniTable.SetFilter("Posting Date", '%1', Today);
+                    ApoeniTable.SetFilter("Bal. Account No.", '%1', "Bal. Account No.");
+                    ZapisnikOPrimopredaji.SetTableView(ApoeniTable);
+                    ZapisnikOPrimopredaji.Run();
+                end;
+
             }
         }
     }
+
+    var
+        GLEntry: Record "G/L Entry";
+        ApoeniTable: Record Apoeni;
+        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
+        ZapisnikOPrimopredaji: Report "Zapisnik o primopredaji";
 }
 

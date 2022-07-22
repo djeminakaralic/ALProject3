@@ -8,6 +8,13 @@ report 50097 "Zapisnik o primopredaji"
 
     dataset
     {
+        dataitem(DataItem20; Apoeni)
+        {
+            trigger OnPreDataItem()
+            begin
+                BalAccNoFilter := GETFILTER("Bal. Account No.");
+            end;
+        }
         dataitem(DataItem21; "G/L Entry")
         {
             column(Picture_CompanyInfo; CompanyInformation.Picture)
@@ -19,18 +26,20 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
-
-            trigger OnAfterGetRecord()
-            begin
-
-            end;
+            column(BankAccountName;BankAccountName)
+            {
+            }
 
             trigger OnPreDataItem()
             begin
-
                 CompanyInformation.GET;
                 CompanyInformation.CALCFIELDS(Picture);
 
+                BankAccount.Reset();
+                BankAccount.Get(BalAccNoFilter);
+                BankAccountName:=BankAccount.Name;
+
+                Datee := System.Today;
             end;
         }
         dataitem(PaymentType; "Payment Type")
@@ -43,16 +52,48 @@ report 50097 "Zapisnik o primopredaji"
             column(Counter; Counter)
             {
             }
+            column(Counter2; Counter2)
+            {
+            }
+            column(AmountRecord; AmountRecord)
+            {
+            }
+            column(TotalAmount; TotalAmount)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
-                Counter += 1;
+                Counter += 1; //ovaj counter broji koji apoen je po redu da bih mogla filtrirati tabelu apoeni
+
+                DataItem20.Reset();
+                DataItem20.SetFilter(Apoeni, '%1', Counter);
+                DataItem20.SetFilter("Bal. Account No.", '%1', BalAccNoFilter);
+                DataItem20.SetFilter("Posting Date", '%1', Datee);
+
+                if DataItem20.FindFirst() then begin
+                    Counter2 := DataItem20.Quantity;
+                    AmountRecord := DataItem20.Amount;
+                    TotalAmount += AmountRecord;
+                end
+                else begin
+                    Counter2 := 0;
+                    AmountRecord := 0;
+                end;
+
             end;
 
             trigger OnPreDataItem()
             begin
 
+                BankAccount.Reset();
+                BankAccount.SetFilter("No.", '%1', BalAccNoFilter);
+                if BankAccount.FindFirst() then
+                    BankAccountName := BankAccount.Name;
+
                 Counter := 0;
+                Counter2 := 0;
+                TotalAmount := 0;
 
                 PaymentType.DeleteAll();
 
@@ -119,28 +160,11 @@ report 50097 "Zapisnik o primopredaji"
                 PaymentType.SetCurrentKey("Entry No.");
                 PaymentType.Ascending;
 
+                Datee := System.Today;
+
             end;
 
         }
-
-        /*trigger OnAfterGetRecord()
-begin
-
-    GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
-    GLEntry.SetFilter("Posting Date", '%1', Datee);
-    GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-
-    PaymentCounter := GLEntry.Count;
-
-    PaymentAmount := 0;
-
-    IF GLEntry.FindFirst() then
-        repeat
-            PaymentAmount += ABS(GLEntry.Amount);
-        until GLEntry.Next() = 0;
-
-end;*/
-
 
     }
 
@@ -148,17 +172,6 @@ end;*/
     {
         layout
         {
-            area(content)
-            {
-                group("Date")
-                {
-                    Caption = 'Datum zapisnika';
-                    field(Datee; Datee)
-                    {
-                        Caption = 'Datum zapisnika: ';
-                    }
-                }
-            }
         }
 
         actions
@@ -177,8 +190,12 @@ end;*/
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
         Counter: Integer;
+        Counter2: Integer;
         Datee: Date;
         PaymentCounter: Integer;
-        PaymentAmount: Decimal;
+        TotalAmount: Decimal;
+        AmountRecord: Decimal;
+        BalAccNoFilter: Code[20];
+        BankAccountName: Text[100];
 }
 

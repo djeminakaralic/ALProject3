@@ -6,16 +6,18 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         addafter(JournalLineDetails)
         {
-            part(APoeniFactBox; "Apoeni FactBox")
+            part(ApoeniFactBox; "Apoeni FactBox")
             {
                 ApplicationArea = Basic, Suite;
-                /*SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
+
+                SubPageLink = "Journal Template Name" = FIELD("Journal Template Name"),
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
-                              "Line No." = FIELD("Line No.");*/
+                              "Bal. Account No." = field("Bal. Account No."),
+                              "Line No." = FIELD("Line No.");
             }
         }
 
-        addafter(CurrentJnlBatchName)
+        /*addafter(CurrentJnlBatchName)
         {
             field("Cash Register"; "Cash Register")
             {
@@ -31,52 +33,52 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                         BankAccounts.SetFilter("No.", '%1', 'BANK-10');
                         /*if BankAccounts.FindFirst() then
                             "Cash Register" := BankAccounts.Name;*/
+        /*Page.Run(Page::"Bank Account Card", BankAccounts);
+    end
+    else
+        if "Journal Batch Name" = 'CZK2 UPL' then begin
+            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
+            Page.Run(Page::"Bank Account Card", BankAccounts);
+        end
+        else
+            if "Journal Batch Name" = 'CZK3 UPL' then begin
+                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
+                Page.Run(Page::"Bank Account Card", BankAccounts);
+            end
+            else
+                if "Journal Batch Name" = 'CZK4 UPL' then begin
+                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
+                    Page.Run(Page::"Bank Account Card", BankAccounts);
+                end
+                else
+                    if "Journal Batch Name" = 'CZK5 UPL' then begin
+                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
                         Page.Run(Page::"Bank Account Card", BankAccounts);
                     end
                     else
-                        if "Journal Batch Name" = 'CZK2 UPL' then begin
-                            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
+                        if "Journal Batch Name" = 'CZK6 UPL' then begin
+                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
                             Page.Run(Page::"Bank Account Card", BankAccounts);
                         end
                         else
-                            if "Journal Batch Name" = 'CZK3 UPL' then begin
-                                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
+                            if "Journal Batch Name" = 'CZK7 UPL' then begin
+                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
                                 Page.Run(Page::"Bank Account Card", BankAccounts);
                             end
                             else
-                                if "Journal Batch Name" = 'CZK4 UPL' then begin
-                                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
+                                if "Journal Batch Name" = 'CZK8 UPL' then begin
+                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
                                     Page.Run(Page::"Bank Account Card", BankAccounts);
                                 end
                                 else
-                                    if "Journal Batch Name" = 'CZK5 UPL' then begin
-                                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
+                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
+                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
                                         Page.Run(Page::"Bank Account Card", BankAccounts);
-                                    end
-                                    else
-                                        if "Journal Batch Name" = 'CZK6 UPL' then begin
-                                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
-                                            Page.Run(Page::"Bank Account Card", BankAccounts);
-                                        end
-                                        else
-                                            if "Journal Batch Name" = 'CZK7 UPL' then begin
-                                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
-                                                Page.Run(Page::"Bank Account Card", BankAccounts);
-                                            end
-                                            else
-                                                if "Journal Batch Name" = 'CZK8 UPL' then begin
-                                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
-                                                    Page.Run(Page::"Bank Account Card", BankAccounts);
-                                                end
-                                                else
-                                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
-                                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
-                                                        Page.Run(Page::"Bank Account Card", BankAccounts);
-                                                    end;
+                                    end;
 
-                end;
-            }
-        }
+end;
+}
+}*/
 
         addafter("Posting Date")
         {
@@ -89,6 +91,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
             field("Payment Method"; "Payment Method")
+            {
+                ApplicationArea = all;
+            }
+            field("Main Cashier"; "Main Cashier")
             {
                 ApplicationArea = all;
             }
@@ -140,6 +146,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
+        modify(Correction)
+        {
+            Visible = false;
+        }
 
 
     }
@@ -163,6 +173,76 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 end;
             }
 
+            action("Transfer")
+            {
+                Caption = 'Transfer';
+                Image = TransferFunds;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                begin
+
+                    Rec.FINDFIRST;
+                    BEGIN
+                        IF Rec."Main Cashier" = FALSE THEN BEGIN
+                            REPEAT
+                                Validate(Rec."Main Cashier", TRUE);
+                                Rec.MODIFY;
+                            UNTIL Rec.NEXT = 0;
+                        END
+
+                    END;
+
+                    GJline.Reset(); //insertujem novi red kada se vrsi prenos plata u "racunski centar"
+                    GJline.Init();
+                    GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+                    GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
+                    //GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                    if GJline.FindLast() then
+                        "Line No." := GJline."Line No." + 10000
+                    else
+                        "Line No." := 10000;
+                    GJline."Posting Date" := System.Today;
+                    GJline."Payment DT" := System.CurrentDateTime;
+                    GJline."Account Type" := "Account Type"::"G/L Account";
+                    GJline.Insert();
+
+                    //Message(Format(Rec."Bal. Account No."));
+
+                    /*
+                    GenJnlLine.SETFILTER("Journal Template Name",'OPŠTE'); 
+ GenJnlLine.SETFILTER("Journal Batch Name",'PRE');
+          IF  GenJnlLine.FINDLAST THEN
+          LineNo:= GenJnlLine."Line No."+10000
+          ELSE
+            LineNo:= 10000;
+          GenJnlLine."Journal Template Name":='OPŠTE';
+          GenJnlLine."Journal Batch Name":='PRE';
+          GenJnlLine."Line No." :=LineNo;
+          GenJnlLine."Posting Date" := "Posting Date";
+          GenJnlLine."Document Date" := "Document Date";
+          GenJnlLine.Description := "Posting Description";
+          GenJnlLine."Document No." := "No.";
+          GenJnlLine."External Document No." := "External Document No.";
+          GenJnlLine."Account Type" :=GenJnlLine."Account Type"::Customer;
+          GenJnlLine."Account No." :="Bill-to Customer No.";
+          GenJnlLine."Currency Code" := "Currency Code";
+          CALCFIELDS("Amount Including VAT");
+          GenJnlLine.VALIDATE("Debit Amount","Amount Including VAT");
+          GenJnlLine."Gen. Posting Type" := 0;
+          GenJnlLine."Gen. Bus. Posting Group" := '';
+          GenJnlLine."Gen. Prod. Posting Group" := '';
+          GenJnlLine."VAT Bus. Posting Group" :='';
+          GenJnlLine."VAT Prod. Posting Group" := '';
+          GenJnlLine."Posting Group" := 'AVANS';
+         GenJnlLine.INSERT(TRUE);*/
+
+                end;
+            }
+
+
             /*action("Payroll")
             {
                 Caption = 'Payroll';
@@ -181,6 +261,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
+
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
 
