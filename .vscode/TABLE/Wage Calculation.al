@@ -1050,6 +1050,10 @@ table 50018 "Wage Calculation"
         {
 
         }
+        field(50382; "Brutto Wage Base"; Decimal)
+        {
+
+        }
 
 
 
