@@ -14,7 +14,6 @@ page 50148 "Apoeni FactBox"
             field(Apoeni; Apoeni)
             {
                 ApplicationArea = All;
-                ShowCaption = false;
 
                 trigger OnDrillDown()
                 var

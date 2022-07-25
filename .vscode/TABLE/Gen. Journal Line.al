@@ -233,8 +233,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50046; "Apoeni"; Decimal)
         {
-            /*FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount);*/
+            FieldClass = FlowField;
+            //CalcFormula = sum(Apoeni.Amount WHERE("Bal. Account No." = field("Bal. Account No.")));
 
         }
         field(50047; "Cash Register"; Text[100])
