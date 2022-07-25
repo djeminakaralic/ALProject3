@@ -183,6 +183,7 @@ end;
                     
                     //UserSetup.Get(SystemId);
                     Message(Format(UserId));
+
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
@@ -203,7 +204,7 @@ end;
 
                     if GJline.FindFirst() then
                         repeat
-                            TotalAmount += abs(GJline.Amount);
+                            TotalAmount += GJline."Credit Amount";
                         until GJline.Next() = 0;
 
                     if GJline.FindLast() then
