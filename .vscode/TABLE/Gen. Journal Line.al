@@ -129,6 +129,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     until GJLine.Next() = 0;
 
                 end else begin
+
                          if (Amount <> 0) AND ("Given amount" > 0) then
                     "To return" := ABS("Given amount") - ABS(Amount);
 
@@ -136,6 +137,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                     Message('Vrati kusur: ' + Format("To return") + ' KM.')
                 else
                     Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
+                    
                 end;
 
             end;
