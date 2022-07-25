@@ -248,32 +248,18 @@ end;
 
     trigger OnAfterGetRecord()
     begin
-        UserSetup.Reset();
+       UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
-        SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+        if UserSetup.FindFirst() then
+            SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
     end;
 
     trigger OnOpenPage()
     begin
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
-        SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
-    end;
-
-    trigger OnModifyRecord(): Boolean
-    begin
-        UserSetup.Reset();
-        UserSetup.SetFilter("User ID", '%1', UserId);
-        SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
-        /*UserSetup.SetFilter("User ID", '%1', UserId);
-        if UserSetup.FindFirst() then begin
-            if UserSetup."Main Cashier" then
-                GJline.SetFilter("Main Cashier", '%1', true)
-
-            else
-                GJline.SetFilter("Main Cashier", '%1', false);
-            CurrPage.Update();
-        end;*/
+        if UserSetup.FindFirst() then
+            SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
