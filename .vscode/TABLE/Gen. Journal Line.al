@@ -136,8 +136,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 if ("Given amount" >= Abs(Amount)) then
                     Message('Vrati kusur: ' + Format("To return") + ' KM.')
                 else
-                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
-                    
+                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne uplaćuje puni iznos racuna
+
                 end;
 
             end;
