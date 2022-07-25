@@ -182,7 +182,7 @@ end;
                 begin
                     
                     //UserSetup.Get(SystemId);
-                    Message(Format(SystemId));
+                    Message(Format(UserId));
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
