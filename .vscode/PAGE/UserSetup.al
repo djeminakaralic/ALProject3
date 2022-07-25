@@ -13,7 +13,6 @@ pageextension 50107 UserSetup extends "User Setup"
             {
                 Caption = 'Main Cashier';
             }
-
         }
         modify("User ID")
         {
