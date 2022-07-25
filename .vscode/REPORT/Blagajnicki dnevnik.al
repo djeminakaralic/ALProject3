@@ -104,7 +104,7 @@ report 50075 "Blagajnički dnevnik"
             begin
                 EmmployeeName := '';
                 //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
-                if "Credit Amount" <> 0 then begin
+                if "Credit Amount" <> 0 then begin //potražni iznos je uplata
                     Datum := "Posting Date";
                     Brdokumenta := "Document No.";
                     BrdokumentaIS := '';
@@ -113,7 +113,7 @@ report 50075 "Blagajnički dnevnik"
                 end;
                 //END;
 
-                if "Debit Amount" <> 0 then begin
+                if "Debit Amount" <> 0 then begin //dugovni iznos je isplata: polog pazara, isplata zaposlenima itd.
                     Datum := "Posting Date";
                     Brdokumenta := '';
                     BrdokumentaIS := "Document No.";
