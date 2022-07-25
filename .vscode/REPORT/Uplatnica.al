@@ -169,13 +169,11 @@ report 50077 Uplatnica
             trigger OnAfterGetRecord()
             begin
 
-                if ("Bank Account No." = 'BANK*') then begin
-                    Counter := Counter + 1;
-                    message(Format("No."));
-                    if Name = 'UniCredit Bank' then begin
-                        BankSWIFT := "SWIFT Code";
-                        BankIBAN := IBAN;
-                    end;
+                Counter := Counter + 1;
+                message(Format("No."));
+                if Name = 'UniCredit Bank' then begin
+                    BankSWIFT := "SWIFT Code";
+                    BankIBAN := IBAN;
                 end;
 
             end;
