@@ -256,6 +256,7 @@ end;
 
         GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
         GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
+        if GenJournalBatch.FindFirst() then
         Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         "Payment DT" := System.CurrentDateTime;
