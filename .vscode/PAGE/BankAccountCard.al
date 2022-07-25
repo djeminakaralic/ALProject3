@@ -1,5 +1,8 @@
 pageextension 50127 BankAccountCard extends "Bank Account Card"
 {
+    
+    //ED
+    
     layout
     {
         // Add changes to page layout here
