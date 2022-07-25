@@ -192,6 +192,7 @@ end;
                     GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                     GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
                     GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                    TotalAmount:=0;
 
                     if GJline.FindFirst() then
                         repeat
