@@ -95,7 +95,7 @@ report 50075 "Blagajnički dnevnik"
             column(EmmployeeName; EmmployeeName)
             {
             }
-            column(BankAccountName; BankAccountName)
+            column(BankAccCardFilter;BankAccCardFilter)
             {
             }
 
