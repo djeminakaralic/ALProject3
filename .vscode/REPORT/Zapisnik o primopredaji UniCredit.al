@@ -26,7 +26,10 @@ report 50097 "Zapisnik o primopredaji"
             column(Datee; Datee)
             {
             }
-            column(BankAccountName;BankAccountName)
+            column(BankAccountName; BankAccountName)
+            {
+            }
+            column(BalAccNoFilter; BalAccNoFilter)
             {
             }
 
@@ -37,7 +40,7 @@ report 50097 "Zapisnik o primopredaji"
 
                 BankAccount.Reset();
                 BankAccount.Get(BalAccNoFilter);
-                BankAccountName:=BankAccount.Name;
+                BankAccountName := BankAccount.Name;
 
                 Datee := System.Today;
             end;

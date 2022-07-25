@@ -843,6 +843,9 @@ End Function
         <Field Name="BankAccountName">
           <DataField>BankAccountName</DataField>
         </Field>
+        <Field Name="BalAccNoFilter">
+          <DataField>BalAccNoFilter</DataField>
+        </Field>
         <Field Name="CCode">
           <DataField>CCode</DataField>
         </Field>
