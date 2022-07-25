@@ -36678,6 +36678,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control Note 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2852714242 - Control 908261736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
+          <source>Main Cashier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension UserSetup - Control Main Cashier - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2852714242 - Control 3743637336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
           <source>Wage Allowed</source>
           <note from="Developer" annotates="general" priority="2"></note>
