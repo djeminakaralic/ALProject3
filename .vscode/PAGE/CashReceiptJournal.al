@@ -181,13 +181,14 @@ end;
                 trigger OnAction()
                 begin
 
-                    UserSetup.SetFilter("User ID", '%1', UserId);
-                    if UserSetup.FindFirst() then begin
-                        if UserSetup."Main Cashier" then
-                            Message('Glavni blagajnik')
-                        else
-                            Message('Nije glavni blagajnik');
-                    end;
+                    UserSetup.Get(UserId);
+                    /*UserSetup.SetFilter("User ID", '%1', UserId);
+                    if UserSetup.FindFirst() then begin*/
+                    if UserSetup."Main Cashier" then
+                        Message('Glavni blagajnik')
+                    else
+                        Message('Nije glavni blagajnik');
+                    //end;
 
                     Rec.FINDFIRST;
                     BEGIN
