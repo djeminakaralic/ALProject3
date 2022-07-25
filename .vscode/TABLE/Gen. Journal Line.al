@@ -87,14 +87,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if (Amount <> 0) AND ("Given amount" > 0) then
-                    "To return" := ABS("Given amount") - ABS(Amount);
-
-                if ("Given amount" >= Abs(Amount)) then
-                    Message('Vrati kusur: ' + Format("To return") + ' KM.')
-                else
-                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
-
+               
                 MultipleBills := 0;
                 MultipleBillsSum := 0;
                 TotalGivenAmount := "Given amount";
@@ -135,6 +128,14 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                         end;
                     until GJLine.Next() = 0;
 
+                end else begin
+                         if (Amount <> 0) AND ("Given amount" > 0) then
+                    "To return" := ABS("Given amount") - ABS(Amount);
+
+                if ("Given amount" >= Abs(Amount)) then
+                    Message('Vrati kusur: ' + Format("To return") + ' KM.')
+                else
+                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
                 end;
 
             end;
