@@ -254,41 +254,9 @@ end;
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
-        GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Batch Name");
-        if GenJournalBatch.FindFirst() then
-
-            /*GenJournalBatch.Get(Rec."Journal Template Name");*/
-        Message(Format(GenJournalBatch."Bal. Account No."));
-
-        if "Journal Batch Name" = 'CZK1 UPL' then
-            Validate(rec."Bal. Account No.", 'BANK-10')
-
-        else
-            if "Journal Batch Name" = 'CZK2 UPL' then
-                Validate(rec."Bal. Account No.", 'BANK-11')
-            else
-                if "Journal Batch Name" = 'CZK3 UPL' then
-                    Validate(rec."Bal. Account No.", 'BANK-12')
-                else
-                    if "Journal Batch Name" = 'CZK4 UPL' then
-                        Validate(rec."Bal. Account No.", 'BANK-13')
-                    else
-                        if "Journal Batch Name" = 'CZK5 UPL' then
-                            Validate(rec."Bal. Account No.", 'BANK-14')
-                        else
-                            if "Journal Batch Name" = 'CZK6 UPL' then
-                                Validate(rec."Bal. Account No.", 'BANK-15')
-                            else
-                                if "Journal Batch Name" = 'CZK7 UPL' then
-                                    Validate(rec."Bal. Account No.", 'BANK-16')
-                                else
-                                    if "Journal Batch Name" = 'CZK8 UPL' then
-                                        Validate(rec."Bal. Account No.", 'BANK-17')
-                                    else
-                                        if "Journal Batch Name" = 'CZK9 UPL' then Validate(rec."Bal. Account No.", 'BANK-18');
-
-        /*BankAccount.Get(Rec."Bal. Account No.");
-        "Cash Register":=BankAccount.Name;*/
+        GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+        GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
+        Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         "Payment DT" := System.CurrentDateTime;
         Description := '';
