@@ -178,7 +178,7 @@ end;
 
                     Rec.FINDFIRST;
                     BEGIN
-                        IF Rec."Main Cashier" = FALSE THEN BEGIN
+                        IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
                             REPEAT
                                 Validate(Rec."Main Cashier", TRUE);
                                 Rec.MODIFY;
@@ -215,9 +215,16 @@ end;
                     GJline."Main Cashier" := true;
                     GJline."Debit Amount" := TotalAmount;
                     GJline.Description := 'Polog pazara';
-                    GJline."Bal. Account No." := '2388';
+
+                    //testirati
+                    GJline."Bal. Account Type":="Bal. Account Type"::"Bank Account";
+                    GJline."Bal. Account No.":=Rec."Bal. Account No.";
                     GJline."Account Type" := "Account Type"::"G/L Account";
-                    GJline."Account No." := '2050';
+                    GJline."Account No.":='20009';
+
+                    /*GJline."Bal. Account No." := '2388';
+                    GJline."Account Type" := "Account Type"::"G/L Account";
+                    GJline."Account No." := '2050';*/
                     GJline.Insert();
 
                     //Message(Format(Rec."Bal. Account No."));
