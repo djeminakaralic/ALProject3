@@ -172,10 +172,8 @@ report 50077 Uplatnica
                         BankSWIFT := "SWIFT Code";
                         BankIBAN := IBAN;
                     end;
-                end
-                else
-                    Counter := 0;
-
+                end;
+                
             end;
         }
 
