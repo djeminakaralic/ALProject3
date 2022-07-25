@@ -254,6 +254,9 @@ end;
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
+        GenJournalBatch.Get(Rec."Journal Batch Name");
+        Message(Format(GenJournalBatch."Bal. Account No."));
+
         if "Journal Batch Name" = 'CZK1 UPL' then
             Validate(rec."Bal. Account No.", 'BANK-10')
 
@@ -294,6 +297,7 @@ end;
         BankAccount: Record "Bank Account";
         GJline: Record "Gen. Journal Line";
         CLEntry: Record "Cust. Ledger Entry";
+        GenJournalBatch: Record "Gen. Journal Batch";
         Customer: Record Customer;
         Text000: Label 'Today is %1';
 }
