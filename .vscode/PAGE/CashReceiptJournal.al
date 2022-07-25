@@ -181,16 +181,8 @@ end;
                 trigger OnAction()
                 begin
 
-                    UserSetup.SetFilter("User ID", '%1', UserId);
-                    if UserSetup.FindFirst() then begin
-                    if UserSetup."Main Cashier" then
-                        Message('Glavni blagajnik')
-                    else
-                        Message('Nije glavni blagajnik');
-                    end;
-
                     Rec.FINDFIRST;
-                    BEGIN                    
+                    BEGIN
                         IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
                             REPEAT
                                 Validate(Rec."Main Cashier", TRUE);
@@ -253,6 +245,28 @@ end;
             }*/
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        /*UserSetup.SetFilter("User ID", '%1', UserId);
+                    if UserSetup.FindFirst() then begin
+                    if UserSetup."Main Cashier" then
+                        GJline.SetFilter("Main Cashier", '%1', true);
+                    /*else
+                        Message('Nije glavni blagajnik');*/
+        //end;
+    end;
+
+    trigger OnModifyRecord(): Boolean
+    begin
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            if UserSetup."Main Cashier" then
+                Message('Glavni')
+            else
+                Message('Nije glavni blagajnik');
+        end;
+    end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
