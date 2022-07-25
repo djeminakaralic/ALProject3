@@ -104,21 +104,23 @@ report 50075 "Blagajnički dnevnik"
             begin
                 EmmployeeName := '';
                 //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
-                if "Credit Amount"<>0 then begin
+                if "Credit Amount" <> 0 then begin
 
-              
-                Datum := "Posting Date";
-                Brdokumenta := "Document No.";
-                BrdokumentaIS := '';
-                Kolicina := Amount;
-                  end;
+
+                    Datum := "Posting Date";
+                    Brdokumenta := "Document No.";
+                    BrdokumentaIS := '';
+                    Kolicina := Amount;
+                    KolicinaIS := 0;
+                end;
                 //END;
 
-                if "Debit Amount"<>0 then begin
-                     Datum := "Posting Date";
-                Brdokumenta := '';
-                BrdokumentaIS := "Document No.";
-                Kolicina := Amount;
+                if "Debit Amount" <> 0 then begin
+                    Datum := "Posting Date";
+                    Brdokumenta := '';
+                    BrdokumentaIS := "Document No.";
+                    Kolicina := 0;
+                    KolicinaIS := Amount;
                 end;
 
 
@@ -129,7 +131,7 @@ report 50075 "Blagajnički dnevnik"
                     Kolicina := 0;
                     KolicinaIS := Amount;
                 END;*/
-                KolicinaIS := 0;
+                //KolicinaIS := 0;
 
                 /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");
