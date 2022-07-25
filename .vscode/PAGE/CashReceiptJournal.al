@@ -17,6 +17,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
         }
 
+        modify(IncomingDocAttachFactBox)
+        {
+            Visible = false;
+        }
+
         /*addafter(CurrentJnlBatchName)
         {
             field("Cash Register"; "Cash Register")
@@ -192,7 +197,7 @@ end;
                     GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                     GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
                     GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
-                    TotalAmount:=0;
+                    TotalAmount := 0;
 
                     if GJline.FindFirst() then
                         repeat
@@ -216,10 +221,10 @@ end;
                     GJline.Description := 'Polog pazara';
 
                     //testirati
-                    GJline."Bal. Account Type":="Bal. Account Type"::"Bank Account";
-                    GJline."Bal. Account No.":=Rec."Bal. Account No.";
+                    GJline."Bal. Account Type" := "Bal. Account Type"::"Bank Account";
+                    GJline."Bal. Account No." := Rec."Bal. Account No.";
                     GJline."Account Type" := "Account Type"::"G/L Account";
-                    GJline."Account No.":='20009';
+                    GJline."Account No." := '20009';
 
                     /*GJline."Bal. Account No." := '2388';
                     GJline."Account Type" := "Account Type"::"G/L Account";
