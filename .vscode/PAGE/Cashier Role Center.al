@@ -20,7 +20,7 @@ page 50107 "Cashier Role Center"
         }
     }
 
-    /*actions
+    actions
 {
 area(reporting)
 {          
@@ -34,7 +34,7 @@ area(reporting)
     } 
 
 }
-}*/
+}
 }
 
 
