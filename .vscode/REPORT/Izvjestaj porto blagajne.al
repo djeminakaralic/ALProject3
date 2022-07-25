@@ -16,15 +16,16 @@ report 50085 "Izvještaj porto blagajne"
             column(Datee; Datee)
             {
             }
-            column(BankAccCardFilter;BankAccCardFilter)
+            column(BankAccCardFilter; BankAccCardFilter)
             {
             }
 
-            /*trigger OnPreDataItem()
+
+            trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
 
-                IF BankAccCardFilter = 'BANK-10' THEN
+                /*IF BankAccCardFilter = 'BANK-10' THEN
                     BankAccCardInt := 1
                 ELSE
                     IF BankAccCardFilter = 'BANK-11' THEN
@@ -48,9 +49,9 @@ report 50085 "Izvještaj porto blagajne"
                                             IF BankAccCardFilter = 'BANK-17' THEN
                                                 BankAccCardInt := 8
                                             ELSE
-                                                IF BankAccCardFilter = 'BANK-18' THEN BankAccCardInt := 9
+                                                IF BankAccCardFilter = 'BANK-18' THEN BankAccCardInt := 9*/
 
-            end;*/
+            end;
         }
 
         dataitem(DataItem22; "Payment Type")
@@ -82,7 +83,7 @@ report 50085 "Izvještaj porto blagajne"
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
-                
+
                 IF GLEntry.FindFirst() then
                     repeat
                         PaymentAmount += ABS(GLEntry.Amount);
