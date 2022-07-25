@@ -244,7 +244,8 @@ end;
 
     trigger OnAfterGetRecord()
     begin
-       UserSetup.Reset();
+        
+        UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
