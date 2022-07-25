@@ -99,10 +99,6 @@ end;
             {
                 ApplicationArea = all;
             }
-            field("Main Cashier"; "Main Cashier")
-            {
-                ApplicationArea = all;
-            }
         }
 
         movebefore(Amount; "Applies-to Doc. No.")
