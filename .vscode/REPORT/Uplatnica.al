@@ -147,13 +147,13 @@ report 50077 Uplatnica
         }
         dataitem(DataItem22; "Bank Account")
         {
+            column(BankNo; DataItem22."No.")
+            {
+            }
             column(BankName; DataItem22.Name)
             {
             }
             column(BankAccNo; DataItem22."Bank Account No.")
-            {
-            }
-            column(BankNo; DataItem22."No.")
             {
             }
             column(Counter; Counter)
@@ -169,7 +169,7 @@ report 50077 Uplatnica
             trigger OnAfterGetRecord()
             begin
 
-                if ("No." = 'BANK*') then begin
+                if ("Bank Account No." = 'BANK*') then begin
                     Counter := Counter + 1;
                     message(Format("No."));
                     if Name = 'UniCredit Bank' then begin

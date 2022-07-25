@@ -2125,14 +2125,14 @@ Ac8USv0BjYvkXbjFOl5FLtpSN1TG/UERxjaakprJgU1XYGqGxxjqORdpqTJ21Hnf1oEAbApQ2aTatKFG
         <Field Name="City_Cust">
           <DataField>City_Cust</DataField>
         </Field>
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
+        </Field>
         <Field Name="BankName">
           <DataField>BankName</DataField>
         </Field>
         <Field Name="BankAccNo">
           <DataField>BankAccNo</DataField>
-        </Field>
-        <Field Name="BankNo">
-          <DataField>BankNo</DataField>
         </Field>
         <Field Name="Counter">
           <DataField>Counter</DataField>
