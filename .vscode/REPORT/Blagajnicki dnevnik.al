@@ -104,11 +104,22 @@ report 50075 "Blagajnički dnevnik"
             begin
                 EmmployeeName := '';
                 //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
+                if "Credit Amount"<>0 then begin
+
+              
                 Datum := "Posting Date";
                 Brdokumenta := "Document No.";
                 BrdokumentaIS := '';
                 Kolicina := Amount;
+                  end;
                 //END;
+
+                if "Debit Amount"<>0 then begin
+                     Datum := "Posting Date";
+                Brdokumenta := '';
+                BrdokumentaIS := "Document No.";
+                Kolicina := Amount;
+                end;
 
 
                 /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
