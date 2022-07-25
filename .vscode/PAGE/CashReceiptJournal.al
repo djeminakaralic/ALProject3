@@ -246,32 +246,39 @@ end;
         }
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+    end;
+
     trigger OnOpenPage()
     begin
-        /*UserSetup.SetFilter("User ID", '%1', UserId);
-                    if UserSetup.FindFirst() then begin
-                    if UserSetup."Main Cashier" then
-                        GJline.SetFilter("Main Cashier", '%1', true);
-                    /*else
-                        Message('Nije glavni blagajnik');*/
-        //end;
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
     end;
 
     trigger OnModifyRecord(): Boolean
     begin
-        /* UserSetup.SetFilter("User ID", '%1', UserId);
-         if UserSetup.FindFirst() then begin
-             if UserSetup."Main Cashier" then
-                 GJline.SetFilter("Main Cashier", '%1', true);
-             CurrPage.Update()
-             else
-             GJline.SetFilter("Main Cashier", '%1', false);
-             CurrPage.Update();
-         end;*/
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+        /*UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            if UserSetup."Main Cashier" then
+                GJline.SetFilter("Main Cashier", '%1', true)
+
+            else
+                GJline.SetFilter("Main Cashier", '%1', false);
+            CurrPage.Update();
+        end;*/
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
