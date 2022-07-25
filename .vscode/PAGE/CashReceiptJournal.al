@@ -254,7 +254,10 @@ end;
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
-        GenJournalBatch.Get(Rec."Journal Batch Name");
+        GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Batch Name");
+        if GenJournalBatch.FindFirst() then
+
+            /*GenJournalBatch.Get(Rec."Journal Template Name");*/
         Message(Format(GenJournalBatch."Bal. Account No."));
 
         if "Journal Batch Name" = 'CZK1 UPL' then
