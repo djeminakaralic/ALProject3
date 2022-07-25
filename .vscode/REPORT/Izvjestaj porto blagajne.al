@@ -16,11 +16,11 @@ report 50085 "Izvještaj porto blagajne"
             column(Datee; Datee)
             {
             }
-            column(BankAccCardInt; BankAccCardInt)
+            column(BankAccCardFilter;BankAccCardFilter)
             {
             }
 
-            trigger OnPreDataItem()
+            /*trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
 
@@ -50,7 +50,7 @@ report 50085 "Izvještaj porto blagajne"
                                             ELSE
                                                 IF BankAccCardFilter = 'BANK-18' THEN BankAccCardInt := 9
 
-            end;
+            end;*/
         }
 
         dataitem(DataItem22; "Payment Type")
