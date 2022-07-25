@@ -190,17 +190,16 @@ end;
                     end;
 
                     Rec.FINDFIRST;
-                    BEGIN
+                    BEGIN                    
                         IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
                             REPEAT
                                 Validate(Rec."Main Cashier", TRUE);
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
-
                     END;
 
-                    GJline.Reset(); //insertujem novi red kada se vrsi prenos plata u "racunski centar"
+                    GJline.Reset(); //insertujem novi red kada se vrsi prenos uplata u "racunski centar"
 
                     GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                     GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
