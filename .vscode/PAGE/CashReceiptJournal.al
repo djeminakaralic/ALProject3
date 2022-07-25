@@ -259,13 +259,15 @@ end;
 
     trigger OnModifyRecord(): Boolean
     begin
-        UserSetup.SetFilter("User ID", '%1', UserId);
-        if UserSetup.FindFirst() then begin
-            if UserSetup."Main Cashier" then
-                Message('Glavni')
-            else
-                Message('Nije glavni blagajnik');
-        end;
+        /* UserSetup.SetFilter("User ID", '%1', UserId);
+         if UserSetup.FindFirst() then begin
+             if UserSetup."Main Cashier" then
+                 GJline.SetFilter("Main Cashier", '%1', true);
+             CurrPage.Update()
+             else
+             GJline.SetFilter("Main Cashier", '%1', false);
+             CurrPage.Update();
+         end;*/
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
