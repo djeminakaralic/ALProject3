@@ -180,7 +180,9 @@ end;
 
                 trigger OnAction()
                 begin
-
+                    
+                    //UserSetup.Get(SystemId);
+                    Message(Format(SystemId));
                     Rec.FINDFIRST;
                     BEGIN
                         IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
@@ -266,6 +268,7 @@ end;
     var
         TotalAmount: Decimal;
         LineNo: Integer;
+        UserSetup: Record "User Setup";
         BankAccount: Record "Bank Account";
         GJline: Record "Gen. Journal Line";
         CLEntry: Record "Cust. Ledger Entry";
