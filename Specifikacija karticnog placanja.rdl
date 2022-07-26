@@ -11,6 +11,34 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
+        </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="PaymentAmount">
+          <DataField>PaymentAmount</DataField>
+        </Field>
+        <Field Name="PaymentAmountFormat">
+          <DataField>PaymentAmountFormat</DataField>
+        </Field>
+        <Field Name="Show">
+          <DataField>Show</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -237,7 +265,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>BankNo</rd:DefaultName>
@@ -287,7 +317,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -338,7 +368,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -394,7 +424,7 @@
                 <TablixMember>
                   <Group Name="Details" />
                   <Visibility>
-                    <Hidden>=(Fields!Show.Value&lt;&gt;1)</Hidden>
+                    <Hidden>=(Fields!BankNo.Value&lt;&gt;'CZK*')</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
@@ -915,10 +945,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
-            <Top>9.33662cm</Top>
-            <Left>11.72532cm</Left>
+            <Top>9.6012cm</Top>
+            <Left>8.0476cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.6248cm</Width>
+            <Width>7.30252cm</Width>
             <ZIndex>19</ZIndex>
             <Style>
               <Border>
@@ -932,9 +962,9 @@
           </Textbox>
           <Line Name="Line5">
             <Top>10.76537cm</Top>
-            <Left>11.71787cm</Left>
+            <Left>9.25725cm</Left>
             <Height>0cm</Height>
-            <Width>3.67458cm</Width>
+            <Width>4.9975cm</Width>
             <ZIndex>20</ZIndex>
             <Style>
               <Border>
@@ -960,9 +990,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>10.76537cm</Top>
-            <Left>11.74433cm</Left>
+            <Left>8.0476cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.60578cm</Width>
+            <Width>7.30251cm</Width>
             <ZIndex>21</ZIndex>
             <Style>
               <Border>
@@ -992,9 +1022,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>11.36537cm</Top>
-            <Left>11.74433cm</Left>
+            <Left>8.0476cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.58677cm</Width>
+            <Width>7.2835cm</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -1058,6 +1088,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1097,32 +1133,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="BankNo">
-          <DataField>BankNo</DataField>
-        </Field>
-        <Field Name="BankName">
-          <DataField>BankName</DataField>
-        </Field>
-        <Field Name="PaymentAmount">
-          <DataField>PaymentAmount</DataField>
-        </Field>
-        <Field Name="PaymentAmountFormat">
-          <DataField>PaymentAmountFormat</DataField>
-        </Field>
-        <Field Name="Show">
-          <DataField>Show</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
