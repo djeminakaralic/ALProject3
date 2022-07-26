@@ -79,6 +79,8 @@ report 50085 "Izvještaj porto blagajne"
                 GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
+                if select=Select::"Izvjestaj porto blagajne" then
+                    GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
 
                 PaymentCounter := GLEntry.Count;
 
