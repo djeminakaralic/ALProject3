@@ -24,10 +24,10 @@ report 50185 "Specifikacija karticnog"
             column(BankName; DataItem22.Name)
             {
             }
-            /*column(PaymentAmount; PaymentAmount)
+            column(PaymentAmount; PaymentAmount)
             {
             }
-            column(ReportTitle; ReportTitle)
+            /*column(ReportTitle; ReportTitle)
             {
             }
             column(Datee; Datee)
@@ -51,14 +51,21 @@ report 50185 "Specifikacija karticnog"
 
             trigger OnAfterGetRecord()
             begin
+                PaymentAmount := 0;
 
-                GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
-                GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
+                IF DataItem22.Name = 'CZK*' then begin
+                    GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
+                    GLEntry.SetFilter("Posting Date", '%1', Datee);
+                    GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
+                    //jos da je uplata
+                    if GLEntry.FindFirst() then
+                        repeat
+                            PaymentAmount += GLEntry."Credit Amount";
+                        until GLEntry.Next() = 0;
+                    Show := 1;
+                end;
 
-
-                //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
-                //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
+               
 
                 /*GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
@@ -89,6 +96,7 @@ report 50185 "Specifikacija karticnog"
             begin
                 //PTCounter := DataItem22.Count;
                 Show := 0;
+
             end;
 
         }
