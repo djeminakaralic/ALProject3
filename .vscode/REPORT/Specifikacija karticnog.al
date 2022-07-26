@@ -12,7 +12,7 @@ report 50185 "Specifikacija karticnog"
         {
             trigger OnPreDataItem()
             begin
-                BankAccCardFilter := GETFILTER("Bal. Account No.");
+                //BankAccCardFilter := GETFILTER("Bal. Account No.");
             end;
         }
 
@@ -82,7 +82,7 @@ report 50185 "Specifikacija karticnog"
 
             trigger OnPreDataItem()
             begin
-                PTCounter := DataItem22.Count;
+                //PTCounter := DataItem22.Count;
                 Show := 0;
             end;
 
