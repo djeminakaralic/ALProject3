@@ -24,33 +24,6 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
-
-                /*IF BankAccCardFilter = 'BANK-10' THEN
-                    BankAccCardInt := 1
-                ELSE
-                    IF BankAccCardFilter = 'BANK-11' THEN
-                        BankAccCardInt := 2
-                    ELSE
-                        IF BankAccCardFilter = 'BANK-12' THEN
-                            BankAccCardInt := 3
-                        ELSE
-                            IF BankAccCardFilter = 'BANK-13' THEN
-                                BankAccCardInt := 4
-                            ELSE
-                                IF BankAccCardFilter = 'BANK-14' THEN
-                                    BankAccCardInt := 5
-                                ELSE
-                                    IF BankAccCardFilter = 'BANK-15' THEN
-                                        BankAccCardInt := 6
-                                    ELSE
-                                        IF BankAccCardFilter = 'BANK-16' THEN
-                                            BankAccCardInt := 7
-                                        ELSE
-                                            IF BankAccCardFilter = 'BANK-17' THEN
-                                                BankAccCardInt := 8
-                                            ELSE
-                                                IF BankAccCardFilter = 'BANK-18' THEN BankAccCardInt := 9*/
-
             end;
         }
 
@@ -79,8 +52,10 @@ report 50085 "Izvještaj porto blagajne"
                 GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-                if select=Select::"Izvještaj porto blagajne" then
+                if select=Select::"POS terminali dnevni izvještaj" then begin
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
+                end;
+                    
 
                 PaymentCounter := GLEntry.Count;
 
