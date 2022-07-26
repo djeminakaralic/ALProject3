@@ -52,10 +52,10 @@ report 50085 "Izvještaj porto blagajne"
                 GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
-                if select=Select::"POS terminali dnevni izvještaj" then begin
+                if select = Select::"POS terminali dnevni izvještaj" then begin
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
                 end;
-                    
+
 
                 PaymentCounter := GLEntry.Count;
 
@@ -70,8 +70,10 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnPreDataItem()
             begin
-
-
+                if select = Select::"Izvještaj porto blagajne" then
+                    ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. '
+                else
+                    ReportTitle := 'DNEVNI IZVJEŠTAJ SA BLAGAJNE';
             end;
         }
     }
@@ -117,18 +119,9 @@ report 50085 "Izvještaj porto blagajne"
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
-        Country: Text[100];
-        City: Text[100];
+        ReportTitle: Text[100];
         BankAccCardFilter: Code[20];
         BankAccCardInt: Integer;
-        CountryRegion: Record "Country/Region";
-        Location: Record Location;
-        Cont: Record Contact;
-        ContName: Text[100];
-        ContAddress: Text[100];
-        ContCity: Text[100];
-        emp: Record Employee;
-        Cust: Record Customer;
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
