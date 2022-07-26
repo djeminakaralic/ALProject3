@@ -810,13 +810,13 @@
               <TablixMembers>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=(Fields!Counter.Value&lt;&gt;20) OR (Fields!Select.Value='POS terminali dnevni izvještaj')</Hidden>
+                    <Hidden>=(Fields!Counter.Value&lt;&gt;20)</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember />
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=(Fields!Counter.Value&lt;&gt;20) OR (Fields!Select.Value='Izvještaj porto blagajne')</Hidden>
+                    <Hidden>=(Fields!Counter.Value&lt;&gt;20)</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
