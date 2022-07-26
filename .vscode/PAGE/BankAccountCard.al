@@ -88,6 +88,5 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
         GLEntry: Record "G/L Entry";
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
-
-        POSDnevniIzvjestaj: Report 50086;
+        POSDnevniIzvjestaj: Report "POS dnevni izvjestaj";
 }

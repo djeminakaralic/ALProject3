@@ -1,4 +1,4 @@
-report 50086 "POS dnevni izvjestaj sa blagajne"
+report 50194 "POS dnevni izvjestaj"
 {
     //ED
     DefaultLayout = RDLC;
@@ -21,7 +21,7 @@ report 50086 "POS dnevni izvjestaj sa blagajne"
 
             trigger OnPreDataItem()
             begin
-                BankAccCardFilter := GETFILTER("Bal. Account No.");                
+                BankAccCardFilter := GETFILTER("Bal. Account No.");
             end;
         }
 
