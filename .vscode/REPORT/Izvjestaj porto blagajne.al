@@ -13,9 +13,6 @@ report 50085 "Izvještaj porto blagajne"
             column(User; USERID)
             {
             }
-            column(Datee; Datee)
-            {
-            }
             column(BankAccCardFilter; BankAccCardFilter)
             {
             }
@@ -41,14 +38,12 @@ report 50085 "Izvještaj porto blagajne"
             column(ReportTitle; ReportTitle)
             {
             }
+            column(Datee;Datee)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
-                /*if GLEntry.FindFirst() then begin
-                    //PostingDatefilter := GETFILTER(GLEntry."Bal. Account No.");
-                    Message(Format(GLEntry."Bal. Account No."));
-                end;*/
-
                 //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
@@ -61,7 +56,6 @@ report 50085 "Izvještaj porto blagajne"
                 end else
                     ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
 
-
                 PaymentCounter := GLEntry.Count;
 
                 PaymentAmount := 0;
@@ -72,14 +66,7 @@ report 50085 "Izvještaj porto blagajne"
                     until GLEntry.Next() = 0;
 
             end;
-
-            trigger OnPreDataItem()
-            begin
-                /*if select = Select::"Izvještaj porto blagajne" then
-                    ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. '
-                else
-                    ReportTitle := 'DNEVNI IZVJEŠTAJ SA BLAGAJNE';*/
-            end;
+            
         }
     }
 
