@@ -34908,21 +34908,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Datee - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3432384244 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Izaberi izvještaj</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Izaberi izvještaj - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 3432384244 - Control 3117446396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Izbor:</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Select - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 3432384244 - Control 3117446396 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Izvještaj porto blagajne,POS terminali dnevni izvještaj</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Select - Property OptionCaption</note>
-        </trans-unit>
         <trans-unit id="Report 3869432832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>StatusExt update</source>
           <note from="Developer" annotates="general" priority="2"></note>

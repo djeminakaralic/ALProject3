@@ -39,9 +39,6 @@ report 50185 "Specifikacija karticnog"
             column(User; USERID)
             {
             }
-            column(Select; Select)
-            {
-            }
             column(Counter; Counter)
             {
             }
@@ -58,7 +55,7 @@ report 50185 "Specifikacija karticnog"
                 //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
 
-                GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
+                /*GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
                 GLEntry.SetFilter("Payment Type Code", '%1', DataItem22.Code);
                 if select = Select::"POS terminali dnevni izvještaj" then begin
@@ -79,7 +76,7 @@ report 50185 "Specifikacija karticnog"
                         PaymentAmount += ABS(GLEntry.Amount);
                     until GLEntry.Next() = 0;
 
-                Counter += 1;
+                Counter += 1;*/
 
             end;
 
@@ -106,15 +103,7 @@ report 50185 "Specifikacija karticnog"
                         Caption = 'Datum izvještaja: ';
                     }
                 }
-                group("Izaberi izvještaj")
-                {
-                    Caption = 'Izaberi izvještaj';
-                    field(Select; Select)
-                    {
-                        Caption = 'Izbor:';
-                        OptionCaption = ' ,Izvještaj porto blagajne,POS terminali dnevni izvještaj';
-                    }
-                }
+                
             }
         }
 
@@ -128,7 +117,6 @@ report 50185 "Specifikacija karticnog"
     }
 
     var
-        Select: Option ,"Izvještaj porto blagajne","POS terminali dnevni izvještaj";
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";

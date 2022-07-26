@@ -1091,9 +1091,6 @@ End Function
         <Field Name="User">
           <DataField>User</DataField>
         </Field>
-        <Field Name="Select">
-          <DataField>Select</DataField>
-        </Field>
         <Field Name="Counter">
           <DataField>Counter</DataField>
         </Field>
