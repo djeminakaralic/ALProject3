@@ -39,6 +39,9 @@ report 50085 "Izvještaj porto blagajne"
             column(User; USERID)
             {
             }
+            column(Select; Select)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -53,7 +56,7 @@ report 50085 "Izvještaj porto blagajne"
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
                     ReportTitle := 'DNEVNI IZVJEŠTAJ SA BLAGAJNE';
                 end else
-                    ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
+                ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
 
                 PaymentCounter := GLEntry.Count;
 
