@@ -810,7 +810,7 @@
               <TablixMembers>
                 <TablixMember>
                   <Visibility>
-                    <Hidden>=IIF(First(Fields!Counter.Value, "DataSet_Result")&lt;&gt;First(Fields!PTCounter.Value, "DataSet_Result"))</Hidden>
+                    <Hidden>=IIF(First(Fields!Counter.Value, "DataSet_Result")!=First(Fields!PTCounter.Value, "DataSet_Result"))</Hidden>
                   </Visibility>
                 </TablixMember>
                 <TablixMember />
@@ -929,9 +929,6 @@ End Function
         </Field>
         <Field Name="Select">
           <DataField>Select</DataField>
-        </Field>
-        <Field Name="PTCounter">
-          <DataField>PTCounter</DataField>
         </Field>
         <Field Name="Counter">
           <DataField>Counter</DataField>

@@ -42,9 +42,6 @@ report 50085 "Izvještaj porto blagajne"
             column(Select; Select)
             {
             }
-            column(PTCounter; PTCounter)
-            {
-            }
             column(Counter; Counter)
             {
             }
@@ -80,6 +77,7 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
                 PTCounter := DataItem22.Count;
+                Message(Format(PTCounter));
             end;
 
         }
