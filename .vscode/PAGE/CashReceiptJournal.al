@@ -40,8 +40,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-        movebefore("Document No."; "Document Type")
-        moveafter("Credit Amount"; "Account Type")
+        movebefore("Document No."; "Account Type")
+        movebefore("Applies-to Doc. Type"; "Document Type")
 
         addafter("Amount (LCY)")
         {
