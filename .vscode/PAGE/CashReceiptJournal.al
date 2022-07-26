@@ -229,7 +229,6 @@ end;
                 end;
             }
 
-
             /*action("Payroll")
             {
                 Caption = 'Payroll';
