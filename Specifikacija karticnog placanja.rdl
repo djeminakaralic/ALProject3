@@ -11,6 +11,34 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
+        </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="PaymentAmount">
+          <DataField>PaymentAmount</DataField>
+        </Field>
+        <Field Name="PaymentAmountFormat">
+          <DataField>PaymentAmountFormat</DataField>
+        </Field>
+        <Field Name="Show">
+          <DataField>Show</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -35,10 +63,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.16641cm</Top>
-            <Left>0.49953cm</Left>
+            <Top>2.21933cm</Top>
+            <Left>5.43561cm</Left>
             <Height>0.6cm</Height>
-            <Width>14.89292cm</Width>
+            <Width>4.95725cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -333,7 +361,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!PaymentAmount.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -393,9 +421,6 @@
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
-                  <Visibility>
-                    <Hidden>=(Fields!Show.Value&lt;&gt;1)</Hidden>
-                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -441,6 +466,7 @@
                     <Value>SPECIFIKACIJA KARTIČNOG PLAĆANJA UZ IZVOD (RCB ____)  </Value>
                     <Style>
                       <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -595,7 +621,7 @@
           </Textbox>
           <Line Name="Line1">
             <Top>7.32578cm</Top>
-            <Left>0.94932cm</Left>
+            <Left>1.24036cm</Left>
             <Height>0cm</Height>
             <Width>2.54cm</Width>
             <ZIndex>7</ZIndex>
@@ -607,7 +633,7 @@
           </Line>
           <Line Name="Line2">
             <Top>7.32578cm</Top>
-            <Left>5.09165cm</Left>
+            <Left>4.82707cm</Left>
             <Height>0cm</Height>
             <Width>2.54cm</Width>
             <ZIndex>8</ZIndex>
@@ -619,7 +645,7 @@
           </Line>
           <Line Name="Line3">
             <Top>7.32578cm</Top>
-            <Left>8.8953cm</Left>
+            <Left>8.5778cm</Left>
             <Height>0cm</Height>
             <Width>2.54cm</Width>
             <ZIndex>9</ZIndex>
@@ -1005,6 +1031,38 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>UPLATE NA DAN:</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.21933cm</Top>
+            <Left>0.52599cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.90962cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>16.93333cm</Height>
         <Style>
@@ -1025,6 +1083,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1064,32 +1128,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="BankNo">
-          <DataField>BankNo</DataField>
-        </Field>
-        <Field Name="BankName">
-          <DataField>BankName</DataField>
-        </Field>
-        <Field Name="PaymentAmount">
-          <DataField>PaymentAmount</DataField>
-        </Field>
-        <Field Name="PaymentAmountFormat">
-          <DataField>PaymentAmountFormat</DataField>
-        </Field>
-        <Field Name="Show">
-          <DataField>Show</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
