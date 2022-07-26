@@ -56,7 +56,7 @@ report 50085 "Izvještaj porto blagajne"
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
                     ReportTitle := 'DNEVNI IZVJEŠTAJ SA BLAGAJNE';
                 end else
-                ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
+                    ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
 
                 PaymentCounter := GLEntry.Count;
 
@@ -67,6 +67,13 @@ report 50085 "Izvještaj porto blagajne"
                         PaymentAmount += ABS(GLEntry.Amount);
                     until GLEntry.Next() = 0;
 
+                Counter += 1;
+
+            end;
+
+            trigger OnPreDataItem()
+            begin
+                Counter := 0;
             end;
 
         }
@@ -119,5 +126,6 @@ report 50085 "Izvještaj porto blagajne"
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
+        Counter: Integer;
 }
 
