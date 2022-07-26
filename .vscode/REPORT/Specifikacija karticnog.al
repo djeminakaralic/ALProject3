@@ -16,15 +16,15 @@ report 50185 "Specifikacija karticnog"
             end;
         }
 
-        dataitem(DataItem22; "Payment Type")
+        dataitem(DataItem22; "Bank Account")
         {
-            column(PTCode; DataItem22.Code)
+            column(BankNo; DataItem22."No.")
             {
             }
-            column(PaymentCounter; PaymentCounter)
+            column(BankName; DataItem22.Name)
             {
             }
-            column(PaymentAmount; PaymentAmount)
+            /*column(PaymentAmount; PaymentAmount)
             {
             }
             column(ReportTitle; ReportTitle)
@@ -47,10 +47,15 @@ report 50185 "Specifikacija karticnog"
             }
             column(PTCounter; PTCounter)
             {
-            }
+            }*/
 
             trigger OnAfterGetRecord()
             begin
+
+                GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
+                GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
+
 
                 //za svaku vrstu uplate koju uzimam u PT code polje stavljam filtere
                 //naziv serije naloga knjižnja, datum, vrsta uplate, uplata kao vrsta dokumenta
@@ -103,7 +108,7 @@ report 50185 "Specifikacija karticnog"
                         Caption = 'Datum izvještaja: ';
                     }
                 }
-                
+
             }
         }
 
