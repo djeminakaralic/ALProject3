@@ -969,6 +969,9 @@ End Function
         <Field Name="Counter">
           <DataField>Counter</DataField>
         </Field>
+        <Field Name="Show">
+          <DataField>Show</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

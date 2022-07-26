@@ -45,6 +45,9 @@ report 50085 "Izvještaj porto blagajne"
             column(Counter; Counter)
             {
             }
+            column(Show;Show)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -58,8 +61,11 @@ report 50085 "Izvještaj porto blagajne"
                 if select = Select::"POS terminali dnevni izvještaj" then begin
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
                     ReportTitle := 'DNEVNI IZVJEŠTAJ SA BLAGAJNE';
-                end else
+                    Show:=1;
+                end else begin 
                 ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
+                Show:=2;
+                end;
 
                 PaymentCounter := GLEntry.Count;
 
@@ -77,6 +83,7 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
                 PTCounter := DataItem22.Count;
+                Show:=0;
             end;
 
         }
@@ -131,5 +138,7 @@ report 50085 "Izvještaj porto blagajne"
         PaymentAmount: Decimal;
         Counter: Integer;
         PTCounter: Integer;
+
+        Show:Integer;
 }
 
