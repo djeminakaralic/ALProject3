@@ -42,6 +42,9 @@ report 50085 "Izvještaj porto blagajne"
             column(Select; Select)
             {
             }
+            column(PTCounter;PTCounter)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -73,7 +76,7 @@ report 50085 "Izvještaj porto blagajne"
 
             trigger OnPreDataItem()
             begin
-                Counter := 0;
+                PTCounter := DataItem22.Count;
             end;
 
         }
@@ -127,5 +130,6 @@ report 50085 "Izvještaj porto blagajne"
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
         Counter: Integer;
+        PTCounter: Integer;
 }
 
