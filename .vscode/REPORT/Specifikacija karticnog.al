@@ -55,7 +55,7 @@ report 50185 "Specifikacija karticnog"
                 PaymentAmount := 0;
                 Show:=0;
 
-                IF DataItem22.Name = 'CZK*' then begin
+                IF DataItem22."No." = 'CZK*' then begin
                     GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
                     GLEntry.SetFilter("Posting Date", '%1', Datee);
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
