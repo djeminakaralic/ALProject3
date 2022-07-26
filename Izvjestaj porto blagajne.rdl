@@ -719,6 +719,9 @@ End Function
         <Field Name="PaymentAmountFormat">
           <DataField>PaymentAmountFormat</DataField>
         </Field>
+        <Field Name="ReportTitle">
+          <DataField>ReportTitle</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

@@ -38,6 +38,9 @@ report 50085 "Izvještaj porto blagajne"
             column(PaymentAmount; PaymentAmount)
             {
             }
+            column(ReportTitle;ReportTitle)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
