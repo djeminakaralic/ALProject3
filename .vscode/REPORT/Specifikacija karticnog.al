@@ -134,7 +134,6 @@ report 50185 "Specifikacija karticnog"
         PaymentAmount: Decimal;
         Counter: Integer;
         PTCounter: Integer;
-
         Show: Integer;
 }
 
