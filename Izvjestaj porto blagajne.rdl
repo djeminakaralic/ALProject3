@@ -808,7 +808,11 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember />
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>=IIF(First(Fields!Counter.Value, "DataSet_Result")&lt;&gt;First(Fields!PTCounter.Value, "DataSet_Result"))</Hidden>
+                  </Visibility>
+                </TablixMember>
                 <TablixMember />
                 <TablixMember />
               </TablixMembers>
