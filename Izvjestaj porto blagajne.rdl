@@ -560,7 +560,7 @@
             <Top>0.60537cm</Top>
             <Left>0.49953cm</Left>
             <Height>0.6cm</Height>
-            <Width>8.19896cm</Width>
+            <Width>7.29938cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -853,7 +853,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=First(Fields!BankAccCardFilter.Value, "DataSet_Result")</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -861,9 +863,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.60537cm</Top>
-            <Left>8.72808cm</Left>
+            <Left>7.79891cm</Left>
             <Height>0.6cm</Height>
-            <Width>1.62774cm</Width>
+            <Width>2.55691cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>

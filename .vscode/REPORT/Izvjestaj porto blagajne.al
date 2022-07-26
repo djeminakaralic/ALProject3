@@ -77,7 +77,6 @@ report 50085 "Izvještaj porto blagajne"
             trigger OnPreDataItem()
             begin
                 PTCounter := DataItem22.Count;
-                Message(Format(PTCounter));
             end;
 
         }
