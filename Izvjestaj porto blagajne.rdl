@@ -581,7 +581,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!ReportTitle.Value</Value>
+                    <Value>=First(Fields!ReportTitle.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
