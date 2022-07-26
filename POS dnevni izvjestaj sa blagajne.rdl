@@ -31,7 +31,7 @@
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>Center</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
@@ -756,6 +756,9 @@ End Function
         </Field>
         <Field Name="BankAccCardFilter">
           <DataField>BankAccCardFilter</DataField>
+        </Field>
+        <Field Name="BankAddress">
+          <DataField>BankAddress</DataField>
         </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>

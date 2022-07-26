@@ -18,14 +18,17 @@ report 50194 "POS dnevni izvjestaj"
             column(BankAccCardFilter; BankAccCardFilter)
             {
             }
+            column(BankAddress; BankAddress)
+            {
+            }
 
             trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
 
                 BankAccount.SetFilter("Bank Account No.", '%1', BankAccCardFilter);
-                if BankAccount.FindFirst() then 
-                    BankAddress:=BankAccount.Address;
+                if BankAccount.FindFirst() then
+                    BankAddress := BankAccount.Address;
 
             end;
         }
