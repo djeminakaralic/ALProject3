@@ -157,7 +157,7 @@ codeunit 50002 "Wage Calculation"
                                     WageFromHours(CalcTemp."Net Wage", EmpCoefficient, EmplDefDim."Amount Distribution Coeff.");
                                     AddNettoAdditions(EmplDefDim."Amount Distribution Coeff.");
                                     BruttoFromNetto;
-                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 1 Code");
+                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 2 Code");
                                     CalculateReductions := FALSE;
                                 END;
 
@@ -209,7 +209,7 @@ codeunit 50002 "Wage Calculation"
 
 
                                     BruttoFromNetto;
-                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 1 Code");
+                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 2 Code");
 
                                     CalcTemp."Net Wage Netto 2" += (CalcTemp."Net Wage" - CalcTemp."Indirect Wage Addition Amount") /
                                                                      (1 + (Employee."Work Experience Percentage" / 100));
