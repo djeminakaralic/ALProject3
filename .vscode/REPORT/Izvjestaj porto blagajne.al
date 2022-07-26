@@ -42,7 +42,10 @@ report 50085 "Izvještaj porto blagajne"
             column(Select; Select)
             {
             }
-            column(PTCounter;PTCounter)
+            column(PTCounter; PTCounter)
+            {
+            }
+            column(Counter; Counter)
             {
             }
 
@@ -59,7 +62,7 @@ report 50085 "Izvještaj porto blagajne"
                     GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
                     ReportTitle := 'DNEVNI IZVJEŠTAJ SA BLAGAJNE';
                 end else
-                    ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
+                ReportTitle := 'IZVJEŠTAJ PORTO BLAGAJNE Br. ';
 
                 PaymentCounter := GLEntry.Count;
 

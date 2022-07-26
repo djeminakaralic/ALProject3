@@ -929,6 +929,9 @@ End Function
         <Field Name="PTCounter">
           <DataField>PTCounter</DataField>
         </Field>
+        <Field Name="Counter">
+          <DataField>Counter</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
