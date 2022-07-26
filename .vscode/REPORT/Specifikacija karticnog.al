@@ -27,13 +27,13 @@ report 50185 "Specifikacija karticnog"
             column(PaymentAmount; PaymentAmount)
             {
             }
-            column(Show;Show)
+            column(Show; Show)
             {
             }
             column(Datee; Datee)
             {
             }
-            
+
             /*column(ReportTitle; ReportTitle)
             {
             }
@@ -53,21 +53,21 @@ report 50185 "Specifikacija karticnog"
             trigger OnAfterGetRecord()
             begin
                 PaymentAmount := 0;
-                Show:=0;
+                Show := 0;
 
                 //IF (DataItem22."No." = FILTER('CZK*')) then begin
-                    GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
-                    GLEntry.SetFilter("Posting Date", '%1', Datee);
-                    GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
-                    //jos da je uplata
-                    if GLEntry.FindFirst() then
-                        repeat
-                            PaymentAmount += GLEntry."Credit Amount";
-                        until GLEntry.Next() = 0;
-                    Show := 1;
+                GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
+                GLEntry.SetFilter("Posting Date", '%1', Datee);
+                GLEntry.SetFilter("Payment Method", '%1', 'Kartično');
+                //jos da je uplata
+                if GLEntry.FindFirst() then
+                    repeat
+                        PaymentAmount += GLEntry."Credit Amount";
+                    until GLEntry.Next() = 0;
+                Show := 1;
                 //end;
 
-               
+
 
                 /*GLEntry.SetFilter("Bal. Account No.", '%1', BankAccCardFilter);
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
@@ -96,9 +96,8 @@ report 50185 "Specifikacija karticnog"
 
             trigger OnPreDataItem()
             begin
+                BankAccount.SetFilter("No.", '%1', 'CZK*');
                 //PTCounter := DataItem22.Count;
-
-
             end;
 
         }
