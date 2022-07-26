@@ -1,5 +1,8 @@
 pageextension 50127 BankAccountCard extends "Bank Account Card"
 {
+    
+    //ED
+    
     layout
     {
         // Add changes to page layout here
@@ -10,7 +13,14 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 ApplicationArea = All;
             }
         }*/
+
+        modify("No.")
+        {
+            Visible = true;
+            Editable = true;
+        }
     }
+
 
     actions
     {
@@ -53,7 +63,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 end;
             }
 
-           
+
         }
 
     }

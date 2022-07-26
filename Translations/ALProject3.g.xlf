@@ -24458,6 +24458,11 @@
           <note from="Developer" annotates="general" priority="2">{Dependency=Match,"ProfileDescription_Payroll"}</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3688002276 - Action 4113372704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cash Receipt Journal</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier Role Center - Action CashReceiptJournal - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1195895850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashiergreeting</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36673,6 +36678,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control Note 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2852714242 - Control 908261736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
+          <source>Main Cashier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension UserSetup - Control Main Cashier - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2852714242 - Control 3743637336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
           <source>Wage Allowed</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -36837,6 +36847,11 @@
           <source>File Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Attachment_Ext - Field File Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2663384385 - Field 479876065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1682139193">
+          <source>No Report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension BankAccount - Field No Report - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2378348555 - Field 2807374237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1657483931">
           <source>Holiday Cause of Absence</source>
@@ -40807,6 +40822,11 @@
           <source>Last Org Shema</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension User_setup_ext - Field Last Org Shema - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2857111473 - Field 908261736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>Main Cashier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension User_setup_ext - Field Main Cashier - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2857111473 - Field 3350665870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>New Username</source>

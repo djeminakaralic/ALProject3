@@ -742,7 +742,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!BankAccountName.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!BalAccNoFilter.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -842,6 +842,9 @@ End Function
         </Field>
         <Field Name="BankAccountName">
           <DataField>BankAccountName</DataField>
+        </Field>
+        <Field Name="BalAccNoFilter">
+          <DataField>BalAccNoFilter</DataField>
         </Field>
         <Field Name="CCode">
           <DataField>CCode</DataField>

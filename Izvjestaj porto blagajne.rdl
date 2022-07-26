@@ -547,7 +547,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE Br.  " &amp; First(Fields!BankAccCardInt.Value, "DataSet_Result")</Value>
+                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE Br.  " &amp; First(Fields!BankAccCardFilter.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -704,8 +704,8 @@ End Function
         <Field Name="Datee">
           <DataField>Datee</DataField>
         </Field>
-        <Field Name="BankAccCardInt">
-          <DataField>BankAccCardInt</DataField>
+        <Field Name="BankAccCardFilter">
+          <DataField>BankAccCardFilter</DataField>
         </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>

@@ -68,8 +68,10 @@ tableextension 50179 User_setup_ext extends "User Setup"
 
         }
 
-
-
+        field(5007; "Main Cashier"; Boolean) //ED
+        {
+            Caption = 'Main Cashier';
+        }
     }
 
     var

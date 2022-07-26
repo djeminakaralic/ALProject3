@@ -147,6 +147,9 @@ report 50077 Uplatnica
         }
         dataitem(DataItem22; "Bank Account")
         {
+            column(BankNo; DataItem22."No.")
+            {
+            }
             column(BankName; DataItem22.Name)
             {
             }
@@ -165,17 +168,18 @@ report 50077 Uplatnica
 
             trigger OnAfterGetRecord()
             begin
-                if "Bank Account No." <> '' then begin
-                    Counter := Counter + 1;
-                    if Name = 'UniCredit Bank' then begin
-                        BankSWIFT := "SWIFT Code";
-                        BankIBAN := IBAN;
 
-                    end;
-                end
-                else
-                    Counter := 0;
+                Counter := Counter + 1;
+                if Name = 'UniCredit Bank' then begin
+                    BankSWIFT := "SWIFT Code";
+                    BankIBAN := IBAN;
+                end;
 
+            end;
+
+            trigger OnPreDataItem()
+            begin
+                Counter := 0;
             end;
         }
 

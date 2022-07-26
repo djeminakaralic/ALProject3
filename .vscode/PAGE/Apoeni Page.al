@@ -43,7 +43,9 @@ page 51067 "Apoeni Page"
                 }
             }
         }
+
     }
+
 
     actions
     {
@@ -80,5 +82,6 @@ page 51067 "Apoeni Page"
         ApoeniTable: Record Apoeni;
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         ZapisnikOPrimopredaji: Report "Zapisnik o primopredaji";
+        CashReceiptJournal: Page "Cash Receipt Journal";
 }
 

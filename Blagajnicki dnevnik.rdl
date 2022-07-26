@@ -964,7 +964,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="DNEVNIK BLAGAJNE " &amp; Fields!BankAccountName.Value</Value>
+                    <Value>="DNEVNIK BLAGAJNE " &amp; First(Fields!BankAccCardFilter.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -1877,8 +1877,8 @@ End Function
         <Field Name="EmmployeeName">
           <DataField>EmmployeeName</DataField>
         </Field>
-        <Field Name="BankAccountName">
-          <DataField>BankAccountName</DataField>
+        <Field Name="BankAccCardFilter">
+          <DataField>BankAccCardFilter</DataField>
         </Field>
       </Fields>
       <Query>
