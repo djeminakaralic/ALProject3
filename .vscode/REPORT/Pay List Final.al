@@ -1083,6 +1083,8 @@ report 50056 "Pay List Final"
 
                     IF NOT TempCalc.FIND('-') THEN CurrReport.SKIP;
                     TempCalc.Payment := TempCalc.Payment + TempCalc."Sick Leave-Fund";
+                    Suma_R1 := 0;
+                    SumaR_2 := 0;
 
 
                     Employee.GET(TempCalc."Employee No.");
