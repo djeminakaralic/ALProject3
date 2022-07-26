@@ -96,7 +96,7 @@ report 50185 "Specifikacija karticnog"
 
             trigger OnPreDataItem()
             begin
-                BankAccount.SetFilter("No.", '%1', 'CZK*');
+                //BankAccount.SetFilter("No.", '%1', 'CZK*');
                 //PTCounter := DataItem22.Count;
             end;
 

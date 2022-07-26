@@ -71,6 +71,9 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
                 trigger OnAction()
                 begin
+                    BankAccount.Reset();
+                    BankAccount.SetFilter("No.", '%1', 'CZK*');
+                    SpecifikacijaKarticnog.SetTableView(BankAccount);
                     /*GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);*/
@@ -101,6 +104,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
     }
 
     var
+    BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
