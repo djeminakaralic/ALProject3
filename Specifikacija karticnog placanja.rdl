@@ -1082,6 +1082,9 @@ End Function
         <Field Name="Show">
           <DataField>Show</DataField>
         </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

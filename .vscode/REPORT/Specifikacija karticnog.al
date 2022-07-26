@@ -30,10 +30,11 @@ report 50185 "Specifikacija karticnog"
             column(Show;Show)
             {
             }
-            /*column(ReportTitle; ReportTitle)
+            column(Datee; Datee)
             {
             }
-            column(Datee; Datee)
+            
+            /*column(ReportTitle; ReportTitle)
             {
             }
             column(BankAccCardFilter; BankAccCardFilter)
@@ -43,9 +44,6 @@ report 50185 "Specifikacija karticnog"
             {
             }
             column(Counter; Counter)
-            {
-            }
-            column(Show; Show)
             {
             }
             column(PTCounter; PTCounter)
