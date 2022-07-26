@@ -1,8 +1,8 @@
 pageextension 50127 BankAccountCard extends "Bank Account Card"
 {
-    
+
     //ED
-    
+
     layout
     {
         // Add changes to page layout here
@@ -46,21 +46,19 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 end;
             }
 
-                       action("POS dnevni izvjestaj sa blagajne")
+            action("POS terminali - dnevni izvještaj")
             {
-                Caption = 'POS dnevni izvjestaj sa blagajne';
+                Caption = 'POS terminali - dnevni izvještaj';
                 Image = Journal;
                 Promoted = true;
                 ApplicationArea = all;
-
-                //RunObject = Report "Izvještaj porto blagajne";
 
                 trigger OnAction()
                 begin
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
-                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
-                    IzvjestajPortoBlagajne.Run();
+                    POSDnevniIzvjestaj.SetTableView(GLEntry);
+                    POSDnevniIzvjestaj.Run();
                 end;
             }
 
@@ -90,5 +88,6 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
         GLEntry: Record "G/L Entry";
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
-        //POSDnevniIzvjestajSaBlagajne: Report 
+
+        POSDnevniIzvjestaj: Report 50086;
 }

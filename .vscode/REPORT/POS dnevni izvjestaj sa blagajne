@@ -21,8 +21,7 @@ report 50086 "POS dnevni izvjestaj sa blagajne"
 
             trigger OnPreDataItem()
             begin
-                BankAccCardFilter := GETFILTER("Bal. Account No.");
-                
+                BankAccCardFilter := GETFILTER("Bal. Account No.");                
             end;
         }
 
