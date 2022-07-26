@@ -37,9 +37,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>2.16641cm</Top>
-            <Left>0.49953cm</Left>
+            <Left>5.43561cm</Left>
             <Height>0.6cm</Height>
-            <Width>14.89292cm</Width>
+            <Width>4.95725cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -104,7 +104,7 @@
             <Top>5.65478cm</Top>
             <Left>5.50617cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.95725cm</Width>
+            <Width>4.88669cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -176,13 +176,15 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>RAČUNI</Value>
+                                  <Value>RN.</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox4</rd:DefaultName>
@@ -233,7 +235,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox6</rd:DefaultName>
@@ -285,7 +289,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -547,7 +551,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="IZVJEŠTAJ PORTO BLAGAJNE Br.  " &amp; First(Fields!BankAccCardFilter.Value, "DataSet_Result")</Value>
+                    <Value>="DNEVNI IZVJEŠTAJ SA BLAGAJNE" &amp; First(Fields!BankAccCardFilter.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -579,7 +583,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>BLAGAJNIK</Value>
+                    <Value>Referent porto blagajnik</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -590,7 +594,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>6.95124cm</Top>
-            <Left>0.49953cm</Left>
+            <Left>10.39286cm</Left>
             <Height>0.6cm</Height>
             <Width>4.97842cm</Width>
             <ZIndex>6</ZIndex>
@@ -604,14 +608,14 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox7">
+          <Textbox Name="Textbox1">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!User.Value</Value>
+                    <Value>UPLATE NA DAN:</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -620,12 +624,58 @@
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>7.55124cm</Top>
-            <Left>0.49953cm</Left>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>2.16641cm</Top>
+            <Left>0.47836cm</Left>
             <Height>0.6cm</Height>
-            <Width>14.85058cm</Width>
+            <Width>4.95725cm</Width>
             <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line1">
+            <Top>8.51641cm</Top>
+            <Left>10.52724cm</Left>
+            <Height>0cm</Height>
+            <Width>4.82287cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ime i prezime/Potpis</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>8.56933cm</Top>
+            <Left>10.44787cm</Left>
+            <Height>0.6cm</Height>
+            <Width>4.90224cm</Width>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>

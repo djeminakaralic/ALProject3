@@ -22,6 +22,11 @@ report 50194 "POS dnevni izvjestaj"
             trigger OnPreDataItem()
             begin
                 BankAccCardFilter := GETFILTER("Bal. Account No.");
+
+                BankAccount.SetFilter("Bank Account No.", '%1', BankAccCardFilter);
+                if BankAccount.FindFirst() then 
+                    BankAddress:=BankAccount.Address;
+
             end;
         }
 
@@ -105,16 +110,9 @@ report 50194 "POS dnevni izvjestaj"
         City: Text[100];
         BankAccCardFilter: Code[20];
         BankAccCardInt: Integer;
-        CountryRegion: Record "Country/Region";
-        Location: Record Location;
-        Cont: Record Contact;
-        ContName: Text[100];
-        ContAddress: Text[100];
-        ContCity: Text[100];
-        emp: Record Employee;
-        Cust: Record Customer;
         Datee: Date;
         PaymentCounter: Integer;
         PaymentAmount: Decimal;
+        BankAddress: Text[100];
 }
 
