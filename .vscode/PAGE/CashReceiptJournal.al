@@ -38,6 +38,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
         }
 
+
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
         moveafter("Document No."; "Account Type")
@@ -54,6 +55,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
         }
+        moveafter("Bal. Account No."; "Posting Date")
+        moveafter("To return"; "Document No.")
         modify("Applied (Yes/No)")
         {
             Visible = false;
@@ -178,7 +181,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     trigger OnAfterGetRecord()
     begin
-        
+
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then
