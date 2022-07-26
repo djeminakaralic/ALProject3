@@ -27,6 +27,9 @@ report 50185 "Specifikacija karticnog"
             column(PaymentAmount; PaymentAmount)
             {
             }
+            column(Show;Show)
+            {
+            }
             /*column(ReportTitle; ReportTitle)
             {
             }
@@ -52,6 +55,7 @@ report 50185 "Specifikacija karticnog"
             trigger OnAfterGetRecord()
             begin
                 PaymentAmount := 0;
+                Show:=0;
 
                 IF DataItem22.Name = 'CZK*' then begin
                     GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
@@ -95,7 +99,7 @@ report 50185 "Specifikacija karticnog"
             trigger OnPreDataItem()
             begin
                 //PTCounter := DataItem22.Count;
-                Show := 0;
+
 
             end;
 
