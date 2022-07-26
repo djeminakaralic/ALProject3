@@ -113,6 +113,15 @@ report 50085 "Izvještaj porto blagajne"
                         Caption = 'Datum izvještaja: ';
                     }
                 }
+                group("Izaberi izvještaj")
+                {
+                    Caption = 'Izaberi izvještaj';
+                    field(Select; Select)
+                    {
+                        Caption = 'Izbor:';
+                        OptionCaption = ' ,Izvještaj porto blagajne,POS terminali dnevni izvještaj';
+                    }
+                }
             }
         }
 
@@ -126,6 +135,7 @@ report 50085 "Izvještaj porto blagajne"
     }
 
     var
+        Select: Option ,"Izvjestaj porto blagajne","POS terminali dnevni izvjestaj";
         CompanyInformation: Record "Company Information";
         GJLine: Record "Gen. Journal Line";
         BankAccount: Record "Bank Account";

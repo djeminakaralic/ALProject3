@@ -29298,6 +29298,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Datee - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 1991143175 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izaberi izvještaj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Izaberi izvještaj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1991143175 - Control 3117446396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izbor:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Select - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1991143175 - Control 3117446396 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Izvještaj porto blagajne,POS terminali dnevni izvještaj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Select - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Report 2809061718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lock Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
