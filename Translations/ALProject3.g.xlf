@@ -34893,6 +34893,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Show record - Control OrgCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 3432384244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifikacija karticnog</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3432384244 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum izvještaja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3432384244 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum izvještaja: </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Datee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3432384244 - Control 3490938155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izaberi izvještaj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Izaberi izvještaj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3432384244 - Control 3117446396 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izbor:</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Select - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3432384244 - Control 3117446396 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Izvještaj porto blagajne,POS terminali dnevni izvještaj</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Select - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Report 3869432832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>StatusExt update</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35462,6 +35492,11 @@
           <source>POS terminali - dnevni izvještaj</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action POS terminali - dnevni izvještaj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3552131165 - Action 3439687030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
+          <source>Specifikacija karticnog placanja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Specifikacija karticnog placanja - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1418896891 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1418896891">
           <source>Do you want to set paid holiday for all employees?</source>

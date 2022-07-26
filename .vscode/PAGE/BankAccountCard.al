@@ -49,7 +49,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
             action("POS terminali - dnevni izvještaj")
             {
                 Caption = 'POS terminali - dnevni izvještaj';
-                Image = Journal;
+                Image = CreditCard;
                 Promoted = true;
                 ApplicationArea = all;
 
@@ -58,6 +58,22 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.Run();
+                end;
+            }
+
+            action("Specifikacija karticnog placanja")
+            {
+                Caption = 'Specifikacija karticnog placanja';
+                Image = CreditCard;
+                Promoted = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    /*GLEntry.Reset();
+                    GLEntry.SetFilter("Bal. Account No.", Rec."No.");
+                    IzvjestajPortoBlagajne.SetTableView(GLEntry);*/
                     IzvjestajPortoBlagajne.Run();
                 end;
             }
