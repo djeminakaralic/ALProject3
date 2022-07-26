@@ -698,12 +698,6 @@ End Function
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>
-        <Field Name="User">
-          <DataField>User</DataField>
-        </Field>
-        <Field Name="BankAccCardFilter">
-          <DataField>BankAccCardFilter</DataField>
-        </Field>
         <Field Name="PTCode">
           <DataField>PTCode</DataField>
         </Field>
@@ -721,6 +715,12 @@ End Function
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
+        </Field>
+        <Field Name="BankAccCardFilter">
+          <DataField>BankAccCardFilter</DataField>
+        </Field>
+        <Field Name="User">
+          <DataField>User</DataField>
         </Field>
       </Fields>
       <Query>
