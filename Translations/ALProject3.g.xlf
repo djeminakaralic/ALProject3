@@ -30688,21 +30688,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Personal track - ReportLabel RptTitle</note>
         </trans-unit>
-        <trans-unit id="Report 157628448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>POS dnevni izvjestaj</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report POS dnevni izvjestaj - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 157628448 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Datum izvještaja</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report POS dnevni izvjestaj - Control Date - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 157628448 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Datum izvještaja: </source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report POS dnevni izvjestaj - Control Datee - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Report 2191867456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Position Menu Change</source>
           <note from="Developer" annotates="general" priority="2"></note>

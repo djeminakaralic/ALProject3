@@ -57,8 +57,8 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 begin
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
-                    POSDnevniIzvjestaj.SetTableView(GLEntry);
-                    POSDnevniIzvjestaj.Run();
+                    IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.Run();
                 end;
             }
 
@@ -88,5 +88,4 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
         GLEntry: Record "G/L Entry";
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
-        POSDnevniIzvjestaj: Report "POS dnevni izvjestaj";
 }
