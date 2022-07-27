@@ -75,7 +75,12 @@ tableextension 50179 User_setup_ext extends "User Setup"
         field(5008; CurrentJnlBatchName; Code[10])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "Gen. Journal Batch";
+            TableRelation = "Gen. Journal Batch".Name;
+
+            trigger OnValidate()
+            begin
+                
+            end;
         }
     }
 
