@@ -28,13 +28,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             var
                 Test: Text[50];
-            begin                
-                Test := replacestring(Rec."Document No.", '-', '/');
-                //Rec."Document No." := replacestring(Rec."Document No.", '''', '-');
+            begin
+                /*Test := replacestring(Rec."Document No.", '-', '/');
+                Test := replacestring(Rec."Document No.", '"', '-');
+                Validate(Rec."Document No.", Test);*/
 
                 //Message('Poruka da radi na validate');
-                message(format(Test));
-            
+
             end;
         }
 
