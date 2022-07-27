@@ -81,9 +81,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-
-
-
+        modify(CurrentJnlBatchName)
+        {
+            Editable = false;
+        }
     }
 
     actions
@@ -209,8 +210,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     begin
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
-        if UserSetup.FindFirst() then
+        if UserSetup.FindFirst() then begin
+            SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+        end;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -227,7 +230,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         "Payment DT" := System.CurrentDateTime;
-        "Posting Date":=System.Today;
+        "Posting Date" := System.Today;
         Description := '';
     end;
 
