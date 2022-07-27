@@ -30,9 +30,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Test: Text[50];
             begin
                 //Rec."Document No.":=ReplaceString(REC."Document No.", '@'', '-');
-                rec."Document No." := replacestring(Rec."Document No.", '@-', '/');
+                Rec."Document No." := replacestring(Rec."Document No.", '@-', '/');
+
                 //Message('Poruka da radi na validate');
-                //message(format(test));
+                message(format(Rec."Document No."));
             end;
         }
 
