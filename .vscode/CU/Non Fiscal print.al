@@ -64,7 +64,7 @@ codeunit 50000 "Non Fiscal print"
             OutStreamObj.WRITETEXT();
             OutStreamObj.WRITETEXT();
 
-            plite := '\x1b\x61\x08	POTVRDA PLAĆANJA\x1b\x21\x00';
+            plite := '\x1b\x61\x08POTVRDA PLAĆANJA\x1b\x21\x00';
             OutStreamObj.WRITETEXT(plite);
             OutStreamObj.WRITETEXT();
             OutStreamObj.WRITETEXT();
@@ -80,8 +80,8 @@ codeunit 50000 "Non Fiscal print"
             OutStreamObj.WRITETEXT(plite);
             OutStreamObj.WRITETEXT();
             OutStreamObj.WRITETEXT();
-            Iznoss := GJL.Amount;
-            ImaZarez := STRPOS(FORMAT(GJL.Amount), ',') + 1;
+            Iznoss := abs(GJL.Amount);
+            ImaZarez := STRPOS(FORMAT(abs(GJL.Amount)), ',') + 1;
 
             IF STRPOS(FORMAT(COPYSTR(FORMAT(Iznoss), ImaZarez, 2)), '00') = 0 THEN
                 Rezultat := ChangeSeparator(FORMAT(Iznoss, 0, '<Sign><Integer><Decimals><Comma,.>'))
@@ -89,13 +89,12 @@ codeunit 50000 "Non Fiscal print"
                 Rezultat := ChangeSeparator(FORMAT(ROUND(Iznoss)));
 
 
-            plite := '\x1b\x21\x08     IZNOS UPLATE : ' + Rezultat + 'KM+     \x1B\x21\x00';
+            plite := '\x1b\x21\x08     IZNOS UPLATE : ' + Rezultat + 'KM     \x1B\x21\x00';
             OutStreamObj.WRITETEXT(plite);
             OutStreamObj.WRITETEXT();
             OutStreamObj.WRITETEXT();
 
-            plite := '\x1B\x21\x00REFERENCE' + ' ' + GJL."Applies-to Doc. No." + '\x1B\x21\x20';
-            OutStreamObj.WRITETEXT(plite);
+
 
             plite := GBatch + ' ' + GJL."Document No.";
             OutStreamObj.WRITETEXT(plite);
@@ -105,7 +104,7 @@ codeunit 50000 "Non Fiscal print"
             OutStreamObj.WRITETEXT();
             plite := '';
 
-            plite := '     ################################';
+            plite := '################################';
             OutStreamObj.WRITETEXT(plite);
             OutStreamObj.WRITETEXT();
             plite := '\x1B\x4d\x01POTVRDA O PLAĆANJU JE ';
@@ -143,37 +142,6 @@ codeunit 50000 "Non Fiscal print"
 
 
 
-            plite := '<IDbroj>' + Custt."Registration No." + '</IDbroj>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-
-
-            //<Naziv>Tring d.o.o. Informatički Inženj</Naziv>
-            plite := '<Naziv>' + SalesHeader."Bill-to Name" + '</Naziv>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-
-            //<Adresa>Mehmeda Vehbi ef. Šemsekadića bb</Adresa>
-
-            plite := '<Adresa>' + SalesHeader."Bill-to Address" + '</Adresa>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-
-            //<PostanskiBroj>75320</PostanskiBroj>
-
-            plite := '<PostanskiBroj>' + SalesHeader."Bill-to Post Code" + '</PostanskiBroj>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-
-            //<Grad>Gračanica</Grad>
-            plite := '<Grad>' + SalesHeader."Bill-to City" + '</Grad>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-
-            plite := '</Kupac>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            //</Kupac>
 
 
 
@@ -183,43 +151,6 @@ codeunit 50000 "Non Fiscal print"
 
 
 
-
-            plite := '</RacunStavka>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '</StavkeRacuna>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '<VrstePlacanja>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '<VrstaPlacanja>';
-
-
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '<Oznaka>Virman</Oznaka>';
-
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '<Iznos>' + '0' + '</Iznos>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-
-
-            plite := '</VrstaPlacanja>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '</VrstePlacanja>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '</NoviObjekat>';
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
-            plite := '</RacunZahtjev>';
-
-            OutStreamObj.WRITETEXT(plite);
-            OutStreamObj.WRITETEXT();
             File1.CLOSE;
 
 

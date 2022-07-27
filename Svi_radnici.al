@@ -106,7 +106,7 @@ report 50095 "Svi radnici"
             trigger OnAfterGetRecord()
             begin
                 Show := true;
-                if (Select = Select::"Spisak po spolu") or (Select = Select::"Spisak svih radnika") or (Select = Select::"Po stvarnoj stručnoj spremi")
+                if (Select = Select::"Spisak po spolu") or (Select = Select::"Spisak svih radnika") or (Select = Select::"Po stvarnoj/potrebnoj stručnoj spremi")
                then begin
                     EClShow.Reset();
                     EClShow.SetFilter("Employee No.", '%1', DataItem1."Employee No.");
@@ -267,7 +267,7 @@ report 50095 "Svi radnici"
                     field(Select; Select)
                     {
                         Caption = 'Izbor:';
-                        OptionCaption = ' ,Otišli u zadanom intervalu,Po stvarnoj stručnoj spremi,Spisak po radnim mjestima,Spisak po sektorima,Spisak po spolu,Spisak svih radnika,Došli u zadanom intervalu';
+                        OptionCaption = ' ,Otišli u zadanom intervalu,Po stvarnoj/potrebnoj stručnoj spremi,Spisak po radnim mjestima,Spisak po sektorima,Spisak po spolu,Spisak svih radnika,Došli u zadanom intervalu';
                     }
                 }
             }
@@ -313,7 +313,7 @@ report 50095 "Svi radnici"
         Pozicija: Text;
         WB: Record "Work booklet";
         StartingDate: Text;
-        Select: Option ,"Otišli u zadanom intervalu","Po stvarnoj stručnoj spremi","Spisak po radnim mjestima","Spisak po sektorima","Spisak po spolu","Spisak svih radnika","Došli u zadanom intervalu";
+        Select: Option ,"Otišli u zadanom intervalu","Po stvarnoj/potrebnoj stručnoj spremi","Spisak po radnim mjestima","Spisak po sektorima","Spisak po spolu","Spisak svih radnika","Došli u zadanom intervalu";
         ImeRoditelja: Text;
         NazivOrgana: Text;
         DatumRodjenja: Text;

@@ -5218,6 +5218,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Cause of Absence Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1229655105 - Field 3422619453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pripravnost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Employee Absence Reg - Field Cause of absence on-call - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1229655105 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8208,6 +8213,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Employees - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 470349803 - Field 43643230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employees on call</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field Employees on call - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 470349803 - Field 3715214246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Employees on Probation</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8247,6 +8257,11 @@
           <source>For Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field For Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470349803 - Field 837247550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table HR Cue - Field FromDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 470349803 - Field 3363289669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inactive - Terminated</source>
@@ -34979,7 +34994,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Control Select - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1897769306 - Control 3117446396 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source> ,Otišli u zadanom intervalu,Po stvarnoj stručnoj spremi,Spisak po radnim mjestima,Spisak po sektorima,Spisak po spolu,Spisak svih radnika,Došli u zadanom intervalu</source>
+          <source> ,Otišli u zadanom intervalu,Po stvarnoj/potrebnoj stručnoj spremi,Spisak po radnim mjestima,Spisak po sektorima,Spisak po spolu,Spisak svih radnika,Došli u zadanom intervalu</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Svi radnici - Control Select - Property OptionCaption</note>
         </trans-unit>
@@ -36957,6 +36972,11 @@
           <source>Standard,Other,Sick,Paid Absence,Unpaid Absence</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Calculation Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1258693103 - Field 1970527837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
+          <source>Pripravnost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension CauseOfAbsence - Field Cause of Absence On-Call - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1258693103 - Field 2640285143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2958609287">
           <source>Coefficient</source>

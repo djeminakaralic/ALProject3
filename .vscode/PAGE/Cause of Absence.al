@@ -52,8 +52,10 @@ pageextension 50118 CauseOfAbsence extends "Causes of Absence"
             field("Sick Leave RAD -1"; "Sick Leave RAD -1") { Visible = false; }
             field("Unpaid days"; "Unpaid days") { }
             field("Add Hours"; "Add Hours") { Visible = true; }
+            field("Cause of Absence On-Call"; "Cause of Absence On-Call") { ApplicationArea = all; }
             field(Weekend; Weekend) { ApplicationArea = all; }
             field(Holiday; Holiday) { }
+
 
 
 
