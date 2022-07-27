@@ -51,7 +51,7 @@ report 50186 "Rekapitulacija uplata/isplata"
                     if GLEntry.FindFirst() then
                     repeat
                         UplataIznos += GLEntry."Credit Amount";
-                        if GLEntry."Bal. Account No."<>BankAccount."Transit G/L account" then 
+                        if GLEntry."G/L Account No."<>BankAccount."Transit G/L account" then 
                         IsplataIznos += GLEntry."Debit Amount";
                         until GLEntry.Next() = 0;
 
