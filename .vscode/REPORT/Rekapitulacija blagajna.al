@@ -38,7 +38,11 @@ report 50186 "Rekapitulacija uplata/isplata"
                 GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
 
-                //PAZITI DA OVDJE ZAOBIĐEM POLOG PAZARA KAO ISPLATU
+                BankAccount.Reset(); //ovdje zaobilazim polog pazara kao isplatu
+                //jer pazar ima kao broj proturacuna tranzitni konto koji je postavljen na kartici bankovnog računa
+                BankAccount.get(DataItem22."No.");
+                GLEntry.SetFilter("Bal. Account No.", '<>%1', BankAccount."Transit G/L account");
+
                 if GLEntry.FindFirst() then
                     repeat
                         UplataIznos += GLEntry."Credit Amount";
