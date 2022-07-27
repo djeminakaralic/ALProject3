@@ -382,14 +382,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox17">
+                        <Textbox Name="UplataIznos">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!UplataIznos.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -398,7 +398,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <rd:DefaultName>UplataIznos</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -433,14 +433,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox19">
+                        <Textbox Name="IsplataIznos">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!IsplataIznos.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -449,7 +449,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <rd:DefaultName>IsplataIznos</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
