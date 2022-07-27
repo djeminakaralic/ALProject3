@@ -29,14 +29,15 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             var
                 Test: Text[50];
             begin
-                Charr:=39;
+                Charr := 39;
                 /*Test := replacestring(Rec."Document No.", '-', '/');
                 Test := replacestring(Rec."Document No.", '"', '-');
                 Validate(Rec."Document No.", Test);*/
-                Test:=ReplaceString(Rec."Document No.", '-', '/');
-                Test:=ReplaceString(Test, Format(Charr), '-');
-                Message(Format(Test));
-                Validate(rec."Document No.", 'KPF-2020/0057');
+                Test := ReplaceString(Rec."Document No.", '-', '/');
+                Test := ReplaceString(Test, Format(Charr), '-');
+                Rec."Document No." := Test;
+                /*Message(Format(Test));
+                Validate(rec."Document No.", 'KPF-2020/0057');*/
 
                 //Message('Poruka da radi na validate');
 
