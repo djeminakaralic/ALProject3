@@ -27,10 +27,10 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             trigger OnAfterValidate()
             var
-                myInt: Integer;
+                Test: Text[50];
             begin
-
-                Message('Poruka da radi na validate');
+                Test := replacestring(Rec."Document No.", '*ee*', 'a');
+                //Message('Poruka da radi na validate');
 
             end;
         }
@@ -294,6 +294,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         else
             Rec."No. Line" := 1;
 
+    end;
+
+    local procedure ReplaceString(String: Text; FindWhat: Text; ReplaceWith: Text) NewString: Text
+    begin
+        WHILE STRPOS(String, FindWhat) > 0 DO
+            String := DELSTR(String, STRPOS(String, FindWhat)) + ReplaceWith + COPYSTR(String, STRPOS(String, FindWhat) + STRLEN(FindWhat));
+        NewString := String;
     end;
 
     var
