@@ -1108,14 +1108,17 @@ End Function
         <Field Name="BankName">
           <DataField>BankName</DataField>
         </Field>
-        <Field Name="PaymentAmount">
-          <DataField>PaymentAmount</DataField>
+        <Field Name="UplataIznos">
+          <DataField>UplataIznos</DataField>
         </Field>
-        <Field Name="PaymentAmountFormat">
-          <DataField>PaymentAmountFormat</DataField>
+        <Field Name="UplataIznosFormat">
+          <DataField>UplataIznosFormat</DataField>
         </Field>
-        <Field Name="Show">
-          <DataField>Show</DataField>
+        <Field Name="IsplataIznos">
+          <DataField>IsplataIznos</DataField>
+        </Field>
+        <Field Name="IsplataIznosFormat">
+          <DataField>IsplataIznosFormat</DataField>
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>

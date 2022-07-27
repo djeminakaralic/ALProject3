@@ -74,10 +74,23 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     BankAccount.Reset();
                     BankAccount.SetFilter("No.", '%1', 'CZK*');
                     SpecifikacijaKarticnog.SetTableView(BankAccount);
-                    /*GLEntry.Reset();
-                    GLEntry.SetFilter("Bal. Account No.", Rec."No.");
-                    IzvjestajPortoBlagajne.SetTableView(GLEntry);*/
                     SpecifikacijaKarticnog.Run();
+                end;
+            }
+
+            action("Rekapitulacija uplata/isplata")
+            {
+                Caption = 'Rekapitulacija uplata/isplata';
+                Image = PostedPayableVoucher;
+                Promoted = true;
+                ApplicationArea = all;
+
+                trigger OnAction()
+                begin
+                    BankAccount.Reset();
+                    BankAccount.SetFilter("No.", '%1', 'CZK*');
+                    RekapitulacijaUplataIsplata.SetTableView(BankAccount);
+                    RekapitulacijaUplataIsplata.Run();
                 end;
             }
 
@@ -109,4 +122,5 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
         SpecifikacijaKarticnog: Report "Specifikacija karticnog";
+        RekapitulacijaUplataIsplata: Report "Rekapitulacija uplata/isplata";
 }

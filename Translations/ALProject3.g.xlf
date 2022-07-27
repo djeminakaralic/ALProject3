@@ -33378,6 +33378,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Reduction per Banks - NamedType Txt001</note>
         </trans-unit>
+        <trans-unit id="Report 364745259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Rekapitulacija uplata/isplata</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Rekapitulacija uplata/isplata - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 364745259 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum izvještaja</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Rekapitulacija uplata/isplata - Control Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 364745259 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Datum izvještaja: </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Rekapitulacija uplata/isplata - Control Datee - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Report 477861334 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reopen Calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35477,6 +35492,11 @@
           <source>POS terminali - dnevni izvještaj</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action POS terminali - dnevni izvještaj - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3552131165 - Action 364745259 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
+          <source>Rekapitulacija uplata/isplata</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BankAccountCard - Action Rekapitulacija uplata/isplata - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3552131165 - Action 3439687030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2292249509">
           <source>Specifikacija karticnog placanja</source>
