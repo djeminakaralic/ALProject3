@@ -29,6 +29,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             var
                 myInt: Integer;
             begin
+
                 Message('Poruka da radi na validate');
 
             end;
@@ -282,6 +283,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 end;
             end;
         }
+
     }
 
     trigger OnInsert()

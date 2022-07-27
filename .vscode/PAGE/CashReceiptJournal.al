@@ -22,69 +22,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }
 
-        /*addafter(CurrentJnlBatchName)
-        {
-            field("Cash Register"; "Cash Register")
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Blagajna';
-                Editable = false;
-
-                trigger OnDrillDown()
-                var
-                    BankAccounts: Record "Bank Account";
-                begin
-                    if "Journal Batch Name" = 'CZK1 UPL' then begin
-                        BankAccounts.SetFilter("No.", '%1', 'BANK-10');
-                        /*if BankAccounts.FindFirst() then
-                            "Cash Register" := BankAccounts.Name;*/
-        /*Page.Run(Page::"Bank Account Card", BankAccounts);
-    end
-    else
-        if "Journal Batch Name" = 'CZK2 UPL' then begin
-            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
-            Page.Run(Page::"Bank Account Card", BankAccounts);
-        end
-        else
-            if "Journal Batch Name" = 'CZK3 UPL' then begin
-                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
-                Page.Run(Page::"Bank Account Card", BankAccounts);
-            end
-            else
-                if "Journal Batch Name" = 'CZK4 UPL' then begin
-                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
-                    Page.Run(Page::"Bank Account Card", BankAccounts);
-                end
-                else
-                    if "Journal Batch Name" = 'CZK5 UPL' then begin
-                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
-                        Page.Run(Page::"Bank Account Card", BankAccounts);
-                    end
-                    else
-                        if "Journal Batch Name" = 'CZK6 UPL' then begin
-                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
-                            Page.Run(Page::"Bank Account Card", BankAccounts);
-                        end
-                        else
-                            if "Journal Batch Name" = 'CZK7 UPL' then begin
-                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
-                                Page.Run(Page::"Bank Account Card", BankAccounts);
-                            end
-                            else
-                                if "Journal Batch Name" = 'CZK8 UPL' then begin
-                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
-                                    Page.Run(Page::"Bank Account Card", BankAccounts);
-                                end
-                                else
-                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
-                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
-                                        Page.Run(Page::"Bank Account Card", BankAccounts);
-                                    end;
-
-end;
-}
-}*/
-
         addafter("Posting Date")
         {
             field("Payment DT"; "Payment DT")
@@ -101,23 +38,14 @@ end;
             }
         }
 
+
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-        moveafter("Bal. VAT Amount"; "Document Type")
-        moveafter("Credit Amount"; "Account Type")
+        moveafter("Document No."; "Account Type")
+        movebefore("Applies-to Doc. Type"; "Document Type")
 
         addafter("Amount (LCY)")
         {
-            /*field(Apoeni; Apoeni)
-            {
-                ApplicationArea = all;
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    CurrPage.Update();
-                    Rec."Given amount" := Rec.Apoeni;
-                end;
-            }*/
             field("Given amount"; "Given amount")
             {
                 ApplicationArea = all;
@@ -127,6 +55,8 @@ end;
                 ApplicationArea = all;
             }
         }
+        moveafter("Bal. Account No."; "Posting Date")
+        moveafter("To return"; "Document No.")
         modify("Applied (Yes/No)")
         {
             Visible = false;
@@ -140,6 +70,14 @@ end;
             Visible = false;
         }
         modify(Correction)
+        {
+            Visible = false;
+        }
+        modify("Debit Amount")
+        {
+            Visible = false;
+        }
+        modify("Credit Amount")
         {
             Visible = false;
         }
@@ -245,7 +183,6 @@ end;
 
                 end;
             }
-
 
             /*action("Payroll")
             {
