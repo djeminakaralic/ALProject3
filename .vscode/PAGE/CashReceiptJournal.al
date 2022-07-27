@@ -175,11 +175,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Bal. Account Type" := "Bal. Account Type"::"Bank Account";
                     GJline."Bal. Account No." := Rec."Bal. Account No.";
                     GJline."Account Type" := "Account Type"::"G/L Account";
-                    GJline."Account No." := '20009';
 
-                    /*GJline."Bal. Account No." := '2388';
-                    GJline."Account Type" := "Account Type"::"G/L Account";
-                    GJline."Account No." := '2050';*/
+                    BankAccount.get(Rec."Bal. Account No."); //broj računa je tranzitni konto koji je postavljen na kartici bankovnog racuna
+                    GJline."Account No." := BankAccount."Transit G/L account";
+
                     GJline.Insert();
 
                 end;
@@ -228,6 +227,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         "Payment DT" := System.CurrentDateTime;
+        "Posting Date":=System.Today;
         Description := '';
     end;
 

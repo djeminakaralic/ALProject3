@@ -9,6 +9,11 @@ tableextension 50152 BankAccount extends "Bank Account"
         {
             Caption = 'No Report';
         }
+        field(50001; "Transit G/L account"; Code[10])
+        {
+            Caption = 'Transit G/L account';
+            TableRelation = "G/L Account";
+        }
         
     }
 

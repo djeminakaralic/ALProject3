@@ -29,22 +29,39 @@ report 50186 "Rekapitulacija uplata/isplata"
             column(Datee; Datee)
             {
             }
+            column(Counter; Counter)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
-                UplataIznos:=0;
-                IsplataIznos:=0;
+                UplataIznos := 0;
+                IsplataIznos := 0;
+                Counter += 1;
 
-                GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
-                GLEntry.SetFilter("Posting Date", '%1', Datee);
+                if Counter>9 then begin
+                    GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
+                    GLEntry.SetFilter("Posting Date", '%1', Datee);
 
-                //PAZITI DA OVDJE ZAOBIĐEM POLOG PAZARA KAO ISPLATU
-                if GLEntry.FindFirst() then
+                    //ovdje zaobilazim polog pazara kao isplatu
+                    //jer pazar ima kao broj proturacuna tranzitni konto koji je postavljen na kartici bankovnog računa
+                    BankAccount.get(DataItem22."No.");
+                
+                    if GLEntry.FindFirst() then
                     repeat
                         UplataIznos += GLEntry."Credit Amount";
+                        if GLEntry."G/L Account No."<>BankAccount."Transit G/L account" then 
                         IsplataIznos += GLEntry."Debit Amount";
-                    until GLEntry.Next() = 0;
+                        until GLEntry.Next() = 0;
 
+                end;
+
+
+                end;
+
+            trigger OnPreDataItem()
+            begin
+                Counter := 0;
             end;
 
         }
@@ -88,5 +105,6 @@ report 50186 "Rekapitulacija uplata/isplata"
         Datee: Date;
         UplataIznos: Decimal;
         IsplataIznos: Decimal;
+        Counter: Integer;
 }
 

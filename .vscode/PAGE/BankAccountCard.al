@@ -14,6 +14,14 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
             }
         }*/
 
+        addafter("Payment Export Format")
+        {
+            field("Transit G/L account";"Transit G/L account")
+            {
+                ApplicationArea = All;
+            }
+        }
+
         modify("No.")
         {
             Visible = true;
@@ -87,8 +95,8 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
                 trigger OnAction()
                 begin
-                    BankAccount.Reset();
-                    BankAccount.SetFilter("No.", '%1', 'CZK*');
+                    /*BankAccount.Reset();
+                    BankAccount.SetFilter("No.", '%1', 'CZK*');*/
                     RekapitulacijaUplataIsplata.SetTableView(BankAccount);
                     RekapitulacijaUplataIsplata.Run();
                 end;

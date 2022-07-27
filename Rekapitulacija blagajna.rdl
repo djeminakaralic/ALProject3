@@ -520,6 +520,9 @@
                   <TablixMembers>
                     <TablixMember />
                   </TablixMembers>
+                  <Visibility>
+                    <Hidden>=(Fields!Counter.Value&lt;10)</Hidden>
+                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -1096,6 +1099,9 @@ End Function
         </Field>
         <Field Name="Datee">
           <DataField>Datee</DataField>
+        </Field>
+        <Field Name="Counter">
+          <DataField>Counter</DataField>
         </Field>
       </Fields>
       <Query>
