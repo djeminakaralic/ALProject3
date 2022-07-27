@@ -10,10 +10,6 @@ report 50186 "Rekapitulacija uplata/isplata"
     {
         dataitem(DataItem21; "G/L Entry")
         {
-            trigger OnPreDataItem()
-            begin
-                //BankAccCardFilter := GETFILTER("Bal. Account No.");
-            end;
         }
 
         dataitem(DataItem22; "Bank Account")
