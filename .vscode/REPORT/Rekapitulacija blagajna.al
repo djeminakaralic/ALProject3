@@ -36,6 +36,8 @@ report 50186 "Rekapitulacija uplata/isplata"
 
             trigger OnAfterGetRecord()
             begin
+                UplataIznos:=0;
+                IsplataIznos:=0;
 
                 GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
