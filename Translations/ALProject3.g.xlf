@@ -36748,6 +36748,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SalesOrder - Control Note 3 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2852714242 - Control 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
+          <source>Current Journal Batch Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension UserSetup - Control CurrentJnlBatchName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2852714242 - Control 908261736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 337631938">
           <source>Main Cashier</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -40877,6 +40882,11 @@
           <source>Gen. Bus. Posting Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TransferHeaderExtends - Field Gen. Bus. Posting Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2857111473 - Field 874212758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
+          <source>CurrentJnlBatchName</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension User_setup_ext - Field CurrentJnlBatchName - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2857111473 - Field 3602241185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 337631938">
           <source>Date for Training</source>
