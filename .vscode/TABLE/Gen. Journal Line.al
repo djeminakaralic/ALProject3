@@ -28,12 +28,9 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             trigger OnAfterValidate()
             var
                 Test: Text[50];
-                Replace: text[10];
-            begin
-                //Replace:=''';
-                //Rec."Document No.":=ReplaceString(REC."Document No.", '@'', '-');
-                Rec."Document No." := replacestring(Rec."Document No.", '-', '/');
-                Rec."Document No." := replacestring(Rec."Document No.", '''', '-');
+            begin                
+                              Rec."Document No." := replacestring(Rec."Document No.", '-', '/');
+                //Rec."Document No." := replacestring(Rec."Document No.", '''', '-');
 
                 //Message('Poruka da radi na validate');
                 message(format(Rec."Document No."));
