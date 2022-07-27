@@ -32,13 +32,13 @@ report 50186 "Rekapitulacija uplata/isplata"
 
             trigger OnAfterGetRecord()
             begin
-                UplataIznos:=0;
-                IsplataIznos:=0;
+                UplataIznos := 0;
+                IsplataIznos := 0;
 
                 GLEntry.SetFilter("Bal. Account No.", '%1', DataItem22."No.");
                 GLEntry.SetFilter("Posting Date", '%1', Datee);
 
-                BankAccount.Reset(); //ovdje zaobilazim polog pazara kao isplatu
+                //ovdje zaobilazim polog pazara kao isplatu
                 //jer pazar ima kao broj proturacuna tranzitni konto koji je postavljen na kartici bankovnog računa
                 BankAccount.get(DataItem22."No.");
                 GLEntry.SetFilter("Bal. Account No.", '<>%1', BankAccount."Transit G/L account");
