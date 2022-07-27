@@ -11,6 +11,34 @@
       <rd:DataSourceID>ec0b0cf3-8591-4e05-9b7e-8ce0fa37ddfc</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
+        </Field>
+        <Field Name="BankName">
+          <DataField>BankName</DataField>
+        </Field>
+        <Field Name="PaymentAmount">
+          <DataField>PaymentAmount</DataField>
+        </Field>
+        <Field Name="PaymentAmountFormat">
+          <DataField>PaymentAmountFormat</DataField>
+        </Field>
+        <Field Name="Show">
+          <DataField>Show</DataField>
+        </Field>
+        <Field Name="Datee">
+          <DataField>Datee</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -180,7 +208,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>ULAZ</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -231,7 +259,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>IZLAZ</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -578,7 +606,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>UPLATE NA DAN:</Value>
+                    <Value>DATUM:</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -675,7 +703,7 @@
             <Top>6.21453cm</Top>
             <Left>2.44863cm</Left>
             <Height>1.24354cm</Height>
-            <Width>2.01966cm</Width>
+            <Width>2.19605cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -714,10 +742,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>6.21454cm</Top>
-            <Left>4.46829cm</Left>
+            <Top>6.21453cm</Top>
+            <Left>4.64468cm</Left>
             <Height>1.24354cm</Height>
-            <Width>2.12549cm</Width>
+            <Width>2.37243cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -767,7 +795,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>6.21453cm</Top>
-            <Left>6.59378cm</Left>
+            <Left>7.01711cm</Left>
             <Height>1.24354cm</Height>
             <Width>1.98438cm</Width>
             <ZIndex>7</ZIndex>
@@ -809,7 +837,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>6.21453cm</Top>
-            <Left>8.57816cm</Left>
+            <Left>9.00149cm</Left>
             <Height>1.24354cm</Height>
             <Width>1.84327cm</Width>
             <ZIndex>8</ZIndex>
@@ -859,9 +887,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>6.24099cm</Top>
-            <Left>11.00349cm</Left>
+            <Left>11.47974cm</Left>
             <Height>1.21708cm</Height>
-            <Width>4.34662cm</Width>
+            <Width>3.87037cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -913,6 +941,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -952,35 +986,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="BankNo">
-          <DataField>BankNo</DataField>
-        </Field>
-        <Field Name="BankName">
-          <DataField>BankName</DataField>
-        </Field>
-        <Field Name="UplataIznos">
-          <DataField>UplataIznos</DataField>
-        </Field>
-        <Field Name="UplataIznosFormat">
-          <DataField>UplataIznosFormat</DataField>
-        </Field>
-        <Field Name="IsplataIznos">
-          <DataField>IsplataIznos</DataField>
-        </Field>
-        <Field Name="IsplataIznosFormat">
-          <DataField>IsplataIznosFormat</DataField>
-        </Field>
-        <Field Name="Datee">
-          <DataField>Datee</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
