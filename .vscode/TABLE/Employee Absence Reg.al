@@ -28,6 +28,7 @@ table 50104 "Employee Absence Reg"
                 AbsenceFIll: Codeunit "Absence Fill";
                 EmployeeA: Record Employee;
                 Preko: Record "Cause of Absence";
+                DateFind: Record date;
             begin
 
                 IF Rec."Approved" = true then begin
@@ -93,6 +94,31 @@ table 50104 "Employee Absence Reg"
                     EmployeeAbsence.DeleteAll();*/
                 end;
 
+                if Hours = 0 then begin
+                    if ("Cause of absence on-call" = true) and (Approved = true) then begin
+                        DateFind.Reset();
+
+                        CauseOfAbsence.Reset();
+                        CauseOfAbsence.Get(rec."Cause of Absence Code");
+                        if CauseOfAbsence.Weekend = false then
+                            DateFind.SetFilter("Period No.", '<>%1 & <>%2', 6, 7);
+                        DateFind.SetFilter("Period Type", '%1', DateFind."Period Type"::Date);
+                        DateFind.SetFilter("Period Start", '%1..%2', "From Date", "To Date");
+                        if DateFind.FindFirst() then begin
+                            EmployeeA.GET(Rec."Employee No.");
+                            Rec.Hours := EmployeeA."Hours In Day" * DateFind.Count;
+
+                        end;
+
+
+
+
+
+
+                    end;
+
+                end;
+
             end;
         }
         field(5; "Entry No."; Integer)
@@ -115,6 +141,7 @@ table 50104 "Employee Absence Reg"
                     error(Text006);
 
                 CauseOfAbsence.GET("Cause of Absence Code");
+                "Cause of absence on-call" := CauseOfAbsence."Cause of Absence On-Call";
                 Description := CauseOfAbsence.Description;
                 VALIDATE("Unit of Measure Code", CauseOfAbsence."Unit of Measure Code");
 
@@ -238,6 +265,11 @@ table 50104 "Employee Absence Reg"
         {
             Caption = 'Hours';
         }
+        field(14; "Cause of absence on-call"; Boolean)
+        {
+            Caption = 'Pripravnost';
+        }
+
     }
 
     keys

@@ -15,6 +15,14 @@ table 50203 "Work at"
         field(2; "Place Of Employment"; Text[100])
         {
             Caption = 'Place Of Employment';
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                text: Text[250];
+            begin
+
+
+            end;
         }
     }
 
