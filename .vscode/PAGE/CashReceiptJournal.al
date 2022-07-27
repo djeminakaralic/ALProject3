@@ -83,6 +83,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
 
 
+
     }
 
     actions

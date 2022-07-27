@@ -24,6 +24,7 @@
                   <TextRun>
                     <Value>=FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
                       <Format>d. MMMM yyyy.</Format>
                     </Style>
                   </TextRun>
@@ -597,7 +598,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>DATUM:</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
