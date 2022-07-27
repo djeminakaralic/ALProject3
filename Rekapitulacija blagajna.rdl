@@ -55,7 +55,6 @@
                   <TextRun>
                     <Value>=FORMAT(Fields!Datee.Value, "dd.MM.yyyy")</Value>
                     <Style>
-                      <FontSize>12pt</FontSize>
                       <Format>d. MMMM yyyy.</Format>
                     </Style>
                   </TextRun>
@@ -110,7 +109,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>BROJ PRODAJNOG MJESTA</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -161,7 +162,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>NAZIV PRODAJNOG MJESTA</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -212,7 +215,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>ULAZ</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -263,7 +268,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>IZLAZ</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -319,7 +326,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!BankNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -370,7 +379,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!BankName.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -421,7 +432,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=FormatNumber(Fields!UplataIznos.Value, 2)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -472,7 +485,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=FormatNumber(Fields!IsplataIznos.Value, 2)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -613,9 +628,7 @@
                 <TextRuns>
                   <TextRun>
                     <Value>DATUM:</Value>
-                    <Style>
-                      <FontSize>12pt</FontSize>
-                    </Style>
+                    <Style />
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -935,7 +948,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=FormatNumber(SUM(Fields!IsplataIznos.Value), 2)</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -967,7 +982,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=FormatNumber(SUM(Fields!UplataIznos.Value), 2)</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -999,7 +1016,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>UKUPNO:</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
