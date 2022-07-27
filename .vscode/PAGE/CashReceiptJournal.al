@@ -176,7 +176,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Bal. Account No." := Rec."Bal. Account No.";
                     GJline."Account Type" := "Account Type"::"G/L Account";
 
-                    BankAccount.SetFilter("Bank Account No.", '%1', "Bal. Account No."); //brj računa je tranzitni konto sa postavke bankovnog računa
+                    BankAccount.SetFilter("Bank Account No.", '%1', rec."Bal. Account No."); //brj računa je tranzitni konto sa postavke bankovnog računa
                     if BankAccount.FindFirst() then
                     GJline."Account No." := BankAccount."Transit G/L account";
 
