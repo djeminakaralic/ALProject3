@@ -228,6 +228,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         "Payment DT" := System.CurrentDateTime;
+        "Posting Date":=System.Today;
         Description := '';
     end;
 
