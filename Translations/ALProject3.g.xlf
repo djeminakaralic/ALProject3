@@ -23953,16 +23953,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit Absence Fill - Method ValidateDate - NamedType Text001</note>
         </trans-unit>
-        <trans-unit id="Codeunit 258273657 - NamedType 415687597" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ova funkcija nije implementirana za odabrani printer!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit BaH FiscalPrintersMgmt - NamedType ERROR_NOT_IMPLEMENTED</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 258273657 - NamedType 4094681209" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ne postoji printer %1!</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit BaH FiscalPrintersMgmt - NamedType ERROR_NO_PRINTER</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1236902037 - NamedType 672599587" size-unit="char" translate="yes" xml:space="preserve">
           <source>Are you sure you wish to close this calculation?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -35518,6 +35508,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Action 2466295624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Non Fiscal Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Action Non Fiscal Print - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4113372704 - Action 2211706696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Payment Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39587,6 +39582,11 @@
           <source>Is Simple Page</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GeneralLedgerSetup - Field Is Simple Page - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 691353248 - Field 1751005630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
+          <source>Path for fiscal printer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GeneralLedgerSetup - Field Path for fiscal printer - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 691353248 - Field 3622961305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4050813720">
           <source>Print VAT specification</source>

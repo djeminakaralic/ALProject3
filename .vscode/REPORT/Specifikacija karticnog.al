@@ -67,7 +67,7 @@ report 50185 "Specifikacija karticnog"
 
             end;
 
-           
+
         }
     }
 

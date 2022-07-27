@@ -9,7 +9,13 @@ pageextension 50102 GeneralLedgerSetup extends "General Ledger Setup"
             {
                 ApplicationArea = all;
             }
+            field("Path for fiscal printer"; "Path for fiscal printer")
+            {
+                ApplicationArea = all;
+            }
         }
+
+
     }
 
     actions

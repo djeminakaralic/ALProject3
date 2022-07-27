@@ -53,11 +53,11 @@ report 50001 "BaH Fisc-PrintInvoiceDuplic"
 
     trigger OnPreReport()
     begin
-        FiscalPrinterMgmt.PrintInvoiceDuplicate(FromDateTime, ToDateTime, InvoiceNo);
+        //     FiscalPrinterMgmt.PrintInvoiceDuplicate(FromDateTime, ToDateTime, InvoiceNo);
     end;
 
     var
-        FiscalPrinterMgmt: Codeunit "BaH FiscalPrintersMgmt";
+        // FiscalPrinterMgmt: Codeunit "BaH FiscalPrintersMgmt";
         FromDateTime: DateTime;
         ToDateTime: DateTime;
         InvoiceNo: Integer;
