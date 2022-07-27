@@ -48,11 +48,11 @@ report 50002 "BaH Fisc-PeriodReport"
         IF (FromDate = 0D) OR (ToDate = 0D) THEN ERROR(ERROR_WRONG_DATE);
         IF FromDate > ToDate THEN ERROR(ERROR_WRONG_DATES);
 
-        FiscalPrinterMgmt.PeriodReport(FromDate, ToDate);
+        //    FiscalPrinterMgmt.PeriodReport(FromDate, ToDate);
     end;
 
     var
-        FiscalPrinterMgmt: Codeunit "BaH FiscalPrintersMgmt";
+        // FiscalPrinterMgmt: Codeunit "BaH FiscalPrintersMgmt";
         FromDate: Date;
         ToDate: Date;
         ERROR_WRONG_DATE: Label 'Morate unijeti oba datuma!';

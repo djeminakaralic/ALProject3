@@ -87,7 +87,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-               
+
                 MultipleBills := 0;
                 MultipleBillsSum := 0;
                 TotalGivenAmount := "Given amount";
@@ -130,13 +130,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
                 end else begin
 
-                         if (Amount <> 0) AND ("Given amount" > 0) then
-                    "To return" := ABS("Given amount") - ABS(Amount);
+                    if (Amount <> 0) AND ("Given amount" > 0) then
+                        "To return" := ABS("Given amount") - ABS(Amount);
 
-                if ("Given amount" >= Abs(Amount)) then
-                    Message('Vrati kusur: ' + Format("To return") + ' KM.')
-                else
-                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne uplaćuje puni iznos racuna
+                    if ("Given amount" >= Abs(Amount)) then
+                        Message('Vrati kusur: ' + Format("To return") + ' KM.')
+                    else
+                        Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne uplaćuje puni iznos racuna
 
                 end;
 
@@ -237,7 +237,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         field(50046; "Apoeni"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount WHERE("Bal. Account No." = field("Bal. Account No."), "Posting Date"=field("Posting Date")));
+            CalcFormula = sum(Apoeni.Amount WHERE("Bal. Account No." = field("Bal. Account No."), "Posting Date" = field("Posting Date")));
         }
         field(50047; "Cash Register"; Text[100])
         {

@@ -165,6 +165,23 @@ end;
                     Report.RunModal(50077, true, false, GJline);
                 end;
             }
+            action("Non Fiscal Print")
+            {
+                Caption = 'Non Fiscal Print';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Fiscal: Codeunit "Non Fiscal print";
+                begin
+                    Fiscal.SetParam(Rec."Line No.", Rec."Journal Batch Name", Rec."Journal Template Name", Rec."Document No.");
+                    Fiscal.Run();
+
+                end;
+            }
 
             action("Transfer")
             {
@@ -244,7 +261,7 @@ end;
 
     trigger OnAfterGetRecord()
     begin
-        
+
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then

@@ -35,10 +35,10 @@ report 50005 "BaH Fisc-DailyRep"
 
     trigger OnPreReport()
     begin
-        FiscalPrinterMgmt.DailyReport;
+        //    FiscalPrinterMgmt.DailyReport;
     end;
 
     var
-        FiscalPrinterMgmt: Codeunit "BaH FiscalPrintersMgmt";
+    //ĐK FiscalPrinterMgmt: Codeunit "BaH FiscalPrintersMgmt";
 }
 
