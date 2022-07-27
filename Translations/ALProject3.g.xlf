@@ -36908,6 +36908,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension BankAccount - Field No Report - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2663384385 - Field 2494072318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1682139193">
+          <source>Transit G/L account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension BankAccount - Field Transit G/L account - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2378348555 - Field 2807374237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1657483931">
           <source>Holiday Cause of Absence</source>
           <note from="Developer" annotates="general" priority="2"></note>
