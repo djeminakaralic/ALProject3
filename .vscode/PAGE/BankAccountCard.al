@@ -14,6 +14,14 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
             }
         }*/
 
+        addafter("Payment Export Format")
+        {
+            field("Transit G/L account";"Transit G/L account")
+            {
+                ApplicationArea = All;
+            }
+        }
+
         modify("No.")
         {
             Visible = true;
