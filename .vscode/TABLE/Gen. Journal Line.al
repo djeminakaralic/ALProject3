@@ -24,7 +24,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             end;
         }
 
-        modify("Applies-to Doc. No.")
+        modify("Applies-to Doc. No.") //ED
         {
             trigger OnBeforeValidate()
             var
