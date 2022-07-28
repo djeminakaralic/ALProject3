@@ -211,10 +211,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if UserSetup.FindFirst() then begin
             //Message(Format(UserSetup.CurrentJnlBatchName)); //Ovdje je CZK6 UPL
 
-            /*IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
+            IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
             Rec.FILTERGROUP(2);
             
-            Rec.SetFilter("Journal Batch Name", '%1', UserSetup.CurrentJnlBatchName);
+            Rec.SetFilter("Journal Batch Name", '%1', 'CZK6 UPL');
             Rec.FILTERGROUP(0);
             END;
 
@@ -239,8 +239,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
         GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
-        Message(Rec."Journal Template Name");
-        Message(rec."Journal Batch Name");
         if GenJournalBatch.FindFirst() then
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
