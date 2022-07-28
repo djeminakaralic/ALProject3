@@ -211,12 +211,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if UserSetup.FindFirst() then begin
             //Message(Format(UserSetup.CurrentJnlBatchName)); //Ovdje je CZK6 UPL
 
-            //IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
+            IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
             Rec.FILTERGROUP(2);
             //Rec.SETRANGE("Journal Template Name", UserSetup.CurrentJnlBatchName);
             Rec.SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);
             Rec.FILTERGROUP(0);
-            //END;
+            END;
 
 
 
