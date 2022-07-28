@@ -255,10 +255,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Main Cashier';
             InitValue = false;
         }
-        field(50050;"CurrentBatchName"; Text[20])
-        {
-            Caption = 'Current Batch Name';
-        }
 
         modify(Amount)
         {

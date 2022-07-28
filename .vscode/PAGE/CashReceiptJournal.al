@@ -4,15 +4,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
-        addafter(CurrentJnlBatchName)
-        {
-            field(CurrentBatchName; CurrentBatchName)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Current Batch Name';
-                Editable=false;
-            }
-        }
         addafter(JournalLineDetails)
         {
             part(ApoeniFactBox; "Apoeni FactBox")
@@ -86,10 +77,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }
         modify("Credit Amount")
-        {
-            Visible = false;
-        }
-        modify(CurrentJnlBatchName)
         {
             Visible = false;
         }
@@ -225,7 +212,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
             IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
-                Rec.CurrentBatchName := UserSetup.CurrentJnlBatchName;
 
                 Rec.FILTERGROUP(2);
                 Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
