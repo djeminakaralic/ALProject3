@@ -4,6 +4,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
+        addafter(CurrentJnlBatchName)
+        {
+            field(CurrentBatchName; CurrentBatchName)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Current Batch Name';
+            }
+        }
         addafter(JournalLineDetails)
         {
             part(ApoeniFactBox; "Apoeni FactBox")
