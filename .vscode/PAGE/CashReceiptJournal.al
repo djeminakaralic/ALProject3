@@ -217,7 +217,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 BatchText:=UserSetup.CurrentJnlBatchName;
             end;
             Rec.FILTERGROUP(2);
-            
+            Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
             Rec.SetFilter("Journal Batch Name", '%1', BatchText);
             Rec.FILTERGROUP(0);
            
