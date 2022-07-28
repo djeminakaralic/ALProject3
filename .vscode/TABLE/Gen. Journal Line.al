@@ -263,7 +263,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             var
-                Test: Code[10];
+                Test: Code[20];
             begin
                 Charr := 39;
 
