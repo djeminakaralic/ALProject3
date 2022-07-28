@@ -82,7 +82,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
     }
 
-    
+
 
 
     actions
@@ -210,11 +210,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then begin
             //Message(Format(UserSetup.CurrentJnlBatchName)); //Ovdje je CZK6 UPL
-           
+
             //IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
             Rec.FILTERGROUP(2);
             //Rec.SETRANGE("Journal Template Name", UserSetup.CurrentJnlBatchName);
-            Rec.SetFilter(Description, '%1', 'Ekrem Selmanović');
+            Rec.SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);
             Rec.FILTERGROUP(0);
             //END;
 
