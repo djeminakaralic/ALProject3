@@ -210,7 +210,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then begin
             Message(Format(UserSetup.CurrentJnlBatchName));
-            Message(Format(GJline."Journal Batch Name"));
+           
 
             /*IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
             Rec.FILTERGROUP(2);
@@ -223,8 +223,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             /*GenJournalBatch.Reset();
             GenJournalBatch.SetFilter("Bal. Account No.", '%1', UserSetup.CurrentJnlBatchName);
             if GenJournalBatch.FindFirst() then
-            SetFilter("Journal Template Name", '%1', GenJournalBatch.Name);
-            //SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);*/
+            SetFilter("Journal Template Name", '%1', GenJournalBatch.Name);*/
+            SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
         end;
     end;
