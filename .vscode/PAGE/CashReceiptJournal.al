@@ -10,6 +10,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Current Batch Name';
+                Editable=false;
             }
         }
         addafter(JournalLineDetails)
@@ -229,6 +230,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
                 Rec.SetFilter("Journal Batch Name", '%1', BatchText);
                 Rec.FILTERGROUP(0);
+
+                Rec.CurrentBatchName:=Rec."Journal Batch Name";
 
             end;
 
