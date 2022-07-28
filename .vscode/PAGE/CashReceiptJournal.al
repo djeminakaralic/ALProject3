@@ -37,7 +37,13 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = all;
             }
         }
-
+        addafter(Description)
+        {
+            field("Test string"; "Test string")
+            {
+                ApplicationArea = all;
+            }
+        }
 
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
@@ -82,6 +88,9 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Visible = false;
         }
     }
+
+    
+
 
     actions
     {

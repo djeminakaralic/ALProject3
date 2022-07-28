@@ -72,7 +72,7 @@ tableextension 50179 User_setup_ext extends "User Setup"
         {
             Caption = 'Main Cashier';
         }
-        field(5008; CurrentJnlBatchName; Code[10])
+        field(5008; CurrentJnlBatchName; Code[10]) //ED
         {
             DataClassification = ToBeClassified;
             TableRelation = "Gen. Journal Batch".Name;
