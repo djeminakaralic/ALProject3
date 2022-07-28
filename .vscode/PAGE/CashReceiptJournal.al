@@ -4,7 +4,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
-        addafter(CurrentJnlBatchName)
+        /*addafter(CurrentJnlBatchName)
         {
             field(CurrentBatchName; CurrentBatchName)
             {
@@ -12,7 +12,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Caption = 'Current Batch Name';
                 Editable=false;
             }
-        }
+        }*/
         addafter(JournalLineDetails)
         {
             part(ApoeniFactBox; "Apoeni FactBox")
