@@ -80,10 +80,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-        modify(CurrentJnlBatchName)
+        /*modify(CurrentJnlBatchName)
         {
             Editable = false;
-        }
+        }*/
 
     }
 
