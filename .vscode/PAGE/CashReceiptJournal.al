@@ -225,7 +225,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             GenJournalBatch.SetFilter("Bal. Account No.", '%1', UserSetup.CurrentJnlBatchName);
             if GenJournalBatch.FindFirst() then
             SetFilter("Journal Template Name", '%1', GenJournalBatch.Name);*/
-            SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);
+            //SetFilter("Journal Template Name", '%1', UserSetup.CurrentJnlBatchName);
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
         end;
     end;
