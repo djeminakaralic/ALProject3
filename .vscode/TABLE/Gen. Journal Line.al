@@ -267,7 +267,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             begin
                 Charr := 39;
 
-                Test := ReplaceString(Rec."Document No.", '-', '/');
+                Test := ReplaceString(Rec."Test string", '-', '/');
                 Test := ReplaceString(Test, Format(Charr), '-');
                 Rec."Test string" := Test;
                 /*Message(Format(Test));*/
