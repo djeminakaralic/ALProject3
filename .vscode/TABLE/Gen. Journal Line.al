@@ -36,13 +36,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Rec."Document No." := Test;
                 /*Message(Format(Test));*/
 
-                //Message('Poruka da radi na validate');
+        //Message('Poruka da radi na validate');
 
-            /*end;
-        }*/
+        /*end;
+    }*/
         modify("Applies-to Doc. No.")
         {
-            trigger OnAfterValidate()
+            trigger OnBeforeValidate()
             var
                 Test: Text[50];
             begin
