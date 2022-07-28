@@ -973,9 +973,15 @@ report 50056 "Pay List Final"
                             END;
 
                         END;
+                        IF Calc."Wage Type" = 'NETO' then begin
+                            NetoZaIsplatu := UkupanDohodak - TotalAmountR - Calc."Untaxable Wage";
+
+                        end
+                        else begin
 
 
-                        NetoZaIsplatu := UkupanDohodak - TotalAmountR;
+                            NetoZaIsplatu := UkupanDohodak - TotalAmountR;
+                        end;
 
                         /*
                         WCh.SETFILTER("No.",'%1',"Employee No.");
