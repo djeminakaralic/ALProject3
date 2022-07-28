@@ -97,7 +97,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                 begin
                     /*BankAccount.Reset();
                     BankAccount.SetFilter("No.", '%1', 'CZK*');*/
-                    RekapitulacijaUplataIsplata.SetTableView(BankAccount);
+                    //RekapitulacijaUplataIsplata.SetTableView(BankAccount);
                     RekapitulacijaUplataIsplata.Run();
                 end;
             }
