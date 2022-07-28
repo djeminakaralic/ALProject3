@@ -205,6 +205,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     end;
 
     trigger OnOpenPage()
+    var 
+    BatchText: text[20];
     begin
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
@@ -212,11 +214,13 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             //Message(Format(UserSetup.CurrentJnlBatchName)); //Ovdje je CZK6 UPL
 
             IF UserSetup.CurrentJnlBatchName<>'' THEN BEGIN
+                BatchText:=UserSetup.CurrentJnlBatchName;
+            end;
             Rec.FILTERGROUP(2);
             
-            Rec.SetFilter("Journal Batch Name", '%1', 'CZK6 UPL');
+            Rec.SetFilter("Journal Batch Name", '%1', BatchText);
             Rec.FILTERGROUP(0);
-            END;
+           
 
 
 
