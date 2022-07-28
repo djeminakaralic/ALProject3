@@ -156,8 +156,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                             TotalAmount += GJline."Credit Amount";
                         until GJline.Next() = 0;
 
-                    if GJline.FindLast() then
-                        LineNo := GJline."Line No." + 10000
+                    if GJline.FindLast() then begin
+                        LineNo := GJline."Line No." + 10000;
+                        //LastDocumentNo := GJline."Document No." + 1;
+                    end
                     else
                         LineNo := 10000;
 
@@ -167,6 +169,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
+                    //GJline."Document No." := LastDocumentNo;
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Main Cashier" := true;
                     GJline."Debit Amount" := TotalAmount;
@@ -252,6 +255,16 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Description := '';
     end;
 
+    /*local procedure GenerateLineDocNo(BatchName: Code[10]; PostingDate: Date; TemplateName: Code[20]) DocumentNo: Code[20]
+    var
+        GenJournalBatch: Record "Gen. Journal Batch";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
+    begin
+        GenJournalBatch.Get(TemplateName, BatchName);
+        if GenJournalBatch."No. Series" <> '' then
+            DocumentNo := NoSeriesManagement.TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
+    end;*/
+
     var
         TotalAmount: Decimal;
         LineNo: Integer;
@@ -262,5 +275,5 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         GenJournalBatch: Record "Gen. Journal Batch";
         Customer: Record Customer;
         Text000: Label 'Today is %1';
-
+        LastDocumentNo: Code[20];
 }
