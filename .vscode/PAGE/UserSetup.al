@@ -9,9 +9,13 @@ pageextension 50107 UserSetup extends "User Setup"
             {
                 Caption = 'Wage Allowed';
             }
-            field("Main Cashier";"Main Cashier")
+            field("Main Cashier"; "Main Cashier")
             {
                 Caption = 'Main Cashier';
+            }
+            field(CurrentJnlBatchName;CurrentJnlBatchName)
+            {
+                Caption = 'Current Journal Batch Name';
             }
         }
         modify("User ID")

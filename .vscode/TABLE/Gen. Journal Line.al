@@ -23,22 +23,20 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "Postponed VAT" := ("VAT Date" <> 0D) AND ("VAT Date" <> "Posting Date") AND ReadGLSetup."Unrealized VAT";
             end;
         }
-        modify("Document No.")
+
+        modify("Applies-to Doc. No.") //ED
         {
-            trigger OnAfterValidate()
+            trigger OnBeforeValidate()
             var
                 Test: Text[50];
             begin
-                Charr:=39;
-                /*Test := replacestring(Rec."Document No.", '-', '/');
-                Test := replacestring(Rec."Document No.", '"', '-');
-                Validate(Rec."Document No.", Test);*/
-                Test:=ReplaceString(Rec."Document No.", '-', '/');
-                Test:=ReplaceString(Test, Format(Charr), '-');
-                Message(Format(Test));
-                Validate(rec."Document No.", 'KPF-2020/0057');
+                Charr := 39;
 
-                //Message('Poruka da radi na validate');
+                Test := ReplaceString(Rec."Applies-to Doc. No.", '-', '/');
+                Test := ReplaceString(Test, Format(Charr), '-');
+                Rec."Applies-to Doc. No." := Test;
+ 
+                 //Message('Poruka da radi na validate');
 
             end;
         }

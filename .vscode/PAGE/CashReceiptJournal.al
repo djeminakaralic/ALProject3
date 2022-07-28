@@ -38,7 +38,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
         }
 
-
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
         moveafter("Document No."; "Account Type")
@@ -81,8 +80,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-
-
+        /*modify(CurrentJnlBatchName)
+        {
+            Editable = false;
+        }*/
 
     }
 
@@ -206,11 +207,31 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     end;
 
     trigger OnOpenPage()
+    var
+        BatchText: text[20];
     begin
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
-        if UserSetup.FindFirst() then
+        if UserSetup.FindFirst() then begin
+            //Message(Format(UserSetup.CurrentJnlBatchName)); //Ovdje je CZK6 UPL
+
+            IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
+                BatchText := UserSetup.CurrentJnlBatchName;
+
+                Rec.FILTERGROUP(2);
+                Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
+                Rec.SetFilter("Journal Batch Name", '%1', BatchText);
+                Rec.FILTERGROUP(0);
+
+                /*GenJournalBatch.FilterGroup(2);
+                GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+                GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
+                GenJournalBatch.FilterGroup(0);*/
+
+            end;
+
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+        end;
     end;
 
     trigger OnNewRecord(BelowxRec: Boolean)
@@ -227,7 +248,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         "Payment DT" := System.CurrentDateTime;
-        "Posting Date":=System.Today;
+        "Posting Date" := System.Today;
         Description := '';
     end;
 
@@ -241,4 +262,5 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         GenJournalBatch: Record "Gen. Journal Batch";
         Customer: Record Customer;
         Text000: Label 'Today is %1';
+
 }
