@@ -209,6 +209,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then begin
+            Message(Format(UserSetup.CurrentJnlBatchName));
             /*GenJournalBatch.Reset();
             GenJournalBatch.SetFilter("Bal. Account No.", '%1', UserSetup.CurrentJnlBatchName);
             if GenJournalBatch.FindFirst() then
