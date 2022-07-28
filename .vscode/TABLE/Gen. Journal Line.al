@@ -255,28 +255,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Main Cashier';
             InitValue = false;
         }
-        field(50050; "Test string"; Code[20])
-        {
-            Caption = 'Test string';
-
-
-
-            trigger OnValidate()
-            var
-                Test: Code[20];
-            begin
-                Charr := 39;
-
-                Test := ReplaceString(Rec."Test string", '-', '/');
-                Test := ReplaceString(Test, Format(Charr), '-');
-                Rec."Test string" := Test;
-                /*Message(Format(Test));*/
-
-                //Message('Poruka da radi na validate');
-
-            end;
-
-        }
 
         modify(Amount)
         {

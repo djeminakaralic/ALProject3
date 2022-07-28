@@ -39788,11 +39788,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Social status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 1821163035 - Field 262825029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Test string</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Test string - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 2304779931 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>To return</source>
           <note from="Developer" annotates="general" priority="2"></note>
