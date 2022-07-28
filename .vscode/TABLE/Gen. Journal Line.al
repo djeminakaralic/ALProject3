@@ -255,13 +255,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
             Caption = 'Main Cashier';
             InitValue = false;
         }
-        field(50050; "Test string"; Code[10])
+        field(50050; "Test string"; Code[20])
         {
             Caption = 'Test string';
-            
 
-  
-                trigger OnValidate()
+
+
+            trigger OnValidate()
             var
                 Test: Code[10];
             begin
