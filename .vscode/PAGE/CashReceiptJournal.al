@@ -80,6 +80,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
+        modify(CurrentJnlBatchName)
+        {
+            Visible = false;
+        }
     }
 
     actions
@@ -213,18 +217,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
 
-                /*GenJournalBatch.FILTERGROUP(2);
-                GenJournalBatch.SetFilter("Journal Template Name", '%1', 'CASH RECE');
-                GenJournalBatch.SetFilter("Journal Batch Name", '%1', BatchText);
-                GenJournalBatch.FILTERGROUP(0);*/
-GenJournalBatch.FILTERGROUP(2);
-                GenJournalBatch.SetFilter("Journal Template Name", '%1', 'CASH RECE');
-                GenJournalBatch.SetFilter(name, '%1', BatchText);
-                GenJournalBatch.FILTERGROUP(0);
+                Rec.FILTERGROUP(2);
+                Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
+                Rec.SetFilter("Journal Batch Name", '%1', BatchText);
+                Rec.FILTERGROUP(0);
 
-
-
-                //rec.CurrentJnlBatchName:='CZK2 UPL';
             end;
 
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
