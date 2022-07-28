@@ -23,23 +23,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "Postponed VAT" := ("VAT Date" <> 0D) AND ("VAT Date" <> "Posting Date") AND ReadGLSetup."Unrealized VAT";
             end;
         }
-        /*modify("Document No.")
-        {
-            trigger OnAfterValidate()
-            var
-                Test: Text[50];
-            begin
-                Charr := 39;
 
-                Test := ReplaceString(Rec."Document No.", '-', '/');
-                Test := ReplaceString(Test, Format(Charr), '-');
-                Rec."Document No." := Test;
-                /*Message(Format(Test));*/
-
-        //Message('Poruka da radi na validate');
-
-        /*end;
-    }*/
         modify("Applies-to Doc. No.")
         {
             trigger OnBeforeValidate()
@@ -51,9 +35,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Test := ReplaceString(Rec."Applies-to Doc. No.", '-', '/');
                 Test := ReplaceString(Test, Format(Charr), '-');
                 Rec."Applies-to Doc. No." := Test;
-                /*Message(Format(Test));*/
-
-                //Message('Poruka da radi na validate');
+ 
+                 //Message('Poruka da radi na validate');
 
             end;
         }
