@@ -29,10 +29,9 @@ page 50107 "Cashier Role Center"
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Cash Receipt Journal';
-                Image = CashReceiptJournal;
+                Image = CashReceiptJournal;                              
                 RunObject = Page "Cash Receipt Journal";
             }
-
         }
     }
 }
