@@ -11,7 +11,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = Basic, Suite;
                 Editable = false;
                 Caption = 'Naziv serije';
-                Visible = NOT(Show);
+                Visible = NOT (Show);
             }
             field("Cashier Table"; "Cashier Table")
             {
@@ -193,11 +193,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                         LineNo := 10000;
 
                     GJline.Init();
-<<<<<<< HEAD
-                    GJline."Posting Date" := System.Today;
-                    GJline."Payment DT" := System.CurrentDateTime;
-                    GJline."Account Type" := "Account Type"::"G/L Account";
-=======
                     GJline."Line No." := LineNo;
                     GJline."Journal Template Name" := Rec."Journal Template Name";
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
@@ -217,7 +212,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     BankAccount.get(Rec."Bal. Account No."); //broj računa je tranzitni konto koji je postavljen na kartici bankovnog racuna
                     GJline."Account No." := BankAccount."Transit G/L account";
 
->>>>>>> f6ecb6d3ce2edf3657730bfbc103144e55eb8f2d
                     GJline.Insert();
 
                 end;
