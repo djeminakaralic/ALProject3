@@ -14,6 +14,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
                               "Bal. Account No." = field("Bal. Account No."),
                               "Line No." = FIELD("Line No.");
+                //ĐL
             }
         }
 
@@ -197,9 +198,9 @@ end;
 
                     GJline.Reset(); //insertujem novi record kada se vrsi prenos plata u "racunski centar"
                     GJline.Init();
-                    GJline."Posting Date":=System.Today;
-                    GJline."Payment DT":= System.CurrentDateTime;
-                    GJline."Account Type":="Account Type"::"G/L Account";
+                    GJline."Posting Date" := System.Today;
+                    GJline."Payment DT" := System.CurrentDateTime;
+                    GJline."Account Type" := "Account Type"::"G/L Account";
                     GJline.Insert();
 
                     //Message(Format(Rec."Bal. Account No."));
