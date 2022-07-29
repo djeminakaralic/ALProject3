@@ -9,6 +9,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field(BatchText; BatchText)
             {
                 ApplicationArea = Basic, Suite;
+                Caption = 'Naziv serije';
             }
         }
         addafter(JournalLineDetails)
@@ -89,7 +90,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
         modify(CurrentJnlBatchName)
         {
-            Editable = false;
+            Visible = false;
         }
     }
 
