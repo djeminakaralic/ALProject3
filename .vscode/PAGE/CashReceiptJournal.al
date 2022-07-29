@@ -11,7 +11,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = Basic, Suite;
                 Editable = false;
                 Caption = 'Naziv serije';
-                Visible = NOT(Show);
+                Visible = NOT (Show);
             }
             field("Cashier Table"; "Cashier Table")
             {
@@ -40,6 +40,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
 
         modify(IncomingDocAttachFactBox)
+        {
+            Visible = false;
+        }
+        modify("Shortcut Dimension 1 Code")
         {
             Visible = false;
         }
