@@ -212,16 +212,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                 end;
             }
-
-            /*action("Payroll")
-            {
-                Caption = 'Payroll';
-                Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = Report "Isplatnica";
-            }*/
         }
     }
 
@@ -263,22 +253,29 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
-        Validate(Rec."Document Type", "Document Type"::Payment);
-        Validate(Rec."Account Type", "Account Type"::Customer);
-        Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
 
-        GenJournalBatch.Reset();
-        GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
-        GenJournalBatch.SetFilter(Name, '%1', BatchText);
-        if GenJournalBatch.FindFirst() then
-            Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
+            IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN //do ovdje
+                Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+                Validate(Rec."Document Type", "Document Type"::Payment);
+                Validate(Rec."Account Type", "Account Type"::Customer);
+                Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
-        Validate("Cashier Employer", CashierEmployerCode);
-        "Cashier Table":=CashierEmployerCode;
-        "Payment DT" := System.CurrentDateTime;
-        "Posting Date" := System.Today;
-        Description := '';
+                GenJournalBatch.Reset();
+                GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+                GenJournalBatch.SetFilter(Name, '%1', BatchText);
+                if GenJournalBatch.FindFirst() then
+                    Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
+
+                Validate("Cashier Employer", CashierEmployerCode);
+                "Cashier Table" := CashierEmployerCode;
+                "Payment DT" := System.CurrentDateTime;
+                "Posting Date" := System.Today;
+                Description := '';
+            end; //i ovo
+        end;
     end;
 
     local procedure GenerateLineDocNo(BatchName: Code[10]; PostingDate: Date; TemplateName: Code[20]) DocumentNo: Code[20]
