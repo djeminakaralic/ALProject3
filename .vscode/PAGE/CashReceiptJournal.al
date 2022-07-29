@@ -261,7 +261,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     begin
         GenJournalBatch.Get(TemplateName, BatchName);
         if GenJournalBatch."No. Series" <> '' then
-            DocumentNo := NoSeriesManagement.TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
+            //DocumentNo := NoSeriesManagement.TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
+            DocumentNo := 'CZK6-2022/00003';
     end;
 
     var
