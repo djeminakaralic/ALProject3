@@ -220,7 +220,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     trigger OnAfterGetRecord()
     begin
-
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then
@@ -248,8 +247,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
                 GenJournalBatch.FilterGroup(0);
 
-            end else 
-            BatchText:='';
+            end;
 
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
         end;
