@@ -232,7 +232,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then begin
 
-            IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
+            IF UserSetup.CurrentJnlBatchName <> ''  THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
 
                 Rec.FILTERGROUP(2);
@@ -255,11 +255,9 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-        UserSetup.Reset();
-        UserSetup.SetFilter("User ID", '%1', UserId);
-        if UserSetup.FindFirst() then begin
+       
 
-            IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN //do ovdje
+            
                 Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
                 Validate(Rec."Document Type", "Document Type"::Payment);
                 Validate(Rec."Account Type", "Account Type"::Customer);
@@ -276,8 +274,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 "Payment DT" := System.CurrentDateTime;
                 "Posting Date" := System.Today;
                 Description := '';
-            end; //i ovo
-        end;
+
+
     end;
 
     local procedure GenerateLineDocNo(BatchName: Code[10]; PostingDate: Date; TemplateName: Code[20]) DocumentNo: Code[20]
