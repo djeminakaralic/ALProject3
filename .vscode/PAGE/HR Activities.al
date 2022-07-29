@@ -245,6 +245,16 @@ page 50066 "HR activities"
                     LookupPageID = "Employee Contract Ledger";
                     ApplicationArea = all;
                 }
+                field("Employees on call"; "Employees on call")
+                {
+                    Image = Checklist;
+                    Importance = Promoted;
+                    Style = Attention;
+                    StyleExpr = TRUE;
+                    Visible = show;
+                    ApplicationArea = all;
+
+                }
 
             }
             cuegroup("Changes")
@@ -563,6 +573,7 @@ page 50066 "HR activities"
         SetRange(DateTraining, today, CalcDate('<+30D>', Today));
         SetRange(DateTraining2, CalcDate('<-30D>', Today), calcdate('<-1D>', Today));
         SetRange(DateCatalogue, CalcDate('<-30D>', Today), Today);
+        SetRange(FromDate, CalcDate('<-30D>', Today), CalcDate('<+30D>', Today));
 
 
         UP.SETFILTER("User ID", '%1', USERID);

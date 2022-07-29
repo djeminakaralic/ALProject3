@@ -157,7 +157,7 @@ codeunit 50002 "Wage Calculation"
                                     WageFromHours(CalcTemp."Net Wage", EmpCoefficient, EmplDefDim."Amount Distribution Coeff.");
                                     AddNettoAdditions(EmplDefDim."Amount Distribution Coeff.");
                                     BruttoFromNetto;
-                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 1 Code");
+                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 2 Code");
                                     CalculateReductions := FALSE;
                                 END;
 
@@ -169,12 +169,14 @@ codeunit 50002 "Wage Calculation"
                                     ConfData.RESET;
                                     ConfData.SETRANGE("Employee No.", Employee."No.");
                                     ConfData.FINDFIRST;
-                                    IF CalculateReductions THEN CalcReductions;
-                                    CalculateReductions := FALSE;
+                                    /*IF CalculateReductions THEN CalcReductions;
+                                    CalculateReductions := FALSE;*/
 
                                     CalcTemp.Payment := ROUND((ConfData."Net Amount 2" * EmplDefDim."Amount Distribution Coeff."), 0.05, '=');
-                                    CalcTemp."Final Net Wage" := CalcTemp.Payment - CalcTemp."Wage Reduction";
+                                    //ĐK CalcTemp."Final Net Wage" := CalcTemp.Payment - CalcTemp."Wage Reduction";
+                                    CalcTemp."Final Net Wage" := CalcTemp.Payment;
                                     CalcTemp.MODIFY;
+
 
                                     TransportAndMeal(EmplDefDim."Amount Distribution Coeff.");
                                     AddNettoAdditions(EmplDefDim."Amount Distribution Coeff.");
@@ -199,6 +201,7 @@ codeunit 50002 "Wage Calculation"
                                     CalcTemp."Tax Deductions" := Employee."Tax Deduction Amount" - WageCalc."Tax Deductions";
 
                                     Percent := Class.Percentage / 100 * AddTaxCat."Tax Payment Percentage" / 100;
+                                    PraviousV := CalcTemp."Net Wage";
                                     CalcTemp."Net Wage" := ((CalcTemp."Net Wage After Tax" + CalcTemp."Indirect Wage Addition Amount") -
                                                    CalcTemp."Tax Deductions" * Percent) / (1 - Percent);
 
@@ -209,9 +212,9 @@ codeunit 50002 "Wage Calculation"
 
 
                                     BruttoFromNetto;
-                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 1 Code");
+                                    WageFromBrutto(TRUE, CalculateReductions, CalcTemp."Global Dimension 1 Code", CalcTemp."Global Dimension 2 Code");
 
-                                    CalcTemp."Net Wage Netto 2" += (CalcTemp."Net Wage" - CalcTemp."Indirect Wage Addition Amount") /
+                                    CalcTemp."Net Wage Netto 2" += (CalcTemp."Net Wage" - CalcTemp."Indirect Wage Addition Amount" - ((CalcTemp."Wage Addition Brutto") / (1 / (1 - AddTaxesPercentage / 100)))) /
                                                                      (1 + (Employee."Work Experience Percentage" / 100));
                                     CalcTemp.MODIFY;
                                     //CalcTemp."Net Wage Netto 2" +=(CalcTemp."Net Wage"-CalcTemp."Indirect Wage Addition Amount")/
@@ -221,11 +224,13 @@ codeunit 50002 "Wage Calculation"
                                     CalcTemp.MODIFY;
                                     CalcTemp."Employee Coefficient" := CalcTemp."Net Wage Netto 2" / CalcTemp."Hour Pool";
                                     CalcTemp."Individual Hour Pool" := CalcTemp."Hour Pool";
+                                    CalcTemp."Brutto Wage Base" := CalcTemp."Net Wage Netto 2" * (1) / (1 - AddTaxesPercentage / 100);
+                                    CalcTemp."Netto Wage Base" := CalcTemp."Net Wage Netto 2";
                                     CalcTemp.MODIFY;
                                     WageFromHours(CalcTemp."Net Wage After Tax", CalcTemp."Employee Coefficient", EmplDefDim."Amount Distribution Coeff.");
-                                    CalcTemp."Wage (Base)" := CalcTemp."Employee Coefficient" * CalcTemp."Hour Pool";
+                                    CalcTemp."Wage (Base)" := (CalcTemp."Employee Coefficient" * CalcTemp."Hour Pool") * ((1) / (1 - AddTaxesPercentage / 100));
+                                    CalcTemp."Net Wage" := CalcTemp."Net Wage" + PraviousV;
                                     CalcTemp.MODIFY;
-
 
 
                                 END;
@@ -756,6 +761,7 @@ codeunit 50002 "Wage Calculation"
 
     var
         Orgdijelovi: Record "ORG Dijelovi";
+        PraviousV: Decimal;
         BaseHourWageSick: Decimal;
         WWeBruto: Record "Wage Value Entry";
         AbsBruto: Record "Employee Absence";

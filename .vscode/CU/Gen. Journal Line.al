@@ -13,7 +13,7 @@ codeunit 50139 GenJNLLine
     begin
     end;
 
-    
+
 
     [EventSubscriber(ObjectType::Table, 17, 'OnAfterCopyGLEntryFromGenJnlLine', '', true, true)]
     procedure OnAfterCopyGLEntryFromGenJnlLine(GLEntry: Record "G/L Entry"; GenJournalLine: Record "Gen. Journal Line")
@@ -26,6 +26,8 @@ codeunit 50139 GenJNLLine
     begin
 
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
+        GLEntry."Payment Method" := FORMAT(GenJournalLine."Payment Method");
+        GLEntry."Cashier Code" := GenJournalLine."Cashier Employer"; //sifra blagajnika
 
     end;
 
@@ -37,7 +39,8 @@ codeunit 50139 GenJNLLine
     begin
         //   VATEntry."VAT Date" := GenJournalLine."VAT Date";
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
-
+        GLEntry."Payment Method" := FORMAT(GenJournalLine."Payment Method");
+        GLEntry."Cashier Code" := GenJournalLine."Cashier Employer"; //sifra blagajnika
 
     end;
 
@@ -55,4 +58,4 @@ codeunit 50139 GenJNLLine
     begin
     end;
 
-    }
+}

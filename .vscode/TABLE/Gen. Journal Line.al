@@ -23,13 +23,20 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 "Postponed VAT" := ("VAT Date" <> 0D) AND ("VAT Date" <> "Posting Date") AND ReadGLSetup."Unrealized VAT";
             end;
         }
-        modify("Document No.")
+
+        modify("Applies-to Doc. No.") //ED
         {
-            trigger OnAfterValidate()
+            trigger OnBeforeValidate()
             var
-                myInt: Integer;
+                Test: Text[50];
             begin
-                Message('Poruka da radi na validate');
+                Charr := 39;
+
+                Test := ReplaceString(Rec."Applies-to Doc. No.", '-', '/');
+                Test := ReplaceString(Test, Format(Charr), '-');
+                Rec."Applies-to Doc. No." := Test;
+
+                //Message('Poruka da radi na validate');
 
             end;
         }
@@ -87,13 +94,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                if (Amount <> 0) AND ("Given amount" > 0) then
-                    "To return" := ABS("Given amount") - ABS(Amount);
-
-                if ("Given amount" >= Abs(Amount)) then
-                    Message('Vrati kusur: ' + Format("To return") + ' KM.')
-                else
-                    Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne placa puni iznos racuna
 
                 MultipleBills := 0;
                 MultipleBillsSum := 0;
@@ -134,6 +134,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                             Message('Vrati kusur: ' + Format(GJLine."To return") + ' KM.');
                         end;
                     until GJLine.Next() = 0;
+
+                end else begin
+
+                    if (Amount <> 0) AND ("Given amount" > 0) then
+                        "To return" := ABS("Given amount") - ABS(Amount);
+
+                    if ("Given amount" >= Abs(Amount)) then
+                        Message('Vrati kusur: ' + Format("To return") + ' KM.')
+                    else
+                        Message('Kupcu ostaje dug: ' + Format(Abs("To return")) + ' KM.'); //kupac ne uplaćuje puni iznos racuna
 
                 end;
 
@@ -233,9 +243,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50046; "Apoeni"; Decimal)
         {
-            /*FieldClass = FlowField;
-            CalcFormula = sum(Apoeni.Amount);*/
-
+            FieldClass = FlowField;
+            CalcFormula = sum(Apoeni.Amount WHERE("Bal. Account No." = field("Bal. Account No."), "Posting Date" = field("Posting Date")));
         }
         field(50047; "Cash Register"; Text[100])
         {
@@ -245,6 +254,20 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Main Cashier';
             InitValue = false;
+        }
+        field(50050; "Cashier Table"; Code[10])
+        {
+            Caption = 'Cashier Table';
+            TableRelation = Cashier;
+        }
+        field(50051; "Cashier Employer"; Code[10])
+        {
+            Caption = 'Cashier Employer';
+
+            trigger OnValidate()
+            begin
+
+            end;
         }
 
         modify(Amount)
@@ -280,6 +303,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 end;
             end;
         }
+
     }
 
     trigger OnInsert()
@@ -290,6 +314,13 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         else
             Rec."No. Line" := 1;
 
+    end;
+
+    local procedure ReplaceString(String: Text; FindWhat: Text; ReplaceWith: Text) NewString: Text
+    begin
+        WHILE STRPOS(String, FindWhat) > 0 DO
+            String := DELSTR(String, STRPOS(String, FindWhat)) + ReplaceWith + COPYSTR(String, STRPOS(String, FindWhat) + STRLEN(FindWhat));
+        NewString := String;
     end;
 
     var
@@ -304,5 +335,6 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         Counter: Integer;
         MultipleBillsSum: Decimal;
         TotalGivenAmount: Decimal;
+        Charr: Char;
 
 }

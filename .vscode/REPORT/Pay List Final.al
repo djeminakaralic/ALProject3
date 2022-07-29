@@ -973,9 +973,15 @@ report 50056 "Pay List Final"
                             END;
 
                         END;
+                        IF Calc."Wage Type" = 'NETO' then begin
+                            NetoZaIsplatu := UkupanDohodak - TotalAmountR - Calc."Untaxable Wage";
+
+                        end
+                        else begin
 
 
-                        NetoZaIsplatu := UkupanDohodak - TotalAmountR;
+                            NetoZaIsplatu := UkupanDohodak - TotalAmountR;
+                        end;
 
                         /*
                         WCh.SETFILTER("No.",'%1',"Employee No.");
@@ -1083,6 +1089,8 @@ report 50056 "Pay List Final"
 
                     IF NOT TempCalc.FIND('-') THEN CurrReport.SKIP;
                     TempCalc.Payment := TempCalc.Payment + TempCalc."Sick Leave-Fund";
+                    Suma_R1 := 0;
+                    SumaR_2 := 0;
 
 
                     Employee.GET(TempCalc."Employee No.");

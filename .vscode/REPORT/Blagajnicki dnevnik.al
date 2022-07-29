@@ -95,7 +95,7 @@ report 50075 "Blagajnički dnevnik"
             column(EmmployeeName; EmmployeeName)
             {
             }
-            column(BankAccountName; BankAccountName)
+            column(BankAccCardFilter;BankAccCardFilter)
             {
             }
 
@@ -104,11 +104,22 @@ report 50075 "Blagajnički dnevnik"
             begin
                 EmmployeeName := '';
                 //IF "Journal Batch Name" = 'UPLATA' THEN BEGIN
-                Datum := "Posting Date";
-                Brdokumenta := "Document No.";
-                BrdokumentaIS := '';
-                Kolicina := Amount;
+                if "Credit Amount" <> 0 then begin //potražni iznos je uplata
+                    Datum := "Posting Date";
+                    Brdokumenta := "Document No.";
+                    BrdokumentaIS := '';
+                    Kolicina := Amount;
+                    KolicinaIS := 0;
+                end;
                 //END;
+
+                if "Debit Amount" <> 0 then begin //dugovni iznos je isplata: polog pazara, isplata zaposlenima itd.
+                    Datum := "Posting Date";
+                    Brdokumenta := '';
+                    BrdokumentaIS := "Document No.";
+                    Kolicina := 0;
+                    KolicinaIS := Amount;
+                end;
 
 
                 /*IF "Journal Batch Name" = 'ISPLATA' THEN BEGIN
@@ -118,7 +129,7 @@ report 50075 "Blagajnički dnevnik"
                     Kolicina := 0;
                     KolicinaIS := Amount;
                 END;*/
-                KolicinaIS := 0;
+                //KolicinaIS := 0;
 
                 /*BALE.SETFILTER("Bank Account No.", '%1', 'BKM');
                 BALE.SETFILTER("Posting Date", '<%1', "Posting Date");

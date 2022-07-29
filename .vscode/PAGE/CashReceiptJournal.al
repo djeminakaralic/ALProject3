@@ -4,6 +4,28 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
+        addafter(CurrentJnlBatchName)
+        {
+            field(BatchText; BatchText)
+            {
+                ApplicationArea = Basic, Suite;
+                Editable = false;
+                Caption = 'Naziv serije';
+                Visible = NOT(Show);
+            }
+            field("Cashier Table"; "Cashier Table")
+            {
+                ApplicationArea = all;
+                Caption = 'Cashier Table';
+
+                trigger OnValidate()
+                begin
+                    CurrPage.Update(false);
+                    CurrPage.SaveRecord();
+                    CashierEmployerCode := "Cashier Table";
+                end;
+            }
+        }
         addafter(JournalLineDetails)
         {
             part(ApoeniFactBox; "Apoeni FactBox")
@@ -18,68 +40,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             }
         }
 
-        /*addafter(CurrentJnlBatchName)
+        modify(IncomingDocAttachFactBox)
         {
-            field("Cash Register"; "Cash Register")
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Blagajna';
-                Editable = false;
-
-                trigger OnDrillDown()
-                var
-                    BankAccounts: Record "Bank Account";
-                begin
-                    if "Journal Batch Name" = 'CZK1 UPL' then begin
-                        BankAccounts.SetFilter("No.", '%1', 'BANK-10');
-                        /*if BankAccounts.FindFirst() then
-                            "Cash Register" := BankAccounts.Name;*/
-        /*Page.Run(Page::"Bank Account Card", BankAccounts);
-    end
-    else
-        if "Journal Batch Name" = 'CZK2 UPL' then begin
-            BankAccounts.SetFilter("No.", '%1', 'BANK-11');
-            Page.Run(Page::"Bank Account Card", BankAccounts);
-        end
-        else
-            if "Journal Batch Name" = 'CZK3 UPL' then begin
-                BankAccounts.SetFilter("No.", '%1', 'BANK-12');
-                Page.Run(Page::"Bank Account Card", BankAccounts);
-            end
-            else
-                if "Journal Batch Name" = 'CZK4 UPL' then begin
-                    BankAccounts.SetFilter("No.", '%1', 'BANK-13');
-                    Page.Run(Page::"Bank Account Card", BankAccounts);
-                end
-                else
-                    if "Journal Batch Name" = 'CZK5 UPL' then begin
-                        BankAccounts.SetFilter("No.", '%1', 'BANK-14');
-                        Page.Run(Page::"Bank Account Card", BankAccounts);
-                    end
-                    else
-                        if "Journal Batch Name" = 'CZK6 UPL' then begin
-                            BankAccounts.SetFilter("No.", '%1', 'BANK-15');
-                            Page.Run(Page::"Bank Account Card", BankAccounts);
-                        end
-                        else
-                            if "Journal Batch Name" = 'CZK7 UPL' then begin
-                                BankAccounts.SetFilter("No.", '%1', 'BANK-16');
-                                Page.Run(Page::"Bank Account Card", BankAccounts);
-                            end
-                            else
-                                if "Journal Batch Name" = 'CZK8 UPL' then begin
-                                    BankAccounts.SetFilter("No.", '%1', 'BANK-17');
-                                    Page.Run(Page::"Bank Account Card", BankAccounts);
-                                end
-                                else
-                                    if "Journal Batch Name" = 'CZK9 UPL' then begin
-                                        BankAccounts.SetFilter("No.", '%1', 'BANK-18');
-                                        Page.Run(Page::"Bank Account Card", BankAccounts);
-                                    end;
-
-end;
-}
-}*/
+            Visible = false;
+        }
 
         addafter("Posting Date")
         {
@@ -95,29 +59,15 @@ end;
             {
                 ApplicationArea = all;
             }
-            field("Main Cashier"; "Main Cashier")
-            {
-                ApplicationArea = all;
-            }
         }
 
         movebefore(Amount; "Applies-to Doc. No.")
         moveafter("Bal. VAT Amount"; "Applies-to Doc. Type")
-        moveafter("Bal. VAT Amount"; "Document Type")
-        moveafter("Credit Amount"; "Account Type")
+        moveafter("Document No."; "Account Type")
+        movebefore("Applies-to Doc. Type"; "Document Type")
 
         addafter("Amount (LCY)")
         {
-            /*field(Apoeni; Apoeni)
-            {
-                ApplicationArea = all;
-
-                trigger OnLookup(var Text: Text): Boolean
-                begin
-                    CurrPage.Update();
-                    Rec."Given amount" := Rec.Apoeni;
-                end;
-            }*/
             field("Given amount"; "Given amount")
             {
                 ApplicationArea = all;
@@ -127,6 +77,16 @@ end;
                 ApplicationArea = all;
             }
         }
+        moveafter("Bal. Account No."; "Posting Date")
+        addafter("Bal. Account No.")
+        {
+            field("Cashier Employer"; "Cashier Employer")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
+        moveafter("To return"; "Document No.")
         modify("Applied (Yes/No)")
         {
             Visible = false;
@@ -139,6 +99,10 @@ end;
         {
             Visible = false;
         }
+        modify(Correction)
+        {
+            Visible = false;
+        }
         modify("Debit Amount")
         {
             Visible = false;
@@ -147,12 +111,10 @@ end;
         {
             Visible = false;
         }
-        modify(Correction)
+        modify(CurrentJnlBatchName)
         {
-            Visible = false;
+            Visible = Show;
         }
-
-
     }
 
     actions
@@ -173,6 +135,23 @@ end;
                     Report.RunModal(50077, true, false, GJline);
                 end;
             }
+            action("Non Fiscal Print")
+            {
+                Caption = 'Non Fiscal Print';
+                Image = Print;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    Fiscal: Codeunit "Non Fiscal print";
+                begin
+                    Fiscal.SetParam(Rec."Line No.", Rec."Journal Batch Name", Rec."Journal Template Name", Rec."Document No.");
+                    Fiscal.Run();
+
+                end;
+            }
 
             action("Transfer")
             {
@@ -187,113 +166,155 @@ end;
 
                     Rec.FINDFIRST;
                     BEGIN
-                        IF Rec."Main Cashier" = FALSE THEN BEGIN
+                        IF Rec."Main Cashier" = FALSE THEN BEGIN //postavljam true da svaki red ide na pregled kod glavnog blagajnika
                             REPEAT
                                 Validate(Rec."Main Cashier", TRUE);
                                 Rec.MODIFY;
                             UNTIL Rec.NEXT = 0;
                         END
-
                     END;
 
-                    GJline.Reset(); //insertujem novi record kada se vrsi prenos plata u "racunski centar"
+                    GJline.Reset(); //insertujem novi red kada se vrsi prenos uplata u "racunski centar"
+
+                    GJline.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+                    GJline.SetFilter("Journal Batch Name", '%1', "Journal Batch Name");
+                    GJline.SetFilter("Bal. Account No.", '%1', Rec."Bal. Account No.");
+                    TotalAmount := 0;
+
+                    if GJline.FindFirst() then
+                        repeat
+                            TotalAmount += GJline."Credit Amount";
+                        until GJline.Next() = 0;
+
+                    if GJline.FindLast() then begin
+                        LineNo := GJline."Line No." + 10000;
+                    end
+                    else
+                        LineNo := 10000;
+
                     GJline.Init();
+<<<<<<< HEAD
                     GJline."Posting Date" := System.Today;
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Account Type" := "Account Type"::"G/L Account";
+=======
+                    GJline."Line No." := LineNo;
+                    GJline."Journal Template Name" := Rec."Journal Template Name";
+                    GJline."Journal Batch Name" := Rec."Journal Batch Name";
+                    GJline."Posting Date" := System.Today;
+                    GJline.Amount := TotalAmount;
+
+                    //GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
+                    GJline."Payment DT" := System.CurrentDateTime;
+                    GJline."Main Cashier" := true;
+                    GJline."Debit Amount" := TotalAmount;
+                    GJline.Description := 'Polog pazara';
+
+                    GJline."Bal. Account Type" := "Bal. Account Type"::"Bank Account";
+                    GJline."Bal. Account No." := Rec."Bal. Account No.";
+                    GJline."Account Type" := "Account Type"::"G/L Account";
+
+                    BankAccount.get(Rec."Bal. Account No."); //broj računa je tranzitni konto koji je postavljen na kartici bankovnog racuna
+                    GJline."Account No." := BankAccount."Transit G/L account";
+
+>>>>>>> f6ecb6d3ce2edf3657730bfbc103144e55eb8f2d
                     GJline.Insert();
-
-                    //Message(Format(Rec."Bal. Account No."));
-
-                    /*
-                    GenJnlLine.SETFILTER("Journal Template Name",'OPŠTE'); 
- GenJnlLine.SETFILTER("Journal Batch Name",'PRE');
-          IF  GenJnlLine.FINDLAST THEN
-          LineNo:= GenJnlLine."Line No."+10000
-          ELSE
-            LineNo:= 10000;
-          GenJnlLine."Journal Template Name":='OPŠTE';
-          GenJnlLine."Journal Batch Name":='PRE';
-          GenJnlLine."Line No." :=LineNo;
-          GenJnlLine."Posting Date" := "Posting Date";
-          GenJnlLine."Document Date" := "Document Date";
-          GenJnlLine.Description := "Posting Description";
-          GenJnlLine."Document No." := "No.";
-          GenJnlLine."External Document No." := "External Document No.";
-          GenJnlLine."Account Type" :=GenJnlLine."Account Type"::Customer;
-          GenJnlLine."Account No." :="Bill-to Customer No.";
-          GenJnlLine."Currency Code" := "Currency Code";
-          CALCFIELDS("Amount Including VAT");
-          GenJnlLine.VALIDATE("Debit Amount","Amount Including VAT");
-          GenJnlLine."Gen. Posting Type" := 0;
-          GenJnlLine."Gen. Bus. Posting Group" := '';
-          GenJnlLine."Gen. Prod. Posting Group" := '';
-          GenJnlLine."VAT Bus. Posting Group" :='';
-          GenJnlLine."VAT Prod. Posting Group" := '';
-          GenJnlLine."Posting Group" := 'AVANS';
-         GenJnlLine.INSERT(TRUE);*/
 
                 end;
             }
-
-
-            /*action("Payroll")
-            {
-                Caption = 'Payroll';
-                Image = Journal;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                RunObject = Report "Isplatnica";
-            }*/
         }
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then
+            SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+    end;
+
+    trigger OnOpenPage()
+    begin
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            Show := UserSetup."Main Cashier";
+
+            IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
+                BatchText := UserSetup.CurrentJnlBatchName;
+
+                Rec.FILTERGROUP(2);
+                Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
+                Rec.SetFilter("Journal Batch Name", '%1', BatchText);
+                Rec.FILTERGROUP(0);
+
+
+                GenJournalBatch.FilterGroup(2);
+                GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+                GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
+                GenJournalBatch.FilterGroup(0);
+
+            end;
+
+            SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+        end;
+    end;
+
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
         Validate(Rec."Document Type", "Document Type"::Payment);
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
-        if "Journal Batch Name" = 'CZK1 UPL' then
-            Validate(rec."Bal. Account No.", 'BANK-10')
+        GenJournalBatch.Reset();
+        GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+        GenJournalBatch.SetFilter(Name, '%1', BatchText);
+        if GenJournalBatch.FindFirst() then
+            Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
-        else
-            if "Journal Batch Name" = 'CZK2 UPL' then
-                Validate(rec."Bal. Account No.", 'BANK-11')
-            else
-                if "Journal Batch Name" = 'CZK3 UPL' then
-                    Validate(rec."Bal. Account No.", 'BANK-12')
-                else
-                    if "Journal Batch Name" = 'CZK4 UPL' then
-                        Validate(rec."Bal. Account No.", 'BANK-13')
-                    else
-                        if "Journal Batch Name" = 'CZK5 UPL' then
-                            Validate(rec."Bal. Account No.", 'BANK-14')
-                        else
-                            if "Journal Batch Name" = 'CZK6 UPL' then
-                                Validate(rec."Bal. Account No.", 'BANK-15')
-                            else
-                                if "Journal Batch Name" = 'CZK7 UPL' then
-                                    Validate(rec."Bal. Account No.", 'BANK-16')
-                                else
-                                    if "Journal Batch Name" = 'CZK8 UPL' then
-                                        Validate(rec."Bal. Account No.", 'BANK-17')
-                                    else
-                                        if "Journal Batch Name" = 'CZK9 UPL' then Validate(rec."Bal. Account No.", 'BANK-18');
-
-        /*BankAccount.Get(Rec."Bal. Account No.");
-        "Cash Register":=BankAccount.Name;*/
-
+        Validate("Cashier Employer", CashierEmployerCode);
+        "Cashier Table" := CashierEmployerCode;
         "Payment DT" := System.CurrentDateTime;
+        "Posting Date" := System.Today;
         Description := '';
+
+
+    end;
+
+    local procedure GenerateLineDocNo(BatchName: Code[10]; PostingDate: Date; TemplateName: Code[20]) DocumentNo: Code[20]
+    var
+        GenJournalBatch: Record "Gen. Journal Batch";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
+    begin
+        GenJournalBatch.Get(TemplateName, BatchName);
+        if GenJournalBatch."No. Series" <> '' then
+            DocumentNo := TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
+        //DocumentNo := 'CZK6-2022/00003';
+    end;
+
+    procedure TryGetNextNo(NoSeriesCode: Code[20]; SeriesDate: Date): Code[20]
+    var
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+    begin
+        NoSeriesMgt.SetParametersBeforeRun(NoSeriesCode, SeriesDate);
+        if NoSeriesMgt.Run then
+            exit(NoSeriesMgt.GetNextNoAfterRun);
     end;
 
     var
+        TotalAmount: Decimal;
+        LineNo: Integer;
+        UserSetup: Record "User Setup";
         BankAccount: Record "Bank Account";
         GJline: Record "Gen. Journal Line";
         CLEntry: Record "Cust. Ledger Entry";
+        GenJournalBatch: Record "Gen. Journal Batch";
         Customer: Record Customer;
         Text000: Label 'Today is %1';
+        LastDocumentNo: Code[20];
+        BatchText: text[20];
+        CashierEmployerCode: Code[10];
+        Show: Boolean;
 }

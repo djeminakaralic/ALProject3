@@ -43,7 +43,9 @@ page 51067 "Apoeni Page"
                 }
             }
         }
+
     }
+
 
     actions
     {
@@ -78,7 +80,8 @@ page 51067 "Apoeni Page"
     var
         GLEntry: Record "G/L Entry";
         ApoeniTable: Record Apoeni;
-        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
+        IzvjestajPortoBlagajne: Report "Izvještaj";
         ZapisnikOPrimopredaji: Report "Zapisnik o primopredaji";
+        CashReceiptJournal: Page "Cash Receipt Journal";
 }
 

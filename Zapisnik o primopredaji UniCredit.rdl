@@ -47,7 +47,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>6.34349cm</Top>
+            <Top>7.7896cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.66146cm</Height>
             <Width>5.32766cm</Width>
@@ -81,7 +81,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.73579cm</Top>
+            <Top>4.71107cm</Top>
             <Left>5.8766cm</Left>
             <Height>0.6cm</Height>
             <Width>4.6402cm</Width>
@@ -113,7 +113,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>2.73579cm</Top>
+            <Top>4.71107cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
             <Width>5.32766cm</Width>
@@ -145,7 +145,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>6.34349cm</Top>
+            <Top>7.7896cm</Top>
             <Left>10.5168cm</Left>
             <Height>0.66146cm</Height>
             <Width>4.507cm</Width>
@@ -177,7 +177,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>7.18134cm</Top>
+            <Top>8.62745cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
             <Width>9.96786cm</Width>
@@ -692,7 +692,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>4.40294cm</Top>
+            <Top>5.84905cm</Top>
             <Left>0.54894cm</Left>
             <Height>1.76416cm</Height>
             <Width>14.47486cm</Width>
@@ -703,27 +703,29 @@
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox10">
+          <Textbox Name="Textbox12">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>BLAGAJNA</Value>
+                    <Value>="CENTAR ZA KUPCE " &amp; First(Fields!BalAccNoFilter.Value, "DataSet_Result") &amp; " " &amp; First(Fields!BankAccountAdress.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>3.51218cm</Top>
+            <rd:DefaultName>Textbox12</rd:DefaultName>
+            <Top>3.85614cm</Top>
             <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
-            <Width>5.32766cm</Width>
+            <Width>14.47486cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -735,28 +737,29 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox12">
+          <Textbox Name="Textbox4">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!BankAccountName.Value, "DataSet_Result")</Value>
+                    <Value>ZAPISNIK O PRIMOPREDAJI NOVCA</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox12</rd:DefaultName>
-            <Top>3.51218cm</Top>
-            <Left>5.8766cm</Left>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>2.9337cm</Top>
+            <Left>0.54894cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.6402cm</Width>
+            <Width>14.47486cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -842,6 +845,12 @@ End Function
         </Field>
         <Field Name="BankAccountName">
           <DataField>BankAccountName</DataField>
+        </Field>
+        <Field Name="BalAccNoFilter">
+          <DataField>BalAccNoFilter</DataField>
+        </Field>
+        <Field Name="BankAccountAdress">
+          <DataField>BankAccountAdress</DataField>
         </Field>
         <Field Name="CCode">
           <DataField>CCode</DataField>

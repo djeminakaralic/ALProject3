@@ -16,7 +16,7 @@ page 50110 "Cashier Activities"
                 ApplicationArea = all;
             }
 
-            field("Cash Receipt Journal"; "Cash Receipt Journal")
+            /*field("Cash Receipt Journal"; "Cash Receipt Journal")
             {
                 ShowCaption = false;
 
@@ -25,7 +25,7 @@ page 50110 "Cashier Activities"
                 begin
                     CashReceiptJournal.Run();
                 end;
-            }
+            }*/
 
             cuegroup(BankAccounts)
             {
@@ -56,14 +56,7 @@ page 50110 "Cashier Activities"
         }
     }
 
-    trigger OnOpenPage()
-    begin
-        "Cash Receipt Journal" := 'Nalog knjiženja gotovinskih uplata';
-        Message(Format("Cash Receipt Journal"));
-    end;
-
     var
         CashReceiptJournal: Page "Cash Receipt Journal";
-
 }
 

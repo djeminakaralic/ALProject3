@@ -1311,7 +1311,7 @@
                     </TablixMember>
                   </TablixMembers>
                   <Visibility>
-                    <Hidden>=(Fields!BankAccNo.Value="") OR (Fields!Counter.Value&gt;4)</Hidden>
+                    <Hidden>=(Fields!Counter.Value&gt;4)</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
@@ -1426,7 +1426,7 @@
                     </TablixMember>
                   </TablixMembers>
                   <Visibility>
-                    <Hidden>=(Fields!BankAccNo.Value="") OR (Fields!Counter.Value&lt;4) OR (Fields!Counter.Value&gt;8)</Hidden>
+                    <Hidden>=(Fields!Counter.Value&lt;4) OR (Fields!Counter.Value&gt;8)</Hidden>
                   </Visibility>
                 </TablixMember>
               </TablixMembers>
@@ -1650,7 +1650,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <Visibility>
-                        <Hidden>=(Fields!BankAccNo.Value="")  Or (Fields!Counter.Value&lt;&gt;9)</Hidden>
+                        <Hidden>=(Fields!Counter.Value&lt;&gt;9)</Hidden>
                       </Visibility>
                     </TablixMember>
                     <TablixMember>
@@ -1760,9 +1760,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>23.59766cm</Top>
+            <Top>23.53115cm</Top>
             <Left>0.47205cm</Left>
-            <Height>1.82824cm</Height>
+            <Height>1.85947cm</Height>
             <Width>18.13521cm</Width>
             <ZIndex>26</ZIndex>
             <Style>
@@ -2124,6 +2124,9 @@ Ac8USv0BjYvkXbjFOl5FLtpSN1TG/UERxjaakprJgU1XYGqGxxjqORdpqTJ21Hnf1oEAbApQ2aTatKFG
         </Field>
         <Field Name="City_Cust">
           <DataField>City_Cust</DataField>
+        </Field>
+        <Field Name="BankNo">
+          <DataField>BankNo</DataField>
         </Field>
         <Field Name="BankName">
           <DataField>BankName</DataField>

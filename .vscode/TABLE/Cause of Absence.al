@@ -133,6 +133,11 @@ tableextension 50146 CauseOfAbsence extends "Cause of Absence"
         {
             Caption = 'Dozvoljen unos vikendom';
         }
+        field(50028; "Cause of Absence On-Call"; Boolean)
+        {
+            Caption = 'Pripravnost';
+
+        }
     }
 
     var

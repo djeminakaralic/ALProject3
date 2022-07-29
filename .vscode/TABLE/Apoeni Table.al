@@ -74,8 +74,9 @@ table 51067 "Apoeni"
             Caption = 'Posting Date';
         }
 
-
     }
+
+
 
     keys
     {
@@ -91,6 +92,7 @@ table 51067 "Apoeni"
     var
         ApoeniDecimal: Decimal;
         ApoeniText: Text[10];
+    
 
 }
 

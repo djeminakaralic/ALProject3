@@ -30,6 +30,12 @@ table 50085 "HR Cue"
             Caption = 'Active Employees';
 
         }
+        field(3; FromDate; Date)
+        {
+            FieldClass = FlowFilter;
+            Caption = 'From Date';
+        }
+
 
         field(21; "Responsibility Center Filter"; Code[10])
         {
@@ -113,6 +119,7 @@ table 50085 "HR Cue"
             FieldClass = FlowFilter;
             Caption = 'Date Training expiring';
         }
+
 
         field(50097; DateTraining2; Date)
         {
@@ -727,6 +734,13 @@ table 50085 "HR Cue"
 
 
         }
+        field(50099; "Employees on call"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Employee Absence Reg" where("Cause of absence on-call" = const(true), "From Date" = field(FromDate)));
+            Caption = 'Employees on call';
+        }
+
     }
 
     keys
