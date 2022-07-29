@@ -1078,6 +1078,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Canton - Field For Calculation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 376583169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 376583169 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 376583169 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 376583169 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cashier - Field Entry No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 455153232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashier Cue</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -24438,6 +24458,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Cantons - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 376583169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cashier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cashier - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3329140304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cashier Activities</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -26152,16 +26177,6 @@
           <source>Vrsta uplate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 907492870 - Control 3004954119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies a code for the employment contract.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Control Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 907492870 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies a description for the employment contract.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Payment Type - Control Description - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 792771594 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activities</source>
@@ -35528,6 +35543,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Control BatchText - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 4113372704 - Control 1128390211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
+          <source>Cashier Table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CashReceiptJournal - Control Cashier Table - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3807742478 - Action 956135699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Incoming Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -39652,6 +39672,11 @@
           <source>Cash Register</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Cash Register - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 1128390211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Cashier Table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Cashier Table - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 23630027 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>City</source>

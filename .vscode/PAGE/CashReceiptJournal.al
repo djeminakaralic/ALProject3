@@ -12,6 +12,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Editable = false;
                 Caption = 'Naziv serije';
             }
+            field("Cashier Table"; "Cashier Table")
+            {
+                ApplicationArea = all;
+                Caption = 'Cashier Table';
+            }
         }
         addafter(JournalLineDetails)
         {

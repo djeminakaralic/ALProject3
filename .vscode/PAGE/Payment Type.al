@@ -1,6 +1,6 @@
 page 50229 "Payment Type"
 {
-    ApplicationArea = BasicHR;
+    ApplicationArea = all;
     Caption = 'Vrsta uplate';
     PageType = List;
     SourceTable = "Payment Type";
@@ -15,13 +15,13 @@ page 50229 "Payment Type"
                 ShowCaption = false;
                 field("Code"; Code)
                 {
-                    ApplicationArea = BasicHR;
-                    ToolTip = 'Specifies a code for the employment contract.';
+                    ApplicationArea = all;
+                    //ToolTip = 'Specifies a code for the employment contract.';
                 }
                 field(Description; Description)
                 {
-                    ApplicationArea = BasicHR;
-                    ToolTip = 'Specifies a description for the employment contract.';
+                    ApplicationArea = all;
+                    //ToolTip = 'Specifies a description for the employment contract.';
                 }
             }
         }
