@@ -36598,6 +36598,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GeneralLedgerEntriesExtension - Action Incoming Document - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 778023424 - Control 1128390211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3603089623">
+          <source>Cashier Table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenJournalBatchExtends - Control Cashier Table - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2262101545 - Control 3686329814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 520017643">
           <source>Code Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
