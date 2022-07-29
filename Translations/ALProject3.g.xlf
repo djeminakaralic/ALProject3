@@ -39823,6 +39823,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field VATRegistrationNo_Cust - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2774207422 - Field 2511570062 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
+          <source>Cashier Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLEntryExtends - Field Cashier Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2774207422 - Field 3089747124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2825951060">
           <source>Contact link</source>
           <note from="Developer" annotates="general" priority="2"></note>

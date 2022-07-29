@@ -27,6 +27,7 @@ codeunit 50139 GenJNLLine
 
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
         GLEntry."Payment Method" := FORMAT(GenJournalLine."Payment Method");
+        GLEntry."Cashier Code" := GenJournalLine."Cashier Employer"; //sifra blagajnika
 
     end;
 
@@ -39,6 +40,7 @@ codeunit 50139 GenJNLLine
         //   VATEntry."VAT Date" := GenJournalLine."VAT Date";
         GLEntry."Payment Type Code" := GenJournalLine."Payment Type";
         GLEntry."Payment Method" := FORMAT(GenJournalLine."Payment Method");
+        GLEntry."Cashier Code" := GenJournalLine."Cashier Employer"; //sifra blagajnika
 
     end;
 

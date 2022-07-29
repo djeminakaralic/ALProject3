@@ -31,6 +31,11 @@ tableextension 50106 GLEntryExtends extends "G/L Entry"
             Caption = 'Payment Method';
             NotBlank = true;
         }
+        field(50005; "Cashier Code"; Code[10])
+        {
+            Caption = 'Cashier Code';
+            NotBlank = true;
+        }
     }
 
     var
