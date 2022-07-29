@@ -227,11 +227,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Rec.FILTERGROUP(0);
 
                 
-
-                /*GenJournalBatch.FilterGroup(2);
+                GenJournalBatch.FilterGroup(2);
                 GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                 GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
-                GenJournalBatch.FilterGroup(0);*/
+                GenJournalBatch.FilterGroup(0);
 
             end;
 
