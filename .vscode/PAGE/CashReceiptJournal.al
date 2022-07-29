@@ -19,8 +19,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                 trigger OnValidate()
                 begin
-                    CurrPage.SaveRecord();
-                    CurrPage.Update(false);
                     CashierEmployerCode := "Cashier Table";
                 end;
             }
@@ -277,6 +275,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         Validate("Cashier Employer", CashierEmployerCode);
+        "Cashier Table":=CashierEmployerCode;
         "Payment DT" := System.CurrentDateTime;
         "Posting Date" := System.Today;
         Description := '';
