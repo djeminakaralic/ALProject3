@@ -36,6 +36,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                               "Journal Batch Name" = FIELD("Journal Batch Name"),
                               "Bal. Account No." = field("Bal. Account No."),
                               "Line No." = FIELD("Line No.");
+                //ĐL
             }
         }
 
