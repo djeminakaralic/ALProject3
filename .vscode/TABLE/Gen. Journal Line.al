@@ -266,7 +266,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             trigger OnValidate()
             begin
-                Message('Test');
+
             end;
         }
 
