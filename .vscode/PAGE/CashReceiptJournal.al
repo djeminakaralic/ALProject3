@@ -269,7 +269,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if GenJournalBatch.FindFirst() then
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
-        "Cashier Employer":=Rec."Cashier Table";
+        Validate("Cashier Employer", Rec."Cashier Table");
         "Payment DT" := System.CurrentDateTime;
         "Posting Date" := System.Today;
         Description := '';
