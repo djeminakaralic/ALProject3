@@ -71,10 +71,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         moveafter("Bal. Account No."; "Posting Date")
         addafter("Bal. Account No.")
         {
-            field("Cashier Employer";"Cashier Employer")
+            field("Cashier Employer"; "Cashier Employer")
             {
                 ApplicationArea = all;
-                Editable=false;
+                Editable = false;
             }
         }
         moveafter("To return"; "Document No.")
@@ -269,7 +269,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if GenJournalBatch.FindFirst() then
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
-        Validate("Cashier Employer", Rec."Cashier Table");
+        Validate("Cashier Employer", GJline."Cashier Table");
         "Payment DT" := System.CurrentDateTime;
         "Posting Date" := System.Today;
         Description := '';
