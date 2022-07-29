@@ -16,6 +16,11 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             {
                 ApplicationArea = all;
                 Caption = 'Cashier Table';
+
+                trigger OnValidate()
+                begin
+                    CashierEmployerCode:="Cashier Table";
+                end;
             }
         }
         addafter(JournalLineDetails)
@@ -269,7 +274,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if GenJournalBatch.FindFirst() then
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
-        Validate("Cashier Employer", GJline."Cashier Table");
+        Validate("Cashier Employer", CashierEmployerCode);
         "Payment DT" := System.CurrentDateTime;
         "Posting Date" := System.Today;
         Description := '';
@@ -307,4 +312,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Text000: Label 'Today is %1';
         LastDocumentNo: Code[20];
         BatchText: text[20];
+
+        CashierEmployerCode: Code[10];
 }
