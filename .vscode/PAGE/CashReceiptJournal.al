@@ -11,6 +11,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 ApplicationArea = Basic, Suite;
                 Editable = false;
                 Caption = 'Naziv serije';
+                Visible = Show;
             }
             field("Cashier Table"; "Cashier Table")
             {
@@ -111,7 +112,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         }
         modify(CurrentJnlBatchName)
         {
-            Visible = false;
+            Visible = Show;
         }
     }
 
@@ -231,8 +232,9 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then begin
+            Show := UserSetup."Main Cashier";
 
-            IF UserSetup.CurrentJnlBatchName <> ''  THEN BEGIN
+            IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
 
                 Rec.FILTERGROUP(2);
@@ -255,25 +257,22 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
 
-       
+        Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
+        Validate(Rec."Document Type", "Document Type"::Payment);
+        Validate(Rec."Account Type", "Account Type"::Customer);
+        Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
-            
-                Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
-                Validate(Rec."Document Type", "Document Type"::Payment);
-                Validate(Rec."Account Type", "Account Type"::Customer);
-                Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
+        GenJournalBatch.Reset();
+        GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
+        GenJournalBatch.SetFilter(Name, '%1', BatchText);
+        if GenJournalBatch.FindFirst() then
+            Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
-                GenJournalBatch.Reset();
-                GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
-                GenJournalBatch.SetFilter(Name, '%1', BatchText);
-                if GenJournalBatch.FindFirst() then
-                    Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
-
-                Validate("Cashier Employer", CashierEmployerCode);
-                "Cashier Table" := CashierEmployerCode;
-                "Payment DT" := System.CurrentDateTime;
-                "Posting Date" := System.Today;
-                Description := '';
+        Validate("Cashier Employer", CashierEmployerCode);
+        "Cashier Table" := CashierEmployerCode;
+        "Payment DT" := System.CurrentDateTime;
+        "Posting Date" := System.Today;
+        Description := '';
 
 
     end;
@@ -311,4 +310,5 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         LastDocumentNo: Code[20];
         BatchText: text[20];
         CashierEmployerCode: Code[10];
+        Show: Boolean;
 }
