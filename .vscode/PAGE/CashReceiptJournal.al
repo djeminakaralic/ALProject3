@@ -280,7 +280,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if UserSetup.FindFirst() then begin
             GenJournalBatch.Reset();
             GenJournalBatch.SetFilter(Name, '%1', UserSetup.CurrentJnlBatchName);
-            "Cashier Employer" := GenJournalBatch."Cashier Table";
+            Validate("Cashier Employer", GenJournalBatch."Cashier Table");
         end;
 
 
