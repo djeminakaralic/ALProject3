@@ -166,6 +166,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 PromotedIsBig = true;
 
                 trigger OnAction()
+                var
+                    NoSeriesMgt: Codeunit NoSeriesExtented;
                 begin
 
                     Rec.FINDFIRST;
@@ -202,6 +204,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
+
+                    //NoSeriesMgt.InitSeries('DOK CZK1', xRec."No. Series", 0D, GJline."Document No.", "No. Series");
 
                     //GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
                     GJline."Payment DT" := System.CurrentDateTime;
@@ -280,8 +284,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if UserSetup.FindFirst() then begin
             GenJournalBatch.Reset();
             GenJournalBatch.SetFilter(Name, '%1', UserSetup.CurrentJnlBatchName);
-            if GenJournalBatch.FindFirst() then 
-            Validate("Cashier Employer", GenJournalBatch."Cashier Table");
+            if GenJournalBatch.FindFirst() then
+                Validate("Cashier Employer", GenJournalBatch."Cashier Table");
         end;
 
 
@@ -296,7 +300,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         if GenJournalBatch.FindFirst() then
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
-        Validate("Cashier Employer", CashierEmployerCode);
         "Payment DT" := System.CurrentDateTime;
         "Posting Date" := System.Today;
         Description := '';
