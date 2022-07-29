@@ -226,7 +226,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
             IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
-
+                
                 Rec.FILTERGROUP(2);
                 Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
                 Rec.SetFilter("Journal Batch Name", '%1', BatchText);
@@ -253,7 +253,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
         GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
-        GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
+        GenJournalBatch.SetFilter(Name, '%1', BatchText);
         if GenJournalBatch.FindFirst() then
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
