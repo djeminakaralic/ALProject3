@@ -9,6 +9,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field(BatchText; BatchText)
             {
                 ApplicationArea = Basic, Suite;
+                Editable = false;
                 Caption = 'Naziv serije';
             }
         }
