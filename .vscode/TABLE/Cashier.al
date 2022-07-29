@@ -1,8 +1,8 @@
 table 50220 "Cashier"
 {
     Caption = 'Cashier';
-    DrillDownPageID = "Payment Type";
-    LookupPageID = "Payment Type";
+    DrillDownPageID = Cashier;
+    LookupPageID = Cashier;
 
     fields
     {
