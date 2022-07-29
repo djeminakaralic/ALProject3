@@ -262,7 +262,7 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         }
         field(50051; "Cashier Employer"; Code[10])
         {
-            Caption = 'Cashier Table';
+            Caption = 'Cashier Employer';
         }
 
         modify(Amount)

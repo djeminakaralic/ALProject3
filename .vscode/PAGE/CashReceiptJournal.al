@@ -74,6 +74,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             field("Cashier Employer";"Cashier Employer")
             {
                 ApplicationArea = all;
+                Editable=false;
             }
         }
         moveafter("To return"; "Document No.")
