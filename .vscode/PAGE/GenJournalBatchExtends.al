@@ -6,7 +6,7 @@ pageextension 50218 GenJournalBatchExtends extends "General Journal Batches"
         {
             field("Cashier Table"; "Cashier Table")
             {
-                ApplicationArea = Basic, Suite;
+                ApplicationArea = all;
                 Caption = 'Cashier Table';
             }
         }
