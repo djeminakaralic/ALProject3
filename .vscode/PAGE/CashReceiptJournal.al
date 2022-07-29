@@ -229,6 +229,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
+
+        if UserSetup."Main Cashier" = true then begin
+            Rec.FILTERGROUP(2);
+            Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
+            Rec.SetFilter("Journal Batch Name", '<>%1', '');
+            Rec.FILTERGROUP(0);
+        end;
+
     end;
 
     trigger OnOpenPage()
