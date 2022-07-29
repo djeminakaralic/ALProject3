@@ -106,7 +106,7 @@ report 50085 "Izvještaj porto blagajne"
                         Caption = 'Datum izvještaja: ';
                     }
                 }
-                group("Izaberi izvještaj")
+                /*group("Izaberi izvještaj")
                 {
                     Caption = 'Izaberi izvještaj';
                     field(Select; Select)
@@ -114,7 +114,7 @@ report 50085 "Izvještaj porto blagajne"
                         Caption = 'Izbor:';
                         OptionCaption = ' ,Izvještaj porto blagajne,POS terminali dnevni izvještaj';
                     }
-                }
+                }*/
             }
         }
 
