@@ -35,8 +35,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Test := ReplaceString(Rec."Applies-to Doc. No.", '-', '/');
                 Test := ReplaceString(Test, Format(Charr), '-');
                 Rec."Applies-to Doc. No." := Test;
- 
-                 //Message('Poruka da radi na validate');
+
+                //Message('Poruka da radi na validate');
 
             end;
         }

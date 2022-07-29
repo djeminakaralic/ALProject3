@@ -16,7 +16,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
         addafter("Payment Export Format")
         {
-            field("Transit G/L account";"Transit G/L account")
+            field("Transit G/L account"; "Transit G/L account")
             {
                 ApplicationArea = All;
             }
@@ -50,6 +50,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.SetParam(1);
                     IzvjestajPortoBlagajne.Run();
                 end;
             }
@@ -66,6 +67,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.SetParam(2);
                     IzvjestajPortoBlagajne.Run();
                 end;
             }
@@ -125,7 +127,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
     }
 
     var
-    BankAccount: Record "Bank Account";
+        BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
         IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";

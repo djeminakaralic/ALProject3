@@ -123,9 +123,10 @@ report 50085 "Izvještaj porto blagajne"
         }
     }
 
-    labels
-    {
-    }
+procedure SetParam(FirstSelect: Option)
+    begin
+        Select:=FirstSelect;
+    end;
 
     var
         Select: Option ,"Izvještaj porto blagajne","POS terminali dnevni izvještaj";

@@ -168,6 +168,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
+                    
                     GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Main Cashier" := true;
