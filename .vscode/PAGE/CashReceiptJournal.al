@@ -177,13 +177,12 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
 
-                    GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
+                    //GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Main Cashier" := true;
                     GJline."Debit Amount" := TotalAmount;
                     GJline.Description := 'Polog pazara';
 
-                    //testirati
                     GJline."Bal. Account Type" := "Bal. Account Type"::"Bank Account";
                     GJline."Bal. Account No." := Rec."Bal. Account No.";
                     GJline."Account Type" := "Account Type"::"G/L Account";
@@ -226,7 +225,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
             IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
-                
+
                 Rec.FILTERGROUP(2);
                 Rec.SetFilter("Journal Template Name", '%1', 'CASH RECE');
                 Rec.SetFilter("Journal Batch Name", '%1', BatchText);
@@ -252,6 +251,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Validate(Rec."Account Type", "Account Type"::Customer);
         Validate(Rec."Bal. Account Type", "Bal. Account Type"::"Bank Account");
 
+        GenJournalBatch.Reset();
         GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
         GenJournalBatch.SetFilter(Name, '%1', BatchText);
         if GenJournalBatch.FindFirst() then
