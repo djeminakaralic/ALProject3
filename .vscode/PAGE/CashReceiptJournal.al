@@ -275,6 +275,14 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        UserSetup.Reset();
+        UserSetup.SetFilter("User ID", '%1', UserId);
+        if UserSetup.FindFirst() then begin
+            GenJournalBatch.Reset();
+            GenJournalBatch.SetFilter(Name, '%1', UserSetup.CurrentJnlBatchName);
+            "Cashier Employer" := GenJournalBatch."Cashier Table";
+        end;
+
 
         Validate(Rec."Applies-to Doc. Type", "Applies-to Doc. Type"::Invoice);
         Validate(Rec."Document Type", "Document Type"::Payment);
