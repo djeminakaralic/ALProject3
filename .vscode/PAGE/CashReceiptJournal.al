@@ -261,8 +261,17 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     begin
         GenJournalBatch.Get(TemplateName, BatchName);
         if GenJournalBatch."No. Series" <> '' then
-            //DocumentNo := NoSeriesManagement.TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
-            DocumentNo := 'CZK6-2022/00003';
+            DocumentNo := TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
+            //DocumentNo := 'CZK6-2022/00003';
+    end;
+
+        procedure TryGetNextNo(NoSeriesCode: Code[20]; SeriesDate: Date): Code[20]
+    var
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+    begin
+        NoSeriesMgt.SetParametersBeforeRun(NoSeriesCode, SeriesDate);
+        if NoSeriesMgt.Run then
+            exit(NoSeriesMgt.GetNextNoAfterRun);
     end;
 
     var
@@ -276,5 +285,4 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Customer: Record Customer;
         Text000: Label 'Today is %1';
         LastDocumentNo: Code[20];
-        NoSeriesMgt: Codeunit NoSeriesManagement;
 }
