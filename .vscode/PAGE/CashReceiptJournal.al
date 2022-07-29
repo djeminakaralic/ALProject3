@@ -312,6 +312,5 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Text000: Label 'Today is %1';
         LastDocumentNo: Code[20];
         BatchText: text[20];
-
         CashierEmployerCode: Code[10];
 }
