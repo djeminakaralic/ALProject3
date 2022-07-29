@@ -32,6 +32,9 @@ report 50097 "Zapisnik o primopredaji"
             column(BalAccNoFilter; BalAccNoFilter)
             {
             }
+            column(BankAccountAdress; BankAccountAdress)
+            {
+            }
 
             trigger OnPreDataItem()
             begin
@@ -41,6 +44,7 @@ report 50097 "Zapisnik o primopredaji"
                 BankAccount.Reset();
                 BankAccount.Get(BalAccNoFilter);
                 BankAccountName := BankAccount.Name;
+                BankAccountAdress := BankAccount.Address;
 
                 Datee := System.Today;
             end;
@@ -200,5 +204,6 @@ report 50097 "Zapisnik o primopredaji"
         AmountRecord: Decimal;
         BalAccNoFilter: Code[20];
         BankAccountName: Text[100];
+        BankAccountAdress: Text[50];
 }
 
