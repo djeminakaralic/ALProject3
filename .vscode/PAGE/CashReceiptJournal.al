@@ -19,6 +19,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                 trigger OnValidate()
                 begin
+                    CurrPage.SaveRecord();
                     CurrPage.Update(false);
                     CashierEmployerCode := "Cashier Table";
                 end;
