@@ -123,9 +123,9 @@ report 50085 "Izvještaj porto blagajne"
         }
     }
 
-procedure SetParam(FirstSelect: Option)
+    procedure SetParam(FirstSelect: Option)
     begin
-        Select:=FirstSelect;
+        Select := FirstSelect;
     end;
 
     var
