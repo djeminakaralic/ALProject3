@@ -4,6 +4,13 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     layout
     {
+        addafter(CurrentJnlBatchName)
+        {
+            field(BatchText;BatchText)
+            {
+                 ApplicationArea = Basic, Suite;
+           }
+        }
         addafter(JournalLineDetails)
         {
             part(ApoeniFactBox; "Apoeni FactBox")
@@ -210,8 +217,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     end;
 
     trigger OnOpenPage()
-    var
-        BatchText: text[20];
     begin
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
@@ -287,4 +292,5 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         Customer: Record Customer;
         Text000: Label 'Today is %1';
         LastDocumentNo: Code[20];
+        BatchText: text[20];
 }
