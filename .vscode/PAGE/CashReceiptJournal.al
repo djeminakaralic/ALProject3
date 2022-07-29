@@ -6,10 +6,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
     {
         addafter(CurrentJnlBatchName)
         {
-            field(BatchText;BatchText)
+            field(BatchText; BatchText)
             {
-                 ApplicationArea = Basic, Suite;
-           }
+                ApplicationArea = Basic, Suite;
+            }
         }
         addafter(JournalLineDetails)
         {
@@ -87,11 +87,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
-        /*modify(CurrentJnlBatchName)
+        modify(CurrentJnlBatchName)
         {
             Editable = false;
-        }*/
-
+        }
     }
 
     actions
@@ -175,7 +174,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
-                    
+
                     GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Main Cashier" := true;
@@ -231,7 +230,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Rec.SetFilter("Journal Batch Name", '%1', BatchText);
                 Rec.FILTERGROUP(0);
 
-                
+
                 GenJournalBatch.FilterGroup(2);
                 GenJournalBatch.SetFilter("Journal Template Name", '%1', Rec."Journal Template Name");
                 GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
@@ -269,10 +268,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         GenJournalBatch.Get(TemplateName, BatchName);
         if GenJournalBatch."No. Series" <> '' then
             DocumentNo := TryGetNextNo(GenJournalBatch."No. Series", PostingDate);
-            //DocumentNo := 'CZK6-2022/00003';
+        //DocumentNo := 'CZK6-2022/00003';
     end;
 
-        procedure TryGetNextNo(NoSeriesCode: Code[20]; SeriesDate: Date): Code[20]
+    procedure TryGetNextNo(NoSeriesCode: Code[20]; SeriesDate: Date): Code[20]
     var
         NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
