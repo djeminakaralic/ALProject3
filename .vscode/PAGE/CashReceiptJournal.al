@@ -248,7 +248,8 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 GenJournalBatch.SetFilter(Name, '%1', Rec."Journal Batch Name");
                 GenJournalBatch.FilterGroup(0);
 
-            end;
+            end else 
+            BatchText:='';
 
             SetFilter("Main Cashier", '%1', UserSetup."Main Cashier");
         end;
