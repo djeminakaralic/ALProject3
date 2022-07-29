@@ -10,24 +10,6 @@ pageextension 50218 GenJournalBatchExtends extends "General Journal Batches"
                 Caption = 'Cashier Table';
             }
         }
-
-        /*addbefore(Code)
-        {
-            field("Short Code"; "Short Code")
-            {
-
-            }
-        }
-        // Add changes to page layout here
-        addafter("Unit of Measure Code")
-        {
-           
-
-        }
-        modify("Total Absence (Base)")
-        {
-            Visible = false;
-        }*/
     }
 
     actions
