@@ -158,7 +158,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                     if GJline.FindLast() then begin
                         LineNo := GJline."Line No." + 10000;
-                        //LastDocumentNo := GJline."Document No." + 1;
                     end
                     else
                         LineNo := 10000;
@@ -169,7 +168,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     GJline."Journal Batch Name" := Rec."Journal Batch Name";
                     GJline."Posting Date" := System.Today;
                     GJline.Amount := TotalAmount;
-                    //GJline."Document No." := LastDocumentNo;
+                    GJline."Document No." := GenerateLineDocNo(rec."Journal Batch Name", Rec."Posting Date", Rec."Journal Template Name");
                     GJline."Payment DT" := System.CurrentDateTime;
                     GJline."Main Cashier" := true;
                     GJline."Debit Amount" := TotalAmount;
