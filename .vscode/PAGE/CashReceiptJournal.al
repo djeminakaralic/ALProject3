@@ -44,6 +44,10 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         {
             Visible = false;
         }
+        modify("Shortcut Dimension 1 Code")
+        {
+            Visible = false;
+        }
 
         addafter("Posting Date")
         {
