@@ -39673,6 +39673,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Cash Register - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1821163035 - Field 4281639782 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Cashier Table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Gen_JournalLineExtends - Field Cashier Employer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1821163035 - Field 1128390211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Cashier Table</source>
           <note from="Developer" annotates="general" priority="2"></note>
