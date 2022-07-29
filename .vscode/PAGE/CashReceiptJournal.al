@@ -13,7 +13,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 Caption = 'Naziv serije';
                 Visible = NOT (Show);
             }
-            field("Cashier Table"; "Cashier Table")
+            /*field("Cashier Table"; "Cashier Table")
             {
                 ApplicationArea = all;
                 Caption = 'Cashier Table';
@@ -24,7 +24,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                     CurrPage.SaveRecord();
                     CashierEmployerCode := "Cashier Table";
                 end;
-            }
+            }*/
         }
         addafter(JournalLineDetails)
         {
@@ -288,7 +288,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
             Validate(rec."Bal. Account No.", GenJournalBatch."Bal. Account No.");
 
         Validate("Cashier Employer", CashierEmployerCode);
-        "Cashier Table" := CashierEmployerCode;
         "Payment DT" := System.CurrentDateTime;
         "Posting Date" := System.Today;
         Description := '';
