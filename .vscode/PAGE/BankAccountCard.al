@@ -129,8 +129,8 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
     var
         BankAccount: Record "Bank Account";
         GLEntry: Record "G/L Entry";
-        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
+        IzvjestajPortoBlagajne: Report "Izvještaj";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
-        SpecifikacijaKarticnog: Report "Specifikacija karticnog";
+        SpecifikacijaKarticnog: Report "Spec karticnog plaćanja";
         RekapitulacijaUplataIsplata: Report "Rekapitulacija uplata/isplata";
 }

@@ -1,4 +1,4 @@
-report 50085 "Izvještaj porto blagajne"
+report 50085 "Izvještaj"
 {
     //ED
     DefaultLayout = RDLC;

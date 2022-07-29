@@ -29288,20 +29288,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Izvjestaj za trening - ReportLabel RptTitle</note>
         </trans-unit>
-        <trans-unit id="Report 1991143175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Izvještaj porto blagajne</source>
+        <trans-unit id="Report 1316478813 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Izvještaj</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 1991143175 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 1316478813 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Datum izvještaja</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj - Control Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 1991143175 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 1316478813 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Datum izvještaja: </source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj porto blagajne - Control Datee - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Izvještaj - Control Datee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2809061718 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lock Calculation</source>
@@ -34898,20 +34898,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Show record - Control OrgCode - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3432384244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifikacija karticnog</source>
+        <trans-unit id="Report 843245752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Spec karticnog plaćanja</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Spec karticnog plaćanja - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3432384244 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 843245752 - Control 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Datum izvještaja</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Spec karticnog plaćanja - Control Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Report 3432384244 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Report 843245752 - Control 1488585315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Datum izvještaja: </source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Report Specifikacija karticnog - Control Datee - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Spec karticnog plaćanja - Control Datee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 3869432832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>StatusExt update</source>
