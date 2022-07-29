@@ -221,7 +221,6 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
         UserSetup.Reset();
         UserSetup.SetFilter("User ID", '%1', UserId);
         if UserSetup.FindFirst() then begin
-            //Message(Format(UserSetup.CurrentJnlBatchName)); //Ovdje je CZK6 UPL
 
             IF UserSetup.CurrentJnlBatchName <> '' THEN BEGIN
                 BatchText := UserSetup.CurrentJnlBatchName;
