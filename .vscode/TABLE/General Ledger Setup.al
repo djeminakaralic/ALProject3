@@ -20,6 +20,7 @@ tableextension 50097 GeneralLedgerSetup extends "General Ledger Setup"
         {
             Caption = 'Path for fiscal printer';
         }
+
     }
 
     var

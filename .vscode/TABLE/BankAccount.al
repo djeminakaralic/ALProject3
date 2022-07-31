@@ -2,7 +2,7 @@ tableextension 50152 BankAccount extends "Bank Account"
 {
 
     //ED
-    
+
     fields
     {
         field(50000; "No Report"; Boolean)
@@ -14,7 +14,11 @@ tableextension 50152 BankAccount extends "Bank Account"
             Caption = 'Transit G/L account';
             TableRelation = "G/L Account";
         }
-        
+        field(50002; "No. series for Payment"; Code[20])
+        {
+            Caption = 'Brojčana serija za uplate';
+        }
+
     }
 
     var

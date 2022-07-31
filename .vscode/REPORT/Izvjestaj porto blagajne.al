@@ -1,4 +1,4 @@
-report 50085 "Izvještaj porto blagajne"
+report 50085 "Izvještaj"
 {
     //ED
     DefaultLayout = RDLC;
@@ -106,7 +106,7 @@ report 50085 "Izvještaj porto blagajne"
                         Caption = 'Datum izvještaja: ';
                     }
                 }
-                group("Izaberi izvještaj")
+                /*group("Izaberi izvještaj")
                 {
                     Caption = 'Izaberi izvještaj';
                     field(Select; Select)
@@ -114,7 +114,7 @@ report 50085 "Izvještaj porto blagajne"
                         Caption = 'Izbor:';
                         OptionCaption = ' ,Izvještaj porto blagajne,POS terminali dnevni izvještaj';
                     }
-                }
+                }*/
             }
         }
 
@@ -123,9 +123,10 @@ report 50085 "Izvještaj porto blagajne"
         }
     }
 
-    labels
-    {
-    }
+    procedure SetParam(FirstSelect: Option)
+    begin
+        Select := FirstSelect;
+    end;
 
     var
         Select: Option ,"Izvještaj porto blagajne","POS terminali dnevni izvještaj";

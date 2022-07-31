@@ -35,8 +35,8 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Test := ReplaceString(Rec."Applies-to Doc. No.", '-', '/');
                 Test := ReplaceString(Test, Format(Charr), '-');
                 Rec."Applies-to Doc. No." := Test;
- 
-                 //Message('Poruka da radi na validate');
+
+                //Message('Poruka da radi na validate');
 
             end;
         }
@@ -254,6 +254,16 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
         {
             Caption = 'Main Cashier';
             InitValue = false;
+        }
+
+        field(50051; "Cashier Employer"; Code[10])
+        {
+            Caption = 'Cashier Employer';
+
+            trigger OnValidate()
+            begin
+
+            end;
         }
 
         modify(Amount)

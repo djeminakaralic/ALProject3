@@ -698,12 +698,12 @@
                   <TablixMembers>
                     <TablixMember>
                       <Visibility>
-                        <Hidden>=(Fields!Show.Value&lt;&gt;2) Or (Fields!Counter.Value&lt;&gt;Fields!PTCounter.Value)</Hidden>
+                        <Hidden>=(Fields!Show.Value=1) Or (Fields!Counter.Value&lt;&gt;Fields!PTCounter.Value)</Hidden>
                       </Visibility>
                     </TablixMember>
                     <TablixMember>
                       <Visibility>
-                        <Hidden>=(Fields!Show.Value&lt;&gt;2) Or (Fields!Counter.Value&lt;&gt;Fields!PTCounter.Value)</Hidden>
+                        <Hidden>=(Fields!Show.Value=1) Or (Fields!Counter.Value&lt;&gt;Fields!PTCounter.Value)</Hidden>
                       </Visibility>
                     </TablixMember>
                   </TablixMembers>

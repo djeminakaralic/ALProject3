@@ -1,4 +1,4 @@
-report 50185 "Specifikacija karticnog"
+report 50185 "Spec karticnog plaćanja"
 {
     //ED
     DefaultLayout = RDLC;

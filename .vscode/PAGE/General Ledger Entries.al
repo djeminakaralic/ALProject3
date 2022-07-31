@@ -21,6 +21,10 @@ pageextension 50122 GeneralLedgerEntriesExtension extends "General Ledger Entrie
             {
                 ApplicationArea = All;
             }
+            field("Cashier Code";"Cashier Code")
+            {
+                ApplicationArea = All;
+            }
         }
     }
 

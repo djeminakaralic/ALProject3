@@ -16,7 +16,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
         addafter("Payment Export Format")
         {
-            field("Transit G/L account";"Transit G/L account")
+            field("Transit G/L account"; "Transit G/L account")
             {
                 ApplicationArea = All;
             }
@@ -27,7 +27,18 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
             Visible = true;
             Editable = true;
         }
+        addbefore("Bank Acc. Posting Group")
+        {
+            field("No. series for Payment"; "No. series for Payment")
+            {
+                ApplicationArea = all;
+                Visible = VisibleCZK;
+            }
+        }
+
+
     }
+
 
 
     actions
@@ -50,6 +61,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.SetParam(1);
                     IzvjestajPortoBlagajne.Run();
                 end;
             }
@@ -66,6 +78,7 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
                     GLEntry.Reset();
                     GLEntry.SetFilter("Bal. Account No.", Rec."No.");
                     IzvjestajPortoBlagajne.SetTableView(GLEntry);
+                    IzvjestajPortoBlagajne.SetParam(2);
                     IzvjestajPortoBlagajne.Run();
                 end;
             }
@@ -122,13 +135,36 @@ pageextension 50127 BankAccountCard extends "Bank Account Card"
 
         }
 
+
     }
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+    begin
+        if StrPos(Rec."No.", 'CZK') <> 0 then
+            VisibleCZK := true
+        else
+            VisibleCZK := false;
+
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+        myInt: Integer;
+    begin
+        if StrPos(Rec."No.", 'CZK') <> 0 then
+            VisibleCZK := true
+        else
+            VisibleCZK := false;
+
+    end;
 
     var
-    BankAccount: Record "Bank Account";
+        BankAccount: Record "Bank Account";
+        VisibleCZK: Boolean;
         GLEntry: Record "G/L Entry";
-        IzvjestajPortoBlagajne: Report "Izvještaj porto blagajne";
+        IzvjestajPortoBlagajne: Report "Izvještaj";
         BlagajnickiDnevnik: Report "Blagajnički dnevnik";
-        SpecifikacijaKarticnog: Report "Specifikacija karticnog";
+        SpecifikacijaKarticnog: Report "Spec karticnog plaćanja";
         RekapitulacijaUplataIsplata: Report "Rekapitulacija uplata/isplata";
 }

@@ -13,6 +13,7 @@ pageextension 50102 GeneralLedgerSetup extends "General Ledger Setup"
             {
                 ApplicationArea = all;
             }
+
         }
 
 

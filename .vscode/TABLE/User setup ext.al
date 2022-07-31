@@ -79,7 +79,7 @@ tableextension 50179 User_setup_ext extends "User Setup"
 
             trigger OnValidate()
             begin
-                
+
             end;
         }
     }
