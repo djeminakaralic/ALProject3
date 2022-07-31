@@ -26,6 +26,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
                 end;
             }*/
         }
+
         addafter(JournalLineDetails)
         {
             part(ApoeniFactBox; "Apoeni FactBox")
@@ -51,6 +52,7 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
         addafter("Posting Date")
         {
+            field("Payment No."; "Payment No.") { Editable = false; }
             field("Payment DT"; "Payment DT")
             {
                 ApplicationArea = all;

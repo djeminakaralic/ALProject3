@@ -36,9 +36,12 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
                 Test := ReplaceString(Test, Format(Charr), '-');
                 Rec."Applies-to Doc. No." := Test;
 
+
                 //Message('Poruka da radi na validate');
 
             end;
+
+
         }
 
 
@@ -265,6 +268,12 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
 
             end;
         }
+        field(50052; "No. Series"; Code[20])
+        { }
+        field(50053; "Payment No."; Code[20])
+        {
+            Caption = 'Redni broj uplate';
+        }
 
         modify(Amount)
         {
@@ -303,12 +312,25 @@ tableextension 50114 Gen_JournalLineExtends extends "Gen. Journal Line"
     }
 
     trigger OnInsert()
+    var
+        myInt: Integer;
+        BankAccount: Record "Bank Account";
+        NoSeriesMgt: Codeunit NoSeriesExtented;
     begin
 
         if GJLine.FindLast() then
             Rec."No. Line" := GJLine."No. Line" + 1
         else
             Rec."No. Line" := 1;
+
+
+        BankAccount.get(Rec."Bal. Account No.");
+
+
+        NoSeriesMgt.InitSeries(BankAccount."No. series for Payment", '', 0D, "Payment No.", "No. Series");
+
+
+
 
     end;
 

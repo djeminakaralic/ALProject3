@@ -17,6 +17,7 @@ tableextension 50152 BankAccount extends "Bank Account"
         field(50002; "No. series for Payment"; Code[20])
         {
             Caption = 'Brojčana serija za uplate';
+            TableRelation = "No. Series".Code;
         }
 
     }

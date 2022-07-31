@@ -71,9 +71,9 @@ codeunit 50000 "Non Fiscal print"
             Custt.RESET;
             Custt.SETFILTER("No.", '%1', GJL."Account No.");
             IF Custt.FINDFIRST THEN
-                plite := Format(GJL."Line No.") + ' ' + GJL.Description + ' ' + Custt.Address
+                plite := Format(GJL."Account No.") + ' ' + GJL.Description + ' ' + Custt.Address
             else
-                plite := Format(GJL."Line No.") + ' ' + GJL.Description;
+                plite := Format(GJL."Account No.") + ' ' + GJL.Description;
             OutStreamObj.WRITETEXT(plite);
             OutStreamObj.WRITETEXT();
             plite := '\x1B\x21\x00REFERENCE' + ' ' + GJL."Applies-to Doc. No." + '\x1B\x21\x20';
@@ -96,11 +96,11 @@ codeunit 50000 "Non Fiscal print"
 
 
 
-            plite := GBatch + ' ' + GJL."Document No.";
+            plite := GBatch + ' ' + 'B ' + GJL."Cashier Employer";
             OutStreamObj.WRITETEXT(plite);
             OutStreamObj.WRITETEXT();
 
-            OutStreamObj.WRITETEXT('R.B. 001');
+            OutStreamObj.WRITETEXT('R.B. ' + format(GJL."Payment No."));
             OutStreamObj.WRITETEXT();
             plite := '';
 
@@ -152,6 +152,7 @@ codeunit 50000 "Non Fiscal print"
 
 
             File1.CLOSE;
+            FileManagement.DownloadToFile(Putanja + 'snd.xml', Putanja + 'snd.xml');
 
 
         END;

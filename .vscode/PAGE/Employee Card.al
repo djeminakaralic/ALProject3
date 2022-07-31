@@ -1812,6 +1812,8 @@ pageextension 50129 EmployeeCard extends "Employee Card"
                         ApplicationArea = all;
 
                     }
+
+
                 }
 
 
@@ -4282,6 +4284,7 @@ pageextension 50129 EmployeeCard extends "Employee Card"
         movebefore("Operator No."; "Last Date Modified")
 
         movebefore("Wage Type"; "Emplymt. Contract Code")
+        moveafter("Wage Posting Group"; "Employee Posting Group")
 
 
         addafter("Country/Region Code")
