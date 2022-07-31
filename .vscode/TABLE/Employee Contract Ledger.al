@@ -484,47 +484,60 @@ table 50071 "Employee Contract Ledger"
 
             trigger OnValidate()
             begin
-                //WG01
-                Employee.SETFILTER("No.", "Employee No.");
-                IF Employee.FINDFIRST THEN BEGIN
-                    ConCat.SETFILTER(Code, '%1', Employee."Contribution Category Code");
-                    IF ConCat.FINDFIRST THEN BEGIN
-                        ConCat.CALCFIELDS("From Brutto");
+
+                NetoPlate.Reset();
+                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                NetoPlate.Get(Rec."Employee No.");
+                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                end
+                else begin
 
 
 
-                        Rec."Tax Deduction Amount" := Employee."Tax Deduction Amount";
-                        Rec.VALIDATE(Brutto, (Netto) / ((1 - ConCat."From Brutto" / 100) * 0.9));
-                        BruttoAfterContributionWE := (Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) - (((Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) * ConCat."From Brutto") / 100);
-                        BruttoAfterDeductionWE := BruttoAfterContributionWE;
-                        IF BruttoAfterDeductionWE <> 0 THEN
-                            TaxWe := (BruttoAfterDeductionWE - "Tax Deduction Amount") * 0.1
-                        ELSE
-                            TaxWe := 0;
 
-                        Rec."Total Netto" := BruttoAfterContributionWE - TaxWe;
-                        IF Rec."No." <> 0 THEN
-                            Rec.MODIFY;
+                    //WG01
+                    Employee.SETFILTER("No.", "Employee No.");
+                    IF Employee.FINDFIRST THEN BEGIN
+                        ConCat.SETFILTER(Code, '%1', Employee."Contribution Category Code");
+                        IF ConCat.FINDFIRST THEN BEGIN
+                            ConCat.CALCFIELDS("From Brutto");
+
+
+
+                            Rec."Tax Deduction Amount" := Employee."Tax Deduction Amount";
+                            Rec.VALIDATE(Brutto, (Netto) / ((1 - ConCat."From Brutto" / 100) * 0.9));
+                            BruttoAfterContributionWE := (Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) - (((Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) * ConCat."From Brutto") / 100);
+                            BruttoAfterDeductionWE := BruttoAfterContributionWE;
+                            IF BruttoAfterDeductionWE <> 0 THEN
+                                TaxWe := (BruttoAfterDeductionWE - "Tax Deduction Amount") * 0.1
+                            ELSE
+                                TaxWe := 0;
+
+                            Rec."Total Netto" := BruttoAfterContributionWE - TaxWe;
+                            IF Rec."No." <> 0 THEN
+                                Rec.MODIFY;
+                        END;
                     END;
-                END;
 
-                IF Brutto < HRSetup."Fixed Amount Brutto" THEN BEGIN
-                    VALIDATE("Fixed Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Less");
-                    VALIDATE("Variable Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Less");
-                END
-                ELSE BEGIN
-                    VALIDATE("Fixed Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Greater");
-                    VALIDATE("Variable Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Greater");
-                END;
-                //WG01
-                IF (("Manager Contract" = TRUE) AND ("Percentage of Fixed Part" <> 0)) THEN BEGIN
-                    "Fixed Amount Brutto" := ("Percentage of Fixed Part" / 100) * Brutto;
-                    "Fixed Amount Netto" := ("Percentage of Fixed Part" / 100) * Rec.Netto;
-                    "Fixed Amount Total Netto" := ("Percentage of Fixed Part" / 100) * "Total Netto";
-                    "Variable Amount Brutto" := (1 - ("Percentage of Fixed Part" / 100)) * Brutto;
-                    "Variable Amount Netto" := (1 - ("Percentage of Fixed Part" / 100)) * Rec.Netto;
-                    "Manager Addition Total Netto" := (1 - ("Percentage of Fixed Part" / 100)) * "Total Netto";
-                END;
+                    IF Brutto < HRSetup."Fixed Amount Brutto" THEN BEGIN
+                        VALIDATE("Fixed Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Less");
+                        VALIDATE("Variable Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Less");
+                    END
+                    ELSE BEGIN
+                        VALIDATE("Fixed Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Greater");
+                        VALIDATE("Variable Amount Brutto", Brutto - HRSetup."Variable Amount Brutto Greater");
+                    END;
+                    //WG01
+                    IF (("Manager Contract" = TRUE) AND ("Percentage of Fixed Part" <> 0)) THEN BEGIN
+                        "Fixed Amount Brutto" := ("Percentage of Fixed Part" / 100) * Brutto;
+                        "Fixed Amount Netto" := ("Percentage of Fixed Part" / 100) * Rec.Netto;
+                        "Fixed Amount Total Netto" := ("Percentage of Fixed Part" / 100) * "Total Netto";
+                        "Variable Amount Brutto" := (1 - ("Percentage of Fixed Part" / 100)) * Brutto;
+                        "Variable Amount Netto" := (1 - ("Percentage of Fixed Part" / 100)) * Rec.Netto;
+                        "Manager Addition Total Netto" := (1 - ("Percentage of Fixed Part" / 100)) * "Total Netto";
+                    END;
+                end;
             end;
         }
         field(10; Brutto; Decimal)
@@ -533,81 +546,89 @@ table 50071 "Employee Contract Ledger"
 
             trigger OnValidate()
             begin
-                HRSetup.GET;
-                IF ((Brutto < HRSetup."Variable Amount Brutto Less") AND (Brutto <> 0)) THEN ERROR(Text008);
-                Employee.SETFILTER("No.", "Employee No.");
-                IF Employee.FINDFIRST THEN BEGIN
-                    BruttoAfterDeduction := 0;
-                    ConCat.SETFILTER(Code, '%1', Employee."Contribution Category Code");
-                    IF ConCat.FINDFIRST THEN BEGIN
-                        ConCat.CALCFIELDS("From Brutto");
-                        BruttoAfterContribution := Rec.Brutto - ((Rec.Brutto * ConCat."From Brutto") / 100);
-                        BruttoAfterContributionWE := (Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) - (((Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) * ConCat."From Brutto") / 100);
+                NetoPlate.Reset();
+                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                NetoPlate.Get(Rec."Employee No.");
+                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                end
+                else begin
+
+                    HRSetup.GET;
+                    IF ((Brutto < HRSetup."Variable Amount Brutto Less") AND (Brutto <> 0)) THEN ERROR(Text008);
+                    Employee.SETFILTER("No.", "Employee No.");
+                    IF Employee.FINDFIRST THEN BEGIN
+                        BruttoAfterDeduction := 0;
+                        ConCat.SETFILTER(Code, '%1', Employee."Contribution Category Code");
+                        IF ConCat.FINDFIRST THEN BEGIN
+                            ConCat.CALCFIELDS("From Brutto");
+                            BruttoAfterContribution := Rec.Brutto - ((Rec.Brutto * ConCat."From Brutto") / 100);
+                            BruttoAfterContributionWE := (Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) - (((Rec.Brutto + (Rec.Brutto * (Employee."Work Experience Percentage") / 100)) * ConCat."From Brutto") / 100);
+                        END;
+
+                        BruttoAfterDeduction := BruttoAfterContribution;
+                        BruttoAfterDeductionWE := BruttoAfterContributionWE;
+                        "Tax Deduction Amount" := Employee."Tax Deduction Amount";
+                        IF BruttoAfterDeductionWE <> 0 THEN
+                            TaxWe := (BruttoAfterDeductionWE - "Tax Deduction Amount") * 0.1
+                        ELSE
+                            TaxWe := 0;
+                        Rec.Tax := BruttoAfterDeduction * 0.1;//!
+                        Rec."Brutto After Contributtion" := BruttoAfterContribution;
+                        Rec.Netto := BruttoAfterContribution - Tax;
+                        Rec."Total Netto" := BruttoAfterContributionWE - TaxWe;
+                        /*ĐK vrati IF Rec."No." <> 0 THEN
+                                 vrati      Rec.MODIFY;
+                                Message('');*/
+
                     END;
 
-                    BruttoAfterDeduction := BruttoAfterContribution;
-                    BruttoAfterDeductionWE := BruttoAfterContributionWE;
-                    "Tax Deduction Amount" := Employee."Tax Deduction Amount";
-                    IF BruttoAfterDeductionWE <> 0 THEN
-                        TaxWe := (BruttoAfterDeductionWE - "Tax Deduction Amount") * 0.1
-                    ELSE
-                        TaxWe := 0;
-                    Rec.Tax := BruttoAfterDeduction * 0.1;//!
-                    Rec."Brutto After Contributtion" := BruttoAfterContribution;
-                    Rec.Netto := BruttoAfterContribution - Tax;
-                    Rec."Total Netto" := BruttoAfterContributionWE - TaxWe;
-                    /*ĐK vrati IF Rec."No." <> 0 THEN
-                             vrati      Rec.MODIFY;
-                            Message('');*/
-
-                END;
 
 
-
-                HRSetup.GET;
-                IF Brutto < HRSetup."Fixed Amount Brutto" THEN BEGIN
-                    IF Brutto <> 0 THEN BEGIN
-                        "Fixed Amount Brutto" := Brutto - HRSetup."Variable Amount Brutto Less";
-                        "Percentage of Fixed Part" := ("Fixed Amount Brutto" / Brutto) * 100;
-                        "Fixed Amount Netto" := ("Percentage of Fixed Part" / 100) * Rec.Netto;
-                        "Fixed Amount Total Netto" := ("Percentage of Fixed Part" / 100) * "Total Netto";
-                        "Variable Amount Brutto" := HRSetup."Variable Amount Brutto Less";
-                        "Variable Amount Netto" := (1 - ("Percentage of Fixed Part" / 100)) * Rec.Netto;
-                        "Percentage of Variable" := (100 - "Percentage of Fixed Part");
-                    END
-                    ELSE BEGIN
-                        "Fixed Amount Brutto" := 0;
-                        "Percentage of Fixed Part" := 0;
-                        "Fixed Amount Netto" := 0;
-                        "Fixed Amount Total Netto" := 0;
-                        "Variable Amount Brutto" := 0;
-                        "Variable Amount Netto" := 0;
-                        "Percentage of Variable" := 0;
-                        "Percentage of Variable" := 0;
+                    HRSetup.GET;
+                    IF Brutto < HRSetup."Fixed Amount Brutto" THEN BEGIN
+                        IF Brutto <> 0 THEN BEGIN
+                            "Fixed Amount Brutto" := Brutto - HRSetup."Variable Amount Brutto Less";
+                            "Percentage of Fixed Part" := ("Fixed Amount Brutto" / Brutto) * 100;
+                            "Fixed Amount Netto" := ("Percentage of Fixed Part" / 100) * Rec.Netto;
+                            "Fixed Amount Total Netto" := ("Percentage of Fixed Part" / 100) * "Total Netto";
+                            "Variable Amount Brutto" := HRSetup."Variable Amount Brutto Less";
+                            "Variable Amount Netto" := (1 - ("Percentage of Fixed Part" / 100)) * Rec.Netto;
+                            "Percentage of Variable" := (100 - "Percentage of Fixed Part");
+                        END
+                        ELSE BEGIN
+                            "Fixed Amount Brutto" := 0;
+                            "Percentage of Fixed Part" := 0;
+                            "Fixed Amount Netto" := 0;
+                            "Fixed Amount Total Netto" := 0;
+                            "Variable Amount Brutto" := 0;
+                            "Variable Amount Netto" := 0;
+                            "Percentage of Variable" := 0;
+                            "Percentage of Variable" := 0;
+                        END;
                     END;
-                END;
 
-                IF Brutto >= HRSetup."Fixed Amount Brutto" THEN BEGIN
-                    IF Brutto <> 0 THEN BEGIN
-                        "Fixed Amount Brutto" := Brutto - HRSetup."Variable Amount Brutto Greater";
-                        "Percentage of Fixed Part" := ("Fixed Amount Brutto" / Brutto) * 100;
-                        "Fixed Amount Netto" := ("Percentage of Fixed Part" / 100) * Rec.Netto;
-                        "Fixed Amount Total Netto" := ("Percentage of Fixed Part" / 100) * "Total Netto";
-                        "Variable Amount Brutto" := HRSetup."Variable Amount Brutto Greater";
-                        "Variable Amount Netto" := (1 - ("Percentage of Fixed Part" / 100)) * Rec.Netto;
-                        "Percentage of Variable" := (100 - "Percentage of Fixed Part");
-                    END
-                    ELSE BEGIN
-                        "Fixed Amount Brutto" := 0;
-                        "Percentage of Fixed Part" := 0;
-                        "Fixed Amount Netto" := 0;
-                        "Fixed Amount Total Netto" := 0;
-                        "Variable Amount Brutto" := 0;
-                        "Variable Amount Netto" := 0;
-                        "Percentage of Variable" := 0;
+                    IF Brutto >= HRSetup."Fixed Amount Brutto" THEN BEGIN
+                        IF Brutto <> 0 THEN BEGIN
+                            "Fixed Amount Brutto" := Brutto - HRSetup."Variable Amount Brutto Greater";
+                            "Percentage of Fixed Part" := ("Fixed Amount Brutto" / Brutto) * 100;
+                            "Fixed Amount Netto" := ("Percentage of Fixed Part" / 100) * Rec.Netto;
+                            "Fixed Amount Total Netto" := ("Percentage of Fixed Part" / 100) * "Total Netto";
+                            "Variable Amount Brutto" := HRSetup."Variable Amount Brutto Greater";
+                            "Variable Amount Netto" := (1 - ("Percentage of Fixed Part" / 100)) * Rec.Netto;
+                            "Percentage of Variable" := (100 - "Percentage of Fixed Part");
+                        END
+                        ELSE BEGIN
+                            "Fixed Amount Brutto" := 0;
+                            "Percentage of Fixed Part" := 0;
+                            "Fixed Amount Netto" := 0;
+                            "Fixed Amount Total Netto" := 0;
+                            "Variable Amount Brutto" := 0;
+                            "Variable Amount Netto" := 0;
+                            "Percentage of Variable" := 0;
+                        END;
                     END;
-                END;
-
+                end;
                 IF Active = TRUE THEN BEGIN
                     IF "Starting Date" <> 0D THEN BEGIN
                         // IF DATE2DMY("Starting Date",1)=1 THEN
@@ -618,7 +639,15 @@ table 50071 "Employee Contract Ledger"
                                 WageAmounts.RESET;
                                 WageAmounts.SETFILTER("Employee No.", "Employee No.");
                                 IF WageAmounts.FINDFIRST THEN BEGIN
-                                    WageAmounts.VALIDATE("Wage Amount", Brutto);
+                                    NetoPlate.Reset();
+                                    NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                    NetoPlate.Get(Rec."Employee No.");
+                                    if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                    end
+                                    else begin
+                                        WageAmounts.VALIDATE("Wage Amount", Brutto);
+                                    end;
                                     IF DATE2DMY("Starting Date", 1) <> 0 THEN BEGIN
                                         EmployeeContractLedger.RESET;
                                         EmployeeContractLedger.SETCURRENTKEY("Employee No.", "Starting Date");
@@ -632,14 +661,17 @@ table 50071 "Employee Contract Ledger"
                                             EmployeeContractLedgerPrevious.SETCURRENTKEY("Employee No.", "Starting Date");
                                             EmployeeContractLedgerPrevious.NEXT(-1);
                                             IF EmployeeContractLedgerPrevious.Brutto <> Brutto THEN BEGIN
-                                                WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
-                                                EGet.Get(EmployeeContractLedger."Employee No.");
-                                                WT.Reset();
-                                                WT.SetFilter(Code, '%1', EGet."Wage Type");
-                                                if WT.FindFirst() then begin
-                                                    if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                        WageAmounts.Validate("Net Amount 2", Rec.Netto);
+                                                NetoPlate.Reset();
+                                                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                                NetoPlate.Get(Rec."Employee No.");
+                                                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                                end
+                                                else begin
+                                                    WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
                                                 end;
+                                                EGet.Get(EmployeeContractLedger."Employee No.");
+
 
 
                                                 WageAmounts.VALIDATE("Application Date", Rec."Starting Date");
@@ -652,7 +684,15 @@ table 50071 "Employee Contract Ledger"
                                     WageAmounts.RESET;
                                     WageAmounts.INIT;
                                     WageAmounts.VALIDATE("Employee No.", "Employee No.");
-                                    WageAmounts.VALIDATE("Wage Amount", Brutto);
+                                    NetoPlate.Reset();
+                                    NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                    NetoPlate.Get(Rec."Employee No.");
+                                    if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                    end
+                                    else begin
+                                        WageAmounts.VALIDATE("Wage Amount", Brutto);
+                                    end;
                                     IF DATE2DMY("Starting Date", 1) <> 1 THEN BEGIN
                                         EmployeeContractLedger.RESET;
                                         EmployeeContractLedger.SETCURRENTKEY("Employee No.", "Starting Date");
@@ -666,19 +706,34 @@ table 50071 "Employee Contract Ledger"
                                             EmployeeContractLedgerPrevious.SETCURRENTKEY("Employee No.", "Starting Date");
                                             EmployeeContractLedgerPrevious.NEXT(-1);
                                             IF EmployeeContractLedgerPrevious.Brutto <> Brutto THEN BEGIN
-                                                WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                                NetoPlate.Reset();
+                                                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                                NetoPlate.Get(Rec."Employee No.");
+                                                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                                end
+                                                else begin
+                                                    WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                                end;
                                                 EGet.Get(EmployeeContractLedger."Employee No.");
                                                 WT.Reset();
                                                 WT.SetFilter(Code, '%1', EGet."Wage Type");
                                                 if WT.FindFirst() then begin
-                                                    if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                        WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+
                                                 end;
                                                 WageAmounts.VALIDATE("Application Date", EmployeeContractLedger."Starting Date");
                                             END;
                                         END;
                                     END;
-                                    WageAmounts.INSERT;
+                                    NetoPlate.Reset();
+                                    NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                    NetoPlate.Get(Rec."Employee No.");
+                                    if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                    end
+                                    else begin
+                                        WageAmounts.INSERT;
+                                    end;
                                 END;
                             END
                         END;
@@ -3373,7 +3428,15 @@ table 50071 "Employee Contract Ledger"
                             WageAmounts.RESET;
                             WageAmounts.SETFILTER("Employee No.", "Employee No.");
                             IF WageAmounts.FINDFIRST THEN BEGIN
-                                WageAmounts.VALIDATE("Wage Amount", Brutto);
+                                NetoPlate.Reset();
+                                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                NetoPlate.Get(Rec."Employee No.");
+                                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                end
+                                else begin
+                                    WageAmounts.VALIDATE("Wage Amount", Brutto);
+                                end;
                                 IF DATE2DMY("Starting Date", 1) <> 1 THEN BEGIN
                                     EmployeeContractLedger.RESET;
                                     EmployeeContractLedger.SETCURRENTKEY("Employee No.", "Starting Date");
@@ -3386,13 +3449,20 @@ table 50071 "Employee Contract Ledger"
                                         EmployeeContractLedgerPrevious.setfilter("Employee No.", "Employee No.");
                                         EmployeeContractLedgerPrevious.SETCURRENTKEY("Employee No.", "Starting Date");
                                         EmployeeContractLedgerPrevious.NEXT(-1);
-                                        WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                        NetoPlate.Reset();
+                                        NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                        NetoPlate.Get(Rec."Employee No.");
+                                        if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                        end
+                                        else begin
+                                            WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                        end;
                                         EGet.Get(EmployeeContractLedger."Employee No.");
                                         WT.Reset();
                                         WT.SetFilter(Code, '%1', EGet."Wage Type");
                                         if WT.FindFirst() then begin
-                                            if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                WageAmounts.Validate("Net Amount 2", Rec.Netto);
+
                                         end;
                                         WageAmounts.VALIDATE("Application Date", Rec."Starting Date");
                                     END;
@@ -3416,18 +3486,33 @@ table 50071 "Employee Contract Ledger"
                                         EmployeeContractLedgerPrevious.setfilter("Employee No.", "Employee No.");
                                         EmployeeContractLedgerPrevious.SETCURRENTKEY("Employee No.", "Starting Date");
                                         EmployeeContractLedgerPrevious.NEXT(-1);
-                                        WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                        NetoPlate.Reset();
+                                        NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                        NetoPlate.Get(Rec."Employee No.");
+                                        if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                        end
+                                        else begin
+                                            WageAmounts.VALIDATE("Old Amount", EmployeeContractLedgerPrevious.Brutto);
+                                        end;
                                         EGet.Get(EmployeeContractLedger."Employee No.");
                                         WT.Reset();
                                         WT.SetFilter(Code, '%1', EGet."Wage Type");
                                         if WT.FindFirst() then begin
-                                            if WT."Wage Calculation Type" = WT."Wage Calculation Type"::Netto2 then
-                                                WageAmounts.Validate("Net Amount 2", EmployeeContractLedger.Netto);
+
                                         end;
                                         WageAmounts.VALIDATE("Application Date", EmployeeContractLedger."Starting Date");
                                     END;
                                 END;
-                                WageAmounts.INSERT;
+                                NetoPlate.Reset();
+                                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                NetoPlate.Get(Rec."Employee No.");
+                                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                end
+                                else begin
+                                    WageAmounts.INSERT;
+                                end;
                             END;
                         END
                     END;
@@ -4285,7 +4370,15 @@ table 50071 "Employee Contract Ledger"
                                 "Position Responsibility" := PosMenuFind."Position Responsibility";
                                 "Position complexity" := PosMenuFind."Position complexity";
                                 Wagesetup.Get();
-                                Validate(Brutto, ROUND(Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage", 0.01, '>'));
+                                NetoPlate.Reset();
+                                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                                NetoPlate.Get(Rec."Employee No.");
+                                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                                end
+                                else begin
+                                    Validate(Brutto, ROUND(Wagesetup."Wage Base" * PosMenuFind."Position Coefficient for Wage", 0.01, '>'));
+                                end;
                                 "Workplace conditions" := PosMenuFind."Workplace conditions";
                             END;
 
@@ -4334,7 +4427,15 @@ table 50071 "Employee Contract Ledger"
                             "Position Responsibility" := PositonMenuTemp."Position Responsibility";
                             "Position complexity" := PositonMenuTemp."Position complexity";
                             Wagesetup.Get();
-                            Validate(Brutto, Wagesetup."Wage Base" * PositonMenuTemp."Position Coefficient for Wage");
+                            NetoPlate.Reset();
+                            NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                            NetoPlate.Get(Rec."Employee No.");
+                            if NetoPlate."Wage Type" = 'NETO' then begin
+
+                            end
+                            else begin
+                                Validate(Brutto, Wagesetup."Wage Base" * PositonMenuTemp."Position Coefficient for Wage");
+                            end;
                             "Workplace conditions" := PositonMenuTemp."Workplace conditions";
 
 
@@ -6017,7 +6118,15 @@ table 50071 "Employee Contract Ledger"
                 myInt: Integer;
             begin
                 Wagesetup.Get();
-                Validate(Brutto, ROUND(Wagesetup."Wage Base" * "Position Coefficient for Wage", 0.01, '>'));
+                NetoPlate.Reset();
+                NetoPlate.SetFilter("No.", '%1', Rec."Employee No.");
+                NetoPlate.Get(Rec."Employee No.");
+                if NetoPlate."Wage Type" = 'NETO' then begin
+
+                end
+                else begin
+                    Validate(Brutto, ROUND(Wagesetup."Wage Base" * "Position Coefficient for Wage", 0.01, '>'));
+                end;
 
 
             end;
@@ -6608,6 +6717,7 @@ table 50071 "Employee Contract Ledger"
         EmployeeContractLedgerPrevious: Record "Employee Contract Ledger";
         ReportName: Text;
         FileVar: File;
+        NetoPlate: Record Employee;
 
         EGet: Record Employee;
         IStream: InStream;

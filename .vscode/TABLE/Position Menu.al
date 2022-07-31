@@ -621,8 +621,13 @@ table 50132 "Position Menu"
                         ecl.validate("Position Coefficient for Wage", Rec."Position Coefficient for Wage");
                         ecl."Position Responsibility" := Rec."Position Responsibility";
                         ecl."Workplace conditions" := Rec."Workplace conditions";
-
-                        ecl.Modify();
+                        NetoPlate.Reset();
+                        NetoPlate.SetFilter("No.", '%1', ecl."Employee No.");
+                        NetoPlate.Get(ecl."Employee No.");
+                        if NetoPlate."Wage Type" = 'NETO' then
+                            ecl.Modify(false)
+                        else
+                            ecl.Modify();
 
 
                     until ecl.Next() = 0;
@@ -637,6 +642,7 @@ table 50132 "Position Menu"
             var
                 myInt: Integer;
                 ecl: Record "Employee Contract Ledger";
+
             begin
                 "Position Coefficient for Wage" := UpdateCoeff(rec."Position complexity", rec."Position Responsibility", rec."Workplace conditions");
                 ecl.Reset();
@@ -651,7 +657,13 @@ table 50132 "Position Menu"
                         ecl."Position Coefficient for Wage" := Rec."Position Coefficient for Wage";
                         ecl."Position Responsibility" := Rec."Position Responsibility";
                         ecl."Workplace conditions" := Rec."Workplace conditions";
-                        ecl.Modify();
+                        NetoPlate.Reset();
+                        NetoPlate.SetFilter("No.", '%1', ecl."Employee No.");
+                        NetoPlate.Get(ecl."Employee No.");
+                        if NetoPlate."Wage Type" = 'NETO' then
+                            ecl.Modify(false)
+                        else
+                            ecl.Modify();
                     until ecl.Next() = 0;
             end;
         }
@@ -682,7 +694,13 @@ table 50132 "Position Menu"
                         ecl."Position Coefficient for Wage" := Rec."Position Coefficient for Wage";
                         ecl."Position Responsibility" := Rec."Position Responsibility";
                         ecl."Workplace conditions" := Rec."Workplace conditions";
-                        ecl.Modify();
+                        NetoPlate.Reset();
+                        NetoPlate.SetFilter("No.", '%1', ecl."Employee No.");
+                        NetoPlate.Get(ecl."Employee No.");
+                        if NetoPlate."Wage Type" = 'NETO' then
+                            ecl.Modify(false)
+                        else
+                            ecl.Modify();
 
                     until ecl.Next() = 0;
             end;
@@ -732,6 +750,7 @@ table 50132 "Position Menu"
 
     var
         Position: Record "Position";
+        NetoPlate: Record Employee;
         RoleT: Record "Role";
         Roles: Record "Role";
         ECLC: Record "Employee Contract Ledger";
