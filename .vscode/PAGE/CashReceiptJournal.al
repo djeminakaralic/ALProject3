@@ -218,6 +218,20 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
                     GJline.Insert();
 
+
+                    //ĐK
+                    NoSeriesLIne.Reset();
+
+                    NoSeriesLIne.SetFilter("Series Code", '%1', BankAccount."No. series for Payment");
+                    if NoSeriesLIne.FindSet() then
+                        repeat
+                            NoSeriesLIne."Last Date Used" := 0D;
+                            NoSeriesLIne."Last No. Used" := '';
+                            NoSeriesLIne.Modify();
+                        until NoSeriesLIne.Next() = 0;
+
+
+
                 end;
             }
         }
@@ -318,6 +332,9 @@ pageextension 50170 CashReceiptJournal extends "Cash Receipt Journal"
 
     var
         TotalAmount: Decimal;
+        CZKNoSeries: Record "Bank Account";
+        NoSeriesLIne: Record "No. Series Line";
+
         LineNo: Integer;
         UserSetup: Record "User Setup";
         BankAccount: Record "Bank Account";
